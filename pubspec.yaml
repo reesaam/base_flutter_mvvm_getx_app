@@ -19,6 +19,7 @@ dependencies:
   get: ^4.6.6
   getx_binding_annotation: ^0.1.1
   freezed: ^2.5.7
+  json_annotation: ^4.9.0
 
   # Storage
   shared_preferences: ^2.3.3
@@ -30,7 +31,6 @@ dependencies:
   # Tools
   dartz: ^0.10.1
   dart_eval: ^0.6.0
-  json_annotation: ^4.9.0
 
   # Remote and Connection
   dio: ^5.4.2+1
@@ -57,6 +57,7 @@ dependencies:
 
   # Localization
   intl: ^0.19.0
+  intl_utils: ^2.8.7
   timezone: ^0.9.4
   country_flags: ^3.0.0
   persian_datetime_picker: ^2.6.0
