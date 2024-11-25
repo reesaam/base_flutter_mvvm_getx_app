@@ -59,6 +59,13 @@ flutter test
 ```
 
 ## Others
+### Localization
+- Localization uses `intl_utils` to generate localizations
+- For any problem in `Localization` use:
+```
+dart run intl_utils:generate
+```
+
 ### Icons
 - For any possible change in Launcher Icon
 - first change the file in assets : <<assets/logos/app_logo.png>> (Please replace the file)
@@ -70,23 +77,40 @@ dart run flutter_launcher_icons -f flutter_launcher_icons.yaml
 # How to Manage
 
 ### lib/admin
-Everything that you need for Administration that mostly would be separated from the App, 
+Everything that you need for Administration that mostly would be separated from the App, It mostly uses in the development phase. Checking widgets is possible this way.
+- Widget Test
+- Functionality Test
+- Components Test
+- Verifiers, Format Checkers or Regexes
+- Or any component that need to be checked or tested
 
-### lib/app
-- Main Widgets and Components (Buttons, Dialogs, Indicators, AppBar, Drawer, ...)
-- 
+### lib/components
+All Components would be placed here
+- Failures
+- Network
+- Storage
+- File Manipulation
+- Docs
+- Permissions
+- Notifications
+
 ### lib/core
+- This is the Core of the App, every Information or functionality which provides and creates core of the app 
 - All Bindings, Routing, Core Elements, Extensions, ...
 - Core Functions (Data Manipulations Functions, AppExit, Connection Checker, ...) that you may need all over the App
-- Core Widgets that you can use globally all over the App
 - All Extensions and Data Manipulation Functions
-- Network Functions
 
-### lib/data
-- App Info and Data
-- All Data and Resources you need
-- Global Entities and Models
-- Storage and Data Functions and Implementation
+### lib/features
+- Main place and develop all features of the app, every page counted as features here 
+
+### lib/shared
+- Model, Entities, Mappers or any type of data models which will use all over the app would place in this folder, they all mostly will decorate with `freezed` for ease of use.  
+
+### lib/ui_kit
+- Theme
+- Main Widgets (AppBar, Drawer, BottomNavigationBar, ...)
+- Dialogs, Sheets and Prompts
+- All Widgets (TextField, Radio, Buttons, CheckBox, ...)
 
 ### Package Manipulation
 with Rename:
