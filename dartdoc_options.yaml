@@ -1,0 +1,21 @@
+dartdoc:
+  categories:
+    "Storage":
+      markdown: docs/storage/storage.md
+      name: Storage
+    "Themes":
+      markdown: docs/ui/themes.md
+      name: Themes
+    "Widgets":
+      markdown: docs/ui/widgets.md
+      name: Widgets
+    "APIs":
+      markdown: docs/api/apis.md
+      name: APIs
+
+  categoryOrder: [
+    "Storage",
+    "Themes",
+    "Widgets",
+    "APIs",
+  ]
