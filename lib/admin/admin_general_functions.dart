@@ -7,6 +7,7 @@ import '../ui_kit/core_widgets.dart';
 import '../ui_kit/general_widgets/dividers.dart';
 import '../ui_kit/resources/paddings.dart';
 import '../ui_kit/resources/spaces.dart';
+import '../ui_kit/theme/themes.dart';
 
 class AdminFunctions {
   static section(List<Widget> section, {bool? isRow, String? title, Color? backgroundColor}) => Column(children: [
@@ -18,7 +19,6 @@ class AdminFunctions {
               ]),
         Container(
           padding: AppPaddings.buttonXLarge,
-          color: backgroundColor,
           child: isRow == true
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -14,7 +14,7 @@ import '../buttons/app_icon_button.dart';
 import '../theme/themes.dart';
 
 class AppSnackBar {
-  factory AppSnackBar.show({
+  AppSnackBar.show({
     String? message,
     String? title,
     Widget? widget,
@@ -27,23 +27,24 @@ class AppSnackBar {
     Color? backgroundColor,
     Color? textColor,
     bool? withProgressIndicator,
-  }) =>
-      _showSnackBar(
-        message: message,
-        title: title,
-        widget: widget,
-        icon: icon,
-        leadingAction: leadingAction,
-        leadingIcon: leadingIcon,
-        leadingText: leadingText,
-        buttonText: buttonText,
-        buttonAction: buttonAction,
-        backgroundColor: backgroundColor,
-        textColor: textColor,
-        showProgressIndicator: withProgressIndicator,
-      );
+  }) {
+    _showSnackBar(
+      message: message,
+      title: title,
+      widget: widget,
+      icon: icon,
+      leadingAction: leadingAction,
+      leadingIcon: leadingIcon,
+      leadingText: leadingText,
+      buttonText: buttonText,
+      buttonAction: buttonAction,
+      backgroundColor: backgroundColor,
+      textColor: textColor,
+      showProgressIndicator: withProgressIndicator,
+    );
+  }
 
-  factory AppSnackBar.showError({
+  AppSnackBar.showError({
     String? message,
     String? title,
     Widget? widget,
@@ -53,21 +54,22 @@ class AppSnackBar {
     String? leadingText,
     String? buttonText,
     Function()? buttonAction,
-  }) =>
-      _showSnackBar(
-        message: message,
-        title: title,
-        widget: widget,
-        icon: icon,
-        leadingAction: leadingAction,
-        leadingIcon: leadingIcon,
-        leadingText: leadingText,
-        buttonText: buttonText,
-        buttonAction: buttonAction,
-        backgroundColor: AppThemes.to.colorScheme.error,
-      );
+  }) {
+    _showSnackBar(
+      message: message,
+      title: title,
+      widget: widget,
+      icon: icon,
+      leadingAction: leadingAction,
+      leadingIcon: leadingIcon,
+      leadingText: leadingText,
+      buttonText: buttonText,
+      buttonAction: buttonAction,
+      backgroundColor: AppThemes.to.colorScheme.error,
+    );
+  }
 
-  factory AppSnackBar.showWarning({
+  AppSnackBar.showWarning({
     String? message,
     String? title,
     Widget? widget,
@@ -77,19 +79,20 @@ class AppSnackBar {
     String? leadingText,
     String? buttonText,
     Function()? buttonAction,
-  }) =>
-      _showSnackBar(
-        message: message,
-        title: title,
-        widget: widget,
-        icon: icon,
-        leadingAction: leadingAction,
-        leadingIcon: leadingIcon,
-        leadingText: leadingText,
-        buttonText: buttonText,
-        buttonAction: buttonAction,
-        backgroundColor: AppThemes.to.hintColor,
-      );
+  }) {
+    _showSnackBar(
+      message: message,
+      title: title,
+      widget: widget,
+      icon: icon,
+      leadingAction: leadingAction,
+      leadingIcon: leadingIcon,
+      leadingText: leadingText,
+      buttonText: buttonText,
+      buttonAction: buttonAction,
+      backgroundColor: AppThemes.to.hintColor,
+    );
+  }
 }
 
 _showSnackBar({
@@ -127,20 +130,20 @@ _showSnackBar({
                 buttonText == null
                     ? shrinkSizedBox
                     : Column(children: [
-                  AppSpaces.h20,
-                  AppGeneralButton(text: buttonText, primaryColor: true, onTap: buttonAction ?? nullFunction),
-                ]),
+                        AppSpaces.h20,
+                        AppGeneralButton(text: buttonText, primaryColor: true, onTap: buttonAction ?? nullFunction),
+                      ]),
               ]),
       onTap: onTap == null ? null : (snack) => onTap(snack),
       mainButton: leadingIcon == null
           ? null
           : leadingText == null
-          ? AppIconButton(
-        primaryColor: true,
-        icon: leadingIcon,
-        onTap: leadingAction ?? nullFunction,
-      )
-          : _buttonWidget(leadingAction ?? nullFunction, leadingText),
+              ? AppIconButton(
+                  primaryColor: true,
+                  icon: leadingIcon,
+                  onTap: leadingAction ?? nullFunction,
+                )
+              : _buttonWidget(leadingAction ?? nullFunction, leadingText),
 
       //Specifications
       padding: padding ?? AppPaddings.snackBar,

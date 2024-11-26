@@ -16,6 +16,7 @@ import '../../../shared/shared_models/core_models/app_page_detail/app_page_detai
 import '../../../core/extensions/extensions_on_data_models/extension_permission.dart';
 import '../../../core/extensions/extensions_on_data_types/extension_date_time.dart';
 import '../../../core/extensions/extensions_on_data_types/extension_duration.dart';
+import '../../../shared/shared_models/core_models/app_settings_data/app_setting_data.dart';
 import '../../../ui_kit/dialogs/app_alert_dialogs.dart';
 import '../../../core/app_localization.dart';
 import '../../../core/core_functions.dart';
@@ -37,7 +38,7 @@ class AdminTestController extends CoreController {
   changeDarkMode() async {
     darkMode.value = !darkMode.value;
     var settings = loadAppData()?.settings;
-    settings = settings?.copyWith(darkMode: darkMode.value);
+    settings = settings?.copyWith(darkMode: darkMode.value) ?? AppSettingData().copyWith(darkMode: darkMode.value);
     saveAppData(appSettingData: settings);
     Get.changeTheme(darkMode.value ? AppThemes.darkTheme : AppThemes.lightTheme);
   }

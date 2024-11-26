@@ -12,11 +12,11 @@ class AppThemesVariables {
   ///Color Modes
   static Color get transparent => _transparent;
   static Color get appBackground => _white;
-  static Color get appBackgroundDark => _black;
+  static Color get appBackgroundDark => _grey.withOpacity(0.9);
   static Color get appPrimary => _persianGreen;
-  static Color get appPrimaryDark => _white;
+  static Color get appPrimaryDark => _grey.withOpacity(0.8);
   static Color get appSecondary => _grey;
-  static Color get appSecondaryDark => _white;
+  static Color get appSecondaryDark => _black;
   static Color get appTertiary => _black;
   static Color get appTertiaryDark => _white;
   static Color get appDisabled => _grey.withOpacity(0.8);

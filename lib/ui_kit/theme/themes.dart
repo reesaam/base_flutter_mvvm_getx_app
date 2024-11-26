@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:getx_binding_annotation/annotation.dart';
 
 import '../../components/storage/app_storage_module.dart';
+import '../../core/core_functions.dart';
 import '../../core/core_resources/defaults.dart';
 import '../resources/elements.dart';
 import '../../shared/shared_models/core_models/theme_data_model/theme_data_model.dart';
@@ -26,6 +27,7 @@ class AppThemes {
     bool? storageResult;
     AppStorage.to.loadAppData().then((value) => value.fold((l) => null, (r) => storageResult = r?.settings?.darkMode));
     isDark = storageResult == true || isSystemDark == true;
+    isDark ? appLogPrint('Dark Mode Activated') : null ;
     return _theme();
   }
 
@@ -33,6 +35,8 @@ class AppThemes {
   ThemeData _theme() => ThemeData(
         colorScheme: _colorScheme(),
         canvasColor: _canvasColor(),
+        scaffoldBackgroundColor: _canvasColor(),
+        dialogBackgroundColor: _canvasColor(),
         primaryColor: _primaryColor(),
         primaryColorLight: AppThemesVariables.appPrimary,
         primaryColorDark: AppThemesVariables.appPrimaryDark,
@@ -150,7 +154,7 @@ class AppThemes {
         ),
         darkThemeData: generalTheme.copyWith(
           backgroundColor: AppThemesVariables.appBackgroundDark,
-          foregroundColor: AppThemesVariables.appPrimaryDark,
+          foregroundColor: AppThemesVariables.appSecondaryDark,
         )).getMode<AppBarTheme>(isDark);
   }
 
@@ -239,11 +243,17 @@ class AppThemes {
   }
 
   DialogTheme _dialog() {
-    DialogTheme generalTheme = const DialogTheme();
+    DialogTheme generalTheme = const DialogTheme(
+      elevation: 10,
+    );
 
     return AppThemeDataModel<DialogTheme>(
-      lightThemeData: generalTheme,
-      darkThemeData: generalTheme,
+      lightThemeData: generalTheme.copyWith(
+        backgroundColor: AppThemesVariables.appBackground,
+      ),
+      darkThemeData: generalTheme.copyWith(
+        backgroundColor: AppThemesVariables.appTertiaryDark,
+      ),
     ).getMode<DialogTheme>(isDark);
   }
 
@@ -306,11 +316,11 @@ class AppThemes {
     ButtonThemeData generalTheme = const ButtonThemeData();
     return AppThemeDataModel<ButtonThemeData>(
         lightThemeData: generalTheme.copyWith(
-          buttonColor: AppThemesVariables.appPrimary,
+          buttonColor: AppThemesVariables.appBackground,
           disabledColor: AppThemesVariables.appDisabled,
         ),
         darkThemeData: generalTheme.copyWith(
-          buttonColor: AppThemesVariables.appPrimaryDark,
+          buttonColor: AppThemesVariables.appSecondaryDark,
           disabledColor: AppThemesVariables.appDisabledDark,
         )).getMode<ButtonThemeData>(isDark);
   }
@@ -332,8 +342,8 @@ class AppThemes {
     );
 
     ButtonStyle buttonStyleDark = _buttonStyle().copyWith(
-      backgroundColor: MaterialStateProperty.all(AppThemesVariables.appPrimaryDark),
-      foregroundColor: MaterialStateProperty.all(AppThemesVariables.appBackgroundDark),
+      backgroundColor: MaterialStateProperty.all(AppThemesVariables.appSecondaryDark),
+      foregroundColor: MaterialStateProperty.all(AppThemesVariables.appTertiaryDark),
     );
 
     return AppThemeDataModel<ElevatedButtonThemeData>(
