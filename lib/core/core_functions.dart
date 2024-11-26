@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 import '../components/connectivity/connectivity.dart';
 import '../components/storage/app_storage_module.dart';
+import '../localization/localizations.dart';
 import '../shared/shared_models/core_models/app_data/app_data.dart';
 import '../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
 import '../shared/shared_models/core_models/app_settings_data/app_setting_data.dart';
@@ -15,7 +16,6 @@ import '../ui_kit/dialogs/app_alert_widget_dialogs.dart';
 import '../ui_kit/dialogs/specific_dialogs/exceptions_dialog.dart';
 import '../ui_kit/main_widgets/progress_indicator.dart';
 import '../ui_kit/main_widgets/snackbar.dart';
-import 'app_localization.dart';
 import 'app_routing/app_routing.dart';
 import 'core_resources/core_enums.dart';
 import 'core_resources/core_flags.dart';
@@ -94,11 +94,11 @@ Future<void> checkForceUpdate() async {
   }
 }
 
-noInternetConnectionSnackBar() => AppSnackBar.show(message: Texts.to.connectionInternetNotAvailableText);
+noInternetConnectionSnackBar() => AppSnackBar.show(message: Texts.to.connection.connectionInternetNotAvailableText);
 
 showLoadingDialog({bool? isDismissible}) => AppAlertWidgetDialogs().withoutButton(widget: AppProgressIndicator.linear(), dismissible: isDismissible);
 
-appExitDialog() => AppAlertDialogs.withOkCancel(title: Texts.to.appExit, text: Texts.to.areYouSure, onTapOk: appExit, dismissible: true);
+appExitDialog() => AppAlertDialogs.withOkCancel(title: Texts.to.general.appExit, text: Texts.to.dialogs.areYouSure, onTapOk: appExit, dismissible: true);
 
 appReload({AppPageDetail? bootPage}) async {
   showLoadingDialog();

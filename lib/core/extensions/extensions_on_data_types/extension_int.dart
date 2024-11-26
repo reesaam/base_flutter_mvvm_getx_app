@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../app_localization.dart';
+import '../../../localization/localizations.dart';
 import '../../core_resources/icons.dart';
 
 extension ExtensionIconFunction on int? {
@@ -13,5 +13,5 @@ extension ExtensionCurrencyFormat on int {
 }
 
 extension ExtensionCurrencyFormatNull on int? {
-  String toCurrency({String? sign}) => this == null ? Texts.to.notAvailableInitials : this!.toCurrency();
+  String toCurrency({String? sign}) => this == null ? Texts.to.general.notAvailableInitials : this!.toCurrency();
 }

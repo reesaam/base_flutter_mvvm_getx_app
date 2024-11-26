@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../core_resources/core_enums.dart';
-import '../../app_localization.dart';
+import '../../../localization/localizations.dart';
 
 extension ExtensionLocaleFunctions on AppLanguages? {
   Locale getLocale() {

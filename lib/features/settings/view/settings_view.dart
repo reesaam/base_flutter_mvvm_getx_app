@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_binding_annotation/annotation.dart';
 
-import '../../../core/app_localization.dart';
 import '../../../core/core_elements/core_view.dart';
 import '../../../core/core_info/app_info.dart';
 import '../../../core/extensions/extensions_on_data_types/extension_languages.dart';
 import '../../../core/extensions/extensions_on_data_types/extension_locale.dart';
 import '../../../core/extensions/extensions_on_data_types/extension_string.dart';
+import '../../../localization/localizations.dart';
 import '../../../ui_kit/general_widgets/popup_menu.dart';
 import '../../../ui_kit/general_widgets/popup_menu_item.dart';
 import '../../../ui_kit/general_widgets/switch.dart';
@@ -41,46 +41,46 @@ class SettingsPage extends CoreView<SettingsController> {
   Widget _widgetAppbarThreeDotsButton() => AppPopupMenu(listItems: _listAppbarThreeDotsButton, primaryColorIcon: false);
 
   List<AppPopupMenuItem> get _listAppbarThreeDotsButton =>
-      List.of([AppPopupMenuItem(text: Texts.to.settingsAppbarMenuResetSettings, onTapFunction: () => controller.resetAllSettings())]);
+      List.of([AppPopupMenuItem(text: Texts.to.settings.settingsAppbarMenuResetSettings, onTapFunction: () => controller.resetAllSettings())]);
 
   Widget _widgetGeneral() {
-    Widget leadingLanguage() => Text(controller.selectedLanguage.value.getLocale().getLanguageName ?? Texts.to.empty);
+    Widget leadingLanguage() => Text(controller.selectedLanguage.value.getLocale().getLanguageName);
 
     Widget leadingDarkMode() =>
         AppSwitch(value: controller.darkMode.value, onChanged: (bool value) => controller.functionDarkModeOnChange(value), enabled: false);
 
-    return Obx(() => SettingsSectionWidget(title: Texts.to.settingsSectionTitleGeneral, widgets: [
+    return Obx(() => SettingsSectionWidget(title: Texts.to.settings.settingsSectionTitleGeneral, widgets: [
           SettingsSectionItemWidget(
-            text: Texts.to.settingsSectionTitleGeneralLanguage.withDoubleDots,
+            text: Texts.to.settings.settingsSectionTitleGeneralLanguage.withDoubleDots,
             leading: leadingLanguage(),
             wholeItemFunction: controller.functionLanguageModal,
           ),
           SettingsSectionItemWidget(
-            text: Texts.to.settingsSectionGeneralItemDarkMode.withDoubleDots,
+            text: Texts.to.settings.settingsSectionGeneralItemDarkMode.withDoubleDots,
             leading: leadingDarkMode(),
           ),
         ]));
   }
 
-  Widget _widgetUpdate() => Obx(() => SettingsSectionWidget(title: Texts.to.settingsSectionTitleUpdate, widgets: [
+  Widget _widgetUpdate() => Obx(() => SettingsSectionWidget(title: Texts.to.settings.settingsSectionTitleUpdate, widgets: [
         SettingsSectionItemWidget(
-          text: Texts.to.settingsSectionTitleUpdateCurrentVersion.withDoubleDots,
+          text: Texts.to.settings.settingsSectionTitleUpdateCurrentVersion.withDoubleDots,
           leading: Text(AppInfo.currentVersion.version),
         ),
         SettingsSectionItemWidget(
-            text: Texts.to.settingsSectionTitleUpdateAvailableVersion.withDoubleDots,
+            text: Texts.to.settings.settingsSectionTitleUpdateAvailableVersion.withDoubleDots,
             leading: Text(controller.updateAvailableVersion.value?.version == AppInfo.currentVersion.version
-                ? Texts.to.notAvailable
-                : controller.updateAvailableVersion.value?.version ?? Texts.to.notAvailable),
+                ? Texts.to.general.notAvailable
+                : controller.updateAvailableVersion.value?.version ?? Texts.to.general.notAvailable),
             wholeItemFunction: controller.functionGoToUpdatePage),
       ]));
 
-  Widget _widgetBackup() => SettingsSectionWidget(title: Texts.to.settingsSectionTitleBackup, widgets: [
-        SettingsSectionItemWidget(text: Texts.to.settingsSectionBackupBackup, wholeItemFunction: controller.functionBackup),
-        SettingsSectionItemWidget(text: Texts.to.settingsSectionBackupRestore, wholeItemFunction: controller.functionRestore),
+  Widget _widgetBackup() => SettingsSectionWidget(title: Texts.to.settings.settingsSectionTitleBackup, widgets: [
+        SettingsSectionItemWidget(text: Texts.to.settings.settingsSectionBackupBackup, wholeItemFunction: controller.functionBackup),
+        SettingsSectionItemWidget(text: Texts.to.settings.settingsSectionBackupRestore, wholeItemFunction: controller.functionRestore),
       ]);
 
-  Widget _widgetStorage() => SettingsSectionWidget(title: Texts.to.settingsSectionTitleStorage, widgets: [
-        SettingsSectionItemWidget(text: Texts.to.settingsSectionStorageItemEraseAllData, wholeItemFunction: controller.clearAllData),
+  Widget _widgetStorage() => SettingsSectionWidget(title: Texts.to.settings.settingsSectionTitleStorage, widgets: [
+        SettingsSectionItemWidget(text: Texts.to.settings.settingsSectionStorageItemEraseAllData, wholeItemFunction: controller.clearAllData),
       ]);
 }

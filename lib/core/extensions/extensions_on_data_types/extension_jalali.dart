@@ -1,13 +1,13 @@
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
-import '../../app_localization.dart';
+import '../../../localization/localizations.dart';
 
 
 extension ExtensionJalaliStringProvidersNull on Jalali? {
-  String toDateTimeFormat() => this == null ? Texts.to.empty : this!.toDateTimeFormat();
-  String toDateFormat() => this == null ? Texts.to.empty : this!.toDateFormat();
-  String toTimeFormat() => this == null ? Texts.to.empty : this!.toTimeFormat();
-  String toTimeFormatWithSeconds() => this == null ? Texts.to.empty : this!.toTimeFormatWithSeconds();
+  String toDateTimeFormat() => this == null ? Texts.to.general.empty : this!.toDateTimeFormat();
+  String toDateFormat() => this == null ? Texts.to.general.empty : this!.toDateFormat();
+  String toTimeFormat() => this == null ? Texts.to.general.empty : this!.toTimeFormat();
+  String toTimeFormatWithSeconds() => this == null ? Texts.to.general.empty : this!.toTimeFormatWithSeconds();
 }
 
 extension ExtensionJalaliStringProvider on Jalali {

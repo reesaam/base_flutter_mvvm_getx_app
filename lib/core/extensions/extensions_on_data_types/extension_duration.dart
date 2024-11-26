@@ -1,5 +1,5 @@
 import '../../../shared/shared_models/helper_models/duration_custom_model/duration_custom_model.dart';
-import '../../app_localization.dart';
+import '../../../localization/localizations.dart';
 
 extension ExtensionDateTimeDurationCalculation on Duration {
   DurationCustomModel calculateDifference() {
@@ -21,8 +21,8 @@ extension ExtensionDateTimeDurationCalculation on Duration {
 }
 
 extension ExtensionDateTimeDurationCalculationNull on Duration? {
-  String toCompleteFormat() => this == null ? Texts.to.notAvailableInitials : this!.toCompleteFormat();
-  String toConditionalFormat() => this == null ? Texts.to.notAvailableInitials : this!.toConditionalFormat();
+  String toCompleteFormat() => this == null ? Texts.to.general.notAvailableInitials : this!.toCompleteFormat();
+  String toConditionalFormat() => this == null ? Texts.to.general.notAvailableInitials : this!.toConditionalFormat();
 }
 
 extension ExtensionDateTimeFormat on Duration {
@@ -41,12 +41,12 @@ extension ExtensionDateTimeFormat on Duration {
     diff.hour == 0 || diff.hour == null ? null : list.add(' ${diff.hour}H,');
     diff.minute == 0 || diff.minute == null ? null : list.add(' ${diff.minute}M,');
     diff.second == 0 || diff.second == null ? null : list.add(' ${diff.second}S,');
-    String result = Texts.to.empty;
+    String result = Texts.to.general.empty;
     for (var s in list) {
       if (s.isNotEmpty) result = result + s;
     }
-    result.isNotEmpty ? result = result.replaceRange(result.length - 1, result.length, Texts.to.empty) : null;
-    return result.isEmpty ? Texts.to.notAvailableInitials : result;
+    result.isNotEmpty ? result = result.replaceRange(result.length - 1, result.length, Texts.to.general.empty) : null;
+    return result.isEmpty ? Texts.to.general.notAvailableInitials : result;
   }
 
   String toTimeZoneFormat() {

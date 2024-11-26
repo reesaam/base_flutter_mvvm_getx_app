@@ -1,10 +1,10 @@
 
-import '../../app_localization.dart';
+import '../../../localization/localizations.dart';
 
 extension ExtensionDateTimeStringProvidersNull on DateTime? {
-  String toDateTimeFormat({String? separator}) => this == null ? Texts.to.empty : this!.toDateTimeFormat();
-  String toDateFormat({String? separator}) => this == null ? Texts.to.empty : this!.toDateFormat();
-  String toTimeFormat({bool? withSeconds}) => this == null ? Texts.to.empty : this!.toTimeFormat();
+  String toDateTimeFormat({String? separator}) => this == null ? Texts.to.general.empty : this!.toDateTimeFormat();
+  String toDateFormat({String? separator}) => this == null ? Texts.to.general.empty : this!.toDateFormat();
+  String toTimeFormat({bool? withSeconds}) => this == null ? Texts.to.general.empty : this!.toTimeFormat();
 }
 
 extension ExtensionDateTimeStringProviders on DateTime {

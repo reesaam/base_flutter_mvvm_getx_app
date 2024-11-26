@@ -3,10 +3,10 @@ import 'package:get/get.dart';
 
 import '../../core_resources/core_enums.dart';
 import '../../core_resources/texts.dart';
-import '../../app_localization.dart';
+import '../../../localization/localizations.dart';
 
 extension ExtensionLanguageName on Locale {
-  String get getLanguageName => this == AppLocalization.persian ? AppTexts.languageNamePersian : getLanguage.name.capitalizeFirst!;
+  String get getLanguageName => this == AppLocalizations.persian ? AppTexts.languageNamePersian : getLanguage.name.capitalizeFirst!;
 }
 
 extension ExtensionLanguageModel on Locale {

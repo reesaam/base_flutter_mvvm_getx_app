@@ -1,7 +1,6 @@
 import 'package:getx_binding_annotation/annotation.dart';
 
 import '../../../components/statistics/statistics.dart';
-import '../../../core/app_localization.dart';
 import '../../../core/app_routing/app_routing.dart';
 import '../../../core/core_elements/core_controller.dart';
 import '../../../core/core_functions.dart';
@@ -10,6 +9,7 @@ import '../../../core/core_resources/core_enums.dart';
 import '../../../core/core_resources/core_flags.dart';
 import '../../../core/core_resources/logos.dart';
 import '../../../core/core_resources/page_details.dart';
+import '../../../localization/localizations.dart';
 import '../../../shared/shared_models/core_models/app_version/app_version.dart';
 import '../../../ui_kit/dialogs/app_alert_dialogs.dart';
 
@@ -38,7 +38,7 @@ class SplashScreenController extends CoreController {
     pageDetail = AppPageDetails.splashScreen;
     logoSource = AppLogos.appLogo;
     appName = AppInfo.appName;
-    appVersion = '${Texts.to.version}: ${AppInfo.currentVersion.version}';
+    appVersion = '${Texts.to.general.version}: ${AppInfo.currentVersion.version}';
   }
 
   @override
@@ -50,8 +50,8 @@ class SplashScreenController extends CoreController {
   }
 
   _showUpdateDialog({bool? isForceUpdate}) => AppAlertDialogs.withYesNo(
-        title: Texts.to.updateNewVersion,
-        text: Texts.to.updateApprove,
+        title: Texts.to.update.updateNewVersion,
+        text: Texts.to.update.updateApprove,
         dismissible: isForceUpdate != true,
         onTapNo: isForceUpdate == true ? null : goToHomePage,
         onTapYes: () {

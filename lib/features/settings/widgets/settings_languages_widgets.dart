@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/app_localization.dart';
 import '../../../core/extensions/extensions_on_data_types/extension_locale.dart';
 import '../../../ui_kit/resources/paddings.dart';
 
@@ -13,7 +12,9 @@ class SettingsLanguageWidget extends StatelessWidget {
   Widget build(BuildContext context) => Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: List.generate(
-          AppLocalization.languagesList.length,
+          // AppLocalizations.languagesList.length,
+        ///TODO
+          2,
           (index) => InkWell(
               onTap: function == null ? null : () => function!(index),
               child: LayoutBuilder(

@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:getx_binding_annotation/annotation.dart';
 
 import '../../../components/storage/app_storage_module.dart';
-import '../../../core/app_localization.dart';
 import '../../../core/app_routing/app_routing.dart';
 import '../../../core/core_elements/core_controller.dart';
 import '../../../core/core_functions.dart';
@@ -14,6 +13,7 @@ import '../../../core/core_resources/page_details.dart';
 import '../../../core/extensions/extensions_on_data_models/extension_settings.dart';
 import '../../../core/extensions/extensions_on_data_types/extension_languages.dart';
 import '../../../core/extensions/extensions_on_data_types/extension_locale.dart';
+import '../../../localization/localizations.dart';
 import '../../../shared/shared_models/core_models/app_settings_data/app_setting_data.dart';
 import '../../../shared/shared_models/core_models/app_version/app_version.dart';
 import '../../../ui_kit/dialogs/app_alert_dialogs.dart';
@@ -63,10 +63,10 @@ class SettingsController extends CoreController {
   }
 
   functionLanguageModal() => AppBottomDialogs().withCancel(
-      title: Texts.to.settingsLanguageModalSelectLanguage, form: SettingsLanguageWidget(function: functionLanguageSelectionOnTap), dismissible: true);
+      title: Texts.to.settings.settingsLanguageModalSelectLanguage, form: SettingsLanguageWidget(function: functionLanguageSelectionOnTap), dismissible: true);
 
   functionLanguageSelectionOnTap(int index) {
-    selectedLanguage.value = AppLocalization.languagesList[index].getLanguage;
+    selectedLanguage.value = AppLocalizations().supportedLocales[index].getLanguage;
     appSettings.changeLanguage(selectedLanguage.value);
     saveSettings();
     popPage();
@@ -85,7 +85,7 @@ class SettingsController extends CoreController {
 
   functionCheckUpdateAvailableVersion() async {
     updateAvailableVersion.value = await checkAvailableVersion();
-    appLogPrint('Checked Update Version: ${updateAvailableVersion.value?.version ?? Texts.to.notAvailable}');
+    appLogPrint('Checked Update Version: ${updateAvailableVersion.value?.version ?? Texts.to.general.notAvailable}');
   }
 
   functionGoToUpdatePage() => goToUpdatePage();
@@ -96,7 +96,7 @@ class SettingsController extends CoreController {
       await AppStorage.to.exportData();
     }
 
-    AppAlertDialogs.withOkCancel(title: Texts.to.warning, text: Texts.to.areYouSureDataExport, onTapOk: function, dismissible: true);
+    AppAlertDialogs.withOkCancel(title: Texts.to.general.warning, text: Texts.to.dialogs.areYouSureDataExport, onTapOk: function, dismissible: true);
   }
 
   functionRestore() {
@@ -105,7 +105,7 @@ class SettingsController extends CoreController {
       await AppStorage.to.importData();
     }
 
-    AppAlertDialogs.withOkCancel(title: Texts.to.warning, text: Texts.to.areYouSureDataMayLost, onTapOk: function, dismissible: true);
+    AppAlertDialogs.withOkCancel(title: Texts.to.general.warning, text: Texts.to.dialogs.areYouSureDataMayLost, onTapOk: function, dismissible: true);
   }
 
   clearAllData() {
@@ -116,7 +116,7 @@ class SettingsController extends CoreController {
       refresh();
     }
 
-    AppAlertDialogs.withOkCancel(title: Texts.to.warning, text: Texts.to.areYouSureDataWillLost, onTapOk: function, dismissible: true);
+    AppAlertDialogs.withOkCancel(title: Texts.to.general.warning, text: Texts.to.dialogs.areYouSureDataWillLost, onTapOk: function, dismissible: true);
   }
 
   resetAllSettings() {
@@ -127,7 +127,7 @@ class SettingsController extends CoreController {
       refresh();
     }
 
-    AppAlertDialogs.withOkCancel(title: Texts.to.warning, text: Texts.to.areYouSureDataWillLost, onTapOk: function, dismissible: true);
+    AppAlertDialogs.withOkCancel(title: Texts.to.general.warning, text: Texts.to.dialogs.areYouSureDataWillLost, onTapOk: function, dismissible: true);
   }
 
   saveSettings() => saveAppData(appSettingData: appSettings.value);
