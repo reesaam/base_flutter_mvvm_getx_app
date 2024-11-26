@@ -1,0 +1,15 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    avoid_print: true
+    prefer_relative_imports: true
+    prefer_single_quotes: true
+    avoid_empty_else: true
+
+analyzer:
+  errors:
+    invalid_assignment: error
+    missing_return: warning
+    unused_import: warning
+    unrelated_type_equality_checks: warning

@@ -1,0 +1,115 @@
+name: base_flutter_mvvm_getx_app
+description: "Base Flutter App Based on MVVM Architecture and GetX State Manager"
+homepage: https://resam.site
+repository: https://github.com/reesaam/base_flutter_mvvm_getx_app
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # Main Libraries
+  get: ^4.6.6
+  getx_binding_annotation: ^0.1.1
+  freezed: ^2.5.7
+  json_annotation: ^4.9.0
+
+  # Storage
+  shared_preferences: ^2.3.3
+  get_storage: ^2.1.1
+
+  #Device Related and Resources
+  permission_handler: ^10.4.5
+
+  # Tools
+  dartz: ^0.10.1
+  dart_eval: ^0.6.0
+
+  # Remote and Connection
+  dio: ^5.4.2+1
+  html: ^0.15.4
+  connectivity_plus: ^5.0.0
+  internet_connection_checker_plus: ^2.2.0
+
+  # Notifications
+  awesome_notifications: ^0.10.0
+  #awesome_notifications_core: ^0.8.2
+  #awesome_notifications_fcm: ^0.8.2
+
+  # UI
+  flutter_animate: ^4.5.0
+
+  # Text and Text-Field
+  auto_size_text: ^3.0.0
+  mask_text_input_formatter: ^2.9.0
+  flutter_regex: ^0.0.3
+
+  # File
+  open_file_plus: ^3.4.1+1
+  flutter_file_dialog: ^3.0.2
+
+  # Localization
+  intl: ^0.19.0
+  intl_utils: ^2.8.7
+  timezone: ^0.9.4
+  country_flags: ^3.0.0
+  persian_datetime_picker: ^2.6.0
+
+  # Sharing
+  share_plus: ^10.1.2
+
+  # Docs
+  dartdoc: ^8.1.0
+
+  # Other
+  dart_style: ^2.3.2
+  rename: ^3.0.2
+  rename_app: ^1.6.1
+  change_app_package_name: ^1.4.0
+
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # Code Generator
+  build_runner: ^2.4.13
+  getx_binding_annotation_generator: ^0.1.1
+  json_serializable: ^6.7.1
+  freezed_annotation: ^2.4.1
+  injectable_generator: ^2.2.0
+
+  # Icon
+  flutter_launcher_icons: ^0.13.1
+
+  flutter_lints: ^4.0.0
+
+flutter_intl:
+  enabled: true
+
+flutter:
+  generate: true
+  uses-material-design: true
+
+  assets:
+    - assets/logos/
+    - assets/fonts/
+
+  fonts:
+    - family: Ubuntu
+      fonts:
+        - asset: assets/fonts/Ubuntu/Ubuntu-Medium.ttf
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto/Roboto-Medium.ttf
+    - family: Rubik
+      fonts:
+        - asset: assets/fonts/Rubik/Rubik-SemiBold.ttf
