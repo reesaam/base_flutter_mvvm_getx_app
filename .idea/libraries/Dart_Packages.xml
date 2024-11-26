@@ -506,6 +506,13 @@
             </list>
           </value>
         </entry>
+        <entry key="i69n">
+          <value>
+            <list>
+              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/i69n-3.0.0/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="image">
           <value>
             <list>
@@ -538,13 +545,6 @@
           <value>
             <list>
               <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.19.0/lib" />
-            </list>
-          </value>
-        </entry>
-        <entry key="intl_utils">
-          <value>
-            <list>
-              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/intl_utils-2.8.7/lib" />
             </list>
           </value>
         </entry>
@@ -1283,12 +1283,12 @@
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/http-1.2.2/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/http_multi_server-3.2.1/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/http_parser-4.0.2/lib" />
+      <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/i69n-3.0.0/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/image-4.3.0/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/injectable-2.5.0/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/injectable_generator-2.6.2/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/internet_connection_checker_plus-2.2.0/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.19.0/lib" />
-      <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/intl_utils-2.8.7/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/io-1.0.4/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/jovial_misc-0.9.0/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/jovial_svg-1.1.24/lib" />

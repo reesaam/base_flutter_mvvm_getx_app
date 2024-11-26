@@ -46,4 +46,3 @@ app.*.map.json
 
 # Localization
 /lib/generated/intl/
-/lib/l10n/untranslated.txt

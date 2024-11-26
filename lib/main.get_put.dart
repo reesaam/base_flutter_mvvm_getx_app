@@ -36,36 +36,35 @@ library;
 
 import 'package:get/get.dart';
 import 'main.dart';
-import 'admin/admin_app_countries/controller/admin_app_countries_controller.dart';
 import 'admin/admin_app_info/controller/admin_app_info_controller.dart';
+import 'admin/admin_app_countries/controller/admin_app_countries_controller.dart';
 import 'admin/admin_app_info/view/admin_app_info_page.dart';
 import 'admin/admin_app_countries/view/admin_app_countries_page.dart';
+import 'admin/admin_start/view/admin_start_page.dart';
 import 'admin/admin_app_resources/controller/admin_app_resources_controller.dart';
 import 'admin/admin_data_format_check/controller/admin_data_format_check_controller.dart';
 import 'admin/admin_data_format_check/view/admin_data_format_check_page.dart';
-import 'admin/admin_start/view/admin_start_page.dart';
-import 'admin/admin_app_resources/view/admin_app_resources_page.dart';
-import 'admin/admin_test/controller/admin_test_controller.dart';
 import 'admin/admin_start/controller/admin_start_controller.dart';
+import 'admin/admin_app_resources/view/admin_app_resources_page.dart';
 import 'admin/admin_verifiers/controller/admin_verifiers_controller.dart';
-import 'admin/admin_test/view/admin_test_page.dart';
+import 'admin/admin_test/controller/admin_test_controller.dart';
 import 'admin/admin_verifiers/view/admin_verifiers_page.dart';
+import 'admin/admin_test/view/admin_test_page.dart';
+import 'admin/admin_widget_check/controller/admin_widget_check_controller.dart';
+import 'admin/admin_widget_check/view/admin_widget_check_page.dart';
 import 'components/connectivity/connectivity.dart';
 import 'components/failures/local_exception.dart';
 import 'components/failures/network_exception.dart';
-import 'admin/admin_widget_check/controller/admin_widget_check_controller.dart';
-import 'admin/admin_widget_check/view/admin_widget_check_page.dart';
 import 'components/file_functions/file_functions.dart';
 import 'components/network/dio.dart';
 import 'components/notifications/local_notifications/local_notifications.dart';
+import 'components/notifications/local_notifications/local_notification_controller.dart';
 import 'components/share/share.dart';
 import 'components/permissions/permissions.dart';
-import 'components/notifications/local_notifications/local_notification_controller.dart';
 import 'components/statistics/statistics.dart';
 import 'components/storage/app_storage_module.dart';
 import 'components/storage/storage_providers/app_local_storage.dart';
 import 'components/storage/storage_providers/app_shared_preferences.dart';
-import 'core/app_localization.dart';
 import 'features/about/controller/about_controller.dart';
 import 'features/about/view/about_view.dart';
 import 'features/homepage/controller/homepage_controller.dart';
@@ -84,10 +83,10 @@ import 'features/versions/data/versions_remote_data_source.dart';
 import 'ui_kit/theme/themes.dart';
 
 /// Generated Library Statistics:
-///   Imports Count: 46
+///   Imports Count: 45
 ///   Pages Count: 14
 ///   Controllers Count: 15
-///   Components Count: 14
+///   Components Count: 13
 ///   Repositories Count: 3
 
 class GetPutPages {
@@ -95,14 +94,14 @@ class GetPutPages {
         GetPage(name: '/AdminAppInfoPage', page: AdminAppInfoPage.new),
         GetPage(
             name: '/AdminAppCountriesPage', page: AdminAppCountriesPage.new),
+        GetPage(name: '/AdminStartPage', page: AdminStartPage.new),
         GetPage(
             name: '/AdminDataFormatCheckPage',
             page: AdminDataFormatCheckPage.new),
-        GetPage(name: '/AdminStartPage', page: AdminStartPage.new),
         GetPage(
             name: '/AdminAppResourcesPage', page: AdminAppResourcesPage.new),
-        GetPage(name: '/AdminTestPage', page: AdminTestPage.new),
         GetPage(name: '/AdminVerifiersPage', page: AdminVerifiersPage.new),
+        GetPage(name: '/AdminTestPage', page: AdminTestPage.new),
         GetPage(name: '/AdminWidgetCheckPage', page: AdminWidgetCheckPage.new),
         GetPage(name: '/AboutPage', page: AboutPage.new),
         GetPage(name: '/HomePage', page: HomePage.new),
@@ -129,10 +128,10 @@ class GetPutBindings implements Bindings {
 class _GetPutController extends Bindings {
   @override
   void dependencies() {
+    Get.lazyPut<AdminAppInfoController>(() => AdminAppInfoController(),
+        fenix: true);
     Get.lazyPut<AdminAppCountriesController>(
         () => AdminAppCountriesController(),
-        fenix: true);
-    Get.lazyPut<AdminAppInfoController>(() => AdminAppInfoController(),
         fenix: true);
     Get.lazyPut<AdminAppResourcesController>(
         () => AdminAppResourcesController(),
@@ -140,11 +139,11 @@ class _GetPutController extends Bindings {
     Get.lazyPut<AdminDataFormatCheckController>(
         () => AdminDataFormatCheckController(),
         fenix: true);
-    Get.lazyPut<AdminTestController>(() => AdminTestController(), fenix: true);
     Get.lazyPut<AdminStartController>(() => AdminStartController(),
         fenix: true);
     Get.lazyPut<AdminVerifiersController>(() => AdminVerifiersController(),
         fenix: true);
+    Get.lazyPut<AdminTestController>(() => AdminTestController(), fenix: true);
     Get.lazyPut<AdminWidgetCheckController>(() => AdminWidgetCheckController(),
         fenix: true);
     Get.lazyPut<AppLocalNotificationController>(
@@ -178,7 +177,6 @@ class _GetPutComponent extends Bindings {
     Get.lazyPut<AppLocalStorage>(() => AppLocalStorage(), fenix: true);
     Get.lazyPut<AppSharedPreferences>(() => AppSharedPreferences(),
         fenix: true);
-    Get.lazyPut<AppLocalization>(() => AppLocalization(), fenix: true);
     Get.lazyPut<AppThemes>(() => AppThemes(), fenix: true);
   }
 }

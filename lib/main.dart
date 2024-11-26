@@ -5,10 +5,10 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 import 'components/notifications/local_notifications/local_notifications.dart';
-import 'core/app_localization.dart';
 import 'core/core_info/app_info.dart';
 import 'core/core_resources/defaults.dart';
 import 'core/extensions/extension_for_prints/extension_for_prints.dart';
+import 'localization/localizations.dart';
 import 'ui_kit/theme/themes.dart';
 
 import 'main.get_put.dart';
@@ -43,10 +43,10 @@ class MainApp extends StatelessWidget {
       theme: AppThemes.lightTheme,
       darkTheme: AppThemes.darkTheme,
       themeMode: ThemeMode.system,
-      supportedLocales: AppLocalization.to.supportedLocales,
-      localizationsDelegates: AppLocalization.to.localizationDelegates,
-      locale: AppLocalization.to.getLocale(),
-      textDirection: AppLocalization.to.getTextDirection(),
+      supportedLocales: AppLocalizations.to.supportedLocales,
+      localizationsDelegates: AppLocalizations.to.localizationDelegates,
+      locale: AppLocalizations.to.getLocale(),
+      textDirection: AppLocalizations.to.getTextDirection(),
     );
   }
 }

@@ -1,0 +1,98 @@
+language:
+  languageName: Persian
+  languageCode: fa
+
+app:
+  appName: Base Flutter MVVM GetX App
+
+pagesName:
+  splashScreenPageName: Splash Screen
+  homePageName: Home
+  settingsPageName: Settings
+  updatePageName: Update
+  aboutPageName: About
+  notFoundPageName: Page Not Found
+
+adminPagesName:
+  adminStartPagePageName: Admin Start Page
+  adminTestPageName: Test Page
+  adminAppInfoPageName: App Info Page
+  adminAppResourcesPageName: App Resources Page
+  adminWidgetCheckPageName: Widget Check Page
+  adminDataFormatCheckPageName: Data Format Check Page
+  adminVerifiersPageName: Verifiers Page
+  adminAppCountriesPageName: App Countries Page
+  appDocsPageName: App Docs Page
+
+general:
+  empty:
+  dash: '-'
+  version: Version
+  ok: Ok
+  cancel: Cancel
+  yes: Yes
+  no: No
+  notAvailable: Not Available
+  notAvailableInitials: N/A
+  total: Total
+  from: From
+  to: To
+  warning: Warning
+  alert: Alert
+  information: Information
+  info: Info
+  incorrect: Incorrect
+  totalBalance: Total Balance
+  appExit: App Exit
+
+dialogs:
+  areYouSure: Are you sure ?
+  areYouSureDataWillLost: Are you sure?\nData will be lost with this Function.
+  areYouSureDataMayLost: Are you sure?\nData may be lost with this Function.
+  areYouSureDataExport: Are you sure?\nData will be exported and exposed.
+  areYouSureDataImport: Are you sure?\nData will be imported and exposed.
+
+connection:
+  connectionInternetNotAvailableTitle: Internet Connection
+  connectionInternetNotAvailableText: Internet Connection is not Available!\nPlease Check your Connection.
+
+settings:
+  settingsLanguageModalSelectLanguage: Select Language
+  settingsAppbarMenuResetSettings: Reset All Settings
+  settingsSectionTitleGeneral: General
+  settingsSectionTitleGeneralLanguage: Language
+  settingsSectionTitleGeneralCalendar: Calendar Type
+  settingsSectionGeneralItemDarkMode: Dark Mode
+  settingsSectionTitleUpdate: Update
+  settingsSectionTitleUpdateCurrentVersion: Current Version
+  settingsSectionTitleUpdateAvailableVersion: Available Version
+  settingsSectionTitleBackup: Backup
+  settingsSectionBackupBackup: Backup Data
+  settingsSectionBackupRestore: Restore Data
+  settingsSectionTitleStorage: Storage
+  settingsSectionStorageItemEraseAllData: Erase All Data
+
+update:
+  updateCurrentVersion: Current Version
+  updateAvailableVersion: New Available Version
+  updateCheckUpdate: Check Update
+  updateDownloadUpdate: Download Update
+  updateNewVersion: New Version Found
+  updateApprove: Do you want to download the New Version?
+  updateCheckingUpdate: Checking for any Available Update ...
+  updateUpdateFound: New Update is Available!
+  updateNoUpdateFound: There is not any Update Available!
+  updateDownloading: Downloading ...
+  updateDownloaded: Update Downloaded!
+  updateInstallationTitle: Update Installation
+  updateInstallationContent: 'Do you want to install the Update?\n\nWarning: Application will close!'
+  updateDirectoryNotFoundTitle: Directory Error!
+  updateDirectoryNotFoundContent: There is not any Directory available to store Data
+  updateFileNotFoundTitle: File Error!
+  updateFileNotFoundContent: File not found
+
+about:
+  aboutTitlesAppName: App Name
+  aboutTitlesDeveloperName: Developer Name
+  aboutTitlesDeveloperWebsite: Developer WebSite
+  aboutTitlesDeveloperLinkedIn: Developer LinkedIn Profile

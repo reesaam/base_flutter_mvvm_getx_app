@@ -4,7 +4,7 @@ homepage: https://resam.site
 repository: https://github.com/reesaam/base_flutter_mvvm_getx_app
 publish_to: 'none'
 
-version: 1.0.0+1
+version: 0.0.4
 
 environment:
   sdk: ^3.5.3
@@ -56,8 +56,9 @@ dependencies:
   flutter_file_dialog: ^3.0.2
 
   # Localization
-  intl: ^0.19.0
-  intl_utils: ^2.8.7
+  i69n: ^3.0.0
+#  intl: ^0.19.0
+#  intl_utils: ^2.8.7
   timezone: ^0.9.4
   country_flags: ^3.0.0
   persian_datetime_picker: ^2.6.0
