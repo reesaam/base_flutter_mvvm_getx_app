@@ -6,12 +6,12 @@ app:
   appName: Base Flutter MVVM GetX App
 
 pagesName:
-  splashScreenPageName: Splash Screen
-  homePageName: Home
-  settingsPageName: Settings
-  updatePageName: Update
-  aboutPageName: About
-  notFoundPageName: Page Not Found
+  splashScreenPageName: صفحه اسپلش
+  homePageName: خانه
+  settingsPageName: تنظیمات
+  updatePageName: بروزرسانی
+  aboutPageName: درباره
+  notFoundPageName: صفحه پیدا نشد
 
 adminPagesName:
   adminStartPagePageName: Admin Start Page
@@ -27,26 +27,26 @@ adminPagesName:
 general:
   empty:
   dash: '-'
-  version: Version
-  ok: Ok
-  cancel: Cancel
-  yes: Yes
-  no: No
-  notAvailable: Not Available
-  notAvailableInitials: N/A
-  total: Total
-  from: From
-  to: To
-  warning: Warning
-  alert: Alert
-  information: Information
-  info: Info
-  incorrect: Incorrect
-  totalBalance: Total Balance
-  appExit: App Exit
+  version: نسخه
+  ok: تایید
+  cancel: لغو
+  yes: باه
+  no: خیر
+  notAvailable: وجود ندارد
+  notAvailableInitials: وجود ندارد
+  total: مجموع
+  from: از
+  to: تا
+  warning: توجه
+  alert: اخطار
+  information: اطلاعات
+  info: اطلاعات
+  incorrect: اشتباه
+  totalBalance: بالانس کل
+  appExit: خروج از برنامه
 
 dialogs:
-  areYouSure: Are you sure ?
+  areYouSure: آیا مطمئن هستید؟
   areYouSureDataWillLost: Are you sure?\nData will be lost with this Function.
   areYouSureDataMayLost: Are you sure?\nData may be lost with this Function.
   areYouSureDataExport: Are you sure?\nData will be exported and exposed.

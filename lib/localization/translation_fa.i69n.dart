@@ -124,12 +124,12 @@ class AppTranslation_fa extends AppTranslation {
 class PagesNameTranslation_fa extends PagesNameTranslation {
   final Translation_fa _parent;
   const PagesNameTranslation_fa(this._parent) : super(_parent);
-  String get splashScreenPageName => "Splash Screen";
-  String get homePageName => "Home";
-  String get settingsPageName => "Settings";
-  String get updatePageName => "Update";
-  String get aboutPageName => "About";
-  String get notFoundPageName => "Page Not Found";
+  String get splashScreenPageName => "صفحه اسپلش";
+  String get homePageName => "خانه";
+  String get settingsPageName => "تنظیمات";
+  String get updatePageName => "بروزرسانی";
+  String get aboutPageName => "درباره";
+  String get notFoundPageName => "صفحه پیدا نشد";
   Object operator [](String key) {
     var index = key.indexOf('.');
     if (index > 0) {
@@ -203,23 +203,23 @@ class GeneralTranslation_fa extends GeneralTranslation {
   const GeneralTranslation_fa(this._parent) : super(_parent);
   String get empty => "null";
   String get dash => "-";
-  String get version => "Version";
-  String get ok => "Ok";
-  String get cancel => "Cancel";
-  String get yes => "Yes";
-  String get no => "No";
-  String get notAvailable => "Not Available";
-  String get notAvailableInitials => "N/A";
-  String get total => "Total";
-  String get from => "From";
-  String get to => "To";
-  String get warning => "Warning";
-  String get alert => "Alert";
-  String get information => "Information";
-  String get info => "Info";
-  String get incorrect => "Incorrect";
-  String get totalBalance => "Total Balance";
-  String get appExit => "App Exit";
+  String get version => "نسخه";
+  String get ok => "تایید";
+  String get cancel => "لغو";
+  String get yes => "باه";
+  String get no => "خیر";
+  String get notAvailable => "وجود ندارد";
+  String get notAvailableInitials => "وجود ندارد";
+  String get total => "مجموع";
+  String get from => "از";
+  String get to => "تا";
+  String get warning => "توجه";
+  String get alert => "اخطار";
+  String get information => "اطلاعات";
+  String get info => "اطلاعات";
+  String get incorrect => "اشتباه";
+  String get totalBalance => "بالانس کل";
+  String get appExit => "خروج از برنامه";
   Object operator [](String key) {
     var index = key.indexOf('.');
     if (index > 0) {
@@ -274,7 +274,7 @@ class GeneralTranslation_fa extends GeneralTranslation {
 class DialogsTranslation_fa extends DialogsTranslation {
   final Translation_fa _parent;
   const DialogsTranslation_fa(this._parent) : super(_parent);
-  String get areYouSure => "Are you sure ?";
+  String get areYouSure => "آیا مطمئن هستید؟";
   String get areYouSureDataWillLost =>
       "Are you sure?\nData will be lost with this Function.";
   String get areYouSureDataMayLost =>

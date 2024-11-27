@@ -261,8 +261,12 @@ class AppThemes {
     BottomSheetThemeData generalTheme = const BottomSheetThemeData();
 
     return AppThemeDataModel<BottomSheetThemeData>(
-      lightThemeData: generalTheme,
-      darkThemeData: generalTheme,
+      lightThemeData: generalTheme.copyWith(
+        backgroundColor: AppThemesVariables.appBackground,
+      ),
+      darkThemeData: generalTheme.copyWith(
+        backgroundColor: AppThemesVariables.appBackgroundDark,
+      ),
     ).getMode<BottomSheetThemeData>(isDark);
   }
 
