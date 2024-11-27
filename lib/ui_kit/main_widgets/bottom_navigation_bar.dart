@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../core/app_localization.dart';
 import '../../../core/app_routing/app_routing.dart';
+import '../../localization/localizations.dart';
 import '../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
 import '../../core/core_resources/page_details.dart';
 import '../../core/extensions/extensions_on_data_types/extension_int.dart';
@@ -53,5 +53,6 @@ class _AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
 
   Icon _createIcon(AppPageDetail route) => pagesList.singleWhere((element) => element.pageRoute == route.pageRoute).iconCode.toIcon();
 
-  String _createLabel(AppPageDetail route) => pagesList.singleWhere((element) => element.pageRoute == route.pageRoute).pageName ?? Texts.to.empty;
+  String _createLabel(AppPageDetail route) =>
+      pagesList.singleWhere((element) => element.pageRoute == route.pageRoute).pageName ?? Texts.to.general.empty;
 }

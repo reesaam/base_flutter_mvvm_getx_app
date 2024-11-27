@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:getx_binding_annotation/annotation.dart';
 
-import '../../../core/app_localization.dart';
 import '../../../core/app_routing/app_routing.dart';
 import '../../../core/core_elements/core_view.dart';
 import '../../../core/core_resources/page_details.dart';

@@ -1,14 +1,11 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
+import 'package:getx_binding_annotation/annotation.dart';
 import 'package:timezone/timezone.dart';
 
-import '../core/core_functions.dart';
-import '../core/core_info/core_defaults.dart';
 import '../core/core_resources/countries.dart';
-import '../core/extensions/extensions_on_data_types/extension_languages.dart';
-import '../core/extensions/extensions_on_data_types/extension_list.dart';
 import '../core/extensions/extensions_on_data_types/extension_time_zone.dart';
-import '../shared/shared_models/core_models/app_settings_data/app_setting_data.dart';
 
 //Languages Import
 import 'translation.i69n.dart';
@@ -21,37 +18,31 @@ class Texts {
   static Translation get to => AppLocalizations.of(Get.context!);
 }
 
+@GetPut.component()
 class AppLocalizations {
   AppLocalizations({this.translation});
-
   static AppLocalizations get to => Get.find();
 
   final Translation? translation;
 
-  static final _translation = <String, Translation Function()>{
+  static final _translations = <String, Translation Function()>{
     'en': () => const Translation(),
     'fa': () => const Translation_fa(),
   };
 
-  get localizationDelegates => const _AppLocalizationsDelegate();
+  get localizationDelegates => [_delegate, _material, _widgets, _cupertino];
+  LocalizationsDelegate get _delegate => const _AppLocalizationsDelegate();
+  LocalizationsDelegate get _material => GlobalMaterialLocalizations.delegate;
+  LocalizationsDelegate get _widgets => GlobalWidgetsLocalizations.delegate;
+  LocalizationsDelegate get _cupertino => GlobalCupertinoLocalizations.delegate;
 
-  List<Locale> get supportedLocales => _supportedLocales.map((x) => Locale(x)).toList();
+  static List<Locale> get supportedLocales => _supportedLocales.map((x) => Locale(x)).toList();
 
-  static Future<AppLocalizations> load(Locale locale) => Future.value(AppLocalizations(translation: _translation[locale.languageCode]!()));
+  static Future<AppLocalizations> load(Locale locale) => Future.value(AppLocalizations(translation: _translations[locale.languageCode]!()));
 
-  static Translation of(BuildContext context) => AppLocalizations.of(context);
+  static Translation of(BuildContext context) => Localizations.of<AppLocalizations>(context, AppLocalizations)!.translation!;
 
   /// Manual Added
-  Locale language = CoreDefaults.defaultLanguage;
-  String timeZoneAbbreviation = CoreDefaults.defaultCountry.timeZoneAbbreviation?.getMiddleElement() ?? '';
-  bool isDst = CoreDefaults.defaultCountry.hasDst;
-
-  // Data Getters
-  AppSettingData _loadData() => loadAppData()?.settings ?? const AppSettingData();
-  Locale getLocale() => _loadData().language.getLocale();
-  TextDirection getTextDirection() =>
-      supportedLocales.any((element) => element.languageCode == const Translation_fa().language.languageCode) ? TextDirection.rtl : TextDirection.ltr;
-
   // TimeZone & Country
   TimeZone getTimeZone() {
     DateTime currentTime = DateTime.now();

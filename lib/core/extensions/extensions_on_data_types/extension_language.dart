@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../localization/translation.i69n.dart';
 import '../../core_resources/core_enums.dart';
 import '../../core_resources/texts.dart';
-import '../../../localization/localizations.dart';
 
-extension ExtensionLanguageName on Locale {
-  String get getLanguageName => this == AppLocalizations.persian ? AppTexts.languageNamePersian : getLanguage.name.capitalizeFirst!;
+extension OnTranslation on Translation {
+  AppLanguages? get getLanguage => AppLanguages.values.firstWhereOrNull((element) => element.locale.languageCode == language.languageCode);
+}
+
+extension OnAppLanguages on AppLanguages {
+  String get localLanguageName => languageName == AppLanguages.persian.languageName ? AppTexts.languageNamePersian : languageName;
 }
 
 extension ExtensionLanguageModel on Locale {

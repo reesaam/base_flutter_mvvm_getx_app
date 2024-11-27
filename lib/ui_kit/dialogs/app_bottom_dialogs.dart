@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../core/app_localization.dart';
 import '../../core/core_functions.dart';
+import '../../localization/localizations.dart';
 import '../buttons/app_general_button.dart';
 import '../core_widgets.dart';
 import '../general_widgets/dividers.dart';
@@ -21,7 +21,7 @@ class AppBottomDialogs {
   withOk({String? title, required Widget form, required Function() onTapOk, bool? dismissible}) async {
     List<Widget> buttons = [
       AppGeneralButton(
-        text: Texts.to.ok,
+        text: Texts.to.general.ok,
         onTap: onTapOk,
         primaryColor: true,
       )
@@ -30,15 +30,15 @@ class AppBottomDialogs {
   }
 
   withCancel({String? title, required Widget form, bool? dismissible}) async {
-    List<Widget> buttons = [AppGeneralButton(onSecondaryColor: true, text: Texts.to.cancel, onTap: _onTapCancel)];
+    List<Widget> buttons = [AppGeneralButton(onSecondaryColor: true, text: Texts.to.general.cancel, onTap: _onTapCancel)];
     await _appBottomDialogGeneral(title: title, form: form, buttons: buttons, dismissible: dismissible);
   }
 
   withOkCancel({String? title, required Widget form, required Function() onTapOk, bool? dismissible}) async {
     List<Widget> buttons = [
-      AppGeneralButton(onSecondaryColor: true, text: Texts.to.cancel, onTap: () => _onTapCancel()),
+      AppGeneralButton(onSecondaryColor: true, text: Texts.to.general.cancel, onTap: () => _onTapCancel()),
       AppGeneralButton(
-        text: Texts.to.ok,
+        text: Texts.to.general.ok,
         onTap: () => onTapOk(),
         primaryColor: true,
       ),
@@ -73,7 +73,7 @@ class AppBottomDialogs {
                         title == null
                             ? shrinkSizedBox
                             : Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                                Text(title ?? Texts.to.empty),
+                                Text(title),
                                 AppDividers.generalWithPrimaryColor,
                                 AppSpaces.h10,
                               ]),

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../core/app_localization.dart';
 import '../../../core/app_routing/app_routing.dart';
 import '../../../core/core_functions.dart';
 import '../../core/core_info/app_info.dart';
+import '../../localization/localizations.dart';
 import '../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
 import '../../core/core_resources/icons.dart';
 import '../../core/core_resources/logos.dart';
@@ -45,13 +45,13 @@ class AppDrawer extends Drawer {
   }
 
   Widget _bodyItem(AppPageDetail page) =>
-      ListTile(title: Text(page.pageName ?? Texts.to.empty), leading: page.iconCode.toIcon(), onTap: () => {popPage(), goToPage(page)});
+      ListTile(title: Text(page.pageName ?? Texts.to.general.empty), leading: page.iconCode.toIcon(), onTap: () => {popPage(), goToPage(page)});
 
   Widget footer() => Container(
       padding: AppPaddings.drawerFooter,
       child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
         AppIcons.version,
         AppSpaces.w20,
-        InkWell(onTap: () => goToUpdatePage(), child: Text('${Texts.to.version}: ${AppInfo.currentVersion.version}')),
+        InkWell(onTap: () => goToUpdatePage(), child: Text('${Texts.to.general.version}: ${AppInfo.currentVersion.version}')),
       ]));
 }

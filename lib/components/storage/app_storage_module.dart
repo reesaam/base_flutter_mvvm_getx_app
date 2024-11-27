@@ -5,9 +5,9 @@ import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:getx_binding_annotation/annotation.dart';
 
-import '../../core/app_localization.dart';
 import '../../core/core_functions.dart';
 import '../../core/core_info/core_defaults.dart';
+import '../../localization/localizations.dart';
 import '../../shared/shared_models/core_models/app_data/app_data.dart';
 import '../../core/core_resources/core_enums.dart';
 import '../../core/core_resources/texts.dart';
@@ -81,7 +81,7 @@ class AppStorage {
   }
 
   void printData({AppData? appData, bool? detailsIncluded}) {
-    String unknown = Texts.to.notAvailableInitials;
+    String unknown = Texts.to.general.notAvailableInitials;
 
     if (appData != null) {
       appLogPrint('==> App Data:');
@@ -91,7 +91,7 @@ class AppStorage {
       if (detailsIncluded == true) {
         appLogPrint('==> Details:');
         appLogPrint('Settings / Dark Mode: ${appData.settings?.darkMode}');
-        appLogPrint('Settings / Language: ${appData.settings?.language?.languageName}');
+        appLogPrint('Settings / Language: ${appData.settings?.language.languageName}');
       }
     }
 

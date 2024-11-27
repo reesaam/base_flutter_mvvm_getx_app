@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_regex/flutter_regex.dart';
 
 import '../../../core/core_functions.dart';
-import '../../core/app_localization.dart';
+import '../../localization/localizations.dart';
 import '../../shared/shared_models/verifier_models/regex_model/regex_model.dart';
 import '../../core/extensions/extensions_on_data_models/extension_regexes.dart';
 import '../../core/extensions/extensions_on_data_types/extension_icon.dart';
@@ -189,7 +189,7 @@ abstract class AppTextFieldWidget extends StatelessWidget {
     String? text;
 
     //Regex Check
-    if (regexValidator != null) _regexValidator(controller.text) ? text = null : text = errorText ?? Texts.to.incorrect;
+    if (regexValidator != null) _regexValidator(controller.text) ? text = null : text = errorText ?? Texts.to.general.incorrect;
 
     //In case of conditions to check and show error are absent ErrorText will come from above
     if (regexValidator == null) text == errorText;
@@ -207,7 +207,7 @@ abstract class AppTextFieldWidget extends StatelessWidget {
   }
 
   /// Regex Checker
-  bool _regexValidator(String value) => value == Texts.to.empty ? true : RegexVal.hasMatch(value, regexValidator!.regexValue);
+  bool _regexValidator(String value) => value == Texts.to.general.empty ? true : RegexVal.hasMatch(value, regexValidator!.regexValue);
 
   /// Counter Builder
   /// [Counter], [MaxLength] and [CurrentLength] has Specific and Complicated Conditions
@@ -216,7 +216,7 @@ abstract class AppTextFieldWidget extends StatelessWidget {
   Widget _buildCounter(int currentLength) {
     String text = '';
     if (hasCounter == true) {
-      text = '${currentLength.toString()}${maxLength == null ? Texts.to.empty : ' / ${maxLength.toString()}'}';
+      text = '${currentLength.toString()}${maxLength == null ? Texts.to.general.empty : ' / ${maxLength.toString()}'}';
     } else if (showMaxLength == true) {
       text = currentLength.toString();
     }

@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../core/app_localization.dart';
 import '../core/extensions/extensions_on_data_types/extension_string.dart';
+import '../localization/localizations.dart';
 import '../ui_kit/buttons/app_general_button.dart';
 import '../ui_kit/core_widgets.dart';
 import '../ui_kit/general_widgets/dividers.dart';
 import '../ui_kit/resources/paddings.dart';
 import '../ui_kit/resources/spaces.dart';
-import '../ui_kit/theme/themes.dart';
 
 class AdminFunctions {
   static section(List<Widget> section, {bool? isRow, String? title, Color? backgroundColor}) => Column(children: [
@@ -46,7 +45,7 @@ class AdminFunctions {
                               )),
                   ])
                 : Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                    Text(title?.withDoubleDots ?? Texts.to.empty),
+                    Text(title?.withDoubleDots ?? Texts.to.general.empty),
                     Text(text),
                   ])),
       ]);

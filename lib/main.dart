@@ -8,6 +8,7 @@ import 'components/notifications/local_notifications/local_notifications.dart';
 import 'core/core_info/app_info.dart';
 import 'core/core_resources/defaults.dart';
 import 'core/extensions/extension_for_prints/extension_for_prints.dart';
+import 'core/extensions/extensions_on_data_types/extension_language.dart';
 import 'localization/localizations.dart';
 import 'ui_kit/theme/themes.dart';
 
@@ -43,10 +44,10 @@ class MainApp extends StatelessWidget {
       theme: AppThemes.lightTheme,
       darkTheme: AppThemes.darkTheme,
       themeMode: ThemeMode.system,
-      supportedLocales: AppLocalizations.to.supportedLocales,
+      supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: AppLocalizations.to.localizationDelegates,
-      locale: AppLocalizations.to.getLocale(),
-      textDirection: AppLocalizations.to.getTextDirection(),
+      locale: AppLocalizations.to.translation?.getLanguage?.locale,
+      textDirection: AppLocalizations.to.translation?.getLanguage?.textDirection,
     );
   }
 }

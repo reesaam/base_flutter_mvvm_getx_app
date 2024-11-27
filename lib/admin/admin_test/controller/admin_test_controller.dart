@@ -11,6 +11,7 @@ import '../../../components/permissions/permissions.dart';
 import '../../../components/share/share.dart';
 import '../../../components/storage/app_storage_module.dart';
 import '../../../core/core_elements/core_controller.dart';
+import '../../../localization/localizations.dart';
 import '../../../shared/shared_models/core_models/app_data/app_data.dart';
 import '../../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
 import '../../../core/extensions/extensions_on_data_models/extension_permission.dart';
@@ -18,7 +19,6 @@ import '../../../core/extensions/extensions_on_data_types/extension_date_time.da
 import '../../../core/extensions/extensions_on_data_types/extension_duration.dart';
 import '../../../shared/shared_models/core_models/app_settings_data/app_setting_data.dart';
 import '../../../ui_kit/dialogs/app_alert_dialogs.dart';
-import '../../../core/app_localization.dart';
 import '../../../core/core_functions.dart';
 import '../../../core/core_resources/page_details.dart';
 import '../../../ui_kit/theme/themes.dart';
@@ -82,7 +82,7 @@ class AdminTestController extends CoreController {
   ///Permissions
   checkAllPermissions() async {
     var result = await AppPermissions.to.checkAllPermissions();
-    String response = Texts.to.empty;
+    String response = Texts.to.general.empty;
     for (var r in result) {
       response = '$response\n${r.permission}: ${r.status?.getName}';
     }
@@ -91,7 +91,7 @@ class AdminTestController extends CoreController {
 
   askAllPermissions() async {
     var result = await AppPermissions.to.askAllPermissions();
-    String response = Texts.to.empty;
+    String response = Texts.to.general.empty;
     for (var r in result) {
       var newResponse = '${r.permission}: ${r.status?.getName}';
       response = '$response\n$newResponse';

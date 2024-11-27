@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../core/app_localization.dart';
 import '../../core/core_functions.dart';
+import '../../localization/localizations.dart';
 import '../buttons/app_general_button.dart';
 import '../core_widgets.dart';
 import '../general_widgets/dividers.dart';
@@ -19,8 +19,8 @@ class AppAlertWidgetDialogs {
     bool? dismissible,
   }) async {
     List<Widget> buttons = [
-      AppGeneralButton(text: Texts.to.cancel, onTap: _onTapCancel),
-      AppGeneralButton(text: Texts.to.ok, primaryColor: true, onTap: onTapOk),
+      AppGeneralButton(text: Texts.to.general.cancel, onTap: _onTapCancel),
+      AppGeneralButton(text: Texts.to.general.ok, primaryColor: true, onTap: onTapOk),
     ];
     await _appAlertWidgetDialog(
       title: title,
@@ -37,7 +37,7 @@ class AppAlertWidgetDialogs {
     bool? dismissible,
   }) async {
     List<Widget> buttons = [
-      AppGeneralButton(primaryColor: true, text: Texts.to.ok, onTap: onTapOk),
+      AppGeneralButton(primaryColor: true, text: Texts.to.general.ok, onTap: onTapOk),
     ];
     await _appAlertWidgetDialog(
       title: title,

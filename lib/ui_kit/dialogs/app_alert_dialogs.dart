@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../core/app_localization.dart';
 import '../../core/core_functions.dart';
+import '../../localization/localizations.dart';
 import '../buttons/app_general_button.dart';
 import '../core_widgets.dart';
 import '../general_widgets/dividers.dart';
@@ -12,23 +12,23 @@ import '../resources/paddings.dart';
 class AppAlertDialogs {
   static withYesNo({String? title, required String text, required Function() onTapYes, Function()? onTapNo, bool? dismissible}) async {
     List<Widget> buttons = [
-      AppGeneralButton(text: Texts.to.no, onTap: onTapNo ?? _onTapCancel),
-      AppGeneralButton(text: Texts.to.yes, primaryColor: true, onTap: onTapYes),
+      AppGeneralButton(text: Texts.to.general.no, onTap: onTapNo ?? _onTapCancel),
+      AppGeneralButton(text: Texts.to.general.yes, primaryColor: true, onTap: onTapYes),
     ];
     await _appAlertDialog(title: title, text: text, buttons: buttons, dismissible: dismissible);
   }
 
   static withOkCancel({String? title, required String text, required Function() onTapOk, Function()? onTapCancel, bool? dismissible}) async {
     List<Widget> buttons = [
-      AppGeneralButton(text: Texts.to.cancel, onTap: onTapCancel ?? _onTapCancel),
-      AppGeneralButton(text: Texts.to.ok, primaryColor: true, onTap: onTapOk),
+      AppGeneralButton(text: Texts.to.general.cancel, onTap: onTapCancel ?? _onTapCancel),
+      AppGeneralButton(text: Texts.to.general.ok, primaryColor: true, onTap: onTapOk),
     ];
     await _appAlertDialog(title: title, text: text, buttons: buttons, dismissible: dismissible);
   }
 
   static withOk({String? title, required String text, required Function() onTapOk, bool? dismissible}) async {
     List<Widget> buttons = [
-      AppGeneralButton(text: Texts.to.ok, primaryColor: true, onTap: onTapOk),
+      AppGeneralButton(text: Texts.to.general.ok, primaryColor: true, onTap: onTapOk),
     ];
     await _appAlertDialog(title: title, text: text, buttons: buttons, dismissible: dismissible);
   }

@@ -11,8 +11,7 @@ import '../../../core/core_resources/core_enums.dart';
 import '../../../core/core_resources/core_flags.dart';
 import '../../../core/core_resources/page_details.dart';
 import '../../../core/extensions/extensions_on_data_models/extension_settings.dart';
-import '../../../core/extensions/extensions_on_data_types/extension_languages.dart';
-import '../../../core/extensions/extensions_on_data_types/extension_locale.dart';
+import '../../../core/extensions/extensions_on_data_types/extension_language.dart';
 import '../../../localization/localizations.dart';
 import '../../../shared/shared_models/core_models/app_settings_data/app_setting_data.dart';
 import '../../../shared/shared_models/core_models/app_version/app_version.dart';
@@ -66,11 +65,11 @@ class SettingsController extends CoreController {
       title: Texts.to.settings.settingsLanguageModalSelectLanguage, form: SettingsLanguageWidget(function: functionLanguageSelectionOnTap), dismissible: true);
 
   functionLanguageSelectionOnTap(int index) {
-    selectedLanguage.value = AppLocalizations().supportedLocales[index].getLanguage;
+    selectedLanguage.value = AppLocalizations.supportedLocales[index].getLanguage;
     appSettings.changeLanguage(selectedLanguage.value);
     saveSettings();
     popPage();
-    Get.updateLocale(selectedLanguage.value.getLocale());
+    Get.updateLocale(selectedLanguage.value.locale);
     appDebugPrint('Language Changed to ${selectedLanguage.value.languageName}');
     // appReload(bootPage: pageDetail);
   }

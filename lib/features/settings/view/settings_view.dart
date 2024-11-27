@@ -4,8 +4,7 @@ import 'package:getx_binding_annotation/annotation.dart';
 
 import '../../../core/core_elements/core_view.dart';
 import '../../../core/core_info/app_info.dart';
-import '../../../core/extensions/extensions_on_data_types/extension_languages.dart';
-import '../../../core/extensions/extensions_on_data_types/extension_locale.dart';
+import '../../../core/extensions/extensions_on_data_types/extension_language.dart';
 import '../../../core/extensions/extensions_on_data_types/extension_string.dart';
 import '../../../localization/localizations.dart';
 import '../../../ui_kit/general_widgets/popup_menu.dart';
@@ -44,7 +43,7 @@ class SettingsPage extends CoreView<SettingsController> {
       List.of([AppPopupMenuItem(text: Texts.to.settings.settingsAppbarMenuResetSettings, onTapFunction: () => controller.resetAllSettings())]);
 
   Widget _widgetGeneral() {
-    Widget leadingLanguage() => Text(controller.selectedLanguage.value.getLocale().getLanguageName);
+    Widget leadingLanguage() => Text(controller.selectedLanguage.value.localLanguageName);
 
     Widget leadingDarkMode() =>
         AppSwitch(value: controller.darkMode.value, onChanged: (bool value) => controller.functionDarkModeOnChange(value), enabled: false);

@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:getx_binding_annotation/annotation.dart';
 
-import '../../../core/app_localization.dart';
 import '../../../core/core_elements/core_view.dart';
 import '../../../core/core_info/app_info.dart';
+import '../../../core/extensions/extensions_on_data_types/extension_language.dart';
+import '../../../localization/localizations.dart';
+import '../../../localization/localizations.dart';
+import '../../../localization/localizations.dart';
+import '../../../localization/localizations.dart';
+import '../../../localization/localizations.dart';
 import '../../../shared/shared_models/helper_models/duration_custom_model/duration_custom_model.dart';
 import '../../../core/core_resources/core_flags.dart';
 import '../../../core/core_info/developer_info.dart';
@@ -11,7 +16,6 @@ import '../../../core/core_resources/countries.dart';
 import '../../../core/extensions/extensions_on_data_types/extension_custom_duration.dart';
 import '../../../core/extensions/extensions_on_data_types/extension_date_time.dart';
 import '../../../core/extensions/extensions_on_data_types/extension_duration.dart';
-import '../../../core/extensions/extensions_on_data_types/extension_locale.dart';
 import '../../../core/extensions/extensions_on_data_types/extension_list.dart';
 import '../../../ui_kit/general_widgets/dividers.dart';
 import '../../../ui_kit/main_widgets/app_bar.dart';
@@ -68,18 +72,18 @@ class AdminAppInfoPage extends CoreView<AdminAppInfoController> {
       ], title: 'App Statistics Info');
 
   _locale() => AdminFunctions.section([
-        AdminFunctions.item(title: 'Locale', text: AppLocalization.to.getLocale().toLanguageTag()),
-        AdminFunctions.item(title: 'Language Code', text: AppLocalization.to.getLocale().languageCode),
-        AdminFunctions.item(title: 'Language Name', text: AppLocalization.to.getLocale().getLanguageName),
-        AdminFunctions.item(title: 'Text Direction', text: AppLocalization.to.getTextDirection().name),
+        AdminFunctions.item(title: 'Locale', text: AppLocalizations.to.translation?.getLanguage?.locale.toLanguageTag()),
+        AdminFunctions.item(title: 'Language Code', text: AppLocalizations.to.translation?.getLanguage?.locale.languageCode),
+        AdminFunctions.item(title: 'Language Name', text: AppLocalizations.to.translation?.getLanguage?.languageName),
+        AdminFunctions.item(title: 'Text Direction', text: AppLocalizations.to.translation?.getLanguage?.textDirection.name),
       ], title: 'Locale');
 
   _localization() {
-    AppCountry country = AppLocalization.to.getCountry();
+    AppCountry country = AppLocalizations.to.getCountry();
     return AdminFunctions.section([
       AdminFunctions.item(title: 'Country Name', text: country.countryName),
       AdminFunctions.item(title: 'Country Name Abbreviation', text: country.countryNameAbbreviation),
-      AdminFunctions.item(title: 'Country Code', text: country.code ?? Texts.to.notAvailableInitials),
+      AdminFunctions.item(title: 'Country Code', text: country.code ?? Texts.to.general.notAvailableInitials),
       AdminFunctions.item(title: 'TimeZone Abbreviation', text: country.timeZoneAbbreviation?.getMiddleElement<String>()),
       AdminFunctions.item(title: 'TimeZone Offset', text: country.timeZoneOffset?.getMiddleElement<DurationCustomModel>().toFormattedOffset()),
       AdminFunctions.item(title: 'Currency Sign', text: country.currency?.sign.string),

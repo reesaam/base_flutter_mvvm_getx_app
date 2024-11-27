@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'countries.dart';
+
 enum AppDataVersions {
   v1(1);
 
@@ -32,13 +34,14 @@ enum APISections {
 }
 
 enum AppLanguages {
-  english('English', Locale('en')),
-  deutsch('Deutsch', Locale('de')),
-  persian('Persian', Locale('fa'));
+  english('English', Locale('en'), TextDirection.ltr),
+  deutsch('Deutsch', Locale('de'), TextDirection.ltr),
+  persian('Persian', Locale('fa'), TextDirection.rtl);
 
   final String languageName;
   final Locale locale;
-  const AppLanguages(this.languageName, this.locale);
+  final TextDirection textDirection;
+  const AppLanguages(this.languageName, this.locale, this.textDirection);
 }
 
 enum AppStorageKeys {

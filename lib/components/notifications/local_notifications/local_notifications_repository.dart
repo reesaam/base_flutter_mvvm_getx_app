@@ -2,9 +2,9 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/core_functions.dart';
-import '../../../core/app_localization.dart';
 import '../../../core/core_resources/core_flags.dart';
 import '../../../core/extensions/extension_for_prints/extension_for_prints.dart';
+import '../../../localization/localizations.dart';
 import '../../../ui_kit/theme/themes.dart';
 import '../notifications_enums.dart';
 import 'local_notification_controller.dart';
@@ -202,8 +202,8 @@ class AppLocalNotificationsRepository {
           bool? requireInputText,
           bool? showInCompactView}) =>
       NotificationActionButton(
-          key: key ?? Texts.to.empty,
-          label: label ?? Texts.to.empty,
+          key: key ?? Texts.to.general.empty,
+          label: label ?? Texts.to.general.empty,
           icon: icon,
           autoDismissible: autoDismissible ?? true,
           actionType: actionType ?? ActionType.Default,

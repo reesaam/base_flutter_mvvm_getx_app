@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:get/get.dart';
 import 'package:getx_binding_annotation/annotation.dart';
 import 'package:open_file_plus/open_file_plus.dart' as file_plus;
+import 'package:path_provider/path_provider.dart';
 
 import '../../../components/connectivity/connectivity.dart';
 import '../../../core/core_elements/core_controller.dart';
@@ -48,7 +49,7 @@ class UpdateController extends CoreController {
     CoreFlags.checkUpdate ? await checkUpdateFunction() : null;
   }
 
-  bool updateAvailability() => availableVersion.value == AppInfo.currentVersion.version || availableVersion.value == Texts.to.notAvailable;
+  bool updateAvailability() => availableVersion.value == AppInfo.currentVersion.version || availableVersion.value == Texts.to.general.notAvailable;
 
   checkUpdateFunction() async {
     buttonCheckUpdateLoading.value = true;
