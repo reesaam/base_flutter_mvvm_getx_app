@@ -276,13 +276,13 @@ class DialogsTranslation_fa extends DialogsTranslation {
   const DialogsTranslation_fa(this._parent) : super(_parent);
   String get areYouSure => "آیا مطمئن هستید؟";
   String get areYouSureDataWillLost =>
-      "Are you sure?\nData will be lost with this Function.";
+      "${areYouSure}\n اطلاعات شما از بین خواهد رفت.";
   String get areYouSureDataMayLost =>
-      "Are you sure?\nData may be lost with this Function.";
+      "${areYouSure}\n اطلاعات شما ممکن است از بین برود.";
   String get areYouSureDataExport =>
-      "Are you sure?\nData will be exported and exposed.";
+      "${areYouSure}\n اطلاعات شما استخراج خواهد شد.";
   String get areYouSureDataImport =>
-      "Are you sure?\nData will be imported and exposed.";
+      "${areYouSure}\n اطلاعات شما وارد خواهد شد.";
   Object operator [](String key) {
     var index = key.indexOf('.');
     if (index > 0) {
@@ -309,9 +309,9 @@ class DialogsTranslation_fa extends DialogsTranslation {
 class ConnectionTranslation_fa extends ConnectionTranslation {
   final Translation_fa _parent;
   const ConnectionTranslation_fa(this._parent) : super(_parent);
-  String get connectionInternetNotAvailableTitle => "Internet Connection";
+  String get connectionInternetNotAvailableTitle => "اتصال اینترنت";
   String get connectionInternetNotAvailableText =>
-      "Internet Connection is not Available!\nPlease Check your Connection.";
+      "اینترنت موجود نیست، لطفا اتصال خود را بررسی کنید";
   Object operator [](String key) {
     var index = key.indexOf('.');
     if (index > 0) {
@@ -332,20 +332,20 @@ class ConnectionTranslation_fa extends ConnectionTranslation {
 class SettingsTranslation_fa extends SettingsTranslation {
   final Translation_fa _parent;
   const SettingsTranslation_fa(this._parent) : super(_parent);
-  String get settingsLanguageModalSelectLanguage => "Select Language";
-  String get settingsAppbarMenuResetSettings => "Reset All Settings";
-  String get settingsSectionTitleGeneral => "General";
-  String get settingsSectionTitleGeneralLanguage => "Language";
-  String get settingsSectionTitleGeneralCalendar => "Calendar Type";
-  String get settingsSectionGeneralItemDarkMode => "Dark Mode";
-  String get settingsSectionTitleUpdate => "Update";
-  String get settingsSectionTitleUpdateCurrentVersion => "Current Version";
-  String get settingsSectionTitleUpdateAvailableVersion => "Available Version";
-  String get settingsSectionTitleBackup => "Backup";
-  String get settingsSectionBackupBackup => "Backup Data";
-  String get settingsSectionBackupRestore => "Restore Data";
-  String get settingsSectionTitleStorage => "Storage";
-  String get settingsSectionStorageItemEraseAllData => "Erase All Data";
+  String get settingsLanguageModalSelectLanguage => "انتخاب زبان";
+  String get settingsAppbarMenuResetSettings => "بازنشانی تمامی تنظیمات";
+  String get settingsSectionTitleGeneral => "عمومی";
+  String get settingsSectionTitleGeneralLanguage => "زبان";
+  String get settingsSectionTitleGeneralCalendar => "نوع تقویم";
+  String get settingsSectionGeneralItemDarkMode => "حالت تاریک";
+  String get settingsSectionTitleUpdate => "بروزرسانی";
+  String get settingsSectionTitleUpdateCurrentVersion => "نسخه فعلی";
+  String get settingsSectionTitleUpdateAvailableVersion => "نسخه در دسترس";
+  String get settingsSectionTitleBackup => "پشتیبان گیری";
+  String get settingsSectionBackupBackup => "پشتیبان گیری اطلاعات";
+  String get settingsSectionBackupRestore => "بازیابی اطلاعات";
+  String get settingsSectionTitleStorage => "حافظه";
+  String get settingsSectionStorageItemEraseAllData => "پاک کردن تمامی اطلاعات";
   Object operator [](String key) {
     var index = key.indexOf('.');
     if (index > 0) {
@@ -390,25 +390,25 @@ class SettingsTranslation_fa extends SettingsTranslation {
 class UpdateTranslation_fa extends UpdateTranslation {
   final Translation_fa _parent;
   const UpdateTranslation_fa(this._parent) : super(_parent);
-  String get updateCurrentVersion => "Current Version";
-  String get updateAvailableVersion => "New Available Version";
-  String get updateCheckUpdate => "Check Update";
-  String get updateDownloadUpdate => "Download Update";
-  String get updateNewVersion => "New Version Found";
-  String get updateApprove => "Do you want to download the New Version?";
-  String get updateCheckingUpdate => "Checking for any Available Update ...";
-  String get updateUpdateFound => "New Update is Available!";
-  String get updateNoUpdateFound => "There is not any Update Available!";
-  String get updateDownloading => "Downloading ...";
-  String get updateDownloaded => "Update Downloaded!";
-  String get updateInstallationTitle => "Update Installation";
+  String get updateCurrentVersion => "نسخه فعلی";
+  String get updateAvailableVersion => "نسخه جدید در دسترس";
+  String get updateCheckUpdate => "بررسی بروزرسانی";
+  String get updateDownloadUpdate => "دانلود بروزرسانی";
+  String get updateNewVersion => "نسخه جدید پیدا شد";
+  String get updateApprove => "آیا تمایل دارید نسخه جدید را دانلود کنید؟";
+  String get updateCheckingUpdate => "بررسی برای نسخه در دسترس ...";
+  String get updateUpdateFound => "نسخه جدید در دسترس است!";
+  String get updateNoUpdateFound => "نسخه جدیدی در دسترس نیست";
+  String get updateDownloading => "در حال دانلود ...";
+  String get updateDownloaded => "بروزرسانی دانلود شد";
+  String get updateInstallationTitle => "در حال نصب بروزرسانی";
   String get updateInstallationContent =>
-      "Do you want to install the Update?\n\nWarning: Application will close!";
-  String get updateDirectoryNotFoundTitle => "Directory Error!";
+      "آیا تمایل به بروزرسانی دارید؟\n\n توجه! برنامه بسته خواهد شد";
+  String get updateDirectoryNotFoundTitle => "خطای دایرکتوری!";
   String get updateDirectoryNotFoundContent =>
-      "There is not any Directory available to store Data";
-  String get updateFileNotFoundTitle => "File Error!";
-  String get updateFileNotFoundContent => "File not found";
+      "هیچ دایرکتوری برای ذخیره اطلاعات موجود نیست";
+  String get updateFileNotFoundTitle => "خطای فایل!";
+  String get updateFileNotFoundContent => "فایل پیدا نشد";
   Object operator [](String key) {
     var index = key.indexOf('.');
     if (index > 0) {
@@ -459,10 +459,10 @@ class UpdateTranslation_fa extends UpdateTranslation {
 class AboutTranslation_fa extends AboutTranslation {
   final Translation_fa _parent;
   const AboutTranslation_fa(this._parent) : super(_parent);
-  String get aboutTitlesAppName => "App Name";
-  String get aboutTitlesDeveloperName => "Developer Name";
-  String get aboutTitlesDeveloperWebsite => "Developer WebSite";
-  String get aboutTitlesDeveloperLinkedIn => "Developer LinkedIn Profile";
+  String get aboutTitlesAppName => "نام برنامه";
+  String get aboutTitlesDeveloperName => "نام توسعه دهنده";
+  String get aboutTitlesDeveloperWebsite => "وب سایت توسعه دهنده";
+  String get aboutTitlesDeveloperLinkedIn => "پروفایل لینکدین توسعه دهنده";
   Object operator [](String key) {
     var index = key.indexOf('.');
     if (index > 0) {

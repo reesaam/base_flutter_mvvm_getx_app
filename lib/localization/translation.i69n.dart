@@ -275,13 +275,13 @@ class DialogsTranslation implements i69n.I69nMessageBundle {
   const DialogsTranslation(this._parent);
   String get areYouSure => "Are you sure ?";
   String get areYouSureDataWillLost =>
-      "Are you sure?\nData will be lost with this Function.";
+      "${areYouSure}\nData will be lost with this Function.";
   String get areYouSureDataMayLost =>
-      "Are you sure?\nData may be lost with this Function.";
+      "${areYouSure}\nData may be lost with this Function.";
   String get areYouSureDataExport =>
-      "Are you sure?\nData will be exported and exposed.";
+      "${areYouSure}\nData will be exported and exposed.";
   String get areYouSureDataImport =>
-      "Are you sure?\nData will be imported and exposed.";
+      "${areYouSure}\nData will be imported and exposed.";
   Object operator [](String key) {
     var index = key.indexOf('.');
     if (index > 0) {

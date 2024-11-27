@@ -47,52 +47,52 @@ general:
 
 dialogs:
   areYouSure: آیا مطمئن هستید؟
-  areYouSureDataWillLost: Are you sure?\nData will be lost with this Function.
-  areYouSureDataMayLost: Are you sure?\nData may be lost with this Function.
-  areYouSureDataExport: Are you sure?\nData will be exported and exposed.
-  areYouSureDataImport: Are you sure?\nData will be imported and exposed.
+  areYouSureDataWillLost: '${areYouSure}\n اطلاعات شما از بین خواهد رفت.'
+  areYouSureDataMayLost: '${areYouSure}\n اطلاعات شما ممکن است از بین برود.'
+  areYouSureDataExport: '${areYouSure}\n اطلاعات شما استخراج خواهد شد.'
+  areYouSureDataImport: '${areYouSure}\n اطلاعات شما وارد خواهد شد.'
 
 connection:
-  connectionInternetNotAvailableTitle: Internet Connection
-  connectionInternetNotAvailableText: Internet Connection is not Available!\nPlease Check your Connection.
+  connectionInternetNotAvailableTitle: اتصال اینترنت
+  connectionInternetNotAvailableText: اینترنت موجود نیست، لطفا اتصال خود را بررسی کنید
 
 settings:
-  settingsLanguageModalSelectLanguage: Select Language
-  settingsAppbarMenuResetSettings: Reset All Settings
-  settingsSectionTitleGeneral: General
-  settingsSectionTitleGeneralLanguage: Language
-  settingsSectionTitleGeneralCalendar: Calendar Type
-  settingsSectionGeneralItemDarkMode: Dark Mode
-  settingsSectionTitleUpdate: Update
-  settingsSectionTitleUpdateCurrentVersion: Current Version
-  settingsSectionTitleUpdateAvailableVersion: Available Version
-  settingsSectionTitleBackup: Backup
-  settingsSectionBackupBackup: Backup Data
-  settingsSectionBackupRestore: Restore Data
-  settingsSectionTitleStorage: Storage
-  settingsSectionStorageItemEraseAllData: Erase All Data
+  settingsLanguageModalSelectLanguage: انتخاب زبان
+  settingsAppbarMenuResetSettings: بازنشانی تمامی تنظیمات
+  settingsSectionTitleGeneral: عمومی
+  settingsSectionTitleGeneralLanguage: زبان
+  settingsSectionTitleGeneralCalendar: نوع تقویم
+  settingsSectionGeneralItemDarkMode: حالت تاریک
+  settingsSectionTitleUpdate: بروزرسانی
+  settingsSectionTitleUpdateCurrentVersion: نسخه فعلی
+  settingsSectionTitleUpdateAvailableVersion: نسخه در دسترس
+  settingsSectionTitleBackup: پشتیبان گیری
+  settingsSectionBackupBackup: پشتیبان گیری اطلاعات
+  settingsSectionBackupRestore: بازیابی اطلاعات
+  settingsSectionTitleStorage: حافظه
+  settingsSectionStorageItemEraseAllData: پاک کردن تمامی اطلاعات
 
 update:
-  updateCurrentVersion: Current Version
-  updateAvailableVersion: New Available Version
-  updateCheckUpdate: Check Update
-  updateDownloadUpdate: Download Update
-  updateNewVersion: New Version Found
-  updateApprove: Do you want to download the New Version?
-  updateCheckingUpdate: Checking for any Available Update ...
-  updateUpdateFound: New Update is Available!
-  updateNoUpdateFound: There is not any Update Available!
-  updateDownloading: Downloading ...
-  updateDownloaded: Update Downloaded!
-  updateInstallationTitle: Update Installation
-  updateInstallationContent: 'Do you want to install the Update?\n\nWarning: Application will close!'
-  updateDirectoryNotFoundTitle: Directory Error!
-  updateDirectoryNotFoundContent: There is not any Directory available to store Data
-  updateFileNotFoundTitle: File Error!
-  updateFileNotFoundContent: File not found
+  updateCurrentVersion: نسخه فعلی
+  updateAvailableVersion: نسخه جدید در دسترس
+  updateCheckUpdate: بررسی بروزرسانی
+  updateDownloadUpdate: دانلود بروزرسانی
+  updateNewVersion: نسخه جدید پیدا شد
+  updateApprove: آیا تمایل دارید نسخه جدید را دانلود کنید؟
+  updateCheckingUpdate: بررسی برای نسخه در دسترس ...
+  updateUpdateFound: نسخه جدید در دسترس است!
+  updateNoUpdateFound: نسخه جدیدی در دسترس نیست
+  updateDownloading: در حال دانلود ...
+  updateDownloaded: بروزرسانی دانلود شد
+  updateInstallationTitle: در حال نصب بروزرسانی
+  updateInstallationContent: 'آیا تمایل به بروزرسانی دارید؟\n\n توجه! برنامه بسته خواهد شد'
+  updateDirectoryNotFoundTitle: خطای دایرکتوری!
+  updateDirectoryNotFoundContent: هیچ دایرکتوری برای ذخیره اطلاعات موجود نیست
+  updateFileNotFoundTitle: خطای فایل!
+  updateFileNotFoundContent: فایل پیدا نشد
 
 about:
-  aboutTitlesAppName: App Name
-  aboutTitlesDeveloperName: Developer Name
-  aboutTitlesDeveloperWebsite: Developer WebSite
-  aboutTitlesDeveloperLinkedIn: Developer LinkedIn Profile
+  aboutTitlesAppName: نام برنامه
+  aboutTitlesDeveloperName: نام توسعه دهنده
+  aboutTitlesDeveloperWebsite: وب سایت توسعه دهنده
+  aboutTitlesDeveloperLinkedIn: پروفایل لینکدین توسعه دهنده

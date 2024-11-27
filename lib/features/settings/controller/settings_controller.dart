@@ -66,12 +66,13 @@ class SettingsController extends CoreController {
 
   functionLanguageSelectionOnTap(int index) {
     selectedLanguage.value = AppLocalizations.supportedLocales[index].getLanguage;
+    appSettings.value = appSettings.value.copyWith(language: selectedLanguage.value);
     appSettings.changeLanguage(selectedLanguage.value);
     saveSettings();
     popPage();
     Get.updateLocale(selectedLanguage.value.locale);
     appDebugPrint('Language Changed to ${selectedLanguage.value.languageName}');
-    // appReload(bootPage: pageDetail);
+    appReload(bootPage: pageDetail);
   }
 
   functionDarkModeOnChange(bool value) {

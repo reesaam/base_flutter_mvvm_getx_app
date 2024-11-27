@@ -47,10 +47,10 @@ general:
 
 dialogs:
   areYouSure: Are you sure ?
-  areYouSureDataWillLost: Are you sure?\nData will be lost with this Function.
-  areYouSureDataMayLost: Are you sure?\nData may be lost with this Function.
-  areYouSureDataExport: Are you sure?\nData will be exported and exposed.
-  areYouSureDataImport: Are you sure?\nData will be imported and exposed.
+  areYouSureDataWillLost: '${areYouSure}\nData will be lost with this Function.'
+  areYouSureDataMayLost: '${areYouSure}\nData may be lost with this Function.'
+  areYouSureDataExport: '${areYouSure}\nData will be exported and exposed.'
+  areYouSureDataImport: '${areYouSure}\nData will be imported and exposed.'
 
 connection:
   connectionInternetNotAvailableTitle: Internet Connection
