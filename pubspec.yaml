@@ -4,10 +4,10 @@ homepage: https://resam.site
 repository: https://github.com/reesaam/base_flutter_mvvm_getx_app
 publish_to: 'none'
 
-version: 0.0.4
+version: 0.0.5
 
 environment:
-  sdk: ^3.5.3
+  sdk: ">=3.4.0 <4.0.0"
 
 dependencies:
   flutter:
@@ -17,8 +17,8 @@ dependencies:
 
   # Main Libraries
   get: ^4.6.6
-  getx_binding_annotation: ^0.1.1
-  freezed: ^2.5.7
+  getx_binding_annotation: ^0.2.1
+  freezed: ^2.5.2
   json_annotation: ^4.9.0
 
   # Storage
@@ -66,7 +66,7 @@ dependencies:
   share_plus: ^10.1.2
 
   # Docs
-  dartdoc: ^8.1.0
+  dartdoc: ^6.2.2
 
   # Other
   dart_style: ^2.3.2
@@ -81,8 +81,8 @@ dev_dependencies:
     sdk: flutter
 
   # Code Generator
-  build_runner: ^2.4.13
-  getx_binding_annotation_generator: ^0.1.1
+  build_runner: ^2.4.10
+  getx_binding_annotation_generator: ^0.2.1
   json_serializable: ^6.7.1
   freezed_annotation: ^2.4.1
   injectable_generator: ^2.2.0
