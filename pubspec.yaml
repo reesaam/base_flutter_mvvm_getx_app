@@ -57,7 +57,7 @@ dependencies:
   flutter_file_dialog: ^3.0.2
 
   # Localization
-  i69n: ^3.0.0
+  i69n: ^3.1.0
   timezone: ^0.9.4
   country_flags: ^3.0.0
   persian_datetime_picker: ^2.6.0
@@ -91,9 +91,6 @@ dev_dependencies:
   flutter_launcher_icons: ^0.13.1
 
   flutter_lints: ^4.0.0
-
-flutter_intl:
-  enabled: true
 
 flutter:
   generate: true
