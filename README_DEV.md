@@ -6,7 +6,7 @@
  - Freezed, Dartz
  - Dependency Injection
  - Dio, Retrofit, Interceptor
- - Intl App Localization, Countries Specifications (Flags, TimeZones, etc.)
+ - Intl App Localization i69, Countries Specifications (Flags, TimeZones, etc.)
  - Get Storage, Shared Preferences, Mongo DB
  - Animations and UI Elements
 
@@ -36,7 +36,7 @@ dart pub run build_runner build --delete-conflicting-outputs
 ## Outputs
 - for android apk:
 ```
-flutter build apk --debug/--release/--profile --no-tree-shake-icons
+flutter build apk --debug/--release/--profile
 ```
 
 - for iOS (ipa):
@@ -46,10 +46,7 @@ flutter build ipa
 
 - for web output:
 ```
-flutter build web --web-renderer canvaskit --release
-```
-```
-(--web-renderer html/canvaskit) for different renderers
+flutter build web --release
 ```
 - ...
 
@@ -59,13 +56,6 @@ flutter test
 ```
 
 ## Others
-### Localization
-- Localization uses `intl_utils` to generate localizations
-- For any problem in `Localization` use:
-```
-dart run intl_utils:generate
-```
-
 ### Icons
 - For any possible change in Launcher Icon
 - first change the file in assets : <<assets/logos/app_logo.png>> (Please replace the file)
