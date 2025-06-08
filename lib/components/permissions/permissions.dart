@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:get/get.dart';
-import 'package:getx_binding_annotation/annotation.dart';
+import 'package:getx_binding_annotation/get_put_annotation.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import '../../shared/shared_models/base_models/permission_base_response_model/permission_base_response.dart';

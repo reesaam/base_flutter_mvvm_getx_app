@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:get/get.dart';
-import 'package:getx_binding_annotation/annotation.dart';
+import 'package:getx_binding_annotation/get_put_annotation.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../../../components/connectivity/connectivity.dart';

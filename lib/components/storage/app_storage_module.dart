@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
-import 'package:getx_binding_annotation/annotation.dart';
+import 'package:getx_binding_annotation/get_put_annotation.dart';
 
 import '../../core/core_functions.dart';
 import '../../core/core_info/core_defaults.dart';

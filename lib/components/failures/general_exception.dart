@@ -1,6 +1,6 @@
-import 'package:injectable/injectable.dart';
+import 'package:getx_binding_annotation/get_put_annotation.dart';
 
-@injectable
+@GetPut.component()
 class GeneralException implements Exception {
   final String? message;
   final int? statusCode;

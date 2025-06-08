@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:getx_binding_annotation/annotation.dart';
+import 'package:getx_binding_annotation/get_put_annotation.dart';
 
 import '../../core/core_resources/core_enums.dart';
 import '../failures/local_exception.dart';

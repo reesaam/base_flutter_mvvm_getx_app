@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
-import 'package:getx_binding_annotation/annotation.dart';
+import 'package:getx_binding_annotation/get_put_annotation.dart';
 
 import '../../../components/storage/app_storage_module.dart';
 import '../../../core/app_routing/app_routing.dart';

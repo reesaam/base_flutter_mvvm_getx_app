@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:getx_binding_annotation/annotation.dart';
+import 'package:getx_binding_annotation/get_put_annotation.dart';
 
 import '../../../core/core_elements/core_view.dart';
 import '../../../shared/shared_models/helper_models/duration_custom_model/duration_custom_model.dart';
