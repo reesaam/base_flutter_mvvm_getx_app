@@ -8,7 +8,7 @@ part 'app_version.freezed.dart';
 part 'app_version.g.dart';
 
 @FreezedCustom.model
-class AppVersion with _$AppVersion {
+abstract class AppVersion with _$AppVersion {
   const factory AppVersion({
     required final String version,
     final List<String>? changes,
@@ -23,7 +23,7 @@ class AppVersion with _$AppVersion {
 }
 
 @FreezedCustom.modelList
-class AppVersionsList with _$AppVersionsList {
+abstract class AppVersionsList with _$AppVersionsList {
   factory AppVersionsList({@Default(<AppVersion>[]) List<AppVersion> versionsList}) = _AppVersionsList;
 
   factory AppVersionsList.fromJson(Map<String, dynamic> json) => _$AppVersionsListFromJson(json);

@@ -8,7 +8,7 @@ part 'permission_base_response.freezed.dart';
 part 'permission_base_response.g.dart';
 
 @FreezedCustom.model
-class PermissionBaseResponse with _$PermissionBaseResponse {
+abstract class PermissionBaseResponse with _$PermissionBaseResponse {
   const factory PermissionBaseResponse({
     final PermissionStatus? status,
     final String? permission,

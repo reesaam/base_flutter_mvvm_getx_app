@@ -7,7 +7,7 @@ part 'local_notification_base_model.freezed.dart';
 part 'local_notification_base_model.g.dart';
 
 @FreezedCustom.model
-class AppLocalNotificationBaseModel with _$AppLocalNotificationBaseModel {
+abstract class AppLocalNotificationBaseModel with _$AppLocalNotificationBaseModel {
   const factory AppLocalNotificationBaseModel({
     final String? title,
   }) = _AppLocalNotificationBaseModel;

@@ -7,7 +7,7 @@ part 'push_notification_base_model.freezed.dart';
 part 'push_notification_base_model.g.dart';
 
 @FreezedCustom.model
-class AppPushNotificationBaseModel with _$AppPushNotificationBaseModel {
+abstract class AppPushNotificationBaseModel with _$AppPushNotificationBaseModel {
   const factory AppPushNotificationBaseModel({
     final String? title,
   }) = _AppPushNotificationBaseModel;

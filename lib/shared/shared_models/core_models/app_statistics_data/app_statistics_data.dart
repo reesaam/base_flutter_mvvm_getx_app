@@ -6,7 +6,7 @@ part 'app_statistics_data.freezed.dart';
 part 'app_statistics_data.g.dart';
 
 @FreezedCustom.model
-class AppStatisticsData with _$AppStatisticsData {
+abstract class AppStatisticsData with _$AppStatisticsData {
   const factory AppStatisticsData({
     final int? launches,
     final int? logins,
@@ -31,7 +31,7 @@ class AppStatisticsData with _$AppStatisticsData {
 }
 
 @FreezedCustom.modelList
-class AppStatisticsDataList with _$AppStatisticsDataList {
+abstract class AppStatisticsDataList with _$AppStatisticsDataList {
   factory AppStatisticsDataList({@Default(<AppStatisticsData>[]) List<AppStatisticsData> dataList}) = _AppStatisticsDataList;
 
   factory AppStatisticsDataList.fromJson(Map<String, dynamic> json) => _$AppStatisticsDataListFromJson(json);

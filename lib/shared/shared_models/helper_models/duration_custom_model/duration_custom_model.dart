@@ -6,7 +6,7 @@ part 'duration_custom_model.freezed.dart';
 part 'duration_custom_model.g.dart';
 
 @FreezedCustom.model
-class DurationCustomModel with _$DurationCustomModel {
+abstract class DurationCustomModel with _$DurationCustomModel {
   const factory DurationCustomModel({
     @Default(0) int? year,
     @Default(0) int? month,
@@ -22,7 +22,7 @@ class DurationCustomModel with _$DurationCustomModel {
 }
 
 @FreezedCustom.modelList
-class DurationCustomModelsList with _$DurationCustomModelsList {
+abstract class DurationCustomModelsList with _$DurationCustomModelsList {
   factory DurationCustomModelsList({@Default(<DurationCustomModel>[]) List<DurationCustomModel> dataList}) = _DurationCustomModelsList;
 
   factory DurationCustomModelsList.fromJson(Map<String, dynamic> json) => _$DurationCustomModelsListFromJson(json);

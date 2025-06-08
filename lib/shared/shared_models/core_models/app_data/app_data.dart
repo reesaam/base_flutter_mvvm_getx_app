@@ -10,7 +10,7 @@ part 'app_data.freezed.dart';
 part 'app_data.g.dart';
 
 @FreezedCustom.model
-class AppData with _$AppData {
+abstract class AppData with _$AppData {
   const factory AppData({
     final AppDataVersions? dataVersion,
     final AppVersionsList? appVersions,

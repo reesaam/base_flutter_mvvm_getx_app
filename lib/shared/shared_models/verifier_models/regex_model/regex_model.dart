@@ -7,7 +7,7 @@ part 'regex_model.freezed.dart';
 part 'regex_model.g.dart';
 
 @FreezedCustom.model
-class AppRegexModel with _$AppRegexModel {
+abstract class AppRegexModel with _$AppRegexModel {
   const factory AppRegexModel({
     required final String regexValue,
     final bool? isExceptionOfFormatting,
@@ -30,7 +30,7 @@ class AppRegexModel with _$AppRegexModel {
 }
 
 @FreezedCustom.modelList
-class AppRegexModelsList with _$AppRegexModelsList {
+abstract class AppRegexModelsList with _$AppRegexModelsList {
   factory AppRegexModelsList({@Default(<AppRegexModel>[]) List<AppRegexModel> regexesList}) = _AppRegexModelsList;
 
   factory AppRegexModelsList.fromJson(Map<String, dynamic> json) => _$AppRegexModelsListFromJson(json);
