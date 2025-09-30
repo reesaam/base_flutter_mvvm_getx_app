@@ -3,10 +3,10 @@ import 'package:get/get.dart';
 import 'package:getx_binding_annotation/get_put_annotation.dart';
 
 import '../../../core/core_elements/core_view.dart';
-import '../../../ui_kit/text_fields/text_field.dart';
 import '../../../ui_kit/general_widgets/dividers.dart';
 import '../../../ui_kit/main_widgets/app_bar.dart';
 import '../../../ui_kit/resources/paddings.dart';
+import '../../../ui_kit/text_fields/text_field.dart';
 import '../../admin_general_functions.dart';
 import '../controller/admin_verifiers_controller.dart';
 

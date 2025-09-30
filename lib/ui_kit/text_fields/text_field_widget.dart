@@ -4,9 +4,9 @@ import 'package:flutter_regex/flutter_regex.dart';
 
 import '../../../core/core_functions.dart';
 import '../../core/extensions/data_models_extensions/extension_regexes.dart';
+import '../../core/extensions/data_types_extensions/extension_icon.dart';
 import '../../localization/localizations.dart';
 import '../../shared/shared_models/verifier_models/regex_model/regex_model.dart';
-import '../../core/extensions/data_types_extensions/extension_icon.dart';
 import '../resources/elements.dart';
 import '../resources/paddings.dart';
 import '../resources/text_styles.dart';

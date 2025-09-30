@@ -4,16 +4,16 @@ import 'package:get/get.dart';
 import '../../../core/app_routing/app_routing.dart';
 import '../../../core/core_functions.dart';
 import '../../core/core_info/app_info.dart';
-import '../../localization/localizations.dart';
-import '../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
 import '../../core/core_resources/icons.dart';
 import '../../core/core_resources/logos.dart';
 import '../../core/core_resources/page_details.dart';
 import '../../core/extensions/data_types_extensions/extension_int.dart';
+import '../../localization/localizations.dart';
+import '../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
+import '../general_widgets/dividers.dart';
 import '../resources/paddings.dart';
 import '../resources/sizes.dart';
 import '../resources/spaces.dart';
-import '../general_widgets/dividers.dart';
 
 class AppDrawer extends Drawer {
   const AppDrawer({super.key});

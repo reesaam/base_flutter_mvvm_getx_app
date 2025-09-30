@@ -7,13 +7,13 @@ import 'package:getx_binding_annotation/get_put_annotation.dart';
 
 import '../../core/core_functions.dart';
 import '../../core/core_info/core_defaults.dart';
+import '../../core/core_resources/core_enums.dart';
+import '../../core/core_resources/texts.dart';
 import '../../core/extensions/data_types_extensions/extension_date_time.dart';
 import '../../core/extensions/data_types_extensions/extension_duration.dart';
 import '../../core/extensions/data_types_extensions/extension_string.dart';
 import '../../localization/localizations.dart';
 import '../../shared/shared_models/core_models/app_data/app_data.dart';
-import '../../core/core_resources/core_enums.dart';
-import '../../core/core_resources/texts.dart';
 import '../failures/local_exception.dart';
 import '../file_functions/file_functions.dart';
 import 'storage_providers/app_local_storage.dart';

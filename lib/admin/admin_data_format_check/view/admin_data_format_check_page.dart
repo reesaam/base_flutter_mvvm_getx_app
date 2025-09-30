@@ -5,8 +5,6 @@ import '../../../core/core_elements/core_view.dart';
 import '../../../core/core_resources/countries.dart';
 import '../../../core/extensions/data_types_extensions/extension_date_time.dart';
 import '../../../core/extensions/data_types_extensions/extension_int.dart';
-import '../../../core/extensions/data_types_extensions/extension_language.dart';
-import '../../../localization/localizations.dart';
 import '../../../localization/localizations.dart';
 import '../../../ui_kit/general_widgets/dividers.dart';
 import '../../../ui_kit/main_widgets/app_bar.dart';

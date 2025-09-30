@@ -4,10 +4,10 @@ import 'package:getx_binding_annotation/get_put_annotation.dart';
 
 import '../../core/core_resources/defaults.dart';
 import '../../core/core_resources/fonts.dart';
+import '../../core/extensions/theme_extensions/extension_colors.dart';
 import '../resources/elements.dart';
 import '../resources/text_sizes.dart';
 import 'colors.dart';
-import '../../core/extensions/theme_extensions/extension_colors.dart';
 
 @GetPut.component()
 class AppThemes {

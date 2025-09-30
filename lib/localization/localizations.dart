@@ -6,7 +6,6 @@ import 'package:timezone/timezone.dart';
 
 import '../core/core_resources/countries.dart';
 import '../core/extensions/data_types_extensions/extension_time_zone.dart';
-
 //Languages Import
 import 'translation.i69n.dart';
 import 'translation_fa.i69n.dart';

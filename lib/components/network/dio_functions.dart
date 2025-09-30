@@ -5,9 +5,9 @@ import 'package:dio/dio.dart';
 
 import '../../core/core_functions.dart';
 import '../../localization/localizations.dart';
+import '../failures/network_exception.dart';
 import '../statistics/statistics.dart';
 import 'dio.dart';
-import '../failures/network_exception.dart';
 
 class DioFunctions {
   static Future<Either<NetworkException, T>> get<T>({required String url, request}) async {

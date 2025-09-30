@@ -7,12 +7,11 @@ import 'package:get_storage/get_storage.dart';
 import 'components/notifications/local_notifications/local_notifications.dart';
 import 'core/core_info/app_info.dart';
 import 'core/core_resources/defaults.dart';
-import 'core/extensions/extension_prints.dart';
 import 'core/extensions/data_types_extensions/extension_language.dart';
+import 'core/extensions/extension_prints.dart';
 import 'localization/localizations.dart';
-import 'ui_kit/theme/themes.dart';
-
 import 'main.get_put.dart';
+import 'ui_kit/theme/themes.dart';
 
 // import 'generated/l10n.dart';
 

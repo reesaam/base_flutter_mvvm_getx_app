@@ -6,7 +6,6 @@ import '../../../core/core_elements/core_view.dart';
 import '../../../core/core_info/app_info.dart';
 import '../../../localization/localizations.dart';
 import '../../../ui_kit/buttons/app_general_button.dart';
-import '../../../ui_kit/main_widgets/app_bar.dart';
 import '../../../ui_kit/resources/paddings.dart';
 import '../../../ui_kit/resources/spaces.dart';
 import '../controller/update_controller.dart';

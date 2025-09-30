@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../core/core_resources/icons.dart';
 import '../../core/extensions/data_types_extensions/extension_icon.dart';
 import '../resources/elements.dart';
-import '../../core/core_resources/icons.dart';
 import '../resources/paddings.dart';
 import 'popup_menu_item.dart';
 

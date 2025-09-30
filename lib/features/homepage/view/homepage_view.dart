@@ -4,10 +4,8 @@ import 'package:getx_binding_annotation/get_put_annotation.dart';
 
 import '../../../core/app_routing/app_routing.dart';
 import '../../../core/core_elements/core_view.dart';
-import '../../../core/core_info/app_info.dart';
 import '../../../core/core_info/developer_info.dart';
 import '../../../core/core_resources/core_flags.dart';
-import '../../../core/core_resources/images.dart';
 import '../../../core/core_resources/logos.dart';
 import '../../../core/extensions/material_widgets_extensions/extension_text.dart';
 import '../../../ui_kit/buttons/app_general_button.dart';

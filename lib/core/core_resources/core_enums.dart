@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'countries.dart';
-
 enum AppDataVersions {
   v1(1);
 

@@ -5,7 +5,6 @@ import '../../../core/app_routing/app_routing.dart';
 import '../../../core/core_elements/core_controller.dart';
 import '../../../core/core_functions.dart';
 import '../../../core/core_info/app_info.dart';
-import '../../../core/core_resources/core_enums.dart';
 import '../../../core/core_resources/core_flags.dart';
 import '../../../core/core_resources/logos.dart';
 import '../../../core/core_resources/page_details.dart';

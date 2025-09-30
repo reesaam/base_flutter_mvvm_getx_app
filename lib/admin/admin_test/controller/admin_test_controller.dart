@@ -11,16 +11,16 @@ import '../../../components/permissions/permissions.dart';
 import '../../../components/share/share.dart';
 import '../../../components/storage/app_storage_module.dart';
 import '../../../core/core_elements/core_controller.dart';
-import '../../../localization/localizations.dart';
-import '../../../shared/shared_models/core_models/app_data/app_data.dart';
-import '../../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
+import '../../../core/core_functions.dart';
+import '../../../core/core_resources/page_details.dart';
 import '../../../core/extensions/data_models_extensions/extension_permission.dart';
 import '../../../core/extensions/data_types_extensions/extension_date_time.dart';
 import '../../../core/extensions/data_types_extensions/extension_duration.dart';
+import '../../../localization/localizations.dart';
+import '../../../shared/shared_models/core_models/app_data/app_data.dart';
+import '../../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
 import '../../../shared/shared_models/core_models/app_settings_data/app_setting_data.dart';
 import '../../../ui_kit/dialogs/app_alert_dialogs.dart';
-import '../../../core/core_functions.dart';
-import '../../../core/core_resources/page_details.dart';
 import '../../../ui_kit/theme/themes.dart';
 
 @GetPut.controller()

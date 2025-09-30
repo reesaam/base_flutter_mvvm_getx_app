@@ -1,9 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:getx_binding_annotation/get_put_annotation.dart';
 
-import '../../failures/local_exception.dart';
-import '../../../core/core_resources/core_enums.dart';
 import '../../../core/core_functions.dart';
+import '../../failures/local_exception.dart';
 import '../app_storage_module_abstraction.dart';
 import 'local_storage_service.dart';
 

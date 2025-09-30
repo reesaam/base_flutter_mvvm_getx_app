@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/app_routing/app_routing.dart';
-import '../../localization/localizations.dart';
-import '../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
 import '../../core/core_resources/page_details.dart';
 import '../../core/extensions/data_types_extensions/extension_int.dart';
+import '../../localization/localizations.dart';
+import '../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
 import '../theme/themes.dart';
 
 class AppBottomNavigationBar extends StatefulWidget {

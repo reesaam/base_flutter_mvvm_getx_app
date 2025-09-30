@@ -1,8 +1,8 @@
 import 'package:country_flags/country_flags.dart';
 import 'package:flutter/material.dart';
 
-import '../../core_resources/countries.dart';
 import '../../../ui_kit/resources/elements.dart';
+import '../../core_resources/countries.dart';
 
 extension ExtensionCountriesList on List<AppCountry> {
   List<AppCountry> get getSortedCountriesList {

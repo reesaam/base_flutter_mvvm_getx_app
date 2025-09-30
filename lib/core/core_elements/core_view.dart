@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../ui_kit/resources/paddings.dart';
-import '../../ui_kit/theme/themes.dart';
-import '../core_functions.dart';
 import '../../ui_kit/core_widgets.dart';
+import '../../ui_kit/resources/paddings.dart';
+import '../core_functions.dart';
 import 'core_controller.dart';
 
 abstract class CoreView<Controller extends CoreController> extends GetView<Controller> {
