@@ -3,11 +3,11 @@ import 'package:getx_binding_annotation/get_put_annotation.dart';
 
 import '../../../core/core_elements/core_view.dart';
 import '../../../shared/shared_models/helper_models/duration_custom_model/duration_custom_model.dart';
-import '../../../core/extensions/extensions_on_data_types/extension_custom_duration.dart';
-import '../../../core/extensions/extensions_on_data_types/extension_duration.dart';
-import '../../../core/extensions/extensions_on_data_types/extension_list.dart';
-import '../../../core/extensions/extensions_on_data_types/extension_string.dart';
-import '../../../core/extensions/extensions_on_enums/extension_on_countries.dart';
+import '../../../core/extensions/data_types_extensions/extension_custom_duration.dart';
+import '../../../core/extensions/data_types_extensions/extension_duration.dart';
+import '../../../core/extensions/data_types_extensions/extension_list.dart';
+import '../../../core/extensions/data_types_extensions/extension_string.dart';
+import '../../../core/extensions/enums_extensions/extension_countries.dart';
 import '../../../ui_kit/core_widgets.dart';
 import '../../../core/core_resources/countries.dart';
 import '../../../ui_kit/general_widgets/dividers.dart';

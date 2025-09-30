@@ -12,7 +12,7 @@ import '../../../core/core_info/app_info.dart';
 import '../../../core/core_resources/core_flags.dart';
 import '../../../core/core_resources/page_details.dart';
 import '../../../core/core_resources/texts.dart';
-import '../../../core/extensions/extensions_on_data_types/extension_string.dart';
+import '../../../core/extensions/data_types_extensions/extension_string.dart';
 import '../../../localization/localizations.dart';
 import '../../../shared/shared_models/core_models/app_version/app_version.dart';
 import '../../../ui_kit/dialogs/app_alert_dialogs.dart';

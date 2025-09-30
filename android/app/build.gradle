@@ -8,7 +8,7 @@ plugins {
 android {
     namespace = "site.resam.basefluttermvvmgetx.base_flutter_mvvm_getx_app"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+//    ndkVersion = flutter.ndkVersion
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8

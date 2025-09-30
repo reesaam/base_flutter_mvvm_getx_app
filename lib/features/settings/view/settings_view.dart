@@ -4,8 +4,8 @@ import 'package:getx_binding_annotation/get_put_annotation.dart';
 
 import '../../../core/core_elements/core_view.dart';
 import '../../../core/core_info/app_info.dart';
-import '../../../core/extensions/extensions_on_data_types/extension_language.dart';
-import '../../../core/extensions/extensions_on_data_types/extension_string.dart';
+import '../../../core/extensions/data_types_extensions/extension_language.dart';
+import '../../../core/extensions/data_types_extensions/extension_string.dart';
 import '../../../localization/localizations.dart';
 import '../../../ui_kit/general_widgets/popup_menu.dart';
 import '../../../ui_kit/general_widgets/popup_menu_item.dart';

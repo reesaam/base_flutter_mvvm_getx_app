@@ -1,4 +1,4 @@
-import '../../core_functions.dart';
+import '../core_functions.dart';
 
 extension ExtensionOnFunctionsDebugPrint on Future<bool> {
   Future<bool> withStatusPrint({bool? isLog, String? featureName, String? message, String? successfulMessage, String? failureMessage}) =>

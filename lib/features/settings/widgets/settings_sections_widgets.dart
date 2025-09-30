@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/extensions/extensions_on_material_widgets/extension_on_text.dart';
+import '../../../core/extensions/material_widgets_extensions/extension_text.dart';
 import '../../../ui_kit/core_widgets.dart';
 import '../../../ui_kit/general_widgets/dividers.dart';
 import '../../../ui_kit/resources/paddings.dart';

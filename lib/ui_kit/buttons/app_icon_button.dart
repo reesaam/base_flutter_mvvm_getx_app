@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../core/extensions/extensions_on_data_types/extension_icon.dart';
-import '../../core/extensions/extensions_on_material_widgets/extension_on_text.dart';
+import '../../core/extensions/data_types_extensions/extension_icon.dart';
+import '../../core/extensions/material_widgets_extensions/extension_text.dart';
 import '../core_widgets.dart';
 import '../resources/paddings.dart';
 import '../resources/sizes.dart';

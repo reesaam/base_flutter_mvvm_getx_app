@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/extensions/extensions_on_data_types/extension_language.dart';
+import '../../../core/extensions/data_types_extensions/extension_language.dart';
 import '../../../localization/localizations.dart';
 import '../../../ui_kit/resources/paddings.dart';
 

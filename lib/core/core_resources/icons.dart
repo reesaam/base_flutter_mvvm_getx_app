@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../extensions/extensions_on_data_types/extension_icon.dart';
+import '../extensions/data_types_extensions/extension_icon.dart';
 
 class AppIcons {
   static List<Icon> get iconsList => List<Icon>.of([

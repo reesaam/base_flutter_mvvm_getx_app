@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../shared/shared_models/verifier_models/regex_model/regex_model.dart';
-import '../../core/extensions/extension_on_widgets/extension_textfield_widget.dart';
 import 'text_field_abstraction.dart';
 import 'text_field_widget.dart';
 

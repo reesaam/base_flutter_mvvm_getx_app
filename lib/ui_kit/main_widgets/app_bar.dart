@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../core/extensions/extensions_on_material_widgets/extension_on_text.dart';
+import '../../core/extensions/material_widgets_extensions/extension_text.dart';
 import '../../localization/localizations.dart';
 import '../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
 import '../resources/paddings.dart';

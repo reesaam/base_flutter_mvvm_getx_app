@@ -4,7 +4,7 @@ homepage: https://resam.site
 repository: https://github.com/reesaam/base_flutter_mvvm_getx_app
 publish_to: 'none'
 
-version: 0.0.6
+version: 0.0.8
 
 environment:
   sdk: ">=3.4.0 <4.0.0"

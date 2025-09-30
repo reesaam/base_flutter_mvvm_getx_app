@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../core/extensions/extensions_on_data_types/extension_string.dart';
+import '../core/extensions/data_types_extensions/extension_string.dart';
 import '../localization/localizations.dart';
 import '../ui_kit/buttons/app_general_button.dart';
 import '../ui_kit/core_widgets.dart';

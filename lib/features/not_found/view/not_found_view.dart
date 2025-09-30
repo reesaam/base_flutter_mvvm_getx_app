@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:getx_binding_annotation/get_put_annotation.dart';
 
 import '../../../core/core_elements/core_view.dart';
-import '../../../core/extensions/extensions_on_data_types/extension_icon.dart';
+import '../../../core/extensions/data_types_extensions/extension_icon.dart';
 import '../../../localization/localizations.dart';
 import '../controller/not_found_controller.dart';
 

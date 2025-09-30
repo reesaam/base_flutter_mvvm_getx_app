@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 
 import '../../../core/core_functions.dart';
 import '../../core/core_resources/defaults.dart';
-import '../../core/extensions/extensions_on_data_types/extension_icon.dart';
-import '../../core/extensions/extensions_on_material_widgets/extension_on_text.dart';
+import '../../core/extensions/data_types_extensions/extension_icon.dart';
+import '../../core/extensions/material_widgets_extensions/extension_text.dart';
 import '../core_widgets.dart';
 import '../resources/elements.dart';
 import '../resources/paddings.dart';

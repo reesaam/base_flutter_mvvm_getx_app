@@ -9,7 +9,7 @@ import '../../shared/shared_models/core_models/app_page_detail/app_page_detail.d
 import '../../core/core_resources/icons.dart';
 import '../../core/core_resources/logos.dart';
 import '../../core/core_resources/page_details.dart';
-import '../../core/extensions/extensions_on_data_types/extension_int.dart';
+import '../../core/extensions/data_types_extensions/extension_int.dart';
 import '../resources/paddings.dart';
 import '../resources/sizes.dart';
 import '../resources/spaces.dart';

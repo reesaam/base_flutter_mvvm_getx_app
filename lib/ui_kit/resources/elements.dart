@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../core/core_resources/defaults.dart';
+import '../theme/colors.dart';
+import '../../core/extensions/theme_extensions/extension_colors.dart';
 import '../theme/themes.dart';
-import '../theme/themes_variables.dart';
 
 class AppElements {
   ///Radius
@@ -35,9 +36,9 @@ class AppElements {
   static BorderSide get borderSideSecondary => _borderSideGeneral.copyWith(color: AppThemes.to.colorScheme.secondary);
   static BorderSide get borderSideTertiary => _borderSideGeneral.copyWith(color: AppThemes.to.colorScheme.tertiary);
   static BorderSide get borderSideError => _borderSideGeneral.copyWith(color: AppThemes.to.colorScheme.error);
-  static BorderSide get borderSideTransparent => _borderSideGeneral.copyWith(color: AppThemesVariables.transparent);
+  static BorderSide get borderSideTransparent => _borderSideGeneral.copyWith(color: AppColors.transparent.color);
   static BorderSide get borderSideFocused => _borderSideGeneral.copyWith(color: AppThemes.to.colorScheme.secondary);
-  static BorderSide get borderSideDisabled => _borderSideGeneral.copyWith(color: AppThemesVariables.transparent);
+  static BorderSide get borderSideDisabled => _borderSideGeneral.copyWith(color: AppColors.transparent.color);
 
   ///OutlineInputBorder
   static OutlineInputBorder get _borderOutlinedGeneral => OutlineInputBorder(borderRadius: borderRadiusLow);
@@ -50,11 +51,11 @@ class AppElements {
 
   ///BoxBorder
   static BoxBorder get boxBorder => Border.all(color: AppThemes.to.canvasColor);
-  static BoxBorder get boxBorderTransparent => Border.all(color: AppThemesVariables.transparent);
+  static BoxBorder get boxBorderTransparent => Border.all(color: AppColors.transparent.color);
 
   ///Shapes
   static BoxDecoration get boxDecorationDefault => BoxDecoration(borderRadius: AppElements.borderRadiusDefault);
-  static BoxDecoration get listPageSearchBox => BoxDecoration(border: Border.all(color: AppThemesVariables.transparent));
+  static BoxDecoration get listPageSearchBox => BoxDecoration(border: Border.all(color: AppColors.transparent.color));
 
   ///RoundedRectangleBorder
   static RoundedRectangleBorder get borderShapeDefault => borderShapeLowRadius;

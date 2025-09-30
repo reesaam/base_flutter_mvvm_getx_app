@@ -9,7 +9,7 @@ import '../../../core/core_info/developer_info.dart';
 import '../../../core/core_resources/core_flags.dart';
 import '../../../core/core_resources/images.dart';
 import '../../../core/core_resources/logos.dart';
-import '../../../core/extensions/extensions_on_material_widgets/extension_on_text.dart';
+import '../../../core/extensions/material_widgets_extensions/extension_text.dart';
 import '../../../ui_kit/buttons/app_general_button.dart';
 import '../../../ui_kit/general_widgets/image.dart';
 import '../../../ui_kit/main_widgets/app_bar.dart';

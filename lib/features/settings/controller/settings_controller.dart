@@ -10,8 +10,8 @@ import '../../../core/core_functions.dart';
 import '../../../core/core_resources/core_enums.dart';
 import '../../../core/core_resources/core_flags.dart';
 import '../../../core/core_resources/page_details.dart';
-import '../../../core/extensions/extensions_on_data_models/extension_settings.dart';
-import '../../../core/extensions/extensions_on_data_types/extension_language.dart';
+import '../../../core/extensions/data_models_extensions/extension_settings.dart';
+import '../../../core/extensions/data_types_extensions/extension_language.dart';
 import '../../../localization/localizations.dart';
 import '../../../shared/shared_models/core_models/app_settings_data/app_setting_data.dart';
 import '../../../shared/shared_models/core_models/app_version/app_version.dart';
@@ -81,6 +81,7 @@ class SettingsController extends CoreController {
     saveSettings();
     appLogPrint('DarkMode Changed to ${darkMode.value}');
     Get.changeTheme(darkMode.value ? AppThemes.darkTheme : AppThemes.lightTheme);
+    update();
   }
 
   functionCheckUpdateAvailableVersion() async {

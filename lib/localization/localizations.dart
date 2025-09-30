@@ -5,7 +5,7 @@ import 'package:getx_binding_annotation/get_put_annotation.dart';
 import 'package:timezone/timezone.dart';
 
 import '../core/core_resources/countries.dart';
-import '../core/extensions/extensions_on_data_types/extension_time_zone.dart';
+import '../core/extensions/data_types_extensions/extension_time_zone.dart';
 
 //Languages Import
 import 'translation.i69n.dart';

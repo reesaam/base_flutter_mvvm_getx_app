@@ -15,7 +15,7 @@ import '../../features/splash_screen/view/splash_screen_view.dart';
 import '../../features/update/view/update_view.dart';
 import '../../localization/localizations.dart';
 import '../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
-import '../extensions/extensions_for_core/extension_app_routes.dart';
+import '../extensions/extension_app_routes.dart';
 import 'icons.dart';
 
 class AppPageDetails {

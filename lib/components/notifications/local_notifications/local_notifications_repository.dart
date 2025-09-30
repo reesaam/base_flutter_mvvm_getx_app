@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/core_functions.dart';
 import '../../../core/core_resources/core_flags.dart';
-import '../../../core/extensions/extension_for_prints/extension_for_prints.dart';
+import '../../../core/extensions/extension_prints.dart';
 import '../../../localization/localizations.dart';
 import '../../../ui_kit/theme/themes.dart';
 import '../notifications_enums.dart';

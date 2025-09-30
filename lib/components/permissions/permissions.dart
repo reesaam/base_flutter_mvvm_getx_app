@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:getx_binding_annotation/get_put_annotation.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+import '../../core/extensions/data_models_extensions/extension_permission.dart';
 import '../../shared/shared_models/base_models/permission_base_response_model/permission_base_response.dart';
-import '../../core/extensions/extensions_on_data_models/extension_permission.dart';
 
 @GetPut.component()
 class AppPermissions {
@@ -71,7 +71,7 @@ class AppPermissions {
   }) =>
       PermissionBaseResponse(
         permission: permission.getName,
-        status: status,
+        status: status
       );
 
   List<String> get _listManifestPermissions => [
