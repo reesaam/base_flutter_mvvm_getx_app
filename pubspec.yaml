@@ -73,6 +73,7 @@ dependencies:
   rename: ^3.0.2
   rename_app: ^1.6.1
   change_app_package_name: ^1.4.0
+  flutter_native_splash: ^2.4.6
 
   cupertino_icons: ^1.0.8
 

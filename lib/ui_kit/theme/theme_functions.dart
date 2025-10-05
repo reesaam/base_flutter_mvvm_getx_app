@@ -9,10 +9,4 @@ class AppThemeFunctions {
     appLogPrint('DarkMode Changed to $darkMode');
     Get.changeTheme(darkMode == true ? AppThemes.darkTheme : AppThemes.lightTheme);
   }
-
-  static bool getMode() {
-    bool? isDark = false;
-    AppStorage.to.loadAppData().then((value) => value.fold((l) => null, (r) => isDark = r?.settings?.darkMode));
-    return isDark == true;
-  }
 }

@@ -12,7 +12,7 @@ import 'colors.dart';
 @GetPut.component()
 class AppThemes {
   ///Main Theme Functions
-  static AppThemes get _to => Get.find();
+  static AppThemes get _to => Get.find<AppThemes>();
   static ThemeData get to => _to.getTheme();
 
   static ThemeData get lightTheme => _to.getTheme(brightness: Brightness.light);
@@ -49,7 +49,7 @@ class AppThemes {
         navigationDrawerTheme: _navigationDrawer(),
         navigationRailTheme: _navigationRail(),
         snackBarTheme: _snackBar(),
-        dialogTheme: _dialog(),
+        dialogTheme: _dialog().data,
         bottomSheetTheme: _bottomSheet(),
         floatingActionButtonTheme: _floatingActionButton(),
         bannerTheme: _banner(),
@@ -70,7 +70,7 @@ class AppThemes {
         toggleButtonsTheme: _buttonToggle(),
         menuButtonTheme: _buttonMenu(),
         dropdownMenuTheme: _buttonDropDown(),
-        cardTheme: _card(),
+        cardTheme: _card().data,
         cardColor: _card().color,
         checkboxTheme: _checkBox(),
         switchTheme: _switch(),
@@ -153,6 +153,7 @@ class AppThemes {
   DialogTheme _dialog() => DialogTheme(
         elevation: 10,
         backgroundColor: AppColors.background.color,
+        data: DialogThemeData(),
       );
 
   BottomSheetThemeData _bottomSheet() => BottomSheetThemeData(backgroundColor: AppColors.background.color);
