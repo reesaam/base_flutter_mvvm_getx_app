@@ -1,6 +1,8 @@
+import 'package:get/get.dart';
 import 'package:getx_binding_annotation/get_put_annotation.dart';
 
 import 'general_exception.dart';
+import 'local_exceptions.dart';
 
 @GetPut.component()
 class LocalException implements GeneralException {
@@ -11,32 +13,8 @@ class LocalException implements GeneralException {
   @override
   final int? statusCode;
 
-  static LocalException handleResponse(ex) {
-    switch (ex) {
-      case null:
-        throw NullException();
-      case 203:
-        throw StorageLoadDataException();
-      case 204:
-        throw StorageSaveDataException();
-      default:
-        throw UnknownException();
-    }
+  static LocalException handleResponse(GeneralException ex, StackTrace? stacktrace) {
+    final exception = LocalExceptions.values.firstWhereOrNull((e) => e.statusCode == ex.statusCode);
+    throw exception != null ? exception.exception : LocalExceptions.unknownException.exception;
   }
-}
-
-class StorageLoadDataException extends LocalException {
-  StorageLoadDataException() : super(message: 'Storage Load Data Exception');
-}
-
-class StorageSaveDataException extends LocalException {
-  StorageSaveDataException() : super(message: 'Storage Save Data Exception');
-}
-
-class NullException extends LocalException {
-  NullException() : super(message: 'Null Exception');
-}
-
-class UnknownException extends LocalException {
-  UnknownException() : super(message: 'Unknown Error');
 }

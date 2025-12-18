@@ -31,7 +31,9 @@ class AppStorage {
   ///Keys
   final _keyAppData = AppStorageKeys.keyAppData;
 
-  Future<Either<LocalException, bool>> clearStorage() async => await _storage.clearStorage(_keyAppData.name);
+  Future<Either<LocalException, bool>> clearStorage() async {
+    return await _storage.clearStorage(_keyAppData.name);
+  }
 
   ///AppData
   Future<Either<LocalException, bool>> saveAppData({required AppData appData}) async =>
