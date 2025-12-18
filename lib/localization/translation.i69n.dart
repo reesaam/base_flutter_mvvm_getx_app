@@ -45,6 +45,7 @@ class Translation implements i69n.I69nMessageBundle {
   ConnectionTranslation get connection => ConnectionTranslation(this);
   SettingsTranslation get settings => SettingsTranslation(this);
   UpdateTranslation get update => UpdateTranslation(this);
+  ErrorTranslation get error => ErrorTranslation(this);
   AboutTranslation get about => AboutTranslation(this);
   Object operator [](String key) {
     var index = key.indexOf('.');
@@ -71,6 +72,8 @@ class Translation implements i69n.I69nMessageBundle {
         return settings;
       case 'update':
         return update;
+      case 'error':
+        return error;
       case 'about':
         return about;
       default:
@@ -449,6 +452,236 @@ class UpdateTranslation implements i69n.I69nMessageBundle {
         return updateFileNotFoundTitle;
       case 'updateFileNotFoundContent':
         return updateFileNotFoundContent;
+      default:
+        return key;
+    }
+  }
+}
+
+class ErrorTranslation implements i69n.I69nMessageBundle {
+  final Translation _parent;
+  const ErrorTranslation(this._parent);
+  ConnectionErrorTranslation get connection => ConnectionErrorTranslation(this);
+  NetworkErrorTranslation get network => NetworkErrorTranslation(this);
+  StorageErrorTranslation get storage => StorageErrorTranslation(this);
+  Object operator [](String key) {
+    var index = key.indexOf('.');
+    if (index > 0) {
+      return (this[key.substring(0, index)]
+          as i69n.I69nMessageBundle)[key.substring(index + 1)];
+    }
+    switch (key) {
+      case 'connection':
+        return connection;
+      case 'network':
+        return network;
+      case 'storage':
+        return storage;
+      default:
+        return key;
+    }
+  }
+}
+
+class ConnectionErrorTranslation implements i69n.I69nMessageBundle {
+  final ErrorTranslation _parent;
+  const ConnectionErrorTranslation(this._parent);
+  String get internetNotAvailable => "Internet Not Available Exception";
+  String get timeoutException => "Timeout Exception";
+  String get socketException => "Socket Exception";
+  String get httpException => "HTTP Exception";
+  String get formatException => "Format Exception";
+  String get accessException => "Format Exception";
+  String get unknownException => "Unknown Error";
+  Object operator [](String key) {
+    var index = key.indexOf('.');
+    if (index > 0) {
+      return (this[key.substring(0, index)]
+          as i69n.I69nMessageBundle)[key.substring(index + 1)];
+    }
+    switch (key) {
+      case 'internetNotAvailable':
+        return internetNotAvailable;
+      case 'timeoutException':
+        return timeoutException;
+      case 'socketException':
+        return socketException;
+      case 'httpException':
+        return httpException;
+      case 'formatException':
+        return formatException;
+      case 'accessException':
+        return accessException;
+      case 'unknownException':
+        return unknownException;
+      default:
+        return key;
+    }
+  }
+}
+
+class NetworkErrorTranslation implements i69n.I69nMessageBundle {
+  final ErrorTranslation _parent;
+  const NetworkErrorTranslation(this._parent);
+  String get nonAuthoritativeInformationException =>
+      "nonAuthoritativeInformationException";
+  String get noContentException => "noContentException";
+  String get notModifiedException => "notModifiedException";
+  String get unauthorizedException => "unauthorizedException";
+  String get paymentRequiredException => "paymentRequiredException";
+  String get forbiddenException => "forbiddenException";
+  String get notFoundException => "notFoundException";
+  String get methodNotAllowedException => "methodNotAllowedException";
+  String get notAcceptableException => "notAcceptableException";
+  String get proxyAuthRequiredException => "proxyAuthRequiredException";
+  String get requestTimeoutException => "requestTimeoutException";
+  String get conflictException => "conflictException";
+  String get lengthRequiredException => "lengthRequiredException";
+  String get preConditionFailedException => "preConditionFailedException";
+  String get requestEntityTooLargeException => "requestEntityTooLargeException";
+  String get requestUriTooLongException => "requestUriTooLongException";
+  String get unsupportedMediaTypeException => "unsupportedMediaTypeException";
+  String get requestedRangeNotSatisfiableException =>
+      "requestedRangeNotSatisfiableException";
+  String get expectationFailedException => "expectationFailedException";
+  String get unProcessableEntityException => "unProcessableEntityException";
+  String get failedDependencyException => "failedDependencyException";
+  String get unorderedCollectionException => "unorderedCollectionException";
+  String get upgradeRequiredException => "upgradeRequiredException";
+  String get tooManyRequestException => "tooManyRequestException";
+  String get requestHeaderFieldsTooLargeException =>
+      "requestHeaderFieldsTooLargeException";
+  String get noResponseException => "noResponseException";
+  String get unavailableForLegalReasonsException =>
+      "unavailableForLegalReasonsException";
+  String get requestHeaderTooLargeException => "requestHeaderTooLargeException";
+  String get internalServerErrorException => "internalServerErrorException";
+  String get notImplementedException => "notImplementedException";
+  String get badGatewayException => "badGatewayException";
+  String get serviceUnavailableException => "serviceUnavailableException";
+  String get gatewayTimeoutException => "gatewayTimeoutException";
+  String get insufficientStorageException => "insufficientStorageException";
+  String get loopDetectedException => "loopDetectedException";
+  String get bandwidthLimitException => "bandwidthLimitException";
+  String get notExtendedException => "notExtendedException";
+  String get networkAuthRequiredException => "networkAuthRequiredException";
+  String get unknownException => "unknownException";
+  Object operator [](String key) {
+    var index = key.indexOf('.');
+    if (index > 0) {
+      return (this[key.substring(0, index)]
+          as i69n.I69nMessageBundle)[key.substring(index + 1)];
+    }
+    switch (key) {
+      case 'nonAuthoritativeInformationException':
+        return nonAuthoritativeInformationException;
+      case 'noContentException':
+        return noContentException;
+      case 'notModifiedException':
+        return notModifiedException;
+      case 'unauthorizedException':
+        return unauthorizedException;
+      case 'paymentRequiredException':
+        return paymentRequiredException;
+      case 'forbiddenException':
+        return forbiddenException;
+      case 'notFoundException':
+        return notFoundException;
+      case 'methodNotAllowedException':
+        return methodNotAllowedException;
+      case 'notAcceptableException':
+        return notAcceptableException;
+      case 'proxyAuthRequiredException':
+        return proxyAuthRequiredException;
+      case 'requestTimeoutException':
+        return requestTimeoutException;
+      case 'conflictException':
+        return conflictException;
+      case 'lengthRequiredException':
+        return lengthRequiredException;
+      case 'preConditionFailedException':
+        return preConditionFailedException;
+      case 'requestEntityTooLargeException':
+        return requestEntityTooLargeException;
+      case 'requestUriTooLongException':
+        return requestUriTooLongException;
+      case 'unsupportedMediaTypeException':
+        return unsupportedMediaTypeException;
+      case 'requestedRangeNotSatisfiableException':
+        return requestedRangeNotSatisfiableException;
+      case 'expectationFailedException':
+        return expectationFailedException;
+      case 'unProcessableEntityException':
+        return unProcessableEntityException;
+      case 'failedDependencyException':
+        return failedDependencyException;
+      case 'unorderedCollectionException':
+        return unorderedCollectionException;
+      case 'upgradeRequiredException':
+        return upgradeRequiredException;
+      case 'tooManyRequestException':
+        return tooManyRequestException;
+      case 'requestHeaderFieldsTooLargeException':
+        return requestHeaderFieldsTooLargeException;
+      case 'noResponseException':
+        return noResponseException;
+      case 'unavailableForLegalReasonsException':
+        return unavailableForLegalReasonsException;
+      case 'requestHeaderTooLargeException':
+        return requestHeaderTooLargeException;
+      case 'internalServerErrorException':
+        return internalServerErrorException;
+      case 'notImplementedException':
+        return notImplementedException;
+      case 'badGatewayException':
+        return badGatewayException;
+      case 'serviceUnavailableException':
+        return serviceUnavailableException;
+      case 'gatewayTimeoutException':
+        return gatewayTimeoutException;
+      case 'insufficientStorageException':
+        return insufficientStorageException;
+      case 'loopDetectedException':
+        return loopDetectedException;
+      case 'bandwidthLimitException':
+        return bandwidthLimitException;
+      case 'notExtendedException':
+        return notExtendedException;
+      case 'networkAuthRequiredException':
+        return networkAuthRequiredException;
+      case 'unknownException':
+        return unknownException;
+      default:
+        return key;
+    }
+  }
+}
+
+class StorageErrorTranslation implements i69n.I69nMessageBundle {
+  final ErrorTranslation _parent;
+  const StorageErrorTranslation(this._parent);
+  String get nullExceptionMessage => "Null Exception";
+  String get loadDataExceptionMessage => "Storage Load Data Exception";
+  String get saveDataExceptionMessage => "Storage Save Data Exception";
+  String get nodataMessage => "No Data Found";
+  String get unknownExceptionMessage => "Unknown Error";
+  Object operator [](String key) {
+    var index = key.indexOf('.');
+    if (index > 0) {
+      return (this[key.substring(0, index)]
+          as i69n.I69nMessageBundle)[key.substring(index + 1)];
+    }
+    switch (key) {
+      case 'nullExceptionMessage':
+        return nullExceptionMessage;
+      case 'loadDataExceptionMessage':
+        return loadDataExceptionMessage;
+      case 'saveDataExceptionMessage':
+        return saveDataExceptionMessage;
+      case 'nodataMessage':
+        return nodataMessage;
+      case 'unknownExceptionMessage':
+        return unknownExceptionMessage;
       default:
         return key;
     }

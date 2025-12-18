@@ -91,6 +91,63 @@ update:
   updateFileNotFoundTitle: File Error!
   updateFileNotFoundContent: File not found
 
+error:
+  connection:
+    internetNotAvailable: Internet Not Available Exception
+    timeoutException: Timeout Exception
+    socketException: Socket Exception
+    httpException: HTTP Exception
+    formatException: Format Exception
+    accessException: Format Exception
+    unknownException: Unknown Error
+  network:
+    parsingDataException: ParsingDataException
+    nonAuthoritativeInformationException: nonAuthoritativeInformationException
+    noContentException: noContentException
+    notModifiedException: notModifiedException
+    unauthorizedException: unauthorizedException
+    paymentRequiredException: paymentRequiredException
+    forbiddenException: forbiddenException
+    notFoundException: notFoundException
+    methodNotAllowedException: methodNotAllowedException
+    notAcceptableException: notAcceptableException
+    proxyAuthRequiredException: proxyAuthRequiredException
+    requestTimeoutException: requestTimeoutException
+    conflictException: conflictException
+    lengthRequiredException: lengthRequiredException
+    preConditionFailedException: preConditionFailedException
+    requestEntityTooLargeException: requestEntityTooLargeException
+    requestUriTooLongException: requestUriTooLongException
+    unsupportedMediaTypeException: unsupportedMediaTypeException
+    requestedRangeNotSatisfiableException: requestedRangeNotSatisfiableException
+    expectationFailedException: expectationFailedException
+    unProcessableEntityException: unProcessableEntityException
+    failedDependencyException: failedDependencyException
+    unorderedCollectionException: unorderedCollectionException
+    upgradeRequiredException: upgradeRequiredException
+    tooManyRequestException: tooManyRequestException
+    requestHeaderFieldsTooLargeException: requestHeaderFieldsTooLargeException
+    noResponseException: noResponseException
+    unavailableForLegalReasonsException: unavailableForLegalReasonsException
+    requestHeaderTooLargeException: requestHeaderTooLargeException
+    internalServerErrorException: internalServerErrorException
+    notImplementedException: notImplementedException
+    badGatewayException: badGatewayException
+    serviceUnavailableException: serviceUnavailableException
+    gatewayTimeoutException: gatewayTimeoutException
+    insufficientStorageException: insufficientStorageException
+    loopDetectedException: loopDetectedException
+    bandwidthLimitException: bandwidthLimitException
+    notExtendedException: notExtendedException
+    networkAuthRequiredException: networkAuthRequiredException
+    unknownException: unknownException
+  storage:
+    nullExceptionMessage: Null Exception
+    loadDataExceptionMessage: Storage Load Data Exception
+    saveDataExceptionMessage: Storage Save Data Exception
+    nodataMessage: No Data Found
+    unknownExceptionMessage: Unknown Error
+
 about:
   aboutTitlesAppName: App Name
   aboutTitlesDeveloperName: Developer Name

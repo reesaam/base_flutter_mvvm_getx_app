@@ -37,9 +37,11 @@ class AppLocalizations {
 
   static List<Locale> get supportedLocales => _supportedLocales.map((x) => Locale(x)).toList();
 
-  static Future<AppLocalizations> load(Locale locale) => Future.value(AppLocalizations(translation: _translations[locale.languageCode]!()));
+  static Future<AppLocalizations> load(Locale locale) =>
+      Future.value(AppLocalizations(translation: _translations[locale.languageCode]!()));
 
-  static Translation of(BuildContext context) => Localizations.of<AppLocalizations>(context, AppLocalizations)!.translation!;
+  static Translation of(BuildContext context) =>
+      Localizations.of<AppLocalizations>(context, AppLocalizations)!.translation!;
 
   /// Manual Added
   // TimeZone & Country

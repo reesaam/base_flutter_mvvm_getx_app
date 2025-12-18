@@ -36,7 +36,7 @@ library;
 ///    GitHub: [ https://github.com/reesaam ]
 
 import 'package:get/get.dart';
-
+import 'main.dart';
 import 'admin/admin_app_countries/controller/admin_app_countries_controller.dart';
 import 'admin/admin_app_countries/view/admin_app_countries_page.dart';
 import 'admin/admin_app_info/controller/admin_app_info_controller.dart';
@@ -53,11 +53,11 @@ import 'admin/admin_verifiers/controller/admin_verifiers_controller.dart';
 import 'admin/admin_verifiers/view/admin_verifiers_page.dart';
 import 'admin/admin_widget_check/controller/admin_widget_check_controller.dart';
 import 'admin/admin_widget_check/view/admin_widget_check_page.dart';
+import 'components/failures/local_exception.dart';
 import 'components/file_functions/file_functions.dart';
 import 'components/network/dio.dart';
-import 'components/notifications/local_notifications/local_notification_controller.dart';
 import 'components/notifications/local_notifications/local_notifications.dart';
-import 'components/permissions/permissions.dart';
+import 'components/notifications/local_notifications/local_notification_controller.dart';
 import 'components/statistics/statistics.dart';
 import 'components/storage/app_storage_module.dart';
 import 'components/storage/storage_providers/app_local_storage.dart';
@@ -66,6 +66,7 @@ import 'features/about/controller/about_controller.dart';
 import 'features/about/view/about_view.dart';
 import 'features/homepage/controller/homepage_controller.dart';
 import 'features/homepage/view/homepage_view.dart';
+import 'localization/localizations.dart';
 import 'features/not_found/controller/not_found_controller.dart';
 import 'features/not_found/view/not_found_view.dart';
 import 'features/settings/controller/settings_controller.dart';
@@ -77,23 +78,21 @@ import 'features/update/data/update_remote_data_source.dart';
 import 'features/update/view/update_view.dart';
 import 'features/versions/data/versions_local_data_source.dart';
 import 'features/versions/data/versions_remote_data_source.dart';
-import 'localization/localizations.dart';
-import 'ui_kit/theme/themes.dart';
 
 /// Generated Library Statistics:
-///   Imports Count: 42
+///   Imports Count: 41
 ///   Pages Count: 14
 ///   Controllers Count: 15
-///   Components Count: 10
+///   Components Count: 9
 ///   Repositories Count: 3
 
 class GetPutPages {
   static List<GetPage> get pages => [
         GetPage(
             name: '/AdminAppCountriesPage', page: AdminAppCountriesPage.new),
+        GetPage(name: '/AdminAppInfoPage', page: AdminAppInfoPage.new),
         GetPage(
             name: '/AdminAppResourcesPage', page: AdminAppResourcesPage.new),
-        GetPage(name: '/AdminAppInfoPage', page: AdminAppInfoPage.new),
         GetPage(
             name: '/AdminDataFormatCheckPage',
             page: AdminDataFormatCheckPage.new),
@@ -131,6 +130,9 @@ class _GetPutController extends Bindings {
         fenix: true);
     Get.lazyPut<AdminAppInfoController>(() => AdminAppInfoController(),
         fenix: true);
+    Get.lazyPut<AdminAppResourcesController>(
+        () => AdminAppResourcesController(),
+        fenix: true);
     Get.lazyPut<AdminDataFormatCheckController>(
         () => AdminDataFormatCheckController(),
         fenix: true);
@@ -138,9 +140,6 @@ class _GetPutController extends Bindings {
         fenix: true);
     Get.lazyPut<AdminTestController>(() => AdminTestController(), fenix: true);
     Get.lazyPut<AdminVerifiersController>(() => AdminVerifiersController(),
-        fenix: true);
-    Get.lazyPut<AdminAppResourcesController>(
-        () => AdminAppResourcesController(),
         fenix: true);
     Get.lazyPut<AdminWidgetCheckController>(() => AdminWidgetCheckController(),
         fenix: true);
@@ -160,7 +159,7 @@ class _GetPutController extends Bindings {
 class _GetPutComponent extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<AppPermissions>(() => AppPermissions(), fenix: true);
+    Get.lazyPut<LocalException>(() => LocalException(), fenix: true);
     Get.lazyPut<AppFileFunctions>(() => AppFileFunctions(), fenix: true);
     Get.lazyPut<DioCore>(() => DioCore(), fenix: true);
     Get.lazyPut<AppLocalNotifications>(() => AppLocalNotifications(),
@@ -171,7 +170,6 @@ class _GetPutComponent extends Bindings {
     Get.lazyPut<AppSharedPreferences>(() => AppSharedPreferences(),
         fenix: true);
     Get.lazyPut<AppLocalizations>(() => AppLocalizations(), fenix: true);
-    Get.lazyPut<AppThemes>(() => AppThemes(), fenix: true);
   }
 }
 

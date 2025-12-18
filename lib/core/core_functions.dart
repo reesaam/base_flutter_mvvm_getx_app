@@ -31,10 +31,12 @@ void popPage() {
 
 nullFunction() => null;
 
-bool? clearAppData() {
-  bool result = false;
-  AppStorage.to.clearStorage().then((value) => value.fold((l) => AppExceptionsDialog.local(exception: l), (r) => result = r));
-  return result;
+void clearAppData() async {
+  final response = await AppStorage.to.clearStorage();
+  response.fold(
+    (l) => AppExceptionsDialog.show(exception: l),
+    (r) => AppSnackBar.show(),
+  );
 }
 
 bool? saveAppData({
@@ -51,13 +53,19 @@ bool? saveAppData({
     settings: appSettingData ?? loadedData?.settings,
     statisticsData: appStatisticsData ?? loadedData?.statisticsData,
   );
-  AppStorage.to.saveAppData(appData: appData).then((value) => value.fold((l) => AppExceptionsDialog.local(exception: l), (r) => result = r));
+  AppStorage.to.saveAppData(appData: appData).then((value) => value.fold(
+        (l) => AppExceptionsDialog.show(exception: l),
+        (r) => result = r,
+      ));
   return result;
 }
 
 AppData? loadAppData() {
   AppData? appData;
-  AppStorage.to.loadAppData().then((value) => value.fold((l) => AppExceptionsDialog.local(exception: l), (r) => appData = r));
+  AppStorage.to.loadAppData().then((value) => value.fold(
+        (l) => AppExceptionsDialog.show(exception: l),
+        (r) => appData = r,
+      ));
   return appData;
 }
 
@@ -67,7 +75,7 @@ void printAllData({bool? detailsIncluded}) async {
 }
 
 Future<AppVersionsList?> getVersions() async {
-  bool internetAvailability =  await AppConnectionChecker.to.checkInternet();
+  bool internetAvailability = await AppConnectionChecker.to.checkInternet();
   AppVersionsList? versionsList;
   if (internetAvailability) {
     var response = await VersionsRemoteDataSource().getVersions();
@@ -96,9 +104,11 @@ Future<void> checkForceUpdate() async {
 
 noInternetConnectionSnackBar() => AppSnackBar.show(message: Texts.to.connection.connectionInternetNotAvailableText);
 
-showLoadingDialog({bool? isDismissible}) => AppAlertWidgetDialogs().withoutButton(widget: AppProgressIndicator.linear(), dismissible: isDismissible);
+showLoadingDialog({bool? isDismissible}) =>
+    AppAlertWidgetDialogs().withoutButton(widget: AppProgressIndicator.linear(), dismissible: isDismissible);
 
-appExitDialog() => AppAlertDialogs.withOkCancel(title: Texts.to.general.appExit, text: Texts.to.dialogs.areYouSure, onTapOk: appExit, dismissible: true);
+appExitDialog() => AppAlertDialogs.withOkCancel(
+    title: Texts.to.general.appExit, text: Texts.to.dialogs.areYouSure, onTapOk: appExit, dismissible: true);
 
 appReload({AppPageDetail? bootPage}) async {
   showLoadingDialog();
