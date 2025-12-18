@@ -1,7 +1,7 @@
 import '../../core/core_resources/defaults.dart';
 
 class AppTextSizes {
-  static double get _textSizeDefault => appDefaultFontSize;
+  static double get _textSizeDefault => AppDefaults.fontSize;
 
   static double get textSizeXSmall => _textSizeDefault - 4;
   static double get textSizeSmall => _textSizeDefault - 2;

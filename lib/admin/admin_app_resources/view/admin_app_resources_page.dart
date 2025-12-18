@@ -33,13 +33,13 @@ class AdminAppResourcesPage extends CoreView<AdminAppResourcesController> {
       ]);
 
   _appDefaults() => AdminFunctions.section([
-        AdminFunctions.item(title: 'Font Size', text: appDefaultFontSize.toInt().toString()),
-        AdminFunctions.item(title: 'Connection Timeout', text: appDefaultConnectionTimeOut.inSeconds.toString()),
-        AdminFunctions.item(title: 'Circular Progress Bar Width', text: defaultCircularProgressBarWidth.toInt().toString()),
-        AdminFunctions.item(title: 'SnackBar Animation Duration', text: appSnackBarDefaultAnimationDuration.inSeconds.toInt().toString()),
-        AdminFunctions.item(title: 'SnackBar Duration', text: appSnackBarDefaultDuration.inSeconds.toInt().toString()),
-        AdminFunctions.item(title: 'Snack Position', text: appDefaultSnackPosition.toString().split('.').last),
-        AdminFunctions.item(title: 'Border Width', text: appDefaultBorderWidth.toInt().toString()),
+        AdminFunctions.item(title: 'Font Size', text: AppDefaults.fontSize.toInt().toString()),
+        AdminFunctions.item(title: 'Connection Timeout', text: AppDefaults.connectionTimeOut.inSeconds.toString()),
+        AdminFunctions.item(title: 'Circular Progress Bar Width', text: AppDefaults.borderWidth.toInt().toString()),
+        AdminFunctions.item(title: 'SnackBar Animation Duration', text: AppDefaults.snackBarAnimationDuration.inSeconds.toInt().toString()),
+        AdminFunctions.item(title: 'SnackBar Duration', text: AppDefaults.snackBarDuration.inSeconds.toInt().toString()),
+        AdminFunctions.item(title: 'Snack Position', text: AppDefaults.snackBarPosition.toString().split('.').last),
+        AdminFunctions.item(title: 'Border Width', text: AppDefaults.borderWidth.toInt().toString()),
       ], title: 'App Defaults');
 
   _appTheme() => AdminFunctions.section([

@@ -176,7 +176,7 @@ class AppThemes {
 
   ///Text
   TextStyle _textStyle() => TextStyle(
-        fontSize: appDefaultFontSize,
+        fontSize: AppDefaults.fontSize,
         overflow: TextOverflow.ellipsis,
       );
 
@@ -187,7 +187,7 @@ class AppThemes {
       );
 
   TextStyle _buttonTextStyle() => TextStyle(
-        fontSize: appDefaultFontSize,
+        fontSize: AppDefaults.fontSize,
         overflow: TextOverflow.ellipsis,
       );
 

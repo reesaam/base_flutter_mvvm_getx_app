@@ -148,10 +148,10 @@ _showSnackBar({
       //Specifications
       padding: padding ?? AppPaddings.snackBar,
       margin: margin ?? AppPaddings.snackBar,
-      snackPosition: appDefaultSnackPosition,
+      snackPosition: AppDefaults.snackBarPosition,
       snackStyle: SnackStyle.FLOATING,
-      animationDuration: appSnackBarDefaultAnimationDuration,
-      duration: duration ?? appSnackBarDefaultDuration,
+      animationDuration: AppDefaults.snackBarAnimationDuration,
+      duration: duration ?? AppDefaults.snackBarDuration,
       isDismissible: isDismissible ?? true,
       backgroundColor: backgroundColor ?? AppThemes.to.snackBarTheme.backgroundColor ?? AppThemes.to.colorScheme.tertiary,
       borderRadius: AppElements.defaultRadius,

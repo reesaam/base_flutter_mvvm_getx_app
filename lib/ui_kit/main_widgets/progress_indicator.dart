@@ -39,7 +39,7 @@ class _AppProgressIndicatorCircular extends CircularProgressIndicator {
   Color? get color => indicatorColor;
 
   @override
-  double get strokeWidth => width ?? defaultCircularProgressBarWidth;
+  double get strokeWidth => width ?? AppDefaults.circularProgressBarWidth;
 }
 
 class _AppProgressIndicatorLinear extends LinearProgressIndicator {

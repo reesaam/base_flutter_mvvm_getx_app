@@ -14,7 +14,7 @@ class AppConnectionChecker {
   get internetConnection => InternetConnection();
   get connectivity => Connectivity();
 
-  Future<bool> checkInternet() async => await internetConnection.hasInternetAccess.timeout(appDefaultConnectionTimeOut);
+  Future<bool> checkInternet() async => await internetConnection.hasInternetAccess.timeout(AppDefaults.connectionTimeOut);
 
   Future<InternetStatus> checkInternetStatus() async => await internetConnection.internetStatus;
 

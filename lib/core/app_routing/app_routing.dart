@@ -32,6 +32,6 @@ goToPage(AppPageDetail? page, {bool? popAll}) {
 }
 
 goToPageWithDelay(AppPageDetail? route, {bool? popAll, int? delayInSeconds}) async {
-  await Future.delayed(Duration(seconds: delayInSeconds ?? appDefaultPageTransitionDelay));
+  await Future.delayed(Duration(seconds: delayInSeconds ?? AppDefaults.transitionDuration.inSeconds));
   goToPage(route);
 }

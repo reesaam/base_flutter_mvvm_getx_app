@@ -30,7 +30,7 @@ class AppElements {
   static BorderRadius get borderRadiusTop => BorderRadius.only(topLeft: circularRadiusDefault, topRight: circularRadiusDefault);
 
   ///BorderSide
-  static BorderSide get _borderSideGeneral => BorderSide(color: AppThemes.to.colorScheme.secondary, width: appDefaultBorderWidth);
+  static BorderSide get _borderSideGeneral => BorderSide(color: AppThemes.to.colorScheme.secondary, width: AppDefaults.borderWidth);
   static BorderSide get borderSide => _borderSideGeneral.copyWith(color: AppThemes.to.primaryColor);
   static BorderSide get borderSidePrimary => _borderSideGeneral.copyWith(color: AppThemes.to.primaryColor);
   static BorderSide get borderSideSecondary => _borderSideGeneral.copyWith(color: AppThemes.to.colorScheme.secondary);
