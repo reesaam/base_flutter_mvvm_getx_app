@@ -6,8 +6,8 @@ import 'package:getx_binding_annotation/get_put_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/core_functions.dart';
+import '../../failures/general_exception.dart';
 import '../../failures/local_exception.dart';
-import '../../failures/local_exceptions.dart';
 import '../app_storage_module_abstraction.dart';
 
 @GetPut.component()
@@ -20,12 +20,12 @@ class AppSharedPreferences extends AppStorageModuleAbstraction {
     try {
       final response = await sp.remove(key);
       appLogPrint('Storage Cleared Successfully');
-      return response ? Right(response) : Left(LocalExceptions.unknownException.exception);
+      return response ? Right(response) : Left(_defaultLeftResponse);
     } on LocalException catch (ex, stackTrace) {
-      appLogPrint('Local Exception Occurred : $ex');
+      _printException('CLEAR STORAGE', ex);
       return Left(LocalException.handleResponse(ex, stackTrace));
     } catch (ex) {
-      appLogPrint('Exception Occurred : $ex');
+      _printException('CLEAR STORAGE', GeneralException.create(ex));
       rethrow;
     }
   }
@@ -35,12 +35,13 @@ class AppSharedPreferences extends AppStorageModuleAbstraction {
     SharedPreferences sp = await SharedPreferences.getInstance();
     try {
       final response = sp.get(key);
-      return response != null ? const Right(true) : Left(LocalExceptions.unknownException.exception);
+      appLogPrint('Storage Read Successfully');
+      return response != null ? const Right(true) : Left(_defaultLeftResponse);
     } on LocalException catch (ex, stackTrace) {
-      appLogPrint('Local Exception Occurred : $ex');
+      _printException('CHECK', ex);
       return Left(LocalException.handleResponse(ex, stackTrace));
     } catch (ex) {
-      appLogPrint('Exception Occurred : $ex');
+      _printException('CHECK', GeneralException.create(ex));
       rethrow;
     }
   }
@@ -52,12 +53,12 @@ class AppSharedPreferences extends AppStorageModuleAbstraction {
       String? data = sp.getString(key);
       final result = data == null ? null : json.decode(data);
       appLogPrint('Data Loaded Successfully from $key');
-      return result != null ? Right(result) : Left(LocalExceptions.unknownException.exception);
+      return result != null ? Right(result) : Left(_defaultLeftResponse);
     } on LocalException catch (ex, stackTrace) {
-      appLogPrint('Local Exception Occurred : $ex');
+      _printException('LOAD', ex);
       return Left(LocalException.handleResponse(ex, stackTrace));
     } catch (ex) {
-      appLogPrint('Exception Occurred : $ex');
+      _printException('LOAD', GeneralException.create(ex));
       rethrow;
     }
   }
@@ -71,13 +72,20 @@ class AppSharedPreferences extends AppStorageModuleAbstraction {
     try {
       String jsonData = json.encode(data);
       final result = await sp.setString(key, jsonData);
-      return Right(result);
+      appLogPrint('Data Saved Successfully');
+      return result ?  Right(result) : Left(_defaultLeftResponse);
     } on LocalException catch (ex, stackTrace) {
-      appLogPrint('Local Exception Occurred : $ex');
+      _printException('SAVE', ex);
       return Left(LocalException.handleResponse(ex, stackTrace));
     } catch (ex) {
-      appLogPrint('Exception Occurred : $ex');
+      _printException('SAVE', GeneralException.create(ex));
       rethrow;
     }
+  }
+
+  static LocalException get _defaultLeftResponse => LocalExceptions.unknownException.exception;
+
+  static _printException(String method, GeneralException exception) {
+    appDebugPrint('==> Local $method Data Exception: ${exception.message} (${exception.statusCode})');
   }
 }

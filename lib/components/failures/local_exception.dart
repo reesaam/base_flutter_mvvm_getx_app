@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
-import 'package:getx_binding_annotation/get_put_annotation.dart';
 
 import 'general_exception.dart';
 import 'local_exceptions.dart';
 
-@GetPut.component()
+export 'local_exceptions.dart';
+
 class LocalException implements GeneralException {
   LocalException({this.message, this.statusCode});
 

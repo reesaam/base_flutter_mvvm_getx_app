@@ -78,7 +78,7 @@ Future<AppVersionsList?> getVersions() async {
   bool internetAvailability = await AppConnectionChecker.to.checkInternet();
   AppVersionsList? versionsList;
   if (internetAvailability) {
-    var response = await VersionsRemoteDataSource().getVersions();
+    var response = await VersionsRemoteDataSource.to.getVersions();
     versionsList = response.fold((l) => null, (r) => r);
   }
   if (versionsList == null) {

@@ -101,46 +101,46 @@ error:
     accessException: Format Exception
     unknownException: Unknown Error
   network:
-    parsingDataException: ParsingDataException
-    nonAuthoritativeInformationException: nonAuthoritativeInformationException
-    noContentException: noContentException
-    notModifiedException: notModifiedException
-    unauthorizedException: unauthorizedException
-    paymentRequiredException: paymentRequiredException
-    forbiddenException: forbiddenException
-    notFoundException: notFoundException
-    methodNotAllowedException: methodNotAllowedException
-    notAcceptableException: notAcceptableException
-    proxyAuthRequiredException: proxyAuthRequiredException
-    requestTimeoutException: requestTimeoutException
-    conflictException: conflictException
-    lengthRequiredException: lengthRequiredException
-    preConditionFailedException: preConditionFailedException
-    requestEntityTooLargeException: requestEntityTooLargeException
-    requestUriTooLongException: requestUriTooLongException
-    unsupportedMediaTypeException: unsupportedMediaTypeException
-    requestedRangeNotSatisfiableException: requestedRangeNotSatisfiableException
-    expectationFailedException: expectationFailedException
-    unProcessableEntityException: unProcessableEntityException
-    failedDependencyException: failedDependencyException
-    unorderedCollectionException: unorderedCollectionException
-    upgradeRequiredException: upgradeRequiredException
-    tooManyRequestException: tooManyRequestException
-    requestHeaderFieldsTooLargeException: requestHeaderFieldsTooLargeException
-    noResponseException: noResponseException
-    unavailableForLegalReasonsException: unavailableForLegalReasonsException
-    requestHeaderTooLargeException: requestHeaderTooLargeException
-    internalServerErrorException: internalServerErrorException
-    notImplementedException: notImplementedException
-    badGatewayException: badGatewayException
-    serviceUnavailableException: serviceUnavailableException
-    gatewayTimeoutException: gatewayTimeoutException
-    insufficientStorageException: insufficientStorageException
-    loopDetectedException: loopDetectedException
-    bandwidthLimitException: bandwidthLimitException
-    notExtendedException: notExtendedException
-    networkAuthRequiredException: networkAuthRequiredException
-    unknownException: unknownException
+    parsingDataException: Parsing Data Exception
+    nonAuthoritativeInformationException: NonAuthoritative Information Exception
+    noContentException: No Content Exception
+    notModifiedException: Not Modified Exception
+    unauthorizedException: Unauthorized Exception
+    paymentRequiredException: Payment Required Exception
+    forbiddenException: Forbidden Exception
+    notFoundException: Not Found Exception
+    methodNotAllowedException: Method Not Allowed Exception
+    notAcceptableException: Not Acceptable Exception
+    proxyAuthRequiredException: Proxy Auth Required Exception
+    requestTimeoutException: Request Timeout Exception
+    conflictException: Conflict Exception
+    lengthRequiredException: Length Required Exception
+    preConditionFailedException: PreCondition Failed Exception
+    requestEntityTooLargeException: Request Entity Too Large Exception
+    requestUriTooLongException: Request Uri Too Long Exception
+    unsupportedMediaTypeException: Unsupported Media Type Exception
+    requestedRangeNotSatisfiableException: Requested Range Not Satisfiable Exception
+    expectationFailedException: Expectation FailedException
+    unProcessableEntityException: UnProcessable Entity Exception
+    failedDependencyException: Failed Dependency Exception
+    unorderedCollectionException: Unordered Collection Exception
+    upgradeRequiredException: Upgrade Required Exception
+    tooManyRequestException: Too Many Request Exception
+    requestHeaderFieldsTooLargeException: Request Header Fields Too Large Exception
+    noResponseException: No Response Exception
+    unavailableForLegalReasonsException: Unavailable For Legal Reasons Exception
+    requestHeaderTooLargeException: Request Header Too Large Exception
+    internalServerErrorException: Internal Server Error Exception
+    notImplementedException: Not Implemented Exception
+    badGatewayException: Bad Gateway Exception
+    serviceUnavailableException: Service Unavailable Exception
+    gatewayTimeoutException: Gateway Timeout Exception
+    insufficientStorageException: Insufficient Storage Exception
+    loopDetectedException: Loop Detected Exception
+    bandwidthLimitException: Bandwidth Limit Exception
+    notExtendedException: Not Extended Exception
+    networkAuthRequiredException: Network AuthRequired Exception
+    unknownException: Unknown Network Error
   storage:
     nullExceptionMessage: Null Exception
     loadDataExceptionMessage: Storage Load Data Exception

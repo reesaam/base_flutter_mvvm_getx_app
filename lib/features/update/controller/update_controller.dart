@@ -90,11 +90,11 @@ class UpdateController extends CoreController {
       dlFile!.existsSync() ? dlFile!.deleteSync() : null;
       downloaded.value = false;
       String downloadAddress = Texts.to.general.empty;
-      final resultAddress = await UpdateRemoteDataSource().getDownloadAddress();
+      final resultAddress = await UpdateRemoteDataSource.to.getDownloadAddress();
       resultAddress.fold((l) => showErrorDialog(message: l.toString()), (r) => downloadAddress = r);
 
       if (downloadAddress.isNotEmpty) {
-        final result = await UpdateRemoteDataSource().updateDownload(savePath: dlFile!.path);
+        final result = await UpdateRemoteDataSource.to.updateDownload(savePath: dlFile!.path);
         result.fold((l) => showErrorDialog(message: l.toString()), (r) {
           dlFile = r;
           downloaded.value = true;

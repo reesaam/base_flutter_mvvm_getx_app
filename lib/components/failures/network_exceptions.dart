@@ -1,5 +1,5 @@
 import '../../localization/localizations.dart';
-import 'local_exception.dart';
+import 'network_exception.dart';
 
 enum NetworkExceptions {
   nonAuthoritativeInformationException(statusCode: 203),
@@ -46,8 +46,8 @@ enum NetworkExceptions {
   const NetworkExceptions({required this.statusCode});
 }
 
-extension LocalExceptionsExtension on NetworkExceptions {
-  LocalException get exception => LocalException(statusCode: statusCode, message: message);
+extension NetworkExceptionsExtension on NetworkExceptions {
+  NetworkException get exception => NetworkException(statusCode: statusCode, message: message);
 
   String get message => switch (this) {
         NetworkExceptions.nonAuthoritativeInformationException => Texts.to.error.network.nonAuthoritativeInformationException,
@@ -90,4 +90,11 @@ extension LocalExceptionsExtension on NetworkExceptions {
         NetworkExceptions.networkAuthRequiredException => Texts.to.error.network.networkAuthRequiredException,
         NetworkExceptions.unknownException => Texts.to.error.network.unknownException,
       };
+}
+
+extension NetworkExceptionsListExtension on List<NetworkExceptions> {
+  NetworkExceptions find(int statusCode) => NetworkExceptions.values.firstWhere(
+        (element) => element.statusCode == statusCode,
+        orElse: () => NetworkExceptions.unknownException,
+      );
 }

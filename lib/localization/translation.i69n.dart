@@ -523,49 +523,53 @@ class ConnectionErrorTranslation implements i69n.I69nMessageBundle {
 class NetworkErrorTranslation implements i69n.I69nMessageBundle {
   final ErrorTranslation _parent;
   const NetworkErrorTranslation(this._parent);
+  String get parsingDataException => "Parsing Data Exception";
   String get nonAuthoritativeInformationException =>
-      "nonAuthoritativeInformationException";
-  String get noContentException => "noContentException";
-  String get notModifiedException => "notModifiedException";
-  String get unauthorizedException => "unauthorizedException";
-  String get paymentRequiredException => "paymentRequiredException";
-  String get forbiddenException => "forbiddenException";
-  String get notFoundException => "notFoundException";
-  String get methodNotAllowedException => "methodNotAllowedException";
-  String get notAcceptableException => "notAcceptableException";
-  String get proxyAuthRequiredException => "proxyAuthRequiredException";
-  String get requestTimeoutException => "requestTimeoutException";
-  String get conflictException => "conflictException";
-  String get lengthRequiredException => "lengthRequiredException";
-  String get preConditionFailedException => "preConditionFailedException";
-  String get requestEntityTooLargeException => "requestEntityTooLargeException";
-  String get requestUriTooLongException => "requestUriTooLongException";
-  String get unsupportedMediaTypeException => "unsupportedMediaTypeException";
+      "NonAuthoritative Information Exception";
+  String get noContentException => "No Content Exception";
+  String get notModifiedException => "Not Modified Exception";
+  String get unauthorizedException => "Unauthorized Exception";
+  String get paymentRequiredException => "Payment Required Exception";
+  String get forbiddenException => "Forbidden Exception";
+  String get notFoundException => "Not Found Exception";
+  String get methodNotAllowedException => "Method Not Allowed Exception";
+  String get notAcceptableException => "Not Acceptable Exception";
+  String get proxyAuthRequiredException => "Proxy Auth Required Exception";
+  String get requestTimeoutException => "Request Timeout Exception";
+  String get conflictException => "Conflict Exception";
+  String get lengthRequiredException => "Length Required Exception";
+  String get preConditionFailedException => "PreCondition Failed Exception";
+  String get requestEntityTooLargeException =>
+      "Request Entity Too Large Exception";
+  String get requestUriTooLongException => "Request Uri Too Long Exception";
+  String get unsupportedMediaTypeException =>
+      "Unsupported Media Type Exception";
   String get requestedRangeNotSatisfiableException =>
-      "requestedRangeNotSatisfiableException";
-  String get expectationFailedException => "expectationFailedException";
-  String get unProcessableEntityException => "unProcessableEntityException";
-  String get failedDependencyException => "failedDependencyException";
-  String get unorderedCollectionException => "unorderedCollectionException";
-  String get upgradeRequiredException => "upgradeRequiredException";
-  String get tooManyRequestException => "tooManyRequestException";
+      "Requested Range Not Satisfiable Exception";
+  String get expectationFailedException => "Expectation FailedException";
+  String get unProcessableEntityException => "UnProcessable Entity Exception";
+  String get failedDependencyException => "Failed Dependency Exception";
+  String get unorderedCollectionException => "Unordered Collection Exception";
+  String get upgradeRequiredException => "Upgrade Required Exception";
+  String get tooManyRequestException => "Too Many Request Exception";
   String get requestHeaderFieldsTooLargeException =>
-      "requestHeaderFieldsTooLargeException";
-  String get noResponseException => "noResponseException";
+      "Request Header Fields Too Large Exception";
+  String get noResponseException => "No Response Exception";
   String get unavailableForLegalReasonsException =>
-      "unavailableForLegalReasonsException";
-  String get requestHeaderTooLargeException => "requestHeaderTooLargeException";
-  String get internalServerErrorException => "internalServerErrorException";
-  String get notImplementedException => "notImplementedException";
-  String get badGatewayException => "badGatewayException";
-  String get serviceUnavailableException => "serviceUnavailableException";
-  String get gatewayTimeoutException => "gatewayTimeoutException";
-  String get insufficientStorageException => "insufficientStorageException";
-  String get loopDetectedException => "loopDetectedException";
-  String get bandwidthLimitException => "bandwidthLimitException";
-  String get notExtendedException => "notExtendedException";
-  String get networkAuthRequiredException => "networkAuthRequiredException";
-  String get unknownException => "unknownException";
+      "Unavailable For Legal Reasons Exception";
+  String get requestHeaderTooLargeException =>
+      "Request Header Too Large Exception";
+  String get internalServerErrorException => "Internal Server Error Exception";
+  String get notImplementedException => "Not Implemented Exception";
+  String get badGatewayException => "Bad Gateway Exception";
+  String get serviceUnavailableException => "Service Unavailable Exception";
+  String get gatewayTimeoutException => "Gateway Timeout Exception";
+  String get insufficientStorageException => "Insufficient Storage Exception";
+  String get loopDetectedException => "Loop Detected Exception";
+  String get bandwidthLimitException => "Bandwidth Limit Exception";
+  String get notExtendedException => "Not Extended Exception";
+  String get networkAuthRequiredException => "Network AuthRequired Exception";
+  String get unknownException => "Unknown Network Error";
   Object operator [](String key) {
     var index = key.indexOf('.');
     if (index > 0) {
@@ -573,6 +577,8 @@ class NetworkErrorTranslation implements i69n.I69nMessageBundle {
           as i69n.I69nMessageBundle)[key.substring(index + 1)];
     }
     switch (key) {
+      case 'parsingDataException':
+        return parsingDataException;
       case 'nonAuthoritativeInformationException':
         return nonAuthoritativeInformationException;
       case 'noContentException':

@@ -17,12 +17,12 @@ class AppLocalStorage implements AppStorageModuleAbstraction {
       final result = _service.remove(key);
       appLogPrint('App Data Cleared Successfully');
       return Right(result);
-    } on LocalException catch (ex) {
+    } on LocalException catch (ex, stackTrace) {
       appLogPrint('Local Exception Occurred : $ex');
-      return Left(LocalException.handleResponse(ex));
-    } catch (ex) {
-      appLogPrint('Local Exception Occurred : $ex');
-      return Left(LocalException.handleResponse(ex));
+      return Left(LocalException.handleResponse(ex, stackTrace));
+    } catch (ex, stackTrace) {
+      appLogPrint('Exception Occurred : $ex');
+      rethrow;
     }
   }
 
@@ -31,12 +31,12 @@ class AppLocalStorage implements AppStorageModuleAbstraction {
     try {
       final response = _service.hasData(key);
       return Right(response);
-    } on LocalException catch (ex) {
+    } on LocalException catch (ex, stackTrace) {
       appLogPrint('Local Exception Occurred : $ex');
-      return Left(LocalException.handleResponse(ex));
-    } catch (ex) {
-      appLogPrint('Local Exception Occurred : $ex');
-      return Left(LocalException.handleResponse(ex));
+      return Left(LocalException.handleResponse(ex, stackTrace));
+    } catch (ex, stackTrace) {
+      appLogPrint('Exception Occurred : $ex');
+      rethrow;
     }
   }
 
@@ -46,12 +46,12 @@ class AppLocalStorage implements AppStorageModuleAbstraction {
       final data = _service.read(key);
       appLogPrint('Data Loaded Successfully from $key');
       return Right(data);
-    } on LocalException catch (ex) {
+    } on LocalException catch (ex, stackTrace) {
       appLogPrint('Local Exception Occurred : $ex');
-      return Left(LocalException.handleResponse(ex));
-    } catch (ex) {
-      appLogPrint('Local Exception Occurred : $ex');
-      return Left(LocalException.handleResponse(ex));
+      return Left(LocalException.handleResponse(ex, stackTrace));
+    } catch (ex, stackTrace) {
+      appLogPrint('Exception Occurred : $ex');
+      rethrow;
     }
   }
 
@@ -64,12 +64,12 @@ class AppLocalStorage implements AppStorageModuleAbstraction {
       await _service.write(key, data);
       appLogPrint('Data Saved Successfully on $key');
       return const Right(true);
-    } on LocalException catch (ex) {
+    } on LocalException catch (ex, stackTrace) {
       appLogPrint('Local Exception Occurred : $ex');
-      return Left(LocalException.handleResponse(ex));
-    } catch (ex) {
-      appLogPrint('Local Exception Occurred : $ex');
-      return Left(LocalException.handleResponse(ex));
+      return Left(LocalException.handleResponse(ex, stackTrace));
+    } catch (ex, stackTrace) {
+      appLogPrint('Exception Occurred : $ex');
+      rethrow;
     }
   }
 }

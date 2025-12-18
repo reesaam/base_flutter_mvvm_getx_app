@@ -38,7 +38,7 @@ class MainApp extends StatelessWidget {
       initialRoute: GetPutPages.initialRoute.name,
       unknownRoute: GetPutPages.unknownRoute,
       defaultTransition: Transition.fadeIn,
-      transitionDuration: appDefaultTransitionDuration,
+      transitionDuration: AppDefaults.transitionDuration,
       color: AppThemes.to.primaryColor,
       theme: AppThemes.lightTheme,
       darkTheme: AppThemes.darkTheme,
