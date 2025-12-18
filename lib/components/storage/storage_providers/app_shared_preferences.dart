@@ -6,6 +6,7 @@ import 'package:getx_binding_annotation/get_put_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/core_functions.dart';
+import '../../../core/core_resources/defined_types.dart';
 import '../../failures/general_exception.dart';
 import '../../failures/local_exception.dart';
 import '../app_storage_module_abstraction.dart';
@@ -15,7 +16,7 @@ class AppSharedPreferences extends AppStorageModuleAbstraction {
   static AppSharedPreferences get to => Get.find();
 
   @override
-  Future<Either<LocalException, bool>> clearStorage(String key) async {
+  Future<BaseLocalResponse<bool>> clearStorage(String key) async {
     SharedPreferences sp = await SharedPreferences.getInstance();
     try {
       final response = await sp.remove(key);
@@ -31,7 +32,7 @@ class AppSharedPreferences extends AppStorageModuleAbstraction {
   }
 
   @override
-  Future<Either<LocalException, bool>> hasData(String key) async {
+  Future<BaseLocalResponse<bool>> hasData(String key) async {
     SharedPreferences sp = await SharedPreferences.getInstance();
     try {
       final response = sp.get(key);
@@ -47,7 +48,7 @@ class AppSharedPreferences extends AppStorageModuleAbstraction {
   }
 
   @override
-  Future<Either<LocalException, Map<String, dynamic>>> loadData(String key) async {
+  Future<BaseLocalResponse<Map<String, dynamic>>> loadData(String key) async {
     SharedPreferences sp = await SharedPreferences.getInstance();
     try {
       String? data = sp.getString(key);
@@ -64,7 +65,7 @@ class AppSharedPreferences extends AppStorageModuleAbstraction {
   }
 
   @override
-  Future<Either<LocalException, bool>> saveData({
+  Future<BaseLocalResponse<bool>> saveData({
     required String key,
     required Map<String, dynamic> data,
   }) async {

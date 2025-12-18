@@ -12,7 +12,7 @@
 // class DioFunctions {
 //   static Dio apiCore = DioCore.to.dioCore;
 //
-//   static Future<Either<NetworkException, T>> get<T>({required String url, request}) async {
+//   static Future<BaseAPIResponse<T> get<T>({required String url, request}) async {
 //     final T data;
 //     try {
 //       _increaseStatisticApiCall();
@@ -34,7 +34,7 @@
 //     }
 //   }
 //
-//   static Future<Either<NetworkException, T>> post<T>({required String url, request}) async {
+//   static Future<BaseAPIResponse<T> post<T>({required String url, request}) async {
 //     var dio = DioCore().dioCore;
 //     final T data;
 //     try {
@@ -56,7 +56,7 @@
 //     }
 //   }
 //
-//   static Future<Either<NetworkException, T>> put<T>({required String url, request}) async {
+//   static Future<BaseAPIResponse<T> put<T>({required String url, request}) async {
 //     var dio = DioCore().dioCore;
 //     final T data;
 //     try {
@@ -78,7 +78,7 @@
 //     }
 //   }
 //
-//   static Future<Either<NetworkException, File>> download({
+//   static Future<BaseAPIResponse<File>> download({
 //     required String url,
 //     required String savePath,
 //     request,

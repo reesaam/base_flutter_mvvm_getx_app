@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:getx_binding_annotation/get_put_annotation.dart';
 
 import '../../../core/core_functions.dart';
+import '../../../core/core_resources/defined_types.dart';
 import '../../failures/local_exception.dart';
 import '../app_storage_module_abstraction.dart';
 import 'local_storage_service.dart';
@@ -12,7 +13,7 @@ class AppLocalStorage implements AppStorageModuleAbstraction {
   final _service = LocalStorageService();
 
   @override
-  Future<Either<LocalException, bool>> clearStorage(String key) async {
+  Future<BaseLocalResponse<bool>> clearStorage(String key) async {
     try {
       final result = _service.remove(key);
       appLogPrint('App Data Cleared Successfully');
@@ -27,7 +28,7 @@ class AppLocalStorage implements AppStorageModuleAbstraction {
   }
 
   @override
-  Future<Either<LocalException, bool>> hasData(String key) async {
+  Future<BaseLocalResponse<bool>> hasData(String key) async {
     try {
       final response = _service.hasData(key);
       return Right(response);
@@ -41,7 +42,7 @@ class AppLocalStorage implements AppStorageModuleAbstraction {
   }
 
   @override
-  Future<Either<LocalException, Map<String, dynamic>?>> loadData(String key) async {
+  Future<BaseLocalResponse<Map<String, dynamic>?>> loadData(String key) async {
     try {
       final data = _service.read(key);
       appLogPrint('Data Loaded Successfully from $key');
@@ -56,7 +57,7 @@ class AppLocalStorage implements AppStorageModuleAbstraction {
   }
 
   @override
-  Future<Either<LocalException, bool>> saveData({
+  Future<BaseLocalResponse<bool>> saveData({
     required String key,
     required Map<String, dynamic> data,
   }) async {

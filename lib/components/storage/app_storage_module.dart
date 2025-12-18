@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:getx_binding_annotation/get_put_annotation.dart';
@@ -8,6 +7,7 @@ import 'package:getx_binding_annotation/get_put_annotation.dart';
 import '../../core/core_functions.dart';
 import '../../core/core_info/core_defaults.dart';
 import '../../core/core_resources/core_enums.dart';
+import '../../core/core_resources/defined_types.dart';
 import '../../core/core_resources/texts.dart';
 import '../../core/extensions/data_types_extensions/extension_date_time.dart';
 import '../../core/extensions/data_types_extensions/extension_duration.dart';
@@ -31,21 +31,21 @@ class AppStorage {
   ///Keys
   final _keyAppData = AppStorageKeys.keyAppData;
 
-  Future<Either<LocalException, bool>> clearStorage() async {
+  Future<BaseLocalResponse<bool>> clearStorage() async {
     return await _storage.clearStorage(_keyAppData.name);
   }
 
   ///AppData
-  Future<Either<LocalException, bool>> saveAppData({required AppData appData}) async =>
+  Future<BaseLocalResponse<bool>> saveAppData({required AppData appData}) async =>
       await _storage.saveData(key: _keyAppData.name, data: appData.toJson());
 
-  Future<Either<LocalException, AppData?>> loadAppData() async {
+  Future<BaseLocalResponse<AppData?>> loadAppData() async {
     final response = await _storage.loadData(_keyAppData.name);
     final result = response.map((r) => r == null ? null : AppData.fromJson(r));
     return result;
   }
 
-  Future<Either<LocalException, bool>> clearAppData() async => await _storage.clearStorage(_keyAppData.name);
+  Future<BaseLocalResponse<bool>> clearAppData() async => await _storage.clearStorage(_keyAppData.name);
 
   ///Manage Data
   Future<void> exportData() async {

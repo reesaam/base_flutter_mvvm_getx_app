@@ -55,7 +55,7 @@ class DioCore {
     }
   }
 
-  Future<Either<NetworkException, File>> download({
+  Future<BaseAPIResponse<File>> download({
     required String url,
     required String savePath,
     request,
