@@ -22,11 +22,13 @@ class AdminTestPage extends CoreView<AdminTestController> {
   EdgeInsets? get pagePadding => AppPaddings.zero;
 
   @override
-  Widget get body => Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.center, children: [
+  Widget get body =>
+      Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.center, children: [
         AppDividers.generalWithDisabledColor,
         _appPages(),
         _themes(),
         _checkConnection(),
+        _api(),
         _files(),
         _permissions(),
         _notifications(),
@@ -56,12 +58,21 @@ class AdminTestPage extends CoreView<AdminTestController> {
         AdminFunctions.itemButton(text: 'Internet Status', function: controller.checkConnection),
       ], title: 'Connections');
 
+  _api() => AdminFunctions.sectionGrid(items: [
+        AdminFunctions.itemButton(text: 'API Get', function: controller.apiGetData),
+        AdminFunctions.itemButton(text: 'API Post', function: controller.apiPostData),
+        AdminFunctions.itemButton(text: 'API Put', function: controller.apiPutData),
+        AdminFunctions.itemButton(text: 'API Patch', function: controller.apiPatchData),
+        AdminFunctions.itemButton(text: 'API Download', function: controller.apiDownloadData),
+        AdminFunctions.itemButton(text: 'API Delete', function: controller.apiDeleteData),
+      ], title: 'API');
+
   _files() => AdminFunctions.sectionGrid(items: [
         AdminFunctions.itemButton(text: 'Pick File', function: controller.pickFile),
         AdminFunctions.itemButton(text: 'Save File', function: controller.saveFile),
       ], title: 'Files');
 
-  _permissions() => AdminFunctions.section([
+  _permissions() => AdminFunctions.sectionGrid(items: [
         AdminFunctions.itemButton(text: 'Check All Permissions', function: controller.checkAllPermissions),
         AdminFunctions.itemButton(text: 'Ask All Permissions', function: controller.askAllPermissions),
       ], title: 'Permissions');

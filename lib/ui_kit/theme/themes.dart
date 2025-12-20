@@ -43,13 +43,12 @@ class AppThemes {
         navigationDrawerTheme: _navigationDrawer(),
         navigationRailTheme: _navigationRail(),
         snackBarTheme: _snackBar(),
-        // dialogTheme: _dialog().data,
+        dialogTheme: _dialog(),
         bottomSheetTheme: _bottomSheet(),
         floatingActionButtonTheme: _floatingActionButton(),
         bannerTheme: _banner(),
         badgeTheme: _badge(),
         chipTheme: _chip(),
-        indicatorColor: _progressIndicator().color,
         progressIndicatorTheme: _progressIndicator(),
         iconTheme: _icon(),
         actionIconTheme: _actionIcon(),
@@ -144,10 +143,7 @@ class AppThemes {
         backgroundColor: AppColors.tertiary.color,
       );
 
-  static DialogTheme _dialog() => DialogTheme(
-        backgroundColor: AppColors.primary.color,
-        data: DialogThemeData(),
-      );
+  static DialogThemeData _dialog() => DialogThemeData();
 
   static BottomSheetThemeData _bottomSheet() => BottomSheetThemeData(backgroundColor: AppColors.background.color);
 

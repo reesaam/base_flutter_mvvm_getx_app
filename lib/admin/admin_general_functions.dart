@@ -61,7 +61,9 @@ class AdminFunctions {
 
   static sectionGrid({required List<Widget> items, required String title}) {
     return Column(children: [
+      AppDividers.general(),
       Column(children: [Text(title, style: const TextStyle(fontSize: 20)), AppDividers.settings]),
+      AppDividers.general(),
       Padding(
           padding: AppPaddings.buttonXLarge,
           child: GridView.count(

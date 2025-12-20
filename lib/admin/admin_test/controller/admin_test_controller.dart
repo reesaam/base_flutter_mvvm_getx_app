@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:get/get.dart';
@@ -6,6 +7,18 @@ import 'package:share_plus/share_plus.dart';
 
 import '../../../components/connectivity/connectivity.dart';
 import '../../../components/file_functions/file_functions.dart';
+import '../../../components/network/api_methods.dart';
+import '../../../components/network/api_methods.dart';
+import '../../../components/network/api_methods.dart';
+import '../../../components/network/api_methods.dart';
+import '../../../components/network/api_methods.dart';
+import '../../../components/network/api_methods.dart';
+import '../../../components/network/dio_core.dart';
+import '../../../components/network/dio_core.dart';
+import '../../../components/network/dio_core.dart';
+import '../../../components/network/dio_core.dart';
+import '../../../components/network/dio_core.dart';
+import '../../../components/network/dio_core.dart';
 import '../../../components/notifications/local_notifications/local_notifications.dart';
 import '../../../components/permissions/permissions.dart';
 import '../../../components/share/share.dart';
@@ -59,6 +72,77 @@ class AdminTestController extends CoreController {
   checkConnection() async {
     var result = await AppConnectionChecker().checkConnection();
     await _dialog(result.name.capitalizeFirst ?? unknownStatus);
+  }
+
+  ///API
+  apiGetData() async {
+    const method = APIMethods.get;
+    const url = 'https://jsonplaceholder.typicode.com/posts';
+    final response = await DioCore.to.callMethod<List>(method: method, url: url);
+    final result = response.fold(
+      (l) => _dialog('API Call Failed'),
+      (r) => _dialog(r.length.toString()),
+    );
+  }
+
+  apiPostData() async {
+    const method = APIMethods.post;
+    const url = 'https://jsonplaceholder.typicode.com/posts';
+    final Map<String, dynamic> data = {
+      "title": "foo",
+      "body": "bar",
+      "userId": 1,
+      "id": 101,
+    };
+    final response = await DioCore.to.callMethod<Map<String, dynamic>>(method: method, url: url, data: data);
+    final result = response.fold(
+      (l) => _dialog('API Call Failed'),
+      (r) => _dialog(r['title']),
+    );
+  }
+
+  apiPutData() async {
+    const method = APIMethods.put;
+    const url = '';
+    final response = await DioCore.to.callMethod<String>(method: method, url: url);
+    final result = response.fold(
+      (l) => _dialog('API Call Failed'),
+      (r) => r,
+    );
+    _dialog(result);
+  }
+
+  apiPatchData() async {
+    const method = APIMethods.patch;
+    const url = '';
+    final response = await DioCore.to.callMethod<String>(method: method, url: url);
+    final result = response.fold(
+      (l) => _dialog('API Call Failed'),
+      (r) => r,
+    );
+    _dialog(result);
+  }
+
+  apiDownloadData() async {
+    const method = APIMethods.download;
+    const url = '';
+    final response = await DioCore.to.callMethod<String>(method: method, url: url);
+    final result = response.fold(
+      (l) => _dialog('API Call Failed'),
+      (r) => r,
+    );
+    _dialog(result);
+  }
+
+  apiDeleteData() async {
+    const method = APIMethods.delete;
+    const url = '';
+    final response = await DioCore.to.callMethod<String>(method: method, url: url);
+    final result = response.fold(
+      (l) => _dialog('API Call Failed'),
+      (r) => r,
+    );
+    _dialog(result);
   }
 
   ///Files
