@@ -1,12 +1,12 @@
 import '../../core/core_resources/defaults.dart';
 import '../../core/core_resources/fonts.dart';
+import '../../core/extensions/data_types_extensions/extension_button_style.dart';
 import '../../core/extensions/theme_extensions/extension_colors.dart';
 import '../resources/elements.dart';
 import '../resources/text_sizes.dart';
 import 'colors.dart';
 
 class AppThemes {
-
   ///Main Theme Functions
   static ThemeData get lightTheme => _getTheme(brightness: Brightness.light);
   static ThemeData get darkTheme => _getTheme(brightness: Brightness.dark);
@@ -175,7 +175,7 @@ class AppThemes {
 
   ///Buttons
   static ButtonThemeData _button() => ButtonThemeData(
-        buttonColor: AppColors.buttonColor.color,
+        buttonColor: AppColors.button.color,
         disabledColor: AppColors.buttonDisabled.color,
       );
 
@@ -185,18 +185,13 @@ class AppThemes {
       );
 
   static ButtonStyle _buttonStyle() => ButtonStyle(
+        backgroundColor: WidgetStateProperty.all(AppColors.button.color),
+        foregroundColor: WidgetStateProperty.all(AppColors.buttonText.color),
         shape: WidgetStateProperty.all(AppElements.borderShapeDefault),
         textStyle: WidgetStateProperty.all(_buttonTextStyle()),
       );
 
-  static ElevatedButtonThemeData _buttonElevated() {
-    ButtonStyle buttonStyle = ButtonStyle(
-      backgroundColor: WidgetStateProperty.all(AppColors.primary.color),
-      foregroundColor: WidgetStateProperty.all(AppColors.background.color),
-    );
-
-    return ElevatedButtonThemeData(style: buttonStyle);
-  }
+  static ElevatedButtonThemeData _buttonElevated() => ElevatedButtonThemeData(style: _buttonStyle());
 
   static OutlinedButtonThemeData _buttonOutlined() => OutlinedButtonThemeData(style: _buttonStyle());
 
@@ -204,7 +199,7 @@ class AppThemes {
 
   static TextButtonThemeData _buttonText() => TextButtonThemeData(style: _buttonStyle());
 
-  static IconButtonThemeData _buttonIcon() => IconButtonThemeData(style: _buttonStyle());
+  static IconButtonThemeData _buttonIcon() => IconButtonThemeData(style: _buttonStyle().invertColors);
 
   static OverflowBar _overflowBar() => const OverflowBar();
 

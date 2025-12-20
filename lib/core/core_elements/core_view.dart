@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 
 import '../../ui_kit/core_widgets.dart';
 import '../../ui_kit/resources/paddings.dart';
+import '../../ui_kit/theme/colors.dart';
 import '../core_functions.dart';
+import '../extensions/theme_extensions/extension_colors.dart';
 import 'core_controller.dart';
 
 abstract class CoreView<Controller extends CoreController> extends GetView<Controller> {
@@ -42,6 +44,7 @@ abstract class CoreView<Controller extends CoreController> extends GetView<Contr
         floatingActionButton: floatingActionButton,
         floatingActionButtonLocation: floatingActionButtonLocation ?? FloatingActionButtonLocation.endFloat,
         bottomSheet: bottomSheet,
+        backgroundColor: AppColors.background.color,
       );
 
   Widget get _pageBody => SafeArea(

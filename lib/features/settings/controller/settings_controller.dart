@@ -63,7 +63,9 @@ class SettingsController extends CoreController {
   }
 
   functionLanguageModal() => AppBottomDialogs().withCancel(
-      title: Texts.to.settings.settingsLanguageModalSelectLanguage, form: SettingsLanguageWidget(function: functionLanguageSelectionOnTap), dismissible: true);
+      title: Texts.to.settings.settingsLanguageModalSelectLanguage,
+      form: SettingsLanguageWidget(function: functionLanguageSelectionOnTap),
+      dismissible: true);
 
   functionLanguageSelectionOnTap(int index) {
     selectedLanguage.value = AppLocalizations.to.supportedLocales[index].getLanguage;
@@ -98,7 +100,11 @@ class SettingsController extends CoreController {
       await AppStorage.to.exportData();
     }
 
-    AppAlertDialogs.withOkCancel(title: Texts.to.general.warning, text: Texts.to.dialogs.areYouSureDataExport, onTapOk: function, dismissible: true);
+    AppAlertDialogs.withOkCancel(
+        title: Texts.to.general.warning,
+        text: Texts.to.dialogs.areYouSureDataExport,
+        onTapOk: function,
+        dismissible: true);
   }
 
   functionRestore() {
@@ -107,7 +113,11 @@ class SettingsController extends CoreController {
       await AppStorage.to.importData();
     }
 
-    AppAlertDialogs.withOkCancel(title: Texts.to.general.warning, text: Texts.to.dialogs.areYouSureDataMayLost, onTapOk: function, dismissible: true);
+    AppAlertDialogs.withOkCancel(
+        title: Texts.to.general.warning,
+        text: Texts.to.dialogs.areYouSureDataMayLost,
+        onTapOk: function,
+        dismissible: true);
   }
 
   clearAllData() {
@@ -118,7 +128,11 @@ class SettingsController extends CoreController {
       refresh();
     }
 
-    AppAlertDialogs.withOkCancel(title: Texts.to.general.warning, text: Texts.to.dialogs.areYouSureDataWillLost, onTapOk: function, dismissible: true);
+    AppAlertDialogs.withOkCancel(
+        title: Texts.to.general.warning,
+        text: Texts.to.dialogs.areYouSureDataWillLost,
+        onTapOk: function,
+        dismissible: true);
   }
 
   resetAllSettings() {
@@ -129,7 +143,11 @@ class SettingsController extends CoreController {
       refresh();
     }
 
-    AppAlertDialogs.withOkCancel(title: Texts.to.general.warning, text: Texts.to.dialogs.areYouSureDataWillLost, onTapOk: function, dismissible: true);
+    AppAlertDialogs.withOkCancel(
+        title: Texts.to.general.warning,
+        text: Texts.to.dialogs.areYouSureDataWillLost,
+        onTapOk: function,
+        dismissible: true);
   }
 
   saveSettings() => saveAppData(appSettingData: appSettings.value);

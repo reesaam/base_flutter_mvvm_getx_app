@@ -1,28 +1,35 @@
 import 'package:flutter/material.dart';
 
+extension ButtonStyleColorsExtension on ButtonStyle {
+  ButtonStyle? get invertColors => copyWith(
+        backgroundColor: foregroundColor,
+        foregroundColor: backgroundColor,
+      );
+}
+
 extension ExtensionButtonCopyWith on ButtonStyle? {
   ButtonStyle? copyWith(
-    MaterialStateProperty<Color?>? backgroundColor,
-    MaterialStateProperty<BorderSide?>? side,
+    WidgetStateProperty<Color?>? backgroundColor,
+    WidgetStateProperty<BorderSide?>? side,
     AlignmentGeometry? alignment,
     Duration? animationDuration,
-    MaterialStateProperty<double?>? elevation,
+    WidgetStateProperty<double?>? elevation,
     bool? enableFeedback,
-    MaterialStateProperty<Size?>? fixedSize,
-    MaterialStateProperty<Color?>? foregroundColor,
-    MaterialStateProperty<Color?>? iconColor,
-    MaterialStateProperty<double?>? iconSize,
-    MaterialStateProperty<Size?>? maximumSize,
-    MaterialStateProperty<Size?>? minimumSize,
-    MaterialStateProperty<MouseCursor?>? mouseCursor,
-    MaterialStateProperty<Color?>? overlayColor,
-    MaterialStateProperty<EdgeInsetsGeometry?>? padding,
-    MaterialStateProperty<Color?>? shadowColor,
-    MaterialStateProperty<OutlinedBorder?>? shape,
+    WidgetStateProperty<Size?>? fixedSize,
+    WidgetStateProperty<Color?>? foregroundColor,
+    WidgetStateProperty<Color?>? iconColor,
+    WidgetStateProperty<double?>? iconSize,
+    WidgetStateProperty<Size?>? maximumSize,
+    WidgetStateProperty<Size?>? minimumSize,
+    WidgetStateProperty<MouseCursor?>? mouseCursor,
+    WidgetStateProperty<Color?>? overlayColor,
+    WidgetStateProperty<EdgeInsetsGeometry?>? padding,
+    WidgetStateProperty<Color?>? shadowColor,
+    WidgetStateProperty<OutlinedBorder?>? shape,
     InteractiveInkFeatureFactory? splashFactory,
-    MaterialStateProperty<Color?>? surfaceTintColor,
+    WidgetStateProperty<Color?>? surfaceTintColor,
     MaterialTapTargetSize? tapTargetSize,
-    MaterialStateProperty<TextStyle?>? textStyle,
+    WidgetStateProperty<TextStyle?>? textStyle,
     VisualDensity? visualDensity,
   ) =>
       ButtonStyle(

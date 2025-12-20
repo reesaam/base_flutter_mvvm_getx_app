@@ -1,5 +1,6 @@
 import '../../../core/app_routing/app_routing.dart';
 import '../../core/core_resources/page_details.dart';
+import '../../core/extensions/data_types_extensions/extension_color.dart';
 import '../../core/extensions/data_types_extensions/extension_int.dart';
 import '../../core/extensions/theme_extensions/extension_colors.dart';
 import '../../localization/localizations.dart';
@@ -30,7 +31,7 @@ class _AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
   }
 
   @override
-  Widget build(BuildContext context) => Obx(() => BottomNavigationBar(
+  Widget build(BuildContext context) => BottomNavigationBar(
         backgroundColor: AppColors.bottomNavigationBarBackground.color,
         currentIndex: selectedIndex.value = widget.selectedIndex ?? 0,
         onTap: (index) => _onItemTap(index),
@@ -39,8 +40,8 @@ class _AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
           (index) => _generateBottomNavigationBarItem(pagesList[index]),
         ),
         selectedItemColor: AppColors.bottomNavigationBarForeground.color,
-        unselectedItemColor: AppColors.bottomNavigationBarForeground.color.withAlpha(400),
-      ));
+        unselectedItemColor: AppColors.bottomNavigationBarForeground.color.lowOpacity,
+      );
 
   BottomNavigationBarItem _generateBottomNavigationBarItem(AppPageDetail route) => BottomNavigationBarItem(
         icon: _createIcon(route),

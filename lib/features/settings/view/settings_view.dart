@@ -39,14 +39,20 @@ class SettingsPage extends CoreView<SettingsController> {
 
   Widget _widgetAppbarThreeDotsButton() => AppPopupMenu(listItems: _listAppbarThreeDotsButton, primaryColorIcon: false);
 
-  List<AppPopupMenuItem> get _listAppbarThreeDotsButton =>
-      List.of([AppPopupMenuItem(text: Texts.to.settings.settingsAppbarMenuResetSettings, onTapFunction: () => controller.resetAllSettings())]);
+  List<AppPopupMenuItem> get _listAppbarThreeDotsButton => List.of([
+        AppPopupMenuItem(
+          text: Texts.to.settings.settingsAppbarMenuResetSettings,
+          onTapFunction: () => controller.resetAllSettings(),
+        )
+      ]);
 
   Widget _widgetGeneral() {
     Widget leadingLanguage() => Text(controller.selectedLanguage.value.localLanguageName);
 
-    Widget leadingDarkMode() =>
-        AppSwitch(value: controller.darkMode.value, onChanged: (bool value) => controller.functionDarkModeOnChange(value), enabled: false);
+    Widget leadingDarkMode() => AppSwitch(
+        value: controller.darkMode.value,
+        onChanged: (bool value) => controller.functionDarkModeOnChange(value),
+        enabled: false);
 
     return Obx(() => SettingsSectionWidget(title: Texts.to.settings.settingsSectionTitleGeneral, widgets: [
           SettingsSectionItemWidget(
@@ -61,25 +67,29 @@ class SettingsPage extends CoreView<SettingsController> {
         ]));
   }
 
-  Widget _widgetUpdate() => Obx(() => SettingsSectionWidget(title: Texts.to.settings.settingsSectionTitleUpdate, widgets: [
-        SettingsSectionItemWidget(
-          text: Texts.to.settings.settingsSectionTitleUpdateCurrentVersion.withDoubleDots,
-          leading: Text(AppInfo.currentVersion.version),
-        ),
-        SettingsSectionItemWidget(
-            text: Texts.to.settings.settingsSectionTitleUpdateAvailableVersion.withDoubleDots,
-            leading: Text(controller.updateAvailableVersion.value?.version == AppInfo.currentVersion.version
-                ? Texts.to.general.notAvailable
-                : controller.updateAvailableVersion.value?.version ?? Texts.to.general.notAvailable),
-            wholeItemFunction: controller.functionGoToUpdatePage),
-      ]));
+  Widget _widgetUpdate() =>
+      Obx(() => SettingsSectionWidget(title: Texts.to.settings.settingsSectionTitleUpdate, widgets: [
+            SettingsSectionItemWidget(
+              text: Texts.to.settings.settingsSectionTitleUpdateCurrentVersion.withDoubleDots,
+              leading: Text(AppInfo.currentVersion.version),
+            ),
+            SettingsSectionItemWidget(
+                text: Texts.to.settings.settingsSectionTitleUpdateAvailableVersion.withDoubleDots,
+                leading: Text(controller.updateAvailableVersion.value?.version == AppInfo.currentVersion.version
+                    ? Texts.to.general.notAvailable
+                    : controller.updateAvailableVersion.value?.version ?? Texts.to.general.notAvailable),
+                wholeItemFunction: controller.functionGoToUpdatePage),
+          ]));
 
   Widget _widgetBackup() => SettingsSectionWidget(title: Texts.to.settings.settingsSectionTitleBackup, widgets: [
-        SettingsSectionItemWidget(text: Texts.to.settings.settingsSectionBackupBackup, wholeItemFunction: controller.functionBackup),
-        SettingsSectionItemWidget(text: Texts.to.settings.settingsSectionBackupRestore, wholeItemFunction: controller.functionRestore),
+        SettingsSectionItemWidget(
+            text: Texts.to.settings.settingsSectionBackupBackup, wholeItemFunction: controller.functionBackup),
+        SettingsSectionItemWidget(
+            text: Texts.to.settings.settingsSectionBackupRestore, wholeItemFunction: controller.functionRestore),
       ]);
 
   Widget _widgetStorage() => SettingsSectionWidget(title: Texts.to.settings.settingsSectionTitleStorage, widgets: [
-        SettingsSectionItemWidget(text: Texts.to.settings.settingsSectionStorageItemEraseAllData, wholeItemFunction: controller.clearAllData),
+        SettingsSectionItemWidget(
+            text: Texts.to.settings.settingsSectionStorageItemEraseAllData, wholeItemFunction: controller.clearAllData),
       ]);
 }

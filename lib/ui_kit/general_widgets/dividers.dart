@@ -1,9 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
 import '../../core/extensions/material_widgets_extensions/extension_text.dart';
+import '../../core/extensions/theme_extensions/extension_colors.dart';
 import '../resources/paddings.dart';
-import '../theme/themes.dart';
+import '../theme/colors.dart';
 
 class AppDividers {
   static Widget general({Color? color}) => Divider(color: color ?? Get.theme.primaryColor);
@@ -19,11 +17,11 @@ class AppDividers {
         ),
       ]);
 
-  static Widget get generalWithCanvasColor => general(color: Get.theme.canvasColor);
+  static Widget get generalWithCanvasColor => general(color: AppColors.canvas.color);
 
-  static Widget get generalWithPrimaryColor => general(color: Get.theme.primaryColor);
+  static Widget get generalWithPrimaryColor => general(color: AppColors.primary.color);
 
-  static Widget get generalWithDisabledColor => general(color: Get.theme.disabledColor);
+  static Widget get generalWithDisabledColor => general(color: AppColors.disabled.color);
 
   static Widget get settings => generalWithDisabledColor;
 }
