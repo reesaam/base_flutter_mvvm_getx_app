@@ -18,7 +18,6 @@ dependencies:
   # Main Libraries
   get: ^4.7.3
   getx_binding_annotation: ^0.2.8
-#  analyzer: 6.11.0
   freezed: ^3.2.3
   json_annotation: ^4.9.0
 
@@ -32,7 +31,6 @@ dependencies:
 
   # Tools
   dartz: ^0.10.1
-  dart_eval: ^0.6.0
 
   # Remote and Connection
   dio: ^5.8.0+1
@@ -67,7 +65,8 @@ dependencies:
   share_plus: ^10.1.2
 
   # Docs
-  dartdoc: ^8.3.1
+#  dartdoc: ^8.3.4
+#  dartdoc_advanced: ^0.1.0
 
   # Other
   rename: ^3.0.2
