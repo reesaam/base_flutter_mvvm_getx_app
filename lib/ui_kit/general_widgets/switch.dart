@@ -1,8 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-import '../../core/extensions/theme_extensions/extension_colors.dart';
-import '../../core/extensions/theme_extensions/extension_colors.dart';
 import '../../core/extensions/theme_extensions/extension_colors.dart';
 import '../resources/sizes.dart';
 import '../theme/colors.dart';

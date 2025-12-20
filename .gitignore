@@ -27,6 +27,7 @@ migrate_working_dir/
 .pub/
 /build/
 pubspec.lock
+devtools_options.yaml
 
 *.freezed.dart
 *.g.dart
