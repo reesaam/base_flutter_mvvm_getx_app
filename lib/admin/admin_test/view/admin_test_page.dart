@@ -76,6 +76,7 @@ class AdminTestPage extends CoreView<AdminTestController> {
   _appData() => Column(children: [
         AdminFunctions.sectionGrid(items: [
           AdminFunctions.itemButton(text: 'Load AppData', function: controller.loadAppDataTest),
+          AdminFunctions.itemButton(text: 'Save AppData', function: controller.saveAppDataTest),
           AdminFunctions.itemButton(text: 'Import AppData', function: controller.importAppDataTest),
           AdminFunctions.itemButton(text: 'Export AppData', function: controller.exportAppDataTest),
         ], title: 'AppData - Save and Load'),

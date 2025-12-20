@@ -13,8 +13,9 @@ class AdminFunctions {
         title == null
             ? shrinkSizedBox
             : Column(children: [
+                AppDividers.general(),
                 Text(title, style: const TextStyle(fontSize: 20)),
-                AppDividers.settings,
+                AppDividers.general(),
               ]),
         Container(
           padding: AppPaddings.buttonXLarge,
@@ -28,7 +29,15 @@ class AdminFunctions {
         AppDividers.generalWithDisabledColor,
       ]);
 
-  static Widget item({String? title, String? text, Widget? widget, List<Widget>? multipleItems, bool? primary, bool? fullWidth}) => Column(children: [
+  static Widget item({
+    String? title,
+    String? text,
+    Widget? widget,
+    List<Widget>? multipleItems,
+    bool? primary,
+    bool? fullWidth,
+  }) =>
+      Column(children: [
         Padding(
             padding: fullWidth == true ? AppPaddings.zero : AppPaddings.buttonXLarge,
             child: text == null
@@ -68,5 +77,6 @@ class AdminFunctions {
     ]);
   }
 
-  static itemButton({required String text, required Function function}) => AppGeneralButton(text: text, onTap: () => function());
+  static itemButton({required String text, required Function function}) =>
+      AppGeneralButton(text: text, onTap: () => function());
 }

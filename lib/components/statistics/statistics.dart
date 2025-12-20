@@ -20,8 +20,8 @@ class AppStatistics {
     bool? crashes,
     bool? pageOpens,
     bool? apiCalls,
-  }) {
-    final appData = loadAppData();
+  }) async {
+    final appData = await loadAppData();
     if (appData != null && appData.statisticsData != null) {
       AppStatisticsData data = appData.statisticsData ?? const AppStatisticsData();
       AppStatisticsData statisticsData = AppStatisticsData(

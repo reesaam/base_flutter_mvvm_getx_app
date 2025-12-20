@@ -152,7 +152,7 @@ class AppThemes {
   static BottomSheetThemeData _bottomSheet() => BottomSheetThemeData(backgroundColor: AppColors.background.color);
 
   static FloatingActionButtonThemeData _floatingActionButton() => FloatingActionButtonThemeData(
-        backgroundColor: AppColors.secondary.color,
+        backgroundColor: AppColors.primary.color,
       );
 
   static MaterialBannerThemeData _banner() => MaterialBannerThemeData();

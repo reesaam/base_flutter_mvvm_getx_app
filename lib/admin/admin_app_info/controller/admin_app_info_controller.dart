@@ -15,7 +15,8 @@ class AdminAppInfoController extends CoreController {
   AppPageDetail get pageDetail => AppPages.adminAppInfoPage;
 
   @override
-  void dataInit() {
-    statisticsData.value = loadAppData()?.statisticsData ?? const AppStatisticsData();
+  void dataInit() async {
+    final loadedAppData = await loadAppData();
+    statisticsData.value = loadedAppData?.statisticsData ?? statisticsData.value;
   }
 }

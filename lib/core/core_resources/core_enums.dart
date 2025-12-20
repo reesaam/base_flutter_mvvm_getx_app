@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
 enum AppDataVersions {
-  v1(1);
+  v1;
 
-  final int number;
-  const AppDataVersions(this.number);
+  String get number => name.replaceRange(0, 1, '');
 }
 
 enum AppStorageProvider {
@@ -21,7 +20,7 @@ enum AppVersionTypes {
 enum APIVersions {
   v1;
 
-  String get getValue => name;
+  String get getValue => name.replaceRange(0, 1, '');
 }
 
 enum APISections {

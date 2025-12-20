@@ -22,7 +22,6 @@ import '../../../shared/shared_models/core_models/app_page_detail/app_page_detai
 import '../../../shared/shared_models/core_models/app_settings_data/app_setting_data.dart';
 import '../../../ui_kit/dialogs/app_alert_dialogs.dart';
 import '../../../ui_kit/theme/theme_functions.dart';
-import '../../../ui_kit/theme/themes.dart';
 
 @GetPut.controller()
 class AdminTestController extends CoreController {
@@ -38,8 +37,10 @@ class AdminTestController extends CoreController {
   ///Connections
   changeDarkMode() async {
     darkMode.value = !darkMode.value;
-    var settings = loadAppData()?.settings;
-    settings = settings?.copyWith(darkMode: darkMode.value) ?? const AppSettingData().copyWith(darkMode: darkMode.value);
+    final loadedAppData = await loadAppData();
+    var settings = loadedAppData?.settings;
+    settings =
+        settings?.copyWith(darkMode: darkMode.value) ?? const AppSettingData().copyWith(darkMode: darkMode.value);
     saveAppData(appSettingData: settings);
     AppThemeFunctions.changeThemeMode(darkMode.value);
   }
@@ -109,10 +110,12 @@ class AdminTestController extends CoreController {
 
   showPushNotification() {}
 
-  loadAppDataTest() {
-    AppData? appData = loadAppData();
+  loadAppDataTest() async {
+    AppData? appData = await loadAppData();
     String response = '';
-    response += 'Version: ${appData?.appVersions?.versionsList.isEmpty ?? true ? 'Empty' : appData?.appVersions?.versionsList.last.version}\n';
+    response = 'Load Data Success\n\n';
+    response +=
+        'Version: ${appData?.appVersions?.versionsList.isEmpty ?? true ? 'Empty' : appData?.appVersions?.versionsList.last.version}\n';
     response += 'Versions Count: ${appData?.appVersions?.versionsList.length ?? 0}\n';
     response += 'Data Version: ${appData?.dataVersion?.number.toString()}\n';
     response += 'Install DateTime: \n${appData?.statisticsData?.installDateTime.toDateTimeFormat()}\n';
@@ -125,6 +128,35 @@ class AdminTestController extends CoreController {
     response += 'Language: ${appData?.settings?.language.languageName}\n';
     response += 'Country: ${appData?.settings?.country.countryName}\n';
     response += 'DarkMode: ${appData?.settings?.darkMode}\n';
+    response += 'Country: ${appData?.settings?.country.countryName}\n';
+    _dialog(response);
+  }
+
+  saveAppDataTest() async {
+    bool? result = false;
+    String response = '';
+
+    AppData? appData = await loadAppData();
+    result = await saveAppData();
+    if (result == true) {
+      response = 'Save Data Success\n\n';
+      response +=
+          'Version: ${appData?.appVersions?.versionsList.isEmpty ?? true ? 'Empty' : appData?.appVersions?.versionsList.last.version}\n';
+      response += 'Versions Count: ${appData?.appVersions?.versionsList.length ?? 0}\n';
+      response += 'Data Version: ${appData?.dataVersion?.number.toString()}\n';
+      response += 'Install DateTime: \n${appData?.statisticsData?.installDateTime.toDateTimeFormat()}\n';
+      response += 'Install Duration: \n${appData?.statisticsData?.installDuration.toConditionalFormat()}\n';
+      response += 'Launches: ${appData?.statisticsData?.launches.toString()}\n';
+      response += 'Page Opens: ${appData?.statisticsData?.pageOpens.toString()}\n';
+      response += 'Api Calls: ${appData?.statisticsData?.apiCalls.toString()}\n';
+      response += 'Logins: ${appData?.statisticsData?.logins.toString()}\n';
+      response += 'Crashes: ${appData?.statisticsData?.crashes.toString()}\n';
+      response += 'Language: ${appData?.settings?.language.languageName}\n';
+      response += 'Country: ${appData?.settings?.country.countryName}\n';
+      response += 'DarkMode: ${appData?.settings?.darkMode}\n';
+    } else {
+      response = 'Save Data Error';
+    }
     _dialog(response);
   }
 

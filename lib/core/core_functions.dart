@@ -21,6 +21,7 @@ import '../ui_kit/main_widgets/snackbar.dart';
 import 'app_routing/app_routing.dart';
 import 'core_resources/core_enums.dart';
 import 'core_resources/core_flags.dart';
+import 'core_resources/countries.dart';
 import 'core_resources/page_details.dart';
 
 void appDebugPrint(message) => CoreFlags.isRelease ? null : debugPrint('[Debug] $message');
@@ -40,38 +41,34 @@ void clearAppData() async {
   );
 }
 
-bool? saveAppData({
+Future<bool?> saveAppData({
   AppVersionsList? appVersionData,
   AppDataVersions? appDataVersionData,
   AppSettingData? appSettingData,
   AppStatisticsData? appStatisticsData,
-}) {
-  bool result = false;
-  AppData? loadedData = loadAppData();
+}) async {
+  AppData? loadedData = await loadAppData();
   AppData appData = AppData(
     appVersions: appVersionData ?? loadedData?.appVersions,
     dataVersion: appDataVersionData ?? loadedData?.dataVersion,
     settings: appSettingData ?? loadedData?.settings,
     statisticsData: appStatisticsData ?? loadedData?.statisticsData,
   );
-  AppStorage.to.saveAppData(appData: appData).then((value) => value.fold(
-        (l) => AppExceptionsDialog.show(exception: l),
-        (r) => result = r,
-      ));
+  final result = await AppStorage.to
+      .saveAppData(appData: appData)
+      .then((value) => value.fold((l) => AppExceptionsDialog.show(exception: l), (r) => r));
   return result;
 }
 
-AppData? loadAppData() {
-  AppData? appData;
-  AppStorage.to.loadAppData().then((value) => value.fold(
-        (l) => AppExceptionsDialog.show(exception: l),
-        (r) => appData = r,
-      ));
+Future<AppData?> loadAppData() async {
+  AppData? appData = await AppStorage.to
+      .loadAppData()
+      .then((value) => value.fold((l) => AppExceptionsDialog.show(exception: l), (r) => r));
   return appData;
 }
 
 void printAllData({bool? detailsIncluded}) async {
-  AppData? appData = loadAppData();
+  AppData? appData = await loadAppData();
   AppStorage.to.printData(appData: appData, detailsIncluded: detailsIncluded);
 }
 

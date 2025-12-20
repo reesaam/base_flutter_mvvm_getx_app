@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:getx_binding_annotation/get_put_annotation.dart';
 
 import '../../../core/core_elements/core_view.dart';
 import '../../../core/core_resources/countries.dart';
 import '../../../core/extensions/data_types_extensions/extension_date_time.dart';
 import '../../../core/extensions/data_types_extensions/extension_int.dart';
+import '../../../core/extensions/data_types_extensions/extension_language.dart';
 import '../../../localization/localizations.dart';
 import '../../../ui_kit/general_widgets/dividers.dart';
 import '../../../ui_kit/main_widgets/app_bar.dart';
@@ -31,7 +33,7 @@ class AdminDataFormatCheckPage extends CoreView<AdminDataFormatCheckController> 
       ]);
 
   _locale() => AdminFunctions.section([
-        AdminFunctions.item(title: 'Language', text: AppLocalizations.to.translation?.language.languageName),
+        AdminFunctions.item(title: 'Language', text: AppLocalizations.to.translation?.getLanguage?.languageName),
       ], title: 'Localization');
 
   _dateTime() => AdminFunctions.section([
