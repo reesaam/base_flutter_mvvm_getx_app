@@ -18,8 +18,8 @@ class AppSwitch extends StatelessWidget {
         onChanged: (value) => onChanged!(value),
         focusNode: FocusNode(canRequestFocus: enabled == false ? false : true),
         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        activeTrackColor: AppThemes.to.primaryColor,
-        inactiveTrackColor: AppThemes.to.canvasColor,
-        inactiveThumbColor: AppThemes.to.primaryColor,
+        activeTrackColor: AppThemes.to.theme.primaryColor,
+        inactiveTrackColor: AppThemes.to.theme.canvasColor,
+        inactiveThumbColor: AppThemes.to.theme.primaryColor,
       ));
 }

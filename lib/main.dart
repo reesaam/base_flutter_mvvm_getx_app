@@ -29,24 +29,22 @@ void initProject() async {
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
   @override
-  Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: AppInfo.appName,
-      initialBinding: GetPutBindings(),
-      getPages: GetPutPages.pages,
-      initialRoute: GetPutPages.initialRoute.name,
-      unknownRoute: GetPutPages.unknownRoute,
-      defaultTransition: Transition.fadeIn,
-      transitionDuration: AppDefaults.transitionDuration,
-      color: AppThemes.to.primaryColor,
-      theme: AppThemes.lightTheme,
-      darkTheme: AppThemes.darkTheme,
-      themeMode: ThemeMode.system,
-      supportedLocales: AppLocalizations.supportedLocales,
-      localizationsDelegates: AppLocalizations.to.localizationDelegates,
-      locale: AppLocalizations.to.translation?.getLanguage?.locale,
-      textDirection: AppLocalizations.to.translation?.getLanguage?.textDirection,
-    );
-  }
+  Widget build(BuildContext context) => GetMaterialApp(
+    debugShowCheckedModeBanner: false,
+    title: AppInfo.appName,
+    initialBinding: GetPutBindings(),
+    getPages: GetPutPages.pages,
+    initialRoute: GetPutPages.initialRoute.name,
+    unknownRoute: GetPutPages.unknownRoute,
+    defaultTransition: AppDefaults.transition,
+    transitionDuration: AppDefaults.transitionDuration,
+    color: AppThemes.to.theme.primaryColor,
+    theme: AppThemes.to.lightTheme,
+    darkTheme: AppThemes.to.darkTheme,
+    themeMode: ThemeMode.system,
+    supportedLocales: AppLocalizations.to.supportedLocales,
+    localizationsDelegates: AppLocalizations.to.localizationDelegates,
+    locale: AppLocalizations.to.translation?.getLanguage?.locale,
+    textDirection: AppLocalizations.to.translation?.getLanguage?.textDirection,
+  );
 }

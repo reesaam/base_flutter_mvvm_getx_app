@@ -41,8 +41,8 @@ class _AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
             pagesList.length,
             (index) => _generateBottomNavigationBarItem(pagesList[index]),
           ),
-          selectedItemColor: AppThemes.to.canvasColor,
-          unselectedItemColor: AppThemes.to.canvasColor.withAlpha(400),
+          selectedItemColor: AppThemes.to.theme.canvasColor,
+          unselectedItemColor: AppThemes.to.theme.canvasColor.withAlpha(400),
         ));
   }
 

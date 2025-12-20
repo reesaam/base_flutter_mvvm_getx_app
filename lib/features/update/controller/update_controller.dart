@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:get/get.dart';
 import 'package:getx_binding_annotation/get_put_annotation.dart';
-import 'package:open_file_plus/open_file_plus.dart' as file_plus;
+// import 'package:open_file_plus/open_file_plus.dart' as file_plus;
 import 'package:path_provider/path_provider.dart';
 
 import '../../../components/connectivity/connectivity.dart';
@@ -109,7 +109,8 @@ class UpdateController extends CoreController {
     }
   }
 
-  void _installUpdateFunction() => dlFile == null ? _alertDirectoryOrFileNotFound(false) : file_plus.OpenFile.open(dlFile!.path);
+  // void _installUpdateFunction() => dlFile == null ? _alertDirectoryOrFileNotFound(false) : file_plus.OpenFile.open(dlFile!.path);
+  void _installUpdateFunction() => null;
 
   _alertDirectoryOrFileNotFound(bool directoryError) => showErrorDialog(
       title: directoryError ? Texts.to.update.updateDirectoryNotFoundTitle : Texts.to.update.updateFileNotFoundTitle,

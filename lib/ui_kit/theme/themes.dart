@@ -11,12 +11,14 @@ import 'colors.dart';
 
 @GetPut.component()
 class AppThemes {
+  AppThemes();
   ///Main Theme Functions
-  static AppThemes get _to => Get.find<AppThemes>();
-  static ThemeData get to => _to.getTheme();
+  static AppThemes get to => Get.find();
+  // static ThemeData get theme => to.getTheme(brightness: Get.theme.brightness);
+  ThemeData get theme => getTheme(brightness: Get.theme.brightness);
 
-  static ThemeData get lightTheme => _to.getTheme(brightness: Brightness.light);
-  static ThemeData get darkTheme => _to.getTheme(brightness: Brightness.dark);
+  ThemeData get lightTheme => getTheme(brightness: Brightness.light);
+  ThemeData get darkTheme => getTheme(brightness: Brightness.dark);
 
   ThemeData importTheme({ThemeData? themeData}) => themeData ?? getTheme();
 
@@ -28,7 +30,9 @@ class AppThemes {
     // isDark ? appLogPrint('Dark Mode Activated') : null ;
     // return _theme();
 
-    return brightness == Brightness.dark ? darkTheme : lightTheme;
+    // Get.changeThemeMode(brightness == Brightness.dark ? ThemeMode.dark : ThemeMode.light);
+
+    return _theme();
   }
 
   ///Theme Constructor
@@ -49,7 +53,7 @@ class AppThemes {
         navigationDrawerTheme: _navigationDrawer(),
         navigationRailTheme: _navigationRail(),
         snackBarTheme: _snackBar(),
-        dialogTheme: _dialog().data,
+        // dialogTheme: _dialog().data,
         bottomSheetTheme: _bottomSheet(),
         floatingActionButtonTheme: _floatingActionButton(),
         bannerTheme: _banner(),
@@ -84,7 +88,7 @@ class AppThemes {
     TextStyle generalStyle = _textStyle();
 
     TextStyle style = generalStyle.copyWith(
-      color: AppColors.secondary.color,
+      color: AppColors.onPrimary.color,
     );
 
     TextTheme textTheme = TextTheme(
@@ -121,7 +125,7 @@ class AppThemes {
     IconThemeData defaultIconThemeData = const IconThemeData();
 
     return BottomNavigationBarThemeData(
-      backgroundColor: AppColors.primary.color,
+      backgroundColor: AppColors.bottomAppBarBackground.color,
       showSelectedLabels: true,
       showUnselectedLabels: true,
       enableFeedback: true,
@@ -133,15 +137,15 @@ class AppThemes {
   }
 
   NavigationBarThemeData _navigationBar() => NavigationBarThemeData(
-        backgroundColor: AppColors.background.color,
+        backgroundColor: AppColors.primary.color,
       );
 
   NavigationDrawerThemeData _navigationDrawer() => NavigationDrawerThemeData(
-        backgroundColor: AppColors.background.color,
+        backgroundColor: AppColors.primary.color,
       );
 
   NavigationRailThemeData _navigationRail() => NavigationRailThemeData(
-        backgroundColor: AppColors.background.color,
+        backgroundColor: AppColors.primary.color,
       );
 
   SnackBarThemeData _snackBar() => SnackBarThemeData(
@@ -152,7 +156,7 @@ class AppThemes {
 
   DialogTheme _dialog() => DialogTheme(
         elevation: 10,
-        backgroundColor: AppColors.background.color,
+        backgroundColor: AppColors.primary.color,
         data: DialogThemeData(),
       );
 

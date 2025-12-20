@@ -41,37 +41,37 @@ extension ExtensionTextCopyWith on Text {
 
 extension ExtensionTextStyle on Text {
   Text withStyle(TextStyle style) => copyWith(style: style);
-  Text get withBodySmall => copyWith(style: AppThemes.to.textTheme.bodySmall);
-  Text get withBodyMedium => copyWith(style: AppThemes.to.textTheme.bodyMedium);
-  Text get withBodyLarge => copyWith(style: AppThemes.to.textTheme.bodyLarge);
-  Text get withDisplaySmall => copyWith(style: AppThemes.to.textTheme.displaySmall);
-  Text get withDisplayMedium => copyWith(style: AppThemes.to.textTheme.displayMedium);
-  Text get withDisplayLarge => copyWith(style: AppThemes.to.textTheme.displayLarge);
-  Text get withTitleSmall => copyWith(style: AppThemes.to.textTheme.titleSmall);
-  Text get withTitleMedium => copyWith(style: AppThemes.to.textTheme.titleMedium);
-  Text get withTitleLarge => copyWith(style: AppThemes.to.textTheme.titleLarge);
+  Text get withBodySmall => copyWith(style: AppThemes.to.theme.textTheme.bodySmall);
+  Text get withBodyMedium => copyWith(style: AppThemes.to.theme.textTheme.bodyMedium);
+  Text get withBodyLarge => copyWith(style: AppThemes.to.theme.textTheme.bodyLarge);
+  Text get withDisplaySmall => copyWith(style: AppThemes.to.theme.textTheme.displaySmall);
+  Text get withDisplayMedium => copyWith(style: AppThemes.to.theme.textTheme.displayMedium);
+  Text get withDisplayLarge => copyWith(style: AppThemes.to.theme.textTheme.displayLarge);
+  Text get withTitleSmall => copyWith(style: AppThemes.to.theme.textTheme.titleSmall);
+  Text get withTitleMedium => copyWith(style: AppThemes.to.theme.textTheme.titleMedium);
+  Text get withTitleLarge => copyWith(style: AppThemes.to.theme.textTheme.titleLarge);
 }
 
 extension ExtensionTextColor on Text {
   Text withColor(Color color) => copyWith(style: style?.copyWith(color: color) ?? TextStyle(color: color));
-  Text get withCanvasColor => withColor(AppThemes.to.canvasColor);
-  Text get withPrimaryColor => withColor(AppThemes.to.primaryColor);
-  Text get withSecondaryColor => withColor(AppThemes.to.colorScheme.secondary);
-  Text get withTertiaryColor => withColor(AppThemes.to.colorScheme.tertiary);
-  Text get withDisabledColor => withColor(AppThemes.to.disabledColor);
+  Text get withCanvasColor => withColor(AppThemes.to.theme.canvasColor);
+  Text get withPrimaryColor => withColor(AppThemes.to.theme.primaryColor);
+  Text get withSecondaryColor => withColor(AppThemes.to.theme.colorScheme.secondary);
+  Text get withTertiaryColor => withColor(AppThemes.to.theme.colorScheme.tertiary);
+  Text get withDisabledColor => withColor(AppThemes.to.theme.disabledColor);
 }
 
 extension ExtensionTextSize on Text {
   Text withSize(double fontSize) => copyWith(style: style?.copyWith(fontSize: fontSize) ?? TextStyle(fontSize: fontSize));
-  Text get withSizeBodySmall => copyWith(style: style?.copyWith(fontSize: AppThemes.to.textTheme.bodySmall?.fontSize) ?? AppThemes.to.textTheme.bodySmall);
-  Text get withSizeBodyMedium => copyWith(style: style?.copyWith(fontSize: AppThemes.to.textTheme.bodyMedium?.fontSize) ?? AppThemes.to.textTheme.bodyMedium);
-  Text get withSizeBodyLarge => copyWith(style: style?.copyWith(fontSize: AppThemes.to.textTheme.bodyLarge?.fontSize) ?? AppThemes.to.textTheme.bodyLarge);
-  Text get withSizeDisplaySmall => copyWith(style: style?.copyWith(fontSize: AppThemes.to.textTheme.displaySmall?.fontSize) ?? AppThemes.to.textTheme.displaySmall);
-  Text get withSizeDisplayMedium => copyWith(style: style?.copyWith(fontSize: AppThemes.to.textTheme.displayMedium?.fontSize) ?? AppThemes.to.textTheme.displayMedium);
-  Text get withSizeDisplayLarge => copyWith(style: style?.copyWith(fontSize: AppThemes.to.textTheme.displayLarge?.fontSize) ?? AppThemes.to.textTheme.displayLarge);
-  Text get withSizeTitleSmall => copyWith(style: style?.copyWith(fontSize: AppThemes.to.textTheme.titleSmall?.fontSize) ?? AppThemes.to.textTheme.titleSmall);
-  Text get withSizeTitleMedium => copyWith(style: style?.copyWith(fontSize: AppThemes.to.textTheme.titleMedium?.fontSize) ?? AppThemes.to.textTheme.titleMedium);
-  Text get withSizeTitleLarge => copyWith(style: style?.copyWith(fontSize: AppThemes.to.textTheme.titleLarge?.fontSize) ?? AppThemes.to.textTheme.titleLarge);
+  Text get withSizeBodySmall => copyWith(style: style?.copyWith(fontSize: AppThemes.to.theme.textTheme.bodySmall?.fontSize) ?? AppThemes.to.theme.textTheme.bodySmall);
+  Text get withSizeBodyMedium => copyWith(style: style?.copyWith(fontSize: AppThemes.to.theme.textTheme.bodyMedium?.fontSize) ?? AppThemes.to.theme.textTheme.bodyMedium);
+  Text get withSizeBodyLarge => copyWith(style: style?.copyWith(fontSize: AppThemes.to.theme.textTheme.bodyLarge?.fontSize) ?? AppThemes.to.theme.textTheme.bodyLarge);
+  Text get withSizeDisplaySmall => copyWith(style: style?.copyWith(fontSize: AppThemes.to.theme.textTheme.displaySmall?.fontSize) ?? AppThemes.to.theme.textTheme.displaySmall);
+  Text get withSizeDisplayMedium => copyWith(style: style?.copyWith(fontSize: AppThemes.to.theme.textTheme.displayMedium?.fontSize) ?? AppThemes.to.theme.textTheme.displayMedium);
+  Text get withSizeDisplayLarge => copyWith(style: style?.copyWith(fontSize: AppThemes.to.theme.textTheme.displayLarge?.fontSize) ?? AppThemes.to.theme.textTheme.displayLarge);
+  Text get withSizeTitleSmall => copyWith(style: style?.copyWith(fontSize: AppThemes.to.theme.textTheme.titleSmall?.fontSize) ?? AppThemes.to.theme.textTheme.titleSmall);
+  Text get withSizeTitleMedium => copyWith(style: style?.copyWith(fontSize: AppThemes.to.theme.textTheme.titleMedium?.fontSize) ?? AppThemes.to.theme.textTheme.titleMedium);
+  Text get withSizeTitleLarge => copyWith(style: style?.copyWith(fontSize: AppThemes.to.theme.textTheme.titleLarge?.fontSize) ?? AppThemes.to.theme.textTheme.titleLarge);
 }
 
 extension ExtensionTextAlignment on Text {

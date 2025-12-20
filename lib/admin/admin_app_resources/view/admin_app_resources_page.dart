@@ -50,9 +50,9 @@ class AdminAppResourcesPage extends CoreView<AdminAppResourcesController> {
                     scrollDirection: Axis.horizontal,
                     physics: const BouncingScrollPhysics(),
                     child: Row(children: [
-                      AdminFunctions.item(title: 'Canvas Color', widget: _colorWidget(AppThemes.to.canvasColor)),
-                      AdminFunctions.item(title: 'Primary Color', widget: _colorWidget(AppThemes.to.primaryColor)),
-                      AdminFunctions.item(title: 'Primary Dark Color', widget: _colorWidget(AppThemes.to.primaryColorDark)),
+                      AdminFunctions.item(title: 'Canvas Color', widget: _colorWidget(AppThemes.to.theme.canvasColor)),
+                      AdminFunctions.item(title: 'Primary Color', widget: _colorWidget(AppThemes.to.theme.primaryColor)),
+                      AdminFunctions.item(title: 'Primary Dark Color', widget: _colorWidget(AppThemes.to.theme.primaryColorDark)),
                     ]))),
             fullWidth: true)
       ], title: 'Theme');
@@ -65,12 +65,12 @@ class AdminAppResourcesPage extends CoreView<AdminAppResourcesController> {
                     scrollDirection: Axis.horizontal,
                     physics: const BouncingScrollPhysics(),
                     child: Row(children: [
-                      AdminFunctions.item(title: 'Background', widget: _colorWidget(AppThemes.to.canvasColor)),
-                      AdminFunctions.item(title: 'Primary', widget: _colorWidget(AppThemes.to.primaryColor)),
-                      AdminFunctions.item(title: 'Secondary', widget: _colorWidget(AppThemes.to.colorScheme.secondary)),
-                      AdminFunctions.item(title: 'Tertiary', widget: _colorWidget(AppThemes.to.colorScheme.tertiary)),
-                      AdminFunctions.item(title: 'Disabled', widget: _colorWidget(AppThemes.to.disabledColor)),
-                      AdminFunctions.item(title: 'Error', widget: _colorWidget(AppThemes.to.colorScheme.error)),
+                      AdminFunctions.item(title: 'Background', widget: _colorWidget(AppThemes.to.theme.canvasColor)),
+                      AdminFunctions.item(title: 'Primary', widget: _colorWidget(AppThemes.to.theme.primaryColor)),
+                      AdminFunctions.item(title: 'Secondary', widget: _colorWidget(AppThemes.to.theme.colorScheme.secondary)),
+                      AdminFunctions.item(title: 'Tertiary', widget: _colorWidget(AppThemes.to.theme.colorScheme.tertiary)),
+                      AdminFunctions.item(title: 'Disabled', widget: _colorWidget(AppThemes.to.theme.disabledColor)),
+                      AdminFunctions.item(title: 'Error', widget: _colorWidget(AppThemes.to.theme.colorScheme.error)),
                     ]))),
             fullWidth: true)
       ], title: 'App Colors - Light');
@@ -83,12 +83,12 @@ class AdminAppResourcesPage extends CoreView<AdminAppResourcesController> {
                     scrollDirection: Axis.horizontal,
                     physics: const BouncingScrollPhysics(),
                     child: Row(children: [
-                      AdminFunctions.item(title: 'Background', widget: _colorWidget(AppThemes.to.canvasColor)),
-                      AdminFunctions.item(title: 'Primary', widget: _colorWidget(AppThemes.to.primaryColor)),
-                      AdminFunctions.item(title: 'Secondary', widget: _colorWidget(AppThemes.to.colorScheme.secondary)),
-                      AdminFunctions.item(title: 'Tertiary', widget: _colorWidget(AppThemes.to.colorScheme.tertiary)),
-                      AdminFunctions.item(title: 'Disabled', widget: _colorWidget(AppThemes.to.disabledColor)),
-                      AdminFunctions.item(title: 'Error', widget: _colorWidget(AppThemes.to.colorScheme.error)),
+                      AdminFunctions.item(title: 'Background', widget: _colorWidget(AppThemes.to.theme.canvasColor)),
+                      AdminFunctions.item(title: 'Primary', widget: _colorWidget(AppThemes.to.theme.primaryColor)),
+                      AdminFunctions.item(title: 'Secondary', widget: _colorWidget(AppThemes.to.theme.colorScheme.secondary)),
+                      AdminFunctions.item(title: 'Tertiary', widget: _colorWidget(AppThemes.to.theme.colorScheme.tertiary)),
+                      AdminFunctions.item(title: 'Disabled', widget: _colorWidget(AppThemes.to.theme.disabledColor)),
+                      AdminFunctions.item(title: 'Error', widget: _colorWidget(AppThemes.to.theme.colorScheme.error)),
                     ]))),
             fullWidth: true)
       ], title: 'App Colors - Dark');

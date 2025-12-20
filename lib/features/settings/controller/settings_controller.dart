@@ -80,7 +80,7 @@ class SettingsController extends CoreController {
     appSettings.value = appSettings.value.copyWith(darkMode: value);
     saveSettings();
     appLogPrint('DarkMode Changed to ${darkMode.value}');
-    Get.changeTheme(darkMode.value ? AppThemes.darkTheme : AppThemes.lightTheme);
+    Get.changeTheme(darkMode.value ? AppThemes.to.darkTheme : AppThemes.to.lightTheme);
     update();
   }
 

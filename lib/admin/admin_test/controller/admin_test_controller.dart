@@ -40,7 +40,7 @@ class AdminTestController extends CoreController {
     var settings = loadAppData()?.settings;
     settings = settings?.copyWith(darkMode: darkMode.value) ?? const AppSettingData().copyWith(darkMode: darkMode.value);
     saveAppData(appSettingData: settings);
-    Get.changeTheme(darkMode.value ? AppThemes.darkTheme : AppThemes.lightTheme);
+    Get.changeTheme(darkMode.value ? AppThemes.to.darkTheme : AppThemes.to.lightTheme);
   }
 
   ///Connections

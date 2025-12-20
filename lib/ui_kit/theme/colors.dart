@@ -1,13 +1,19 @@
 import 'color_palette.dart';
 
+export '../../core/extensions/theme_extensions/extension_theme.dart';
+
 enum AppColors {
   background(AppColorPalette.primary),
   primary(AppColorPalette.primary),
+  onPrimary(AppColorPalette.onPrimary),
   secondary(AppColorPalette.secondary),
+  onSecondary(AppColorPalette.onSecondary),
   tertiary(AppColorPalette.tertiary),
-  canvas(AppColorPalette.background),
-  appBarBackground(AppColorPalette.background),
+  canvas(AppColorPalette.primary),
+  appBarBackground(AppColorPalette.primary),
   appBarForeground(AppColorPalette.background),
+  bottomAppBarBackground(AppColorPalette.primary),
+  bottomAppBarForeground(AppColorPalette.background),
   error(AppColorPalette.error),
   buttonColor(AppColorPalette.secondary),
   buttonDisabled(AppColorPalette.onSecondary),

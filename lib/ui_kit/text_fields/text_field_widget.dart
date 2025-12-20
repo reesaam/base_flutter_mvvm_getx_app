@@ -101,7 +101,7 @@ abstract class AppTextFieldWidget extends StatelessWidget {
             textDirection: textDirection,
             obscureText: isPassword ?? false,
             style: errorText == null ? AppTextStyles.textFieldText() : AppTextStyles.textError(),
-            cursorColor: AppThemes.to.primaryColor,
+            cursorColor: AppThemes.to.theme.primaryColor,
             keyboardType: textInputType ?? TextInputType.text,
             textInputAction: textInputAction,
 

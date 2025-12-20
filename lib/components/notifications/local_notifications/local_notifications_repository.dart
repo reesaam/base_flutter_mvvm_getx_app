@@ -207,7 +207,7 @@ class AppLocalNotificationsRepository {
           icon: icon,
           autoDismissible: autoDismissible ?? true,
           actionType: actionType ?? ActionType.Default,
-          color: color ?? AppThemes.to.primaryColor,
+          color: color ?? AppThemes.to.theme.primaryColor,
           enabled: enabled ?? true,
           isDangerousOption: isDangerousOption ?? false,
           requireInputText: requireInputText ?? false,

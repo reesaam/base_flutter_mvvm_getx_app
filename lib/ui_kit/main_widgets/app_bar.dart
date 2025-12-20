@@ -39,6 +39,6 @@ class AppAppBar extends AppBar {
   @override
   bool? get centerTitle => true;
 
-  Widget get _normalTextTitle => Text(pageDetail.pageName ?? Texts.to.general.empty, style: AppThemes.to.textTheme.titleSmall)
-      .withColor(AppThemes.to.appBarTheme.foregroundColor ?? AppThemes.to.canvasColor);
+  Widget get _normalTextTitle => Text(pageDetail.pageName ?? Texts.to.general.empty, style: AppThemes.to.theme.textTheme.titleSmall)
+      .withColor(AppThemes.to.theme.appBarTheme.foregroundColor ?? AppThemes.to.theme.canvasColor);
 }

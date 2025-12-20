@@ -1,12 +1,10 @@
-
-
 enum AppColorPalette {
-  transparent(),
-  background(),
+  transparent(colorName: 'BackGround', lightColorCode: '00000000'),
+  background(colorName: 'BackGround', lightColorCode: 'FFFFFF', darkColorCode: '000000'),
   primary(colorName: 'Coral', lightColorCode: _coral, darkColorCode: _coral),
-  onPrimary(),
-  secondary(),
-  onSecondary(),
+  onPrimary(lightColorCode: '000000', darkColorCode: 'FFFFFF'),
+  secondary(colorName: 'Coral', lightColorCode: _coral, darkColorCode: _coral),
+  onSecondary(lightColorCode: 'FFFFFF', darkColorCode: '000000'),
   tertiary(),
   onTertiary(),
   disabled(),

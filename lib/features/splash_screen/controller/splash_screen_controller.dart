@@ -42,10 +42,11 @@ class SplashScreenController extends CoreController {
 
   @override
   void onReadyFunction() async {
-    availableUpdate = await checkAvailableVersion();
-    (availableUpdate != null && availableUpdate?.version != AppInfo.currentVersion.version)
-        ? _showUpdateDialog(isForceUpdate: availableUpdate?.isForceUpdate)
-        : goToPageWithDelay(AppPageDetails.homepage);
+    // availableUpdate = await checkAvailableVersion();
+    // (availableUpdate != null && availableUpdate?.version != AppInfo.currentVersion.version)
+    //     ? _showUpdateDialog(isForceUpdate: availableUpdate?.isForceUpdate)
+    //     : goToPageWithDelay(AppPageDetails.homepage);
+    goToPage(AppPageDetails.homepage);
   }
 
   _showUpdateDialog({bool? isForceUpdate}) => AppAlertDialogs.withYesNo(

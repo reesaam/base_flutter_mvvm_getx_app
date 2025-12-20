@@ -6,6 +6,7 @@ class AppDefaults {
 
   ///TimeOuts
   static Duration get connectionTimeOut => const Duration(seconds: 10);
+  static Transition get transition => Transition.fadeIn;
   static Duration get transitionDuration => const Duration(milliseconds: 1);
   static int get pageTransitionDelay => 5;
 
