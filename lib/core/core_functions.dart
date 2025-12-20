@@ -21,6 +21,7 @@ import '../ui_kit/main_widgets/snackbar.dart';
 import 'app_routing/app_routing.dart';
 import 'core_resources/core_enums.dart';
 import 'core_resources/core_flags.dart';
+import 'core_resources/page_details.dart';
 
 void appDebugPrint(message) => CoreFlags.isRelease ? null : debugPrint('[Debug] $message');
 void appLogPrint(message) => debugPrint('[LOG] $message');
@@ -97,7 +98,7 @@ Future<void> checkForceUpdate() async {
   AppVersion? version = await checkAvailableVersion();
   if (version != null) {
     if (version.isForceUpdate == true) {
-      goToUpdatePage(popAll: true);
+      goToPage(AppPages.update, popAll: true);
     }
   }
 }

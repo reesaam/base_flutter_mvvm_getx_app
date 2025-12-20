@@ -411,7 +411,7 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
         AdminFunctions.item(
             fullWidth: true,
             widget: AppAppBar(
-              pageDetail: AppPageDetail(pageRoute: AppPageDetails.adminWidgetCheckPage.pageRoute, pageName: 'Page Name'),
+              pageDetail: AppPageDetail(pageRoute: AppPages.adminWidgetCheckPage.pageRoute, pageName: 'Page Name'),
               barLeading: AppIconButton(icon: AppIcons.list, onTap: nullFunction),
               barAction: AppIconButton(icon: AppIcons.add, onTap: nullFunction),
             )),

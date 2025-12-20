@@ -36,7 +36,7 @@ class UpdateController extends CoreController {
 
   @override
   void pageInit() {
-    pageDetail = AppPageDetails.update;
+    pageDetail = AppPages.update;
   }
 
   @override

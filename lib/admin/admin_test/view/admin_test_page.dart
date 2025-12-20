@@ -39,10 +39,10 @@ class AdminTestPage extends CoreView<AdminTestController> {
 
   _appPages() => AdminFunctions.sectionGrid(
       items: List.generate(
-          AppPageDetails.listPages.length,
+          AppPages.listPages.length,
           (index) => AppGeneralButton(
-                text: AppPageDetails.listPages[index].pageName ?? 'Unknown',
-                onTap: () => goToPage(AppPageDetails.listPages[index]),
+                text: AppPages.listPages[index].pageName ?? 'Unknown',
+                onTap: () => goToPage(AppPages.listPages[index]),
               )),
       title: 'App All Pages');
 

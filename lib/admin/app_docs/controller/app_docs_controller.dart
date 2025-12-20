@@ -9,7 +9,7 @@ import '../../../shared/shared_models/core_models/app_statistics_data/app_statis
 class AppDocsController extends CoreController {
 
   @override
-  AppPageDetail get pageDetail => AppPageDetails.appDocs;
+  AppPageDetail get pageDetail => AppPages.appDocs;
 
   Rx<AppStatisticsData> statisticsData = const AppStatisticsData().obs;
 

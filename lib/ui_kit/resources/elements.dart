@@ -30,14 +30,14 @@ class AppElements {
   static BorderRadius get borderRadiusTop => BorderRadius.only(topLeft: circularRadiusDefault, topRight: circularRadiusDefault);
 
   ///BorderSide
-  static BorderSide get _borderSideGeneral => BorderSide(color: AppThemes.to.theme.colorScheme.secondary, width: AppDefaults.borderWidth);
-  static BorderSide get borderSide => _borderSideGeneral.copyWith(color: AppThemes.to.theme.primaryColor);
-  static BorderSide get borderSidePrimary => _borderSideGeneral.copyWith(color: AppThemes.to.theme.primaryColor);
-  static BorderSide get borderSideSecondary => _borderSideGeneral.copyWith(color: AppThemes.to.theme.colorScheme.secondary);
-  static BorderSide get borderSideTertiary => _borderSideGeneral.copyWith(color: AppThemes.to.theme.colorScheme.tertiary);
-  static BorderSide get borderSideError => _borderSideGeneral.copyWith(color: AppThemes.to.theme.colorScheme.error);
+  static BorderSide get _borderSideGeneral => BorderSide(color: Get.theme.colorScheme.secondary, width: AppDefaults.borderWidth);
+  static BorderSide get borderSide => _borderSideGeneral.copyWith(color: Get.theme.primaryColor);
+  static BorderSide get borderSidePrimary => _borderSideGeneral.copyWith(color: Get.theme.primaryColor);
+  static BorderSide get borderSideSecondary => _borderSideGeneral.copyWith(color: Get.theme.colorScheme.secondary);
+  static BorderSide get borderSideTertiary => _borderSideGeneral.copyWith(color: Get.theme.colorScheme.tertiary);
+  static BorderSide get borderSideError => _borderSideGeneral.copyWith(color: Get.theme.colorScheme.error);
   static BorderSide get borderSideTransparent => _borderSideGeneral.copyWith(color: AppColors.transparent.color);
-  static BorderSide get borderSideFocused => _borderSideGeneral.copyWith(color: AppThemes.to.theme.colorScheme.secondary);
+  static BorderSide get borderSideFocused => _borderSideGeneral.copyWith(color: Get.theme.colorScheme.secondary);
   static BorderSide get borderSideDisabled => _borderSideGeneral.copyWith(color: AppColors.transparent.color);
 
   ///OutlineInputBorder
@@ -50,7 +50,7 @@ class AppElements {
   static OutlineInputBorder get borderOutlinedTransparentZeroRadius => borderOutlinedTransparent.copyWith(borderRadius: borderRadiusZero);
 
   ///BoxBorder
-  static BoxBorder get boxBorder => Border.all(color: AppThemes.to.theme.canvasColor);
+  static BoxBorder get boxBorder => Border.all(color: Get.theme.canvasColor);
   static BoxBorder get boxBorderTransparent => Border.all(color: AppColors.transparent.color);
 
   ///Shapes
@@ -70,6 +70,6 @@ class AppElements {
   static double get contactsContactAvatarMaxRadius => 30;
 
 ///Panel
-// static BoxBorder get defaultPanelBorder => Border.all(color: AppThemes.to.theme.panelBorder);
+// static BoxBorder get defaultPanelBorder => Border.all(color: Get.theme.panelBorder);
 // static BoxDecoration get defaultPanel => BoxDecoration(border: defaultPanelBorder, borderRadius: defaultBorderWithRadius);
 }

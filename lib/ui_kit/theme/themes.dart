@@ -1,7 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:getx_binding_annotation/get_put_annotation.dart';
-
 import '../../core/core_resources/defaults.dart';
 import '../../core/core_resources/fonts.dart';
 import '../../core/extensions/theme_extensions/extension_colors.dart';
@@ -9,21 +5,16 @@ import '../resources/elements.dart';
 import '../resources/text_sizes.dart';
 import 'colors.dart';
 
-@GetPut.component()
 class AppThemes {
-  AppThemes();
+
   ///Main Theme Functions
-  static AppThemes get to => Get.find();
-  // static ThemeData get theme => to.getTheme(brightness: Get.theme.brightness);
-  ThemeData get theme => getTheme(brightness: Get.theme.brightness);
+  static ThemeData get lightTheme => _getTheme(brightness: Brightness.light);
+  static ThemeData get darkTheme => _getTheme(brightness: Brightness.dark);
 
-  ThemeData get lightTheme => getTheme(brightness: Brightness.light);
-  ThemeData get darkTheme => getTheme(brightness: Brightness.dark);
-
-  ThemeData importTheme({ThemeData? themeData}) => themeData ?? getTheme();
+  ThemeData importTheme({ThemeData? themeData}) => themeData ?? _getTheme();
 
   ///Get Variables and Decide about Theme
-  ThemeData getTheme({Brightness? brightness}) {
+  static ThemeData _getTheme({Brightness? brightness}) {
     // bool? storageResult;
     // AppStorage.to.loadAppData().then((value) => value.fold((l) => null, (r) => storageResult = r?.settings?.darkMode));
     // isDark = storageResult == true || isSystemDark == true;
@@ -31,12 +22,11 @@ class AppThemes {
     // return _theme();
 
     // Get.changeThemeMode(brightness == Brightness.dark ? ThemeMode.dark : ThemeMode.light);
-
     return _theme();
   }
 
   ///Theme Constructor
-  ThemeData _theme() => ThemeData(
+  static ThemeData _theme() => ThemeData(
         // colorScheme: _colorScheme(),
         canvasColor: AppColors.canvas.color,
         scaffoldBackgroundColor: AppColors.background.color,
@@ -84,7 +74,7 @@ class AppThemes {
       );
 
   ///Main Components
-  TextTheme _textTheme() {
+  static TextTheme _textTheme() {
     TextStyle generalStyle = _textStyle();
 
     TextStyle style = generalStyle.copyWith(
@@ -105,27 +95,27 @@ class AppThemes {
     return textTheme;
   }
 
-  AppBarTheme _appBar() => AppBarTheme(
+  static AppBarTheme _appBar() => AppBarTheme(
         centerTitle: true,
         backgroundColor: AppColors.appBarBackground.color,
         foregroundColor: AppColors.appBarForeground.color,
       );
 
-  BottomAppBarTheme _bottomAppBar() => BottomAppBarTheme(
+  static BottomAppBarTheme _bottomAppBar() => BottomAppBarTheme(
         elevation: 5,
         color: AppColors.primary.color,
       );
 
-  DrawerThemeData _drawer() => DrawerThemeData(
+  static DrawerThemeData _drawer() => DrawerThemeData(
         elevation: 5,
         backgroundColor: AppColors.appBarBackground.color,
       );
 
-  BottomNavigationBarThemeData _bottomNavigationBar() {
+  static BottomNavigationBarThemeData _bottomNavigationBar() {
     IconThemeData defaultIconThemeData = const IconThemeData();
 
     return BottomNavigationBarThemeData(
-      backgroundColor: AppColors.bottomAppBarBackground.color,
+      backgroundColor: AppColors.bottomNavigationBarBackground.color,
       showSelectedLabels: true,
       showUnselectedLabels: true,
       enableFeedback: true,
@@ -136,71 +126,70 @@ class AppThemes {
     );
   }
 
-  NavigationBarThemeData _navigationBar() => NavigationBarThemeData(
+  static NavigationBarThemeData _navigationBar() => NavigationBarThemeData(
         backgroundColor: AppColors.primary.color,
       );
 
-  NavigationDrawerThemeData _navigationDrawer() => NavigationDrawerThemeData(
+  static NavigationDrawerThemeData _navigationDrawer() => NavigationDrawerThemeData(
         backgroundColor: AppColors.primary.color,
       );
 
-  NavigationRailThemeData _navigationRail() => NavigationRailThemeData(
+  static NavigationRailThemeData _navigationRail() => NavigationRailThemeData(
         backgroundColor: AppColors.primary.color,
       );
 
-  SnackBarThemeData _snackBar() => SnackBarThemeData(
+  static SnackBarThemeData _snackBar() => SnackBarThemeData(
         elevation: 10,
         behavior: SnackBarBehavior.floating,
         backgroundColor: AppColors.tertiary.color,
       );
 
-  DialogTheme _dialog() => DialogTheme(
-        elevation: 10,
+  static DialogTheme _dialog() => DialogTheme(
         backgroundColor: AppColors.primary.color,
         data: DialogThemeData(),
       );
 
-  BottomSheetThemeData _bottomSheet() => BottomSheetThemeData(backgroundColor: AppColors.background.color);
+  static BottomSheetThemeData _bottomSheet() => BottomSheetThemeData(backgroundColor: AppColors.background.color);
 
-  FloatingActionButtonThemeData _floatingActionButton() => FloatingActionButtonThemeData(
+  static FloatingActionButtonThemeData _floatingActionButton() => FloatingActionButtonThemeData(
         backgroundColor: AppColors.secondary.color,
       );
 
-  MaterialBannerThemeData _banner() => MaterialBannerThemeData();
+  static MaterialBannerThemeData _banner() => MaterialBannerThemeData();
 
-  BadgeThemeData _badge() => BadgeThemeData();
+  static BadgeThemeData _badge() => BadgeThemeData();
 
-  ChipThemeData _chip() => ChipThemeData();
+  static ChipThemeData _chip() => ChipThemeData();
 
-  ProgressIndicatorThemeData _progressIndicator() => ProgressIndicatorThemeData();
+  static ProgressIndicatorThemeData _progressIndicator() => ProgressIndicatorThemeData();
 
-  IconThemeData _icon() => IconThemeData();
+  static IconThemeData _icon() => IconThemeData();
 
-  ActionIconThemeData _actionIcon() => ActionIconThemeData();
+  static ActionIconThemeData _actionIcon() => ActionIconThemeData();
 
   ///Text
-  TextStyle _textStyle() => TextStyle(
+  static TextStyle _textStyle() => TextStyle(
         fontSize: AppDefaults.fontSize,
         overflow: TextOverflow.ellipsis,
       );
 
   ///Buttons
-  ButtonThemeData _button() => ButtonThemeData(
+  static ButtonThemeData _button() => ButtonThemeData(
         buttonColor: AppColors.buttonColor.color,
         disabledColor: AppColors.buttonDisabled.color,
       );
 
-  TextStyle _buttonTextStyle() => TextStyle(
+  static TextStyle _buttonTextStyle() => TextStyle(
         fontSize: AppDefaults.fontSize,
         overflow: TextOverflow.ellipsis,
       );
 
-  ButtonStyle _buttonStyle() => ButtonStyle(
+  static ButtonStyle _buttonStyle() => ButtonStyle(
         shape: WidgetStateProperty.all(AppElements.borderShapeDefault),
         textStyle: WidgetStateProperty.all(_buttonTextStyle()),
       );
 
-  ElevatedButtonThemeData _buttonElevated() {
+  static ElevatedButtonThemeData _buttonElevated() {
     ButtonStyle buttonStyle = ButtonStyle(
       backgroundColor: WidgetStateProperty.all(AppColors.primary.color),
       foregroundColor: WidgetStateProperty.all(AppColors.background.color),
@@ -209,42 +198,42 @@ class AppThemes {
     return ElevatedButtonThemeData(style: buttonStyle);
   }
 
-  OutlinedButtonThemeData _buttonOutlined() => OutlinedButtonThemeData(style: _buttonStyle());
+  static OutlinedButtonThemeData _buttonOutlined() => OutlinedButtonThemeData(style: _buttonStyle());
 
-  FilledButtonThemeData _buttonFilled() => FilledButtonThemeData(style: _buttonStyle());
+  static FilledButtonThemeData _buttonFilled() => FilledButtonThemeData(style: _buttonStyle());
 
-  TextButtonThemeData _buttonText() => TextButtonThemeData(style: _buttonStyle());
+  static TextButtonThemeData _buttonText() => TextButtonThemeData(style: _buttonStyle());
 
-  IconButtonThemeData _buttonIcon() => IconButtonThemeData(style: _buttonStyle());
+  static IconButtonThemeData _buttonIcon() => IconButtonThemeData(style: _buttonStyle());
 
-  OverflowBar _overflowBar() => const OverflowBar();
+  static OverflowBar _overflowBar() => const OverflowBar();
 
-  ToggleButtonsThemeData _buttonToggle() => ToggleButtonsThemeData();
+  static ToggleButtonsThemeData _buttonToggle() => ToggleButtonsThemeData();
 
-  MenuButtonThemeData _buttonMenu() => MenuButtonThemeData(style: _buttonStyle());
+  static MenuButtonThemeData _buttonMenu() => MenuButtonThemeData(style: _buttonStyle());
 
   ///Menus
-  DropdownMenuThemeData _buttonDropDown() => const DropdownMenuThemeData();
+  static DropdownMenuThemeData _buttonDropDown() => const DropdownMenuThemeData();
 
   ///Others
-  CardTheme _card() => CardTheme(
+  static CardTheme _card() => CardTheme(
         shape: AppElements.borderShapeDefault,
         color: AppColors.background.color,
       );
 
-  CheckboxThemeData _checkBox() => CheckboxThemeData(
+  static CheckboxThemeData _checkBox() => CheckboxThemeData(
         checkColor: WidgetStateProperty.all(AppColors.background.color),
         fillColor: WidgetStateProperty.all(AppColors.primary.color),
         // side: AppElements.borderSide,
       );
 
-  SwitchThemeData _switch() => SwitchThemeData(
+  static SwitchThemeData _switch() => SwitchThemeData(
         overlayColor: WidgetStateProperty.all(AppColors.background.color),
         trackOutlineColor: WidgetStateProperty.all(AppColors.primary.color),
         thumbColor: WidgetStateProperty.all(AppColors.background.color),
       );
 
-  DividerThemeData _divider() => DividerThemeData(
+  static DividerThemeData _divider() => DividerThemeData(
         color: AppColors.secondary.color,
       );
 }

@@ -3,6 +3,10 @@ import 'package:flutter_regex/flutter_regex.dart';
 
 import 'extension_int.dart';
 
+extension ExtensionStringNullChecks on String? {
+  bool get isNullOrEmpty => this?.isEmpty ?? true;
+}
+
 extension ExtensionUInt8List on String {
   Uint8List toUInt8List() => Uint8List.fromList(codeUnits);
 }

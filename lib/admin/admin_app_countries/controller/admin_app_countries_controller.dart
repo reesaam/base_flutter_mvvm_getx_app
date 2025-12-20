@@ -11,5 +11,5 @@ class AdminAppCountriesController extends CoreController {
   List<AppCountry> countries = AppCountry.values.getSortedCountriesList;
 
   @override
-  AppPageDetail get pageDetail => AppPageDetails.adminAppCountriesPage;
+  AppPageDetail get pageDetail => AppPages.adminAppCountriesPage;
 }

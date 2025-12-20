@@ -1,12 +1,11 @@
-import 'package:flutter/material.dart';
-
-import '../../../ui_kit/theme/themes.dart';
+import '../../../ui_kit/theme/colors.dart';
+import '../theme_extensions/extension_colors.dart';
 
 extension ExtensionIconColor on Icon {
-  Icon get withPrimaryColor => withColor(AppThemes.to.theme.primaryColor);
-  Icon get withSecondaryColor => this;
-  Icon get withTertiaryColor => this;
-  Icon get withAppAppBackgroundColor => withColor(AppThemes.to.theme.canvasColor);
+  Icon get withPrimaryColor => withColor(AppColors.primary.color);
+  Icon get withSecondaryColor => withColor(AppColors.secondary.color);
+  Icon get withTertiaryColor => withColor(AppColors.tertiary.color);
+  Icon get withAppAppBackgroundColor => withColor(AppColors.background.color);
 }
 
 extension ExtensionIconSize on Icon {

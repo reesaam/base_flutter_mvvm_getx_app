@@ -1,12 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
 import '../../../core/app_routing/app_routing.dart';
 import '../../core/core_resources/page_details.dart';
 import '../../core/extensions/data_types_extensions/extension_int.dart';
+import '../../core/extensions/theme_extensions/extension_colors.dart';
 import '../../localization/localizations.dart';
 import '../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
-import '../theme/themes.dart';
+import '../theme/colors.dart';
 
 class AppBottomNavigationBar extends StatefulWidget {
   final int? selectedIndex;
@@ -18,7 +16,7 @@ class AppBottomNavigationBar extends StatefulWidget {
 
 class _AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
   RxInt selectedIndex = 0.obs;
-  List<AppPageDetail> pagesList = AppPageDetails.listPages.where((element) => element.bottomBarItemNumber != null).toList();
+  List<AppPageDetail> pagesList = AppPages.listPages.where((element) => element.bottomBarItemNumber != null).toList();
 
   @override
   void initState() {
@@ -32,26 +30,25 @@ class _AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    selectedIndex.value = widget.selectedIndex ?? 0;
-    return Obx(() => BottomNavigationBar(
-          currentIndex: selectedIndex.value,
-          onTap: (index) => _onItemTap(index),
-          items: List<BottomNavigationBarItem>.generate(
-            pagesList.length,
-            (index) => _generateBottomNavigationBarItem(pagesList[index]),
-          ),
-          selectedItemColor: AppThemes.to.theme.canvasColor,
-          unselectedItemColor: AppThemes.to.theme.canvasColor.withAlpha(400),
-        ));
-  }
+  Widget build(BuildContext context) => Obx(() => BottomNavigationBar(
+        backgroundColor: AppColors.bottomNavigationBarBackground.color,
+        currentIndex: selectedIndex.value = widget.selectedIndex ?? 0,
+        onTap: (index) => _onItemTap(index),
+        items: List<BottomNavigationBarItem>.generate(
+          pagesList.length,
+          (index) => _generateBottomNavigationBarItem(pagesList[index]),
+        ),
+        selectedItemColor: AppColors.bottomNavigationBarForeground.color,
+        unselectedItemColor: AppColors.bottomNavigationBarForeground.color.withAlpha(400),
+      ));
 
   BottomNavigationBarItem _generateBottomNavigationBarItem(AppPageDetail route) => BottomNavigationBarItem(
         icon: _createIcon(route),
         label: _createLabel(route),
       );
 
-  Icon _createIcon(AppPageDetail route) => pagesList.singleWhere((element) => element.pageRoute == route.pageRoute).iconCode.toIcon();
+  Icon _createIcon(AppPageDetail route) =>
+      pagesList.singleWhere((element) => element.pageRoute == route.pageRoute).iconCode.toIcon();
 
   String _createLabel(AppPageDetail route) =>
       pagesList.singleWhere((element) => element.pageRoute == route.pageRoute).pageName ?? Texts.to.general.empty;

@@ -17,6 +17,7 @@ import '../../../shared/shared_models/core_models/app_settings_data/app_setting_
 import '../../../shared/shared_models/core_models/app_version/app_version.dart';
 import '../../../ui_kit/dialogs/app_alert_dialogs.dart';
 import '../../../ui_kit/dialogs/app_bottom_dialogs.dart';
+import '../../../ui_kit/theme/theme_functions.dart';
 import '../../../ui_kit/theme/themes.dart';
 import '../widgets/settings_languages_widgets.dart';
 
@@ -40,7 +41,7 @@ class SettingsController extends CoreController {
 
   @override
   void pageInit() {
-    pageDetail = AppPageDetails.settings;
+    pageDetail = AppPages.settings;
   }
 
   @override
@@ -80,7 +81,7 @@ class SettingsController extends CoreController {
     appSettings.value = appSettings.value.copyWith(darkMode: value);
     saveSettings();
     appLogPrint('DarkMode Changed to ${darkMode.value}');
-    Get.changeTheme(darkMode.value ? AppThemes.to.darkTheme : AppThemes.to.lightTheme);
+    AppThemeFunctions.changeThemeMode(darkMode.value);
     update();
   }
 
@@ -89,7 +90,7 @@ class SettingsController extends CoreController {
     appLogPrint('Checked Update Version: ${updateAvailableVersion.value?.version ?? Texts.to.general.notAvailable}');
   }
 
-  functionGoToUpdatePage() => goToUpdatePage();
+  functionGoToUpdatePage() => goToPage(AppPages.update);
 
   functionBackup() {
     function() async {

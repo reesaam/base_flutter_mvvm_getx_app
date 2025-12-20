@@ -18,7 +18,7 @@ import '../../shared/shared_models/core_models/app_page_detail/app_page_detail.d
 import '../extensions/extension_app_routes.dart';
 import 'icons.dart';
 
-class AppPageDetails {
+class AppPages {
   static List<AppPageDetail> get listPages => [
         splashScreen,
         homepage,

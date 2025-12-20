@@ -8,6 +8,6 @@ class HomePageController extends CoreController {
 
   @override
   void pageInit() {
-    pageDetail = AppPageDetails.homepage;
+    pageDetail = AppPages.homepage;
   }
 }

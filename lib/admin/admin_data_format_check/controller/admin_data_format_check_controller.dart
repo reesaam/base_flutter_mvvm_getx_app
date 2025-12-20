@@ -10,7 +10,7 @@ import '../../../ui_kit/dialogs/app_alert_dialogs.dart';
 class AdminDataFormatCheckController extends CoreController {
 
   @override
-  AppPageDetail get pageDetail => AppPageDetails.adminDataFormatCheckPage;
+  AppPageDetail get pageDetail => AppPages.adminDataFormatCheckPage;
 
   functionCalledDialog() => AppAlertDialogs.withOk(text: 'Function Called', onTapOk: popPage);
 }

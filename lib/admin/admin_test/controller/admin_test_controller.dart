@@ -21,6 +21,7 @@ import '../../../shared/shared_models/core_models/app_data/app_data.dart';
 import '../../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
 import '../../../shared/shared_models/core_models/app_settings_data/app_setting_data.dart';
 import '../../../ui_kit/dialogs/app_alert_dialogs.dart';
+import '../../../ui_kit/theme/theme_functions.dart';
 import '../../../ui_kit/theme/themes.dart';
 
 @GetPut.controller()
@@ -28,7 +29,7 @@ class AdminTestController extends CoreController {
   Rx<bool> darkMode = false.obs;
 
   @override
-  AppPageDetail get pageDetail => AppPageDetails.adminTestPage;
+  AppPageDetail get pageDetail => AppPages.adminTestPage;
 
   ///Internal
   _dialog(String text) async => await AppAlertDialogs.withOk(text: text, onTapOk: popPage);
@@ -40,7 +41,7 @@ class AdminTestController extends CoreController {
     var settings = loadAppData()?.settings;
     settings = settings?.copyWith(darkMode: darkMode.value) ?? const AppSettingData().copyWith(darkMode: darkMode.value);
     saveAppData(appSettingData: settings);
-    Get.changeTheme(darkMode.value ? AppThemes.to.darkTheme : AppThemes.to.lightTheme);
+    AppThemeFunctions.changeThemeMode(darkMode.value);
   }
 
   ///Connections

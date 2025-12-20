@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_regex/flutter_regex.dart';
 
@@ -10,8 +11,6 @@ import '../../shared/shared_models/verifier_models/regex_model/regex_model.dart'
 import '../resources/elements.dart';
 import '../resources/paddings.dart';
 import '../resources/text_styles.dart';
-import '../theme/theme_functions.dart';
-import '../theme/themes.dart';
 import 'text_field.dart';
 import 'text_field_abstraction.dart';
 
@@ -101,7 +100,7 @@ abstract class AppTextFieldWidget extends StatelessWidget {
             textDirection: textDirection,
             obscureText: isPassword ?? false,
             style: errorText == null ? AppTextStyles.textFieldText() : AppTextStyles.textError(),
-            cursorColor: AppThemes.to.theme.primaryColor,
+            cursorColor: Get.theme.primaryColor,
             keyboardType: textInputType ?? TextInputType.text,
             textInputAction: textInputAction,
 

@@ -11,7 +11,7 @@ import '../../../shared/shared_models/core_models/app_page_detail/app_page_detai
 class AdminVerifiersController extends CoreController {
 
   @override
-  AppPageDetail get pageDetail => AppPageDetails.adminVerifiersPage;
+  AppPageDetail get pageDetail => AppPages.adminVerifiersPage;
 
   TextEditingController generalController = TextEditingController();
   TextEditingController passwordController = TextEditingController();

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../core/extensions/material_widgets_extensions/extension_text.dart';
 import '../../localization/localizations.dart';
@@ -39,6 +40,6 @@ class AppAppBar extends AppBar {
   @override
   bool? get centerTitle => true;
 
-  Widget get _normalTextTitle => Text(pageDetail.pageName ?? Texts.to.general.empty, style: AppThemes.to.theme.textTheme.titleSmall)
-      .withColor(AppThemes.to.theme.appBarTheme.foregroundColor ?? AppThemes.to.theme.canvasColor);
+  Widget get _normalTextTitle => Text(pageDetail.pageName ?? Texts.to.general.empty, style: Get.theme.textTheme.titleSmall)
+      .withColor(Get.theme.appBarTheme.foregroundColor ?? Get.theme.canvasColor);
 }

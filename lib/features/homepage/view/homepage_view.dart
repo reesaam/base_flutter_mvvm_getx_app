@@ -7,6 +7,7 @@ import '../../../core/core_elements/core_view.dart';
 import '../../../core/core_info/developer_info.dart';
 import '../../../core/core_resources/core_flags.dart';
 import '../../../core/core_resources/logos.dart';
+import '../../../core/core_resources/page_details.dart';
 import '../../../core/extensions/material_widgets_extensions/extension_text.dart';
 import '../../../ui_kit/buttons/app_general_button.dart';
 import '../../../ui_kit/general_widgets/image.dart';
@@ -75,6 +76,6 @@ class HomePage extends CoreView<HomePageController> {
 
   _adminTestButton() => Padding(
         padding: AppPaddings.pages,
-        child: const AppGeneralButton(text: 'Admin Test Page', onTap: gotoAdminStartPage),
+        child: AppGeneralButton(text: 'Admin Test Page', onTap: () => goToPage(AppPages.adminStartPage)),
       );
 }

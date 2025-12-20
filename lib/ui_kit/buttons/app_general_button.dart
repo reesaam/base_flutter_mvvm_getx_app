@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../core_widgets.dart';
 import '../main_widgets/progress_indicator.dart';
-import '../theme/themes.dart';
 
 class AppGeneralButton extends ElevatedButton {
   const AppGeneralButton({
@@ -38,10 +38,20 @@ class AppGeneralButton extends ElevatedButton {
         ? [_buttonLoading]
         : [
             icon ?? shrinkSizedBox,
-            Expanded(child: Center(child: Text(text, textAlign: TextAlign.center, overflow: TextOverflow.ellipsis, softWrap: true))),
+            Expanded(
+                child: Center(
+                    child: Text(
+              text,
+              textAlign: TextAlign.center,
+              overflow: TextOverflow.ellipsis,
+              softWrap: true,
+            ))),
             leading ?? shrinkSizedBox,
           ];
-    return Row(mainAxisAlignment: MainAxisAlignment.spaceAround, crossAxisAlignment: CrossAxisAlignment.center, children: children);
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: children);
   }
 
   @override
@@ -55,7 +65,7 @@ class AppGeneralButton extends ElevatedButton {
           : MaterialStatesController(<MaterialState>{MaterialState.disabled}));
 
   Widget get _buttonLoading => AppProgressIndicator.circular(
-        color: AppThemes.to.theme.canvasColor,
+        color: Get.theme.canvasColor,
         width: 20,
         strokeWidth: 3,
       );

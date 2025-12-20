@@ -40,7 +40,7 @@ class AppDrawer extends Drawer {
       ]));
 
   Widget body() {
-    List<AppPageDetail> drawerList = AppPageDetails.listPages.where((element) => element.drawerPresence == true).toList();
+    List<AppPageDetail> drawerList = AppPages.listPages.where((element) => element.drawerPresence == true).toList();
     return Column(children: List.generate(drawerList.length, (index) => _bodyItem(drawerList[index])));
   }
 
@@ -52,6 +52,6 @@ class AppDrawer extends Drawer {
       child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
         AppIcons.version,
         AppSpaces.w20,
-        InkWell(onTap: () => goToUpdatePage(), child: Text('${Texts.to.general.version}: ${AppInfo.currentVersion.version}')),
+        InkWell(onTap: () => goToPage(AppPages.update), child: Text('${Texts.to.general.version}: ${AppInfo.currentVersion.version}')),
       ]));
 }

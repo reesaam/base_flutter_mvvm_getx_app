@@ -65,7 +65,7 @@ class AppSnackBar {
       leadingText: leadingText,
       buttonText: buttonText,
       buttonAction: buttonAction,
-      backgroundColor: AppThemes.to.theme.colorScheme.error,
+      backgroundColor: Get.theme.colorScheme.error,
     );
   }
 
@@ -90,7 +90,7 @@ class AppSnackBar {
       leadingText: leadingText,
       buttonText: buttonText,
       buttonAction: buttonAction,
-      backgroundColor: AppThemes.to.theme.hintColor,
+      backgroundColor: Get.theme.hintColor,
     );
   }
 }
@@ -119,14 +119,14 @@ _showSnackBar({
 }) =>
     GetSnackBar(
       //Elements
-      titleText: title == null ? shrinkSizedBox : Text(title).withColor(textColor ?? AppThemes.to.theme.canvasColor),
+      titleText: title == null ? shrinkSizedBox : Text(title).withColor(textColor ?? Get.theme.canvasColor),
       messageText: widget ??
           Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                message == null ? const SizedBox.shrink() : Text(message).withColor(textColor ?? AppThemes.to.theme.canvasColor),
+                message == null ? const SizedBox.shrink() : Text(message).withColor(textColor ?? Get.theme.canvasColor),
                 buttonText == null
                     ? shrinkSizedBox
                     : Column(children: [
@@ -153,12 +153,12 @@ _showSnackBar({
       animationDuration: AppDefaults.snackBarAnimationDuration,
       duration: duration ?? AppDefaults.snackBarDuration,
       isDismissible: isDismissible ?? true,
-      backgroundColor: backgroundColor ?? AppThemes.to.theme.snackBarTheme.backgroundColor ?? AppThemes.to.theme.colorScheme.tertiary,
+      backgroundColor: backgroundColor ?? Get.theme.snackBarTheme.backgroundColor ?? Get.theme.colorScheme.tertiary,
       borderRadius: AppElements.defaultRadius,
-      icon: icon?.withColor(iconColor ?? textColor ?? AppThemes.to.theme.canvasColor),
+      icon: icon?.withColor(iconColor ?? textColor ?? Get.theme.canvasColor),
       shouldIconPulse: false,
       showProgressIndicator: showProgressIndicator ?? false,
-      progressIndicatorBackgroundColor: showProgressIndicator == true ? backgroundColor ?? AppThemes.to.theme.canvasColor : null,
+      progressIndicatorBackgroundColor: showProgressIndicator == true ? backgroundColor ?? Get.theme.canvasColor : null,
       progressIndicatorController: progressIndicatorController,
     ).show();
 

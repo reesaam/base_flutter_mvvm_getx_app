@@ -1,11 +1,11 @@
-import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:awesome_notifications/awesome_notifications.dart';
 
 import '../../../../core/core_functions.dart';
 import '../../../core/core_resources/core_flags.dart';
 import '../../../core/extensions/extension_prints.dart';
 import '../../../localization/localizations.dart';
-import '../../../ui_kit/theme/themes.dart';
 import '../notifications_enums.dart';
 import 'local_notification_controller.dart';
 
@@ -207,7 +207,7 @@ class AppLocalNotificationsRepository {
           icon: icon,
           autoDismissible: autoDismissible ?? true,
           actionType: actionType ?? ActionType.Default,
-          color: color ?? AppThemes.to.theme.primaryColor,
+          color: color ?? Get.theme.primaryColor,
           enabled: enabled ?? true,
           isDangerousOption: isDangerousOption ?? false,
           requireInputText: requireInputText ?? false,

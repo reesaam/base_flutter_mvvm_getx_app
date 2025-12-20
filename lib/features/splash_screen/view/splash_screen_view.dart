@@ -32,7 +32,7 @@ class SplashScreenPage extends CoreView<SplashScreenController> {
 
   Widget _widgetAppName() => Container(
         alignment: Alignment.center,
-        child: Text(controller.appName, style: AppThemes.to.theme.textTheme.titleSmall),
+        child: Text(controller.appName, style: Get.theme.textTheme.titleSmall),
       );
 
   Widget _widgetLoadingIndicator() => Container(

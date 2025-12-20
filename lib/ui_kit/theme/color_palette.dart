@@ -1,9 +1,9 @@
 enum AppColorPalette {
-  transparent(colorName: 'BackGround', lightColorCode: '00000000'),
-  background(colorName: 'BackGround', lightColorCode: 'FFFFFF', darkColorCode: '000000'),
-  primary(colorName: 'Coral', lightColorCode: _coral, darkColorCode: _coral),
+  transparent(lightColorCode: '00000000'),
+  background(lightColorCode: 'FFFFFF', darkColorCode: '000000'),
+  primary(lightColorCode: _persianGreen, darkColorCode: _persianGreen),
   onPrimary(lightColorCode: '000000', darkColorCode: 'FFFFFF'),
-  secondary(colorName: 'Coral', lightColorCode: _coral, darkColorCode: _coral),
+  secondary(lightColorCode: _coral, darkColorCode: _coral),
   onSecondary(lightColorCode: 'FFFFFF', darkColorCode: '000000'),
   tertiary(),
   onTertiary(),

@@ -12,7 +12,7 @@ class AdminAppInfoController extends CoreController {
   Rx<AppStatisticsData> statisticsData = const AppStatisticsData().obs;
 
   @override
-  AppPageDetail get pageDetail => AppPageDetails.adminAppInfoPage;
+  AppPageDetail get pageDetail => AppPages.adminAppInfoPage;
 
   @override
   void dataInit() {

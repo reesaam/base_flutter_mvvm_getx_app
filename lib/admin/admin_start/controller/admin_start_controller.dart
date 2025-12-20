@@ -9,10 +9,10 @@ class AdminStartController extends CoreController {
   List<AppPageDetail> pages = List<AppPageDetail>.empty(growable: true);
 
   @override
-  AppPageDetail get pageDetail => AppPageDetails.adminStartPage;
+  AppPageDetail get pageDetail => AppPages.adminStartPage;
 
   @override
   void dataInit() {
-    pages = AppPageDetails.listAdminPages;
+    pages = AppPages.listAdminPages;
   }
 }

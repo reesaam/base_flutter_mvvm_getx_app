@@ -34,7 +34,7 @@ class SplashScreenController extends CoreController {
 
   @override
   void pageInit() {
-    pageDetail = AppPageDetails.splashScreen;
+    pageDetail = AppPages.splashScreen;
     logoSource = AppLogos.appLogo;
     appName = AppInfo.appName;
     appVersion = '${Texts.to.general.version}: ${AppInfo.currentVersion.version}';
@@ -46,17 +46,17 @@ class SplashScreenController extends CoreController {
     // (availableUpdate != null && availableUpdate?.version != AppInfo.currentVersion.version)
     //     ? _showUpdateDialog(isForceUpdate: availableUpdate?.isForceUpdate)
     //     : goToPageWithDelay(AppPageDetails.homepage);
-    goToPage(AppPageDetails.homepage);
+    goToPage(AppPages.homepage);
   }
 
   _showUpdateDialog({bool? isForceUpdate}) => AppAlertDialogs.withYesNo(
         title: Texts.to.update.updateNewVersion,
         text: Texts.to.update.updateApprove,
         dismissible: isForceUpdate != true,
-        onTapNo: isForceUpdate == true ? null : goToHomePage,
+        onTapNo: isForceUpdate == true ? null : goToPage(AppPages.homepage),
         onTapYes: () {
-          if (isForceUpdate != true) goToHomePage();
-          goToUpdatePage();
+          if (isForceUpdate != true) goToPage(AppPages.homepage);
+          goToPage(AppPages.update);
         },
       );
 }

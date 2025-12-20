@@ -32,7 +32,7 @@ class AdminStartPage extends CoreView<AdminStartController> {
       padding: AppPaddings.buttonLarge,
       child: Column(
           children: List<Widget>.generate(
-              AppPageDetails.listAdminPages.length,
+              AppPages.listAdminPages.length,
               (index) => index == 0
                   ? shrinkSizedBox
                   : AppGeneralButton(
