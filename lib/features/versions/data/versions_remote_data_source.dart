@@ -8,6 +8,7 @@ import '../../../shared/shared_models/core_models/app_version/app_version.dart';
 
 abstract class VersionsRemoteDataSource {
   static VersionsRemoteDataSource get to => Get.find();
+
   Future<BaseAPIResponse<AppVersionsList>> getVersions();
 }
 

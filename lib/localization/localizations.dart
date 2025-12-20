@@ -14,12 +14,13 @@ const _supportedLocales = ['en', 'fa'];
 
 class Texts {
   Texts._();
-  static Translation get to => AppLocalizations.of(Get.context!);
+  static Translation get to => AppLocalizations.to.of(Get.context!);
 }
 
 @GetPut.component()
 class AppLocalizations {
   AppLocalizations({this.translation});
+
   static AppLocalizations get to => Get.find();
 
   final Translation? translation;
@@ -35,12 +36,12 @@ class AppLocalizations {
   LocalizationsDelegate get _widgets => GlobalWidgetsLocalizations.delegate;
   LocalizationsDelegate get _cupertino => GlobalCupertinoLocalizations.delegate;
 
-  static List<Locale> get supportedLocales => _supportedLocales.map((x) => Locale(x)).toList();
+  List<Locale> get supportedLocales => _supportedLocales.map((x) => Locale(x)).toList();
 
-  static Future<AppLocalizations> load(Locale locale) =>
+  Future<AppLocalizations> load(Locale locale) =>
       Future.value(AppLocalizations(translation: _translations[locale.languageCode]!()));
 
-  static Translation of(BuildContext context) =>
+  Translation of(BuildContext context) =>
       Localizations.of<AppLocalizations>(context, AppLocalizations)!.translation!;
 
   /// Manual Added
@@ -73,7 +74,7 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   bool isSupported(Locale locale) => _supportedLocales.contains(locale.languageCode);
 
   @override
-  Future<AppLocalizations> load(Locale locale) => AppLocalizations.load(locale);
+  Future<AppLocalizations> load(Locale locale) => AppLocalizations.to.load(locale);
 
   @override
   bool shouldReload(LocalizationsDelegate<AppLocalizations> old) => false;

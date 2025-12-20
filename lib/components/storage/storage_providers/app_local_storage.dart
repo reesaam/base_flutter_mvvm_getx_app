@@ -9,7 +9,6 @@ import 'local_storage_service.dart';
 
 @GetPut.component()
 class AppLocalStorage implements AppStorageModuleAbstraction {
-  final String _keyLocalStorage = 'Local Storage';
   final _service = LocalStorageService();
 
   @override

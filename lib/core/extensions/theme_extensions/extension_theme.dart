@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../ui_kit/theme/color_palette.dart';
+import '../../core_functions.dart';
 
-Color _defaultColor = Colors.transparent;
+Color _defaultColor = Colors.white;
 LinearGradient _defaultGradient = LinearGradient(colors: [_defaultColor, _defaultColor]);
 
 extension BuildContextExtensions on BuildContext {
@@ -18,7 +19,7 @@ extension BrightnessExtensions on Brightness {
 extension ColorExtensionForAppColorPalette on AppColorPalette {
   Color get color {
     Color color = _defaultColor;
-    if (Get.context?.isLight ?? false) {
+    if (Get.context?.isLight ?? true) {
       Color? lightColor = _createColorFromColorCode(lightColorCode);
       if (lightColor == null && (lightGradientCodes?.isNotEmpty ?? false)) {
         lightColor = _createColorFromColorCode(lightGradientCodes!.first);
@@ -31,6 +32,7 @@ extension ColorExtensionForAppColorPalette on AppColorPalette {
       }
       if (darkColor != null) color = darkColor;
     }
+    appDebugPrint('ColorExtensionForAppColorPalette: $this');
     return color;
   }
 

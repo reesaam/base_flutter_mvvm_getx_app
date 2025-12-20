@@ -13,12 +13,12 @@ class SettingsLanguageWidget extends StatelessWidget {
   Widget build(BuildContext context) => Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: List.generate(
-          AppLocalizations.supportedLocales.length,
+          AppLocalizations.to.supportedLocales.length,
           (index) => InkWell(
               onTap: function == null ? null : () => function!(index),
               child: LayoutBuilder(
                   builder: (context, constraints) => Container(
                       width: constraints.maxWidth,
                       padding: AppPaddings.modalItems,
-                      child: Text(AppLocalizations.supportedLocales[index].getLanguage.languageName))))));
+                      child: Text(AppLocalizations.to.supportedLocales[index].getLanguage.languageName))))));
 }

@@ -65,7 +65,7 @@ class SettingsController extends CoreController {
       title: Texts.to.settings.settingsLanguageModalSelectLanguage, form: SettingsLanguageWidget(function: functionLanguageSelectionOnTap), dismissible: true);
 
   functionLanguageSelectionOnTap(int index) {
-    selectedLanguage.value = AppLocalizations.supportedLocales[index].getLanguage;
+    selectedLanguage.value = AppLocalizations.to.supportedLocales[index].getLanguage;
     appSettings.value = appSettings.value.copyWith(language: selectedLanguage.value);
     appSettings.changeLanguage(selectedLanguage.value);
     saveSettings();
