@@ -16,10 +16,10 @@ dependencies:
     sdk: flutter
 
   # Main Libraries
-  get: ^4.7.2
-  getx_binding_annotation: ^0.2.5
-  analyzer: 6.11.0
-  freezed: ^3.0.6
+  get: ^4.7.3
+  getx_binding_annotation: ^0.2.8
+#  analyzer: 6.11.0
+  freezed: ^3.2.3
   json_annotation: ^4.9.0
 
   # Storage
@@ -82,8 +82,8 @@ dev_dependencies:
     sdk: flutter
 
   # Code Generator
-  build_runner: ^2.4.15
-  getx_binding_annotation_generator: ^0.2.5
+  build_runner: ^2.10.4
+  getx_binding_annotation_generator: ^0.2.8
   json_serializable: ^6.9.5
   freezed_annotation: ^3.0.0
 
