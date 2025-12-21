@@ -1,13 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter_file_dialog/flutter_file_dialog.dart';
-import 'package:get/get.dart';
-import 'package:getx_binding_annotation/get_put_annotation.dart';
 
 import '../../../core/core_functions.dart';
+import '../../core/core_elements/core_component.dart';
 
 @GetPut.component()
-class AppFileFunctions {
+class AppFileFunctions extends CoreComponent {
   static AppFileFunctions get to => Get.find();
 
   Future<String?> saveFile({

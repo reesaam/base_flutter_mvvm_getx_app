@@ -1,18 +1,16 @@
 import 'dart:convert';
 
-import 'package:dartz/dartz.dart';
 import 'package:get/get.dart';
 import 'package:getx_binding_annotation/get_put_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/core_functions.dart';
 import '../../../core/core_resources/defined_types.dart';
-import '../../failures/general_exception.dart';
 import '../../failures/local_exception.dart';
 import '../app_storage_module_abstraction.dart';
 
 @GetPut.component()
-class AppSharedPreferences extends AppStorageModuleAbstraction {
+class AppSharedPreferences implements AppStorageModuleAbstraction {
   static AppSharedPreferences get to => Get.find();
 
   @override

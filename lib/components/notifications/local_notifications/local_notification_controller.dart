@@ -2,13 +2,13 @@ import 'dart:isolate';
 import 'dart:ui';
 
 import 'package:awesome_notifications/awesome_notifications.dart';
-import 'package:getx_binding_annotation/get_put_annotation.dart';
 
 import '../../../../core/core_functions.dart';
+import '../../../core/core_elements/core_component.dart';
 import '../notifications_enums.dart';
 
-@GetPut.controller()
-class AppLocalNotificationController {
+@GetPut.component()
+class AppLocalNotificationController extends CoreComponent {
   AppLocalNotificationController() {
     ReceivePort? receivePort;
     // IsolateNameServer.registerPortWithName(receivePort, AppNotificationsPortNames.receivePort.portName);

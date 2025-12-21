@@ -1,14 +1,13 @@
 import 'dart:io';
 
-import 'package:get/get.dart';
-import 'package:getx_binding_annotation/get_put_annotation.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+import '../../core/core_elements/core_component.dart';
 import '../../core/extensions/data_models_extensions/extension_permission.dart';
 import '../../shared/shared_models/base_models/permission_base_response_model/permission_base_response.dart';
 
 @GetPut.component()
-class AppPermissions {
+class AppPermissions extends CoreComponent {
   static AppPermissions get to => Get.find();
 
   AppPermissions() {

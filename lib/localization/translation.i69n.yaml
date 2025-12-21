@@ -49,10 +49,10 @@ dialogs:
   general:
     areYouSure: Are you sure ?
   data:
-    areYouSureDataWillLost: '${areYouSure}\nData will be lost with this Function.'
-    areYouSureDataMayLost: '${areYouSure}\nData may be lost with this Function.'
-    areYouSureDataExport: '${areYouSure}\nData will be exported and exposed.'
-    areYouSureDataImport: '${areYouSure}\nData will be imported and exposed.'
+    areYouSureDataWillLost: '${_parent.general.areYouSure}\nData will be lost with this Function.'
+    areYouSureDataMayLost: '${_parent.general.areYouSure}\nData may be lost with this Function.'
+    areYouSureDataExport: '${_parent.general.areYouSure}\nData will be exported and exposed.'
+    areYouSureDataImport: '${_parent.general.areYouSure}\nData will be imported and exposed.'
   connection:
     connectionInternetNotAvailableTitle: Internet Connection
     connectionInternetNotAvailableText: Internet Connection is not Available!\nPlease Check your Connection.
@@ -100,7 +100,7 @@ storage:
   exceptionLoadData: Storage Load Data Exception
   exceptionSaveData: Storage Save Data Exception
   exceptionNodata: No Data Found
-  exceptionUnknown: Unknown Error
+  exceptionUnknown: Unknown Storage Error
 
 network:
   connection:
@@ -110,7 +110,7 @@ network:
     exceptionHttp: HTTP Exception
     exceptionFormat: Format Exception
     exceptionAccess: Format Exception
-    exceptionUnknown: Unknown Error
+    exceptionUnknown: Unknown Network Error
   api:
     exceptionParsingData: Parsing Data Exception
     exceptionNonAuthoritativeInformation: NonAuthoritative Information Exception

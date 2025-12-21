@@ -3,7 +3,15 @@ import 'package:get/get.dart';
 
 import '../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
 
+export 'package:flutter/material.dart';
+export 'package:flutter/widgets.dart';
+export 'package:get/get.dart';
+export 'package:getx_binding_annotation/get_put_annotation.dart';
+
 abstract class CoreController extends GetxController {
+
+  static CoreController get to => Get.find();
+
   BuildContext context = Get.context!;
   late AppPageDetail pageDetail;
 

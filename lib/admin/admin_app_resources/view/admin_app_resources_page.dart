@@ -1,22 +1,13 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:getx_binding_annotation/get_put_annotation.dart';
-
 import '../../../core/core_elements/core_view.dart';
 import '../../../core/core_info/app_info.dart';
 import '../../../core/core_resources/core_enums.dart';
 import '../../../core/core_resources/defaults.dart';
 import '../../../core/extensions/theme_extensions/extension_color_palette.dart';
-import '../../../core/extensions/theme_extensions/extension_colors.dart';
-import '../../../ui_kit/core_widgets.dart';
 import '../../../ui_kit/general_widgets/dividers.dart';
 import '../../../ui_kit/main_widgets/app_bar.dart';
 import '../../../ui_kit/resources/elements.dart';
 import '../../../ui_kit/resources/paddings.dart';
 import '../../../ui_kit/resources/spaces.dart';
-import '../../../ui_kit/theme/color_palette.dart';
-import '../../../ui_kit/theme/color_palette.dart';
-import '../../../ui_kit/theme/color_palette.dart';
 import '../../../ui_kit/theme/color_palette.dart';
 import '../../../ui_kit/theme/colors.dart';
 import '../../admin_general_functions.dart';

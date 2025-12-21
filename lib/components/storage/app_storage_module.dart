@@ -1,9 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
-import 'package:get/get.dart';
-import 'package:getx_binding_annotation/get_put_annotation.dart';
 
+import '../../core/core_elements/core_component.dart';
 import '../../core/core_functions.dart';
 import '../../core/core_info/core_defaults.dart';
 import '../../core/core_resources/core_enums.dart';
@@ -14,13 +13,12 @@ import '../../core/extensions/data_types_extensions/extension_duration.dart';
 import '../../core/extensions/data_types_extensions/extension_string.dart';
 import '../../localization/localizations.dart';
 import '../../shared/shared_models/core_models/app_data/app_data.dart';
-import '../failures/local_exception.dart';
 import '../file_functions/file_functions.dart';
 import 'storage_providers/app_local_storage.dart';
 import 'storage_providers/app_shared_preferences.dart';
 
 @GetPut.component()
-class AppStorage {
+class AppStorage extends CoreComponent {
   final _storage = switch (CoreDefaults.defaultStorageProvider) {
     AppStorageProvider.getStorage => AppLocalStorage(),
     AppStorageProvider.sharedPreferences => AppSharedPreferences(),

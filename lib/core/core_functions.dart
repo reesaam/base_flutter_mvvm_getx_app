@@ -80,7 +80,7 @@ Future<AppVersionsList?> getVersions() async {
     versionsList = response.fold((l) => null, (r) => r);
   }
   if (versionsList == null) {
-    var response = await VersionsLocalDataSource().getVersions();
+    var response = await VersionsLocalDataSource.to.getVersions();
     versionsList = response.fold((l) => null, (r) => r);
   }
   return versionsList;
@@ -100,13 +100,13 @@ Future<void> checkForceUpdate() async {
   }
 }
 
-noInternetConnectionSnackBar() => AppSnackBar.show(message: Texts.to.connection.connectionInternetNotAvailableText);
+noInternetConnectionSnackBar() => AppSnackBar.show(message: Texts.to.network.connection.internetNotAvailable);
 
 showLoadingDialog({bool? isDismissible}) =>
     AppAlertWidgetDialogs().withoutButton(widget: AppProgressIndicator.linear(), dismissible: isDismissible);
 
 appExitDialog() => AppAlertDialogs.withOkCancel(
-    title: Texts.to.general.appExit, text: Texts.to.dialogs.areYouSure, onTapOk: appExit, dismissible: true);
+    title: Texts.to.general.appExit, text: Texts.to.dialogs.general.areYouSure, onTapOk: appExit, dismissible: true);
 
 appReload({AppPageDetail? bootPage}) async {
   showLoadingDialog();

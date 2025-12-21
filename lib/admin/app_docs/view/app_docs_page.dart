@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import '../../../core/core_elements/core_view.dart';
 import '../../../ui_kit/general_widgets/dividers.dart';
 import '../../../ui_kit/main_widgets/app_bar.dart';

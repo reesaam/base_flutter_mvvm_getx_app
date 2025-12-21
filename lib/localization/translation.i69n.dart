@@ -42,10 +42,11 @@ class Translation implements i69n.I69nMessageBundle {
       AdminPagesNameTranslation(this);
   GeneralTranslation get general => GeneralTranslation(this);
   DialogsTranslation get dialogs => DialogsTranslation(this);
-  ConnectionTranslation get connection => ConnectionTranslation(this);
   SettingsTranslation get settings => SettingsTranslation(this);
   UpdateTranslation get update => UpdateTranslation(this);
   ErrorTranslation get error => ErrorTranslation(this);
+  StorageTranslation get storage => StorageTranslation(this);
+  NetworkTranslation get network => NetworkTranslation(this);
   AboutTranslation get about => AboutTranslation(this);
   Object operator [](String key) {
     var index = key.indexOf('.');
@@ -66,14 +67,16 @@ class Translation implements i69n.I69nMessageBundle {
         return general;
       case 'dialogs':
         return dialogs;
-      case 'connection':
-        return connection;
       case 'settings':
         return settings;
       case 'update':
         return update;
       case 'error':
         return error;
+      case 'storage':
+        return storage;
+      case 'network':
+        return network;
       case 'about':
         return about;
       default:
@@ -276,15 +279,33 @@ class GeneralTranslation implements i69n.I69nMessageBundle {
 class DialogsTranslation implements i69n.I69nMessageBundle {
   final Translation _parent;
   const DialogsTranslation(this._parent);
+  GeneralDialogsTranslation get general => GeneralDialogsTranslation(this);
+  DataDialogsTranslation get data => DataDialogsTranslation(this);
+  ConnectionDialogsTranslation get connection =>
+      ConnectionDialogsTranslation(this);
+  Object operator [](String key) {
+    var index = key.indexOf('.');
+    if (index > 0) {
+      return (this[key.substring(0, index)]
+          as i69n.I69nMessageBundle)[key.substring(index + 1)];
+    }
+    switch (key) {
+      case 'general':
+        return general;
+      case 'data':
+        return data;
+      case 'connection':
+        return connection;
+      default:
+        return key;
+    }
+  }
+}
+
+class GeneralDialogsTranslation implements i69n.I69nMessageBundle {
+  final DialogsTranslation _parent;
+  const GeneralDialogsTranslation(this._parent);
   String get areYouSure => "Are you sure ?";
-  String get areYouSureDataWillLost =>
-      "${areYouSure}\nData will be lost with this Function.";
-  String get areYouSureDataMayLost =>
-      "${areYouSure}\nData may be lost with this Function.";
-  String get areYouSureDataExport =>
-      "${areYouSure}\nData will be exported and exposed.";
-  String get areYouSureDataImport =>
-      "${areYouSure}\nData will be imported and exposed.";
   Object operator [](String key) {
     var index = key.indexOf('.');
     if (index > 0) {
@@ -294,6 +315,30 @@ class DialogsTranslation implements i69n.I69nMessageBundle {
     switch (key) {
       case 'areYouSure':
         return areYouSure;
+      default:
+        return key;
+    }
+  }
+}
+
+class DataDialogsTranslation implements i69n.I69nMessageBundle {
+  final DialogsTranslation _parent;
+  const DataDialogsTranslation(this._parent);
+  String get areYouSureDataWillLost =>
+      "${_parent.general.areYouSure}\nData will be lost with this Function.";
+  String get areYouSureDataMayLost =>
+      "${_parent.general.areYouSure}\nData may be lost with this Function.";
+  String get areYouSureDataExport =>
+      "${_parent.general.areYouSure}\nData will be exported and exposed.";
+  String get areYouSureDataImport =>
+      "${_parent.general.areYouSure}\nData will be imported and exposed.";
+  Object operator [](String key) {
+    var index = key.indexOf('.');
+    if (index > 0) {
+      return (this[key.substring(0, index)]
+          as i69n.I69nMessageBundle)[key.substring(index + 1)];
+    }
+    switch (key) {
       case 'areYouSureDataWillLost':
         return areYouSureDataWillLost;
       case 'areYouSureDataMayLost':
@@ -308,9 +353,9 @@ class DialogsTranslation implements i69n.I69nMessageBundle {
   }
 }
 
-class ConnectionTranslation implements i69n.I69nMessageBundle {
-  final Translation _parent;
-  const ConnectionTranslation(this._parent);
+class ConnectionDialogsTranslation implements i69n.I69nMessageBundle {
+  final DialogsTranslation _parent;
+  const ConnectionDialogsTranslation(this._parent);
   String get connectionInternetNotAvailableTitle => "Internet Connection";
   String get connectionInternetNotAvailableText =>
       "Internet Connection is not Available!\nPlease Check your Connection.";
@@ -334,20 +379,20 @@ class ConnectionTranslation implements i69n.I69nMessageBundle {
 class SettingsTranslation implements i69n.I69nMessageBundle {
   final Translation _parent;
   const SettingsTranslation(this._parent);
-  String get settingsLanguageModalSelectLanguage => "Select Language";
-  String get settingsAppbarMenuResetSettings => "Reset All Settings";
-  String get settingsSectionTitleGeneral => "General";
-  String get settingsSectionTitleGeneralLanguage => "Language";
-  String get settingsSectionTitleGeneralCalendar => "Calendar Type";
-  String get settingsSectionGeneralItemDarkMode => "Dark Mode";
-  String get settingsSectionTitleUpdate => "Update";
-  String get settingsSectionTitleUpdateCurrentVersion => "Current Version";
-  String get settingsSectionTitleUpdateAvailableVersion => "Available Version";
-  String get settingsSectionTitleBackup => "Backup";
-  String get settingsSectionBackupBackup => "Backup Data";
-  String get settingsSectionBackupRestore => "Restore Data";
-  String get settingsSectionTitleStorage => "Storage";
-  String get settingsSectionStorageItemEraseAllData => "Erase All Data";
+  String get languageModalSelectLanguage => "Select Language";
+  String get appbarMenuResetSettings => "Reset All Settings";
+  String get sectionTitleGeneral => "General";
+  String get sectionTitleGeneralLanguage => "Language";
+  String get sectionTitleGeneralCalendar => "Calendar Type";
+  String get sectionGeneralItemDarkMode => "Dark Mode";
+  String get sectionTitleUpdate => "Update";
+  String get sectionTitleUpdateCurrentVersion => "Current Version";
+  String get sectionTitleUpdateAvailableVersion => "Available Version";
+  String get sectionTitleBackup => "Backup";
+  String get sectionBackupBackup => "Backup Data";
+  String get sectionBackupRestore => "Restore Data";
+  String get sectionTitleStorage => "Storage";
+  String get sectionStorageItemEraseAllData => "Erase All Data";
   Object operator [](String key) {
     var index = key.indexOf('.');
     if (index > 0) {
@@ -355,34 +400,34 @@ class SettingsTranslation implements i69n.I69nMessageBundle {
           as i69n.I69nMessageBundle)[key.substring(index + 1)];
     }
     switch (key) {
-      case 'settingsLanguageModalSelectLanguage':
-        return settingsLanguageModalSelectLanguage;
-      case 'settingsAppbarMenuResetSettings':
-        return settingsAppbarMenuResetSettings;
-      case 'settingsSectionTitleGeneral':
-        return settingsSectionTitleGeneral;
-      case 'settingsSectionTitleGeneralLanguage':
-        return settingsSectionTitleGeneralLanguage;
-      case 'settingsSectionTitleGeneralCalendar':
-        return settingsSectionTitleGeneralCalendar;
-      case 'settingsSectionGeneralItemDarkMode':
-        return settingsSectionGeneralItemDarkMode;
-      case 'settingsSectionTitleUpdate':
-        return settingsSectionTitleUpdate;
-      case 'settingsSectionTitleUpdateCurrentVersion':
-        return settingsSectionTitleUpdateCurrentVersion;
-      case 'settingsSectionTitleUpdateAvailableVersion':
-        return settingsSectionTitleUpdateAvailableVersion;
-      case 'settingsSectionTitleBackup':
-        return settingsSectionTitleBackup;
-      case 'settingsSectionBackupBackup':
-        return settingsSectionBackupBackup;
-      case 'settingsSectionBackupRestore':
-        return settingsSectionBackupRestore;
-      case 'settingsSectionTitleStorage':
-        return settingsSectionTitleStorage;
-      case 'settingsSectionStorageItemEraseAllData':
-        return settingsSectionStorageItemEraseAllData;
+      case 'languageModalSelectLanguage':
+        return languageModalSelectLanguage;
+      case 'appbarMenuResetSettings':
+        return appbarMenuResetSettings;
+      case 'sectionTitleGeneral':
+        return sectionTitleGeneral;
+      case 'sectionTitleGeneralLanguage':
+        return sectionTitleGeneralLanguage;
+      case 'sectionTitleGeneralCalendar':
+        return sectionTitleGeneralCalendar;
+      case 'sectionGeneralItemDarkMode':
+        return sectionGeneralItemDarkMode;
+      case 'sectionTitleUpdate':
+        return sectionTitleUpdate;
+      case 'sectionTitleUpdateCurrentVersion':
+        return sectionTitleUpdateCurrentVersion;
+      case 'sectionTitleUpdateAvailableVersion':
+        return sectionTitleUpdateAvailableVersion;
+      case 'sectionTitleBackup':
+        return sectionTitleBackup;
+      case 'sectionBackupBackup':
+        return sectionBackupBackup;
+      case 'sectionBackupRestore':
+        return sectionBackupRestore;
+      case 'sectionTitleStorage':
+        return sectionTitleStorage;
+      case 'sectionStorageItemEraseAllData':
+        return sectionStorageItemEraseAllData;
       default:
         return key;
     }
@@ -461,9 +506,59 @@ class UpdateTranslation implements i69n.I69nMessageBundle {
 class ErrorTranslation implements i69n.I69nMessageBundle {
   final Translation _parent;
   const ErrorTranslation(this._parent);
-  ConnectionErrorTranslation get connection => ConnectionErrorTranslation(this);
-  NetworkErrorTranslation get network => NetworkErrorTranslation(this);
-  StorageErrorTranslation get storage => StorageErrorTranslation(this);
+  String get unknown => "Unknown Error Occurred";
+  Object operator [](String key) {
+    var index = key.indexOf('.');
+    if (index > 0) {
+      return (this[key.substring(0, index)]
+          as i69n.I69nMessageBundle)[key.substring(index + 1)];
+    }
+    switch (key) {
+      case 'unknown':
+        return unknown;
+      default:
+        return key;
+    }
+  }
+}
+
+class StorageTranslation implements i69n.I69nMessageBundle {
+  final Translation _parent;
+  const StorageTranslation(this._parent);
+  String get exceptionNull => "Null Exception";
+  String get exceptionLoadData => "Storage Load Data Exception";
+  String get exceptionSaveData => "Storage Save Data Exception";
+  String get exceptionNodata => "No Data Found";
+  String get exceptionUnknown => "Unknown Storage Error";
+  Object operator [](String key) {
+    var index = key.indexOf('.');
+    if (index > 0) {
+      return (this[key.substring(0, index)]
+          as i69n.I69nMessageBundle)[key.substring(index + 1)];
+    }
+    switch (key) {
+      case 'exceptionNull':
+        return exceptionNull;
+      case 'exceptionLoadData':
+        return exceptionLoadData;
+      case 'exceptionSaveData':
+        return exceptionSaveData;
+      case 'exceptionNodata':
+        return exceptionNodata;
+      case 'exceptionUnknown':
+        return exceptionUnknown;
+      default:
+        return key;
+    }
+  }
+}
+
+class NetworkTranslation implements i69n.I69nMessageBundle {
+  final Translation _parent;
+  const NetworkTranslation(this._parent);
+  ConnectionNetworkTranslation get connection =>
+      ConnectionNetworkTranslation(this);
+  ApiNetworkTranslation get api => ApiNetworkTranslation(this);
   Object operator [](String key) {
     var index = key.indexOf('.');
     if (index > 0) {
@@ -473,26 +568,24 @@ class ErrorTranslation implements i69n.I69nMessageBundle {
     switch (key) {
       case 'connection':
         return connection;
-      case 'network':
-        return network;
-      case 'storage':
-        return storage;
+      case 'api':
+        return api;
       default:
         return key;
     }
   }
 }
 
-class ConnectionErrorTranslation implements i69n.I69nMessageBundle {
-  final ErrorTranslation _parent;
-  const ConnectionErrorTranslation(this._parent);
+class ConnectionNetworkTranslation implements i69n.I69nMessageBundle {
+  final NetworkTranslation _parent;
+  const ConnectionNetworkTranslation(this._parent);
   String get internetNotAvailable => "Internet Not Available Exception";
-  String get timeoutException => "Timeout Exception";
-  String get socketException => "Socket Exception";
-  String get httpException => "HTTP Exception";
-  String get formatException => "Format Exception";
-  String get accessException => "Format Exception";
-  String get unknownException => "Unknown Error";
+  String get exceptionTimeout => "Timeout Exception";
+  String get exceptionSocket => "Socket Exception";
+  String get exceptionHttp => "HTTP Exception";
+  String get exceptionFormat => "Format Exception";
+  String get exceptionAccess => "Format Exception";
+  String get exceptionUnknown => "Unknown Network Error";
   Object operator [](String key) {
     var index = key.indexOf('.');
     if (index > 0) {
@@ -502,74 +595,74 @@ class ConnectionErrorTranslation implements i69n.I69nMessageBundle {
     switch (key) {
       case 'internetNotAvailable':
         return internetNotAvailable;
-      case 'timeoutException':
-        return timeoutException;
-      case 'socketException':
-        return socketException;
-      case 'httpException':
-        return httpException;
-      case 'formatException':
-        return formatException;
-      case 'accessException':
-        return accessException;
-      case 'unknownException':
-        return unknownException;
+      case 'exceptionTimeout':
+        return exceptionTimeout;
+      case 'exceptionSocket':
+        return exceptionSocket;
+      case 'exceptionHttp':
+        return exceptionHttp;
+      case 'exceptionFormat':
+        return exceptionFormat;
+      case 'exceptionAccess':
+        return exceptionAccess;
+      case 'exceptionUnknown':
+        return exceptionUnknown;
       default:
         return key;
     }
   }
 }
 
-class NetworkErrorTranslation implements i69n.I69nMessageBundle {
-  final ErrorTranslation _parent;
-  const NetworkErrorTranslation(this._parent);
-  String get parsingDataException => "Parsing Data Exception";
-  String get nonAuthoritativeInformationException =>
+class ApiNetworkTranslation implements i69n.I69nMessageBundle {
+  final NetworkTranslation _parent;
+  const ApiNetworkTranslation(this._parent);
+  String get exceptionParsingData => "Parsing Data Exception";
+  String get exceptionNonAuthoritativeInformation =>
       "NonAuthoritative Information Exception";
-  String get noContentException => "No Content Exception";
-  String get notModifiedException => "Not Modified Exception";
-  String get unauthorizedException => "Unauthorized Exception";
-  String get paymentRequiredException => "Payment Required Exception";
-  String get forbiddenException => "Forbidden Exception";
-  String get notFoundException => "Not Found Exception";
-  String get methodNotAllowedException => "Method Not Allowed Exception";
-  String get notAcceptableException => "Not Acceptable Exception";
-  String get proxyAuthRequiredException => "Proxy Auth Required Exception";
-  String get requestTimeoutException => "Request Timeout Exception";
-  String get conflictException => "Conflict Exception";
-  String get lengthRequiredException => "Length Required Exception";
-  String get preConditionFailedException => "PreCondition Failed Exception";
-  String get requestEntityTooLargeException =>
+  String get exceptionNoContent => "No Content Exception";
+  String get exceptionNotModified => "Not Modified Exception";
+  String get exceptionUnauthorized => "Unauthorized Exception";
+  String get exceptionPaymentRequired => "Payment Required Exception";
+  String get exceptionForbidden => "Forbidden Exception";
+  String get exceptionNotFound => "Not Found Exception";
+  String get exceptionMethodNotAllowed => "Method Not Allowed Exception";
+  String get exceptionNotAcceptable => "Not Acceptable Exception";
+  String get exceptionProxyAuthRequired => "Proxy Auth Required Exception";
+  String get exceptionRequestTimeout => "Request Timeout Exception";
+  String get exceptionConflict => "Conflict Exception";
+  String get exceptionLengthRequired => "Length Required Exception";
+  String get exceptionPreConditionFailed => "PreCondition Failed Exception";
+  String get exceptionRequestEntityTooLarge =>
       "Request Entity Too Large Exception";
-  String get requestUriTooLongException => "Request Uri Too Long Exception";
-  String get unsupportedMediaTypeException =>
+  String get exceptionRequestUriTooLong => "Request Uri Too Long Exception";
+  String get exceptionUnsupportedMediaType =>
       "Unsupported Media Type Exception";
-  String get requestedRangeNotSatisfiableException =>
+  String get exceptionRequestedRangeNotSatisfiable =>
       "Requested Range Not Satisfiable Exception";
-  String get expectationFailedException => "Expectation FailedException";
-  String get unProcessableEntityException => "UnProcessable Entity Exception";
-  String get failedDependencyException => "Failed Dependency Exception";
-  String get unorderedCollectionException => "Unordered Collection Exception";
-  String get upgradeRequiredException => "Upgrade Required Exception";
-  String get tooManyRequestException => "Too Many Request Exception";
-  String get requestHeaderFieldsTooLargeException =>
+  String get exceptionExpectationFailed => "Expectation FailedException";
+  String get exceptionUnProcessableEntity => "UnProcessable Entity Exception";
+  String get exceptionFailedDependency => "Failed Dependency Exception";
+  String get exceptionUnorderedCollection => "Unordered Collection Exception";
+  String get exceptionUpgradeRequired => "Upgrade Required Exception";
+  String get exceptionTooManyRequest => "Too Many Request Exception";
+  String get exceptionRequestHeaderFieldsTooLarge =>
       "Request Header Fields Too Large Exception";
-  String get noResponseException => "No Response Exception";
-  String get unavailableForLegalReasonsException =>
+  String get exceptionNoResponse => "No Response Exception";
+  String get exceptionUnavailableForLegalReasons =>
       "Unavailable For Legal Reasons Exception";
-  String get requestHeaderTooLargeException =>
+  String get exceptionRequestHeaderTooLarge =>
       "Request Header Too Large Exception";
-  String get internalServerErrorException => "Internal Server Error Exception";
-  String get notImplementedException => "Not Implemented Exception";
-  String get badGatewayException => "Bad Gateway Exception";
-  String get serviceUnavailableException => "Service Unavailable Exception";
-  String get gatewayTimeoutException => "Gateway Timeout Exception";
-  String get insufficientStorageException => "Insufficient Storage Exception";
-  String get loopDetectedException => "Loop Detected Exception";
-  String get bandwidthLimitException => "Bandwidth Limit Exception";
-  String get notExtendedException => "Not Extended Exception";
-  String get networkAuthRequiredException => "Network AuthRequired Exception";
-  String get unknownException => "Unknown Network Error";
+  String get exceptionInternalServerError => "Internal Server Error Exception";
+  String get exceptionNotImplemented => "Not Implemented Exception";
+  String get exceptionBadGateway => "Bad Gateway Exception";
+  String get exceptionServiceUnavailable => "Service Unavailable Exception";
+  String get exceptionGatewayTimeout => "Gateway Timeout Exception";
+  String get exceptionInsufficientStorage => "Insufficient Storage Exception";
+  String get exceptionLoopDetected => "Loop Detected Exception";
+  String get exceptionBandwidthLimit => "Bandwidth Limit Exception";
+  String get exceptionNotExtended => "Not Extended Exception";
+  String get exceptionNetworkAuthRequired => "Network AuthRequired Exception";
+  String get exceptionUnknown => "Unknown Network Error";
   Object operator [](String key) {
     var index = key.indexOf('.');
     if (index > 0) {
@@ -577,117 +670,86 @@ class NetworkErrorTranslation implements i69n.I69nMessageBundle {
           as i69n.I69nMessageBundle)[key.substring(index + 1)];
     }
     switch (key) {
-      case 'parsingDataException':
-        return parsingDataException;
-      case 'nonAuthoritativeInformationException':
-        return nonAuthoritativeInformationException;
-      case 'noContentException':
-        return noContentException;
-      case 'notModifiedException':
-        return notModifiedException;
-      case 'unauthorizedException':
-        return unauthorizedException;
-      case 'paymentRequiredException':
-        return paymentRequiredException;
-      case 'forbiddenException':
-        return forbiddenException;
-      case 'notFoundException':
-        return notFoundException;
-      case 'methodNotAllowedException':
-        return methodNotAllowedException;
-      case 'notAcceptableException':
-        return notAcceptableException;
-      case 'proxyAuthRequiredException':
-        return proxyAuthRequiredException;
-      case 'requestTimeoutException':
-        return requestTimeoutException;
-      case 'conflictException':
-        return conflictException;
-      case 'lengthRequiredException':
-        return lengthRequiredException;
-      case 'preConditionFailedException':
-        return preConditionFailedException;
-      case 'requestEntityTooLargeException':
-        return requestEntityTooLargeException;
-      case 'requestUriTooLongException':
-        return requestUriTooLongException;
-      case 'unsupportedMediaTypeException':
-        return unsupportedMediaTypeException;
-      case 'requestedRangeNotSatisfiableException':
-        return requestedRangeNotSatisfiableException;
-      case 'expectationFailedException':
-        return expectationFailedException;
-      case 'unProcessableEntityException':
-        return unProcessableEntityException;
-      case 'failedDependencyException':
-        return failedDependencyException;
-      case 'unorderedCollectionException':
-        return unorderedCollectionException;
-      case 'upgradeRequiredException':
-        return upgradeRequiredException;
-      case 'tooManyRequestException':
-        return tooManyRequestException;
-      case 'requestHeaderFieldsTooLargeException':
-        return requestHeaderFieldsTooLargeException;
-      case 'noResponseException':
-        return noResponseException;
-      case 'unavailableForLegalReasonsException':
-        return unavailableForLegalReasonsException;
-      case 'requestHeaderTooLargeException':
-        return requestHeaderTooLargeException;
-      case 'internalServerErrorException':
-        return internalServerErrorException;
-      case 'notImplementedException':
-        return notImplementedException;
-      case 'badGatewayException':
-        return badGatewayException;
-      case 'serviceUnavailableException':
-        return serviceUnavailableException;
-      case 'gatewayTimeoutException':
-        return gatewayTimeoutException;
-      case 'insufficientStorageException':
-        return insufficientStorageException;
-      case 'loopDetectedException':
-        return loopDetectedException;
-      case 'bandwidthLimitException':
-        return bandwidthLimitException;
-      case 'notExtendedException':
-        return notExtendedException;
-      case 'networkAuthRequiredException':
-        return networkAuthRequiredException;
-      case 'unknownException':
-        return unknownException;
-      default:
-        return key;
-    }
-  }
-}
-
-class StorageErrorTranslation implements i69n.I69nMessageBundle {
-  final ErrorTranslation _parent;
-  const StorageErrorTranslation(this._parent);
-  String get nullExceptionMessage => "Null Exception";
-  String get loadDataExceptionMessage => "Storage Load Data Exception";
-  String get saveDataExceptionMessage => "Storage Save Data Exception";
-  String get nodataMessage => "No Data Found";
-  String get unknownExceptionMessage => "Unknown Error";
-  Object operator [](String key) {
-    var index = key.indexOf('.');
-    if (index > 0) {
-      return (this[key.substring(0, index)]
-          as i69n.I69nMessageBundle)[key.substring(index + 1)];
-    }
-    switch (key) {
-      case 'nullExceptionMessage':
-        return nullExceptionMessage;
-      case 'loadDataExceptionMessage':
-        return loadDataExceptionMessage;
-      case 'saveDataExceptionMessage':
-        return saveDataExceptionMessage;
-      case 'nodataMessage':
-        return nodataMessage;
-      case 'unknownExceptionMessage':
-        return unknownExceptionMessage;
+      case 'exceptionParsingData':
+        return exceptionParsingData;
+      case 'exceptionNonAuthoritativeInformation':
+        return exceptionNonAuthoritativeInformation;
+      case 'exceptionNoContent':
+        return exceptionNoContent;
+      case 'exceptionNotModified':
+        return exceptionNotModified;
+      case 'exceptionUnauthorized':
+        return exceptionUnauthorized;
+      case 'exceptionPaymentRequired':
+        return exceptionPaymentRequired;
+      case 'exceptionForbidden':
+        return exceptionForbidden;
+      case 'exceptionNotFound':
+        return exceptionNotFound;
+      case 'exceptionMethodNotAllowed':
+        return exceptionMethodNotAllowed;
+      case 'exceptionNotAcceptable':
+        return exceptionNotAcceptable;
+      case 'exceptionProxyAuthRequired':
+        return exceptionProxyAuthRequired;
+      case 'exceptionRequestTimeout':
+        return exceptionRequestTimeout;
+      case 'exceptionConflict':
+        return exceptionConflict;
+      case 'exceptionLengthRequired':
+        return exceptionLengthRequired;
+      case 'exceptionPreConditionFailed':
+        return exceptionPreConditionFailed;
+      case 'exceptionRequestEntityTooLarge':
+        return exceptionRequestEntityTooLarge;
+      case 'exceptionRequestUriTooLong':
+        return exceptionRequestUriTooLong;
+      case 'exceptionUnsupportedMediaType':
+        return exceptionUnsupportedMediaType;
+      case 'exceptionRequestedRangeNotSatisfiable':
+        return exceptionRequestedRangeNotSatisfiable;
+      case 'exceptionExpectationFailed':
+        return exceptionExpectationFailed;
+      case 'exceptionUnProcessableEntity':
+        return exceptionUnProcessableEntity;
+      case 'exceptionFailedDependency':
+        return exceptionFailedDependency;
+      case 'exceptionUnorderedCollection':
+        return exceptionUnorderedCollection;
+      case 'exceptionUpgradeRequired':
+        return exceptionUpgradeRequired;
+      case 'exceptionTooManyRequest':
+        return exceptionTooManyRequest;
+      case 'exceptionRequestHeaderFieldsTooLarge':
+        return exceptionRequestHeaderFieldsTooLarge;
+      case 'exceptionNoResponse':
+        return exceptionNoResponse;
+      case 'exceptionUnavailableForLegalReasons':
+        return exceptionUnavailableForLegalReasons;
+      case 'exceptionRequestHeaderTooLarge':
+        return exceptionRequestHeaderTooLarge;
+      case 'exceptionInternalServerError':
+        return exceptionInternalServerError;
+      case 'exceptionNotImplemented':
+        return exceptionNotImplemented;
+      case 'exceptionBadGateway':
+        return exceptionBadGateway;
+      case 'exceptionServiceUnavailable':
+        return exceptionServiceUnavailable;
+      case 'exceptionGatewayTimeout':
+        return exceptionGatewayTimeout;
+      case 'exceptionInsufficientStorage':
+        return exceptionInsufficientStorage;
+      case 'exceptionLoopDetected':
+        return exceptionLoopDetected;
+      case 'exceptionBandwidthLimit':
+        return exceptionBandwidthLimit;
+      case 'exceptionNotExtended':
+        return exceptionNotExtended;
+      case 'exceptionNetworkAuthRequired':
+        return exceptionNetworkAuthRequired;
+      case 'exceptionUnknown':
+        return exceptionUnknown;
       default:
         return key;
     }

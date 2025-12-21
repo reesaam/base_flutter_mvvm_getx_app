@@ -1,6 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:getx_binding_annotation/get_put_annotation.dart';
-
 import '../../../core/core_elements/core_view.dart';
 import '../../../core/core_resources/countries.dart';
 import '../../../core/extensions/data_types_extensions/extension_custom_duration.dart';

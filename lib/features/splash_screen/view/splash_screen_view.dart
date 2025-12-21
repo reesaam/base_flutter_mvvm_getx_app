@@ -1,12 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:getx_binding_annotation/get_put_annotation.dart';
-
 import '../../../core/core_elements/core_view.dart';
 import '../../../ui_kit/core_widgets.dart';
 import '../../../ui_kit/general_widgets/image.dart';
 import '../../../ui_kit/main_widgets/progress_indicator.dart';
-import '../../../ui_kit/theme/themes.dart';
 import '../controller/splash_screen_controller.dart';
 
 @GetPut.page(isInitial: true)

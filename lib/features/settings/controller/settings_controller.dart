@@ -1,8 +1,5 @@
 import 'dart:async';
 
-import 'package:get/get.dart';
-import 'package:getx_binding_annotation/get_put_annotation.dart';
-
 import '../../../components/storage/app_storage_module.dart';
 import '../../../core/app_routing/app_routing.dart';
 import '../../../core/core_elements/core_controller.dart';
@@ -18,7 +15,6 @@ import '../../../shared/shared_models/core_models/app_version/app_version.dart';
 import '../../../ui_kit/dialogs/app_alert_dialogs.dart';
 import '../../../ui_kit/dialogs/app_bottom_dialogs.dart';
 import '../../../ui_kit/theme/theme_functions.dart';
-import '../../../ui_kit/theme/themes.dart';
 import '../widgets/settings_languages_widgets.dart';
 
 @GetPut.controller()
@@ -64,7 +60,7 @@ class SettingsController extends CoreController {
   }
 
   functionLanguageModal() => AppBottomDialogs().withCancel(
-      title: Texts.to.settings.settingsLanguageModalSelectLanguage,
+      title: Texts.to.settings.languageModalSelectLanguage,
       form: SettingsLanguageWidget(function: functionLanguageSelectionOnTap),
       dismissible: true);
 
@@ -84,7 +80,7 @@ class SettingsController extends CoreController {
     appSettings.value = appSettings.value.copyWith(darkMode: value);
     saveSettings();
     appLogPrint('DarkMode Changed to ${darkMode.value}');
-    AppThemeFunctions.changeThemeMode(darkMode.value);
+    AppThemeFunctions.to.changeThemeMode(darkMode.value);
     update();
   }
 
@@ -103,7 +99,7 @@ class SettingsController extends CoreController {
 
     AppAlertDialogs.withOkCancel(
         title: Texts.to.general.warning,
-        text: Texts.to.dialogs.areYouSureDataExport,
+        text: Texts.to.dialogs.data.areYouSureDataExport,
         onTapOk: function,
         dismissible: true);
   }
@@ -116,7 +112,7 @@ class SettingsController extends CoreController {
 
     AppAlertDialogs.withOkCancel(
         title: Texts.to.general.warning,
-        text: Texts.to.dialogs.areYouSureDataMayLost,
+        text: Texts.to.dialogs.data.areYouSureDataMayLost,
         onTapOk: function,
         dismissible: true);
   }
@@ -131,7 +127,7 @@ class SettingsController extends CoreController {
 
     AppAlertDialogs.withOkCancel(
         title: Texts.to.general.warning,
-        text: Texts.to.dialogs.areYouSureDataWillLost,
+        text: Texts.to.dialogs.data.areYouSureDataWillLost,
         onTapOk: function,
         dismissible: true);
   }
@@ -146,7 +142,7 @@ class SettingsController extends CoreController {
 
     AppAlertDialogs.withOkCancel(
         title: Texts.to.general.warning,
-        text: Texts.to.dialogs.areYouSureDataWillLost,
+        text: Texts.to.dialogs.data.areYouSureDataWillLost,
         onTapOk: function,
         dismissible: true);
   }

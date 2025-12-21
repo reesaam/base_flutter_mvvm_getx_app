@@ -8,8 +8,8 @@ class AppExceptionsDialog extends AppAlertDialogs {
     await AppAlertDialogs.withOk(
       title: statusCode != null
           ? 'Error: ${statusCode.toString()}'
-          : exception.statusCode?.toString() ?? Texts.to.error.storage.unknownExceptionMessage,
-      text: message ?? exception.message ?? Texts.to.error.storage.unknownExceptionMessage,
+          : exception.statusCode?.toString() ?? Texts.to.error.unknown,
+      text: message ?? exception.message ?? Texts.to.error.unknown,
       onTapOk: onTap ?? popPage,
     );
   }

@@ -53,13 +53,10 @@ import 'admin/admin_verifiers/controller/admin_verifiers_controller.dart';
 import 'admin/admin_verifiers/view/admin_verifiers_page.dart';
 import 'admin/admin_widget_check/controller/admin_widget_check_controller.dart';
 import 'admin/admin_widget_check/view/admin_widget_check_page.dart';
-import 'components/connectivity/connectivity.dart';
 import 'components/file_functions/file_functions.dart';
 import 'components/network/dio_core.dart';
 import 'components/notifications/local_notifications/local_notification_controller.dart';
 import 'components/notifications/local_notifications/local_notifications.dart';
-import 'components/permissions/permissions.dart';
-import 'components/share/share.dart';
 import 'components/statistics/statistics.dart';
 import 'components/storage/app_storage_module.dart';
 import 'components/storage/storage_providers/app_local_storage.dart';
@@ -79,14 +76,13 @@ import 'features/update/data/update_remote_data_source.dart';
 import 'features/update/view/update_view.dart';
 import 'features/versions/data/versions_local_data_source.dart';
 import 'features/versions/data/versions_remote_data_source.dart';
-import 'localization/localizations.dart';
-import 'ui_kit/theme/themes.dart';
+import 'ui_kit/theme/theme_functions.dart';
 
 /// Generated Library Statistics:
-///   Imports Count: 44
+///   Imports Count: 40
 ///   Pages Count: 14
-///   Controllers Count: 15
-///   Components Count: 12
+///   Controllers Count: 14
+///   Components Count: 9
 ///   Repositories Count: 3
 
 class GetPutPages {
@@ -146,9 +142,6 @@ class _GetPutController extends Bindings {
         fenix: true);
     Get.lazyPut<AdminWidgetCheckController>(() => AdminWidgetCheckController(),
         fenix: true);
-    Get.lazyPut<AppLocalNotificationController>(
-        () => AppLocalNotificationController(),
-        fenix: true);
     Get.lazyPut<AboutController>(() => AboutController(), fenix: true);
     Get.lazyPut<HomePageController>(() => HomePageController(), fenix: true);
     Get.lazyPut<NotFoundController>(() => NotFoundController(), fenix: true);
@@ -162,21 +155,19 @@ class _GetPutController extends Bindings {
 class _GetPutComponent extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<AppConnectionChecker>(() => AppConnectionChecker(),
-        fenix: true);
     Get.lazyPut<AppFileFunctions>(() => AppFileFunctions(), fenix: true);
     Get.lazyPut<DioCore>(() => DioCore(), fenix: true);
+    Get.lazyPut<AppLocalNotificationController>(
+        () => AppLocalNotificationController(),
+        fenix: true);
     Get.lazyPut<AppLocalNotifications>(() => AppLocalNotifications(),
         fenix: true);
-    Get.lazyPut<AppPermissions>(() => AppPermissions(), fenix: true);
-    Get.lazyPut<AppShare>(() => AppShare(), fenix: true);
     Get.lazyPut<AppStatistics>(() => AppStatistics(), fenix: true);
     Get.lazyPut<AppStorage>(() => AppStorage(), fenix: true);
     Get.lazyPut<AppLocalStorage>(() => AppLocalStorage(), fenix: true);
     Get.lazyPut<AppSharedPreferences>(() => AppSharedPreferences(),
         fenix: true);
-    Get.lazyPut<AppLocalizations>(() => AppLocalizations(), fenix: true);
-    Get.lazyPut<AppTheme>(() => AppTheme(), fenix: true);
+    Get.lazyPut<AppThemeFunctions>(() => AppThemeFunctions(), fenix: true);
   }
 }
 
@@ -185,7 +176,8 @@ class _GetPutRepository extends Bindings {
   void dependencies() {
     Get.lazyPut<UpdateRemoteDataSourceImpl>(() => UpdateRemoteDataSourceImpl(),
         fenix: true);
-    Get.lazyPut<VersionsLocalDataSource>(() => VersionsLocalDataSource(),
+    Get.lazyPut<VersionsLocalDataSourceImpl>(
+        () => VersionsLocalDataSourceImpl(),
         fenix: true);
     Get.lazyPut<VersionsRemoteDataSourceImpl>(
         () => VersionsRemoteDataSourceImpl(),

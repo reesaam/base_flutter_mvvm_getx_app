@@ -1,7 +1,5 @@
 import 'dart:io';
 
-import 'package:get/get.dart';
-import 'package:getx_binding_annotation/get_put_annotation.dart';
 import 'package:open_file_plus/open_file_plus.dart' as file_plus;
 import 'package:path_provider/path_provider.dart';
 

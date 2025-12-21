@@ -1,11 +1,9 @@
-import 'package:get/get.dart';
-import 'package:getx_binding_annotation/get_put_annotation.dart';
-
+import '../../core/core_elements/core_component.dart';
 import '../../core/core_functions.dart';
 import '../../shared/shared_models/core_models/app_statistics_data/app_statistics_data.dart';
 
 @GetPut.component()
-class AppStatistics {
+class AppStatistics extends CoreComponent {
   static AppStatistics get to => Get.find();
 
   void increaseLaunch() => _addStatistics(launches: true);

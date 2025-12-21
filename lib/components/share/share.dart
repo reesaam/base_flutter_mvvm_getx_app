@@ -1,8 +1,9 @@
-import 'package:getx_binding_annotation/get_put_annotation.dart';
 import 'package:share_plus/share_plus.dart';
 
+import '../../core/core_elements/core_component.dart';
+
 @GetPut.component()
-class AppShare {
+class AppShare extends CoreComponent {
   static shareText(String text) async {
     await Share.share(text);
   }

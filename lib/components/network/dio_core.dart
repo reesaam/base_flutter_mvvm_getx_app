@@ -5,6 +5,7 @@ import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart';
 import 'package:getx_binding_annotation/get_put_annotation.dart';
 
+import '../../core/core_elements/core_component.dart';
 import '../../core/core_functions.dart';
 import '../../core/core_resources/defaults.dart';
 import '../../core/core_resources/defined_types.dart';
@@ -19,7 +20,7 @@ export 'api_response_status.dart';
 typedef APIResponse = dio.Response;
 
 @GetPut.component()
-class DioCore {
+class DioCore extends CoreComponent {
   static DioCore get to => Get.find();
 
   dio.Dio get dioCore => dio.Dio();

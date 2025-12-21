@@ -15,9 +15,9 @@ extension LocalExceptionsExtension on LocalExceptions {
   LocalException get exception => LocalException(statusCode: statusCode, message: message);
 
   String get message => switch (this) {
-        LocalExceptions.nullException => Texts.to.error.storage.nullExceptionMessage,
-        LocalExceptions.storageLoadDataException => Texts.to.error.storage.loadDataExceptionMessage,
-        LocalExceptions.storageSaveDataException => Texts.to.error.storage.saveDataExceptionMessage,
-        LocalExceptions.unknownException => Texts.to.error.storage.unknownExceptionMessage,
+        LocalExceptions.nullException => Texts.to.storage.exceptionNull,
+        LocalExceptions.storageLoadDataException => Texts.to.storage.exceptionLoadData,
+        LocalExceptions.storageSaveDataException => Texts.to.storage.exceptionSaveData,
+        LocalExceptions.unknownException => Texts.to.storage.exceptionUnknown,
       };
 }

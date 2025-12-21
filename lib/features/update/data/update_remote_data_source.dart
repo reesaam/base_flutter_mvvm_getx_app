@@ -1,10 +1,7 @@
 import 'dart:io';
 
-import 'package:dartz/dartz.dart';
-import 'package:get/get.dart';
-import 'package:getx_binding_annotation/get_put_annotation.dart';
-
 import '../../../components/network/dio_core.dart';
+import '../../../core/core_elements/core_repository.dart';
 import '../../../core/core_resources/apis.dart';
 import '../../../core/core_resources/defined_types.dart';
 
@@ -17,7 +14,7 @@ abstract class UpdateRemoteDataSource {
 }
 
 @GetPut.repository(as: UpdateRemoteDataSource)
-class UpdateRemoteDataSourceImpl implements UpdateRemoteDataSource {
+class UpdateRemoteDataSourceImpl extends CoreRepository implements UpdateRemoteDataSource {
   @override
   Future<BaseAPIResponse<String>> getDownloadAddress() async =>
       await DioCore.to.callMethod<String>(method: APIMethods.get, url: AppAPIUrls.apiGetUpdateAddress);

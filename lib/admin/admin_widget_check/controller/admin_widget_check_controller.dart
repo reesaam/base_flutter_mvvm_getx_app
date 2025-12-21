@@ -1,5 +1,3 @@
-import 'package:getx_binding_annotation/get_put_annotation.dart';
-
 import '../../../core/core_elements/core_controller.dart';
 import '../../../core/core_functions.dart';
 import '../../../core/core_resources/page_details.dart';

@@ -1,23 +1,9 @@
-import 'dart:convert';
 import 'dart:io';
 
-import 'package:get/get.dart';
-import 'package:getx_binding_annotation/get_put_annotation.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../../../components/connectivity/connectivity.dart';
 import '../../../components/file_functions/file_functions.dart';
-import '../../../components/network/api_methods.dart';
-import '../../../components/network/api_methods.dart';
-import '../../../components/network/api_methods.dart';
-import '../../../components/network/api_methods.dart';
-import '../../../components/network/api_methods.dart';
-import '../../../components/network/api_methods.dart';
-import '../../../components/network/dio_core.dart';
-import '../../../components/network/dio_core.dart';
-import '../../../components/network/dio_core.dart';
-import '../../../components/network/dio_core.dart';
-import '../../../components/network/dio_core.dart';
 import '../../../components/network/dio_core.dart';
 import '../../../components/notifications/local_notifications/local_notifications.dart';
 import '../../../components/permissions/permissions.dart';
@@ -55,7 +41,7 @@ class AdminTestController extends CoreController {
     settings =
         settings?.copyWith(darkMode: darkMode.value) ?? const AppSettingData().copyWith(darkMode: darkMode.value);
     saveAppData(appSettingData: settings);
-    AppThemeFunctions.changeThemeMode(darkMode.value);
+    AppThemeFunctions.to.changeThemeMode(darkMode.value);
   }
 
   ///Connections
