@@ -6,7 +6,10 @@ import '../resources/elements.dart';
 import '../resources/text_sizes.dart';
 import 'colors.dart';
 
-class AppThemes {
+export 'package:flutter/widgets.dart';
+export 'package:flutter/material.dart';
+
+class AppTheme {
   ///Main Theme Functions
   static ThemeData get lightTheme => _getTheme(brightness: Brightness.light);
   static ThemeData get darkTheme => _getTheme(brightness: Brightness.dark);

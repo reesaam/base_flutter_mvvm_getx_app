@@ -6,6 +6,6 @@ import 'themes.dart';
 class AppThemeFunctions {
   static changeThemeMode(bool? darkMode) {
     appLogPrint('DarkMode Changed to $darkMode');
-    Get.changeTheme(darkMode != true ? AppThemes.lightTheme : AppThemes.darkTheme);
+    Get.changeTheme(darkMode != true ? AppTheme.lightTheme : AppTheme.darkTheme);
   }
 }

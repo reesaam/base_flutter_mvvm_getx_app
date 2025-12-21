@@ -176,7 +176,7 @@ class _GetPutComponent extends Bindings {
     Get.lazyPut<AppSharedPreferences>(() => AppSharedPreferences(),
         fenix: true);
     Get.lazyPut<AppLocalizations>(() => AppLocalizations(), fenix: true);
-    Get.lazyPut<AppThemes>(() => AppThemes(), fenix: true);
+    Get.lazyPut<AppTheme>(() => AppTheme(), fenix: true);
   }
 }
 
