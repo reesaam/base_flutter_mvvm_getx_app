@@ -2,7 +2,7 @@ import '../core_info/app_info.dart';
 import 'core_enums.dart';
 
 ///
-/// All APIs URls are gathering here in [AppAPIs] to have the best changing performance
+/// All APIs URls are gathering here in [AppAPIUrls] to have the best changing performance
 /// You can use [_apiBaseUrl] for the Base for all, it means the base url of the business website
 /// Use [_apiVersion] for determine the version of api and it could be easily changed
 /// [_apiUrl] is the generated API URl that you can use for APIS here, the every API will be used in the App
@@ -11,7 +11,7 @@ import 'core_enums.dart';
 /// Then API URLs will generate for every API and you use them all over the App
 ///
 
-class AppAPIs {
+class AppAPIUrls {
   /// [Main Variables] for generating APIs are:
   // static String get _apiBaseUrl => '${AppInfo.subDomain}.${AppInfo.baseUrl}';
   static String get _apiBaseUrl => 'www.${AppInfo.baseUrl}/${AppInfo.subDomain}';

@@ -16,5 +16,5 @@ abstract class VersionsRemoteDataSource {
 class VersionsRemoteDataSourceImpl implements VersionsRemoteDataSource {
   @override
   Future<BaseAPIResponse<AppVersionsList>> getVersions() async =>
-      await DioCore.to.callMethod<AppVersionsList>(method: APIMethods.get, url: AppAPIs.apiGetVersions);
+      await DioCore.to.callMethod<AppVersionsList>(method: APIMethods.get, url: AppAPIUrls.apiGetVersions);
 }

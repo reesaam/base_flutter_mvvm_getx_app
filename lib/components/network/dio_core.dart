@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart' as dio;
@@ -5,17 +6,15 @@ import 'package:get/get.dart';
 import 'package:getx_binding_annotation/get_put_annotation.dart';
 
 import '../../core/core_functions.dart';
-import '../../core/core_info/app_info.dart';
 import '../../core/core_resources/defaults.dart';
 import '../../core/core_resources/defined_types.dart';
 import '../../core/core_resources/texts.dart';
 import '../statistics/statistics.dart';
 import 'api_methods.dart';
-import 'api_status.dart';
 
 export 'package:dio/dio.dart';
 export 'api_methods.dart';
-export 'api_status.dart';
+export 'api_response_status.dart';
 
 typedef APIResponse = dio.Response;
 
@@ -37,21 +36,22 @@ class DioCore {
       receiveTimeout: AppDefaults.connectionTimeOut,
       sendTimeout: AppDefaults.connectionTimeOut,
       contentType: AppTexts.dioHeaderContentTypeData,
+      headers: {"Content-Type": "application/json"},
     );
-
+    _increaseStatisticApiCall();
     final result = await dioCore.request(
-      AppInfo.baseUrl + url,
+      url,
       queryParameters: queryParameters,
       options: options,
       data: data,
     );
-    if (result.statusCode == APIStatus.success.statusCode) {
-      _printResponse(method.getName, result);
+    if (APIResponseStatus.values.find(result.statusCode ?? 0).isSuccess == true) {
+      // _printResponse(method.getName, result.data);
       return Right(result.data);
     } else {
       _printException(method.getName,
           ['Result Data: ${result.data} (${result.statusCode})', 'Result Message: ${result.statusMessage}']);
-      return Left(NetworkExceptions.values.find(result.statusCode ?? 0).exception);
+      return Left(APIResponseStatus.values.find(result.statusCode ?? 0).exception);
     }
   }
 
@@ -72,7 +72,7 @@ class DioCore {
       }
       _printException(
           APIMethods.download.getName, ['Result Data: ${result.data}', 'Result Message: ${result.statusMessage}']);
-      return Left(_defaultLeftResponse);
+      return Left(APIResponseStatus.values.find(result.statusCode ?? 0).exception);
     } on dio.DioException catch (ex, stackTrace) {
       _printException(APIMethods.download.getName,
           ['DioException Response: ${ex.response}', 'DioException Message: ${ex.message}']);
@@ -82,8 +82,6 @@ class DioCore {
       rethrow;
     }
   }
-
-  static NetworkException get _defaultLeftResponse => NetworkExceptions.unknownException.exception;
 
   static _increaseStatisticApiCall() => AppStatistics.to.increaseApiCalls();
 

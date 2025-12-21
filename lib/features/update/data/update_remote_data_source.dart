@@ -20,13 +20,13 @@ abstract class UpdateRemoteDataSource {
 class UpdateRemoteDataSourceImpl implements UpdateRemoteDataSource {
   @override
   Future<BaseAPIResponse<String>> getDownloadAddress() async =>
-      await DioCore.to.callMethod<String>(method: APIMethods.get, url: AppAPIs.apiGetUpdateAddress);
+      await DioCore.to.callMethod<String>(method: APIMethods.get, url: AppAPIUrls.apiGetUpdateAddress);
 
   @override
   Future<BaseAPIResponse<String>> getAvailableVersion() async =>
-      await DioCore.to.callMethod<String>(method: APIMethods.get, url: AppAPIs.apiGetVersions);
+      await DioCore.to.callMethod<String>(method: APIMethods.get, url: AppAPIUrls.apiGetVersions);
 
   @override
   Future<BaseAPIResponse<File?>> updateDownload({required String savePath}) async =>
-      await DioCore.to.download(url: AppAPIs.apiGetUpdateAPKDownload, savePath: savePath);
+      await DioCore.to.download(url: AppAPIUrls.apiGetUpdateAPKDownload, savePath: savePath);
 }

@@ -1,10 +1,12 @@
 import 'package:dio/dio.dart' as dio;
-import 'package:get/get.dart';
 
+import '../../core/extensions/api_extensions/extension_api_response_status.dart';
+import '../network/api_response_status.dart';
 import 'general_exception.dart';
-import 'network_exceptions.dart';
 
-export 'network_exceptions.dart';
+export '../network/api_response_status.dart';
+export 'general_exception.dart';
+export '../../core/extensions/api_extensions/extension_api_response_status.dart';
 
 class NetworkException implements GeneralException {
   NetworkException({this.message, this.statusCode});
@@ -15,7 +17,6 @@ class NetworkException implements GeneralException {
   final int? statusCode;
 
   static NetworkException handleResponse(dio.DioException ex, StackTrace? stacktrace) {
-    final exception = NetworkExceptions.values.firstWhereOrNull((e) => e.statusCode == ex.response?.statusCode);
-    throw exception != null ? exception.exception : NetworkExceptions.unknownException.exception;
+    throw APIResponseStatus.values.find(ex.response?.statusCode ?? 0).exception;
   }
 }
