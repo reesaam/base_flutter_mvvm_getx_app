@@ -1,5 +1,5 @@
-import '../../boiler_plates/boiler_plate_ui_kit.dart';
-export '../../boiler_plates/boiler_plate_ui_kit.dart';
+import '../ui_kit_barrel.dart';
+export '../ui_kit_barrel.dart';
 
 class AppBox extends AppWidget {
   const AppBox._({super.key, this.child, this.width, this.height, this.shrink, this.flex});

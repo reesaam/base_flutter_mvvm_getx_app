@@ -1,6 +1,5 @@
-export '../../boiler_plates/boiler_plate_ui_kit.dart';
+export '../ui_kit_barrel.dart';
 
-import '../../core/extensions/data_types_extensions/extension_icon.dart';
 import 'popup_menu_item.dart';
 
 class AppPopupMenu extends AppWidget {
@@ -23,8 +22,8 @@ class AppPopupMenu extends AppWidget {
       shape: AppElements.borderShapeDefault,
       icon: icon == null
           ? primaryColorIcon == true
-              ? AppIcons.threeDots.withPrimaryColor
-              : AppIcons.threeDots.withSecondaryColor
+              ? AppIcons.threeDots.widget.withPrimaryColor
+              : AppIcons.threeDots.widget.withSecondaryColor
           : primaryColorIcon == true
               ? icon!.withPrimaryColor
               : icon!.withSecondaryColor,

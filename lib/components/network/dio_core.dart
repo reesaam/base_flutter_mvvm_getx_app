@@ -2,8 +2,6 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart' as dio;
-import 'package:get/get.dart';
-import 'package:getx_binding_annotation/get_put_annotation.dart';
 
 import '../../core/core_elements/core_component.dart';
 import '../../core/core_functions.dart';
@@ -13,7 +11,6 @@ import '../../core/core_resources/texts.dart';
 import '../statistics/statistics.dart';
 import 'api_methods.dart';
 
-export 'package:dio/dio.dart';
 export 'api_methods.dart';
 export 'api_response_status.dart';
 

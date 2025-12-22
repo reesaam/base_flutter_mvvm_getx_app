@@ -1,9 +1,7 @@
 import '../../../core/core_elements/core_view.dart';
 import '../../../core/core_functions.dart';
-import '../../../core/core_resources/icons.dart';
 import '../../../core/core_resources/logos.dart';
 import '../../../core/core_resources/page_details.dart';
-import '../../../core/extensions/data_types_extensions/extension_icon.dart';
 import '../../../core/extensions/material_widgets_extensions/extension_text.dart';
 import '../../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
 import '../../../ui_kit/buttons/app_general_button.dart';
@@ -21,7 +19,6 @@ import '../../../ui_kit/main_widgets/app_bar.dart';
 import '../../../ui_kit/main_widgets/bottom_navigation_bar.dart';
 import '../../../ui_kit/main_widgets/progress_indicator.dart';
 import '../../../ui_kit/main_widgets/snackbar.dart';
-import '../../../ui_kit/resources/paddings.dart';
 import '../../../ui_kit/text_fields/text_field.dart';
 import '../../admin_general_functions.dart';
 import '../controller/admin_widget_check_controller.dart';
@@ -69,7 +66,7 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
         AdminFunctions.item(
             title: 'IconButton\nDefaultColor',
             widget: AppIconButton(
-              icon: AppIcons.home,
+              icon: AppIcons.home.widget,
               text: 'IconButton',
               onTap: controller.functionCalledDialog,
             )),
@@ -77,7 +74,7 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
             primary: true,
             title: 'IconButton\nPrimaryColor',
             widget: AppIconButton(
-              icon: AppIcons.home,
+              icon: AppIcons.home.widget,
               text: 'IconButton',
               primaryColor: true,
               onTap: controller.functionCalledDialog,
@@ -120,15 +117,15 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
     return AdminFunctions.section([
       AdminFunctions.item(
           title: 'TextField Editable with Leading Icon',
-          widget: AppTextField.general(controller: ctrl, hint: textFieldHint, leadingIcon: AppIcons.info)),
+          widget: AppTextField.general(controller: ctrl, hint: textFieldHint, leadingIcon: AppIcons.info.widget)),
       AdminFunctions.item(
           title: 'TextField Editable with Prefix and Suffix',
           widget: AppTextField.general(
               controller: ctrl,
               hint: textFieldHint,
-              prefixIcon: AppIcons.add,
+              prefixIcon: AppIcons.add.widget,
               prefixAction: controller.functionCalledDialog,
-              suffixIcon: AppIcons.settings,
+              suffixIcon: AppIcons.settings.widget,
               suffixAction: controller.functionCalledDialog)),
       AdminFunctions.item(
           title: 'TextField Not Editable',
@@ -138,7 +135,7 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
             hasCounter: true,
             label: textFieldLabel,
             hint: textFieldHint,
-            suffixIcon: AppIcons.settings,
+            suffixIcon: AppIcons.settings.widget,
             suffixAction: controller.functionCalledDialog,
           )),
       AdminFunctions.item(
@@ -147,7 +144,7 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
           controller: ctrlWithData,
           hasCounter: true,
           hint: textFieldHint,
-          suffixIcon: AppIcons.settings,
+          suffixIcon: AppIcons.settings.widget,
           suffixAction: controller.functionCalledDialog,
         ),
       ),
@@ -160,7 +157,7 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
             showMaxLength: true,
             label: textFieldLabel,
             hint: textFieldHint,
-            suffixIcon: AppIcons.settings,
+            suffixIcon: AppIcons.settings.widget,
             suffixAction: controller.functionCalledDialog,
           )),
       AdminFunctions.item(
@@ -187,8 +184,8 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
             title: 'AppGeneralButton',
             widget: AppGeneralButton(
               text: 'AppGeneralButton',
-              icon: AppIcons.adminPanelIcon,
-              leading: AppIcons.version,
+              icon: AppIcons.adminPanel.widget,
+              leading: AppIcons.version.widget,
               onTap: controller.functionCalledDialog,
             )),
         AdminFunctions.item(
@@ -197,8 +194,8 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
             widget: AppGeneralButton(
               primaryColor: true,
               text: 'AppGeneralButton',
-              icon: AppIcons.adminPanelIcon,
-              leading: AppIcons.version,
+              icon: AppIcons.adminPanel.widget,
+              leading: AppIcons.version.widget,
               onTap: controller.functionCalledDialog,
             )),
         AdminFunctions.item(
@@ -206,8 +203,8 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
             widget: AppGeneralButton(
               loading: true,
               text: 'AppGeneralButton',
-              icon: AppIcons.adminPanelIcon,
-              leading: AppIcons.version,
+              icon: AppIcons.adminPanel.widget,
+              leading: AppIcons.version.widget,
               onTap: controller.functionCalledDialog,
             )),
         AdminFunctions.item(
@@ -217,8 +214,8 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
               loading: true,
               primaryColor: true,
               text: 'AppGeneralButton',
-              icon: AppIcons.adminPanelIcon,
-              leading: AppIcons.version,
+              icon: AppIcons.adminPanel.widget,
+              leading: AppIcons.version.widget,
               onTap: controller.functionCalledDialog,
             )),
         AdminFunctions.item(
@@ -226,8 +223,8 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
             widget: AppGeneralButton(
               disabled: true,
               text: 'AppGeneralButton',
-              icon: AppIcons.adminPanelIcon,
-              leading: AppIcons.version,
+              icon: AppIcons.adminPanel.widget,
+              leading: AppIcons.version.widget,
               onTap: controller.functionCalledDialog,
             )),
       ], title: 'General Buttons');
@@ -350,7 +347,7 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
                 onTap: () => AppSnackBar.show(
                       message: 'App SnackBar with LeadingIcon',
                       title: 'AppSnackBar Title',
-                      leadingIcon: AppIcons.info,
+                      leadingIcon: AppIcons.info.widget,
                       leadingAction: controller.functionCalledDialog,
                     ))),
         AdminFunctions.item(
@@ -368,7 +365,7 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
                 onTap: () => AppSnackBar.show(
                       message: 'App SnackBar with Button',
                       title: 'AppSnackBar Title',
-                      icon: AppIcons.settings,
+                      icon: AppIcons.settings.widget,
                     ))),
         AdminFunctions.item(
             widget: AppGeneralButton(
@@ -409,8 +406,8 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
             fullWidth: true,
             widget: AppAppBar(
               pageDetail: AppPageDetail(pageRoute: AppPages.adminWidgetCheckPage.pageRoute, pageName: 'Page Name'),
-              barLeading: AppIconButton(icon: AppIcons.list, onTap: nullFunction),
-              barAction: AppIconButton(icon: AppIcons.add, onTap: nullFunction),
+              barLeading: AppIconButton(icon: AppIcons.list.widget, onTap: nullFunction),
+              barAction: AppIconButton(icon: AppIcons.add.widget, onTap: nullFunction),
             )),
       ], title: 'AppBar');
 
@@ -430,10 +427,10 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
                   physics: const BouncingScrollPhysics(),
                   child: Row(
                       children: List<Widget>.generate(
-                          AppIcons.iconsList.length,
+                          AppIcons.values.length,
                           (index) => Padding(
                                 padding: AppPaddings.pages,
-                                child: AppIcons.iconsList[index].withSecondaryColor,
+                                child: AppIcons.values[index].widget.withSecondaryColor,
                               )))),
             ),
             fullWidth: true)

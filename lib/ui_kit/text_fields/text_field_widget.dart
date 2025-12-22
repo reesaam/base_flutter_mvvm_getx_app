@@ -1,4 +1,4 @@
-export '../../boiler_plates/boiler_plate_ui_kit.dart';
+export '../ui_kit_barrel.dart';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_regex/flutter_regex.dart';

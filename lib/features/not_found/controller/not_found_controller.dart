@@ -9,6 +9,6 @@ class NotFoundController extends CoreController {
   @override
   void pageInit() {
     pageDetail = AppPages.notFound;
-    icon = AppIcons.notFound;
+    icon = AppIcons.notFound.widget;
   }
 }

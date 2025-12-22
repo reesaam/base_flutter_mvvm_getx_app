@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'general_exception.dart';
 import 'local_exceptions.dart';
 
+export 'general_exception.dart';
 export 'local_exceptions.dart';
 
 class LocalException implements GeneralException {

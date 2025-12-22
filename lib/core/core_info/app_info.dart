@@ -1,5 +1,4 @@
 import '../../shared/shared_models/core_models/app_version/app_version.dart';
-import '../core_functions.dart';
 
 class AppInfo {
   static const String appName = 'Base Flutter MVVM GetX App';

@@ -1,10 +1,9 @@
-export '../../../boiler_plates/boiler_plate_ui_kit.dart';
+export '../../ui_kit_barrel.dart';
 
 import '../../../core/core_functions.dart';
-import '../../../core/core_resources/icons.dart';
 import '../app_alert_widget_dialogs.dart';
 
 showErrorDialog({String? title, required String message}) {
-  Widget widget = Row(children: [AppIcons.error, Text(message)]);
+  Widget widget = Row(children: [AppIcons.error.widget, Text(message)]);
   AppAlertWidgetDialogs().withOk(widget: widget, onTapOk: popPage);
 }

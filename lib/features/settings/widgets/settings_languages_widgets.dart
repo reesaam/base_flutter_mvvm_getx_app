@@ -1,5 +1,5 @@
-import '../../../boiler_plates/boiler_plate_ui_kit.dart';
-export '../../../boiler_plates/boiler_plate_ui_kit.dart';
+import '../../../ui_kit/ui_kit_barrel.dart';
+export '../../../ui_kit/ui_kit_barrel.dart';
 
 import '../../../core/extensions/data_types_extensions/extension_language.dart';
 import '../../../localization/localizations.dart';

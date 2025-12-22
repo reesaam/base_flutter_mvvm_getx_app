@@ -1,5 +1,5 @@
-import '../../boiler_plates/boiler_plate_ui_kit.dart';
-export '../../boiler_plates/boiler_plate_ui_kit.dart';
+import '../ui_kit_barrel.dart';
+export '../ui_kit_barrel.dart';
 
 import '../../core/extensions/material_widgets_extensions/extension_text.dart';
 import '../resources/paddings.dart';

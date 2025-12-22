@@ -1,4 +1,4 @@
-import '../../../boiler_plates/boiler_plate_ui_kit.dart';
+import '../../../ui_kit/ui_kit_barrel.dart';
 
 import '../../../ui_kit/theme/color_palette.dart';
 import '../../core_functions.dart';

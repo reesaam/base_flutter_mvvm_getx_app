@@ -1,4 +1,4 @@
-export '../../boiler_plates/boiler_plate_ui_kit.dart';
+export '../ui_kit_barrel.dart';
 
 import '../../core/extensions/data_types_extensions/extension_icon.dart';
 

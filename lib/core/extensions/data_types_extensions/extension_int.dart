@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../../../localization/localizations.dart';
@@ -6,7 +5,7 @@ import '../../core_resources/fonts.dart';
 import '../../core_resources/icons.dart';
 
 extension ExtensionIconFunction on int? {
-  Icon toIcon() => this == null ? AppIcons.none : Icon(IconData(this!, fontFamily: AppFonts.materialIcons));
+  Icon toIcon() => this == null ? AppIcons.none.widget : Icon(IconData(this!, fontFamily: AppFonts.materialIcons));
 }
 
 extension ExtensionCurrencyFormat on int {

@@ -1,4 +1,4 @@
-export '../../boiler_plates/boiler_plate_ui_kit.dart';
+export '../ui_kit_barrel.dart';
 
 import '../../../core/app_routing/app_routing.dart';
 import '../../../core/core_functions.dart';
@@ -45,7 +45,7 @@ class AppDrawer extends Drawer {
   Widget footer() => Container(
       padding: AppPaddings.drawerFooter,
       child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-        AppIcons.version,
+        AppIcons.version.widget,
         AppSpaces.w20,
         InkWell(onTap: () => goToPage(AppPages.update), child: Text('${Texts.to.general.version}: ${AppInfo.currentVersion.version}')),
       ]));

@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+export 'package:freezed_annotation/freezed_annotation.dart';
 
 @immutable
 class FreezedCustom {

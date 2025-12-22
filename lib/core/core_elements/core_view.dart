@@ -1,13 +1,12 @@
 import '../../ui_kit/resources/paddings.dart';
-import '../../ui_kit/theme/colors.dart';
 import '../core_functions.dart';
 import '../extensions/theme_extensions/extension_colors.dart';
 import 'core_controller.dart';
 
-export 'package:flutter/material.dart';
-export 'package:flutter/widgets.dart';
 export 'package:get/get.dart';
 export 'package:getx_binding_annotation/get_put_annotation.dart';
+export 'package:flutter/material.dart';
+export 'package:flutter/widgets.dart';
 
 abstract class CoreView<Controller extends CoreController> extends GetView<Controller> {
   const CoreView({super.key});
