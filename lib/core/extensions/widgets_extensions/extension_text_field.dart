@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../../shared/shared_models/verifier_models/regex_model/regex_model.dart';

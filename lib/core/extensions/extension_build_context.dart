@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import '../../core/core_barrel.dart';
 
 extension BuildContextData on BuildContext {
   Brightness get brightness => theme.brightness;

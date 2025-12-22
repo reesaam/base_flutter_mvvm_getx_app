@@ -1,4 +1,4 @@
-import 'package:get/get.dart';
+import '../../../core/core_barrel.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 extension ExtensionPermissionsName on Permission {

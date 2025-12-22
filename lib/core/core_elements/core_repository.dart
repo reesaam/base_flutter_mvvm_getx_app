@@ -1,4 +1,4 @@
-import 'package:get/get.dart';
+import '../../../core/core_barrel.dart';
 
 export 'package:get/get.dart';
 export 'package:getx_binding_annotation/get_put_annotation.dart';

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import '../../core/core_barrel.dart';
 
 export '../extensions/data_types_extensions/extension_icon.dart';
 

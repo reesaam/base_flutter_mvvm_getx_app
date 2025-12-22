@@ -1,11 +1,7 @@
-import 'package:flutter/material.dart';
-
 import '../core/extensions/data_types_extensions/extension_string.dart';
 import '../localization/localizations.dart';
 import '../ui_kit/buttons/app_general_button.dart';
 import '../ui_kit/general_widgets/dividers.dart';
-import '../ui_kit/resources/paddings.dart';
-import '../ui_kit/resources/spaces.dart';
 
 class AdminFunctions {
   static section(List<Widget> section, {bool? isRow, String? title, Color? backgroundColor}) => Column(children: [

@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import '../../../ui_kit/resources/paddings.dart';
 
 extension ExtensionAppPaddingsCopyWith on EdgeInsets {

@@ -1,4 +1,4 @@
-import 'package:get/get.dart';
+import '../../../core/core_barrel.dart';
 
 import '../../components/statistics/statistics.dart';
 import '../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';

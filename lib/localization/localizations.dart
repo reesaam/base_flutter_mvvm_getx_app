@@ -1,6 +1,6 @@
-import 'package:flutter/widgets.dart';
+import '../../../core/core_barrel.dart';
+
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:get/get.dart';
 import 'package:getx_binding_annotation/get_put_annotation.dart';
 import 'package:timezone/timezone.dart';
 

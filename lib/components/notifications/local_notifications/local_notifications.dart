@@ -1,5 +1,6 @@
+import '../../../core/core_barrel.dart';
+
 import 'package:awesome_notifications/awesome_notifications.dart';
-import 'package:get/get.dart';
 import 'package:getx_binding_annotation/get_put_annotation.dart';
 
 import '../notifications_enums.dart';

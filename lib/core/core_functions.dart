@@ -1,8 +1,5 @@
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
-import 'package:get/get.dart';
-
 import '../components/connectivity/connectivity.dart';
 import '../components/storage/app_storage_module.dart';
 import '../features/versions/data/versions_local_data_source.dart';
@@ -21,7 +18,6 @@ import '../ui_kit/main_widgets/snackbar.dart';
 import 'app_routing/app_routing.dart';
 import 'core_resources/core_enums.dart';
 import 'core_resources/core_flags.dart';
-import 'core_resources/countries.dart';
 import 'core_resources/page_details.dart';
 
 void appDebugPrint(message) => CoreFlags.isRelease ? null : debugPrint('[Debug] $message');

@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import '../../../core/core_barrel.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 
 import '../../../../core/core_functions.dart';

@@ -2,7 +2,7 @@ import '../ui_kit_barrel.dart';
 export '../ui_kit_barrel.dart';
 
 class AppBox extends AppWidget {
-  const AppBox._({super.key, this.child, this.width, this.height, this.shrink, this.flex});
+  const AppBox._({this.child, this.width, this.height, this.shrink, this.flex});
 
   final Widget? child;
   final double? width;

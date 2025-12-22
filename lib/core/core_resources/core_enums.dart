@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import '../../core/core_barrel.dart';
 
 enum AppDataVersions {
   v1;

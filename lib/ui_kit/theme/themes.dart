@@ -3,8 +3,6 @@ import '../../core/core_resources/fonts.dart';
 import '../../core/extensions/data_types_extensions/extension_button_style.dart';
 import '../../core/extensions/theme_extensions/extension_colors.dart';
 import '../resources/elements.dart';
-import '../resources/text_sizes.dart';
-import 'colors.dart';
 
 export 'package:flutter/widgets.dart';
 export 'package:flutter/material.dart';

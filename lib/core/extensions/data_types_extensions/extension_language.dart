@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import '../../../core/core_barrel.dart';
 
 import '../../../localization/translation.i69n.dart';
 import '../../core_resources/core_enums.dart';
