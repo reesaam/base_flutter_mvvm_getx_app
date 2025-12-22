@@ -88,7 +88,7 @@ class AppBottomSheet {
     int length = buttons.length;
     for (int i = 0; i < length; i++) {
       list.addIf(i == 0, AppBox.shrinkExpanded());
-      list.add(Expanded(flex: length > 1 ? (30 ~/ length) : 4, child: buttons[i]));
+      list.add(AppBox.expanded(flex: length > 1 ? (30 ~/ length) : 4, child: buttons[i]));
       list.add(i == length - 1 ? AppBox.shrinkExpanded() : AppBox.shrinkExpanded(flex: 5));
     }
     return Padding(

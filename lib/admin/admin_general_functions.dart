@@ -9,19 +9,18 @@ import '../ui_kit/resources/spaces.dart';
 
 class AdminFunctions {
   static section(List<Widget> section, {bool? isRow, String? title, Color? backgroundColor}) => Column(children: [
-        title == null
-            ? shrinkSizedBox
-            : Column(children: [
-                AppDividers.general(),
-                Text(title, style: const TextStyle(fontSize: 20)),
-                AppDividers.general(),
-              ]),
+        if (title != null)
+          Column(children: [
+            AppDividers.general(),
+            Text(title, style: const TextStyle(fontSize: 20)),
+            AppDividers.general(),
+          ]),
         Container(
           padding: AppPaddings.buttonXLarge,
           child: isRow == true
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: List<Widget>.generate(section.length, (index) => Expanded(child: section[index])),
+                  children: List<Widget>.generate(section.length, (index) => AppBox.expanded(child: section[index])),
                 )
               : Column(children: section),
         ),
@@ -41,12 +40,12 @@ class AdminFunctions {
             padding: fullWidth == true ? AppPaddings.zero : AppPaddings.buttonXLarge,
             child: text == null
                 ? Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                    title == null ? shrinkSizedBox : Text(title, textAlign: TextAlign.center),
-                    title == null ? shrinkSizedBox : AppSpaces.h20,
+                    if (title != null) Text(title, textAlign: TextAlign.center),
+                    if (title != null) AppSpaces.h20,
                     Container(
                         padding: fullWidth == true ? AppPaddings.zero : const EdgeInsets.symmetric(horizontal: 20),
                         child: multipleItems == null
-                            ? widget ?? shrinkSizedBox
+                            ? widget ?? AppBox.shrink()
                             : Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: multipleItems,

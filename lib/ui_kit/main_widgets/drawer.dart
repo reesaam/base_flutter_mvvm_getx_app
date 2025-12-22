@@ -21,7 +21,7 @@ class AppDrawer extends Drawer {
           child: Column(children: [
         header(),
         AppDividers.general(),
-        Expanded(child: body()),
+        AppBox.expanded(child: body()),
         AppDividers.general(),
         footer(),
       ]));

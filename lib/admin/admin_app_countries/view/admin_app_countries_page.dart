@@ -36,7 +36,7 @@ class AdminAppCountriesPage extends CoreView<AdminAppCountriesController> {
         Padding(
             padding: AppPaddings.buttonXLarge,
             child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-              Expanded(
+              AppBox.expanded(
                   flex: 5,
                   child: Column(children: [
                     _item('Name Abbr', country.countryNameAbbreviation),
@@ -46,8 +46,8 @@ class AdminAppCountriesPage extends CoreView<AdminAppCountriesController> {
                     _item('Currency', country.currency?.name),
                     _item('Currency Sign', country.currency?.sign.string),
                   ])),
-              shrinkExpanded(2),
-              Expanded(
+              AppBox.shrinkExpanded(flex: 2),
+              AppBox.expanded(
                   flex: 2,
                   child: Column(children: [
                     country.flag(rounded: true, hasBorder: true),
@@ -59,7 +59,7 @@ class AdminAppCountriesPage extends CoreView<AdminAppCountriesController> {
       ]);
 
   _item(String? title, String? text) => text == null
-      ? shrinkSizedBox
+      ? AppBox.shrink()
       : Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Text(title?.withDoubleDots ?? ''),
           Text(text),

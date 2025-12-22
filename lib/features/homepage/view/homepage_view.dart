@@ -46,8 +46,8 @@ class HomePage extends CoreView<HomePageController> {
       padding: AppPaddings.homepageTopBar,
       height: Get.height / 6,
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, crossAxisAlignment: CrossAxisAlignment.center, children: [
-        const Expanded(flex: 1, child: AppImage(image: AppLogos.appLogo)),
-        Expanded(
+        AppBox.expanded(flex: 1, child: const AppImage(image: AppLogos.appLogo)),
+        AppBox.expanded(
             flex: 2,
             child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
               const Text('Base Flutter App').withSizeTitleSmall,
@@ -61,8 +61,8 @@ class HomePage extends CoreView<HomePageController> {
       padding: AppPaddings.homepageTopBar,
       height: Get.height / 6,
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, crossAxisAlignment: CrossAxisAlignment.center, children: [
-        const Expanded(flex: 1, child: AppImage(image: AppLogos.developerLogo)),
-        Expanded(
+        AppBox.expanded(flex: 1, child: const AppImage(image: AppLogos.developerLogo)),
+        AppBox.expanded(
             flex: 2,
             child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
               Text(AppDeveloperInfo.fullName).withSizeTitleSmall,

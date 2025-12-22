@@ -30,7 +30,7 @@ class AdminStartPage extends CoreView<AdminStartController> {
           children: List<Widget>.generate(
               AppPages.listAdminPages.length,
               (index) => index == 0
-                  ? shrinkSizedBox
+                  ? AppBox.shrink()
                   : AppGeneralButton(
                       text: controller.pages[index].pageName ?? Texts.to.general.notAvailableInitials,
                       onTap: () => goToPage(controller.pages[index]),

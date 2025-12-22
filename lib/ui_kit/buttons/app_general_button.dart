@@ -37,7 +37,7 @@ class AppGeneralButton extends ElevatedButton {
         ? [_buttonLoading]
         : [
             icon ?? AppBox.shrink(),
-            Expanded(
+            AppBox.expanded(
                 child: Center(
                     child: Text(
               text,

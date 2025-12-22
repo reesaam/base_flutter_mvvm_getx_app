@@ -52,7 +52,7 @@ abstract class CoreView<Controller extends CoreController> extends GetView<Contr
         child: Column(children: [
           header ?? AppBox.shrink(),
           //Main Body
-          Expanded(
+          AppBox.expanded(
               child: Padding(
                   padding: pagePadding ?? AppPaddings.pages,
                   child: scrollable
