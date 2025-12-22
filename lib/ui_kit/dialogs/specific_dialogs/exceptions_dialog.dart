@@ -1,4 +1,3 @@
-import '../../ui_kit_barrel.dart';
 export '../../ui_kit_barrel.dart';
 
 import '../../../components/failures/general_exception.dart';

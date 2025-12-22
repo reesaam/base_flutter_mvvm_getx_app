@@ -14,7 +14,7 @@ import '../../../core/extensions/data_types_extensions/extension_string.dart';
 import '../../../localization/localizations.dart';
 import '../../../shared/shared_models/core_models/app_version/app_version.dart';
 import '../../../ui_kit/dialogs/app_alert_dialogs.dart';
-import '../../../ui_kit/dialogs/app_bottom_dialogs.dart';
+import '../../../ui_kit/dialogs/app_bottom_sheet.dart';
 import '../../../ui_kit/dialogs/specific_dialogs/core_dialogs.dart';
 import '../../../ui_kit/main_widgets/progress_indicator.dart';
 import '../../../ui_kit/main_widgets/snackbar.dart';

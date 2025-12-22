@@ -2,7 +2,6 @@ import '../ui_kit_barrel.dart';
 export '../ui_kit_barrel.dart';
 
 import '../../core/extensions/material_widgets_extensions/extension_text.dart';
-import '../resources/paddings.dart';
 
 class AppDividers {
   static Widget general({Color? color}) => Divider(color: color ?? Get.theme.primaryColor);

@@ -1,5 +1,4 @@
 import '../ui_kit_barrel.dart';
-export '../ui_kit_barrel.dart';
 
 import '../../core/core_resources/defaults.dart';
 

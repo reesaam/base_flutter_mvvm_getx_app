@@ -1,10 +1,7 @@
 import '../ui_kit_barrel.dart';
 export '../ui_kit_barrel.dart';
 
-import '../../core/extensions/data_types_extensions/extension_icon.dart';
 import '../../core/extensions/material_widgets_extensions/extension_text.dart';
-import '../resources/paddings.dart';
-import '../resources/sizes.dart';
 
 class AppIconButton extends MaterialButton {
   const AppIconButton({

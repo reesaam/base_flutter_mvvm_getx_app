@@ -19,14 +19,21 @@ flutter clean
 ```
 
 - Get pubspec Updated for all available and used packages:
+
 ```
 flutter pub get
 ```
+or
+```
+dart pub get
+```
+
 
 - Build runner Command:
 ```
 dart pub run build_runner build --delete-conflicting-outputs
 ```
+
 
 --> or run this instead all above:
 ```
@@ -41,12 +48,12 @@ flutter build apk --debug/--release/--profile
 
 - for iOS (ipa):
 ```
-flutter build ipa
+flutter build ipa --debug/--release/--profile
 ```
 
 - for web output:
 ```
-flutter build web --release
+flutter build web --debug/--release/--profile
 ```
 - ...
 

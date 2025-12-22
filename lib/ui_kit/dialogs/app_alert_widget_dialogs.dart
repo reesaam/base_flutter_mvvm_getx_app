@@ -4,8 +4,6 @@ import '../../core/core_functions.dart';
 import '../../localization/localizations.dart';
 import '../buttons/app_general_button.dart';
 import '../general_widgets/dividers.dart';
-import '../resources/elements.dart';
-import '../resources/paddings.dart';
 
 class AppAlertWidgetDialogs {
   _onTapCancel() => popPage();

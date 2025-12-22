@@ -8,7 +8,7 @@ import '../../../ui_kit/buttons/app_general_button.dart';
 import '../../../ui_kit/buttons/app_icon_button.dart';
 import '../../../ui_kit/dialogs/app_alert_dialogs.dart';
 import '../../../ui_kit/dialogs/app_alert_widget_dialogs.dart';
-import '../../../ui_kit/dialogs/app_bottom_dialogs.dart';
+import '../../../ui_kit/dialogs/app_bottom_sheet.dart';
 import '../../../ui_kit/general_widgets/check_box.dart';
 import '../../../ui_kit/general_widgets/dividers.dart';
 import '../../../ui_kit/general_widgets/image.dart';
