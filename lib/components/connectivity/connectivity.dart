@@ -13,7 +13,7 @@ class AppConnectionChecker extends CoreComponent {
   get internetConnection => InternetConnection();
   get connectivity => Connectivity();
 
-  Future<bool> checkInternet() async => await internetConnection.hasInternetAccess.timeout(AppDefaults.connectionTimeOut);
+  Future<bool> checkInternet() async => await internetConnection.hasInternetAccess.timeout(AppDefaults.timeOutConnection);
 
   Future<InternetStatus> checkInternetStatus() async => await internetConnection.internetStatus;
 

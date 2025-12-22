@@ -24,10 +24,13 @@ dependencies:
   # Storage
   shared_preferences: ^2.5.3
   get_storage: ^2.1.1
+  get_secure_storage: ^1.0.5
 
   #Device Related and Resources
   permission_handler: ^12.0.0+1
   path_provider: ^2.1.5
+  url_launcher: ^6.3.2
+  app_links: ^6.4.1
 
   # Tools
   dartz: ^0.10.1

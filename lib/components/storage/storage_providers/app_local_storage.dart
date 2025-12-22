@@ -11,7 +11,7 @@ class AppLocalStorage implements AppStorageModuleAbstraction {
   final _service = LocalStorageService();
 
   @override
-  Future<BaseLocalResponse<bool>> clearStorage(String key) async {
+  Future<BaseLocalResponse<bool>> clear(String key) async {
     try {
       final result = _service.remove(key);
       appLogPrint('App Data Cleared Successfully');

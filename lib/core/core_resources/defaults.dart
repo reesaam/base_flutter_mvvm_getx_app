@@ -5,7 +5,9 @@ class AppDefaults {
   static double get fontSize => 14;
 
   ///TimeOuts
-  static Duration get connectionTimeOut => const Duration(seconds: 10);
+  static Duration get timeOutGeneral => const Duration(seconds: 20);
+  static Duration get timeOutConnection => const Duration(seconds: 10);
+  static Duration get timeOutDeepLink => const Duration(seconds: 10);
   static Transition get transition => Transition.fadeIn;
   static Duration get transitionDuration => const Duration(milliseconds: 1);
   static int get pageTransitionDelay => 5;

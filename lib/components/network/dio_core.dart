@@ -31,8 +31,8 @@ class DioCore extends CoreComponent {
   }) async {
     final dio.Options options = dio.Options(
       method: method.getName,
-      receiveTimeout: AppDefaults.connectionTimeOut,
-      sendTimeout: AppDefaults.connectionTimeOut,
+      receiveTimeout: AppDefaults.timeOutConnection,
+      sendTimeout: AppDefaults.timeOutConnection,
       contentType: AppTexts.dioHeaderContentTypeData,
       headers: {"Content-Type": "application/json"},
     );

@@ -34,7 +34,7 @@ class AdminAppResourcesPage extends CoreView<AdminAppResourcesController> {
 
   _appDefaults() => AdminFunctions.section([
         AdminFunctions.item(title: 'Font Size', text: AppDefaults.fontSize.toInt().toString()),
-        AdminFunctions.item(title: 'Connection Timeout', text: AppDefaults.connectionTimeOut.inSeconds.toString()),
+        AdminFunctions.item(title: 'Connection Timeout', text: AppDefaults.timeOutConnection.inSeconds.toString()),
         AdminFunctions.item(title: 'Transition', text: AppDefaults.transition.name),
         AdminFunctions.item(title: 'Transition Duration', text: AppDefaults.transitionDuration.inSeconds.toString()),
         AdminFunctions.item(

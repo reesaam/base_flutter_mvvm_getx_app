@@ -42,5 +42,7 @@ enum AppLanguages {
 }
 
 enum AppStorageKeys {
-  keyAppData,
+  appSecureStorage,
+  appData,
+  deepLink,
 }

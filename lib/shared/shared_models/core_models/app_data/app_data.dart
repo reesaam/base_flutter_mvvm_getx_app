@@ -1,5 +1,3 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-
 import '../../../../core/annotations/freezed_custom_annotation.dart';
 import '../../../../core/core_resources/core_enums.dart';
 import '../app_settings_data/app_setting_data.dart';

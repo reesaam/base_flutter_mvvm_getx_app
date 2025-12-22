@@ -27,10 +27,10 @@ class AppStorage extends CoreComponent {
   static AppStorage get to => Get.find();
 
   ///Keys
-  final _keyAppData = AppStorageKeys.keyAppData;
+  final _keyAppData = AppStorageKeys.appData;
 
   Future<BaseLocalResponse<bool>> clearStorage() async {
-    return await _storage.clearStorage(_keyAppData.name);
+    return await _storage.clear(_keyAppData.name);
   }
 
   ///AppData
@@ -43,7 +43,7 @@ class AppStorage extends CoreComponent {
     return result;
   }
 
-  Future<BaseLocalResponse<bool>> clearAppData() async => await _storage.clearStorage(_keyAppData.name);
+  Future<BaseLocalResponse<bool>> clearAppData() async => await _storage.clear(_keyAppData.name);
 
   ///Manage Data
   Future<void> exportData() async {

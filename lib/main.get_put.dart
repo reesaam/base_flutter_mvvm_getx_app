@@ -53,10 +53,12 @@ import 'admin/admin_verifiers/controller/admin_verifiers_controller.dart';
 import 'admin/admin_verifiers/view/admin_verifiers_page.dart';
 import 'admin/admin_widget_check/controller/admin_widget_check_controller.dart';
 import 'admin/admin_widget_check/view/admin_widget_check_page.dart';
+import 'components/deep_link_handler/deep_link_handler.dart';
 import 'components/file_functions/file_functions.dart';
 import 'components/network/dio_core.dart';
 import 'components/notifications/local_notifications/local_notification_controller.dart';
 import 'components/notifications/local_notifications/local_notifications.dart';
+import 'components/secure_storage/secure_storage.dart';
 import 'components/statistics/statistics.dart';
 import 'components/storage/app_storage_module.dart';
 import 'components/storage/storage_providers/app_local_storage.dart';
@@ -79,10 +81,10 @@ import 'features/versions/data/versions_remote_data_source.dart';
 import 'ui_kit/theme/theme_functions.dart';
 
 /// Generated Library Statistics:
-///   Imports Count: 40
+///   Imports Count: 42
 ///   Pages Count: 14
 ///   Controllers Count: 14
-///   Components Count: 9
+///   Components Count: 11
 ///   Repositories Count: 3
 
 class GetPutPages {
@@ -155,12 +157,15 @@ class _GetPutController extends Bindings {
 class _GetPutComponent extends Bindings {
   @override
   void dependencies() {
+    Get.lazyPut<DeepLinkHandler>(() => DeepLinkHandler(), fenix: true);
     Get.lazyPut<AppFileFunctions>(() => AppFileFunctions(), fenix: true);
     Get.lazyPut<DioCore>(() => DioCore(), fenix: true);
     Get.lazyPut<AppLocalNotificationController>(
         () => AppLocalNotificationController(),
         fenix: true);
     Get.lazyPut<AppLocalNotifications>(() => AppLocalNotifications(),
+        fenix: true);
+    Get.lazyPut<SecureStorageModuleImpl>(() => SecureStorageModuleImpl(),
         fenix: true);
     Get.lazyPut<AppStatistics>(() => AppStatistics(), fenix: true);
     Get.lazyPut<AppStorage>(() => AppStorage(), fenix: true);

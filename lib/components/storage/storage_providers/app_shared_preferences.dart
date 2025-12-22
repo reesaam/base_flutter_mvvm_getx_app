@@ -15,7 +15,7 @@ class AppSharedPreferences implements AppStorageModuleAbstraction {
   static AppSharedPreferences get to => Get.find();
 
   @override
-  Future<BaseLocalResponse<bool>> clearStorage(String key) async {
+  Future<BaseLocalResponse<bool>> clear(String key) async {
     SharedPreferences sp = await SharedPreferences.getInstance();
     try {
       final response = await sp.remove(key);
