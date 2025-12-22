@@ -57,7 +57,7 @@ class UpdateController extends CoreController {
   }
 
   Future<void> _checkUpdateFunction() async {
-    AppBottomDialogs().withoutButton(title: Texts.to.update.updateCheckingUpdate, form: AppProgressIndicator.linear());
+    AppBottomSheet().withoutButton(title: Texts.to.update.updateCheckingUpdate, form: AppProgressIndicator.linear());
     AppVersion? version = await checkAvailableVersion();
     popPage();
     if (version == null || version.version == AppInfo.currentVersion.version) {
@@ -72,7 +72,7 @@ class UpdateController extends CoreController {
 
   downloadUpdate() async {
     buttonDownloadUpdateLoading.value = true;
-    AppBottomDialogs().withoutButton(title: Texts.to.update.updateDownloading, form: AppProgressIndicator.linear());
+    AppBottomSheet().withoutButton(title: Texts.to.update.updateDownloading, form: AppProgressIndicator.linear());
     bool internetStatus = await AppConnectionChecker.to.checkInternet();
     internetStatus ? _downloadUpdateFunction() : noInternetConnectionSnackBar();
     buttonDownloadUpdateLoading.value = false;

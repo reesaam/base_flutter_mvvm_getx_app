@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import '../../boiler_plates/boiler_plate_ui_kit.dart';
+export '../../boiler_plates/boiler_plate_ui_kit.dart';
 
 class AppPaddings extends EdgeInsets {
   const AppPaddings.all(double? value) : super.all(value ?? 0);

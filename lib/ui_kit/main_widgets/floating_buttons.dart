@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+export '../../boiler_plates/boiler_plate_ui_kit.dart';
 
 import '../../core/extensions/data_types_extensions/extension_icon.dart';
 

@@ -1,16 +1,17 @@
-import 'package:flutter/material.dart';
+import '../../../boiler_plates/boiler_plate_ui_kit.dart';
+export '../../../boiler_plates/boiler_plate_ui_kit.dart';
 
 import '../../../core/extensions/data_types_extensions/extension_language.dart';
 import '../../../localization/localizations.dart';
 import '../../../ui_kit/resources/paddings.dart';
 
-class SettingsLanguageWidget extends StatelessWidget {
+class SettingsLanguageWidget extends AppWidget {
   const SettingsLanguageWidget({super.key, this.function});
 
   final Function? function;
 
   @override
-  Widget build(BuildContext context) => Column(
+  Widget get widget => Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: List.generate(
           AppLocalizations.to.supportedLocales.length,

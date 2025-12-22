@@ -1,5 +1,7 @@
+import '../../../boiler_plates/boiler_plate_ui_kit.dart';
+export '../../../boiler_plates/boiler_plate_ui_kit.dart';
+
 import 'package:country_flags/country_flags.dart';
-import 'package:flutter/material.dart';
 
 import '../../../ui_kit/resources/elements.dart';
 import '../../core_resources/countries.dart';

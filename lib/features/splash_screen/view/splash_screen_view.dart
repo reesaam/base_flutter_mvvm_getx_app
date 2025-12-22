@@ -1,5 +1,4 @@
 import '../../../core/core_elements/core_view.dart';
-import '../../../ui_kit/core_widgets.dart';
 import '../../../ui_kit/general_widgets/image.dart';
 import '../../../ui_kit/main_widgets/progress_indicator.dart';
 import '../controller/splash_screen_controller.dart';
@@ -14,10 +13,10 @@ class SplashScreenPage extends CoreView<SplashScreenController> {
       width: Get.width,
       height: Get.height - 100,
       child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        Expanded(flex: 4, child: shrinkSizedBox),
-        Expanded(flex: 4, child: _widgetLogo()),
-        Expanded(flex: 8, child: _widgetAppName()),
-        Expanded(flex: 6, child: _widgetLoadingIndicator()),
+        AppBox.shrinkExpanded(flex: 4),
+        AppBox.expanded(flex: 4, child: _widgetLogo()),
+        AppBox.expanded(flex: 8, child: _widgetAppName()),
+        AppBox.expanded(flex: 6, child: _widgetLoadingIndicator()),
       ]));
 
   Widget _widgetLogo() => Container(

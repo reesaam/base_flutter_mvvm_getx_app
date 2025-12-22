@@ -1,8 +1,9 @@
-import '../../core/extensions/theme_extensions/extension_colors.dart';
-import '../resources/sizes.dart';
-import '../theme/colors.dart';
+import '../../boiler_plates/boiler_plate_ui_kit.dart';
+export '../../boiler_plates/boiler_plate_ui_kit.dart';
 
-class AppSwitch extends StatelessWidget {
+import '../resources/sizes.dart';
+
+class AppSwitch extends AppWidget {
   const AppSwitch({super.key, required this.value, required this.onChanged, this.enabled});
 
   final bool? value;
@@ -10,7 +11,7 @@ class AppSwitch extends StatelessWidget {
   final bool? enabled;
 
   @override
-  Widget build(BuildContext context) => SizedBox(
+  Widget get widget => SizedBox(
       height: AppSizes.switchHeight.height,
       child: Switch.adaptive(
         value: value == true ? true : false,

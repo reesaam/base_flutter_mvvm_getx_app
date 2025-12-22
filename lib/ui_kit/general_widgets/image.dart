@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
+import '../../boiler_plates/boiler_plate_ui_kit.dart';
+export '../../boiler_plates/boiler_plate_ui_kit.dart';
 
-class AppImage extends StatelessWidget {
+class AppImage extends AppWidget {
   const AppImage({
     super.key,
     required this.image,
@@ -17,7 +18,7 @@ class AppImage extends StatelessWidget {
   final BoxFit? boxFit;
 
   @override
-  Widget build(BuildContext context) => Container(
+  Widget get widget => Container(
         constraints: BoxConstraints(maxWidth: size?.width ?? double.maxFinite, maxHeight: size?.height ?? double.maxFinite),
         padding: padding,
         child: ClipRRect(borderRadius: BorderRadius.all(Radius.circular(roundness ?? 0)), child: Image.asset(image, fit: boxFit ?? BoxFit.fill)),

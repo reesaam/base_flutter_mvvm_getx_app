@@ -1,10 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+export '../../boiler_plates/boiler_plate_ui_kit.dart';
 
 import '../../core/core_functions.dart';
 import '../../localization/localizations.dart';
 import '../buttons/app_general_button.dart';
-import '../core_widgets.dart';
 import '../general_widgets/dividers.dart';
 import '../resources/elements.dart';
 import '../resources/paddings.dart';
@@ -78,7 +76,7 @@ class AppAlertWidgetDialogs {
                   scrollable: true,
                   shape: AppElements.borderShapeAlertDialog,
                   title: title == null
-                      ? shrinkSizedBox
+                      ? AppBox.shrink()
                       : Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
                           Text(title),
                           AppDividers.generalWithPrimaryColor,
@@ -95,9 +93,9 @@ class AppAlertWidgetDialogs {
     List<Widget> list = List.empty(growable: true);
     int length = buttons.length;
     for (int i = 0; i < length; i++) {
-      list.addIf(i == 0, shrinkOneExpanded);
+      list.addIf(i == 0, AppBox.shrinkExpanded());
       list.add(Expanded(flex: length > 1 ? (30 ~/ length) : 2, child: buttons[i]));
-      list.add(i == length - 1 ? shrinkOneExpanded : shrinkExpanded(2));
+      list.add(i == length - 1 ? AppBox.shrinkExpanded() : AppBox.shrinkExpanded(flex: 2));
     }
     return [Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: list)];
   }

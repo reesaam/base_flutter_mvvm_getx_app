@@ -1,11 +1,11 @@
+import '../../boiler_plates/boiler_plate_ui_kit.dart';
+export '../../boiler_plates/boiler_plate_ui_kit.dart';
+
 import '../../../core/app_routing/app_routing.dart';
 import '../../core/core_resources/page_details.dart';
-import '../../core/extensions/data_types_extensions/extension_color.dart';
 import '../../core/extensions/data_types_extensions/extension_int.dart';
-import '../../core/extensions/theme_extensions/extension_colors.dart';
 import '../../localization/localizations.dart';
 import '../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
-import '../theme/colors.dart';
 
 class AppBottomNavigationBar extends StatefulWidget {
   final int? selectedIndex;

@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+export '../../boiler_plates/boiler_plate_ui_kit.dart';
+
 import 'package:flutter/services.dart';
 import 'package:flutter_regex/flutter_regex.dart';
 
@@ -8,9 +8,6 @@ import '../../core/extensions/data_models_extensions/extension_regexes.dart';
 import '../../core/extensions/data_types_extensions/extension_icon.dart';
 import '../../localization/localizations.dart';
 import '../../shared/shared_models/verifier_models/regex_model/regex_model.dart';
-import '../resources/elements.dart';
-import '../resources/paddings.dart';
-import '../resources/text_styles.dart';
 import 'text_field.dart';
 import 'text_field_abstraction.dart';
 

@@ -1,3 +1,6 @@
+import '../../../boiler_plates/boiler_plate_ui_kit.dart';
+export '../../../boiler_plates/boiler_plate_ui_kit.dart';
+
 import '../../../components/failures/general_exception.dart';
 import '../../../core/core_functions.dart';
 import '../../../localization/localizations.dart';

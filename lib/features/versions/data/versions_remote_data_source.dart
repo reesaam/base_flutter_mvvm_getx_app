@@ -4,7 +4,7 @@ import '../../../core/core_resources/apis.dart';
 import '../../../core/core_resources/defined_types.dart';
 import '../../../shared/shared_models/core_models/app_version/app_version.dart';
 
-abstract class VersionsRemoteDataSource {
+abstract class VersionsRemoteDataSource extends CoreRepository {
   static VersionsRemoteDataSource get to => Get.find();
 
   Future<BaseAPIResponse<AppVersionsList>> getVersions();

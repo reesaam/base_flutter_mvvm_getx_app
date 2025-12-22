@@ -1,4 +1,3 @@
-import '../../ui_kit/core_widgets.dart';
 import '../../ui_kit/resources/paddings.dart';
 import '../../ui_kit/theme/colors.dart';
 import '../core_functions.dart';
@@ -51,7 +50,7 @@ abstract class CoreView<Controller extends CoreController> extends GetView<Contr
 
   Widget get _pageBody => SafeArea(
         child: Column(children: [
-          header ?? shrinkSizedBox,
+          header ?? AppBox.shrink(),
           //Main Body
           Expanded(
               child: Padding(
@@ -63,7 +62,7 @@ abstract class CoreView<Controller extends CoreController> extends GetView<Contr
                           child: body,
                         )
                       : body)),
-          footer ?? shrinkSizedBox,
+          footer ?? AppBox.shrink(),
         ]),
       );
 }

@@ -1,12 +1,11 @@
-import 'package:flutter/material.dart';
+import '../../../boiler_plates/boiler_plate_ui_kit.dart';
+export '../../../boiler_plates/boiler_plate_ui_kit.dart';
 
 import '../../../core/extensions/material_widgets_extensions/extension_text.dart';
-import '../../../ui_kit/core_widgets.dart';
 import '../../../ui_kit/general_widgets/dividers.dart';
-import '../../../ui_kit/resources/paddings.dart';
 
 ///Whole Widget
-class SettingsSectionWidget extends StatelessWidget {
+class SettingsSectionWidget extends AppWidget {
   final String title;
   final List<Widget> widgets;
   const SettingsSectionWidget({super.key, required this.title, required this.widgets});
@@ -14,7 +13,7 @@ class SettingsSectionWidget extends StatelessWidget {
   Widget _title(String text) => Text(text).withSizeBodyLarge.withDisabledColor;
 
   @override
-  Widget build(BuildContext context) => Padding(
+  Widget get widget => Padding(
       padding: AppPaddings.settingsSection,
       child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         _title(title),
@@ -38,6 +37,6 @@ class SettingsSectionItemWidget extends StatelessWidget {
           padding: AppPaddings.settingsItem,
           child: Row(crossAxisAlignment: CrossAxisAlignment.center, mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Text(text).withBodyLarge,
-            leading ?? shrinkSizedBox,
+            leading ?? AppBox.shrink(),
           ])));
 }

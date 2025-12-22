@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
+import '../../boiler_plates/boiler_plate_ui_kit.dart';
+export '../../boiler_plates/boiler_plate_ui_kit.dart';
 
-class AppCheckBox extends StatelessWidget {
+class AppCheckBox extends AppWidget {
   const AppCheckBox({
     super.key,
     required this.value,
@@ -11,7 +12,7 @@ class AppCheckBox extends StatelessWidget {
   final Function(bool?) onChanged;
 
   @override
-  Widget build(BuildContext context) => Checkbox(
+  Widget get widget => Checkbox(
       // side: AppElements.defaultBorderSideCheckBox,
       value: value,
       onChanged: (isChecked) => onChanged(isChecked));

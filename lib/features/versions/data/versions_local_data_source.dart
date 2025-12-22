@@ -3,7 +3,7 @@ import '../../../core/core_elements/core_repository.dart';
 import '../../../core/core_resources/defined_types.dart';
 import '../../../shared/shared_models/core_models/app_version/app_version.dart';
 
-abstract class VersionsLocalDataSource {
+abstract class VersionsLocalDataSource extends CoreRepository {
   static VersionsLocalDataSource get to => Get.find();
 
   Future<BaseLocalResponse<AppVersionsList?>> getVersions();

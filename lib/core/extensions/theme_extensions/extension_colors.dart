@@ -1,4 +1,6 @@
-import '../../../ui_kit/theme/colors.dart';
+import '../../../boiler_plates/boiler_plate_ui_kit.dart';
+export '../../../boiler_plates/boiler_plate_ui_kit.dart';
+
 import 'extension_color_palette.dart';
 
 extension CreateColor on AppColors {

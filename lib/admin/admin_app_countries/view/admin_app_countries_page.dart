@@ -6,7 +6,6 @@ import '../../../core/extensions/data_types_extensions/extension_list.dart';
 import '../../../core/extensions/data_types_extensions/extension_string.dart';
 import '../../../core/extensions/enums_extensions/extension_countries.dart';
 import '../../../shared/shared_models/helper_models/duration_custom_model/duration_custom_model.dart';
-import '../../../ui_kit/core_widgets.dart';
 import '../../../ui_kit/general_widgets/dividers.dart';
 import '../../../ui_kit/main_widgets/app_bar.dart';
 import '../../../ui_kit/resources/paddings.dart';

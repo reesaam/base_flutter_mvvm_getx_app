@@ -1,12 +1,9 @@
-import 'package:flutter/material.dart';
+export '../../boiler_plates/boiler_plate_ui_kit.dart';
 
-import '../../core/core_resources/icons.dart';
 import '../../core/extensions/data_types_extensions/extension_icon.dart';
-import '../resources/elements.dart';
-import '../resources/paddings.dart';
 import 'popup_menu_item.dart';
 
-class AppPopupMenu extends StatelessWidget {
+class AppPopupMenu extends AppWidget {
   const AppPopupMenu({
     super.key,
     required this.listItems,
@@ -21,7 +18,7 @@ class AppPopupMenu extends StatelessWidget {
   final bool? primaryColorIcon;
 
   @override
-  Widget build(BuildContext context) => PopupMenuButton(
+  Widget get widget => PopupMenuButton(
       padding: AppPaddings.zero,
       shape: AppElements.borderShapeDefault,
       icon: icon == null

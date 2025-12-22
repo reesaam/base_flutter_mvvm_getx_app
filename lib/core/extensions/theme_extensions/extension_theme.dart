@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-export 'package:flutter/material.dart';
-export 'package:get/get.dart';
+import '../../../boiler_plates/boiler_plate_ui_kit.dart';
 
 extension BuildContextExtensions on BuildContext {
   Brightness? get brightness => Get.context?.theme.brightness;

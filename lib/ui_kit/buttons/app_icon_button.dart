@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
+import '../../boiler_plates/boiler_plate_ui_kit.dart';
+export '../../boiler_plates/boiler_plate_ui_kit.dart';
 
 import '../../core/extensions/data_types_extensions/extension_icon.dart';
 import '../../core/extensions/material_widgets_extensions/extension_text.dart';
-import '../core_widgets.dart';
 import '../resources/paddings.dart';
 import '../resources/sizes.dart';
 
@@ -38,7 +38,7 @@ class AppIconButton extends MaterialButton {
             icon: primaryColor == true ? icon.withPrimaryColor : icon.withSecondaryColor,
           ),
           text == null
-              ? shrinkSizedBox
+              ? AppBox.shrink()
               : primaryColor == true
                   ? Text(text!).withPrimaryColor
                   : Text(text!),

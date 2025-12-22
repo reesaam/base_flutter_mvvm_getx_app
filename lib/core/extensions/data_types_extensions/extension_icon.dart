@@ -1,5 +1,5 @@
-import '../../../ui_kit/theme/colors.dart';
-import '../theme_extensions/extension_colors.dart';
+import '../../../boiler_plates/boiler_plate_ui_kit.dart';
+export '../../../boiler_plates/boiler_plate_ui_kit.dart';
 
 extension ExtensionIconColor on Icon {
   Icon get withPrimaryColor => withColor(AppColors.primary.color);

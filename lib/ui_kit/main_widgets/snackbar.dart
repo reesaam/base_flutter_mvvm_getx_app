@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+export '../../boiler_plates/boiler_plate_ui_kit.dart';
 
 import '../../../core/core_functions.dart';
 import '../../core/core_resources/defaults.dart';
@@ -7,11 +6,6 @@ import '../../core/extensions/data_types_extensions/extension_icon.dart';
 import '../../core/extensions/material_widgets_extensions/extension_text.dart';
 import '../buttons/app_general_button.dart';
 import '../buttons/app_icon_button.dart';
-import '../core_widgets.dart';
-import '../resources/elements.dart';
-import '../resources/paddings.dart';
-import '../resources/spaces.dart';
-import '../theme/themes.dart';
 
 class AppSnackBar {
   AppSnackBar.show({
@@ -119,22 +113,21 @@ _showSnackBar({
 }) =>
     GetSnackBar(
       //Elements
-      titleText: title == null ? shrinkSizedBox : Text(title).withColor(textColor ?? Get.theme.canvasColor),
+      titleText: title == null ? AppBox.shrink() : Text(title).withColor(textColor ?? Get.theme.canvasColor),
       messageText: widget ??
           Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                message == null ? const SizedBox.shrink() : Text(message).withColor(textColor ?? Get.theme.canvasColor),
-                buttonText == null
-                    ? shrinkSizedBox
-                    : Column(children: [
-                        AppSpaces.h20,
-                        AppGeneralButton(text: buttonText, primaryColor: true, onTap: buttonAction ?? nullFunction),
-                      ]),
+                if(message != null) Text(message).withColor(textColor ?? Get.theme.canvasColor),
+                if (buttonText != null)
+                  Column(children: [
+                    AppSpaces.h20,
+                    AppGeneralButton(text: buttonText, primaryColor: true, onTap: buttonAction ?? nullFunction),
+                  ]),
               ]),
-      onTap: onTap == null ? null : (snack) => onTap(snack),
+      onTap: (snack) => onTap == null ? null : onTap(snack),
       mainButton: leadingIcon == null
           ? null
           : leadingText == null
@@ -162,4 +155,5 @@ _showSnackBar({
       progressIndicatorController: progressIndicatorController,
     ).show();
 
-Widget _buttonWidget(Function() buttonFunction, String buttonText) => AppGeneralButton(text: buttonText, onTap: buttonFunction);
+Widget _buttonWidget(Function() buttonFunction, String buttonText) =>
+    AppGeneralButton(text: buttonText, onTap: buttonFunction);

@@ -1,21 +1,19 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+export '../../boiler_plates/boiler_plate_ui_kit.dart';
 
 import '../../core/core_functions.dart';
 import '../../localization/localizations.dart';
 import '../buttons/app_general_button.dart';
-import '../core_widgets.dart';
 import '../general_widgets/dividers.dart';
 import '../resources/elements.dart';
 import '../resources/paddings.dart';
 import '../resources/spaces.dart';
 
-class AppBottomDialogs {
+class AppBottomSheet {
   _onTapCancel() => popPage();
 
   withoutButton({String? title, required Widget form, bool? dismissible}) async {
     List<Widget> buttons = [];
-    await _appBottomDialogGeneral(title: title, form: form, buttons: buttons, dismissible: dismissible);
+    await _appBottomSheetGeneral(title: title, form: form, buttons: buttons, dismissible: dismissible);
   }
 
   withOk({String? title, required Widget form, required Function() onTapOk, bool? dismissible}) async {
@@ -26,12 +24,12 @@ class AppBottomDialogs {
         primaryColor: true,
       )
     ];
-    await _appBottomDialogGeneral(title: title, form: form, buttons: buttons, dismissible: dismissible);
+    await _appBottomSheetGeneral(title: title, form: form, buttons: buttons, dismissible: dismissible);
   }
 
   withCancel({String? title, required Widget form, bool? dismissible}) async {
     List<Widget> buttons = [AppGeneralButton(onSecondaryColor: true, text: Texts.to.general.cancel, onTap: _onTapCancel)];
-    await _appBottomDialogGeneral(title: title, form: form, buttons: buttons, dismissible: dismissible);
+    await _appBottomSheetGeneral(title: title, form: form, buttons: buttons, dismissible: dismissible);
   }
 
   withOkCancel({String? title, required Widget form, required Function() onTapOk, bool? dismissible}) async {
@@ -43,7 +41,7 @@ class AppBottomDialogs {
         primaryColor: true,
       ),
     ];
-    await _appBottomDialogGeneral(title: title, form: form, buttons: buttons, dismissible: dismissible);
+    await _appBottomSheetGeneral(title: title, form: form, buttons: buttons, dismissible: dismissible);
   }
 
   tappableItem({required String text, required Function() onTap}) => LayoutBuilder(
@@ -55,7 +53,7 @@ class AppBottomDialogs {
             child: Text(text),
           )));
 
-  _appBottomDialogGeneral({String? title, required Widget form, required List<Widget> buttons, bool? dismissible}) async =>
+  _appBottomSheetGeneral({String? title, required Widget form, required List<Widget> buttons, bool? dismissible}) async =>
       await showModalBottomSheet(
           context: Get.context!,
           useSafeArea: true,
@@ -71,7 +69,7 @@ class AppBottomDialogs {
                     child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, crossAxisAlignment: CrossAxisAlignment.center, children: [
                       Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                         title == null
-                            ? shrinkSizedBox
+                            ? AppBox.shrink()
                             : Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                                 Text(title),
                                 AppDividers.generalWithPrimaryColor,
@@ -89,9 +87,9 @@ class AppBottomDialogs {
     List<Widget> list = List.empty(growable: true);
     int length = buttons.length;
     for (int i = 0; i < length; i++) {
-      list.addIf(i == 0, shrinkOneExpanded);
+      list.addIf(i == 0, AppBox.shrinkExpanded());
       list.add(Expanded(flex: length > 1 ? (30 ~/ length) : 4, child: buttons[i]));
-      list.add(i == length - 1 ? shrinkOneExpanded : shrinkExpanded(5));
+      list.add(i == length - 1 ? AppBox.shrinkExpanded() : AppBox.shrinkExpanded(flex: 5));
     }
     return Padding(
       padding: AppPaddings.buttonXLarge,

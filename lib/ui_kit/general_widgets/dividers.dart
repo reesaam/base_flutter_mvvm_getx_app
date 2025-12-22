@@ -1,7 +1,8 @@
+import '../../boiler_plates/boiler_plate_ui_kit.dart';
+export '../../boiler_plates/boiler_plate_ui_kit.dart';
+
 import '../../core/extensions/material_widgets_extensions/extension_text.dart';
-import '../../core/extensions/theme_extensions/extension_colors.dart';
 import '../resources/paddings.dart';
-import '../theme/colors.dart';
 
 class AppDividers {
   static Widget general({Color? color}) => Divider(color: color ?? Get.theme.primaryColor);

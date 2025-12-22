@@ -1,11 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import '../../boiler_plates/boiler_plate_ui_kit.dart';
+export '../../boiler_plates/boiler_plate_ui_kit.dart';
 
 import '../../core/extensions/material_widgets_extensions/extension_text.dart';
 import '../../localization/localizations.dart';
 import '../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
 import '../resources/paddings.dart';
-import '../theme/themes.dart';
 
 class AppAppBar extends AppBar {
   AppAppBar({

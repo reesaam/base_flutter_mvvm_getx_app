@@ -1,5 +1,6 @@
+import '../../../boiler_plates/boiler_plate_ui_kit.dart';
+
 import '../../../ui_kit/theme/color_palette.dart';
-import '../../../ui_kit/theme/colors.dart';
 import '../../core_functions.dart';
 import '../data_types_extensions/extension_string.dart';
 

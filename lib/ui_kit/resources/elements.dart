@@ -1,9 +1,7 @@
-import 'package:flutter/material.dart';
+import '../../boiler_plates/boiler_plate_ui_kit.dart';
+export '../../boiler_plates/boiler_plate_ui_kit.dart';
 
 import '../../core/core_resources/defaults.dart';
-import '../../core/extensions/theme_extensions/extension_colors.dart';
-import '../theme/colors.dart';
-import '../theme/themes.dart';
 
 class AppElements {
   ///Radius

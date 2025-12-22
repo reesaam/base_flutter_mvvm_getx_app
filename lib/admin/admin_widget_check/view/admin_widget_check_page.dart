@@ -301,22 +301,22 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
       AdminFunctions.item(
           widget: AppGeneralButton(
         text: 'BottomSheet Dialog without Button',
-        onTap: () => AppBottomDialogs().withoutButton(title: 'BottomSheet Dialog', form: form, dismissible: true),
+        onTap: () => AppBottomSheet().withoutButton(title: 'BottomSheet Dialog', form: form, dismissible: true),
       )),
       AdminFunctions.item(
           widget: AppGeneralButton(
         text: 'BottomSheet Dialog with OK',
-        onTap: () => AppBottomDialogs().withOk(title: 'BottomSheet Dialog', form: form, onTapOk: popPage, dismissible: true),
+        onTap: () => AppBottomSheet().withOk(title: 'BottomSheet Dialog', form: form, onTapOk: popPage, dismissible: true),
       )),
       AdminFunctions.item(
           widget: AppGeneralButton(
         text: 'BottomSheet Dialog with Cancel',
-        onTap: () => AppBottomDialogs().withCancel(title: 'BottomSheet Dialog', form: form, dismissible: true),
+        onTap: () => AppBottomSheet().withCancel(title: 'BottomSheet Dialog', form: form, dismissible: true),
       )),
       AdminFunctions.item(
           widget: AppGeneralButton(
         text: 'BottomSheet Dialog with OK/Cancel',
-        onTap: () => AppBottomDialogs().withOkCancel(title: 'BottomSheet Dialog', form: form, onTapOk: popPage, dismissible: true),
+        onTap: () => AppBottomSheet().withOkCancel(title: 'BottomSheet Dialog', form: form, onTapOk: popPage, dismissible: true),
       )),
     ], title: 'BottomSheet Dialogs');
   }

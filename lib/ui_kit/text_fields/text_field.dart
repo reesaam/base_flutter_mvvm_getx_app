@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+export '../../boiler_plates/boiler_plate_ui_kit.dart';
+
 import 'package:flutter/services.dart';
 
 import '../../shared/shared_models/verifier_models/regex_model/regex_model.dart';

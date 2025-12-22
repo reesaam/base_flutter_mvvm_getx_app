@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
+import '../../../boiler_plates/boiler_plate_ui_kit.dart';
+export '../../../boiler_plates/boiler_plate_ui_kit.dart';
 
-class AboutSectionWidget extends StatelessWidget {
+class AboutSectionWidget extends AppWidget {
   final String titleText;
   final String itemText;
   const AboutSectionWidget({super.key, required this.titleText, required this.itemText});
@@ -19,7 +20,7 @@ class AboutSectionWidget extends StatelessWidget {
               ))));
 
   @override
-  Widget build(BuildContext context) => Container(
+  Widget get widget => Container(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [_title(), _item()]));
 }

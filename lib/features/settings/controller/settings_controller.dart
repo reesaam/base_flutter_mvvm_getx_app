@@ -59,7 +59,7 @@ class SettingsController extends CoreController {
     appSettingDataListener = appSettings.listen((data) => _fillData());
   }
 
-  functionLanguageModal() => AppBottomDialogs().withCancel(
+  functionLanguageModal() => AppBottomSheet().withCancel(
       title: Texts.to.settings.languageModalSelectLanguage,
       form: SettingsLanguageWidget(function: functionLanguageSelectionOnTap),
       dismissible: true);

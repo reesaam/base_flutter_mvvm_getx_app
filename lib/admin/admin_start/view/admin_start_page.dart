@@ -4,7 +4,6 @@ import '../../../core/core_resources/icons.dart';
 import '../../../core/core_resources/page_details.dart';
 import '../../../localization/localizations.dart';
 import '../../../ui_kit/buttons/app_general_button.dart';
-import '../../../ui_kit/core_widgets.dart';
 import '../../../ui_kit/main_widgets/app_bar.dart';
 import '../../../ui_kit/main_widgets/floating_buttons.dart';
 import '../../../ui_kit/resources/paddings.dart';

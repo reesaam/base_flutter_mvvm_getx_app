@@ -1,19 +1,14 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+export '../../boiler_plates/boiler_plate_ui_kit.dart';
 
 import '../../../core/app_routing/app_routing.dart';
 import '../../../core/core_functions.dart';
 import '../../core/core_info/app_info.dart';
-import '../../core/core_resources/icons.dart';
 import '../../core/core_resources/logos.dart';
 import '../../core/core_resources/page_details.dart';
 import '../../core/extensions/data_types_extensions/extension_int.dart';
 import '../../localization/localizations.dart';
 import '../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
 import '../general_widgets/dividers.dart';
-import '../resources/paddings.dart';
-import '../resources/sizes.dart';
-import '../resources/spaces.dart';
 
 class AppDrawer extends Drawer {
   const AppDrawer({super.key});

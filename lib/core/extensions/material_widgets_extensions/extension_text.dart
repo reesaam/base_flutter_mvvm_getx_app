@@ -1,7 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-import '../../../ui_kit/theme/themes.dart';
+import '../../../boiler_plates/boiler_plate_ui_kit.dart';
+export '../../../boiler_plates/boiler_plate_ui_kit.dart';
 
 extension ExtensionTextCopyWith on Text {
   Text copyWith({

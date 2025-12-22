@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import '../../boiler_plates/boiler_plate_ui_kit.dart';
+export '../../boiler_plates/boiler_plate_ui_kit.dart';
 
-import '../core_widgets.dart';
 import '../main_widgets/progress_indicator.dart';
 
 class AppGeneralButton extends ElevatedButton {
@@ -37,7 +36,7 @@ class AppGeneralButton extends ElevatedButton {
     List<Widget> children = loading == true
         ? [_buttonLoading]
         : [
-            icon ?? shrinkSizedBox,
+            icon ?? AppBox.shrink(),
             Expanded(
                 child: Center(
                     child: Text(
@@ -46,7 +45,7 @@ class AppGeneralButton extends ElevatedButton {
               overflow: TextOverflow.ellipsis,
               softWrap: true,
             ))),
-            leading ?? shrinkSizedBox,
+            leading ?? AppBox.shrink(),
           ];
     return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,

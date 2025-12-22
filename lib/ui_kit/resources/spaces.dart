@@ -1,5 +1,5 @@
-
-import 'package:flutter/material.dart';
+import '../../boiler_plates/boiler_plate_ui_kit.dart';
+export '../../boiler_plates/boiler_plate_ui_kit.dart';
 
 class AppSpaces {
   static Widget custom({double? height, double? width}) => SizedBox(height: height, width: width);
