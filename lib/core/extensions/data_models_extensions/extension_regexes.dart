@@ -1,5 +1,4 @@
-
-import '../../../shared/shared_models/verifier_models/regex_model/regex_model.dart';
+import '../../../barrels/shared_models_barrel.dart';
 
 extension Equal on AppRegexModel {
   bool equalTo(AppRegexModel regExp) => regexValue == regExp.regexValue;

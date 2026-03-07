@@ -2,8 +2,9 @@ import 'dart:io';
 
 import 'package:flutter_file_dialog/flutter_file_dialog.dart';
 
-import '../../../core/core_functions.dart';
-import '../../core/core_elements/core_component.dart';
+import '../../barrels/annotations_barrel.dart';
+import '../../barrels/core_barrel.dart';
+import '../../barrels/core_elements_barrel.dart';
 
 @GetPut.component()
 class AppFileFunctions extends CoreComponent {

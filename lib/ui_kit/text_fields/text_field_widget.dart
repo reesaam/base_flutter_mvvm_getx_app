@@ -1,13 +1,12 @@
-export '../ui_kit_barrel.dart';
-
 import 'package:flutter/services.dart';
 import 'package:flutter_regex/flutter_regex.dart';
 
-import '../../../core/core_functions.dart';
-import '../../core/extensions/data_models_extensions/extension_regexes.dart';
-import '../../localization/localizations.dart';
-import '../../shared/shared_models/verifier_models/regex_model/regex_model.dart';
-import 'text_field.dart';
+import '../../barrels/ui_kit_barrel.dart';
+import '../../barrels/core_barrel.dart';
+import '../../barrels/extensions_barrel.dart';
+import '../../barrels/localization_barrel.dart';
+import '../../barrels/shared_models_barrel.dart';
+
 import 'text_field_abstraction.dart';
 
 /// General and Complete Widget for [AppTextField]

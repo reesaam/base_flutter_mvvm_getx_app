@@ -1,8 +1,8 @@
-import '../../../core/core_elements/core_controller.dart';
-import '../../../core/core_resources/countries.dart';
-import '../../../core/core_resources/page_details.dart';
-import '../../../core/extensions/enums_extensions/extension_countries.dart';
-import '../../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
+import '../../../barrels/core_resources_barrel.dart';
+import '../../../barrels/extensions_barrel.dart';
+import '../../../barrels/shared_models_barrel.dart';
 
 @GetPut.controller()
 class AdminAppCountriesController extends CoreController {

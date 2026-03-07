@@ -1,10 +1,7 @@
-import '../../../ui_kit/ui_kit_barrel.dart';
-export '../../../ui_kit/ui_kit_barrel.dart';
-
 import 'package:country_flags/country_flags.dart';
 
-import '../../../ui_kit/resources/elements.dart';
-import '../../core_resources/countries.dart';
+import '../../../barrels/core_resources_barrel.dart';
+import '../../../barrels/ui_kit_barrel.dart';
 
 extension ExtensionCountriesList on List<AppCountry> {
   List<AppCountry> get getSortedCountriesList {

@@ -1,8 +1,6 @@
-import '../../../../core/annotations/freezed_custom_annotation.dart';
+import '../../../../barrels/annotations_barrel.dart';
+import '../../../../barrels/shared_models_barrel.dart';
 import '../../../../core/core_resources/core_enums.dart';
-import '../app_settings_data/app_setting_data.dart';
-import '../app_statistics_data/app_statistics_data.dart';
-import '../app_version/app_version.dart';
 
 part 'app_data.freezed.dart';
 part 'app_data.g.dart';

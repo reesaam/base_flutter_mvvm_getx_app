@@ -1,9 +1,7 @@
-export '../../ui_kit_barrel.dart';
-
-import '../../../components/failures/general_exception.dart';
-import '../../../core/core_functions.dart';
-import '../../../localization/localizations.dart';
-import '../../../ui_kit/dialogs/app_alert_dialogs.dart';
+import '../../../barrels/components_barrel.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/localization_barrel.dart';
+import '../../../barrels/ui_kit_barrel.dart';
 
 class AppExceptionsDialog extends AppAlertDialogs {
   static show({required GeneralException exception, String? message, int? statusCode, Function()? onTap}) async {

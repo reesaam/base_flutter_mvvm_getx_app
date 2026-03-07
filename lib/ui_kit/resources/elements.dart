@@ -1,7 +1,5 @@
-import '../ui_kit_barrel.dart';
-export '../ui_kit_barrel.dart';
-
-import '../../core/core_resources/defaults.dart';
+import '../../barrels/core_resources_barrel.dart';
+import '../../barrels/ui_kit_barrel.dart';
 
 class AppElements {
   ///Radius
@@ -62,12 +60,4 @@ class AppElements {
   static RoundedRectangleBorder get borderShapeHighRadius => RoundedRectangleBorder(borderRadius: borderRadiusLow);
   static RoundedRectangleBorder get borderShapeModal => RoundedRectangleBorder(borderRadius: borderRadiusTop);
   static RoundedRectangleBorder get borderShapeAlertDialog => RoundedRectangleBorder(borderRadius: borderRadiusDefault);
-
-  ///Avatars
-  static double get contactsListAvatarMaxRadius => 18;
-  static double get contactsContactAvatarMaxRadius => 30;
-
-///Panel
-// static BoxBorder get defaultPanelBorder => Border.all(color: Get.theme.panelBorder);
-// static BoxDecoration get defaultPanel => BoxDecoration(border: defaultPanelBorder, borderRadius: defaultBorderWithRadius);
 }

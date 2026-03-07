@@ -1,4 +1,4 @@
-import '../../../core/core_barrel.dart';
+import '../../../barrels/core_barrel.dart';
 
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:getx_binding_annotation/get_put_annotation.dart';

@@ -1,9 +1,6 @@
-import '../ui_kit_barrel.dart';
-export '../ui_kit_barrel.dart';
+import '../../barrels/ui_kit_barrel.dart';
 
-import '../resources/sizes.dart';
-
-class AppSwitch extends AppWidget {
+class AppSwitch extends BaseWidget {
   const AppSwitch({super.key, required this.value, required this.onChanged, this.enabled});
 
   final bool? value;

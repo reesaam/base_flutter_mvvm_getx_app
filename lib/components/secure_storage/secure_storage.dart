@@ -1,10 +1,11 @@
 import 'package:get_secure_storage/get_secure_storage.dart';
 
-import '../../core/core_elements/core_component.dart';
-import '../../core/core_functions.dart';
+import '../../barrels/annotations_barrel.dart';
+import '../../barrels/components_barrel.dart';
+import '../../barrels/core_barrel.dart';
+import '../../barrels/core_elements_barrel.dart';
+import '../../barrels/core_resources_barrel.dart';
 import '../../core/core_resources/core_enums.dart';
-import '../../core/core_resources/defined_types.dart';
-import '../failures/local_exception.dart';
 
 abstract class SecureStorageModule extends CoreComponent {
   static SecureStorageModule get to => Get.find();

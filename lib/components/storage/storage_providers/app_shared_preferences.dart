@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import '../../../core/core_barrel.dart';
+import '../../../barrels/core_barrel.dart';
 
 import 'package:getx_binding_annotation/get_put_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';

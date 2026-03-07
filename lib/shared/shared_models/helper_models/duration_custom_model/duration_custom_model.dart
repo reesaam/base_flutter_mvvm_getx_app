@@ -1,4 +1,4 @@
-import '../../../../core/annotations/freezed_custom_annotation.dart';
+import '../../../../barrels/annotations_barrel.dart';
 
 part 'duration_custom_model.freezed.dart';
 part 'duration_custom_model.g.dart';

@@ -1,7 +1,4 @@
-import '../../../ui_kit/ui_kit_barrel.dart';
-export '../../../ui_kit/ui_kit_barrel.dart';
-
-import 'extension_color_palette.dart';
+import '../../../barrels/ui_kit_barrel.dart';
 
 extension CreateColor on AppColors {
   Color get color => colorPalette.color;

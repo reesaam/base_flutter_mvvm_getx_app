@@ -1,11 +1,7 @@
-import '../../../ui_kit/ui_kit_barrel.dart';
-export '../../../ui_kit/ui_kit_barrel.dart';
-
-import '../../../core/extensions/material_widgets_extensions/extension_text.dart';
-import '../../../ui_kit/general_widgets/dividers.dart';
+import '../../../barrels/ui_kit_barrel.dart';
 
 ///Whole Widget
-class SettingsSectionWidget extends AppWidget {
+class SettingsSectionWidget extends BaseWidget {
   final String title;
   final List<Widget> widgets;
   const SettingsSectionWidget({super.key, required this.title, required this.widgets});

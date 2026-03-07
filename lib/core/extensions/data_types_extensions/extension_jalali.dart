@@ -1,7 +1,6 @@
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
-import '../../../localization/localizations.dart';
-
+import '../../../barrels/localization_barrel.dart';
 
 extension ExtensionJalaliStringProvidersNull on Jalali? {
   String toDateTimeFormat() => this == null ? Texts.to.general.empty : this!.toDateTimeFormat();

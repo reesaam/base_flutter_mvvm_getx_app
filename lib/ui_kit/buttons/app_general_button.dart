@@ -1,7 +1,4 @@
-import '../ui_kit_barrel.dart';
-export '../ui_kit_barrel.dart';
-
-import '../main_widgets/progress_indicator.dart';
+import '../../barrels/ui_kit_barrel.dart';
 
 class AppGeneralButton extends ElevatedButton {
   const AppGeneralButton({

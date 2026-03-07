@@ -1,6 +1,7 @@
 import 'package:share_plus/share_plus.dart';
 
-import '../../core/core_elements/core_component.dart';
+import '../../barrels/annotations_barrel.dart';
+import '../../barrels/core_elements_barrel.dart';
 
 @GetPut.component()
 class AppShare extends CoreComponent {

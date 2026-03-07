@@ -3,21 +3,16 @@ import 'dart:io';
 import 'package:open_file_plus/open_file_plus.dart' as file_plus;
 import 'package:path_provider/path_provider.dart';
 
-import '../../../components/connectivity/connectivity.dart';
-import '../../../core/core_elements/core_controller.dart';
-import '../../../core/core_functions.dart';
-import '../../../core/core_info/app_info.dart';
-import '../../../core/core_resources/core_flags.dart';
-import '../../../core/core_resources/page_details.dart';
-import '../../../core/core_resources/texts.dart';
-import '../../../core/extensions/data_types_extensions/extension_string.dart';
-import '../../../localization/localizations.dart';
-import '../../../shared/shared_models/core_models/app_version/app_version.dart';
-import '../../../ui_kit/dialogs/app_alert_dialogs.dart';
-import '../../../ui_kit/dialogs/app_bottom_sheet.dart';
-import '../../../ui_kit/dialogs/specific_dialogs/core_dialogs.dart';
-import '../../../ui_kit/main_widgets/progress_indicator.dart';
-import '../../../ui_kit/main_widgets/snackbar.dart';
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/components_barrel.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
+import '../../../barrels/core_resources_barrel.dart';
+import '../../../barrels/extensions_barrel.dart';
+import '../../../barrels/localization_barrel.dart';
+import '../../../barrels/shared_models_barrel.dart';
+import '../../../barrels/ui_kit_barrel.dart';
+import '../../versions/controller/versions_controller.dart';
 import '../data/update_remote_data_source.dart';
 
 @GetPut.controller()
@@ -44,67 +39,71 @@ class UpdateController extends CoreController {
 
   @override
   void onReadyFunction() async {
-    CoreFlags.checkUpdate ? await checkUpdateFunction() : null;
+    CoreFlags.checkUpdate ? await checkUpdate() : null;
   }
 
   bool updateAvailability() => availableVersion.value == AppInfo.currentVersion.version || availableVersion.value == Texts.to.general.notAvailable;
 
-  checkUpdateFunction() async {
+  Future<void> checkUpdate() async {
     buttonCheckUpdateLoading.value = true;
-    bool internetStatus = await AppConnectionChecker.to.checkInternet();
-    internetStatus ? await _checkUpdateFunction() : noInternetConnectionSnackBar();
-    buttonCheckUpdateLoading.value = false;
-  }
-
-  Future<void> _checkUpdateFunction() async {
     AppBottomSheet().withoutButton(title: Texts.to.update.updateCheckingUpdate, form: AppProgressIndicator.linear());
-    AppVersion? version = await checkAvailableVersion();
-    popPage();
-    if (version == null || version.version == AppInfo.currentVersion.version) {
-      appLogPrint('No New Version Available');
-      AppSnackBar.show(message: Texts.to.update.updateNoUpdateFound);
+    bool internetStatus = await AppConnectionChecker.to.checkInternet();
+    if (internetStatus) {
+      AppVersion? version = await VersionsController.to.checkUpdateAvailableVersion();
+      popPage();
+      if (version == null || version.version == AppInfo.currentVersion.version) {
+        appLogPrint('No New Version Available');
+        AppSnackBar.show(message: Texts.to.update.updateNoUpdateFound);
+      } else {
+        appLogPrint('Available Version: ${version.version}');
+        availableVersion.value = version.version;
+        AppSnackBar.show(
+          message: '${Texts.to.update.updateUpdateFound}\n${Texts.to.general.version.withDoubleDots} $version',
+        );
+      }
     } else {
-      appLogPrint('Available Version: ${version.version}');
-      availableVersion.value = version.version;
-      AppSnackBar.show(message: '${Texts.to.update.updateUpdateFound}\n${Texts.to.general.version.withDoubleDots} $version');
+      noInternetConnectionSnackBar();
     }
   }
 
-  downloadUpdate() async {
+  void downloadUpdate() async {
     buttonDownloadUpdateLoading.value = true;
     AppBottomSheet().withoutButton(title: Texts.to.update.updateDownloading, form: AppProgressIndicator.linear());
     bool internetStatus = await AppConnectionChecker.to.checkInternet();
-    internetStatus ? _downloadUpdateFunction() : noInternetConnectionSnackBar();
-    buttonDownloadUpdateLoading.value = false;
-  }
-
-  _downloadUpdateFunction() async {
+    if (!internetStatus) {
+      noInternetConnectionSnackBar();
+      return;
+    }
     dlDir = await getExternalStorageDirectory();
     if (dlDir != null) {
-      dlFile = File('${dlDir!.path}/${AppTexts.updateAppFilename}');
-    }
-
-    if (dlDir != null && dlFile != null) {
-      dlFile!.existsSync() ? dlFile!.deleteSync() : null;
-      downloaded.value = false;
-      String downloadAddress = Texts.to.general.empty;
-      final resultAddress = await UpdateRemoteDataSource.to.getDownloadAddress();
-      resultAddress.fold((l) => showErrorDialog(message: l.toString()), (r) => downloadAddress = r);
-
-      if (downloadAddress.isNotEmpty) {
-        final result = await UpdateRemoteDataSource.to.updateDownload(savePath: dlFile!.path);
-        result.fold((l) => showErrorDialog(message: l.toString()), (r) {
-          dlFile = r;
-          downloaded.value = true;
-          appDebugPrint(dlFile?.length());
-          AppSnackBar.show(message: Texts.to.update.updateDownloaded);
-          AppAlertDialogs.withOkCancel(
-              title: Texts.to.update.updateInstallationTitle, text: Texts.to.update.updateInstallationContent, onTapOk: _installUpdateFunction, dismissible: true);
-        });
-      }
-    } else {
       _alertDirectoryOrFileNotFound(dlDir == null);
+      return;
     }
+    File? dlFile = File('${dlDir!.path}/${AppTexts.updateAppFilename}');
+    if (dlFile.existsSync()) dlFile.deleteSync();
+    downloaded.value = false;
+    String downloadAddress = Texts.to.general.empty;
+    final resultAddress = await UpdateRemoteDataSource.to.getDownloadAddress();
+    resultAddress.fold((l) => showErrorDialog(message: l.toString()), (r) => downloadAddress = r);
+    if (downloadAddress.isEmpty) {
+      _alertDirectoryOrFileNotFound(dlDir == null);
+      return;
+    }
+    final result = await UpdateRemoteDataSource.to.updateDownload(savePath: dlFile.path);
+    result.fold((l) => showErrorDialog(message: l.toString()), (r) {
+      dlFile = r;
+      downloaded.value = true;
+      appDebugPrint(dlFile?.length());
+      AppSnackBar.show(message: Texts.to.update.updateDownloaded);
+      AppAlertDialogs.withOkCancel(
+        title: Texts.to.update.updateInstallationTitle,
+        text: Texts.to.update.updateInstallationContent,
+        onTapOk: _installUpdateFunction,
+        dismissible: true,
+      );
+    });
+
+    buttonDownloadUpdateLoading.value = false;
   }
 
   void _installUpdateFunction() => dlFile == null ? _alertDirectoryOrFileNotFound(false) : file_plus.OpenFile.open(dlFile!.path);

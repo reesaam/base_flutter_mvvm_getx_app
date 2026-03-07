@@ -3,8 +3,10 @@ import 'dart:ui';
 
 import 'package:awesome_notifications/awesome_notifications.dart';
 
-import '../../../../core/core_functions.dart';
-import '../../../core/core_elements/core_component.dart';
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
+
 import '../notifications_enums.dart';
 
 @GetPut.component()

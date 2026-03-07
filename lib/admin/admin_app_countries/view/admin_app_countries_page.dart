@@ -1,15 +1,10 @@
-import '../../../core/core_elements/core_view.dart';
-import '../../../core/core_resources/countries.dart';
-import '../../../core/extensions/data_types_extensions/extension_custom_duration.dart';
-import '../../../core/extensions/data_types_extensions/extension_duration.dart';
-import '../../../core/extensions/data_types_extensions/extension_list.dart';
-import '../../../core/extensions/data_types_extensions/extension_string.dart';
-import '../../../core/extensions/enums_extensions/extension_countries.dart';
-import '../../../shared/shared_models/helper_models/duration_custom_model/duration_custom_model.dart';
-import '../../../ui_kit/general_widgets/dividers.dart';
-import '../../../ui_kit/main_widgets/app_bar.dart';
-import '../../../ui_kit/resources/paddings.dart';
-import '../../../ui_kit/resources/spaces.dart';
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
+import '../../../barrels/core_resources_barrel.dart';
+import '../../../barrels/extensions_barrel.dart';
+import '../../../barrels/shared_models_barrel.dart';
+import '../../../barrels/ui_kit_barrel.dart';
+
 import '../controller/admin_app_countries_controller.dart';
 
 @GetPut.page()

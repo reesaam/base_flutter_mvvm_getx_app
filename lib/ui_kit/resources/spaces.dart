@@ -1,5 +1,4 @@
-import '../ui_kit_barrel.dart';
-export '../ui_kit_barrel.dart';
+import '../../barrels/ui_kit_barrel.dart';
 
 class AppSpaces {
   static Widget custom({double? height, double? width}) => SizedBox(height: height, width: width);

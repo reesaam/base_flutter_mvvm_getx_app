@@ -1,7 +1,6 @@
-import '../ui_kit_barrel.dart';
-export '../ui_kit_barrel.dart';
+import '../../barrels/ui_kit_barrel.dart';
 
-class AppCheckBox extends AppWidget {
+class AppCheckBox extends BaseWidget {
   const AppCheckBox({
     super.key,
     required this.value,

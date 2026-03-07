@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_regex/flutter_regex.dart';
 
-import 'extension_int.dart';
+import '../../../barrels/extensions_barrel.dart';
 
 extension ExtensionStringNullChecks on String? {
   bool get isNullOrEmpty => this?.isEmpty ?? true;

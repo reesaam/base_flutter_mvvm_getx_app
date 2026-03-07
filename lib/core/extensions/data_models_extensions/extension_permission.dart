@@ -1,5 +1,6 @@
-import '../../../core/core_barrel.dart';
 import 'package:permission_handler/permission_handler.dart';
+
+import '../../../barrels/core_barrel.dart';
 
 extension ExtensionPermissionsName on Permission {
   String get getName => toString().split('.').last.capitalizeFirst ?? 'Unknown';

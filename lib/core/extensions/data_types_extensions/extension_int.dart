@@ -1,8 +1,8 @@
 import 'package:intl/intl.dart';
 
-import '../../../localization/localizations.dart';
-import '../../core_resources/fonts.dart';
-import '../../core_resources/icons.dart';
+import '../../../barrels/core_resources_barrel.dart';
+import '../../../barrels/localization_barrel.dart';
+import '../../../barrels/ui_kit_barrel.dart';
 
 extension ExtensionIconFunction on int? {
   Icon toIcon() => this == null ? AppIcons.none.widget : Icon(IconData(this!, fontFamily: AppFonts.materialIcons));

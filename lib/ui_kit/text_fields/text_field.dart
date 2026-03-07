@@ -1,8 +1,8 @@
-export '../ui_kit_barrel.dart';
-
 import 'package:flutter/services.dart';
 
-import '../../shared/shared_models/verifier_models/regex_model/regex_model.dart';
+import '../../barrels/shared_models_barrel.dart';
+import '../../barrels/ui_kit_barrel.dart';
+
 import 'text_field_abstraction.dart';
 import 'text_field_widget.dart';
 

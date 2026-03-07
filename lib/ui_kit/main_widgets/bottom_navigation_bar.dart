@@ -1,11 +1,9 @@
-import '../ui_kit_barrel.dart';
-export '../ui_kit_barrel.dart';
-
-import '../../../core/app_routing/app_routing.dart';
-import '../../core/core_resources/page_details.dart';
-import '../../core/extensions/data_types_extensions/extension_int.dart';
-import '../../localization/localizations.dart';
-import '../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
+import '../../barrels/core_barrel.dart';
+import '../../barrels/core_resources_barrel.dart' hide State;
+import '../../barrels/extensions_barrel.dart';
+import '../../barrels/localization_barrel.dart';
+import '../../barrels/shared_models_barrel.dart';
+import '../../barrels/ui_kit_barrel.dart' hide State;
 
 class AppBottomNavigationBar extends StatefulWidget {
   final int? selectedIndex;

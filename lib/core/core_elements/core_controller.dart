@@ -1,11 +1,5 @@
-import '../../core/core_barrel.dart';
-
-import '../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
-
-export 'package:get/get.dart';
-export 'package:getx_binding_annotation/get_put_annotation.dart';
-export 'package:flutter/material.dart';
-export 'package:flutter/widgets.dart';
+import '../../barrels/shared_models_barrel.dart';
+import '../../barrels/core_barrel.dart';
 
 abstract class CoreController extends GetxController {
 

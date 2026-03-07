@@ -1,7 +1,5 @@
-import '../../../core/core_barrel.dart';
-
-import '../../../shared/shared_models/core_models/app_settings_data/app_setting_data.dart';
-import '../../core_functions.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/shared_models_barrel.dart';
 import '../../core_resources/core_enums.dart';
 
 extension ExtensionAppSettingsRxClear on Rx<AppSettingData> {

@@ -1,7 +1,5 @@
-export '../../ui_kit_barrel.dart';
-
-import '../../../core/core_functions.dart';
-import '../app_alert_widget_dialogs.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/ui_kit_barrel.dart';
 
 showErrorDialog({String? title, required String message}) {
   Widget widget = Row(children: [AppIcons.error.widget, Text(message)]);

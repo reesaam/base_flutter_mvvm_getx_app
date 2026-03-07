@@ -1,9 +1,6 @@
-export '../ui_kit_barrel.dart';
-
-import '../../core/core_functions.dart';
-import '../../localization/localizations.dart';
-import '../buttons/app_general_button.dart';
-import '../general_widgets/dividers.dart';
+import '../../barrels/core_barrel.dart';
+import '../../barrels/localization_barrel.dart';
+import '../../barrels/ui_kit_barrel.dart';
 
 class AppBottomSheet {
   _onTapCancel() => popPage();

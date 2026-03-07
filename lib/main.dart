@@ -1,12 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
-import 'components/deep_link_handler/deep_link_handler.dart';
-import 'core/core_info/app_info.dart';
-import 'core/core_resources/defaults.dart';
-import 'core/extensions/data_types_extensions/extension_language.dart';
-import 'core/extensions/theme_extensions/extension_colors.dart';
-import 'localization/localizations.dart';
+import 'barrels/core_barrel.dart';
+import 'barrels/core_resources_barrel.dart';
+import 'barrels/extensions_barrel.dart';
+import 'barrels/localization_barrel.dart';
+import 'barrels/ui_kit_barrel.dart';
 
 import 'main.get_put.dart';
 // import 'generated/l10n.dart';

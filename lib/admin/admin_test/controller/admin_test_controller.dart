@@ -2,25 +2,15 @@ import 'dart:io';
 
 import 'package:share_plus/share_plus.dart';
 
-import '../../../components/connectivity/connectivity.dart';
-import '../../../components/file_functions/file_functions.dart';
-import '../../../components/network/dio_core.dart';
-import '../../../components/notifications/local_notifications/local_notifications.dart';
-import '../../../components/permissions/permissions.dart';
-import '../../../components/share/share.dart';
-import '../../../components/storage/app_storage_module.dart';
-import '../../../core/core_elements/core_controller.dart';
-import '../../../core/core_functions.dart';
-import '../../../core/core_resources/page_details.dart';
-import '../../../core/extensions/data_models_extensions/extension_permission.dart';
-import '../../../core/extensions/data_types_extensions/extension_date_time.dart';
-import '../../../core/extensions/data_types_extensions/extension_duration.dart';
-import '../../../localization/localizations.dart';
-import '../../../shared/shared_models/core_models/app_data/app_data.dart';
-import '../../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
-import '../../../shared/shared_models/core_models/app_settings_data/app_setting_data.dart';
-import '../../../ui_kit/dialogs/app_alert_dialogs.dart';
-import '../../../ui_kit/theme/theme_functions.dart';
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/components_barrel.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
+import '../../../barrels/core_resources_barrel.dart';
+import '../../../barrels/extensions_barrel.dart';
+import '../../../barrels/localization_barrel.dart';
+import '../../../barrels/shared_models_barrel.dart';
+import '../../../barrels/ui_kit_barrel.dart';
 
 @GetPut.controller()
 class AdminTestController extends CoreController {

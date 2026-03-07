@@ -1,4 +1,4 @@
-import '../../core/core_barrel.dart';
+import '../../barrels/core_barrel.dart';
 
 import 'general_exception.dart';
 import 'local_exceptions.dart';

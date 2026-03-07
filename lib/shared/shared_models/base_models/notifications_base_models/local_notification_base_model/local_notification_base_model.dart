@@ -1,5 +1,3 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-
 import '../../../../../core/annotations/freezed_custom_annotation.dart';
 
 part 'local_notification_base_model.freezed.dart';

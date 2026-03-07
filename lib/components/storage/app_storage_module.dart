@@ -2,18 +2,15 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
-import '../../core/core_elements/core_component.dart';
-import '../../core/core_functions.dart';
-import '../../core/core_info/core_defaults.dart';
+import '../../barrels/annotations_barrel.dart';
+import '../../barrels/components_barrel.dart';
+import '../../barrels/core_barrel.dart';
+import '../../barrels/core_elements_barrel.dart';
+import '../../barrels/core_resources_barrel.dart';
+import '../../barrels/extensions_barrel.dart';
+import '../../barrels/localization_barrel.dart';
+import '../../barrels/shared_models_barrel.dart';
 import '../../core/core_resources/core_enums.dart';
-import '../../core/core_resources/defined_types.dart';
-import '../../core/core_resources/texts.dart';
-import '../../core/extensions/data_types_extensions/extension_date_time.dart';
-import '../../core/extensions/data_types_extensions/extension_duration.dart';
-import '../../core/extensions/data_types_extensions/extension_string.dart';
-import '../../localization/localizations.dart';
-import '../../shared/shared_models/core_models/app_data/app_data.dart';
-import '../file_functions/file_functions.dart';
 import 'storage_providers/app_local_storage.dart';
 import 'storage_providers/app_shared_preferences.dart';
 

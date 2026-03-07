@@ -1,5 +1,4 @@
-
-import '../../../localization/localizations.dart';
+import '../../../barrels/localization_barrel.dart';
 
 extension ExtensionDateTimeStringProvidersNull on DateTime? {
   String toDateTimeFormat({String? separator}) => this == null ? Texts.to.general.empty : this!.toDateTimeFormat();

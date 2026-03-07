@@ -1,10 +1,6 @@
-export '../ui_kit_barrel.dart';
-
-import '../../../core/core_functions.dart';
-import '../../core/core_resources/defaults.dart';
-import '../../core/extensions/material_widgets_extensions/extension_text.dart';
-import '../buttons/app_general_button.dart';
-import '../buttons/app_icon_button.dart';
+import '../../barrels/core_barrel.dart';
+import '../../barrels/core_resources_barrel.dart';
+import '../../barrels/ui_kit_barrel.dart';
 
 class AppSnackBar {
   AppSnackBar.show({

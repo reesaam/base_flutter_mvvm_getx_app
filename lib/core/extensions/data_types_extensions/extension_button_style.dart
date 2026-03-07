@@ -1,4 +1,4 @@
-import '../../../core/core_barrel.dart';
+import '../../../barrels/core_barrel.dart';
 
 extension ButtonStyleColorsExtension on ButtonStyle {
   ButtonStyle? get invertColors => copyWith(

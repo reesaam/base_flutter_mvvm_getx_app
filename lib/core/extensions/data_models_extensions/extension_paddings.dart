@@ -1,4 +1,4 @@
-import '../../../ui_kit/resources/paddings.dart';
+import '../../../barrels/ui_kit_barrel.dart';
 
 extension ExtensionAppPaddingsCopyWith on EdgeInsets {
   AppPaddings copyWithSymmetric({

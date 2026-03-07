@@ -1,7 +1,4 @@
-export '../ui_kit_barrel.dart';
-
-import '../../core/extensions/data_types_extensions/extension_icon.dart';
-
+import '../../barrels/ui_kit_barrel.dart';
 
 class AppFloatingActionButtons extends FloatingActionButton {
   const AppFloatingActionButtons({super.key, required this.icon, required super.onPressed});

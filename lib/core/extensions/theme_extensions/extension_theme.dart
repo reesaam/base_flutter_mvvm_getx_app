@@ -1,4 +1,4 @@
-import '../../../ui_kit/ui_kit_barrel.dart';
+import '../../../barrels/ui_kit_barrel.dart';
 
 extension BuildContextExtensions on BuildContext {
   Brightness? get brightness => Get.context?.theme.brightness;

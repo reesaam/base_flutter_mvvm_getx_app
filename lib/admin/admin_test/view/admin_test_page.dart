@@ -1,10 +1,8 @@
-import '../../../core/app_routing/app_routing.dart';
-import '../../../core/core_elements/core_view.dart';
-import '../../../core/core_resources/page_details.dart';
-import '../../../ui_kit/buttons/app_general_button.dart';
-import '../../../ui_kit/general_widgets/dividers.dart';
-import '../../../ui_kit/main_widgets/app_bar.dart';
-import '../../../ui_kit/resources/paddings.dart';
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
+import '../../../barrels/core_resources_barrel.dart';
+import '../../../barrels/ui_kit_barrel.dart';
 import '../../admin_general_functions.dart';
 import '../controller/admin_test_controller.dart';
 

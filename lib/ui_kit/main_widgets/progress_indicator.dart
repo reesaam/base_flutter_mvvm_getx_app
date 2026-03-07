@@ -1,6 +1,5 @@
-import '../ui_kit_barrel.dart';
-
-import '../../core/core_resources/defaults.dart';
+import '../../barrels/core_resources_barrel.dart';
+import '../../barrels/ui_kit_barrel.dart';
 
 class AppProgressIndicator {
   static Widget circular({

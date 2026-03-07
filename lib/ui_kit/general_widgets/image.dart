@@ -1,7 +1,6 @@
-import '../ui_kit_barrel.dart';
-export '../ui_kit_barrel.dart';
+import '../../barrels/ui_kit_barrel.dart';
 
-class AppImage extends AppWidget {
+class AppImage extends BaseWidget {
   const AppImage({
     super.key,
     required this.image,

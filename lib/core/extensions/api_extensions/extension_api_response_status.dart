@@ -1,4 +1,4 @@
-import '../../../core/core_barrel.dart';
+import '../../../barrels/core_barrel.dart';
 
 import '../../../components/failures/network_exception.dart';
 import '../../../localization/localizations.dart';

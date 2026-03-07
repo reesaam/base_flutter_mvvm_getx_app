@@ -1,8 +1,9 @@
 import 'package:timezone/timezone.dart';
 
-import '../../../localization/localizations.dart';
-import '../../../shared/shared_models/helper_models/duration_custom_model/duration_custom_model.dart';
-import '../../core_resources/countries.dart';
+import '../../../barrels/core_resources_barrel.dart';
+import '../../../barrels/localization_barrel.dart';
+import '../../../barrels/shared_models_barrel.dart';
+
 import 'extension_custom_duration.dart';
 import 'extension_duration.dart';
 

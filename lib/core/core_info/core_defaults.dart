@@ -1,4 +1,4 @@
-import '../../core/core_barrel.dart';
+import '../../barrels/core_barrel.dart';
 
 import '../core_resources/core_enums.dart';
 import '../core_resources/countries.dart';

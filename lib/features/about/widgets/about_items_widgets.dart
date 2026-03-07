@@ -1,7 +1,6 @@
-import '../../../ui_kit/ui_kit_barrel.dart';
-export '../../../ui_kit/ui_kit_barrel.dart';
+import '../../../barrels/ui_kit_barrel.dart';
 
-class AboutSectionWidget extends AppWidget {
+class AboutSectionWidget extends BaseWidget {
   final String titleText;
   final String itemText;
   const AboutSectionWidget({super.key, required this.titleText, required this.itemText});

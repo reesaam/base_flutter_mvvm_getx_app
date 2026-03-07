@@ -1,8 +1,8 @@
-import '../../../core/core_elements/core_controller.dart';
-import '../../../core/core_info/app_info.dart';
-import '../../../core/core_info/developer_info.dart';
-import '../../../core/core_resources/page_details.dart';
-import '../../../localization/localizations.dart';
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
+import '../../../barrels/core_resources_barrel.dart';
+import '../../../barrels/localization_barrel.dart';
 
 @GetPut.controller()
 class AboutController extends CoreController {

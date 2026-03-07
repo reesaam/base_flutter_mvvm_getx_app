@@ -1,20 +1,16 @@
 import 'dart:async';
 
-import '../../../components/storage/app_storage_module.dart';
-import '../../../core/app_routing/app_routing.dart';
-import '../../../core/core_elements/core_controller.dart';
-import '../../../core/core_functions.dart';
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/components_barrel.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
+import '../../../barrels/core_resources_barrel.dart';
+import '../../../barrels/extensions_barrel.dart';
+import '../../../barrels/shared_models_barrel.dart';
+import '../../../barrels/ui_kit_barrel.dart';
 import '../../../core/core_resources/core_enums.dart';
-import '../../../core/core_resources/core_flags.dart';
-import '../../../core/core_resources/page_details.dart';
-import '../../../core/extensions/data_models_extensions/extension_settings.dart';
-import '../../../core/extensions/data_types_extensions/extension_language.dart';
 import '../../../localization/localizations.dart';
-import '../../../shared/shared_models/core_models/app_settings_data/app_setting_data.dart';
-import '../../../shared/shared_models/core_models/app_version/app_version.dart';
-import '../../../ui_kit/dialogs/app_alert_dialogs.dart';
-import '../../../ui_kit/dialogs/app_bottom_sheet.dart';
-import '../../../ui_kit/theme/theme_functions.dart';
+import '../../versions/controller/versions_controller.dart';
 import '../widgets/settings_languages_widgets.dart';
 
 @GetPut.controller()
@@ -85,7 +81,7 @@ class SettingsController extends CoreController {
   }
 
   functionCheckUpdateAvailableVersion() async {
-    updateAvailableVersion.value = await checkAvailableVersion();
+    updateAvailableVersion.value = await VersionsController.to.checkUpdateAvailableVersion();
     appLogPrint('Checked Update Version: ${updateAvailableVersion.value?.version ?? Texts.to.general.notAvailable}');
   }
 

@@ -1,4 +1,7 @@
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/ui_kit_barrel.dart';
 import '../../../core/core_elements/core_view.dart';
+
 import '../controller/about_controller.dart';
 import '../widgets/about_items_widgets.dart';
 

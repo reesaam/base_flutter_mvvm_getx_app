@@ -1,14 +1,11 @@
-import '../../../components/statistics/statistics.dart';
-import '../../../core/app_routing/app_routing.dart';
-import '../../../core/core_elements/core_controller.dart';
-import '../../../core/core_functions.dart';
-import '../../../core/core_info/app_info.dart';
-import '../../../core/core_resources/core_flags.dart';
-import '../../../core/core_resources/logos.dart';
-import '../../../core/core_resources/page_details.dart';
-import '../../../localization/localizations.dart';
-import '../../../shared/shared_models/core_models/app_version/app_version.dart';
-import '../../../ui_kit/dialogs/app_alert_dialogs.dart';
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/components_barrel.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
+import '../../../barrels/core_resources_barrel.dart';
+import '../../../barrels/localization_barrel.dart';
+import '../../../barrels/shared_models_barrel.dart';
+import '../../../barrels/ui_kit_barrel.dart';
 
 @GetPut.controller()
 class SplashScreenController extends CoreController {

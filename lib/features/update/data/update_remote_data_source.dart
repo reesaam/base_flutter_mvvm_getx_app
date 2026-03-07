@@ -1,9 +1,10 @@
 import 'dart:io';
 
-import '../../../components/network/dio_core.dart';
-import '../../../core/core_elements/core_repository.dart';
-import '../../../core/core_resources/apis.dart';
-import '../../../core/core_resources/defined_types.dart';
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/components_barrel.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
+import '../../../barrels/core_resources_barrel.dart';
 
 abstract class UpdateRemoteDataSource {
   static UpdateRemoteDataSource get to => Get.find();

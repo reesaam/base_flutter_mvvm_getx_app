@@ -1,6 +1,7 @@
-import '../../core/core_elements/core_controller.dart';
-import '../theme/themes.dart';
-import '../../core/core_functions.dart';
+import '../../barrels/annotations_barrel.dart';
+import '../../barrels/core_barrel.dart';
+import '../../barrels/core_elements_barrel.dart';
+import '../../barrels/ui_kit_barrel.dart';
 
 @GetPut.component()
 class AppThemeFunctions extends CoreController {

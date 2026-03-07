@@ -1,14 +1,10 @@
-import '../../../core/core_elements/core_view.dart';
-import '../../../core/core_info/app_info.dart';
-import '../../../core/extensions/data_types_extensions/extension_language.dart';
-import '../../../core/extensions/data_types_extensions/extension_string.dart';
-import '../../../localization/localizations.dart';
-import '../../../ui_kit/general_widgets/popup_menu.dart';
-import '../../../ui_kit/general_widgets/popup_menu_item.dart';
-import '../../../ui_kit/general_widgets/switch.dart';
-import '../../../ui_kit/main_widgets/app_bar.dart';
-import '../../../ui_kit/main_widgets/bottom_navigation_bar.dart';
-import '../../../ui_kit/main_widgets/drawer.dart';
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
+import '../../../barrels/extensions_barrel.dart';
+import '../../../barrels/localization_barrel.dart';
+
+import '../../../barrels/ui_kit_barrel.dart';
 import '../controller/settings_controller.dart';
 import '../widgets/settings_sections_widgets.dart';
 

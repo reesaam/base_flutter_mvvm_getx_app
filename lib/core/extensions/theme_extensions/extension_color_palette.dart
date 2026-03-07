@@ -1,8 +1,8 @@
-import '../../../ui_kit/ui_kit_barrel.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/extensions_barrel.dart';
+import '../../../barrels/ui_kit_barrel.dart';
 
 import '../../../ui_kit/theme/color_palette.dart';
-import '../../core_functions.dart';
-import '../data_types_extensions/extension_string.dart';
 
 Color _defaultColor = Colors.transparent;
 LinearGradient _defaultGradient = LinearGradient(colors: [_defaultColor, _defaultColor]);

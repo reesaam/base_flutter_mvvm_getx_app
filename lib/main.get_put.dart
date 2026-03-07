@@ -53,12 +53,17 @@ import 'admin/admin_verifiers/controller/admin_verifiers_controller.dart';
 import 'admin/admin_verifiers/view/admin_verifiers_page.dart';
 import 'admin/admin_widget_check/controller/admin_widget_check_controller.dart';
 import 'admin/admin_widget_check/view/admin_widget_check_page.dart';
+import 'admin/app_docs/controller/app_docs_controller.dart';
+import 'admin/app_docs/view/app_docs_page.dart';
+import 'components/connectivity/connectivity.dart';
 import 'components/deep_link_handler/deep_link_handler.dart';
 import 'components/file_functions/file_functions.dart';
 import 'components/network/dio_core.dart';
 import 'components/notifications/local_notifications/local_notification_controller.dart';
 import 'components/notifications/local_notifications/local_notifications.dart';
+import 'components/permissions/permissions.dart';
 import 'components/secure_storage/secure_storage.dart';
+import 'components/share/share.dart';
 import 'components/statistics/statistics.dart';
 import 'components/storage/app_storage_module.dart';
 import 'components/storage/storage_providers/app_local_storage.dart';
@@ -76,15 +81,17 @@ import 'features/splash_screen/view/splash_screen_view.dart';
 import 'features/update/controller/update_controller.dart';
 import 'features/update/data/update_remote_data_source.dart';
 import 'features/update/view/update_view.dart';
+import 'features/versions/controller/versions_controller.dart';
 import 'features/versions/data/versions_local_data_source.dart';
 import 'features/versions/data/versions_remote_data_source.dart';
+import 'localization/localizations.dart';
 import 'ui_kit/theme/theme_functions.dart';
 
 /// Generated Library Statistics:
-///   Imports Count: 42
+///   Imports Count: 49
 ///   Pages Count: 14
-///   Controllers Count: 14
-///   Components Count: 11
+///   Controllers Count: 17
+///   Components Count: 15
 ///   Repositories Count: 3
 
 class GetPutPages {
@@ -144,6 +151,8 @@ class _GetPutController extends Bindings {
         fenix: true);
     Get.lazyPut<AdminWidgetCheckController>(() => AdminWidgetCheckController(),
         fenix: true);
+    Get.lazyPut<AppDocsController>(() => AppDocsController(), fenix: true);
+    Get.lazyPut<AppDocsPage>(() => AppDocsPage(), fenix: true);
     Get.lazyPut<AboutController>(() => AboutController(), fenix: true);
     Get.lazyPut<HomePageController>(() => HomePageController(), fenix: true);
     Get.lazyPut<NotFoundController>(() => NotFoundController(), fenix: true);
@@ -151,12 +160,15 @@ class _GetPutController extends Bindings {
     Get.lazyPut<SplashScreenController>(() => SplashScreenController(),
         fenix: true);
     Get.lazyPut<UpdateController>(() => UpdateController(), fenix: true);
+    Get.lazyPut<VersionsController>(() => VersionsController(), fenix: true);
   }
 }
 
 class _GetPutComponent extends Bindings {
   @override
   void dependencies() {
+    Get.lazyPut<AppConnectionChecker>(() => AppConnectionChecker(),
+        fenix: true);
     Get.lazyPut<DeepLinkHandler>(() => DeepLinkHandler(), fenix: true);
     Get.lazyPut<AppFileFunctions>(() => AppFileFunctions(), fenix: true);
     Get.lazyPut<DioCore>(() => DioCore(), fenix: true);
@@ -165,13 +177,16 @@ class _GetPutComponent extends Bindings {
         fenix: true);
     Get.lazyPut<AppLocalNotifications>(() => AppLocalNotifications(),
         fenix: true);
+    Get.lazyPut<AppPermissions>(() => AppPermissions(), fenix: true);
     Get.lazyPut<SecureStorageModuleImpl>(() => SecureStorageModuleImpl(),
         fenix: true);
+    Get.lazyPut<AppShare>(() => AppShare(), fenix: true);
     Get.lazyPut<AppStatistics>(() => AppStatistics(), fenix: true);
     Get.lazyPut<AppStorage>(() => AppStorage(), fenix: true);
     Get.lazyPut<AppLocalStorage>(() => AppLocalStorage(), fenix: true);
     Get.lazyPut<AppSharedPreferences>(() => AppSharedPreferences(),
         fenix: true);
+    Get.lazyPut<AppLocalizations>(() => AppLocalizations(), fenix: true);
     Get.lazyPut<AppThemeFunctions>(() => AppThemeFunctions(), fenix: true);
   }
 }

@@ -1,8 +1,6 @@
-export '../ui_kit_barrel.dart';
+import '../../barrels/ui_kit_barrel.dart';
 
-import 'popup_menu_item.dart';
-
-class AppPopupMenu extends AppWidget {
+class AppPopupMenu extends BaseWidget {
   const AppPopupMenu({
     super.key,
     required this.listItems,

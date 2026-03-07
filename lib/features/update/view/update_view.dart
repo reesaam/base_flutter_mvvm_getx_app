@@ -1,7 +1,8 @@
-import '../../../core/core_elements/core_view.dart';
-import '../../../core/core_info/app_info.dart';
-import '../../../localization/localizations.dart';
-import '../../../ui_kit/buttons/app_general_button.dart';
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
+import '../../../barrels/localization_barrel.dart';
+import '../../../barrels/ui_kit_barrel.dart';
 import '../controller/update_controller.dart';
 
 @GetPut.page()
@@ -39,7 +40,7 @@ class UpdatePage extends CoreView<UpdateController> {
         AppGeneralButton(
           text: Texts.to.update.updateCheckUpdate,
           loading: controller.buttonCheckUpdateLoading.value,
-          onTap: controller.checkUpdateFunction,
+          onTap: controller.checkUpdate,
         ),
         AppGeneralButton(
           text: Texts.to.update.updateDownloadUpdate,

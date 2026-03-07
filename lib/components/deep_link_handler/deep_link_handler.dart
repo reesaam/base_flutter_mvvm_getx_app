@@ -1,22 +1,18 @@
 import 'dart:async';
 
 import 'package:app_links/app_links.dart';
-import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-export 'deep_link_handler_helper.dart';
-export 'deep_link_handler_data_model.dart';
-export 'deep_link_types.dart';
+import '../../barrels/annotations_barrel.dart';
 
-import '../../core/app_routing/app_routing.dart';
-import '../../core/core_elements/core_component.dart';
-import '../../core/core_functions.dart';
+import '../../barrels/components_barrel.dart';
+import '../../barrels/core_barrel.dart';
+import '../../barrels/core_elements_barrel.dart';
+import '../../barrels/core_resources_barrel.dart';
+import '../../barrels/localization_barrel.dart';
+import '../../barrels/ui_kit_barrel.dart';
 import '../../core/core_resources/core_enums.dart';
-import '../../core/core_resources/defaults.dart';
-import '../../core/core_resources/page_details.dart';
-import '../../localization/localizations.dart';
-import '../../ui_kit/main_widgets/snackbar.dart';
-import '../secure_storage/secure_storage.dart';
+
 import 'deep_link_handler_data_model.dart';
 import 'deep_link_handler_helper.dart';
 import 'deep_link_types.dart';

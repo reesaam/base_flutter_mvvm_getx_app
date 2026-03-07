@@ -1,6 +1,7 @@
-import '../../../core/core_elements/core_controller.dart';
-import '../../../core/core_resources/icons.dart';
-import '../../../core/core_resources/page_details.dart';
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
+import '../../../barrels/core_resources_barrel.dart';
+import '../../../barrels/ui_kit_barrel.dart';
 
 @GetPut.controller()
 class NotFoundController extends CoreController {

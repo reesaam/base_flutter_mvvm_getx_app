@@ -1,7 +1,6 @@
-import '../core/extensions/data_types_extensions/extension_string.dart';
+import '../barrels/extensions_barrel.dart';
+import '../barrels/ui_kit_barrel.dart';
 import '../localization/localizations.dart';
-import '../ui_kit/buttons/app_general_button.dart';
-import '../ui_kit/general_widgets/dividers.dart';
 
 class AdminFunctions {
   static section(List<Widget> section, {bool? isRow, String? title, Color? backgroundColor}) => Column(children: [

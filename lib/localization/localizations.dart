@@ -1,4 +1,4 @@
-import '../../../core/core_barrel.dart';
+import '../../../barrels/core_barrel.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:getx_binding_annotation/get_put_annotation.dart';

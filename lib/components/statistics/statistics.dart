@@ -1,6 +1,7 @@
-import '../../core/core_elements/core_component.dart';
-import '../../core/core_functions.dart';
-import '../../shared/shared_models/core_models/app_statistics_data/app_statistics_data.dart';
+import '../../barrels/annotations_barrel.dart';
+import '../../barrels/core_barrel.dart';
+import '../../barrels/core_elements_barrel.dart';
+import '../../barrels/shared_models_barrel.dart';
 
 @GetPut.component()
 class AppStatistics extends CoreComponent {

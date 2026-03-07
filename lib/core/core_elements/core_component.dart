@@ -1,8 +1,3 @@
-import '../../../core/core_barrel.dart';
-
-export 'package:flutter/material.dart';
-export 'package:flutter/widgets.dart';
-export 'package:get/get.dart';
-export 'package:getx_binding_annotation/get_put_annotation.dart';
+import '../../../barrels/core_barrel.dart';
 
 abstract class CoreComponent extends GetxController {}

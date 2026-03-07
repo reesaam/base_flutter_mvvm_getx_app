@@ -1,25 +1,10 @@
-import '../../../core/core_elements/core_view.dart';
-import '../../../core/core_functions.dart';
-import '../../../core/core_resources/logos.dart';
-import '../../../core/core_resources/page_details.dart';
-import '../../../core/extensions/material_widgets_extensions/extension_text.dart';
-import '../../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
-import '../../../ui_kit/buttons/app_general_button.dart';
-import '../../../ui_kit/buttons/app_icon_button.dart';
-import '../../../ui_kit/dialogs/app_alert_dialogs.dart';
-import '../../../ui_kit/dialogs/app_alert_widget_dialogs.dart';
-import '../../../ui_kit/dialogs/app_bottom_sheet.dart';
-import '../../../ui_kit/general_widgets/check_box.dart';
-import '../../../ui_kit/general_widgets/dividers.dart';
-import '../../../ui_kit/general_widgets/image.dart';
-import '../../../ui_kit/general_widgets/popup_menu.dart';
-import '../../../ui_kit/general_widgets/popup_menu_item.dart';
-import '../../../ui_kit/general_widgets/switch.dart';
-import '../../../ui_kit/main_widgets/app_bar.dart';
-import '../../../ui_kit/main_widgets/bottom_navigation_bar.dart';
-import '../../../ui_kit/main_widgets/progress_indicator.dart';
-import '../../../ui_kit/main_widgets/snackbar.dart';
-import '../../../ui_kit/text_fields/text_field.dart';
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
+import '../../../barrels/core_resources_barrel.dart';
+import '../../../barrels/shared_models_barrel.dart';
+import '../../../barrels/ui_kit_barrel.dart';
+
 import '../../admin_general_functions.dart';
 import '../controller/admin_widget_check_controller.dart';
 

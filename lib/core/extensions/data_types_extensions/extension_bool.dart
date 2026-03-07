@@ -1,4 +1,4 @@
-import '../../../core/core_barrel.dart';
+import '../../../barrels/core_barrel.dart';
 
 extension ExtensionRxFunctions on Rx<bool> {
   get invert => value = !value;

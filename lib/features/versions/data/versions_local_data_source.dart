@@ -1,7 +1,9 @@
-import '../../../components/storage/app_storage_module.dart';
-import '../../../core/core_elements/core_repository.dart';
-import '../../../core/core_resources/defined_types.dart';
-import '../../../shared/shared_models/core_models/app_version/app_version.dart';
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/components_barrel.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
+import '../../../barrels/core_resources_barrel.dart';
+import '../../../barrels/shared_models_barrel.dart';
 
 abstract class VersionsLocalDataSource extends CoreRepository {
   static VersionsLocalDataSource get to => Get.find();

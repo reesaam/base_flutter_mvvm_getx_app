@@ -1,17 +1,8 @@
-import '../../../core/app_routing/app_routing.dart';
-import '../../../core/core_elements/core_view.dart';
-import '../../../core/core_info/developer_info.dart';
-import '../../../core/core_resources/core_flags.dart';
-import '../../../core/core_resources/logos.dart';
-import '../../../core/core_resources/page_details.dart';
-import '../../../core/extensions/material_widgets_extensions/extension_text.dart';
-import '../../../ui_kit/buttons/app_general_button.dart';
-import '../../../ui_kit/general_widgets/image.dart';
-import '../../../ui_kit/main_widgets/app_bar.dart';
-import '../../../ui_kit/main_widgets/bottom_navigation_bar.dart';
-import '../../../ui_kit/main_widgets/drawer.dart';
-import '../../../ui_kit/resources/paddings.dart';
-import '../../../ui_kit/resources/spaces.dart';
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
+import '../../../barrels/core_resources_barrel.dart';
+import '../../../barrels/ui_kit_barrel.dart';
 import '../controller/homepage_controller.dart';
 
 @GetPut.page()

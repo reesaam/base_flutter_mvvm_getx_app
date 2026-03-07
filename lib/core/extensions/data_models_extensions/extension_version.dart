@@ -1,7 +1,5 @@
-import '../../../core/core_barrel.dart';
-
-import '../../../shared/shared_models/core_models/app_version/app_version.dart';
-import '../../core_functions.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/shared_models_barrel.dart';
 
 extension ExtensionAppVersionRxClear on Rx<AppVersionsList> {
   Rx<AppVersionsList> clearData() => value.clearData();

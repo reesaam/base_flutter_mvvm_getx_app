@@ -1,10 +1,10 @@
-import '../../../core/app_routing/app_routing.dart';
-import '../../../core/core_elements/core_view.dart';
-import '../../../core/core_resources/page_details.dart';
-import '../../../localization/localizations.dart';
-import '../../../ui_kit/buttons/app_general_button.dart';
-import '../../../ui_kit/main_widgets/app_bar.dart';
-import '../../../ui_kit/main_widgets/floating_buttons.dart';
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
+import '../../../barrels/core_resources_barrel.dart';
+import '../../../barrels/localization_barrel.dart';
+import '../../../barrels/ui_kit_barrel.dart';
+
 import '../controller/admin_start_controller.dart';
 
 @GetPut.page()

@@ -1,6 +1,8 @@
-import '../../../core/core_elements/core_view.dart';
-import '../../../core/extensions/data_types_extensions/extension_icon.dart';
-import '../../../localization/localizations.dart';
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
+import '../../../barrels/localization_barrel.dart';
+import '../../../barrels/ui_kit_barrel.dart';
+
 import '../controller/not_found_controller.dart';
 
 @GetPut.page(isUnknown: true)

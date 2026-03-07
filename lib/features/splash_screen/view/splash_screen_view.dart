@@ -1,6 +1,7 @@
-import '../../../core/core_elements/core_view.dart';
-import '../../../ui_kit/general_widgets/image.dart';
-import '../../../ui_kit/main_widgets/progress_indicator.dart';
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
+import '../../../barrels/ui_kit_barrel.dart';
+
 import '../controller/splash_screen_controller.dart';
 
 @GetPut.page(isInitial: true)
