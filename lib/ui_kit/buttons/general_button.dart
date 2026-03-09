@@ -26,7 +26,7 @@ class AppGeneralButton extends ElevatedButton {
   final bool? primaryColor;
   final bool? onSecondaryColor;
   final bool? loading;
-  final MaterialStatesController? stateController;
+  final WidgetStatesController? stateController;
 
   @override
   Widget? get child {
@@ -57,8 +57,8 @@ class AppGeneralButton extends ElevatedButton {
   MaterialStatesController? get statesController =>
       stateController ??
       (disabled == true
-          ? MaterialStatesController(<MaterialState>{MaterialState.focused})
-          : MaterialStatesController(<MaterialState>{MaterialState.disabled}));
+          ? WidgetStatesController(<WidgetState>{WidgetState.focused})
+          : WidgetStatesController(<WidgetState>{WidgetState.disabled}));
 
   Widget get _buttonLoading => AppProgressIndicator.circular(
         color: Get.theme.canvasColor,
