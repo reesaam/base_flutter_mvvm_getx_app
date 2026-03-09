@@ -95,7 +95,7 @@ class AppPages {
   static AppPageDetail homepage = AppPageDetail(
     pageName: Texts.to.pagesName.homePageName,
     pageRoute: _getPageRoute(HomePage),
-    iconCode: AppIcons.home.icon!.codePoint,
+    iconCode: AppIcons.home.icon.codePoint,
     bottomBarItemNumber: 0,
     drawerPresence: true,
   );
@@ -103,7 +103,7 @@ class AppPages {
   static AppPageDetail settings = AppPageDetail(
     pageName: Texts.to.pagesName.settingsPageName,
     pageRoute: _getPageRoute(SettingsPage),
-    iconCode: AppIcons.settings.icon!.codePoint,
+    iconCode: AppIcons.settings.icon.codePoint,
     bottomBarItemNumber: 1,
     drawerPresence: true,
   );
@@ -111,14 +111,14 @@ class AppPages {
   static AppPageDetail about = AppPageDetail(
     pageName: Texts.to.pagesName.aboutPageName,
     pageRoute: _getPageRoute(AboutPage),
-    iconCode: AppIcons.about.icon!.codePoint,
+    iconCode: AppIcons.about.icon.codePoint,
     drawerPresence: true,
   );
 
   static AppPageDetail update = AppPageDetail(
     pageName: Texts.to.pagesName.updatePageName,
     pageRoute: _getPageRoute(UpdatePage),
-    iconCode: AppIcons.update.icon!.codePoint,
+    iconCode: AppIcons.update.icon.codePoint,
     drawerPresence: true,
   );
 

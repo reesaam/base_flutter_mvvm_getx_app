@@ -1,8 +1,7 @@
-import '../../core/core_functions.dart';
-import '../../core/core_info/app_info.dart';
-import '../../core/extensions/data_types_extensions/extension_list.dart';
-import '../../core/extensions/data_types_extensions/extension_string.dart';
-import 'deep_link_handler_data_model.dart';
+import '../../barrels/core_barrel.dart';
+import '../../barrels/extensions_barrel.dart';
+
+import 'deep_link_handler_data_model/deep_link_handler_data_model.dart';
 import 'deep_link_types.dart';
 
 String _signature = '${AppInfo.appNameInitials}Type';

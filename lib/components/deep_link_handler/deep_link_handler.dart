@@ -12,13 +12,13 @@ import '../../barrels/core_resources_barrel.dart';
 import '../../barrels/localization_barrel.dart';
 import '../../barrels/ui_kit_barrel.dart';
 
-import 'deep_link_handler_data_model.dart';
+import 'deep_link_handler_data_model/deep_link_handler_data_model.dart';
 import 'deep_link_handler_helper.dart';
 import 'deep_link_types.dart';
 
 @GetPut.component()
 class DeepLinkHandler extends CoreComponent {
-  static AppLinks _appLinks = AppLinks();
+  static final AppLinks _appLinks = AppLinks();
 
   static String storageKey = AppStorageKeys.deepLink.name;
 

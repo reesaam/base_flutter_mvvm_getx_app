@@ -1,5 +1,6 @@
-import '../../core/annotations/freezed_custom_annotation.dart';
-import 'deep_link_types.dart';
+import '../../../barrels/annotations_barrel.dart';
+
+import '../deep_link_types.dart';
 
 part 'deep_link_handler_data_model.freezed.dart';
 part 'deep_link_handler_data_model.g.dart';
