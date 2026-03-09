@@ -1,4 +1,4 @@
-import '../../barrels/ui_kit_barrel.dart';
+import '../barrels/ui_kit_barrel.dart';
 
 class AppImage extends BaseWidget {
   const AppImage({

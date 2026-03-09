@@ -1,4 +1,4 @@
-import '../../barrels/ui_kit_barrel.dart';
+import '../barrels/ui_kit_barrel.dart';
 
 class AppCheckBox extends BaseWidget {
   const AppCheckBox({

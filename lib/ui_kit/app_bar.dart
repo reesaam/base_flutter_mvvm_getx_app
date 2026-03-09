@@ -1,6 +1,6 @@
-import '../../barrels/localization_barrel.dart';
-import '../../barrels/shared_models_barrel.dart';
-import '../../barrels/ui_kit_barrel.dart';
+import '../barrels/localization_barrel.dart';
+import '../barrels/shared_models_barrel.dart';
+import '../barrels/ui_kit_barrel.dart';
 
 class AppAppBar extends AppBar {
   AppAppBar({
