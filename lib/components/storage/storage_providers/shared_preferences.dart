@@ -1,24 +1,26 @@
 import 'dart:convert';
 
-import '../../../barrels/core_barrel.dart';
-
-import 'package:getx_binding_annotation/get_put_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../core/core_functions.dart';
-import '../../../core/core_resources/defined_types.dart';
-import '../../failures/local_exception.dart';
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/components_barrel.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/core_resources_barrel.dart';
 import '../app_storage_module_abstraction.dart';
 
 @GetPut.component()
 class AppSharedPreferences implements AppStorageModuleAbstraction {
-  static AppSharedPreferences get to => Get.find();
+  AppSharedPreferences() {
+    _init();
+  }
+
+  late SharedPreferences _storage;
+  void _init() async => _storage = await SharedPreferences.getInstance();
 
   @override
   Future<BaseLocalResponse<bool>> clear(String key) async {
-    SharedPreferences sp = await SharedPreferences.getInstance();
     try {
-      final response = await sp.remove(key);
+      final response = await _storage.remove(key);
       appLogPrint('Storage Cleared Successfully');
       return response ? Right(response) : Left(_defaultLeftResponse);
     } on LocalException catch (ex, stackTrace) {
@@ -32,9 +34,8 @@ class AppSharedPreferences implements AppStorageModuleAbstraction {
 
   @override
   Future<BaseLocalResponse<bool>> hasData(String key) async {
-    SharedPreferences sp = await SharedPreferences.getInstance();
     try {
-      final response = sp.get(key);
+      final response = _storage.get(key);
       appLogPrint('Storage Read Successfully');
       return response != null ? const Right(true) : Left(_defaultLeftResponse);
     } on LocalException catch (ex, stackTrace) {
@@ -48,9 +49,8 @@ class AppSharedPreferences implements AppStorageModuleAbstraction {
 
   @override
   Future<BaseLocalResponse<Map<String, dynamic>>> loadData(String key) async {
-    SharedPreferences sp = await SharedPreferences.getInstance();
     try {
-      String? data = sp.getString(key);
+      String? data = _storage.getString(key);
       final result = data == null ? null : json.decode(data);
       appLogPrint('Data Loaded Successfully from $key');
       return result != null ? Right(result) : Left(_defaultLeftResponse);

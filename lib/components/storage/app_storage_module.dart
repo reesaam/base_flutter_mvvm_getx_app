@@ -11,8 +11,8 @@ import '../../barrels/extensions_barrel.dart';
 import '../../barrels/localization_barrel.dart';
 import '../../barrels/shared_models_barrel.dart';
 
-import 'storage_providers/app_local_storage.dart';
-import 'storage_providers/app_shared_preferences.dart';
+import 'storage_providers/local_storage.dart';
+import 'storage_providers/shared_preferences.dart';
 
 @GetPut.component()
 class AppStorage extends CoreComponent {
