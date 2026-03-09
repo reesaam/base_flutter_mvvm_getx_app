@@ -1,13 +1,16 @@
 # Base Flutter MVVM GetX App
 
 ### A Flutter Base Project using:
- - MVVM Architecture
+ - MVVM Architecture (with Shared-Models Optimization)
  - GetX State-Managements
  - Freezed, Dartz
  - Dependency Injection
  - Dio, Retrofit, Interceptor
  - Intl App Localization i69, Countries Specifications (Flags, TimeZones, etc.)
  - Get Storage, Shared Preferences, Mongo DB
+ - Import Optimization with Barrels Implementation
+ - GetX Binding and Routing Generator Package
+ - Centralized UI Kit
  - Animations and UI Elements
 
 ## Getting Started
