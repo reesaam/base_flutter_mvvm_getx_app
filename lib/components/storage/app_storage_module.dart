@@ -10,7 +10,7 @@ import '../../barrels/core_resources_barrel.dart';
 import '../../barrels/extensions_barrel.dart';
 import '../../barrels/localization_barrel.dart';
 import '../../barrels/shared_models_barrel.dart';
-import '../../core/core_resources/core_enums.dart';
+
 import 'storage_providers/app_local_storage.dart';
 import 'storage_providers/app_shared_preferences.dart';
 
@@ -83,7 +83,9 @@ class AppStorage extends CoreComponent {
     if (appData != null) {
       appLogPrint('==> App Data:');
       appLogPrint('App Version: ${appData.appVersions?.versionsList.lastOrNull?.version ?? unknown}');
-      detailsIncluded == true ? appLogPrint('App Version Type: ${appData.appVersions?.versionsList.lastOrNull?.versionType ?? unknown}') : null;
+      detailsIncluded == true
+          ? appLogPrint('App Version Type: ${appData.appVersions?.versionsList.lastOrNull?.versionType ?? unknown}')
+          : null;
       appLogPrint('App Data Type: ${appData.dataVersion?.number ?? unknown}');
       if (detailsIncluded == true) {
         appLogPrint('==> Details:');

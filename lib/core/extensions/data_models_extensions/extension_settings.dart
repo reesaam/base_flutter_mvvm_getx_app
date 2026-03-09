@@ -1,6 +1,6 @@
 import '../../../barrels/core_barrel.dart';
+import '../../../barrels/core_resources_barrel.dart';
 import '../../../barrels/shared_models_barrel.dart';
-import '../../core_resources/core_enums.dart';
 
 extension ExtensionAppSettingsRxClear on Rx<AppSettingData> {
   Rx<AppSettingData> clearData() {

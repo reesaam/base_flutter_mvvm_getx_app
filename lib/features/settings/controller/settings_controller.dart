@@ -8,7 +8,6 @@ import '../../../barrels/core_resources_barrel.dart';
 import '../../../barrels/extensions_barrel.dart';
 import '../../../barrels/shared_models_barrel.dart';
 import '../../../barrels/ui_kit_barrel.dart';
-import '../../../core/core_resources/core_enums.dart';
 import '../../../localization/localizations.dart';
 import '../../versions/controller/versions_controller.dart';
 import '../widgets/settings_languages_widgets.dart';

@@ -5,7 +5,6 @@ import '../../barrels/components_barrel.dart';
 import '../../barrels/core_barrel.dart';
 import '../../barrels/core_elements_barrel.dart';
 import '../../barrels/core_resources_barrel.dart';
-import '../../core/core_resources/core_enums.dart';
 
 abstract class SecureStorageModule extends CoreComponent {
   static SecureStorageModule get to => Get.find();

@@ -1,6 +1,6 @@
 import '../../../../barrels/annotations_barrel.dart';
+import '../../../../barrels/core_resources_barrel.dart';
 import '../../../../barrels/shared_models_barrel.dart';
-import '../../../../core/core_resources/core_enums.dart';
 
 part 'app_data.freezed.dart';
 part 'app_data.g.dart';

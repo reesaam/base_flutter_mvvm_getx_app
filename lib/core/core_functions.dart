@@ -1,12 +1,10 @@
 import 'dart:io';
 
 import '../barrels/components_barrel.dart';
-import '../barrels/core_barrel.dart';
 import '../barrels/core_resources_barrel.dart';
 import '../barrels/localization_barrel.dart';
 import '../barrels/shared_models_barrel.dart';
 import '../barrels/ui_kit_barrel.dart';
-import 'core_resources/core_enums.dart';
 
 void appDebugPrint(message) => CoreFlags.isRelease ? null : debugPrint('[Debug] $message');
 void appLogPrint(message) => debugPrint('[LOG] $message');

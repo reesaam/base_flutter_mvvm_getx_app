@@ -3,7 +3,6 @@ import '../../../barrels/core_barrel.dart';
 import '../../../barrels/core_elements_barrel.dart';
 import '../../../barrels/core_resources_barrel.dart';
 import '../../../barrels/ui_kit_barrel.dart';
-import '../../../core/core_resources/core_enums.dart';
 
 import '../../../ui_kit/theme/color_palette.dart';
 import '../../admin_general_functions.dart';

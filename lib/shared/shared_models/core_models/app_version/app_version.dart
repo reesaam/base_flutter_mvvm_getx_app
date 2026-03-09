@@ -1,6 +1,6 @@
 import '../../../../barrels/annotations_barrel.dart';
 import '../../../../barrels/core_barrel.dart';
-import '../../../../core/core_resources/core_enums.dart';
+import '../../../../barrels/core_resources_barrel.dart';
 
 part 'app_version.freezed.dart';
 part 'app_version.g.dart';
@@ -10,7 +10,6 @@ abstract class AppVersion with _$AppVersion {
   const factory AppVersion({
     required final String version,
     final List<String>? changes,
-    @JsonEnum()
     final AppVersionTypes? versionType,
     final bool? isForceUpdate,
   }) = _AppVersion;

@@ -2,7 +2,6 @@
 import '../../../barrels/core_barrel.dart';
 import '../../../barrels/core_resources_barrel.dart';
 import '../../../barrels/localization_barrel.dart';
-import '../../core_resources/core_enums.dart';
 
 extension OnTranslation on Translation {
   AppLanguages? get getLanguage => AppLanguages.values.firstWhereOrNull((element) => element.locale.languageCode == language.languageCode);

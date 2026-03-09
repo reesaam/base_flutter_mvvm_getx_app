@@ -1,5 +1,6 @@
-import '../core_info/app_info.dart';
-import 'core_enums.dart';
+
+import '../../barrels/core_barrel.dart';
+import '../../barrels/core_resources_barrel.dart';
 
 ///
 /// All APIs URls are gathering here in [AppAPIUrls] to have the best changing performance

@@ -1,5 +1,5 @@
+import '../../../../barrels/core_resources_barrel.dart';
 import '../../../../core/annotations/freezed_custom_annotation.dart';
-import '../../../../core/core_resources/core_enums.dart';
 import '../../../../core/core_resources/countries.dart';
 
 part 'app_setting_data.freezed.dart';
