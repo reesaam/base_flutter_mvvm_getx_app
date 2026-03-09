@@ -54,7 +54,7 @@ class AppGeneralButton extends ElevatedButton {
   VoidCallback? get onPressed => () => disabled == true || loading == true ? null : onTap();
 
   @override
-  MaterialStatesController? get statesController =>
+  WidgetStatesController? get statesController =>
       stateController ??
       (disabled == true
           ? WidgetStatesController(<WidgetState>{WidgetState.focused})
