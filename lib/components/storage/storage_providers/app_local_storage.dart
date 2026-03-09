@@ -1,21 +1,28 @@
-import 'package:getx_binding_annotation/get_put_annotation.dart';
+import 'dart:convert' as convert;
+import 'package:get_storage/get_storage.dart';
 
-import '../../../core/core_functions.dart';
-import '../../../core/core_resources/defined_types.dart';
-import '../../failures/local_exception.dart';
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/components_barrel.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/core_resources_barrel.dart';
 import '../app_storage_module_abstraction.dart';
-import 'local_storage_service.dart';
+
 
 @GetPut.component()
 class AppLocalStorage implements AppStorageModuleAbstraction {
-  final _service = LocalStorageService();
+  AppLocalStorage() {
+    _init();
+  }
+
+  late GetStorage _storage;
+  void _init() => _storage = GetStorage();
 
   @override
   Future<BaseLocalResponse<bool>> clear(String key) async {
     try {
-      final result = _service.remove(key);
+      _storage.remove(key);
       appLogPrint('App Data Cleared Successfully');
-      return Right(result);
+      return const Right(true);
     } on LocalException catch (ex, stackTrace) {
       appLogPrint('Local Exception Occurred : $ex');
       return Left(LocalException.handleResponse(ex, stackTrace));
@@ -28,7 +35,7 @@ class AppLocalStorage implements AppStorageModuleAbstraction {
   @override
   Future<BaseLocalResponse<bool>> hasData(String key) async {
     try {
-      final response = _service.hasData(key);
+      final response = _storage.hasData(key);
       return Right(response);
     } on LocalException catch (ex, stackTrace) {
       appLogPrint('Local Exception Occurred : $ex');
@@ -42,9 +49,9 @@ class AppLocalStorage implements AppStorageModuleAbstraction {
   @override
   Future<BaseLocalResponse<Map<String, dynamic>?>> loadData(String key) async {
     try {
-      final data = _service.read(key);
+      final data = _storage.read<String?>(key);
       appLogPrint('Data Loaded Successfully from $key');
-      return Right(data);
+      return Right(data == null ? null : convert.jsonDecode(data));
     } on LocalException catch (ex, stackTrace) {
       appLogPrint('Local Exception Occurred : $ex');
       return Left(LocalException.handleResponse(ex, stackTrace));
@@ -60,7 +67,7 @@ class AppLocalStorage implements AppStorageModuleAbstraction {
     required Map<String, dynamic> data,
   }) async {
     try {
-      await _service.write(key, data);
+      await _storage.write(key, convert.jsonEncode(data));
       appLogPrint('Data Saved Successfully on $key');
       return const Right(true);
     } on LocalException catch (ex, stackTrace) {
