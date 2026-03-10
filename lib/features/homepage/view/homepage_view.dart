@@ -63,6 +63,6 @@ class HomePage extends CoreView<HomePageController> {
 
   _adminTestButton() => Padding(
         padding: AppPaddings.pages,
-        child: AppGeneralButton(text: 'Admin Test Page', onTap: () => goToPage(AppPages.adminStartPage)),
+        child: AppButton.general(text: 'Admin Test Page', onTap: () => goToPage(AppPages.adminStartPage)),
       );
 }

@@ -10,7 +10,7 @@ class AppIconButton extends MaterialButton {
     this.size,
   }) : super(onPressed: onTap);
 
-  final Icon icon;
+  final AppIcons icon;
   final Function() onTap;
   final bool? primaryColor;
   final String? text;
@@ -29,7 +29,7 @@ class AppIconButton extends MaterialButton {
             padding: AppPaddings.zero,
             iconSize: AppSizes.iconButtonIconSize,
             onPressed: onTap,
-            icon: primaryColor == true ? icon.withPrimaryColor : icon.withSecondaryColor,
+            icon: primaryColor == true ? icon.widget.withPrimaryColor : icon.widget.withSecondaryColor,
           ),
           text == null
               ? AppBox.shrink()

@@ -73,5 +73,5 @@ class AdminFunctions {
   }
 
   static itemButton({required String text, required Function function}) =>
-      AppGeneralButton(text: text, onTap: () => function());
+      AppButton.general(text: text, onTap: () => function());
 }

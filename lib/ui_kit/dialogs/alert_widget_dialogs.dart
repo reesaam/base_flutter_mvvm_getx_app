@@ -12,8 +12,8 @@ class AppAlertWidgetDialogs {
     bool? dismissible,
   }) async {
     List<Widget> buttons = [
-      AppGeneralButton(text: Texts.to.general.cancel, onTap: _onTapCancel),
-      AppGeneralButton(text: Texts.to.general.ok, primaryColor: true, onTap: onTapOk),
+      AppButton.general(text: Texts.to.general.cancel, onTap: _onTapCancel),
+      AppButton.general(text: Texts.to.general.ok, onTap: onTapOk),
     ];
     await _appAlertWidgetDialog(
       title: title,
@@ -30,7 +30,7 @@ class AppAlertWidgetDialogs {
     bool? dismissible,
   }) async {
     List<Widget> buttons = [
-      AppGeneralButton(primaryColor: true, text: Texts.to.general.ok, onTap: onTapOk),
+      AppButton.general(text: Texts.to.general.ok, onTap: onTapOk),
     ];
     await _appAlertWidgetDialog(
       title: title,

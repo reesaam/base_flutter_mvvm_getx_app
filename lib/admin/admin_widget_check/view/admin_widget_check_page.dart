@@ -50,18 +50,18 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
   _iconButtons() => AdminFunctions.section([
         AdminFunctions.item(
             title: 'IconButton\nDefaultColor',
-            widget: AppIconButton(
-              icon: AppIcons.home.widget,
-              text: 'IconButton',
+            widget: AppButton.icon(
+              icon: AppIcons.home,
+              // text: 'IconButton',
               onTap: controller.functionCalledDialog,
             )),
         AdminFunctions.item(
             primary: true,
             title: 'IconButton\nPrimaryColor',
-            widget: AppIconButton(
-              icon: AppIcons.home.widget,
-              text: 'IconButton',
-              primaryColor: true,
+            widget: AppButton.icon(
+              icon: AppIcons.home,
+              // text: 'IconButton',
+              // primaryColor: true,
               onTap: controller.functionCalledDialog,
             )),
       ], isRow: true, title: 'Icon Buttons');
@@ -167,49 +167,47 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
   _generalButtons() => AdminFunctions.section([
         AdminFunctions.item(
             title: 'AppGeneralButton',
-            widget: AppGeneralButton(
+            widget: AppButton.general(
               text: 'AppGeneralButton',
-              icon: AppIcons.adminPanel.widget,
-              leading: AppIcons.version.widget,
+              icon: AppIcons.adminPanel,
+              leading: AppIcons.version,
               onTap: controller.functionCalledDialog,
             )),
         AdminFunctions.item(
             primary: true,
             title: 'AppGeneralButton PrimaryColor',
-            widget: AppGeneralButton(
-              primaryColor: true,
+            widget: AppButton.general(
               text: 'AppGeneralButton',
-              icon: AppIcons.adminPanel.widget,
-              leading: AppIcons.version.widget,
+              icon: AppIcons.adminPanel,
+              leading: AppIcons.version,
               onTap: controller.functionCalledDialog,
             )),
         AdminFunctions.item(
             title: 'AppGeneralButton Loading',
-            widget: AppGeneralButton(
+            widget: AppButton.general(
               loading: true,
               text: 'AppGeneralButton',
-              icon: AppIcons.adminPanel.widget,
-              leading: AppIcons.version.widget,
+              icon: AppIcons.adminPanel,
+              leading: AppIcons.version,
               onTap: controller.functionCalledDialog,
             )),
         AdminFunctions.item(
             primary: true,
             title: 'AppGeneralButton Primary Loading',
-            widget: AppGeneralButton(
+            widget: AppButton.general(
               loading: true,
-              primaryColor: true,
               text: 'AppGeneralButton',
-              icon: AppIcons.adminPanel.widget,
-              leading: AppIcons.version.widget,
+              icon: AppIcons.adminPanel,
+              leading: AppIcons.version,
               onTap: controller.functionCalledDialog,
             )),
         AdminFunctions.item(
             title: 'AppGeneralButton Disabled',
-            widget: AppGeneralButton(
+            widget: AppButton.general(
               disabled: true,
               text: 'AppGeneralButton',
-              icon: AppIcons.adminPanel.widget,
-              leading: AppIcons.version.widget,
+              icon: AppIcons.adminPanel,
+              leading: AppIcons.version,
               onTap: controller.functionCalledDialog,
             )),
       ], title: 'General Buttons');
@@ -246,22 +244,22 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
 
   _alertDialogs() => AdminFunctions.section([
         AdminFunctions.item(
-            widget: AppGeneralButton(
+            widget: AppButton.general(
           text: 'Alert Dialog with OK',
           onTap: () => AppAlertDialogs.withOk(title: 'Alert Dialog Title', text: 'App Alert Dialog with Yes/No', onTapOk: popPage),
         )),
         AdminFunctions.item(
-            widget: AppGeneralButton(
+            widget: AppButton.general(
           text: 'Alert Dialog with Ok/Cancel',
           onTap: () => AppAlertDialogs.withOkCancel(title: 'Alert Dialog Title', text: 'App Alert Dialog with Ok/Cancel', onTapOk: popPage),
         )),
         AdminFunctions.item(
-            widget: AppGeneralButton(
+            widget: AppButton.general(
           text: 'Alert Dialog by Widget with OK',
           onTap: () => AppAlertWidgetDialogs().withOk(title: 'Alert Dialog Title', widget: _alertDialogWidget(), onTapOk: popPage),
         )),
         AdminFunctions.item(
-            widget: AppGeneralButton(
+            widget: AppButton.general(
           text: 'Alert Dialog by Widget with Ok/Cancel',
           onTap: () => AppAlertWidgetDialogs().withOkCancel(title: 'Alert Dialog Title', widget: _alertDialogWidget(), onTapOk: popPage),
         )),
@@ -281,22 +279,22 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
 
     return AdminFunctions.section([
       AdminFunctions.item(
-          widget: AppGeneralButton(
+          widget: AppButton.general(
         text: 'BottomSheet Dialog without Button',
         onTap: () => AppBottomSheet().withoutButton(title: 'BottomSheet Dialog', form: form, dismissible: true),
       )),
       AdminFunctions.item(
-          widget: AppGeneralButton(
+          widget: AppButton.general(
         text: 'BottomSheet Dialog with OK',
         onTap: () => AppBottomSheet().withOk(title: 'BottomSheet Dialog', form: form, onTapOk: popPage, dismissible: true),
       )),
       AdminFunctions.item(
-          widget: AppGeneralButton(
+          widget: AppButton.general(
         text: 'BottomSheet Dialog with Cancel',
         onTap: () => AppBottomSheet().withCancel(title: 'BottomSheet Dialog', form: form, dismissible: true),
       )),
       AdminFunctions.item(
-          widget: AppGeneralButton(
+          widget: AppButton.general(
         text: 'BottomSheet Dialog with OK/Cancel',
         onTap: () => AppBottomSheet().withOkCancel(title: 'BottomSheet Dialog', form: form, onTapOk: popPage, dismissible: true),
       )),
@@ -305,20 +303,20 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
 
   _snackBars() => AdminFunctions.section([
         AdminFunctions.item(
-            widget: AppGeneralButton(
+            widget: AppButton.general(
                 text: 'Simple Snackbar',
                 onTap: () => AppSnackBar.show(
                       message: 'App SnackBar with LeadingText',
                     ))),
         AdminFunctions.item(
-            widget: AppGeneralButton(
+            widget: AppButton.general(
                 text: 'Simple Snackbar with Title',
                 onTap: () => AppSnackBar.show(
                       message: 'App SnackBar with LeadingText',
                       title: 'AppSnackBar Title',
                     ))),
         AdminFunctions.item(
-            widget: AppGeneralButton(
+            widget: AppButton.general(
                 text: 'Snackbar with LeadingText',
                 onTap: () => AppSnackBar.show(
                       message: 'App SnackBar with LeadingText',
@@ -327,16 +325,16 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
                       leadingAction: controller.functionCalledDialog,
                     ))),
         AdminFunctions.item(
-            widget: AppGeneralButton(
+            widget: AppButton.general(
                 text: 'Snackbar with LeadingIcon',
                 onTap: () => AppSnackBar.show(
                       message: 'App SnackBar with LeadingIcon',
                       title: 'AppSnackBar Title',
-                      leadingIcon: AppIcons.info.widget,
+                      leadingIcon: AppIcons.info,
                       leadingAction: controller.functionCalledDialog,
                     ))),
         AdminFunctions.item(
-            widget: AppGeneralButton(
+            widget: AppButton.general(
                 text: 'Snackbar with Button',
                 onTap: () => AppSnackBar.show(
                       message: 'App SnackBar with Button',
@@ -345,15 +343,15 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
                       buttonAction: controller.functionCalledDialog,
                     ))),
         AdminFunctions.item(
-            widget: AppGeneralButton(
+            widget: AppButton.general(
                 text: 'Snackbar with Icon',
                 onTap: () => AppSnackBar.show(
                       message: 'App SnackBar with Button',
                       title: 'AppSnackBar Title',
-                      icon: AppIcons.settings.widget,
+                      icon: AppIcons.settings,
                     ))),
         AdminFunctions.item(
-            widget: AppGeneralButton(
+            widget: AppButton.general(
                 text: 'Snackbar with Progress Indicator',
                 onTap: () => AppSnackBar.show(
                       message: 'App SnackBar with Progress Indicator',
@@ -361,7 +359,7 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
                       withProgressIndicator: true,
                     ))),
         AdminFunctions.item(
-            widget: AppGeneralButton(
+            widget: AppButton.general(
                 text: 'Progress Indicator Snackbar',
                 onTap: () => AppSnackBar.show(
                       title: 'Progress Indicator Snackbar Title',
@@ -371,14 +369,14 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
                       ),
                     ))),
         AdminFunctions.item(
-            widget: AppGeneralButton(
+            widget: AppButton.general(
                 text: 'Error Snackbar',
                 onTap: () => AppSnackBar.showError(
                       message: 'App SnackBar with Button',
                       title: 'AppSnackBar Title',
                     ))),
         AdminFunctions.item(
-            widget: AppGeneralButton(
+            widget: AppButton.general(
                 text: 'Warning Snackbar',
                 onTap: () => AppSnackBar.showWarning(
                       message: 'App SnackBar with Button',
@@ -391,8 +389,8 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
             fullWidth: true,
             widget: AppAppBar(
               pageDetail: AppPageDetail(pageRoute: AppPages.adminWidgetCheckPage.pageRoute, pageName: 'Page Name'),
-              barLeading: AppIconButton(icon: AppIcons.list.widget, onTap: nullFunction),
-              barAction: AppIconButton(icon: AppIcons.add.widget, onTap: nullFunction),
+              barLeading: AppButton.icon(icon: AppIcons.list, onTap: nullFunction),
+              barAction: AppButton.icon(icon: AppIcons.add, onTap: nullFunction),
             )),
       ], title: 'AppBar');
 

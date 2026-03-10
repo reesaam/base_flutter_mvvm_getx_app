@@ -37,12 +37,12 @@ class UpdatePage extends CoreView<UpdateController> {
   Widget _widgetButtons() => Obx(() => Container(
       padding: AppPaddings.updateButtons,
       child: Column(children: [
-        AppGeneralButton(
+        AppButton.general(
           text: Texts.to.update.updateCheckUpdate,
           loading: controller.buttonCheckUpdateLoading.value,
           onTap: controller.checkUpdate,
         ),
-        AppGeneralButton(
+        AppButton.general(
           text: Texts.to.update.updateDownloadUpdate,
           loading: controller.buttonDownloadUpdateLoading.value,
           onTap: controller.downloadUpdate,
