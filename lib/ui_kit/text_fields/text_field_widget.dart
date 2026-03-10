@@ -10,8 +10,8 @@ import '../../barrels/shared_models_barrel.dart';
 import 'text_field_abstraction.dart';
 
 /// General and Complete Widget for [AppTextField]
-/// All TextField in the App will generate with this Widget in [AppTextField]
-/// [AppTextField] also uses [AppTextFieldAbstraction] for Abstraction which has been explained
+/// All TextFields in the App will generate with this Widget in [AppTextField]
+/// [AppTextField] also uses [AppTextFieldAbstraction] for Abstraction which has been explained there
 
 abstract class AppTextFieldWidget extends StatelessWidget {
   const AppTextFieldWidget({
