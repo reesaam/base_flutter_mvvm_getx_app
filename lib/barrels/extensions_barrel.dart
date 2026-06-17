@@ -15,7 +15,6 @@ export '../core/extensions/data_types_extensions/extension_date_time.dart';
 export '../core/extensions/data_types_extensions/extension_duration.dart';
 export '../core/extensions/data_types_extensions/extension_icon.dart';
 export '../core/extensions/data_types_extensions/extension_int.dart';
-export '../core/extensions/data_types_extensions/extension_jalali.dart';
 export '../core/extensions/data_types_extensions/extension_language.dart';
 export '../core/extensions/data_types_extensions/extension_list.dart';
 export '../core/extensions/data_types_extensions/extension_string.dart';
