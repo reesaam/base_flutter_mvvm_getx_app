@@ -62,7 +62,6 @@ dependencies:
   i69n: ^3.1.0
   timezone: ^0.9.4
   country_flags: ^3.0.0
-  persian_datetime_picker: ^2.6.0
 
   # Sharing
   share_plus: ^10.1.2
