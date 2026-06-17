@@ -18,9 +18,9 @@ class AppButtonConstructor extends BaseWidget {
     this.iconColor,
     this.borderColor,
     this.loadingColor,
-    this.child,
     this.loadingWidget,
     this.text,
+    this.child,
     this.icon,
     this.leading,
     this.width,
@@ -33,6 +33,8 @@ class AppButtonConstructor extends BaseWidget {
     this.mainAxisAlignment,
     this.crossAxisAlignment,
   });
+      // : assert(child != null && text != null, 'Both child and text parameters can\'t have value');
+
   /// TODO: Write Assert for child and text
 
   final ButtonType buttonType;
@@ -57,11 +59,12 @@ class AppButtonConstructor extends BaseWidget {
   final MainAxisAlignment? mainAxisAlignment;
   final CrossAxisAlignment? crossAxisAlignment;
 
-
   @override
   Widget get widget {
     if (buttonType == ButtonType.general) {
       return AppButtonWidget(
+        backgroundColor: AppColors.background,
+        textColor: AppColors.secondary,
         text: text ?? Texts.to.general.notAvailableInitials,
         onTap: onTap,
         icon: icon,

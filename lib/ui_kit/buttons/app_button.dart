@@ -42,8 +42,9 @@ class AppButton extends AppButtonConstructor implements AppButtonAbstraction {
   });
 
   factory AppButton.general({
-    required String text,
     required Function() onTap,
+    String? text,
+    Widget? widget,
     AppIcons? icon,
     AppIcons? leading,
     bool? disabled,
@@ -57,6 +58,7 @@ class AppButton extends AppButtonConstructor implements AppButtonAbstraction {
         leading: leading,
         disabled: disabled,
         loading: loading,
+        child: widget,
       );
 
   factory AppButton.filled({

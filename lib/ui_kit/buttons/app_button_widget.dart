@@ -1,4 +1,5 @@
 import '../../barrels/ui_kit_barrel.dart';
+import 'app_button_loading.dart';
 
 class AppButtonWidget extends ElevatedButton {
   const AppButtonWidget({
@@ -51,7 +52,7 @@ class AppButtonWidget extends ElevatedButton {
   @override
   Widget? get child {
     List<Widget> children = loading == true
-        ? [loadingWidget ?? _buttonLoading(loadingColor)]
+        ? [loadingWidget ?? AppButtonLoading(color: loadingColor)]
         : [
             icon?.widget ?? AppBox.shrink(),
             AppBox.expanded(
@@ -79,10 +80,4 @@ class AppButtonWidget extends ElevatedButton {
       (disabled == true
           ? WidgetStatesController(<WidgetState>{WidgetState.focused})
           : WidgetStatesController(<WidgetState>{WidgetState.disabled}));
-
-  Widget _buttonLoading(AppColors? color) => AppProgressIndicator.circular(
-        color: color?.color ?? Get.theme.canvasColor,
-        width: 20,
-        strokeWidth: 3,
-      );
 }
