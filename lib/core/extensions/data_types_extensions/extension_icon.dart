@@ -9,5 +9,5 @@ extension ExtensionIconColor on Icon {
 
 extension ExtensionIconSize on Icon {
   Icon withSize(double size) => Icon(icon, size: size, color: color);
-  Icon withColor(Color color) => Icon(icon, size: size, color: color);
+  Icon withColor(Color? color) => Icon(icon, size: size, color: color);
 }

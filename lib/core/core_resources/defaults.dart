@@ -22,5 +22,9 @@ class AppDefaults {
 
   ///Borders
   static double get borderWidth => 2;
+
+  ///Buttons
+  static double get buttonHeight => 50;
+  static EdgeInsets get buttonPadding => const EdgeInsets.symmetric(horizontal: 5, vertical: 5);
 }
 
