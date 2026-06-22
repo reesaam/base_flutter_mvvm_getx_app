@@ -1,7 +1,9 @@
+import '../../barrels/core_resources_barrel.dart';
 import '../../barrels/localization_barrel.dart';
 import '../../barrels/ui_kit_barrel.dart';
 
 import 'app_button_widget.dart';
+import 'button_type_enum.dart';
 import 'icon_button.dart';
 
 /// General and Complete Widget for [AppButton]
@@ -33,9 +35,6 @@ class AppButtonConstructor extends BaseWidget {
     this.mainAxisAlignment,
     this.crossAxisAlignment,
   });
-      // : assert(child != null && text != null, 'Both child and text parameters can\'t have value');
-
-  /// TODO: Write Assert for child and text
 
   final ButtonType buttonType;
   final Function() onTap;
@@ -61,43 +60,33 @@ class AppButtonConstructor extends BaseWidget {
 
   @override
   Widget get widget {
-    if (buttonType == ButtonType.general) {
-      return AppButtonWidget(
-        backgroundColor: AppColors.background,
-        textColor: AppColors.secondary,
-        text: text ?? Texts.to.general.notAvailableInitials,
-        onTap: onTap,
-        icon: icon,
-        leading: leading,
-        disabled: disabled,
-        loading: loading,
-      );
-    } else if (buttonType == ButtonType.filled) {
-      return AppButtonWidget(
-        text: text ?? Texts.to.general.notAvailableInitials,
-        onTap: onTap,
-        icon: icon,
-        leading: leading,
-        disabled: disabled,
-        loading: loading,
-      );
-    } else if (buttonType == ButtonType.outlined) {
-      return AppButtonWidget(
-        text: text ?? Texts.to.general.notAvailableInitials,
-        onTap: onTap,
-        icon: icon,
-        leading: leading,
-        disabled: disabled,
-        loading: loading,
-      );
-    } else if (buttonType == ButtonType.icon) {
-      return AppIconButton(
+    Widget widget = AppBox.shrink();
+    if (buttonType == ButtonType.icon) {
+      widget = AppIconButton(
         icon: icon ?? AppIcons.none,
+        iconColor: iconColor,
         onTap: onTap,
         text: text,
       );
+    } else {
+      widget = AppButtonWidget(
+        backgroundColor: buttonType.backgroundColor,
+        borderColor: borderColor,
+        textColor: buttonType.textColor,
+        text: text ?? Texts.to.general.notAvailableInitials,
+        onTap: onTap,
+        icon: icon,
+        leading: leading,
+        disabled: disabled,
+        loading: loading,
+      );
     }
-
-    return AppBox.shrink();
+    return Container(
+      width: width,
+      height: height ?? AppDefaults.buttonHeight,
+      padding: padding ?? AppDefaults.buttonPadding,
+      margin: margin,
+      child: widget,
+    );
   }
 }

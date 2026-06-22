@@ -1,7 +1,8 @@
 import '../../barrels/ui_kit_barrel.dart';
 
-import 'app_button_abstraction.dart';
-import 'app_button_constructor.dart';
+import 'button_abstraction.dart';
+import 'button_constructor.dart';
+import 'button_type_enum.dart';
 
 /// Abstraction for [AppButton] to Determine what functions Buttons have without checking the main file.
 /// [AppButton] is the Main Widget which creates a general complete Widget of a Buttons with all the parameters
@@ -9,13 +10,6 @@ import 'app_button_constructor.dart';
 /// first, for Developer's knowledge of existing factories of the Buttons and what Options do they have
 /// and second, is for developing purposes, means if existing AppButton was not enough or complete to Answer Developing needs
 /// it can be extended and developed by another widget or any other way of implementation
-
-enum ButtonType {
-  general,
-  icon,
-  filled,
-  outlined,
-}
 
 class AppButton extends AppButtonConstructor implements AppButtonAbstraction {
   const AppButton._({
@@ -39,10 +33,18 @@ class AppButton extends AppButtonConstructor implements AppButtonAbstraction {
     super.stateController,
     super.mainAxisAlignment,
     super.crossAxisAlignment,
-  });
+  }) : assert(
+          (text == null && icon == null) ||
+              (text == null && icon != null) ||
+              (text != null && icon != null) ||
+              (child == null),
+          'Either text or icon or both must be provided, or a child widget must be provided.',
+        );
 
   factory AppButton.general({
     required Function() onTap,
+    AppColors? backgroundColor,
+    AppColors? borderColor,
     String? text,
     Widget? widget,
     AppIcons? icon,
@@ -52,6 +54,8 @@ class AppButton extends AppButtonConstructor implements AppButtonAbstraction {
   }) =>
       AppButton._(
         buttonType: ButtonType.general,
+        backgroundColor: backgroundColor,
+        borderColor: borderColor,
         onTap: onTap,
         text: text,
         icon: icon,
@@ -62,8 +66,11 @@ class AppButton extends AppButtonConstructor implements AppButtonAbstraction {
       );
 
   factory AppButton.filled({
-    required String text,
     required Function() onTap,
+    required String text,
+    AppColors? backgroundColor,
+    AppColors? borderColor,
+    Widget? widget,
     AppIcons? icon,
     AppIcons? leading,
     bool? disabled,
@@ -71,6 +78,8 @@ class AppButton extends AppButtonConstructor implements AppButtonAbstraction {
   }) =>
       AppButton._(
         buttonType: ButtonType.filled,
+        backgroundColor: backgroundColor,
+        borderColor: borderColor,
         onTap: onTap,
         text: text,
         icon: icon,
@@ -80,8 +89,10 @@ class AppButton extends AppButtonConstructor implements AppButtonAbstraction {
       );
 
   factory AppButton.outlined({
-    required String text,
     required Function() onTap,
+    required String text,
+    AppColors? borderColor,
+    Widget? widget,
     AppIcons? icon,
     AppIcons? leading,
     bool? disabled,
@@ -89,23 +100,31 @@ class AppButton extends AppButtonConstructor implements AppButtonAbstraction {
   }) =>
       AppButton._(
         buttonType: ButtonType.outlined,
+        borderColor: borderColor,
         onTap: onTap,
         text: text,
         icon: icon,
         leading: leading,
         disabled: disabled,
         loading: loading,
+        child: widget,
       );
 
   factory AppButton.icon({
     required AppIcons icon,
-    required Function() onTap,
+    required Function onTap,
+    AppColors? backgroundColor,
+    AppColors? iconColor,
+    AppColors? borderColor,
     String? text,
   }) =>
       AppButton._(
         buttonType: ButtonType.icon,
-        onTap: onTap,
+        backgroundColor: backgroundColor,
+        borderColor: borderColor,
+        onTap: () => onTap,
         icon: icon,
+        iconColor: iconColor,
         text: text,
       );
 }

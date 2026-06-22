@@ -1,5 +1,5 @@
 import '../../barrels/ui_kit_barrel.dart';
-import 'app_button_loading.dart';
+import 'button_loading.dart';
 
 class AppButtonWidget extends ElevatedButton {
   const AppButtonWidget({
