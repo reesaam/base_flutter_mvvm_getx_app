@@ -5,23 +5,23 @@ import '../../barrels/ui_kit_barrel.dart';
 class AppAlertDialogs {
   static withYesNo({String? title, required String text, required Function() onTapYes, Function()? onTapNo, bool? dismissible}) async {
     List<Widget> buttons = [
-      AppGeneralButton(text: Texts.to.general.no, onTap: onTapNo ?? _onTapCancel),
-      AppGeneralButton(text: Texts.to.general.yes, primaryColor: true, onTap: onTapYes),
+      AppButton.general(text: Texts.to.general.no, onTap: onTapNo ?? _onTapCancel),
+      AppButton.general(text: Texts.to.general.yes, onTap: onTapYes),
     ];
     await _appAlertDialog(title: title, text: text, buttons: buttons, dismissible: dismissible);
   }
 
   static withOkCancel({String? title, required String text, required Function() onTapOk, Function()? onTapCancel, bool? dismissible}) async {
     List<Widget> buttons = [
-      AppGeneralButton(text: Texts.to.general.cancel, onTap: onTapCancel ?? _onTapCancel),
-      AppGeneralButton(text: Texts.to.general.ok, primaryColor: true, onTap: onTapOk),
+      AppButton.general(text: Texts.to.general.cancel, onTap: onTapCancel ?? _onTapCancel),
+      AppButton.general(text: Texts.to.general.ok, onTap: onTapOk),
     ];
     await _appAlertDialog(title: title, text: text, buttons: buttons, dismissible: dismissible);
   }
 
   static withOk({String? title, required String text, required Function() onTapOk, bool? dismissible}) async {
     List<Widget> buttons = [
-      AppGeneralButton(text: Texts.to.general.ok, primaryColor: true, onTap: onTapOk),
+      AppButton.general(text: Texts.to.general.ok, onTap: onTapOk),
     ];
     await _appAlertDialog(title: title, text: text, buttons: buttons, dismissible: dismissible);
   }

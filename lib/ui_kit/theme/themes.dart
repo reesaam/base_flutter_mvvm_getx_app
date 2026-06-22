@@ -194,7 +194,7 @@ class AppTheme {
 
   static OverflowBar _overflowBar() => const OverflowBar();
 
-  static ToggleButtonsThemeData _buttonToggle() => ToggleButtonsThemeData();
+  static ToggleButtonsThemeData _buttonToggle() => const ToggleButtonsThemeData();
 
   static MenuButtonThemeData _buttonMenu() => MenuButtonThemeData(style: _buttonStyle());
 

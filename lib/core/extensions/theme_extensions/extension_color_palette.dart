@@ -32,7 +32,6 @@ extension ColorExtensionForAppColorPalette on AppColorPalette {
       }
       if (darkColor != null) color = darkColor;
     }
-    appDebugPrint('ColorExtensionForAppColorPalette: $this');
     return color;
   }
 

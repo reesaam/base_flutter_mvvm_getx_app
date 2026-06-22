@@ -6,10 +6,15 @@ linter:
     prefer_relative_imports: true
     prefer_single_quotes: true
     avoid_empty_else: true
+    plugins:
+      - import_lint
 
 analyzer:
+  language:
+    strict-inference: true
   errors:
     invalid_assignment: error
+    invalid_import: error
     missing_return: error
     always_declare_return_types: warning
     always_use_package_imports: ignore
@@ -22,3 +27,13 @@ analyzer:
     unnecessary_this: warning
     unused_import: warning
     unrelated_type_equality_checks: error
+
+import_lint:
+  rules:
+    - name: "Only allow imports from Barrels"
+      allowed_imports:
+        - "lib/barrels/**"
+      disallowed_imports:
+        - "lib/**"
+      exclude:
+        - "lib/barrels/**"

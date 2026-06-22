@@ -22,14 +22,14 @@ class AdminStartPage extends CoreView<AdminStartController> {
         _sectionsButtons(),
       ]);
 
-  _sectionsButtons() => Container(
+ Widget _sectionsButtons() => Container(
       padding: AppPaddings.buttonLarge,
       child: Column(
           children: List<Widget>.generate(
               AppPages.listAdminPages.length,
               (index) => index == 0
                   ? AppBox.shrink()
-                  : AppGeneralButton(
+                  : AppButton.general(
                       text: controller.pages[index].pageName ?? Texts.to.general.notAvailableInitials,
                       onTap: () => goToPage(controller.pages[index]),
                     ))));

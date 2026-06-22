@@ -7,14 +7,14 @@ class AppSnackBar {
     String? message,
     String? title,
     Widget? widget,
-    Icon? icon,
+    AppIcons? icon,
     Function()? leadingAction,
-    Icon? leadingIcon,
+    AppIcons? leadingIcon,
     String? leadingText,
     String? buttonText,
     Function()? buttonAction,
-    Color? backgroundColor,
-    Color? textColor,
+    AppColors? backgroundColor,
+    AppColors? textColor,
     bool? withProgressIndicator,
   }) {
     _showSnackBar(
@@ -27,8 +27,8 @@ class AppSnackBar {
       leadingText: leadingText,
       buttonText: buttonText,
       buttonAction: buttonAction,
-      backgroundColor: backgroundColor,
-      textColor: textColor,
+      backgroundColor: backgroundColor?.color,
+      textColor: textColor?.color,
       showProgressIndicator: withProgressIndicator,
     );
   }
@@ -37,9 +37,9 @@ class AppSnackBar {
     String? message,
     String? title,
     Widget? widget,
-    Icon? icon,
+    AppIcons? icon,
     Function()? leadingAction,
-    Icon? leadingIcon,
+    AppIcons? leadingIcon,
     String? leadingText,
     String? buttonText,
     Function()? buttonAction,
@@ -62,9 +62,9 @@ class AppSnackBar {
     String? message,
     String? title,
     Widget? widget,
-    Icon? icon,
+    AppIcons? icon,
     Function()? leadingAction,
-    Icon? leadingIcon,
+    AppIcons? leadingIcon,
     String? leadingText,
     String? buttonText,
     Function()? buttonAction,
@@ -89,9 +89,9 @@ _showSnackBar({
   String? title,
   Widget? widget,
   Function(GetSnackBar)? onTap,
-  Icon? icon,
+  AppIcons? icon,
   Function()? leadingAction,
-  Icon? leadingIcon,
+  AppIcons? leadingIcon,
   String? leadingText,
   String? buttonText,
   Function()? buttonAction,
@@ -115,19 +115,18 @@ _showSnackBar({
               crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                if(message != null) Text(message).withColor(textColor ?? Get.theme.canvasColor),
+                if (message != null) Text(message).withColor(textColor ?? Get.theme.canvasColor),
                 if (buttonText != null)
                   Column(children: [
                     AppSpaces.h20,
-                    AppGeneralButton(text: buttonText, primaryColor: true, onTap: buttonAction ?? nullFunction),
+                    AppButton.general(text: buttonText, onTap: buttonAction ?? nullFunction),
                   ]),
               ]),
       onTap: (snack) => onTap == null ? null : onTap(snack),
       mainButton: leadingIcon == null
           ? null
           : leadingText == null
-              ? AppIconButton(
-                  primaryColor: true,
+              ? AppButton.icon(
                   icon: leadingIcon,
                   onTap: leadingAction ?? nullFunction,
                 )
@@ -143,7 +142,7 @@ _showSnackBar({
       isDismissible: isDismissible ?? true,
       backgroundColor: backgroundColor ?? Get.theme.snackBarTheme.backgroundColor ?? Get.theme.colorScheme.tertiary,
       borderRadius: AppElements.defaultRadius,
-      icon: icon?.withColor(iconColor ?? textColor ?? Get.theme.canvasColor),
+      icon: icon?.widget.withColor(iconColor ?? textColor ?? Get.theme.canvasColor),
       shouldIconPulse: false,
       showProgressIndicator: showProgressIndicator ?? false,
       progressIndicatorBackgroundColor: showProgressIndicator == true ? backgroundColor ?? Get.theme.canvasColor : null,
@@ -151,4 +150,4 @@ _showSnackBar({
     ).show();
 
 Widget _buttonWidget(Function() buttonFunction, String buttonText) =>
-    AppGeneralButton(text: buttonText, onTap: buttonFunction);
+    AppButton.general(text: buttonText, onTap: buttonFunction);

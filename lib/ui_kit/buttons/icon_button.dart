@@ -5,14 +5,14 @@ class AppIconButton extends MaterialButton {
     super.key,
     required this.icon,
     required this.onTap,
-    this.primaryColor,
+    this.iconColor,
     this.text,
     this.size,
   }) : super(onPressed: onTap);
 
-  final Icon icon;
+  final AppIcons icon;
   final Function() onTap;
-  final bool? primaryColor;
+  final AppColors? iconColor;
   final String? text;
   final Size? size;
 
@@ -29,13 +29,11 @@ class AppIconButton extends MaterialButton {
             padding: AppPaddings.zero,
             iconSize: AppSizes.iconButtonIconSize,
             onPressed: onTap,
-            icon: primaryColor == true ? icon.withPrimaryColor : icon.withSecondaryColor,
+            icon: icon.widget.withColor(iconColor?.color),
           ),
           text == null
               ? AppBox.shrink()
-              : primaryColor == true
-                  ? Text(text!).withPrimaryColor
-                  : Text(text!),
+              : Text(text!).withColor(iconColor?.color),
         ]));
   }
 }

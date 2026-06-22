@@ -31,6 +31,7 @@ class AppPaddings extends EdgeInsets {
   static EdgeInsets get snackBar => const EdgeInsets.symmetric(horizontal: 20, vertical: 20);
 
   ///Buttons
+  static EdgeInsets get buttonDefaultPadding => const EdgeInsets.symmetric(horizontal: 10, vertical: 10);
   static EdgeInsets get buttonXSmall => const EdgeInsets.symmetric(horizontal: 100, vertical: 10);
   static EdgeInsets get buttonSmall => const EdgeInsets.symmetric(horizontal: 80, vertical: 10);
   static EdgeInsets get buttonMedium => const EdgeInsets.symmetric(horizontal: 60, vertical: 10);

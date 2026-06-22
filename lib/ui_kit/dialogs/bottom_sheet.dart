@@ -12,27 +12,25 @@ class AppBottomSheet {
 
   withOk({String? title, required Widget form, required Function() onTapOk, bool? dismissible}) async {
     List<Widget> buttons = [
-      AppGeneralButton(
+      AppButton.general(
         text: Texts.to.general.ok,
         onTap: onTapOk,
-        primaryColor: true,
       )
     ];
     await _appBottomSheetGeneral(title: title, form: form, buttons: buttons, dismissible: dismissible);
   }
 
   withCancel({String? title, required Widget form, bool? dismissible}) async {
-    List<Widget> buttons = [AppGeneralButton(onSecondaryColor: true, text: Texts.to.general.cancel, onTap: _onTapCancel)];
+    List<Widget> buttons = [AppButton.general(text: Texts.to.general.cancel, onTap: _onTapCancel)];
     await _appBottomSheetGeneral(title: title, form: form, buttons: buttons, dismissible: dismissible);
   }
 
   withOkCancel({String? title, required Widget form, required Function() onTapOk, bool? dismissible}) async {
     List<Widget> buttons = [
-      AppGeneralButton(onSecondaryColor: true, text: Texts.to.general.cancel, onTap: () => _onTapCancel()),
-      AppGeneralButton(
+      AppButton.general(text: Texts.to.general.cancel, onTap: () => _onTapCancel()),
+      AppButton.general(
         text: Texts.to.general.ok,
         onTap: () => onTapOk(),
-        primaryColor: true,
       ),
     ];
     await _appBottomSheetGeneral(title: title, form: form, buttons: buttons, dismissible: dismissible);
