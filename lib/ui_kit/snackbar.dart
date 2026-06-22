@@ -13,8 +13,8 @@ class AppSnackBar {
     String? leadingText,
     String? buttonText,
     Function()? buttonAction,
-    Color? backgroundColor,
-    Color? textColor,
+    AppColors? backgroundColor,
+    AppColors? textColor,
     bool? withProgressIndicator,
   }) {
     _showSnackBar(
@@ -27,8 +27,8 @@ class AppSnackBar {
       leadingText: leadingText,
       buttonText: buttonText,
       buttonAction: buttonAction,
-      backgroundColor: backgroundColor,
-      textColor: textColor,
+      backgroundColor: backgroundColor?.color,
+      textColor: textColor?.color,
       showProgressIndicator: withProgressIndicator,
     );
   }
