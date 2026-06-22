@@ -10,8 +10,6 @@ linter:
       - import_lint
 
 analyzer:
-  language:
-    strict-inference: true
   errors:
     invalid_assignment: error
     invalid_import: error
