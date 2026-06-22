@@ -10,7 +10,7 @@ class UpdatePage extends CoreView<UpdateController> {
   const UpdatePage({super.key});
 
   @override
-  Widget? get footer => _widgetButtons();
+  Widget? get bottomSheet => _widgetButtons();
 
   @override
   Widget get body => Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [

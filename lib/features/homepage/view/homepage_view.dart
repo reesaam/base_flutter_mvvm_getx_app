@@ -16,10 +16,10 @@ class HomePage extends CoreView<HomePageController> {
   PreferredSizeWidget? get appBar => AppAppBar(pageDetail: controller.pageDetail);
 
   @override
-  Widget? get footer => CoreFlags.isRelease ? null : _adminTestButton();
+  Widget? get bottomNavigationBar => const AppBottomNavigationBar();
 
   @override
-  Widget? get bottomNavigationBar => const AppBottomNavigationBar();
+  Widget? get bottomSheet => _adminTestButton();
 
   @override
   Widget get body => Center(
@@ -32,7 +32,7 @@ class HomePage extends CoreView<HomePageController> {
         ],
       ));
 
-  _logo() => Container(
+  Widget _logo() => Container(
       alignment: Alignment.center,
       padding: AppPaddings.homepageTopBar,
       height: Get.height / 6,
@@ -47,7 +47,7 @@ class HomePage extends CoreView<HomePageController> {
             ])),
       ]));
 
-  _developer() => Container(
+  Widget _developer() => Container(
       alignment: Alignment.center,
       padding: AppPaddings.homepageTopBar,
       height: Get.height / 6,
@@ -61,7 +61,7 @@ class HomePage extends CoreView<HomePageController> {
             ])),
       ]));
 
-  _adminTestButton() => Padding(
+  Widget _adminTestButton() => Padding(
         padding: AppPaddings.pages,
         child: AppButton.general(text: 'Admin Test Page', onTap: () => goToPage(AppPages.adminStartPage)),
       );
