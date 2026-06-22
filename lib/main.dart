@@ -7,6 +7,7 @@ import 'barrels/extensions_barrel.dart';
 import 'barrels/localization_barrel.dart';
 import 'barrels/ui_kit_barrel.dart';
 
+import 'core/core_resources/system_channel_methods.dart';
 import 'main.get_put.dart';
 // import 'generated/l10n.dart';
 
@@ -18,7 +19,7 @@ void initProject() async {
   // await GetStorage.init().withStatusPrint(isLog: true, featureName: 'Get Storage Initialization');
   // await AppLocalNotifications().init().withStatusPrint(isLog: true, featureName: 'App Local Notifications Initialization');
   // await DeepLinkHandler.init();
-  kIsWeb ? null : SystemChannels.textInput.invokeMethod('TextInput.hide');
+  kIsWeb ? null : await AppSystemChannelMethods.textInputHide.invoke();
   runApp(const MainApp());
 }
 

@@ -1,3 +1,4 @@
+import '../../barrels/core_resources_barrel.dart';
 import '../../barrels/ui_kit_barrel.dart';
 
 import 'button_abstraction.dart';
@@ -34,11 +35,8 @@ class AppButton extends AppButtonConstructor implements AppButtonAbstraction {
     super.mainAxisAlignment,
     super.crossAxisAlignment,
   }) : assert(
-          (text == null && icon == null) ||
-              (text == null && icon != null) ||
-              (text != null && icon != null) ||
-              (child == null),
-          'Either text or icon or both must be provided, or a child widget must be provided.',
+          (text == null && icon == null) || (text == null && icon != null) || (text != null && icon != null) || (child == null),
+          AppAssertTexts.buttonsCheckNullInputs,
         );
 
   factory AppButton.general({

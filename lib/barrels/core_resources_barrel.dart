@@ -11,3 +11,5 @@ export '../core/core_resources/images.dart';
 export '../core/core_resources/logos.dart';
 export '../core/core_resources/page_details.dart';
 export '../core/core_resources/texts.dart';
+export '../core/core_resources/assert_texts.dart';
+export '../core/core_resources/system_channel_methods.dart';
