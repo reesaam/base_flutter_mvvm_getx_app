@@ -31,7 +31,9 @@ import_lint:
     - name: "Only allow imports from Barrels"
       allowed_imports:
         - "lib/barrels/**"
+        - "./**"
       disallowed_imports:
         - "lib/**"
+        - "../**"
       exclude:
         - "lib/barrels/**"
