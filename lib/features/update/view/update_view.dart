@@ -18,7 +18,7 @@ class UpdatePage extends CoreView<UpdateController> {
       ]);
 
   Widget _widgetVersions() => Card(
-      child: Container(
+      child: AppContainer(
           padding: AppPaddings.updateVersions,
           child: Column(children: [
             _widgetVersion(Texts.to.update.updateCurrentVersion, AppInfo.currentVersion.version),
@@ -34,7 +34,7 @@ class UpdatePage extends CoreView<UpdateController> {
         children: [Text(title), Text(version)],
       );
 
-  Widget _widgetButtons() => Obx(() => Container(
+  Widget _widgetButtons() => Obx(() => AppContainer(
       padding: AppPaddings.updateButtons,
       child: Column(children: [
         AppButton.general(

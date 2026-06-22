@@ -21,7 +21,7 @@ class AppDrawer extends Drawer {
         footer(),
       ]));
 
-  Widget header() => Container(
+  Widget header() => AppContainer(
       padding: AppPaddings.drawerHeader,
       child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
         Image.asset(AppLogos.appLogo, width: AppSizes.drawerHeaderIconWidth),
@@ -37,7 +37,7 @@ class AppDrawer extends Drawer {
   Widget _bodyItem(AppPageDetail page) =>
       ListTile(title: Text(page.pageName ?? Texts.to.general.empty), leading: page.iconCode.toIcon(), onTap: () => {popPage(), goToPage(page)});
 
-  Widget footer() => Container(
+  Widget footer() => AppContainer(
       padding: AppPaddings.drawerFooter,
       child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
         AppIcons.version.widget,

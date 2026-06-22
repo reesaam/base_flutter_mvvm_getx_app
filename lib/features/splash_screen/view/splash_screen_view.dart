@@ -9,7 +9,7 @@ class SplashScreenPage extends CoreView<SplashScreenController> {
   const SplashScreenPage({super.key});
 
   @override
-  Widget get body => Container(
+  Widget get body => AppContainer(
       alignment: Alignment.center,
       width: Get.width,
       height: Get.height - 100,
@@ -20,17 +20,17 @@ class SplashScreenPage extends CoreView<SplashScreenController> {
         AppBox.expanded(flex: 6, child: _widgetLoadingIndicator()),
       ]));
 
-  Widget _widgetLogo() => Container(
+  Widget _widgetLogo() => AppContainer(
         alignment: Alignment.center,
         child: AppImage(image: controller.logoSource),
       );
 
-  Widget _widgetAppName() => Container(
+  Widget _widgetAppName() => AppContainer(
         alignment: Alignment.center,
         child: Text(controller.appName, style: Get.theme.textTheme.titleSmall),
       );
 
-  Widget _widgetLoadingIndicator() => Container(
+  Widget _widgetLoadingIndicator() => AppContainer(
         alignment: Alignment.center,
         child: AppProgressIndicator.circular(width: 50),
       );

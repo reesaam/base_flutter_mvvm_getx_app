@@ -82,7 +82,7 @@ abstract class AppTextFieldWidget extends StatelessWidget {
   final FocusNode? focusNode;
 
   @override
-  Widget build(BuildContext context) => Container(
+  Widget build(BuildContext context) => AppContainer(
         width: width,
         height: height,
         padding: padding,

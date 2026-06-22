@@ -24,7 +24,7 @@ extension ExtensionCountryFlagWidget on AppCountry {
     double? padding,
     double? aspectRatio,
   }) {
-    return Container(
+    return AppContainer(
         width: size ?? 100,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(rounded == true ? roundRadius ?? AppElements.defaultRadius : 0)),

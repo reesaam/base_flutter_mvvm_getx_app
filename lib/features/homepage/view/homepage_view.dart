@@ -32,7 +32,7 @@ class HomePage extends CoreView<HomePageController> {
         ],
       ));
 
-  Widget _logo() => Container(
+  Widget _logo() => AppContainer(
       alignment: Alignment.center,
       padding: AppPaddings.homepageTopBar,
       height: Get.height / 6,
@@ -47,7 +47,7 @@ class HomePage extends CoreView<HomePageController> {
             ])),
       ]));
 
-  Widget _developer() => Container(
+  Widget _developer() => AppContainer(
       alignment: Alignment.center,
       padding: AppPaddings.homepageTopBar,
       height: Get.height / 6,

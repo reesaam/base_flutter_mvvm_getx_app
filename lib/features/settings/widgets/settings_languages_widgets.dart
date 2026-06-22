@@ -15,7 +15,7 @@ class SettingsLanguageWidget extends BaseWidget {
           (index) => InkWell(
               onTap: function == null ? null : () => function!(index),
               child: LayoutBuilder(
-                  builder: (context, constraints) => Container(
+                  builder: (context, constraints) => AppContainer(
                       width: constraints.maxWidth,
                       padding: AppPaddings.modalItems,
                       child: Text(AppLocalizations.to.supportedLocales[index].getLanguage.languageName))))));

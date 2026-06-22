@@ -58,8 +58,8 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
 
     return AdminFunctions.section([
       AdminFunctions.item(title: 'AppBox', widget: AppBox(child: _innerChild)),
-      AdminFunctions.item(title: 'AppBox Expanded', widget: Container(
-          color: AppColors.primary.color,
+      AdminFunctions.item(title: 'AppBox Expanded', widget: AppContainer(
+          color: AppColors.primary,
           child: AppBox.expanded(child: _innerChild))),
     ], isRow: false, title: 'App Boxes');
   }

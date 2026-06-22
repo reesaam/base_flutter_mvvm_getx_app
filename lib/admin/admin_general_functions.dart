@@ -10,7 +10,7 @@ class AdminFunctions {
             Text(title, style: const TextStyle(fontSize: 20)),
             AppDividers.general(),
           ]),
-        Container(
+        AppContainer(
           padding: AppPaddings.buttonXLarge,
           child: isRow == true
               ? Row(
@@ -37,7 +37,7 @@ class AdminFunctions {
                 ? Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     if (title != null) Text(title, textAlign: TextAlign.center),
                     if (title != null) AppSpaces.h20,
-                    Container(
+                    AppContainer(
                         padding: fullWidth == true ? AppPaddings.zero : const EdgeInsets.symmetric(horizontal: 20),
                         child: multipleItems == null
                             ? widget ?? AppBox.shrink()

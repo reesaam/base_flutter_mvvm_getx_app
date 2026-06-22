@@ -22,7 +22,7 @@ class AdminStartPage extends CoreView<AdminStartController> {
         _sectionsButtons(),
       ]);
 
- Widget _sectionsButtons() => Container(
+ Widget _sectionsButtons() => AppContainer(
       padding: AppPaddings.buttonLarge,
       child: Column(
           children: List<Widget>.generate(

@@ -89,7 +89,7 @@ class AdminAppResourcesPage extends CoreView<AdminAppResourcesController> {
 
   _colorWidget({AppColors? color, AppColorPalette? colorPalette, bool? dark, bool? gradient}) {
     AppColorPalette innerColor = color?.colorPalette ?? colorPalette ?? AppColorPalette.values.first;
-    return Container(
+    return AppContainer(
         alignment: Alignment.center,
         height: 40,
         width: 40,

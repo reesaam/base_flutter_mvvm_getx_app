@@ -9,7 +9,10 @@ export '../ui_kit/theme/theme_functions.dart';
 
 // Vital Widgets
 export '../ui_kit/core_widgets/base_widget.dart';
+
+// UI Kit Widgets
 export '../ui_kit/core_box.dart';
+export '../ui_kit/container.dart';
 
 // Extensions
 export '../core/extensions/theme_extensions/extension_colors.dart';

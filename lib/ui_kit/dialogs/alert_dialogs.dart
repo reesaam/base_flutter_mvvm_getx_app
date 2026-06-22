@@ -38,7 +38,7 @@ _appAlertDialog({
         useSafeArea: true,
         useRootNavigator: true,
         barrierDismissible: dismissible ?? false,
-        builder: (context) => Container(
+        builder: (context) => AppContainer(
           padding: AppPaddings.generalAlertDialog,
           child: AlertDialog.adaptive(
             scrollable: true,

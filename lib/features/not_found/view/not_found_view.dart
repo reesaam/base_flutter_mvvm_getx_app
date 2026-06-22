@@ -10,7 +10,7 @@ class NotFoundPage extends CoreView<NotFoundController> {
   const NotFoundPage({super.key});
 
   @override
-  Widget get body => Container(
+  Widget get body => AppContainer(
       alignment: Alignment.center,
       width: Get.width,
       height: Get.height - 100,
@@ -18,7 +18,7 @@ class NotFoundPage extends CoreView<NotFoundController> {
         _widgetMain(),
       ]));
 
-  Widget _widgetMain() => Container(
+  Widget _widgetMain() => AppContainer(
       alignment: Alignment.center,
       child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         controller.icon.withSize(Get.size.width / 6),
