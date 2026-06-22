@@ -9,7 +9,7 @@ export '../ui_kit/theme/theme_functions.dart';
 
 // Vital Widgets
 export '../ui_kit/core_widgets/base_widget.dart';
-export '../ui_kit/core_widgets/core_box.dart';
+export '../ui_kit/core_box.dart';
 
 // Extensions
 export '../core/extensions/theme_extensions/extension_colors.dart';
@@ -52,10 +52,10 @@ export '../ui_kit/text_fields/text_field.dart';
 export '../ui_kit/app_bar.dart';
 export '../ui_kit/bottom_navigation_bar.dart';
 export '../ui_kit/drawer.dart';
-export '../ui_kit/floating_buttons.dart';
+export '../ui_kit/floating_button.dart';
 export '../ui_kit/progress_indicator.dart';
 export '../ui_kit/snackbar.dart';
 export '../ui_kit/check_box.dart';
-export '../ui_kit/dividers.dart';
+export '../ui_kit/divider.dart';
 export '../ui_kit/image.dart';
 export '../ui_kit/switch.dart';

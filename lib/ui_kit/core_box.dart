@@ -1,4 +1,4 @@
-import '../../barrels/ui_kit_barrel.dart';
+import '../barrels/ui_kit_barrel.dart';
 
 class AppBox extends BaseWidget {
   const AppBox._({this.child, this.width, this.height, this.shrink, this.flex, this.expanded});
