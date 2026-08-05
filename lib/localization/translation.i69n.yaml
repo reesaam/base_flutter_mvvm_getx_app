@@ -1,0 +1,160 @@
+language:
+  languageName: English
+  languageCode: en_US
+
+app:
+  appName: Base Flutter MVVM GetX App
+
+pagesName:
+  splashScreenPageName: Splash Screen
+  homePageName: Home
+  settingsPageName: Settings
+  updatePageName: Update
+  aboutPageName: About
+  notFoundPageName: Page Not Found
+
+adminPagesName:
+  adminStartPagePageName: Admin Start Page
+  adminTestPageName: Test Page
+  adminAppInfoPageName: App Info Page
+  adminAppResourcesPageName: App Resources Page
+  adminWidgetCheckPageName: Widget Check Page
+  adminDataFormatCheckPageName: Data Format Check Page
+  adminVerifiersPageName: Verifiers Page
+  adminAppCountriesPageName: App Countries Page
+  appDocsPageName: App Docs Page
+
+general:
+  empty:
+  dash: '-'
+  version: Version
+  ok: Ok
+  cancel: Cancel
+  yes: Yes
+  no: No
+  notAvailable: Not Available
+  notAvailableInitials: N/A
+  total: Total
+  from: From
+  to: To
+  warning: Warning
+  alert: Alert
+  information: Information
+  info: Info
+  incorrect: Incorrect
+  totalBalance: Total Balance
+  appExit: App Exit
+
+dialogs:
+  general:
+    areYouSure: Are you sure ?
+  data:
+    areYouSureDataWillLost: '${_parent.general.areYouSure}\nData will be lost with this Function.'
+    areYouSureDataMayLost: '${_parent.general.areYouSure}\nData may be lost with this Function.'
+    areYouSureDataExport: '${_parent.general.areYouSure}\nData will be exported and exposed.'
+    areYouSureDataImport: '${_parent.general.areYouSure}\nData will be imported and exposed.'
+  connection:
+    connectionInternetNotAvailableTitle: Internet Connection
+    connectionInternetNotAvailableText: Internet Connection is not Available!\nPlease Check your Connection.
+
+settings:
+  languageModalSelectLanguage: Select Language
+  appbarMenuResetSettings: Reset All Settings
+  sectionTitleGeneral: General
+  sectionTitleGeneralLanguage: Language
+  sectionTitleGeneralCalendar: Calendar Type
+  sectionGeneralItemDarkMode: Dark Mode
+  sectionTitleUpdate: Update
+  sectionTitleUpdateCurrentVersion: Current Version
+  sectionTitleUpdateAvailableVersion: Available Version
+  sectionTitleBackup: Backup
+  sectionBackupBackup: Backup Data
+  sectionBackupRestore: Restore Data
+  sectionTitleStorage: Storage
+  sectionStorageItemEraseAllData: Erase All Data
+
+update:
+  updateCurrentVersion: Current Version
+  updateAvailableVersion: New Available Version
+  updateCheckUpdate: Check Update
+  updateDownloadUpdate: Download Update
+  updateNewVersion: New Version Found
+  updateApprove: Do you want to download the New Version?
+  updateCheckingUpdate: Checking for any Available Update ...
+  updateUpdateFound: New Update is Available!
+  updateNoUpdateFound: There is not any Update Available!
+  updateDownloading: Downloading ...
+  updateDownloaded: Update Downloaded!
+  updateInstallationTitle: Update Installation
+  updateInstallationContent: 'Do you want to install the Update?\n\nWarning: Application will close!'
+  updateDirectoryNotFoundTitle: Directory Error!
+  updateDirectoryNotFoundContent: There is not any Directory available to store Data
+  updateFileNotFoundTitle: File Error!
+  updateFileNotFoundContent: File not found
+
+error:
+  unknown: Unknown Error Occurred
+
+storage:
+  exceptionNull: Null Exception
+  exceptionLoadData: Storage Load Data Exception
+  exceptionSaveData: Storage Save Data Exception
+  exceptionNodata: No Data Found
+  exceptionUnknown: Unknown Storage Error
+
+network:
+  connection:
+    internetNotAvailable: Internet Not Available Exception
+    exceptionTimeout: Timeout Exception
+    exceptionSocket: Socket Exception
+    exceptionHttp: HTTP Exception
+    exceptionFormat: Format Exception
+    exceptionAccess: Format Exception
+    exceptionUnknown: Unknown Network Error
+  api:
+    exceptionParsingData: Parsing Data Exception
+    exceptionNonAuthoritativeInformation: NonAuthoritative Information Exception
+    exceptionNoContent: No Content Exception
+    exceptionNotModified: Not Modified Exception
+    exceptionUnauthorized: Unauthorized Exception
+    exceptionPaymentRequired: Payment Required Exception
+    exceptionForbidden: Forbidden Exception
+    exceptionNotFound: Not Found Exception
+    exceptionMethodNotAllowed: Method Not Allowed Exception
+    exceptionNotAcceptable: Not Acceptable Exception
+    exceptionProxyAuthRequired: Proxy Auth Required Exception
+    exceptionRequestTimeout: Request Timeout Exception
+    exceptionConflict: Conflict Exception
+    exceptionLengthRequired: Length Required Exception
+    exceptionPreConditionFailed: PreCondition Failed Exception
+    exceptionRequestEntityTooLarge: Request Entity Too Large Exception
+    exceptionRequestUriTooLong: Request Uri Too Long Exception
+    exceptionUnsupportedMediaType: Unsupported Media Type Exception
+    exceptionRequestedRangeNotSatisfiable: Requested Range Not Satisfiable Exception
+    exceptionExpectationFailed: Expectation FailedException
+    exceptionUnProcessableEntity: UnProcessable Entity Exception
+    exceptionFailedDependency: Failed Dependency Exception
+    exceptionUnorderedCollection: Unordered Collection Exception
+    exceptionUpgradeRequired: Upgrade Required Exception
+    exceptionTooManyRequest: Too Many Request Exception
+    exceptionRequestHeaderFieldsTooLarge: Request Header Fields Too Large Exception
+    exceptionNoResponse: No Response Exception
+    exceptionUnavailableForLegalReasons: Unavailable For Legal Reasons Exception
+    exceptionRequestHeaderTooLarge: Request Header Too Large Exception
+    exceptionInternalServerError: Internal Server Error Exception
+    exceptionNotImplemented: Not Implemented Exception
+    exceptionBadGateway: Bad Gateway Exception
+    exceptionServiceUnavailable: Service Unavailable Exception
+    exceptionGatewayTimeout: Gateway Timeout Exception
+    exceptionInsufficientStorage: Insufficient Storage Exception
+    exceptionLoopDetected: Loop Detected Exception
+    exceptionBandwidthLimit: Bandwidth Limit Exception
+    exceptionNotExtended: Not Extended Exception
+    exceptionNetworkAuthRequired: Network AuthRequired Exception
+    exceptionUnknown: Unknown Network Error
+
+about:
+  aboutTitlesAppName: App Name
+  aboutTitlesDeveloperName: Developer Name
+  aboutTitlesDeveloperWebsite: Developer WebSite
+  aboutTitlesDeveloperLinkedIn: Developer LinkedIn Profile

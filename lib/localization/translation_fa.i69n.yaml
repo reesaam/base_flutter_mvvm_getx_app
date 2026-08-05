@@ -1,0 +1,6 @@
+language:
+  languageName: Persian
+  languageCode: fa
+
+app:
+  appName: Base Flutter MVVM GetX App
