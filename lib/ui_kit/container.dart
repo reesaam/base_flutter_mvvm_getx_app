@@ -33,7 +33,7 @@ class AppContainer extends BaseWidget {
 
   @override
   Widget get widget => Container(
-        color: color?.color ?? AppColors.canvas.color,
+        color: decoration == null ? (color?.color ?? AppColors.canvas.color) : null,
         height: height,
         width: width,
         alignment: alignment ?? Alignment.center,

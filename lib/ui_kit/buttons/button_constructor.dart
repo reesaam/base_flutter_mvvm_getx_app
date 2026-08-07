@@ -83,7 +83,7 @@ class AppButtonConstructor extends BaseWidget {
     }
     return AppContainer(
       width: width,
-      height: height,
+      height: height ?? AppDefaults.buttonHeight,
       padding: padding ?? AppDefaults.buttonPadding,
       margin: margin,
       child: widget,
