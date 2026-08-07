@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
 
 import 'barrels/core_barrel.dart';
 import 'barrels/core_resources_barrel.dart';

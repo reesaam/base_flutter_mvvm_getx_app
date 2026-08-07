@@ -6,7 +6,6 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import '../../../barrels/annotations_barrel.dart';
 import '../../../barrels/core_barrel.dart';
 import '../../../barrels/core_elements_barrel.dart';
-
 import '../notifications_enums.dart';
 
 @GetPut.component()
@@ -16,7 +15,7 @@ class AppLocalNotificationController extends CoreComponent {
     // IsolateNameServer.registerPortWithName(receivePort, AppNotificationsPortNames.receivePort.portName);
   }
 
-  @pragma("vm:entry-point")
+  @notificationAnnotation
   static onActionReceivedMethod(ReceivedAction receivedAction) {
     appDebugPrint('Notification Received Action Channel Key: ${receivedAction.channelKey}');
     appDebugPrint('New Notification Action Received: ${receivedAction.toMap()}');
@@ -28,17 +27,17 @@ class AppLocalNotificationController extends CoreComponent {
     }
   }
 
-  @pragma("vm:entry-point")
+  @notificationAnnotation
   static onDismissActionReceivedMethod(ReceivedAction receivedAction) {
     appDebugPrint(receivedAction.channelKey);
   }
 
-  @pragma("vm:entry-point")
+  @notificationAnnotation
   static onNotificationCreatedMethod(ReceivedNotification receivedNotification) {
     appDebugPrint(receivedNotification.channelKey);
   }
 
-  @pragma("vm:entry-point")
+  @notificationAnnotation
   static onNotificationDisplayedMethod(ReceivedNotification receivedNotification) {
     appDebugPrint(receivedNotification.channelKey);
   }
