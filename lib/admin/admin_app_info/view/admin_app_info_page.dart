@@ -1,4 +1,5 @@
 import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/components_barrel.dart';
 import '../../../barrels/core_barrel.dart';
 import '../../../barrels/core_elements_barrel.dart';
 import '../../../barrels/core_resources_barrel.dart';
@@ -36,8 +37,8 @@ class AdminAppInfoPage extends CoreView<AdminAppInfoController> {
         AdminFunctions.item(title: 'Website', text: AppInfo.website),
         AdminFunctions.item(title: 'Current Version', text: AppInfo.currentVersion.version),
         // AdminFunctions.item(title: 'Version Counter', text: AppInfo.versionsCounter.toString()),
-        AdminFunctions.item(title: 'Base URL', text: AppInfo.baseUrl),
-        AdminFunctions.item(title: 'SubDomain', text: AppInfo.subDomain),
+        AdminFunctions.item(title: 'Base URL', text: currentEnvironment.baseUrl),
+        AdminFunctions.item(title: 'SubDomain', text: currentEnvironment.subDomain ?? Texts.to.general.notAvailableInitials),
         AdminFunctions.item(title: 'Is Release', text: CoreFlags.isRelease.toString()),
         AdminFunctions.item(title: 'Check Update', text: CoreFlags.checkUpdate.toString()),
       ], title: 'App Info');

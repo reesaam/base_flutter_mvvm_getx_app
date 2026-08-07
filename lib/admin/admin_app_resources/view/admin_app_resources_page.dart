@@ -1,4 +1,5 @@
 import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/components_barrel.dart';
 import '../../../barrels/core_barrel.dart';
 import '../../../barrels/core_elements_barrel.dart';
 import '../../../barrels/core_resources_barrel.dart';
@@ -82,17 +83,17 @@ class AdminAppResourcesPage extends CoreView<AdminAppResourcesController> {
       ], title: 'App Color Palette');
 
   _appAPIs() => AdminFunctions.section([
-        AdminFunctions.item(title: 'Base URL', text: AppInfo.baseUrl),
+        AdminFunctions.item(title: 'Base URL', text: currentEnvironment.baseUrl),
         AdminFunctions.item(title: 'API Version', text: APIVersions.v1.getValue),
-        AdminFunctions.item(title: 'API Base URL', text: 'https://${AppInfo.baseUrl}/'),
+        AdminFunctions.item(title: 'API Base URL', text: 'https://${currentEnvironment.baseUrl}/'),
       ], title: 'App APIs');
 
   _colorWidget({AppColors? color, AppColorPalette? colorPalette, bool? dark, bool? gradient}) {
     AppColorPalette innerColor = color?.colorPalette ?? colorPalette ?? AppColorPalette.values.first;
     return AppContainer(
         alignment: Alignment.center,
-        height: 40,
-        width: 40,
+        height: 30,
+        width: 30,
         decoration: BoxDecoration(
           borderRadius: AppElements.borderRadiusHigh,
           border: Border.all(color: Colors.black, width: 2),

@@ -14,3 +14,4 @@ export '../components/statistics/statistics.dart';
 export '../components/storage/app_storage_module.dart';
 export '../components/secure_storage/secure_storage.dart';
 export '../components/deep_link/deep_link_handler.dart';
+export '../components/environment/environment_handler.dart';

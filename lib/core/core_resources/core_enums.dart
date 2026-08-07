@@ -11,6 +11,16 @@ enum AppStorageProvider {
   sharedPreferences,
 }
 
+enum Environment {
+  development(baseUrl: 'resam.site'),
+  stage(baseUrl: 'resam.site'),
+  production(baseUrl: 'resam.site');
+
+  final String baseUrl;
+  final String? subDomain;
+  const Environment({required this.baseUrl, this.subDomain});
+}
+
 enum AppVersionTypes {
   release,
   beta,

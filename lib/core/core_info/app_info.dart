@@ -1,18 +1,18 @@
-import '../../shared/shared_models/core_models/app_version/app_version.dart';
+import '../../barrels/core_resources_barrel.dart';
+import '../../barrels/shared_models_barrel.dart';
 
 class AppInfo {
   static const String appName = 'Base Flutter MVVM GetX App';
   static const String appNameInitials = 'BFMGA';
   static const String website = 'resam.site';
 
-  //Versioning
-  static const AppVersion currentVersion = AppVersion(version: '0.0.1');
+  // Version
+  static const AppVersion currentVersion = AppVersion(version: '0.2.0');
 
-  //Domains
-  static const String baseUrl = 'resam.site';
-  static const String subDomain = 'basefluttermvvmgetx';
+  // Environment
+  static const Environment environment = Environment.development;
 
-  //FileNames
+  // FileNames
   static const String fileNameAPK = '${AppInfo.appNameInitials}_android.apk';
   static const String fileNameIPA = '${AppInfo.appNameInitials}_ios.ipa';
   static const String fileNameBackup = '${AppInfo.appNameInitials}_Backup.json';
