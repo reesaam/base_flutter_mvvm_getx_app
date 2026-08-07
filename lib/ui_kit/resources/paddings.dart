@@ -50,7 +50,7 @@ class AppPaddings extends EdgeInsets {
   static EdgeInsets get homepageButtons => const EdgeInsets.fromLTRB(50, 40, 50, 0);
 
   ///Settings
-  static EdgeInsets get settingsSection => const EdgeInsets.fromLTRB(0, 20, 0, 10);
+  static EdgeInsets get settingsSection => const EdgeInsets.fromLTRB(20, 20, 20, 10);
   static EdgeInsets get settingsItem => const EdgeInsets.symmetric(horizontal: 15, vertical: 10);
 
   ///Update
