@@ -55,7 +55,8 @@ import 'admin/admin_widget_check/view/admin_widget_check_page.dart';
 import 'admin/app_docs/controller/app_docs_controller.dart';
 import 'admin/app_docs/view/app_docs_page.dart';
 import 'components/connectivity/connectivity.dart';
-import 'components/deep_link_handler/deep_link_handler.dart';
+import 'components/deep_link/deep_link_handler.dart';
+import 'components/environment/environment_handler.dart';
 import 'components/file_functions/file_functions.dart';
 import 'components/network/dio_core.dart';
 import 'components/notifications/local_notifications/local_notification_controller.dart';
@@ -87,10 +88,10 @@ import 'localization/localizations.dart';
 import 'ui_kit/theme/theme_functions.dart';
 
 /// Generated Library Statistics:
-/// Imports Count: 49
+/// Imports Count: 50
 /// Pages Count: 14
 /// Controllers Count: 17
-/// Components Count: 15
+/// Components Count: 16
 /// Repositories Count: 3
 
 class GetPutPages {
@@ -183,6 +184,7 @@ class _GetPutComponent extends Bindings {
       fenix: true,
     );
     Get.lazyPut<DeepLinkHandler>(() => DeepLinkHandler(), fenix: true);
+    Get.lazyPut<EnvironmentHandler>(() => EnvironmentHandler(), fenix: true);
     Get.lazyPut<AppFileFunctions>(() => AppFileFunctions(), fenix: true);
     Get.lazyPut<DioCore>(() => DioCore(), fenix: true);
     Get.lazyPut<AppLocalNotificationController>(

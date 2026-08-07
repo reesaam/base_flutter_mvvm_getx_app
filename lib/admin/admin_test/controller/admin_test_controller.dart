@@ -124,7 +124,7 @@ class AdminTestController extends CoreController {
   ///Files
   pickFile() async {
     String message = 'File not Imported';
-    var result = await AppFileFunctions().pickFile();
+    var result = await AppFileFunctions.to.pickFile();
     if (result != null) {
       message = 'Picked FileName:\n${result.path.split('/').last}';
     }
@@ -133,9 +133,9 @@ class AdminTestController extends CoreController {
 
   saveFile() async {
     String message = 'File nor Saved';
-    var resultPick = await AppFileFunctions().pickFile();
+    var resultPick = await AppFileFunctions.to.pickFile();
     if (resultPick != null) {
-      var result = await AppFileFunctions().saveFile(fileName: resultPick.path, data: resultPick.readAsBytesSync());
+      var result = await AppFileFunctions.to.saveFile(fileName: resultPick.path, data: resultPick.readAsBytesSync());
       message = 'Saved FileName:\n${result?.split('/').last ?? unknownStatus}';
     }
     await _dialog(message);
@@ -229,7 +229,7 @@ class AdminTestController extends CoreController {
   shareUri() async => await AppShare.shareUrl('Sample link');
 
   shareFile() async {
-    File? file = await AppFileFunctions().pickFile();
+    File? file = await AppFileFunctions.to.pickFile();
     if (file == null) {
       await AppAlertDialogs.withOk(text: 'File is not Picked or Loaded', onTapOk: popPage);
     } else {

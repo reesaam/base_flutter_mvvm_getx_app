@@ -1,9 +1,7 @@
 import '../../barrels/shared_models_barrel.dart';
 import '../../barrels/core_barrel.dart';
 
-abstract class CoreController extends GetxController {
-
-  static CoreController get to => Get.find();
+abstract class CoreController<T> extends GetxController {
 
   BuildContext context = Get.context!;
   late AppPageDetail pageDetail;
