@@ -50,5 +50,6 @@ app.*.map.json
 
 /.idea/
 /.dart_tool/
+/lib/localization/translation*.dart
 **.swift
 *.cc
