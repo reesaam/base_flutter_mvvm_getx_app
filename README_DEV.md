@@ -142,7 +142,7 @@ Everything below is required knowledge for working on this template after the en
 | Layer / path | Role |
 |---|---|
 | `lib/app/bootstrap.dart` | App entry: Zone + `FlutterError` + `PlatformDispatcher` + Sentry + storage/DI init |
-| `lib/app/flavors/env_config.dart` | Compile-time env via `--dart-define` |
+| `lib/app/flavors/env_config.dart` | Compile-time env via `--dart-define-from-file` JSON configs |
 | `lib/app/di/app_bindings.dart` | GetX bindings + abstract DI fixes |
 | `lib/app/di/binding_fixes.dart` | Ensures abstract types are registered after codegen |
 | `lib/main.dart` | Calls `bootstrap(() => MainApp())` |
@@ -196,56 +196,65 @@ Shortcut (Windows) if present:
 .\builder
 ```
 
-## Run / build with dart-define (EnvConfig)
+## Run / build with env config files (EnvConfig)
 
-Defined in `lib/app/flavors/env_config.dart`:
+Do **not** pass long `--dart-define=...` chains. Put values in JSON under `config/` and load them with one flag:
 
-| Define | Type | Default | Purpose |
+```bash
+flutter run --dart-define-from-file=config/env.development.json
+flutter run --dart-define-from-file=config/env.stage.json
+flutter run --dart-define-from-file=config/env.local.json
+flutter build apk --release --dart-define-from-file=config/env.production.json
+```
+
+### Config files
+
+| File | Committed? | Purpose |
+|---|---|---|
+| `config/env.development.json` | yes | Default local / demo auth |
+| `config/env.stage.json` | yes | Staging host/subdomain |
+| `config/env.local.json.example` | yes | Template for personal overrides |
+| `config/env.local.json` | **no** (gitignored) | Your machine-only secrets/overrides |
+| `config/env.production.json.example` | yes | Template for production |
+| `config/env.production.json` | **no** (gitignored) | Real production secrets (DSN, passwords) |
+
+Setup once:
+
+```bash
+# optional personal overrides
+cp config/env.local.json.example config/env.local.json
+
+# production (fill real Sentry DSN + password)
+cp config/env.production.json.example config/env.production.json
+```
+
+Example `config/env.development.json`:
+
+```json
+{
+  "ENV": "development",
+  "BASE_URL": "resam.site",
+  "API_SUBDOMAIN": "www",
+  "ENABLE_SENTRY": "false",
+  "SENTRY_DSN": "",
+  "SECURE_STORAGE_PASSWORD": "dev_only_change_me",
+  "AUTH_DEMO_MODE": "true"
+}
+```
+
+Keys (same as before; booleans must be JSON strings `"true"` / `"false"`):
+
+| Key | Type | Default | Purpose |
 |---|---|---|---|
 | `ENV` | String | `development` | `development` / `stage` / `production` (also `prod`, `staging`) |
 | `BASE_URL` | String | _(empty → enum default)_ | Host only, e.g. `api.example.com` |
 | `API_SUBDOMAIN` | String | _(empty → enum default)_ | e.g. `www`, `stage` |
-| `ENABLE_SENTRY` | bool | `false` | Must be `true` to init Sentry |
+| `ENABLE_SENTRY` | bool string | `false` | Must be `"true"` to init Sentry |
 | `SENTRY_DSN` | String | empty | Sentry DSN URL |
 | `SECURE_STORAGE_PASSWORD` | String | `dev_only_change_me` | Password for `get_secure_storage` init |
-| `AUTH_DEMO_MODE` | bool | `true` | Accept any non-empty login without real API |
+| `AUTH_DEMO_MODE` | bool string | `true` | Accept any non-empty login without real API |
 
-### Examples
-
-```bash
-# Default local run (demo auth on, Sentry off)
-flutter run
-
-# Stage API
-flutter run \
-  --dart-define=ENV=stage \
-  --dart-define=BASE_URL=resam.site \
-  --dart-define=API_SUBDOMAIN=stage
-
-# Production + real auth + Sentry
-flutter run \
-  --dart-define=ENV=production \
-  --dart-define=BASE_URL=resam.site \
-  --dart-define=API_SUBDOMAIN=www \
-  --dart-define=AUTH_DEMO_MODE=false \
-  --dart-define=ENABLE_SENTRY=true \
-  --dart-define=SENTRY_DSN=https://YOUR_KEY@o0.ingest.sentry.io/0 \
-  --dart-define=SECURE_STORAGE_PASSWORD=replace_with_strong_secret
-
-# Release APK with same defines
-flutter build apk --release \
-  --dart-define=ENV=production \
-  --dart-define=AUTH_DEMO_MODE=false \
-  --dart-define=ENABLE_SENTRY=true \
-  --dart-define=SENTRY_DSN=https://YOUR_KEY@o0.ingest.sentry.io/0 \
-  --dart-define=SECURE_STORAGE_PASSWORD=replace_with_strong_secret
-```
-
-PowerShell (Windows) — use one line or backticks for continuation:
-
-```powershell
-flutter run --dart-define=ENV=production --dart-define=AUTH_DEMO_MODE=false --dart-define=ENABLE_SENTRY=true --dart-define=SENTRY_DSN=https://YOUR_KEY@o0.ingest.sentry.io/0
-```
+`EnvConfig` still reads these via `String.fromEnvironment` / `bool.fromEnvironment` — the JSON file only supplies the defines at compile time.
 
 API base URL is built as:
 
@@ -345,7 +354,7 @@ Do not remove these when changing `main.dart`.
 | `checkUpdate` | Auto-check update on splash/settings |
 | `clearData` | Clear local app data on splash |
 
-Toggle manually for local experiments; prefer `--dart-define` for env/API/Sentry.
+Toggle manually for local experiments; prefer `config/env.*.json` + `--dart-define-from-file` for env/API/Sentry.
 
 ## Localization (i69n)
 
@@ -415,6 +424,7 @@ dart run flutter_launcher_icons -f flutter_launcher_icons.yaml
 
 - Regenerating `main.get_put.dart` can reintroduce `Impl`-only `lazyPut` — keep `applyBindingFixes` or re-patch abstracts.
 - Calling secure storage before bootstrap init → failures / empty session.
-- Forgetting `--dart-define` on **both** `run` and `build` → wrong env in release binaries.
+- Forgetting `--dart-define-from-file=config/env....json` on **both** `run` and `build` → wrong env in release binaries.
+- Committing `config/env.production.json` / `config/env.local.json` with real secrets — keep them gitignored; commit only `.example` files.
 - Using `Texts.to` / localized exception messages in pure unit tests without a widget tree — handlers fall back to status names when localization is unavailable.
 - Creating `ScrollController()` inside `build` without dispose (use `CoreView` scroll flag instead).
