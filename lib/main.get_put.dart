@@ -35,7 +35,6 @@ library;
 ///  GitHub: [ https://github.com/reesaam ]
 
 import 'package:get/get.dart';
-import 'main.dart';
 import 'admin/admin_app_countries/controller/admin_app_countries_controller.dart';
 import 'admin/admin_app_countries/view/admin_app_countries_page.dart';
 import 'admin/admin_app_info/controller/admin_app_info_controller.dart';
@@ -70,6 +69,10 @@ import 'components/storage/storage_providers/local_storage.dart';
 import 'components/storage/storage_providers/shared_preferences.dart';
 import 'features/about/controller/about_controller.dart';
 import 'features/about/view/about_view.dart';
+import 'features/auth/controller/auth_controller.dart';
+import 'features/auth/data/auth_remote_data_source.dart';
+import 'features/auth/data/auth_session.dart';
+import 'features/auth/view/login_view.dart';
 import 'features/homepage/controller/homepage_controller.dart';
 import 'features/homepage/view/homepage_view.dart';
 import 'features/not_found/controller/not_found_controller.dart';
@@ -93,6 +96,8 @@ import 'ui_kit/theme/theme_functions.dart';
 /// Controllers Count: 17
 /// Components Count: 16
 /// Repositories Count: 3
+/// NOTE: Abstract DI types patched manually (C1). Prefer regenerating then re-applying
+/// [applyBindingFixes] via AppBindings.
 
 class GetPutPages {
   static List<GetPage> get pages => [
@@ -108,6 +113,7 @@ class GetPutPages {
     GetPage(name: '/AdminVerifiersPage', page: AdminVerifiersPage.new),
     GetPage(name: '/AdminWidgetCheckPage', page: AdminWidgetCheckPage.new),
     GetPage(name: '/AboutPage', page: AboutPage.new),
+    GetPage(name: '/LoginPage', page: LoginPage.new),
     GetPage(name: '/HomePage', page: HomePage.new),
     GetPage(name: '/NotFoundPage', page: NotFoundPage.new),
     GetPage(name: '/SettingsPage', page: SettingsPage.new),
@@ -164,6 +170,7 @@ class _GetPutController extends Bindings {
     Get.lazyPut<AppDocsController>(() => AppDocsController(), fenix: true);
     Get.lazyPut<AppDocsPage>(() => AppDocsPage(), fenix: true);
     Get.lazyPut<AboutController>(() => AboutController(), fenix: true);
+    Get.lazyPut<AuthController>(() => AuthController(), fenix: true);
     Get.lazyPut<HomePageController>(() => HomePageController(), fenix: true);
     Get.lazyPut<NotFoundController>(() => NotFoundController(), fenix: true);
     Get.lazyPut<SettingsController>(() => SettingsController(), fenix: true);
@@ -196,10 +203,11 @@ class _GetPutComponent extends Bindings {
       fenix: true,
     );
     Get.lazyPut<AppPermissions>(() => AppPermissions(), fenix: true);
-    Get.lazyPut<SecureStorageModuleImpl>(
+    Get.lazyPut<SecureStorageModule>(
       () => SecureStorageModuleImpl(),
       fenix: true,
     );
+    Get.lazyPut<AuthSession>(() => AuthSession(), fenix: true);
     Get.lazyPut<AppShare>(() => AppShare(), fenix: true);
     Get.lazyPut<AppStatistics>(() => AppStatistics(), fenix: true);
     Get.lazyPut<AppStorage>(() => AppStorage(), fenix: true);
@@ -216,16 +224,20 @@ class _GetPutComponent extends Bindings {
 class _GetPutRepository extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<UpdateRemoteDataSourceImpl>(
+    Get.lazyPut<UpdateRemoteDataSource>(
       () => UpdateRemoteDataSourceImpl(),
       fenix: true,
     );
-    Get.lazyPut<VersionsLocalDataSourceImpl>(
+    Get.lazyPut<VersionsLocalDataSource>(
       () => VersionsLocalDataSourceImpl(),
       fenix: true,
     );
-    Get.lazyPut<VersionsRemoteDataSourceImpl>(
+    Get.lazyPut<VersionsRemoteDataSource>(
       () => VersionsRemoteDataSourceImpl(),
+      fenix: true,
+    );
+    Get.lazyPut<AuthRemoteDataSource>(
+      () => AuthRemoteDataSourceImpl(),
       fenix: true,
     );
   }

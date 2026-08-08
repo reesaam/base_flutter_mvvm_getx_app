@@ -7,6 +7,9 @@ import '../../barrels/components_barrel.dart';
 import '../../barrels/core_barrel.dart';
 import '../../barrels/core_elements_barrel.dart';
 import '../../barrels/core_resources_barrel.dart';
+import 'interceptors/auth_interceptor.dart';
+import 'interceptors/logging_interceptor.dart';
+import 'interceptors/retry_interceptor.dart';
 
 export 'api_methods.dart';
 export 'api_response_status.dart';
@@ -17,7 +20,29 @@ typedef APIResponse = dio.Response;
 class DioCore extends CoreComponent {
   static DioCore get to => Get.find();
 
-  dio.Dio get dioCore => dio.Dio();
+  late final dio.Dio client;
+
+  @override
+  void onInit() {
+    client = dio.Dio(
+      dio.BaseOptions(
+        connectTimeout: AppDefaults.timeOutConnection,
+        receiveTimeout: AppDefaults.timeOutConnection,
+        sendTimeout: AppDefaults.timeOutConnection,
+        contentType: AppTexts.dioHeaderContentTypeData,
+        headers: const {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      ),
+    );
+    client.interceptors.addAll([
+      AuthInterceptor(),
+      RetryInterceptor(client),
+      LoggingInterceptor(),
+    ]);
+    super.onInit();
+  }
+
+  /// Shared singleton Dio instance (never allocate per request).
+  dio.Dio get dioCore => client;
 
   Future<BaseAPIResponse<T>> callMethod<T>({
     required APIMethods method,
@@ -25,74 +50,87 @@ class DioCore extends CoreComponent {
     Map<String, dynamic>? data,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? headers,
+    bool skipAuth = false,
   }) async {
-    final dio.Options options = dio.Options(
-      method: method.getName,
-      receiveTimeout: AppDefaults.timeOutConnection,
-      sendTimeout: AppDefaults.timeOutConnection,
-      contentType: AppTexts.dioHeaderContentTypeData,
-      headers: {"Content-Type": "application/json"},
-    );
-    _increaseStatisticApiCall();
-    final result = await dioCore.request(
-      url,
-      queryParameters: queryParameters,
-      options: options,
-      data: data,
-    );
-    if (APIResponseStatus.values.find(result.statusCode ?? 0).isSuccess == true) {
-      // _printResponse(method.getName, result.data);
-      return Right(result.data);
-    } else {
-      _printException(method.getName,
-          ['Result Data: ${result.data} (${result.statusCode})', 'Result Message: ${result.statusMessage}']);
+    try {
+      final options = dio.Options(
+        method: method.getName,
+        receiveTimeout: AppDefaults.timeOutConnection,
+        sendTimeout: AppDefaults.timeOutConnection,
+        contentType: AppTexts.dioHeaderContentTypeData,
+        headers: {
+          'Content-Type': 'application/json',
+          if (headers != null) ...headers,
+          if (skipAuth) AuthInterceptor.skipAuthHeader: 'true',
+        },
+      );
+      _increaseStatisticApiCall();
+      final result = await client.request<dynamic>(
+        url,
+        queryParameters: queryParameters,
+        options: options,
+        data: data,
+      );
+      if (APIResponseStatus.values.find(result.statusCode ?? 0).isSuccess == true) {
+        return Right(result.data as T);
+      }
+      _printException(method.getName, [
+        'Result Data: ${result.data} (${result.statusCode})',
+        'Result Message: ${result.statusMessage}',
+      ]);
       return Left(APIResponseStatus.values.find(result.statusCode ?? 0).exception);
+    } on dio.DioException catch (ex, stackTrace) {
+      _printException(method.getName, [
+        'DioException Response: ${ex.response}',
+        'DioException Message: ${ex.message}',
+      ]);
+      return Left(NetworkException.handleResponse(ex, stackTrace));
+    } catch (ex) {
+      _printException(method.getName, ['$ex']);
+      return Left(NetworkException(message: ex.toString(), statusCode: 0));
     }
   }
 
   Future<BaseAPIResponse<File>> download({
     required String url,
     required String savePath,
-    request,
   }) async {
-    final File data;
     try {
       _increaseStatisticApiCall();
-      final savePath = _getSavePath();
-      final APIResponse result = await dioCore.download(url, savePath);
+      final APIResponse result = await client.download(url, savePath);
       if (result.statusCode == 200) {
         _printResponse('DOWNLOAD', result);
-        data = result.data;
-        return Right(data);
+        return Right(File(savePath));
       }
-      _printException(
-          APIMethods.download.getName, ['Result Data: ${result.data}', 'Result Message: ${result.statusMessage}']);
+      _printException(APIMethods.download.getName, [
+        'Result Data: ${result.data}',
+        'Result Message: ${result.statusMessage}',
+      ]);
       return Left(APIResponseStatus.values.find(result.statusCode ?? 0).exception);
     } on dio.DioException catch (ex, stackTrace) {
-      _printException(APIMethods.download.getName,
-          ['DioException Response: ${ex.response}', 'DioException Message: ${ex.message}']);
+      _printException(APIMethods.download.getName, [
+        'DioException Response: ${ex.response}',
+        'DioException Message: ${ex.message}',
+      ]);
       return Left(NetworkException.handleResponse(ex, stackTrace));
-    } catch (ex, stackTrace) {
+    } catch (ex) {
       _printException(APIMethods.download.getName, ['$ex']);
-      rethrow;
+      return Left(NetworkException(message: ex.toString(), statusCode: 0));
     }
   }
 
-  static _increaseStatisticApiCall() => AppStatistics.to.increaseApiCalls();
+  static void _increaseStatisticApiCall() => AppStatistics.to.increaseApiCalls();
 
-  ///TODO: Implementation
-  static Future<String> _getSavePath() async => '';
-
-  static _printResponse(String method, APIResponse response) {
+  static void _printResponse(String method, APIResponse response) {
     appDebugPrint('==> $method Method Successful Response:');
     appDebugPrint('Status Code: ${response.statusCode}');
     appDebugPrint('Data Message: ${response.statusMessage}');
     appDebugPrint('Data Body: ${response.data}');
   }
 
-  static _printException(String method, List<String> prints) {
+  static void _printException(String method, List<String> prints) {
     appDebugPrint('==> $method Method Exception:');
-    for (var print in prints) {
+    for (final print in prints) {
       appDebugPrint(print);
     }
   }

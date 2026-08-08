@@ -15,15 +15,14 @@ import '../../barrels/core_resources_barrel.dart';
 
 class AppAPIUrls {
   /// [Main Variables] for generating APIs are:
-  // static String get _apiBaseUrl => '${AppInfo.subDomain}.${AppInfo.baseUrl}';
-  static String get _apiBaseUrl => '${currentEnvironment.subDomain ?? 'www'}.${currentEnvironment.baseUrl}/';
+  static String get _apiBaseUrl => '${EnvironmentHandler.subDomain ?? 'www'}.${EnvironmentHandler.baseUrl}';
   static String get _apiVersion => APIVersions.v1.getValue;
   static String get _apiUrl => 'https://$_apiBaseUrl/$_apiVersion';
 
   /// Defining [Sections]
-  //Sections
   static String get _apiSectionVersion => '$_apiUrl/${APISections.versions.getName}';
   static String get _apiSectionUpdate => '$_apiUrl/${APISections.update.getName}';
+  static String get _apiSectionAuth => '$_apiUrl/${APISections.auth.getName}';
 
   /// [Sections]:
   //Version
@@ -32,4 +31,10 @@ class AppAPIUrls {
   //Update
   static String get apiGetUpdateAddress => '$_apiSectionUpdate/get_download_address';
   static String get apiGetUpdateAPKDownload => '$apiGetUpdateAddress/${AppInfo.fileNameAPK}';
+
+  //Auth
+  static String get apiLogin => '$_apiSectionAuth/login';
+  static String get apiLogout => '$_apiSectionAuth/logout';
+  static String get apiRefreshToken => '$_apiSectionAuth/refresh';
+  static String get apiMe => '$_apiSectionAuth/me';
 }

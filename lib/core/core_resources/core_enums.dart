@@ -12,9 +12,9 @@ enum AppStorageProvider {
 }
 
 enum Environment {
-  development(baseUrl: 'resam.site'),
-  stage(baseUrl: 'resam.site'),
-  production(baseUrl: 'resam.site');
+  development(baseUrl: 'resam.site', subDomain: 'www'),
+  stage(baseUrl: 'resam.site', subDomain: 'stage'),
+  production(baseUrl: 'resam.site', subDomain: 'www');
 
   final String baseUrl;
   final String? subDomain;
@@ -35,7 +35,8 @@ enum APIVersions {
 
 enum APISections {
   versions,
-  update;
+  update,
+  auth;
 
   String get getName => name;
 }
@@ -55,4 +56,7 @@ enum AppStorageKeys {
   appSecureStorage,
   appData,
   deepLink,
+  accessToken,
+  refreshToken,
+  authUser,
 }

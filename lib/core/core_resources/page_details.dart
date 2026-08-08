@@ -8,6 +8,7 @@ import '../../admin/admin_verifiers/view/admin_verifiers_page.dart';
 import '../../admin/admin_widget_check/view/admin_widget_check_page.dart';
 import '../../admin/app_docs/view/app_docs_page.dart';
 import '../../features/about/view/about_view.dart';
+import '../../features/auth/view/login_view.dart';
 import '../../features/homepage/view/homepage_view.dart';
 import '../../features/not_found/view/not_found_view.dart';
 import '../../features/settings/view/settings_view.dart';
@@ -21,6 +22,7 @@ import 'icons.dart';
 class AppPages {
   static List<AppPageDetail> get listPages => [
         splashScreen,
+        login,
         homepage,
         settings,
         about,
@@ -90,6 +92,11 @@ class AppPages {
   static AppPageDetail splashScreen = AppPageDetail(
     pageName: Texts.to.pagesName.splashScreenPageName,
     pageRoute: _getPageRoute(SplashScreenPage),
+  );
+
+  static AppPageDetail login = AppPageDetail(
+    pageName: 'Login',
+    pageRoute: _getPageRoute(LoginPage),
   );
 
   static AppPageDetail homepage = AppPageDetail(

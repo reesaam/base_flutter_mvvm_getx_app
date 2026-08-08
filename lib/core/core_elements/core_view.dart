@@ -21,6 +21,9 @@ abstract class CoreView<Controller extends CoreController> extends GetView<Contr
 
   EdgeInsets? get pagePadding => null;
 
+  /// When true, body is wrapped in [SingleChildScrollView] without a leaked controller.
+  bool get enableBodyScroll => true;
+
   @override
   Widget build(BuildContext context) => PopScope(
         canPop: controller.pageDetail.bottomBarItemNumber == null,
@@ -42,11 +45,16 @@ abstract class CoreView<Controller extends CoreController> extends GetView<Contr
         backgroundColor: AppColors.background.color,
       );
 
-  Widget get _pageBody => SafeArea(
-          child: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        controller: ScrollController(),
-        physics: const BouncingScrollPhysics(),
-        child: body,
-      ));
+  Widget get _pageBody {
+    final content = pagePadding == null ? body : Padding(padding: pagePadding!, child: body);
+    return SafeArea(
+      child: enableBodyScroll
+          ? SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              physics: const BouncingScrollPhysics(),
+              child: content,
+            )
+          : content,
+    );
+  }
 }

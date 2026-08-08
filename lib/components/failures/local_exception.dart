@@ -15,7 +15,17 @@ class LocalException implements GeneralException {
   final int? statusCode;
 
   static LocalException handleResponse(GeneralException ex, StackTrace? stacktrace) {
-    final exception = LocalExceptions.values.firstWhereOrNull((e) => e.statusCode == ex.statusCode);
-    throw exception != null ? exception.exception : LocalExceptions.unknownException.exception;
+    if (ex is LocalException) {
+      return LocalException(message: ex.message, statusCode: ex.statusCode);
+    }
+    final matched = LocalExceptions.values.firstWhereOrNull((e) => e.statusCode == ex.statusCode);
+    if (matched == null) {
+      return LocalException(message: LocalExceptions.unknownException.name, statusCode: 0);
+    }
+    try {
+      return matched.exception;
+    } catch (_) {
+      return LocalException(message: matched.name, statusCode: matched.statusCode);
+    }
   }
 }

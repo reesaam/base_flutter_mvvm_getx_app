@@ -17,6 +17,16 @@ class NetworkException implements GeneralException {
   final int? statusCode;
 
   static NetworkException handleResponse(dio.DioException ex, StackTrace? stacktrace) {
-    throw APIResponseStatus.values.find(ex.response?.statusCode ?? 0).exception;
+    final status = APIResponseStatus.values.find(ex.response?.statusCode ?? 0);
+    String message;
+    try {
+      message = status.message;
+    } catch (_) {
+      message = status.name;
+    }
+    return NetworkException(
+      message: message,
+      statusCode: ex.response?.statusCode ?? status.statusCode,
+    );
   }
 }

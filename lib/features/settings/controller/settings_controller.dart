@@ -9,6 +9,7 @@ import '../../../barrels/extensions_barrel.dart';
 import '../../../barrels/shared_models_barrel.dart';
 import '../../../barrels/ui_kit_barrel.dart';
 import '../../../localization/localizations.dart';
+import '../../auth/controller/auth_controller.dart';
 import '../../versions/controller/versions_controller.dart';
 import '../widgets/settings_languages_widgets.dart';
 
@@ -47,11 +48,14 @@ class SettingsController extends CoreController {
     appSettingDataListener.cancel();
   }
 
-  _fillData() {
+  void _fillData() {
     darkMode.value = appSettings.value.darkMode;
     selectedLanguage.value = appSettings.value.language;
     appDebugPrint('Fill Setting Data Function Applied Data');
-    appSettingDataListener = appSettings.listen((data) => _fillData());
+    appSettingDataListener = appSettings.listen((data) {
+      darkMode.value = data.darkMode;
+      selectedLanguage.value = data.language;
+    });
   }
 
   functionLanguageModal() => AppBottomSheet().withCancel(
@@ -143,4 +147,17 @@ class SettingsController extends CoreController {
   }
 
   saveSettings() => saveAppData(appSettingData: appSettings.value);
+
+  Future<void> logout() async {
+    AppAlertDialogs.withOkCancel(
+      title: Texts.to.general.warning,
+      text: Texts.to.dialogs.general.areYouSure,
+      dismissible: true,
+      onTapOk: () async {
+        popPage();
+        final auth = Get.isRegistered<AuthController>() ? AuthController.to : Get.put(AuthController());
+        await auth.logout();
+      },
+    );
+  }
 }
