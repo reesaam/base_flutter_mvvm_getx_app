@@ -1,16 +1,22 @@
 import '../../core/core_resources/core_enums.dart';
 
-/// Compile-time environment via `--dart-define`.
+/// Compile-time environment configuration.
 ///
-/// Example:
+/// Prefer a JSON env file over long CLI flags:
+/// ```bash
+/// flutter run --dart-define-from-file=config/env.development.json
+/// flutter build apk --release --dart-define-from-file=config/env.production.json
 /// ```
-/// flutter run \
-///   --dart-define=ENV=production \
-///   --dart-define=BASE_URL=api.example.com \
-///   --dart-define=API_SUBDOMAIN=www \
-///   --dart-define=ENABLE_SENTRY=true \
-///   --dart-define=SENTRY_DSN=https://...@sentry.io/...
-/// ```
+///
+/// Or pick a launch config in `.vscode/launch.json`.
+///
+/// Files:
+/// - `config/env.development.json` — default local
+/// - `config/env.stage.json` — staging
+/// - `config/env.local.json` — personal overrides (gitignored; copy from `.example`)
+/// - `config/env.production.json` — secrets (gitignored; copy from `.example`)
+///
+/// Values are still read via [String.fromEnvironment] / [bool.fromEnvironment].
 class EnvConfig {
   const EnvConfig._();
 
