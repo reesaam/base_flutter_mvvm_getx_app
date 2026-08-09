@@ -10,6 +10,8 @@ import '../barrels/ui_kit_barrel.dart';
 import 'package:flutter/foundation.dart';
 
 void appDebugPrint(String message) => CoreFlags.isRelease ? null : debugPrint('[Debug] $message');
+// Logger entry point — direct print is allowed only here.
+// ignore: avoid_print
 void appLogPrint(String message) => print('[LOG] $message');
 
 bool get kIsDesktop => Platform.isWindows || Platform.isMacOS || Platform.isLinux;

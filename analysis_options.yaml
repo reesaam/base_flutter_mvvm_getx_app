@@ -1,12 +1,10 @@
 include: package:flutter_lints/flutter.yaml
 
-# Barrel imports: analyzer plugin for all of `lib/` (red errors in IDE + analyze).
-# After changing `plugins:`, restart the Dart Analysis Server.
+# Analyzer plugins (restart Dart Analysis Server after changing `plugins:`):
+# - barrel_import_lints/only_barrel_imports
 #
-# Suppress one line:
-#   // ignore: barrel_import_lints/only_barrel_imports
-# Suppress a file:
-#   // ignore_for_file: barrel_import_lints/only_barrel_imports
+# Suppress:
+#   // ignore: avoid_print   (logger only)
 
 plugins:
   barrel_import_lints:
@@ -27,6 +25,7 @@ analyzer:
     invalid_import: error
     missing_return: error
     only_barrel_imports: error
+    avoid_print: error
     always_declare_return_types: warning
     always_use_package_imports: ignore
     annotate_overrides: warning
