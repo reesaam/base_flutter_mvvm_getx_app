@@ -251,25 +251,23 @@ Then re-run `dart run tool/generate_barrels.dart`.
 
 ## Run / build with env config files (EnvConfig)
 
-Do **not** pass long `--dart-define=...` chains. Put values in JSON under `config/` and load them with one flag:
+Do **not** pass long `--dart-define=...` chains. Put values in JSON under `config/envs/` and load them with one flag:
 
 ```bash
-flutter run --dart-define-from-file=config/env.development.json
-flutter run --dart-define-from-file=config/env.stage.json
-flutter run --dart-define-from-file=config/env.local.json
-flutter build apk --release --dart-define-from-file=config/env.production.json
+flutter run --dart-define-from-file=config/envs/env.development.json
+flutter run --dart-define-from-file=config/envs/env.stage.json
+flutter run --dart-define-from-file=config/envs/env.local.json
+flutter build apk --release --dart-define-from-file=config/envs/env.production.json
 ```
 
 ### Config files
 
-| File | Committed? | Purpose |
-|---|---|---|
-| `config/env.development.json` | yes | Default local / demo auth |
-| `config/env.stage.json` | yes | Staging host/subdomain |
-| `config/env.local.json.example` | yes | Template for personal overrides |
-| `config/env.local.json` | **no** (gitignored) | Your machine-only secrets/overrides |
-| `config/env.production.json.example` | yes | Template for production |
-| `config/env.production.json` | **no** (gitignored) | Real production secrets (DSN, passwords) |
+| File                                      | Committed? | Purpose |
+|-------------------------------------------|---|---|
+| `config/envs/env.development.json`        | yes | Default local / demo auth |
+| `config/envs/env.stage.json`              | yes | Staging host/subdomain |
+| `config/envs/env.local.json`              | **no** (gitignored) | Your machine-only secrets/overrides |
+| `config/envs/env.production.json`         | **no** (gitignored) | Real production secrets (DSN, passwords) |
 
 Setup once:
 
