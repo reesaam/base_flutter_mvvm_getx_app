@@ -1,0 +1,97 @@
+# Barrel generation config
+# Run: dart run tool/generate_barrels.dart
+# Also runs from builder.bat before build_runner.
+
+# Global excludes (glob-like suffixes / name patterns)
+exclude_suffixes:
+  - .g.dart
+  - .freezed.dart
+  - .mocks.dart
+
+exclude_names:
+  - dio_functions.dart
+
+# Skip private library files (leading underscore)
+exclude_private: true
+
+# Skip files that are `part of` another library
+exclude_part_files: true
+
+barrels:
+  - output: lib/barrels/components_barrel.dart
+    library: true
+    roots:
+      - lib/components
+
+  - output: lib/barrels/core_barrel.dart
+    library: true
+    package_exports:
+      - package:flutter/widgets.dart
+      - package:flutter/material.dart
+      - package:get/get.dart
+    roots:
+      - lib/core/app_routing
+      - lib/core/core_info
+    files:
+      - lib/core/core_functions.dart
+
+  - output: lib/barrels/core_elements_barrel.dart
+    library: true
+    roots:
+      - lib/core/core_elements
+
+  - output: lib/barrels/core_resources_barrel.dart
+    library: true
+    roots:
+      - lib/core/core_resources
+
+  - output: lib/barrels/extensions_barrel.dart
+    library: true
+    roots:
+      - lib/core/extensions
+
+  - output: lib/barrels/annotations_barrel.dart
+    library: true
+    package_exports:
+      - package:getx_binding_annotation/getx_binding_annotation.dart
+    roots:
+      - lib/core/annotations
+
+  - output: lib/barrels/shared_models_barrel.dart
+    library: true
+    roots:
+      - lib/shared
+
+  - output: lib/barrels/ui_kit_barrel.dart
+    library: true
+    package_exports:
+      - package:flutter/widgets.dart
+      - package:flutter/material.dart
+      - package:get/get.dart
+      - package:awesome_notifications/awesome_notifications.dart
+    roots:
+      - lib/ui_kit
+    # Keep commonly used theme extensions available via ui_kit barrel
+    extra_exports:
+      - lib/core/extensions/theme_extensions/extension_colors.dart
+      - lib/core/extensions/data_types_extensions/extension_color.dart
+      - lib/core/extensions/theme_extensions/extension_color_palette.dart
+      - lib/core/extensions/theme_extensions/extension_theme.dart
+      - lib/core/extensions/widgets_extensions/extension_text_field.dart
+      - lib/core/extensions/material_widgets_extensions/extension_border.dart
+      - lib/core/extensions/material_widgets_extensions/extension_text.dart
+      - lib/core/extensions/data_types_extensions/extension_button_style.dart
+      - lib/core/core_resources/icons.dart
+      - lib/core/core_resources/images.dart
+
+  - output: lib/barrels/localization_barrel.dart
+    library: true
+    package_exports:
+      - package:flutter_localizations/flutter_localizations.dart
+      - package:timezone/timezone.dart
+    roots:
+      - lib/localization
+    # i69n generated files use .i69n.dart — allow them
+    include_suffixes:
+      - .dart
+      - .i69n.dart

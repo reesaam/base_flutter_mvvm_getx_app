@@ -1,0 +1,5 @@
+targets:
+  $default:
+    builders:
+      base_flutter_mvvm_getx_app|barrels:
+        enabled: true

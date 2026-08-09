@@ -165,7 +165,13 @@ Splash → authenticated ? Home : Login
 # Dependencies
 flutter pub get
 
-# Codegen (Freezed / JSON / GetX bindings / i69n)
+# Generate barrels (also runs via build_runner / builder.bat)
+dart run tool/generate_barrels.dart
+
+# Fail CI if barrels are stale
+dart run tool/generate_barrels.dart --check
+
+# Codegen (Freezed / JSON / GetX bindings / i69n / barrels builder)
 dart run build_runner build --delete-conflicting-outputs
 
 # Watch mode while editing models/bindings
@@ -187,6 +193,7 @@ dart format lib test
 # Clean rebuild
 flutter clean
 flutter pub get
+dart run tool/generate_barrels.dart
 dart run build_runner build --delete-conflicting-outputs
 ```
 
@@ -195,6 +202,52 @@ Shortcut (Windows) if present:
 ```bash
 .\builder
 ```
+
+## Barrel generation (auto-exports)
+
+Barrels under `lib/barrels/` are **generated**. Do not hand-edit them.
+
+| Piece | Path |
+|---|---|
+| Config | `config/barrels.yaml` |
+| CLI | `dart run tool/generate_barrels.dart` |
+| CI check | `dart run tool/generate_barrels.dart --check` |
+| Shared logic | `lib/tooling/barrels_generator.dart` |
+| build_runner builder | `lib/builder.dart` (enabled in `build.yaml` / `pubspec.yaml`) |
+
+**Strategy:** export **all** Dart files under each configured root (simplest for new files). Prune what you do not want via `exclude` / `exclude_names` in `config/barrels.yaml`.
+
+Global skips by default: `*.g.dart`, `*.freezed.dart`, `*.mocks.dart`, private `_*.dart`, `part of` files, and `dio_functions.dart`.
+
+### Without build_runner
+
+```bash
+dart run tool/generate_barrels.dart
+```
+
+### With build_runner
+
+```bash
+dart run build_runner build --delete-conflicting-outputs
+```
+
+The local `barrels` builder regenerates barrels as part of the build. `builder.bat` also runs the CLI first for a clean full rebuild.
+
+### Add / tweak a barrel
+
+Edit `config/barrels.yaml`, for example:
+
+```yaml
+barrels:
+  - output: lib/barrels/components_barrel.dart
+    library: true
+    roots:
+      - lib/components
+    exclude:
+      - some_file_i_do_not_want.dart
+```
+
+Then re-run `dart run tool/generate_barrels.dart`.
 
 ## Run / build with env config files (EnvConfig)
 
