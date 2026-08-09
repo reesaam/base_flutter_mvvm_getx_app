@@ -29,16 +29,16 @@ class AppLocalNotificationController extends CoreComponent {
 
   @notificationAnnotation
   static onDismissActionReceivedMethod(ReceivedAction receivedAction) {
-    appDebugPrint(receivedAction.channelKey);
+    appDebugPrint(receivedAction.channelKey.toString());
   }
 
   @notificationAnnotation
   static onNotificationCreatedMethod(ReceivedNotification receivedNotification) {
-    appDebugPrint(receivedNotification.channelKey);
+    appDebugPrint(receivedNotification.channelKey.toString());
   }
 
   @notificationAnnotation
   static onNotificationDisplayedMethod(ReceivedNotification receivedNotification) {
-    appDebugPrint(receivedNotification.channelKey);
+    appDebugPrint(receivedNotification.channelKey.toString());
   }
 }

@@ -33,7 +33,7 @@ class AppLocalNotificationsRepository {
     bool channelSetResult = await _setChannel().withStatusPrint(featureName: 'App Local Notifications Channel Set');
 
     var receivedAction = await AwesomeNotifications().getInitialNotificationAction(removeFromActionEvents: false);
-    appDebugPrint(receivedAction);
+    appDebugPrint(receivedAction.toString());
 
     return initializationResult && permissionResult && listenersInitResult && channelSetResult;
   }

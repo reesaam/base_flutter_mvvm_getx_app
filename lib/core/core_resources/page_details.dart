@@ -1,4 +1,5 @@
 import '../../barrels/admin_barrel.dart';
+import '../../barrels/core_resources_barrel.dart';
 import '../../barrels/extensions_barrel.dart';
 import '../../barrels/localization_barrel.dart';
 import '../../barrels/shared_models_barrel.dart';
@@ -9,7 +10,6 @@ import '../../features/not_found/view/not_found_view.dart';
 import '../../features/settings/view/settings_view.dart';
 import '../../features/splash_screen/view/splash_screen_view.dart';
 import '../../features/update/view/update_view.dart';
-import 'icons.dart';
 
 class AppPages {
   static List<AppPageDetail> get listPages => [

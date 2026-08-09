@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
-import 'package:get_storage/get_storage.dart';
-
 import 'barrels/components_barrel.dart';
 import 'barrels/core_barrel.dart';
 import 'barrels/core_resources_barrel.dart';
+
+// ignore: only_barrel_imports
+import 'package:get_storage/get_storage.dart';
 import 'features/auth/data/auth_session.dart';
 
 Future<void> projectInitialization(FutureOr<Widget> Function() builder) async {

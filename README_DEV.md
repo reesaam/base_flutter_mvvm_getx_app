@@ -249,6 +249,27 @@ barrels:
 
 Then re-run `dart run tool/generate_barrels.dart`.
 
+### Barrel import lint
+
+Shared layers **and pub packages** must be imported via `lib/barrels/*_barrel.dart` (see `package_exports` in `config/barrels.yaml`). Features have **no** barrel — same-feature relatives are fine; cross-feature imports need an explicit ignore. Direct `package:` imports are only allowed inside barreled roots (where the dependency is owned).
+
+```bash
+dart run tool/check_barrel_imports.dart
+```
+
+Override one import:
+
+```dart
+// ignore: only_barrel_imports
+import '../../auth/data/auth_session.dart';
+```
+
+Override a whole file:
+
+```dart
+// ignore_for_file: only_barrel_imports
+```
+
 ## Run / build with env config files (EnvConfig)
 
 Do **not** pass long `--dart-define=...` chains. Put values in JSON under `config/envs/` and load them with one flag:

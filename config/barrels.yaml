@@ -112,3 +112,9 @@ barrels:
     include_suffixes:
       - .dart
       - .i69n.dart
+
+  # Admin module barrel (features do NOT get a barrel — use relative imports between features)
+  - output: lib/barrels/admin_barrel.dart
+    library: true
+    roots:
+      - lib/admin

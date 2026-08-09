@@ -1,8 +1,5 @@
 import 'dart:io';
 
-import 'package:open_file_plus/open_file_plus.dart' as file_plus;
-import 'package:path_provider/path_provider.dart';
-
 import '../../../barrels/annotations_barrel.dart';
 import '../../../barrels/components_barrel.dart';
 import '../../../barrels/core_barrel.dart';
@@ -12,6 +9,9 @@ import '../../../barrels/extensions_barrel.dart';
 import '../../../barrels/localization_barrel.dart';
 import '../../../barrels/shared_models_barrel.dart';
 import '../../../barrels/ui_kit_barrel.dart';
+// ignore: only_barrel_imports
+import 'package:path_provider/path_provider.dart';
+import 'package:open_file_plus/open_file_plus.dart' as file_plus;
 import '../../versions/controller/versions_controller.dart';
 import '../data/update_remote_data_source.dart';
 
@@ -93,7 +93,7 @@ class UpdateController extends CoreController {
     result.fold((l) => showErrorDialog(message: l.toString()), (r) {
       dlFile = r;
       downloaded.value = true;
-      appDebugPrint(dlFile?.length());
+      appDebugPrint((dlFile?.length() ?? 0).toString());
       AppSnackBar.show(message: Texts.to.update.updateDownloaded);
       AppAlertDialogs.withOkCancel(
         title: Texts.to.update.updateInstallationTitle,

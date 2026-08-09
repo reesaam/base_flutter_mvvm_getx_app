@@ -1,13 +1,24 @@
 include: package:flutter_lints/flutter.yaml
 
+# Barrel import policy (not a dart analyzer plugin — analyzer plugins conflict
+# with this project's codegen deps):
+#   dart run tool/check_barrel_imports.dart
+#
+# Rule id: only_barrel_imports
+# Allowed: barrels, same-feature relatives, dart: SDK, packages only inside barreled roots
+# Forbidden elsewhere: package: imports and direct shared-layer imports (use barrels)
+#
+# Override one line:
+#   // ignore: only_barrel_imports
+# Override a file:
+#   // ignore_for_file: only_barrel_imports
+
 linter:
   rules:
     avoid_print: true
     prefer_relative_imports: true
     prefer_single_quotes: true
     avoid_empty_else: true
-    plugins:
-      - import_lint
 
 analyzer:
   errors:
@@ -25,15 +36,3 @@ analyzer:
     unnecessary_this: warning
     unused_import: warning
     unrelated_type_equality_checks: error
-
-import_lint:
-  rules:
-    - name: "Only allow imports from Barrels"
-      allowed_imports:
-        - "lib/barrels/**"
-        - "./**"
-      disallowed_imports:
-        - "lib/**"
-        - "../**"
-      exclude:
-        - "lib/barrels/**"
