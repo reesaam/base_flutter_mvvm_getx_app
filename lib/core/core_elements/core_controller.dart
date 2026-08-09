@@ -7,9 +7,7 @@ abstract class CoreController<T> extends GetxController {
 
   BuildContext get context {
     final ctx = Get.context;
-    if (ctx == null) {
-      throw StateError('BuildContext is not available yet. Access context after the widget tree is mounted.');
-    }
+    if (ctx == null) throw StateError('BuildContext is not available yet. Access context after the widget tree is mounted.');
     return ctx;
   }
 
