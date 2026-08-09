@@ -1,6 +1,6 @@
 import 'dart:io';
 
-// import 'package:open_file_plus/open_file_plus.dart' as file_plus;
+import 'package:open_file_plus/open_file_plus.dart' as file_plus;
 import 'package:path_provider/path_provider.dart';
 
 import '../../../barrels/annotations_barrel.dart';
@@ -106,9 +106,7 @@ class UpdateController extends CoreController {
     buttonDownloadUpdateLoading.value = false;
   }
 
-  /// TODO: OpenFilePlus
-  // void _installUpdateFunction() => dlFile == null ? _alertDirectoryOrFileNotFound(false) : file_plus.OpenFile.open(dlFile!.path);
-  void _installUpdateFunction() => _alertDirectoryOrFileNotFound(false);
+  void _installUpdateFunction() => dlFile == null ? _alertDirectoryOrFileNotFound(false) : file_plus.OpenFile.open(dlFile!.path);
 
   _alertDirectoryOrFileNotFound(bool directoryError) => showErrorDialog(
       title: directoryError ? Texts.to.update.updateDirectoryNotFoundTitle : Texts.to.update.updateFileNotFoundTitle,

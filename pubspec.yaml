@@ -55,7 +55,7 @@ dependencies:
   flutter_regex: ^0.0.3
 
   # File
-#  open_file_plus: ^3.4.1+1
+  open_file_plus: ^3.4.1+1
   flutter_file_dialog: ^3.0.3
 
   # Localization
@@ -98,9 +98,6 @@ builders:
     build_extensions: {"$lib$": [".barrels.stamp"]}
     auto_apply: root_package
     build_to: cache
-
-#dependency_overrides:
-#    analyzer: 8.1.1
 
 flutter:
   generate: true
