@@ -45,7 +45,7 @@ barrels:
       - lib/core/app_routing
       - lib/core/core_info
       - lib/core/flavors
-      - lib/core/layout
+      - lib/core/core_layout
     exclude:
       - app_breakpoints.dart
       - layout_model.dart
