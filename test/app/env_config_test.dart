@@ -1,6 +1,6 @@
+import 'package:base_flutter_mvvm_getx_app/barrels/core_barrel.dart';
+import 'package:base_flutter_mvvm_getx_app/barrels/core_resources_barrel.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:base_flutter_mvvm_getx_app/app/flavors/env_config.dart';
-import 'package:base_flutter_mvvm_getx_app/core/core_resources/core_enums.dart';
 
 void main() {
   group('EnvConfig', () {

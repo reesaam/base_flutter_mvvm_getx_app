@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-import '../../app/flavors/env_config.dart';
 import '../../barrels/core_barrel.dart';
 
 /// Abstracts crash/error reporting so the app can run without Sentry.

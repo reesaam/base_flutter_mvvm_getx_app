@@ -2,6 +2,7 @@ import '../../../barrels/annotations_barrel.dart';
 import '../../../barrels/core_barrel.dart';
 import '../../../barrels/core_elements_barrel.dart';
 import '../../../barrels/ui_kit_barrel.dart';
+
 import '../controller/auth_controller.dart';
 
 @GetPut.page()

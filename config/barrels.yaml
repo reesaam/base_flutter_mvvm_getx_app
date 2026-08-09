@@ -44,6 +44,7 @@ barrels:
     roots:
       - lib/core/app_routing
       - lib/core/core_info
+      - lib/core/flavors
     files:
       - lib/core/core_functions.dart
 

@@ -1,4 +1,3 @@
-import '../../../app/flavors/env_config.dart';
 import '../../../barrels/annotations_barrel.dart';
 import '../../../barrels/components_barrel.dart';
 import '../../../barrels/core_barrel.dart';

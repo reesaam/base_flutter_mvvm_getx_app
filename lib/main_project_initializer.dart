@@ -3,14 +3,12 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:get_storage/get_storage.dart';
 
-import '../barrels/components_barrel.dart';
-import '../barrels/core_barrel.dart';
-import '../barrels/core_resources_barrel.dart';
-import '../features/auth/data/auth_session.dart';
-import 'flavors/env_config.dart';
+import 'barrels/components_barrel.dart';
+import 'barrels/core_barrel.dart';
+import 'barrels/core_resources_barrel.dart';
+import 'features/auth/data/auth_session.dart';
 
-/// App entry bootstrap: Zone + FlutterError + PlatformDispatcher + Sentry + DI.
-Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
+Future<void> projectInitialization(FutureOr<Widget> Function() builder) async {
   await runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
@@ -59,7 +57,5 @@ Future<void> _initializeDependencies() async {
     await CrashReporter.recordError(e, st, hint: 'auth_session_restore');
   }
 
-  if (!kIsWeb) {
-    await AppSystemChannelMethods.textInputHide.invoke();
-  }
+  if (!kIsWeb) await AppSystemChannelMethods.textInputHide.invoke();
 }
