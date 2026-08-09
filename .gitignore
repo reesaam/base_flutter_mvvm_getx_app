@@ -56,3 +56,5 @@ app.*.map.json
 # Local / secret env files (never commit real secrets)
 config/envs/env.local.json
 config/envs/env.production.json
+FLUTTER
+GENERATE
