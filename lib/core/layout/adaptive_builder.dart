@@ -42,10 +42,6 @@ class AdaptiveHost extends StatelessWidget {
   }
 }
 
-/// UI factory that selects mobile / tablet / desktop builders from [LayoutModel].
-///
-/// Fallback chain: desktop → tablet → mobile (first non-null wins for the
-/// current device, walking down the chain).
 class AdaptiveBuilder extends StatelessWidget {
   const AdaptiveBuilder({
     super.key,
@@ -55,16 +51,10 @@ class AdaptiveBuilder extends StatelessWidget {
     this.layout,
   });
 
-  /// Required baseline builder (phones and ultimate fallback).
   final AdaptiveWidgetBuilder mobile;
-
-  /// Optional tablet builder; falls back to [mobile].
   final AdaptiveWidgetBuilder? tablet;
-
-  /// Optional desktop builder; falls back to [tablet] then [mobile].
   final AdaptiveWidgetBuilder? desktop;
 
-  /// Optional explicit layout. When null, uses [LayoutScope] or computes once.
   final LayoutModel? layout;
 
   @override
@@ -79,7 +69,6 @@ class AdaptiveBuilder extends StatelessWidget {
   }
 }
 
-/// Sugar for selecting a value by device type without building widgets.
 class AdaptiveValue<T> {
   const AdaptiveValue({
     required this.mobile,
@@ -101,7 +90,6 @@ class AdaptiveValue<T> {
 }
 
 extension LayoutContextX on BuildContext {
-  /// Layout snapshot from the nearest [LayoutScope], or computed from [MediaQuery].
   LayoutModel get layout => LayoutScope.maybeOf(this) ?? LayoutModel.of(this);
 
   DeviceType get deviceType => layout.deviceType;
