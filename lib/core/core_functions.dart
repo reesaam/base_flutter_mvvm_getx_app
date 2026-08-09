@@ -1,13 +1,19 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
+
 import '../barrels/components_barrel.dart';
 import '../barrels/core_resources_barrel.dart';
 import '../barrels/localization_barrel.dart';
 import '../barrels/shared_models_barrel.dart';
 import '../barrels/ui_kit_barrel.dart';
 
-void appDebugPrint(message) => CoreFlags.isRelease ? null : debugPrint('[Debug] $message');
-void appLogPrint(message) => debugPrint('[LOG] $message');
+void appDebugPrint(message) => CoreFlags.isProduction ? null : debugPrint('[Debug] $message');
+void appLogPrint(message) => print('[LOG] $message');
+
+bool get kIsDesktop => Platform.isWindows || Platform.isMacOS || Platform.isLinux;
+bool get kIsDesktopWeb => kIsWeb && kIsDesktop;
+bool get kisMobile => Platform.isAndroid || Platform.isIOS;
 
 void popPage() {
   Get.back();
