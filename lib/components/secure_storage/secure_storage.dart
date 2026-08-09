@@ -20,8 +20,7 @@ class SecureStorageModuleImpl extends CoreComponent implements SecureStorageModu
   static GetSecureStorage get _storage => GetSecureStorage();
 
   @override
-  Future<void> init(String password) async =>
-      await GetSecureStorage.init(password: password, container: AppStorageKeys.appSecureStorage.name);
+  Future<void> init(String password) async => await GetSecureStorage.init(password: password, container: AppStorageKeys.appSecureStorage.name);
 
   @override
   Future<BaseLocalResponse<T?>> read<T>(AppStorageKeys key) async {

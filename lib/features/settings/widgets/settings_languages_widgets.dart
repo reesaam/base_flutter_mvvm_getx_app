@@ -9,14 +9,19 @@ class SettingsLanguageWidget extends BaseWidget {
 
   @override
   Widget get widget => Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: List.generate(
-          AppLocalizations.to.supportedLocales.length,
-          (index) => InkWell(
-              onTap: function == null ? null : () => function!(index),
-              child: LayoutBuilder(
-                  builder: (context, constraints) => AppContainer(
-                      width: constraints.maxWidth,
-                      padding: AppPaddings.modalItems,
-                      child: Text(AppLocalizations.to.supportedLocales[index].getLanguage.languageName))))));
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: List.generate(
+      AppLocalizations.to.supportedLocales.length,
+      (index) => InkWell(
+        onTap: function == null ? null : () => function!(index),
+        child: LayoutBuilder(
+          builder: (context, constraints) => AppContainer(
+            width: constraints.maxWidth,
+            padding: AppPaddings.modalItems,
+            child: Text(AppLocalizations.to.supportedLocales[index].getLanguage.languageName),
+          ),
+        ),
+      ),
+    ),
+  );
 }

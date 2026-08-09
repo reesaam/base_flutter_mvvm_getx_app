@@ -61,9 +61,7 @@ class UpdateController extends CoreController {
       } else {
         appLogPrint('Available Version: ${version.version}');
         availableVersion.value = version.version;
-        AppSnackBar.show(
-          message: '${Texts.to.update.updateUpdateFound}\n${Texts.to.general.version.withDoubleDots} $version',
-        );
+        AppSnackBar.show(message: '${Texts.to.update.updateUpdateFound}\n${Texts.to.general.version.withDoubleDots} $version');
       }
     } else {
       noInternetConnectionSnackBar();
@@ -113,6 +111,7 @@ class UpdateController extends CoreController {
   void _installUpdateFunction() => dlFile == null ? _alertDirectoryOrFileNotFound(false) : file_plus.OpenFile.open(dlFile!.path);
 
   _alertDirectoryOrFileNotFound(bool directoryError) => showErrorDialog(
-      title: directoryError ? Texts.to.update.updateDirectoryNotFoundTitle : Texts.to.update.updateFileNotFoundTitle,
-      message: directoryError ? Texts.to.update.updateDirectoryNotFoundContent : Texts.to.update.updateFileNotFoundContent);
+    title: directoryError ? Texts.to.update.updateDirectoryNotFoundTitle : Texts.to.update.updateFileNotFoundTitle,
+    message: directoryError ? Texts.to.update.updateDirectoryNotFoundContent : Texts.to.update.updateFileNotFoundContent,
+  );
 }

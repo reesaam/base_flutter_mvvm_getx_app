@@ -8,7 +8,6 @@ import 'local_notifications_repository.dart';
 
 @GetPut.component()
 class AppLocalNotifications extends AppNotificationsRepository {
-
   static AppLocalNotifications get to => Get.find();
 
   @override
@@ -84,11 +83,7 @@ class AppLocalNotifications extends AppNotificationsRepository {
       largeIcon: largeIcon,
       timeoutAfterLongSeconds: timeoutAfterLongSeconds,
       wakeUpScreen: wakeUpScreen,
-      interval: NotificationInterval(
-        interval: interval,
-        repeats: repeat ?? false,
-        preciseAlarm: preciseAlarm ?? true,
-      ),
+      interval: NotificationInterval(interval: interval, repeats: repeat ?? false, preciseAlarm: preciseAlarm ?? true),
     );
     return result;
   }

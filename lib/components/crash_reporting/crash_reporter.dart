@@ -35,12 +35,7 @@ class CrashReporter {
     );
   }
 
-  static Future<void> recordError(
-    Object error,
-    StackTrace? stackTrace, {
-    String? hint,
-    bool fatal = false,
-  }) async {
+  static Future<void> recordError(Object error, StackTrace? stackTrace, {String? hint, bool fatal = false}) async {
     appLogPrint('CrashReporter: $error');
     if (!isEnabled) return;
     await Sentry.captureException(
@@ -55,23 +50,12 @@ class CrashReporter {
 
   static Future<void> recordFlutterError(FlutterErrorDetails details) async {
     FlutterError.presentError(details);
-    await recordError(
-      details.exception,
-      details.stack,
-      hint: details.context?.toString(),
-      fatal: true,
-    );
+    await recordError(details.exception, details.stack, hint: details.context?.toString(), fatal: true);
   }
 
   static Future<void> addBreadcrumb(String message, {String? category}) async {
     if (!isEnabled) return;
-    await Sentry.addBreadcrumb(
-      Breadcrumb(
-        message: message,
-        category: category ?? 'app',
-        level: SentryLevel.info,
-      ),
-    );
+    await Sentry.addBreadcrumb(Breadcrumb(message: message, category: category ?? 'app', level: SentryLevel.info));
   }
 
   static Future<void> setUser({String? id, String? email, String? username}) async {

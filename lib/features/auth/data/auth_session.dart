@@ -40,18 +40,11 @@ class AuthSession extends CoreComponent {
 
     isAuthenticated.value = _accessToken != null && _accessToken!.isNotEmpty;
     if (isAuthenticated.value && currentUser.value != null) {
-      await CrashReporter.setUser(
-        id: currentUser.value!.id,
-        email: currentUser.value!.email,
-        username: currentUser.value!.displayName,
-      );
+      await CrashReporter.setUser(id: currentUser.value!.id, email: currentUser.value!.email, username: currentUser.value!.displayName);
     }
   }
 
-  Future<void> persistSession({
-    required AuthTokens tokens,
-    required AuthUser user,
-  }) async {
+  Future<void> persistSession({required AuthTokens tokens, required AuthUser user}) async {
     _accessToken = tokens.accessToken;
     _refreshToken = tokens.refreshToken;
     currentUser.value = user;
@@ -88,15 +81,11 @@ class AuthSession extends CoreComponent {
 
   /// Demo helper used when auth demo mode is enabled.
   AuthLoginResult createDemoSession({required String email}) => AuthLoginResult(
-        tokens: AuthTokens(
-          accessToken: 'demo_access_${DateTime.now().millisecondsSinceEpoch}',
-          refreshToken: 'demo_refresh_${DateTime.now().millisecondsSinceEpoch}',
-          expiresAt: DateTime.now().add(const Duration(days: 7)),
-        ),
-        user: AuthUser(
-          id: 'demo-user',
-          email: email,
-          displayName: email.split('@').first,
-        ),
-      );
+    tokens: AuthTokens(
+      accessToken: 'demo_access_${DateTime.now().millisecondsSinceEpoch}',
+      refreshToken: 'demo_refresh_${DateTime.now().millisecondsSinceEpoch}',
+      expiresAt: DateTime.now().add(const Duration(days: 7)),
+    ),
+    user: AuthUser(id: 'demo-user', email: email, displayName: email.split('@').first),
+  );
 }

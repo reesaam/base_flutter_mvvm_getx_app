@@ -24,10 +24,7 @@ nullFunction() => null;
 
 void clearAppData() async {
   final response = await AppStorage.to.clearStorage();
-  response.fold(
-    (l) => AppExceptionsDialog.show(exception: l),
-    (r) => AppSnackBar.show(),
-  );
+  response.fold((l) => AppExceptionsDialog.show(exception: l), (r) => AppSnackBar.show());
 }
 
 Future<bool?> saveAppData({
@@ -50,9 +47,7 @@ Future<bool?> saveAppData({
 }
 
 Future<AppData?> loadAppData() async {
-  AppData? appData = await AppStorage.to
-      .loadAppData()
-      .then((value) => value.fold((l) => AppExceptionsDialog.show(exception: l), (r) => r));
+  AppData? appData = await AppStorage.to.loadAppData().then((value) => value.fold((l) => AppExceptionsDialog.show(exception: l), (r) => r));
   return appData;
 }
 
@@ -63,11 +58,10 @@ void printAllData({bool? detailsIncluded}) async {
 
 noInternetConnectionSnackBar() => AppSnackBar.show(message: Texts.to.network.connection.internetNotAvailable);
 
-showLoadingDialog({bool? isDismissible}) =>
-    AppAlertWidgetDialogs().withoutButton(widget: AppProgressIndicator.linear(), dismissible: isDismissible);
+showLoadingDialog({bool? isDismissible}) => AppAlertWidgetDialogs().withoutButton(widget: AppProgressIndicator.linear(), dismissible: isDismissible);
 
-appExitDialog() => AppAlertDialogs.withOkCancel(
-    title: Texts.to.general.appExit, text: Texts.to.dialogs.general.areYouSure, onTapOk: appExit, dismissible: true);
+appExitDialog() =>
+    AppAlertDialogs.withOkCancel(title: Texts.to.general.appExit, text: Texts.to.dialogs.general.areYouSure, onTapOk: appExit, dismissible: true);
 
 appReload({AppPageDetail? bootPage}) async {
   showLoadingDialog();

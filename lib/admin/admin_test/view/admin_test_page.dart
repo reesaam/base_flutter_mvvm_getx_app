@@ -17,89 +17,124 @@ class AdminTestPage extends CoreView<AdminTestController> {
   EdgeInsets? get pagePadding => AppPaddings.zero;
 
   @override
-  Widget get body =>
-      Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.center, children: [
-        AppDividers.generalWithDisabledColor,
-        _appPages(),
-        _themes(),
-        _checkConnection(),
-        _api(),
-        _files(),
-        _permissions(),
-        _notifications(),
-        _appData(),
-        _share(),
+  Widget get body => Column(
+    mainAxisAlignment: MainAxisAlignment.start,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      AppDividers.generalWithDisabledColor,
+      _appPages(),
+      _themes(),
+      _checkConnection(),
+      _api(),
+      _files(),
+      _permissions(),
+      _notifications(),
+      _appData(),
+      _share(),
 
-        ///Always Exist at Last
-        _tempTest()
-      ]);
+      ///Always Exist at Last
+      _tempTest(),
+    ],
+  );
 
   _appPages() => AdminFunctions.sectionGrid(
-      items: List.generate(
-          AppPages.listPages.length,
-          (index) => AppButton.general(
-                text: AppPages.listPages[index].pageName ?? 'Unknown',
-                onTap: () => goToPage(AppPages.listPages[index]),
-              )),
-      title: 'App All Pages');
+    items: List.generate(
+      AppPages.listPages.length,
+      (index) => AppButton.general(text: AppPages.listPages[index].pageName ?? 'Unknown', onTap: () => goToPage(AppPages.listPages[index])),
+    ),
+    title: 'App All Pages',
+  );
 
-  _themes() => AdminFunctions.sectionGrid(items: [
-        AdminFunctions.itemButton(text: 'Change Dark Mode', function: controller.changeDarkMode),
-      ], title: 'Themes');
+  _themes() => AdminFunctions.sectionGrid(
+    items: [AdminFunctions.itemButton(text: 'Change Dark Mode', function: controller.changeDarkMode)],
+    title: 'Themes',
+  );
 
-  _checkConnection() => AdminFunctions.sectionGrid(items: [
-        AdminFunctions.itemButton(text: 'Connection Status', function: controller.internetConnection),
-        AdminFunctions.itemButton(text: 'Internet Connection', function: controller.internetStatus),
-        AdminFunctions.itemButton(text: 'Internet Status', function: controller.checkConnection),
-      ], title: 'Connections');
+  _checkConnection() => AdminFunctions.sectionGrid(
+    items: [
+      AdminFunctions.itemButton(text: 'Connection Status', function: controller.internetConnection),
+      AdminFunctions.itemButton(text: 'Internet Connection', function: controller.internetStatus),
+      AdminFunctions.itemButton(text: 'Internet Status', function: controller.checkConnection),
+    ],
+    title: 'Connections',
+  );
 
-  _api() => AdminFunctions.sectionGrid(items: [
-        AdminFunctions.itemButton(text: 'API Get', function: controller.apiGetData),
-        AdminFunctions.itemButton(text: 'API Post', function: controller.apiPostData),
-        AdminFunctions.itemButton(text: 'API Put', function: controller.apiPutData),
-        AdminFunctions.itemButton(text: 'API Patch', function: controller.apiPatchData),
-        AdminFunctions.itemButton(text: 'API Download', function: controller.apiDownloadData),
-        AdminFunctions.itemButton(text: 'API Delete', function: controller.apiDeleteData),
-      ], title: 'API');
+  _api() => AdminFunctions.sectionGrid(
+    items: [
+      AdminFunctions.itemButton(text: 'API Get', function: controller.apiGetData),
+      AdminFunctions.itemButton(text: 'API Post', function: controller.apiPostData),
+      AdminFunctions.itemButton(text: 'API Put', function: controller.apiPutData),
+      AdminFunctions.itemButton(text: 'API Patch', function: controller.apiPatchData),
+      AdminFunctions.itemButton(text: 'API Download', function: controller.apiDownloadData),
+      AdminFunctions.itemButton(text: 'API Delete', function: controller.apiDeleteData),
+    ],
+    title: 'API',
+  );
 
-  _files() => AdminFunctions.sectionGrid(items: [
-        AdminFunctions.itemButton(text: 'Pick File', function: controller.pickFile),
-        AdminFunctions.itemButton(text: 'Save File', function: controller.saveFile),
-      ], title: 'Files');
+  _files() => AdminFunctions.sectionGrid(
+    items: [
+      AdminFunctions.itemButton(text: 'Pick File', function: controller.pickFile),
+      AdminFunctions.itemButton(text: 'Save File', function: controller.saveFile),
+    ],
+    title: 'Files',
+  );
 
-  _permissions() => AdminFunctions.sectionGrid(items: [
-        AdminFunctions.itemButton(text: 'Check All Permissions', function: controller.checkAllPermissions),
-        AdminFunctions.itemButton(text: 'Ask All Permissions', function: controller.askAllPermissions),
-      ], title: 'Permissions');
+  _permissions() => AdminFunctions.sectionGrid(
+    items: [
+      AdminFunctions.itemButton(text: 'Check All Permissions', function: controller.checkAllPermissions),
+      AdminFunctions.itemButton(text: 'Ask All Permissions', function: controller.askAllPermissions),
+    ],
+    title: 'Permissions',
+  );
 
-  _notifications() => Column(children: [
-        AdminFunctions.sectionGrid(items: [
+  _notifications() => Column(
+    children: [
+      AdminFunctions.sectionGrid(
+        items: [
           AdminFunctions.itemButton(text: 'Local Notification', function: controller.showLocalNotification),
           AdminFunctions.itemButton(text: 'Push Notification', function: controller.showPushNotification),
-        ], title: 'Notifications'),
-      ]);
+        ],
+        title: 'Notifications',
+      ),
+    ],
+  );
 
-  _appData() => Column(children: [
-        AdminFunctions.sectionGrid(items: [
+  _appData() => Column(
+    children: [
+      AdminFunctions.sectionGrid(
+        items: [
           AdminFunctions.itemButton(text: 'Load AppData', function: controller.loadAppDataTest),
           AdminFunctions.itemButton(text: 'Save AppData', function: controller.saveAppDataTest),
           AdminFunctions.itemButton(text: 'Import AppData', function: controller.importAppDataTest),
           AdminFunctions.itemButton(text: 'Export AppData', function: controller.exportAppDataTest),
-        ], title: 'AppData - Save and Load'),
-      ]);
+        ],
+        title: 'AppData - Save and Load',
+      ),
+    ],
+  );
 
-  _share() => Column(children: [
-        AdminFunctions.sectionGrid(items: [
+  _share() => Column(
+    children: [
+      AdminFunctions.sectionGrid(
+        items: [
           AdminFunctions.itemButton(text: 'Share Text', function: controller.shareText),
           AdminFunctions.itemButton(text: 'Share Url', function: controller.shareUri),
           AdminFunctions.itemButton(text: 'Share File', function: controller.shareFile),
-        ], title: 'AppData - Save and Load'),
-      ]);
+        ],
+        title: 'AppData - Save and Load',
+      ),
+    ],
+  );
 
-  _tempTest() => Column(children: [
-        AdminFunctions.sectionGrid(items: [
+  _tempTest() => Column(
+    children: [
+      AdminFunctions.sectionGrid(
+        items: [
           AdminFunctions.itemButton(text: 'Temp Test One', function: controller.tempTestFunctionOne),
           AdminFunctions.itemButton(text: 'Temp Test Two', function: controller.tempTestFunctionTwo),
-        ], title: 'Temp Test'),
-      ]);
+        ],
+        title: 'Temp Test',
+      ),
+    ],
+  );
 }

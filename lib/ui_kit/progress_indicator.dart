@@ -2,30 +2,16 @@ import '../barrels/core_resources_barrel.dart';
 import '../barrels/ui_kit_barrel.dart';
 
 class AppProgressIndicator {
-  static Widget circular({
-    Color? color,
-    double? width,
-    double? strokeWidth,
-  }) =>
-      SizedBox(
-          width: width,
-          height: width,
-          child: _AppProgressIndicatorCircular(
-            indicatorColor: color,
-            width: strokeWidth,
-          ));
+  static Widget circular({Color? color, double? width, double? strokeWidth}) => SizedBox(
+    width: width,
+    height: width,
+    child: _AppProgressIndicatorCircular(indicatorColor: color, width: strokeWidth),
+  );
 
-  static Widget linear({
-    Color? color,
-    Color? backgroundColor,
-    double? width,
-  }) =>
-      SizedBox(
-          width: width,
-          child: _AppProgressIndicatorLinear(
-            indicatorColor: color,
-            indicatorBackgroundColor: backgroundColor,
-          ));
+  static Widget linear({Color? color, Color? backgroundColor, double? width}) => SizedBox(
+    width: width,
+    child: _AppProgressIndicatorLinear(indicatorColor: color, indicatorBackgroundColor: backgroundColor),
+  );
 }
 
 class _AppProgressIndicatorCircular extends CircularProgressIndicator {

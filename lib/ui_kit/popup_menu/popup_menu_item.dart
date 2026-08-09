@@ -1,12 +1,7 @@
 import '../../barrels/ui_kit_barrel.dart';
 
 class AppPopupMenuItem extends PopupMenuItem {
-  const AppPopupMenuItem({
-    super.key,
-    super.child,
-    required this.text,
-    required this.onTapFunction,
-  });
+  const AppPopupMenuItem({super.key, super.child, required this.text, required this.onTapFunction});
 
   final String text;
   final Function() onTapFunction;

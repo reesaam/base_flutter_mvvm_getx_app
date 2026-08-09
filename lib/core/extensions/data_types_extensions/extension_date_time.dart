@@ -25,8 +25,8 @@ extension ExtensionDateTimeCompareNull on DateTime? {
   bool equalTo(DateTime? dateTime) => this == null && dateTime == null
       ? true
       : this == null || dateTime == null
-          ? false
-          : this!.equalTo(dateTime);
+      ? false
+      : this!.equalTo(dateTime);
 }
 
 extension ExtensionDateTimeCompare on DateTime {

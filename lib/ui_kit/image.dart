@@ -1,14 +1,7 @@
 import '../barrels/ui_kit_barrel.dart';
 
 class AppImage extends BaseWidget {
-  const AppImage({
-    super.key,
-    required this.image,
-    this.padding,
-    this.size,
-    this.roundness,
-    this.boxFit,
-  });
+  const AppImage({super.key, required this.image, this.padding, this.size, this.roundness, this.boxFit});
 
   final String image;
   final EdgeInsets? padding;
@@ -18,8 +11,11 @@ class AppImage extends BaseWidget {
 
   @override
   Widget get widget => AppContainer(
-        constraints: BoxConstraints(maxWidth: size?.width ?? double.maxFinite, maxHeight: size?.height ?? double.maxFinite),
-        padding: padding,
-        child: ClipRRect(borderRadius: BorderRadius.all(Radius.circular(roundness ?? 0)), child: Image.asset(image, fit: boxFit ?? BoxFit.fill)),
-      );
+    constraints: BoxConstraints(maxWidth: size?.width ?? double.maxFinite, maxHeight: size?.height ?? double.maxFinite),
+    padding: padding,
+    child: ClipRRect(
+      borderRadius: BorderRadius.all(Radius.circular(roundness ?? 0)),
+      child: Image.asset(image, fit: boxFit ?? BoxFit.fill),
+    ),
+  );
 }

@@ -11,12 +11,7 @@ class AppBottomSheet {
   }
 
   withOk({String? title, required Widget form, required Function() onTapOk, bool? dismissible}) async {
-    List<Widget> buttons = [
-      AppButton.general(
-        text: Texts.to.general.ok,
-        onTap: onTapOk,
-      )
-    ];
+    List<Widget> buttons = [AppButton.general(text: Texts.to.general.ok, onTap: onTapOk)];
     await _appBottomSheetGeneral(title: title, form: form, buttons: buttons, dismissible: dismissible);
   }
 
@@ -28,52 +23,58 @@ class AppBottomSheet {
   withOkCancel({String? title, required Widget form, required Function() onTapOk, bool? dismissible}) async {
     List<Widget> buttons = [
       AppButton.general(text: Texts.to.general.cancel, onTap: () => _onTapCancel()),
-      AppButton.general(
-        text: Texts.to.general.ok,
-        onTap: () => onTapOk(),
-      ),
+      AppButton.general(text: Texts.to.general.ok, onTap: () => onTapOk()),
     ];
     await _appBottomSheetGeneral(title: title, form: form, buttons: buttons, dismissible: dismissible);
   }
 
   tappableItem({required String text, required Function() onTap}) => LayoutBuilder(
-      builder: (context, constraints) => InkWell(
-          onTap: onTap,
-          child: SizedBox(
-            width: constraints.maxWidth,
-            height: 50,
-            child: Text(text),
-          )));
+    builder: (context, constraints) => InkWell(
+      onTap: onTap,
+      child: SizedBox(width: constraints.maxWidth, height: 50, child: Text(text)),
+    ),
+  );
 
-  _appBottomSheetGeneral({String? title, required Widget form, required List<Widget> buttons, bool? dismissible}) async =>
-      await showModalBottomSheet(
-          context: Get.context!,
-          useSafeArea: true,
-          useRootNavigator: true,
-          showDragHandle: true,
-          isScrollControlled: true,
-          isDismissible: dismissible ?? false,
-          shape: AppElements.borderShapeModal,
-          builder: (context) => SingleChildScrollView(
-                  child: Column(mainAxisSize: MainAxisSize.max, children: [
-                Padding(
-                    padding: AppPaddings.generalBottomModal,
-                    child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, crossAxisAlignment: CrossAxisAlignment.center, children: [
-                      Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                        title == null
-                            ? AppBox.shrink()
-                            : Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                                Text(title),
-                                AppDividers.generalWithPrimaryColor,
-                                AppSpaces.h10,
-                              ]),
-                        form,
-                      ]),
-                      AppSpaces.h40,
-                      _renderButtonsBottomDialog(buttons),
-                    ])),
-                AppSpaces.h20,
-              ])));
+  _appBottomSheetGeneral({String? title, required Widget form, required List<Widget> buttons, bool? dismissible}) async => await showModalBottomSheet(
+    context: Get.context!,
+    useSafeArea: true,
+    useRootNavigator: true,
+    showDragHandle: true,
+    isScrollControlled: true,
+    isDismissible: dismissible ?? false,
+    shape: AppElements.borderShapeModal,
+    builder: (context) => SingleChildScrollView(
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Padding(
+            padding: AppPaddings.generalBottomModal,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    title == null
+                        ? AppBox.shrink()
+                        : Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [Text(title), AppDividers.generalWithPrimaryColor, AppSpaces.h10],
+                          ),
+                    form,
+                  ],
+                ),
+                AppSpaces.h40,
+                _renderButtonsBottomDialog(buttons),
+              ],
+            ),
+          ),
+          AppSpaces.h20,
+        ],
+      ),
+    ),
+  );
 
   Widget _renderButtonsBottomDialog(List<Widget> buttons) {
     List<Widget> list = List.empty(growable: true);

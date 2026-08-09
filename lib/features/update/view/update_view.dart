@@ -13,40 +13,47 @@ class UpdatePage extends CoreView<UpdateController> {
   Widget? get bottomSheet => _widgetButtons();
 
   @override
-  Widget get body => Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        _widgetVersions(),
-      ]);
+  Widget get body => Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [_widgetVersions()]);
 
   Widget _widgetVersions() => Card(
-      child: AppContainer(
-          padding: AppPaddings.updateVersions,
-          child: Column(children: [
-            _widgetVersion(Texts.to.update.updateCurrentVersion, AppInfo.currentVersion.version),
-            AppSpaces.h10,
-            Obx(() => _widgetVersion(
-                  Texts.to.update.updateAvailableVersion,
-                  controller.updateAvailability() ? controller.availableVersion.value : Texts.to.general.notAvailable,
-                )),
-          ])));
+    child: AppContainer(
+      padding: AppPaddings.updateVersions,
+      child: Column(
+        children: [
+          _widgetVersion(Texts.to.update.updateCurrentVersion, AppInfo.currentVersion.version),
+          AppSpaces.h10,
+          Obx(
+            () => _widgetVersion(
+              Texts.to.update.updateAvailableVersion,
+              controller.updateAvailability() ? controller.availableVersion.value : Texts.to.general.notAvailable,
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
 
-  Widget _widgetVersion(String title, String version) => Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [Text(title), Text(version)],
-      );
+  Widget _widgetVersion(String title, String version) =>
+      Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text(title), Text(version)]);
 
-  Widget _widgetButtons() => Obx(() => AppContainer(
+  Widget _widgetButtons() => Obx(
+    () => AppContainer(
       padding: AppPaddings.updateButtons,
-      child: Column(children: [
-        AppButton.general(
-          text: Texts.to.update.updateCheckUpdate,
-          loading: controller.buttonCheckUpdateLoading.value,
-          onTap: controller.checkUpdate,
-        ),
-        AppButton.general(
-          text: Texts.to.update.updateDownloadUpdate,
-          loading: controller.buttonDownloadUpdateLoading.value,
-          onTap: controller.downloadUpdate,
-          disabled: controller.updateAvailability(),
-        ),
-      ])));
+      child: Column(
+        children: [
+          AppButton.general(
+            text: Texts.to.update.updateCheckUpdate,
+            loading: controller.buttonCheckUpdateLoading.value,
+            onTap: controller.checkUpdate,
+          ),
+          AppButton.general(
+            text: Texts.to.update.updateDownloadUpdate,
+            loading: controller.buttonDownloadUpdateLoading.value,
+            onTap: controller.downloadUpdate,
+            disabled: controller.updateAvailability(),
+          ),
+        ],
+      ),
+    ),
+  );
 }

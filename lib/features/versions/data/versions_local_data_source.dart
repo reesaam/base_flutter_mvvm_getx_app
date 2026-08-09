@@ -13,7 +13,6 @@ abstract class VersionsLocalDataSource extends CoreRepository {
 
 @GetPut.repository(as: VersionsLocalDataSource)
 class VersionsLocalDataSourceImpl extends CoreRepository implements VersionsLocalDataSource {
-
   @override
   Future<BaseLocalResponse<AppVersionsList?>> getVersions() async {
     var result = await AppStorage.to.loadAppData();

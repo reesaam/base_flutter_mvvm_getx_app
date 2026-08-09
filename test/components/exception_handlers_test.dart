@@ -8,10 +8,7 @@ void main() {
     test('returns NetworkException instead of throwing', () {
       final dioError = DioException(
         requestOptions: RequestOptions(path: '/test'),
-        response: Response(
-          requestOptions: RequestOptions(path: '/test'),
-          statusCode: 404,
-        ),
+        response: Response(requestOptions: RequestOptions(path: '/test'), statusCode: 404),
         type: DioExceptionType.badResponse,
       );
 

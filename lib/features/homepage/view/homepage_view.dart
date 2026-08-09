@@ -23,22 +23,13 @@ class HomePage extends CoreView<HomePageController> {
 
   @override
   Widget get body => Center(
-    child: layout.constrainContent(
-      Column(
-        children: [
-          AppSpaces.h50,
-          _logo(layout.height / 6),
-          AppSpaces.h50,
-          _developer(layout.height / 6),
-        ],
-      ),
-    ),
+    child: layout.constrainContent(Column(children: [AppSpaces.h50, _logo(layout.height / 6), AppSpaces.h50, _developer(layout.height / 6)])),
   );
 
   Widget _adminTestButton() => Padding(
-        padding: AppPaddings.pages,
-        child: AppButton.general(text: 'Admin Test Page', onTap: () => goToPage(AppPages.adminStartPage)),
-      );
+    padding: AppPaddings.pages,
+    child: AppButton.general(text: 'Admin Test Page', onTap: () => goToPage(AppPages.adminStartPage)),
+  );
 
   Widget _logo(double height) => AppContainer(
     alignment: Alignment.center,
@@ -78,10 +69,7 @@ class HomePage extends CoreView<HomePageController> {
           flex: 2,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(AppDeveloperInfo.fullName).withSizeTitleSmall,
-              Text('Software Developer').withSizeDisplaySmall,
-            ],
+            children: [Text(AppDeveloperInfo.fullName).withSizeTitleSmall, Text('Software Developer').withSizeDisplaySmall],
           ),
         ),
       ],

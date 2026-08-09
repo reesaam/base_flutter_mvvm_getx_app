@@ -27,11 +27,6 @@ class AboutController extends CoreController {
       Texts.to.about.aboutTitlesDeveloperLinkedIn,
     ]);
 
-    listItems = List<String>.of([
-      AppInfo.appName,
-      AppDeveloperInfo.fullName,
-      AppDeveloperInfo.website,
-      AppDeveloperInfo.linkedin,
-    ]);
+    listItems = List<String>.of([AppInfo.appName, AppDeveloperInfo.fullName, AppDeveloperInfo.website, AppDeveloperInfo.linkedin]);
   }
 }

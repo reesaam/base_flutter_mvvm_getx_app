@@ -27,4 +27,3 @@ class AppDefaults {
   static double get buttonHeight => 50;
   static EdgeInsets get buttonPadding => const EdgeInsets.symmetric(horizontal: 5, vertical: 5);
 }
-

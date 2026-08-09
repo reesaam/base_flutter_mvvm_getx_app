@@ -19,5 +19,4 @@ class AppTexts {
   static const String dioHeaderContentTypeData = 'application/json';
   static const String dioHeaderConnection = 'Connection';
   static const String dioHeaderConnectionData = 'keep-alive';
-
 }

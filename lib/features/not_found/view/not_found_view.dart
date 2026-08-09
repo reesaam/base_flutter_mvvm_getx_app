@@ -11,17 +11,17 @@ class NotFoundPage extends CoreView<NotFoundController> {
 
   @override
   Widget get body => AppContainer(
-      alignment: Alignment.center,
-      width: Get.width,
-      height: Get.height - 100,
-      child: Stack(children: [
-        _widgetMain(),
-      ]));
+    alignment: Alignment.center,
+    width: Get.width,
+    height: Get.height - 100,
+    child: Stack(children: [_widgetMain()]),
+  );
 
   Widget _widgetMain() => AppContainer(
-      alignment: Alignment.center,
-      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        controller.icon.withSize(Get.size.width / 6),
-        Text(Texts.to.pagesName.notFoundPageName),
-      ]));
+    alignment: Alignment.center,
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [controller.icon.withSize(Get.size.width / 6), Text(Texts.to.pagesName.notFoundPageName)],
+    ),
+  );
 }

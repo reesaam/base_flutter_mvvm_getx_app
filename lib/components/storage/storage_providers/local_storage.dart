@@ -8,7 +8,6 @@ import '../../../barrels/core_resources_barrel.dart';
 
 import '../app_storage_module_abstraction.dart';
 
-
 @GetPut.component()
 class AppLocalStorage implements AppStorageModuleAbstraction {
   AppLocalStorage() {
@@ -63,10 +62,7 @@ class AppLocalStorage implements AppStorageModuleAbstraction {
   }
 
   @override
-  Future<BaseLocalResponse<bool>> saveData({
-    required String key,
-    required Map<String, dynamic> data,
-  }) async {
+  Future<BaseLocalResponse<bool>> saveData({required String key, required Map<String, dynamic> data}) async {
     try {
       await _storage.write(key, convert.jsonEncode(data));
       appLogPrint('Data Saved Successfully on $key');

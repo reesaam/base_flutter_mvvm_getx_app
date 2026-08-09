@@ -2,11 +2,7 @@ import 'package:dio/dio.dart' as dio;
 
 /// Retries idempotent GET requests on transient failures.
 class RetryInterceptor extends dio.Interceptor {
-  RetryInterceptor(
-    this._dio, {
-    this.maxRetries = 2,
-    this.retryDelay = const Duration(milliseconds: 400),
-  });
+  RetryInterceptor(this._dio, {this.maxRetries = 2, this.retryDelay = const Duration(milliseconds: 400)});
 
   final dio.Dio _dio;
   final int maxRetries;
@@ -41,12 +37,8 @@ class RetryInterceptor extends dio.Interceptor {
       dio.DioExceptionType.connectionTimeout ||
       dio.DioExceptionType.sendTimeout ||
       dio.DioExceptionType.receiveTimeout ||
-      dio.DioExceptionType.connectionError =>
-        true,
-      dio.DioExceptionType.badResponse =>
-        err.response?.statusCode == 502 ||
-            err.response?.statusCode == 503 ||
-            err.response?.statusCode == 504,
+      dio.DioExceptionType.connectionError => true,
+      dio.DioExceptionType.badResponse => err.response?.statusCode == 502 || err.response?.statusCode == 503 || err.response?.statusCode == 504,
       _ => false,
     };
   }

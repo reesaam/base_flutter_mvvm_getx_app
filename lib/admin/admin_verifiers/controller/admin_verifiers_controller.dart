@@ -7,7 +7,6 @@ import '../../../barrels/ui_kit_barrel.dart';
 
 @GetPut.controller()
 class AdminVerifiersController extends CoreController {
-
   @override
   AppPageDetail get pageDetail => AppPages.adminVerifiersPage;
 

@@ -95,12 +95,8 @@ class AdaptiveValue<T> {
 
 extension LayoutContextX on BuildContext {
   LayoutModel get layout => LayoutScope.maybeOf(this) ?? LayoutModel.of(this);
-
   DeviceType get deviceType => layout.deviceType;
-
   bool get isMobileLayout => layout.isMobile;
-
   bool get isTabletLayout => layout.isTablet;
-
   bool get isDesktopLayout => layout.isDesktop;
 }

@@ -18,19 +18,20 @@ class AdminStartPage extends CoreView<AdminStartController> {
   Widget? get floatingActionButton => AppFloatingActionButtons(icon: AppIcons.add.widget, onPressed: () {});
 
   @override
-  Widget get body => Column(children: [
-        _sectionsButtons(),
-      ]);
+  Widget get body => Column(children: [_sectionsButtons()]);
 
- Widget _sectionsButtons() => AppContainer(
-      padding: AppPaddings.buttonLarge,
-      child: Column(
-          children: List<Widget>.generate(
-              AppPages.listAdminPages.length,
-              (index) => index == 0
-                  ? AppBox.shrink()
-                  : AppButton.general(
-                      text: controller.pages[index].pageName ?? Texts.to.general.notAvailableInitials,
-                      onTap: () => goToPage(controller.pages[index]),
-                    ))));
+  Widget _sectionsButtons() => AppContainer(
+    padding: AppPaddings.buttonLarge,
+    child: Column(
+      children: List<Widget>.generate(
+        AppPages.listAdminPages.length,
+        (index) => index == 0
+            ? AppBox.shrink()
+            : AppButton.general(
+                text: controller.pages[index].pageName ?? Texts.to.general.notAvailableInitials,
+                onTap: () => goToPage(controller.pages[index]),
+              ),
+      ),
+    ),
+  );
 }

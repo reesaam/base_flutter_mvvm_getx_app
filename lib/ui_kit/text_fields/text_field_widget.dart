@@ -83,90 +83,82 @@ abstract class AppTextFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => AppContainer(
-        width: width,
-        height: height,
-        padding: padding,
-        margin: margin,
-        child: TextFormField(
-            controller: controller,
-            undoController: undoController,
-            textAlign: TextAlign.start,
-            textAlignVertical: TextAlignVertical.center,
-            textDirection: textDirection,
-            obscureText: isPassword ?? false,
-            style: errorText == null ? AppTextStyles.textFieldText() : AppTextStyles.textError(),
-            cursorColor: Get.theme.primaryColor,
-            keyboardType: textInputType ?? TextInputType.text,
-            textInputAction: textInputAction,
+    width: width,
+    height: height,
+    padding: padding,
+    margin: margin,
+    child: TextFormField(
+      controller: controller,
+      undoController: undoController,
+      textAlign: TextAlign.start,
+      textAlignVertical: TextAlignVertical.center,
+      textDirection: textDirection,
+      obscureText: isPassword ?? false,
+      style: errorText == null ? AppTextStyles.textFieldText() : AppTextStyles.textError(),
+      cursorColor: Get.theme.primaryColor,
+      keyboardType: textInputType ?? TextInputType.text,
+      textInputAction: textInputAction,
 
-            /// if [expandable] it could not been set, and if [obscured] it must be 1
-            /// And it can't set in parent function, it should be set in the widget itself
-            maxLines: expandable == true
-                ? null
-                : isPassword == true
-                    ? 1
-                    : maxLines,
-            maxLength: maxLength,
-            expands: expandable == true,
-            enableInteractiveSelection: editable == false || wholeWidgetAction != null ? false : true,
-            autofocus: autoFocus ?? false,
-            focusNode: focusNode,
-            canRequestFocus: editable == false || wholeWidgetAction != null ? false : true,
-            scrollPhysics: const BouncingScrollPhysics(),
-            onTap: wholeWidgetAction == null ? () {} : () => wholeWidgetAction!(),
-            onChanged: (value) => onChangedAction == null ? () {} : onChangedAction!(value),
-            onTapOutside: (event) => FocusScope.of(context).previousFocus(),
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            validator: (value) => _errorDetector(),
-            inputFormatters: inputFormatters ?? _formatters(),
-            buildCounter: (context, {required currentLength, required isFocused, required maxLength}) =>
-                hasCounter == true || showMaxLength == true ? _buildCounter(currentLength) : null,
+      /// if [expandable] it could not been set, and if [obscured] it must be 1
+      /// And it can't set in parent function, it should be set in the widget itself
+      maxLines: expandable == true
+          ? null
+          : isPassword == true
+          ? 1
+          : maxLines,
+      maxLength: maxLength,
+      expands: expandable == true,
+      enableInteractiveSelection: editable == false || wholeWidgetAction != null ? false : true,
+      autofocus: autoFocus ?? false,
+      focusNode: focusNode,
+      canRequestFocus: editable == false || wholeWidgetAction != null ? false : true,
+      scrollPhysics: const BouncingScrollPhysics(),
+      onTap: wholeWidgetAction == null ? () {} : () => wholeWidgetAction!(),
+      onChanged: (value) => onChangedAction == null ? () {} : onChangedAction!(value),
+      onTapOutside: (event) => FocusScope.of(context).previousFocus(),
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      validator: (value) => _errorDetector(),
+      inputFormatters: inputFormatters ?? _formatters(),
+      buildCounter: (context, {required currentLength, required isFocused, required maxLength}) =>
+          hasCounter == true || showMaxLength == true ? _buildCounter(currentLength) : null,
 
-            /// All Decoration Customizations
-            decoration: InputDecoration(
-              constraints: const BoxConstraints(maxHeight: double.maxFinite),
-              contentPadding: AppPaddings.textFieldContent,
-              labelText: label,
-              labelStyle: errorText == null ? AppTextStyles.textFieldText() : AppTextStyles.textError(),
-              hintText: hint,
-              hintStyle: AppTextStyles.textFieldHint(),
-              alignLabelWithHint: true,
-              hintMaxLines: 1,
-              icon: _leading,
-              prefixIcon: _prefix,
-              suffixIcon: _suffix,
-              border: AppElements.borderOutlined,
-              enabledBorder: _errorDetector() == null ? AppElements.borderOutlined : AppElements.borderOutlinedError,
-              disabledBorder: AppElements.borderOutlinedDisabled,
-              focusedBorder: AppElements.borderOutlinedFocused,
-              isDense: true,
-              isCollapsed: true,
-              errorStyle: _errorDetector() == null ? null : AppTextStyles.textError(),
-              errorBorder: _errorDetector() == null ? null : AppElements.borderOutlinedError,
-              errorText: _errorDetector(),
-            )),
-      );
+      /// All Decoration Customizations
+      decoration: InputDecoration(
+        constraints: const BoxConstraints(maxHeight: double.maxFinite),
+        contentPadding: AppPaddings.textFieldContent,
+        labelText: label,
+        labelStyle: errorText == null ? AppTextStyles.textFieldText() : AppTextStyles.textError(),
+        hintText: hint,
+        hintStyle: AppTextStyles.textFieldHint(),
+        alignLabelWithHint: true,
+        hintMaxLines: 1,
+        icon: _leading,
+        prefixIcon: _prefix,
+        suffixIcon: _suffix,
+        border: AppElements.borderOutlined,
+        enabledBorder: _errorDetector() == null ? AppElements.borderOutlined : AppElements.borderOutlinedError,
+        disabledBorder: AppElements.borderOutlinedDisabled,
+        focusedBorder: AppElements.borderOutlinedFocused,
+        isDense: true,
+        isCollapsed: true,
+        errorStyle: _errorDetector() == null ? null : AppTextStyles.textError(),
+        errorBorder: _errorDetector() == null ? null : AppElements.borderOutlinedError,
+        errorText: _errorDetector(),
+      ),
+    ),
+  );
 
   Widget? get _leading => leadingIcon == null
       ? null
-      : InkWell(
-          onTap: () => leadingAction == null ? nullFunction() : leadingAction!(),
-          child: leadingIcon?.withSecondaryColor,
-        );
+      : InkWell(onTap: () => leadingAction == null ? nullFunction() : leadingAction!(), child: leadingIcon?.withSecondaryColor);
 
   Widget? get _prefix => prefixIcon == null
       ? null
-      : InkWell(
-          onTap: () => prefixAction == null ? nullFunction() : prefixAction!(),
-          child: prefixIcon?.withSecondaryColor,
-        );
+      : InkWell(onTap: () => prefixAction == null ? nullFunction() : prefixAction!(), child: prefixIcon?.withSecondaryColor);
 
   Widget? get _suffix => suffixIcon == null
       ? null
-      : InkWell(
-          onTap: () => suffixAction == null ? nullFunction() : suffixAction!(),
-          child: suffixIcon?.withSecondaryColor,
-        );
+      : InkWell(onTap: () => suffixAction == null ? nullFunction() : suffixAction!(), child: suffixIcon?.withSecondaryColor);
 
   /// All Errors would Detect by this function
   /// Even multiple conditions will Check and shows by their priority
@@ -174,8 +166,7 @@ abstract class AppTextFieldWidget extends StatelessWidget {
     String? text;
 
     //Regex Check
-    if (regexValidator != null)
-      _regexValidator(controller.text) ? text = null : text = errorText ?? Texts.to.general.incorrect;
+    if (regexValidator != null) _regexValidator(controller.text) ? text = null : text = errorText ?? Texts.to.general.incorrect;
 
     //In case of conditions to check and show error are absent ErrorText will come from above
     if (regexValidator == null) text == errorText;
@@ -193,8 +184,7 @@ abstract class AppTextFieldWidget extends StatelessWidget {
   }
 
   /// Regex Checker
-  bool _regexValidator(String value) =>
-      value == Texts.to.general.empty ? true : RegexVal.hasMatch(value, regexValidator!.regexValue);
+  bool _regexValidator(String value) => value == Texts.to.general.empty ? true : RegexVal.hasMatch(value, regexValidator!.regexValue);
 
   /// Counter Builder
   /// [Counter], [MaxLength] and [CurrentLength] has Specific and Complicated Conditions

@@ -13,13 +13,7 @@ class AppStatistics extends CoreComponent {
   void increasePageOpens() => _addStatistics(pageOpens: true);
   void increaseApiCalls() => _addStatistics(apiCalls: true);
 
-  void _addStatistics({
-    bool? launches,
-    bool? logins,
-    bool? crashes,
-    bool? pageOpens,
-    bool? apiCalls,
-  }) async {
+  void _addStatistics({bool? launches, bool? logins, bool? crashes, bool? pageOpens, bool? apiCalls}) async {
     final appData = await loadAppData();
     if (appData != null && appData.statisticsData != null) {
       AppStatisticsData data = appData.statisticsData ?? const AppStatisticsData();

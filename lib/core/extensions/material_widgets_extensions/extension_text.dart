@@ -17,24 +17,23 @@ extension ExtensionTextCopyWith on Text {
     TextHeightBehavior? textHeightBehavior,
     TextScaler? textScaler,
     TextWidthBasis? textWidthBasis,
-  }) =>
-      Text(
-        text ?? data!,
-        style: style ?? this.style,
-        textAlign: textAlign ?? this.textAlign,
-        overflow: overflow ?? this.overflow,
-        maxLines: maxLines ?? this.maxLines,
-        key: key ?? this.key,
-        locale: locale ?? this.locale,
-        selectionColor: selectionColor ?? this.selectionColor,
-        semanticsLabel: semanticsLabel ?? this.semanticsLabel,
-        softWrap: softWrap ?? this.softWrap,
-        strutStyle: strutStyle ?? this.strutStyle,
-        textDirection: textDirection ?? this.textDirection,
-        textHeightBehavior: textHeightBehavior ?? this.textHeightBehavior,
-        textScaler: textScaler ?? this.textScaler,
-        textWidthBasis: textWidthBasis ?? this.textWidthBasis,
-      );
+  }) => Text(
+    text ?? data!,
+    style: style ?? this.style,
+    textAlign: textAlign ?? this.textAlign,
+    overflow: overflow ?? this.overflow,
+    maxLines: maxLines ?? this.maxLines,
+    key: key ?? this.key,
+    locale: locale ?? this.locale,
+    selectionColor: selectionColor ?? this.selectionColor,
+    semanticsLabel: semanticsLabel ?? this.semanticsLabel,
+    softWrap: softWrap ?? this.softWrap,
+    strutStyle: strutStyle ?? this.strutStyle,
+    textDirection: textDirection ?? this.textDirection,
+    textHeightBehavior: textHeightBehavior ?? this.textHeightBehavior,
+    textScaler: textScaler ?? this.textScaler,
+    textWidthBasis: textWidthBasis ?? this.textWidthBasis,
+  );
 }
 
 extension ExtensionTextStyle on Text {
@@ -51,7 +50,9 @@ extension ExtensionTextStyle on Text {
 }
 
 extension ExtensionTextColor on Text {
-  Text withColor(Color? color) => copyWith(style: style?.copyWith(color: color) ?? TextStyle(color: color));
+  Text withColor(Color? color) => copyWith(
+    style: style?.copyWith(color: color) ?? TextStyle(color: color),
+  );
   Text get withCanvasColor => withColor(Get.theme.canvasColor);
   Text get withPrimaryColor => withColor(Get.theme.primaryColor);
   Text get withSecondaryColor => withColor(Get.theme.colorScheme.secondary);
@@ -60,7 +61,9 @@ extension ExtensionTextColor on Text {
 }
 
 extension ExtensionTextSize on Text {
-  Text withSize(double fontSize) => copyWith(style: style?.copyWith(fontSize: fontSize) ?? TextStyle(fontSize: fontSize));
+  Text withSize(double fontSize) => copyWith(
+    style: style?.copyWith(fontSize: fontSize) ?? TextStyle(fontSize: fontSize),
+  );
   Text get withSizeBodySmall => copyWith(style: style?.copyWith(fontSize: Get.textTheme.bodySmall?.fontSize) ?? Get.textTheme.bodySmall);
   Text get withSizeBodyMedium => copyWith(style: style?.copyWith(fontSize: Get.textTheme.bodyMedium?.fontSize) ?? Get.textTheme.bodyMedium);
   Text get withSizeBodyLarge => copyWith(style: style?.copyWith(fontSize: Get.textTheme.bodyLarge?.fontSize) ?? Get.textTheme.bodyLarge);

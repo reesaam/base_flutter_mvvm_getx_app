@@ -9,4 +9,3 @@ extension BuildContextExtensions on BuildContext {
 extension BrightnessExtensions on Brightness {
   bool get isLight => Get.context?.brightness == Brightness.light;
 }
-

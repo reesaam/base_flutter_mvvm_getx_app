@@ -18,30 +18,33 @@ class AdminDataFormatCheckPage extends CoreView<AdminDataFormatCheckController> 
   EdgeInsets? get pagePadding => AppPaddings.zero;
 
   @override
-  Widget get body => Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.center, children: [
-        AppDividers.generalWithDisabledColor,
-        _locale(),
-        _dateTime(),
-        _currency(),
-      ]);
+  Widget get body => Column(
+    mainAxisAlignment: MainAxisAlignment.start,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [AppDividers.generalWithDisabledColor, _locale(), _dateTime(), _currency()],
+  );
 
   _locale() => AdminFunctions.section([
-        AdminFunctions.item(title: 'Language', text: AppLocalizations.to.translation?.getLanguage?.languageName),
-      ], title: 'Localization');
+    AdminFunctions.item(title: 'Language', text: AppLocalizations.to.translation?.getLanguage?.languageName),
+  ], title: 'Localization');
 
   _dateTime() => AdminFunctions.section([
-        AdminFunctions.item(title: 'Date & Time', text: DateTime.now().toDateTimeFormat()),
-        AdminFunctions.item(title: 'Date', text: DateTime.now().toDateFormat()),
-        AdminFunctions.item(title: 'Time', text: DateTime.now().toTimeFormat()),
-        AdminFunctions.item(title: 'Time with Seconds', text: DateTime.now().toTimeFormat(withSeconds: true)),
-      ], title: 'Date & Time');
+    AdminFunctions.item(title: 'Date & Time', text: DateTime.now().toDateTimeFormat()),
+    AdminFunctions.item(title: 'Date', text: DateTime.now().toDateFormat()),
+    AdminFunctions.item(title: 'Time', text: DateTime.now().toTimeFormat()),
+    AdminFunctions.item(title: 'Time with Seconds', text: DateTime.now().toTimeFormat(withSeconds: true)),
+  ], title: 'Date & Time');
 
   _currency() => AdminFunctions.section([
-        AdminFunctions.item(title: 'Separators', text: 22500000.toCurrency()),
-        AdminFunctions.item(title: 'Separators with Sign', text: 55400000.toCurrency(sign: AppCountry.us.currency?.sign.string ?? '')),
-        AdminFunctions.item(title: 'Separators', text: 22500000.toCurrency()),
-        AdminFunctions.item(
-            title: 'Separators with Sign',
-            text: 55400000.toCurrency(sign: AppLocalizations.to.getCountry().currency?.sign.string ?? AppCountry.us.currency?.sign.string ?? '')),
-      ], title: 'Currency');
+    AdminFunctions.item(title: 'Separators', text: 22500000.toCurrency()),
+    AdminFunctions.item(
+      title: 'Separators with Sign',
+      text: 55400000.toCurrency(sign: AppCountry.us.currency?.sign.string ?? ''),
+    ),
+    AdminFunctions.item(title: 'Separators', text: 22500000.toCurrency()),
+    AdminFunctions.item(
+      title: 'Separators with Sign',
+      text: 55400000.toCurrency(sign: AppLocalizations.to.getCountry().currency?.sign.string ?? AppCountry.us.currency?.sign.string ?? ''),
+    ),
+  ], title: 'Currency');
 }

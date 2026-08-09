@@ -20,14 +20,7 @@ enum AppColorPalette {
   final List<String>? lightGradientCodes;
   final List<String>? darkGradientCodes;
   final double? opacity;
-  const AppColorPalette({
-    this.colorName,
-    this.lightColorCode,
-    this.darkColorCode,
-    this.lightGradientCodes,
-    this.darkGradientCodes,
-    this.opacity,
-  });
+  const AppColorPalette({this.colorName, this.lightColorCode, this.darkColorCode, this.lightGradientCodes, this.darkGradientCodes, this.opacity});
 }
 
 const String _coral = 'FE7D6A';

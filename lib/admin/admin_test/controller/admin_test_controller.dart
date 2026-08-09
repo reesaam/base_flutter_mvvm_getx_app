@@ -28,8 +28,7 @@ class AdminTestController extends CoreController {
     darkMode.value = !darkMode.value;
     final loadedAppData = await loadAppData();
     var settings = loadedAppData?.settings;
-    settings =
-        settings?.copyWith(darkMode: darkMode.value) ?? const AppSettingData().copyWith(darkMode: darkMode.value);
+    settings = settings?.copyWith(darkMode: darkMode.value) ?? const AppSettingData().copyWith(darkMode: darkMode.value);
     saveAppData(appSettingData: settings);
     AppThemeFunctions.to.changeThemeMode(darkMode.value);
   }
@@ -55,36 +54,22 @@ class AdminTestController extends CoreController {
     const method = APIMethods.get;
     const url = 'https://jsonplaceholder.typicode.com/posts';
     final response = await DioCore.to.callMethod<List>(method: method, url: url);
-    final result = response.fold(
-      (l) => _dialog('API Call Failed'),
-      (r) => _dialog(r.length.toString()),
-    );
+    final result = response.fold((l) => _dialog('API Call Failed'), (r) => _dialog(r.length.toString()));
   }
 
   apiPostData() async {
     const method = APIMethods.post;
     const url = 'https://jsonplaceholder.typicode.com/posts';
-    final Map<String, dynamic> data = {
-      "title": "foo",
-      "body": "bar",
-      "userId": 1,
-      "id": 101,
-    };
+    final Map<String, dynamic> data = {"title": "foo", "body": "bar", "userId": 1, "id": 101};
     final response = await DioCore.to.callMethod<Map<String, dynamic>>(method: method, url: url, data: data);
-    final result = response.fold(
-      (l) => _dialog('API Call Failed'),
-      (r) => _dialog(r['title']),
-    );
+    final result = response.fold((l) => _dialog('API Call Failed'), (r) => _dialog(r['title']));
   }
 
   apiPutData() async {
     const method = APIMethods.put;
     const url = '';
     final response = await DioCore.to.callMethod<String>(method: method, url: url);
-    final result = response.fold(
-      (l) => _dialog('API Call Failed'),
-      (r) => r,
-    );
+    final result = response.fold((l) => _dialog('API Call Failed'), (r) => r);
     _dialog(result);
   }
 
@@ -92,10 +77,7 @@ class AdminTestController extends CoreController {
     const method = APIMethods.patch;
     const url = '';
     final response = await DioCore.to.callMethod<String>(method: method, url: url);
-    final result = response.fold(
-      (l) => _dialog('API Call Failed'),
-      (r) => r,
-    );
+    final result = response.fold((l) => _dialog('API Call Failed'), (r) => r);
     _dialog(result);
   }
 
@@ -103,10 +85,7 @@ class AdminTestController extends CoreController {
     const method = APIMethods.download;
     const url = '';
     final response = await DioCore.to.callMethod<String>(method: method, url: url);
-    final result = response.fold(
-      (l) => _dialog('API Call Failed'),
-      (r) => r,
-    );
+    final result = response.fold((l) => _dialog('API Call Failed'), (r) => r);
     _dialog(result);
   }
 
@@ -114,10 +93,7 @@ class AdminTestController extends CoreController {
     const method = APIMethods.delete;
     const url = '';
     final response = await DioCore.to.callMethod<String>(method: method, url: url);
-    final result = response.fold(
-      (l) => _dialog('API Call Failed'),
-      (r) => r,
-    );
+    final result = response.fold((l) => _dialog('API Call Failed'), (r) => r);
     _dialog(result);
   }
 
@@ -162,10 +138,7 @@ class AdminTestController extends CoreController {
   }
 
   showLocalNotification() async {
-    await AppLocalNotifications().simple(
-      title: 'Test Notification Title',
-      body: 'Test Notification Body',
-    );
+    await AppLocalNotifications().simple(title: 'Test Notification Title', body: 'Test Notification Body');
   }
 
   showPushNotification() {}
@@ -174,8 +147,7 @@ class AdminTestController extends CoreController {
     AppData? appData = await loadAppData();
     String response = '';
     response = 'Load Data Success\n\n';
-    response +=
-        'Version: ${appData?.appVersions?.versionsList.isEmpty ?? true ? 'Empty' : appData?.appVersions?.versionsList.last.version}\n';
+    response += 'Version: ${appData?.appVersions?.versionsList.isEmpty ?? true ? 'Empty' : appData?.appVersions?.versionsList.last.version}\n';
     response += 'Versions Count: ${appData?.appVersions?.versionsList.length ?? 0}\n';
     response += 'Data Version: ${appData?.dataVersion?.number.toString()}\n';
     response += 'Install DateTime: \n${appData?.statisticsData?.installDateTime.toDateTimeFormat()}\n';
@@ -200,8 +172,7 @@ class AdminTestController extends CoreController {
     result = await saveAppData();
     if (result == true) {
       response = 'Save Data Success\n\n';
-      response +=
-          'Version: ${appData?.appVersions?.versionsList.isEmpty ?? true ? 'Empty' : appData?.appVersions?.versionsList.last.version}\n';
+      response += 'Version: ${appData?.appVersions?.versionsList.isEmpty ?? true ? 'Empty' : appData?.appVersions?.versionsList.last.version}\n';
       response += 'Versions Count: ${appData?.appVersions?.versionsList.length ?? 0}\n';
       response += 'Data Version: ${appData?.dataVersion?.number.toString()}\n';
       response += 'Install DateTime: \n${appData?.statisticsData?.installDateTime.toDateTimeFormat()}\n';

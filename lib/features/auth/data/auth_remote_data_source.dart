@@ -9,10 +9,7 @@ import 'auth_session.dart';
 abstract class AuthRemoteDataSource extends CoreRepository {
   static AuthRemoteDataSource get to => Get.find();
 
-  Future<BaseAPIResponse<AuthLoginResult>> login({
-    required String email,
-    required String password,
-  });
+  Future<BaseAPIResponse<AuthLoginResult>> login({required String email, required String password});
 
   Future<BaseAPIResponse<bool>> logout();
 
@@ -22,10 +19,7 @@ abstract class AuthRemoteDataSource extends CoreRepository {
 @GetPut.repository(as: AuthRemoteDataSource)
 class AuthRemoteDataSourceImpl extends CoreRepository implements AuthRemoteDataSource {
   @override
-  Future<BaseAPIResponse<AuthLoginResult>> login({
-    required String email,
-    required String password,
-  }) async {
+  Future<BaseAPIResponse<AuthLoginResult>> login({required String email, required String password}) async {
     if (EnvConfig.authDemoMode) {
       if (email.trim().isEmpty || password.trim().isEmpty) {
         return Left(NetworkException(message: 'Email and password are required', statusCode: 400));
@@ -48,10 +42,7 @@ class AuthRemoteDataSourceImpl extends CoreRepository implements AuthRemoteDataS
     if (EnvConfig.authDemoMode) {
       return const Right(true);
     }
-    final result = await DioCore.to.callMethod<dynamic>(
-      method: APIMethods.post,
-      url: AppAPIUrls.apiLogout,
-    );
+    final result = await DioCore.to.callMethod<dynamic>(method: APIMethods.post, url: AppAPIUrls.apiLogout);
     return result.map((_) => true);
   }
 
@@ -64,10 +55,7 @@ class AuthRemoteDataSourceImpl extends CoreRepository implements AuthRemoteDataS
       }
       return Right(user);
     }
-    final result = await DioCore.to.callMethod<Map<String, dynamic>>(
-      method: APIMethods.get,
-      url: AppAPIUrls.apiMe,
-    );
+    final result = await DioCore.to.callMethod<Map<String, dynamic>>(method: APIMethods.get, url: AppAPIUrls.apiMe);
     return result.map(AuthUser.fromJson);
   }
 }

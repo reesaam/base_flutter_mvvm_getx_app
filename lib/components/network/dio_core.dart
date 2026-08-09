@@ -33,11 +33,7 @@ class DioCore extends CoreComponent {
         headers: const {'Content-Type': 'application/json', 'Accept': 'application/json'},
       ),
     );
-    client.interceptors.addAll([
-      AuthInterceptor(),
-      RetryInterceptor(client),
-      LoggingInterceptor(),
-    ]);
+    client.interceptors.addAll([AuthInterceptor(), RetryInterceptor(client), LoggingInterceptor()]);
     super.onInit();
   }
 
@@ -58,32 +54,17 @@ class DioCore extends CoreComponent {
         receiveTimeout: AppDefaults.timeOutConnection,
         sendTimeout: AppDefaults.timeOutConnection,
         contentType: AppTexts.dioHeaderContentTypeData,
-        headers: {
-          'Content-Type': 'application/json',
-          if (headers != null) ...headers,
-          if (skipAuth) AuthInterceptor.skipAuthHeader: 'true',
-        },
+        headers: {'Content-Type': 'application/json', if (headers != null) ...headers, if (skipAuth) AuthInterceptor.skipAuthHeader: 'true'},
       );
       _increaseStatisticApiCall();
-      final result = await client.request<dynamic>(
-        url,
-        queryParameters: queryParameters,
-        options: options,
-        data: data,
-      );
+      final result = await client.request<dynamic>(url, queryParameters: queryParameters, options: options, data: data);
       if (APIResponseStatus.values.find(result.statusCode ?? 0).isSuccess == true) {
         return Right(result.data as T);
       }
-      _printException(method.getName, [
-        'Result Data: ${result.data} (${result.statusCode})',
-        'Result Message: ${result.statusMessage}',
-      ]);
+      _printException(method.getName, ['Result Data: ${result.data} (${result.statusCode})', 'Result Message: ${result.statusMessage}']);
       return Left(APIResponseStatus.values.find(result.statusCode ?? 0).exception);
     } on dio.DioException catch (ex, stackTrace) {
-      _printException(method.getName, [
-        'DioException Response: ${ex.response}',
-        'DioException Message: ${ex.message}',
-      ]);
+      _printException(method.getName, ['DioException Response: ${ex.response}', 'DioException Message: ${ex.message}']);
       return Left(NetworkException.handleResponse(ex, stackTrace));
     } catch (ex) {
       _printException(method.getName, ['$ex']);
@@ -91,10 +72,7 @@ class DioCore extends CoreComponent {
     }
   }
 
-  Future<BaseAPIResponse<File>> download({
-    required String url,
-    required String savePath,
-  }) async {
+  Future<BaseAPIResponse<File>> download({required String url, required String savePath}) async {
     try {
       _increaseStatisticApiCall();
       final APIResponse result = await client.download(url, savePath);
@@ -102,16 +80,10 @@ class DioCore extends CoreComponent {
         _printResponse('DOWNLOAD', result);
         return Right(File(savePath));
       }
-      _printException(APIMethods.download.getName, [
-        'Result Data: ${result.data}',
-        'Result Message: ${result.statusMessage}',
-      ]);
+      _printException(APIMethods.download.getName, ['Result Data: ${result.data}', 'Result Message: ${result.statusMessage}']);
       return Left(APIResponseStatus.values.find(result.statusCode ?? 0).exception);
     } on dio.DioException catch (ex, stackTrace) {
-      _printException(APIMethods.download.getName, [
-        'DioException Response: ${ex.response}',
-        'DioException Message: ${ex.message}',
-      ]);
+      _printException(APIMethods.download.getName, ['DioException Response: ${ex.response}', 'DioException Message: ${ex.message}']);
       return Left(NetworkException.handleResponse(ex, stackTrace));
     } catch (ex) {
       _printException(APIMethods.download.getName, ['$ex']);

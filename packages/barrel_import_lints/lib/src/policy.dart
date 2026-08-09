@@ -15,17 +15,9 @@ import 'package:yaml/yaml.dart';
 /// // ignore_for_file: barrel_import_lints/only_barrel_imports
 /// ```
 class BarrelImportPolicy {
-  BarrelImportPolicy({
-    required this.packageName,
-    required this.barreledRoots,
-    required this.barrelOutputs,
-    required this.barrelOwnedFiles,
-  });
+  BarrelImportPolicy({required this.packageName, required this.barreledRoots, required this.barrelOutputs, required this.barrelOwnedFiles});
 
-  factory BarrelImportPolicy.fromYaml({
-    required String packageName,
-    required YamlMap barrelsYaml,
-  }) {
+  factory BarrelImportPolicy.fromYaml({required String packageName, required YamlMap barrelsYaml}) {
     final barrels = barrelsYaml['barrels'] as YamlList? ?? YamlList();
     final roots = <String>{};
     final outputs = <String>{};
@@ -58,10 +50,7 @@ class BarrelImportPolicy {
   final Set<String> barrelOwnedFiles;
 
   /// Returns a violation message, or `null` if the import is allowed.
-  String? checkImport({
-    required String libRel,
-    required String uri,
-  }) {
+  String? checkImport({required String libRel, required String uri}) {
     if (_shouldSkipFile(libRel)) return null;
     if (uri.startsWith('dart:')) return null;
 
@@ -74,11 +63,7 @@ class BarrelImportPolicy {
       if (uri.startsWith(prefix)) {
         final resolved = normalizeRel(uri.substring(prefix.length));
         if (isBarrelImport(resolved)) return null;
-        return _messageForResolved(
-          resolved: resolved,
-          sourceFeature: sourceFeature,
-          sourceRoot: sourceRoot,
-        );
+        return _messageForResolved(resolved: resolved, sourceFeature: sourceFeature, sourceRoot: sourceRoot);
       }
       if (allowDirectPackages) return null;
       return 'Do not import packages directly from `$libRel`. '
@@ -88,18 +73,10 @@ class BarrelImportPolicy {
     final resolved = resolveRelative(fromLibRel: libRel, uri: uri);
     if (resolved == null) return null;
     if (isBarrelImport(resolved)) return null;
-    return _messageForResolved(
-      resolved: resolved,
-      sourceFeature: sourceFeature,
-      sourceRoot: sourceRoot,
-    );
+    return _messageForResolved(resolved: resolved, sourceFeature: sourceFeature, sourceRoot: sourceRoot);
   }
 
-  String? _messageForResolved({
-    required String resolved,
-    required String? sourceFeature,
-    required String? sourceRoot,
-  }) {
+  String? _messageForResolved({required String resolved, required String? sourceFeature, required String? sourceRoot}) {
     final targetFeature = _featureName(resolved);
 
     // Same feature: relatives are always OK (features have no barrel).

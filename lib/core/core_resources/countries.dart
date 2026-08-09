@@ -1,12 +1,7 @@
 import '../../barrels/shared_models_barrel.dart';
 
 enum AppCountry {
-  utc(
-    countryName: 'GMT',
-    countryNameAbbreviation: 'GMT',
-    timeZoneAbbreviation: ['UTC'],
-    timeZoneOffset: [DurationCustomModel()],
-  ),
+  utc(countryName: 'GMT', countryNameAbbreviation: 'GMT', timeZoneAbbreviation: ['UTC'], timeZoneOffset: [DurationCustomModel()]),
   iran(
     countryName: 'Iran',
     countryNameAbbreviation: 'IR',
@@ -30,12 +25,7 @@ enum AppCountry {
     code: '1',
     currency: AppCurrency.usd,
     timeZoneAbbreviation: ['PST', 'MST', 'CST', 'EST'],
-    timeZoneOffset: [
-      DurationCustomModel(hour: -8),
-      DurationCustomModel(hour: -7),
-      DurationCustomModel(hour: -6),
-      DurationCustomModel(hour: -5),
-    ],
+    timeZoneOffset: [DurationCustomModel(hour: -8), DurationCustomModel(hour: -7), DurationCustomModel(hour: -6), DurationCustomModel(hour: -5)],
   ),
   uk(
     countryName: 'United Kingdom',
@@ -140,12 +130,7 @@ enum AppCurrency {
   final String name;
   final String description;
   final String? localDescription;
-  const AppCurrency({
-    required this.sign,
-    required this.name,
-    required this.description,
-    this.localDescription,
-  });
+  const AppCurrency({required this.sign, required this.name, required this.description, this.localDescription});
 }
 
 enum AppCurrencySign {

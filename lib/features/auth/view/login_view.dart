@@ -20,43 +20,36 @@ class LoginPage extends CoreView<AuthController> {
 
   @override
   Widget get body => Obx(
-        () => Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            AppSpaces.h40,
-            Text(AppInfo.appName).withSizeTitleLarge,
-            AppSpaces.h10,
-            const Text('Sign in to continue').withSizeBodyMedium,
-            AppSpaces.h40,
-            AppTextField.general(
-              controller: controller.emailController,
-              label: 'Email',
-              hint: 'you@example.com',
-              textInputType: TextInputType.emailAddress,
-              textInputAction: TextInputAction.next,
-            ),
-            AppSpaces.h20,
-            AppTextField.general(
-              controller: controller.passwordController,
-              label: 'Password',
-              hint: '••••••••',
-              isPassword: controller.obscurePassword.value,
-              textInputAction: TextInputAction.done,
-              suffixAction: controller.toggleObscurePassword,
-            ),
-            if (controller.errorMessage.value != null) ...[
-              AppSpaces.h20,
-              Text(controller.errorMessage.value!).withColor(AppColors.error.color),
-            ],
-            AppSpaces.h40,
-            AppButton.filled(
-              text: 'Sign In',
-              loading: controller.isLoading.value,
-              onTap: controller.login,
-            ),
-            AppSpaces.h20,
-            const Text('Demo mode accepts any non-empty credentials.').withSizeBodySmall,
-          ],
+    () => Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        AppSpaces.h40,
+        Text(AppInfo.appName).withSizeTitleLarge,
+        AppSpaces.h10,
+        const Text('Sign in to continue').withSizeBodyMedium,
+        AppSpaces.h40,
+        AppTextField.general(
+          controller: controller.emailController,
+          label: 'Email',
+          hint: 'you@example.com',
+          textInputType: TextInputType.emailAddress,
+          textInputAction: TextInputAction.next,
         ),
-      );
+        AppSpaces.h20,
+        AppTextField.general(
+          controller: controller.passwordController,
+          label: 'Password',
+          hint: '••••••••',
+          isPassword: controller.obscurePassword.value,
+          textInputAction: TextInputAction.done,
+          suffixAction: controller.toggleObscurePassword,
+        ),
+        if (controller.errorMessage.value != null) ...[AppSpaces.h20, Text(controller.errorMessage.value!).withColor(AppColors.error.color)],
+        AppSpaces.h40,
+        AppButton.filled(text: 'Sign In', loading: controller.isLoading.value, onTap: controller.login),
+        AppSpaces.h20,
+        const Text('Demo mode accepts any non-empty credentials.').withSizeBodySmall,
+      ],
+    ),
+  );
 }

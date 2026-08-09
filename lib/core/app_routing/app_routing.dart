@@ -7,8 +7,8 @@ void goToPage(AppPageDetail? page, {bool? popAll}) {
   page == null
       ? Get.toNamed(AppPages.notFound.pageRoute)
       : popAll == true
-          ? Get.offAllNamed(page.pageRoute)
-          : Get.toNamed(page.pageRoute);
+      ? Get.offAllNamed(page.pageRoute)
+      : Get.toNamed(page.pageRoute);
   AppStatistics.to.increasePageOpens();
 }
 

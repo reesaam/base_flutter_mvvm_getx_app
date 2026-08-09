@@ -30,24 +30,18 @@ class _AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
 
   @override
   Widget build(BuildContext context) => BottomNavigationBar(
-        backgroundColor: AppColors.bottomNavigationBarBackground.color,
-        currentIndex: selectedIndex.value = widget.selectedIndex ?? 0,
-        onTap: (index) => _onItemTap(index),
-        items: List<BottomNavigationBarItem>.generate(
-          pagesList.length,
-          (index) => _generateBottomNavigationBarItem(pagesList[index]),
-        ),
-        selectedItemColor: AppColors.bottomNavigationBarForeground.color,
-        unselectedItemColor: AppColors.bottomNavigationBarForeground.color.lowOpacity,
-      );
+    backgroundColor: AppColors.bottomNavigationBarBackground.color,
+    currentIndex: selectedIndex.value = widget.selectedIndex ?? 0,
+    onTap: (index) => _onItemTap(index),
+    items: List<BottomNavigationBarItem>.generate(pagesList.length, (index) => _generateBottomNavigationBarItem(pagesList[index])),
+    selectedItemColor: AppColors.bottomNavigationBarForeground.color,
+    unselectedItemColor: AppColors.bottomNavigationBarForeground.color.lowOpacity,
+  );
 
-  BottomNavigationBarItem _generateBottomNavigationBarItem(AppPageDetail route) => BottomNavigationBarItem(
-        icon: _createIcon(route),
-        label: _createLabel(route),
-      );
+  BottomNavigationBarItem _generateBottomNavigationBarItem(AppPageDetail route) =>
+      BottomNavigationBarItem(icon: _createIcon(route), label: _createLabel(route));
 
-  Icon _createIcon(AppPageDetail route) =>
-      pagesList.singleWhere((element) => element.pageRoute == route.pageRoute).iconCode.toIcon();
+  Icon _createIcon(AppPageDetail route) => pagesList.singleWhere((element) => element.pageRoute == route.pageRoute).iconCode.toIcon();
 
   String _createLabel(AppPageDetail route) =>
       pagesList.singleWhere((element) => element.pageRoute == route.pageRoute).pageName ?? Texts.to.general.empty;

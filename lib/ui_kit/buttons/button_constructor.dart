@@ -62,12 +62,7 @@ class AppButtonConstructor extends BaseWidget {
   Widget get widget {
     Widget widget = AppBox.shrink();
     if (buttonType == ButtonType.icon) {
-      widget = AppIconButton(
-        icon: icon ?? AppIcons.none,
-        iconColor: iconColor,
-        onTap: onTap,
-        text: text,
-      );
+      widget = AppIconButton(icon: icon ?? AppIcons.none, iconColor: iconColor, onTap: onTap, text: text);
     } else {
       widget = AppButtonWidget(
         backgroundColor: buttonType.backgroundColor,

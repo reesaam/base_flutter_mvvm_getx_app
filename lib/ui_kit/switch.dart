@@ -9,14 +9,15 @@ class AppSwitch extends BaseWidget {
 
   @override
   Widget get widget => SizedBox(
-      height: AppSizes.switchHeight.height,
-      child: Switch.adaptive(
-        value: value == true ? true : false,
-        onChanged: (value) => onChanged!(value),
-        focusNode: FocusNode(canRequestFocus: enabled == false ? false : true),
-        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        activeTrackColor: AppColors.primary.color,
-        inactiveTrackColor: AppColors.canvas.color,
-        inactiveThumbColor: AppColors.primary.color,
-      ));
+    height: AppSizes.switchHeight.height,
+    child: Switch.adaptive(
+      value: value == true ? true : false,
+      onChanged: (value) => onChanged!(value),
+      focusNode: FocusNode(canRequestFocus: enabled == false ? false : true),
+      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      activeTrackColor: AppColors.primary.color,
+      inactiveTrackColor: AppColors.canvas.color,
+      inactiveThumbColor: AppColors.primary.color,
+    ),
+  );
 }

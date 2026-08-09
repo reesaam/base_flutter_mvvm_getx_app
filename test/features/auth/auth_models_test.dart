@@ -4,11 +4,7 @@ import 'package:base_flutter_mvvm_getx_app/features/auth/models/auth_models.dart
 void main() {
   group('AuthTokens', () {
     test('fromJson / toJson round-trip', () {
-      final tokens = AuthTokens.fromJson({
-        'access_token': 'abc',
-        'refresh_token': 'def',
-        'expires_at': '2030-01-01T00:00:00.000',
-      });
+      final tokens = AuthTokens.fromJson({'access_token': 'abc', 'refresh_token': 'def', 'expires_at': '2030-01-01T00:00:00.000'});
 
       expect(tokens.accessToken, 'abc');
       expect(tokens.refreshToken, 'def');
@@ -17,10 +13,7 @@ void main() {
     });
 
     test('isExpired when expiresAt is in the past', () {
-      final tokens = AuthTokens(
-        accessToken: 'x',
-        expiresAt: DateTime.now().subtract(const Duration(minutes: 1)),
-      );
+      final tokens = AuthTokens(accessToken: 'x', expiresAt: DateTime.now().subtract(const Duration(minutes: 1)));
       expect(tokens.isExpired, isTrue);
     });
   });

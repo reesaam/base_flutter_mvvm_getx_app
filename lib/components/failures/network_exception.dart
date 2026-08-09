@@ -24,9 +24,6 @@ class NetworkException implements GeneralException {
     } catch (_) {
       message = status.name;
     }
-    return NetworkException(
-      message: message,
-      statusCode: ex.response?.statusCode ?? status.statusCode,
-    );
+    return NetworkException(message: message, statusCode: ex.response?.statusCode ?? status.statusCode);
   }
 }

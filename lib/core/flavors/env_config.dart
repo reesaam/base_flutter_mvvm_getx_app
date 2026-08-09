@@ -1,4 +1,5 @@
 import '../../barrels/core_resources_barrel.dart';
+
 /// Prefer a JSON env file over long CLI flags:
 /// ```bash
 /// flutter run --dart-define-from-file=config/envs/env.development.json
@@ -22,19 +23,16 @@ class EnvConfig {
   static const String apiSubDomainOverride = String.fromEnvironment('API_SUBDOMAIN', defaultValue: '');
   static const String sentryDsn = String.fromEnvironment('SENTRY_DSN', defaultValue: '');
   static const bool enableSentry = bool.fromEnvironment('ENABLE_SENTRY', defaultValue: false);
-  static const String secureStoragePassword = String.fromEnvironment(
-    'SECURE_STORAGE_PASSWORD',
-    defaultValue: 'dev_only_change_me',
-  );
+  static const String secureStoragePassword = String.fromEnvironment('SECURE_STORAGE_PASSWORD', defaultValue: 'dev_only_change_me');
 
   /// When true, auth accepts any non-empty credentials without calling the API.
   static const bool authDemoMode = bool.fromEnvironment('AUTH_DEMO_MODE', defaultValue: true);
 
   static Environment get environment => switch (envName.toLowerCase()) {
-        'production' || 'prod' => Environment.production,
-        'stage' || 'staging' => Environment.stage,
-        _ => Environment.development,
-      };
+    'production' || 'prod' => Environment.production,
+    'stage' || 'staging' => Environment.stage,
+    _ => Environment.development,
+  };
 
   static String get resolvedBaseUrl {
     if (baseUrlOverride.isNotEmpty) return baseUrlOverride;

@@ -20,50 +20,44 @@ class AppAlertDialogs {
   }
 
   static withOk({String? title, required String text, required Function() onTapOk, bool? dismissible}) async {
-    List<Widget> buttons = [
-      AppButton.general(text: Texts.to.general.ok, onTap: onTapOk),
-    ];
+    List<Widget> buttons = [AppButton.general(text: Texts.to.general.ok, onTap: onTapOk)];
     await _appAlertDialog(title: title, text: text, buttons: buttons, dismissible: dismissible);
   }
 }
 
-_appAlertDialog({
-  String? title,
-  required String text,
-  required List<Widget> buttons,
-  bool? dismissible,
-}) async =>
-    await showDialog(
-        context: Get.context!,
-        useSafeArea: true,
-        useRootNavigator: true,
-        barrierDismissible: dismissible ?? false,
-        builder: (context) => AppContainer(
-          padding: AppPaddings.generalAlertDialog,
-          child: AlertDialog.adaptive(
-            scrollable: true,
-            shape: AppElements.borderShapeAlertDialog,
-            title: title == null
-                ? AppBox.shrink()
-                : Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(title),
-              AppDividers.generalWithPrimaryColor,
-            ]),
-            content: Padding(
-                padding: AppPaddings.generalAlertDialog,
-                child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(text, softWrap: true),
-                    ])),
-            actions: _renderButtonsAlertDialog(buttons),
-            actionsOverflowAlignment: OverflowBarAlignment.center,
-            actionsOverflowDirection: VerticalDirection.down,
-            actionsAlignment: MainAxisAlignment.center,
-          ),
-        ));
+_appAlertDialog({String? title, required String text, required List<Widget> buttons, bool? dismissible}) async => await showDialog(
+  context: Get.context!,
+  useSafeArea: true,
+  useRootNavigator: true,
+  barrierDismissible: dismissible ?? false,
+  builder: (context) => AppContainer(
+    padding: AppPaddings.generalAlertDialog,
+    child: AlertDialog.adaptive(
+      scrollable: true,
+      shape: AppElements.borderShapeAlertDialog,
+      title: title == null
+          ? AppBox.shrink()
+          : Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [Text(title), AppDividers.generalWithPrimaryColor],
+            ),
+      content: Padding(
+        padding: AppPaddings.generalAlertDialog,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [Text(text, softWrap: true)],
+        ),
+      ),
+      actions: _renderButtonsAlertDialog(buttons),
+      actionsOverflowAlignment: OverflowBarAlignment.center,
+      actionsOverflowDirection: VerticalDirection.down,
+      actionsAlignment: MainAxisAlignment.center,
+    ),
+  ),
+);
 
 List<Widget> _renderButtonsAlertDialog(List<Widget> buttons) {
   List<Widget> list = List.empty(growable: true);

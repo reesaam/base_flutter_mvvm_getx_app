@@ -5,7 +5,6 @@ import '../../../barrels/shared_models_barrel.dart';
 
 @GetPut.controller()
 class AdminAppResourcesController extends CoreController {
-
   @override
   AppPageDetail get pageDetail => AppPages.adminAppResourcesPage;
 }

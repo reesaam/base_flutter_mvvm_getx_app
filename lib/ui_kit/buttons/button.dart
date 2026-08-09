@@ -35,9 +35,9 @@ class AppButton extends AppButtonConstructor implements AppButtonAbstraction {
     super.mainAxisAlignment,
     super.crossAxisAlignment,
   }) : assert(
-          (text == null && icon == null) || (text == null && icon != null) || (text != null && icon != null) || (child == null),
-          AppAssertTexts.buttonsCheckNullInputs,
-        );
+         (text == null && icon == null) || (text == null && icon != null) || (text != null && icon != null) || (child == null),
+         AppAssertTexts.buttonsCheckNullInputs,
+       );
 
   factory AppButton.general({
     required Function() onTap,
@@ -49,19 +49,18 @@ class AppButton extends AppButtonConstructor implements AppButtonAbstraction {
     AppIcons? leading,
     bool? disabled,
     bool? loading,
-  }) =>
-      AppButton._(
-        buttonType: ButtonType.general,
-        backgroundColor: backgroundColor,
-        borderColor: borderColor,
-        onTap: onTap,
-        text: text,
-        icon: icon,
-        leading: leading,
-        disabled: disabled,
-        loading: loading,
-        child: widget,
-      );
+  }) => AppButton._(
+    buttonType: ButtonType.general,
+    backgroundColor: backgroundColor,
+    borderColor: borderColor,
+    onTap: onTap,
+    text: text,
+    icon: icon,
+    leading: leading,
+    disabled: disabled,
+    loading: loading,
+    child: widget,
+  );
 
   factory AppButton.filled({
     required Function() onTap,
@@ -73,18 +72,17 @@ class AppButton extends AppButtonConstructor implements AppButtonAbstraction {
     AppIcons? leading,
     bool? disabled,
     bool? loading,
-  }) =>
-      AppButton._(
-        buttonType: ButtonType.filled,
-        backgroundColor: backgroundColor,
-        borderColor: borderColor,
-        onTap: onTap,
-        text: text,
-        icon: icon,
-        leading: leading,
-        disabled: disabled,
-        loading: loading,
-      );
+  }) => AppButton._(
+    buttonType: ButtonType.filled,
+    backgroundColor: backgroundColor,
+    borderColor: borderColor,
+    onTap: onTap,
+    text: text,
+    icon: icon,
+    leading: leading,
+    disabled: disabled,
+    loading: loading,
+  );
 
   factory AppButton.outlined({
     required Function() onTap,
@@ -95,18 +93,17 @@ class AppButton extends AppButtonConstructor implements AppButtonAbstraction {
     AppIcons? leading,
     bool? disabled,
     bool? loading,
-  }) =>
-      AppButton._(
-        buttonType: ButtonType.outlined,
-        borderColor: borderColor,
-        onTap: onTap,
-        text: text,
-        icon: icon,
-        leading: leading,
-        disabled: disabled,
-        loading: loading,
-        child: widget,
-      );
+  }) => AppButton._(
+    buttonType: ButtonType.outlined,
+    borderColor: borderColor,
+    onTap: onTap,
+    text: text,
+    icon: icon,
+    leading: leading,
+    disabled: disabled,
+    loading: loading,
+    child: widget,
+  );
 
   factory AppButton.icon({
     required AppIcons icon,
@@ -115,14 +112,13 @@ class AppButton extends AppButtonConstructor implements AppButtonAbstraction {
     AppColors? iconColor,
     AppColors? borderColor,
     String? text,
-  }) =>
-      AppButton._(
-        buttonType: ButtonType.icon,
-        backgroundColor: backgroundColor,
-        borderColor: borderColor,
-        onTap: () => onTap,
-        icon: icon,
-        iconColor: iconColor,
-        text: text,
-      );
+  }) => AppButton._(
+    buttonType: ButtonType.icon,
+    backgroundColor: backgroundColor,
+    borderColor: borderColor,
+    onTap: () => onTap,
+    icon: icon,
+    iconColor: iconColor,
+    text: text,
+  );
 }

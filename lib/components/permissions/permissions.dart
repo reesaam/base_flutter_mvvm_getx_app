@@ -67,33 +67,27 @@ class AppPermissions extends CoreComponent {
 
   Future<List<PermissionBaseResponse>> checkAllPermissions() async => await checkPermissionsList(_listPermissions);
 
-  PermissionBaseResponse _createResponse({
-    required Permission permission,
-    required PermissionStatus status,
-  }) =>
-      PermissionBaseResponse(
-        permission: permission.getName,
-        status: status
-      );
+  PermissionBaseResponse _createResponse({required Permission permission, required PermissionStatus status}) =>
+      PermissionBaseResponse(permission: permission.getName, status: status);
 
   List<String> get _listManifestPermissions => [
-        'ACCESS_COARSE_LOCATION',
-        'ACCESS_FINE_LOCATION',
-        'ACCESS_LOCATION_EXTRA_COMMANDS',
-        'ACCESS_NETWORK_STATE',
-        'ACCESS_NOTIFICATION_POLICY',
-        'ACCESS_WIFI_STATE',
-        'ANSWER_PHONE_CALLS',
-        'CALL_PHONE',
-        'READ_CALL_LOG',
-        'ANSWER_PHONE_CALLS',
-        'CAMERA',
-        'CHANGE_WIFI_STATE',
-        'INTERNET',
-        'READ_EXTERNAL_STORAGE',
-        'READ_PHONE_STATE',
-        'READ_SMS',
-        'SEND_SMS',
-        'VIBRATE',
-      ];
+    'ACCESS_COARSE_LOCATION',
+    'ACCESS_FINE_LOCATION',
+    'ACCESS_LOCATION_EXTRA_COMMANDS',
+    'ACCESS_NETWORK_STATE',
+    'ACCESS_NOTIFICATION_POLICY',
+    'ACCESS_WIFI_STATE',
+    'ANSWER_PHONE_CALLS',
+    'CALL_PHONE',
+    'READ_CALL_LOG',
+    'ANSWER_PHONE_CALLS',
+    'CAMERA',
+    'CHANGE_WIFI_STATE',
+    'INTERNET',
+    'READ_EXTERNAL_STORAGE',
+    'READ_PHONE_STATE',
+    'READ_SMS',
+    'SEND_SMS',
+    'VIBRATE',
+  ];
 }

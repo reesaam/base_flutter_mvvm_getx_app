@@ -36,42 +36,39 @@ class LayoutModel {
 
   factory LayoutModel.fromSize(Size size, {Orientation? orientation}) {
     final deviceType = DeviceType.fromWidth(size.width);
-    final resolvedOrientation = orientation ??
-        (size.width >= size.height ? Orientation.landscape : Orientation.portrait);
+    final resolvedOrientation = orientation ?? (size.width >= size.height ? Orientation.landscape : Orientation.portrait);
 
     return switch (deviceType) {
       DeviceType.mobile => LayoutModel(
-          size: size,
-          deviceType: deviceType,
-          orientation: resolvedOrientation,
-          columns: AppBreakpoints.columnsMobile,
-          gutter: AppBreakpoints.gutterMobile,
-          pagePadding: const EdgeInsets.symmetric(horizontal: AppBreakpoints.paddingMobile),
-          contentMaxWidth: AppBreakpoints.contentMobile,
-          isLargeDesktop: false,
-        ),
+        size: size,
+        deviceType: deviceType,
+        orientation: resolvedOrientation,
+        columns: AppBreakpoints.columnsMobile,
+        gutter: AppBreakpoints.gutterMobile,
+        pagePadding: const EdgeInsets.symmetric(horizontal: AppBreakpoints.paddingMobile),
+        contentMaxWidth: AppBreakpoints.contentMobile,
+        isLargeDesktop: false,
+      ),
       DeviceType.tablet => LayoutModel(
-          size: size,
-          deviceType: deviceType,
-          orientation: resolvedOrientation,
-          columns: AppBreakpoints.columnsTablet,
-          gutter: AppBreakpoints.gutterTablet,
-          pagePadding: const EdgeInsets.symmetric(horizontal: AppBreakpoints.paddingTablet),
-          contentMaxWidth: AppBreakpoints.contentTablet,
-          isLargeDesktop: false,
-        ),
+        size: size,
+        deviceType: deviceType,
+        orientation: resolvedOrientation,
+        columns: AppBreakpoints.columnsTablet,
+        gutter: AppBreakpoints.gutterTablet,
+        pagePadding: const EdgeInsets.symmetric(horizontal: AppBreakpoints.paddingTablet),
+        contentMaxWidth: AppBreakpoints.contentTablet,
+        isLargeDesktop: false,
+      ),
       DeviceType.desktop => LayoutModel(
-          size: size,
-          deviceType: deviceType,
-          orientation: resolvedOrientation,
-          columns: AppBreakpoints.columnsDesktop,
-          gutter: AppBreakpoints.gutterDesktop,
-          pagePadding: const EdgeInsets.symmetric(horizontal: AppBreakpoints.paddingDesktop),
-          contentMaxWidth: size.width >= AppBreakpoints.largeDesktop
-              ? AppBreakpoints.contentLargeDesktop
-              : AppBreakpoints.contentDesktop,
-          isLargeDesktop: size.width >= AppBreakpoints.largeDesktop,
-        ),
+        size: size,
+        deviceType: deviceType,
+        orientation: resolvedOrientation,
+        columns: AppBreakpoints.columnsDesktop,
+        gutter: AppBreakpoints.gutterDesktop,
+        pagePadding: const EdgeInsets.symmetric(horizontal: AppBreakpoints.paddingDesktop),
+        contentMaxWidth: size.width >= AppBreakpoints.largeDesktop ? AppBreakpoints.contentLargeDesktop : AppBreakpoints.contentDesktop,
+        isLargeDesktop: size.width >= AppBreakpoints.largeDesktop,
+      ),
     };
   }
 
@@ -109,18 +106,8 @@ class LayoutModel {
           isLargeDesktop == other.isLargeDesktop;
 
   @override
-  int get hashCode => Object.hash(
-        size,
-        deviceType,
-        orientation,
-        columns,
-        gutter,
-        pagePadding,
-        contentMaxWidth,
-        isLargeDesktop,
-      );
+  int get hashCode => Object.hash(size, deviceType, orientation, columns, gutter, pagePadding, contentMaxWidth, isLargeDesktop);
 
   @override
-  String toString() =>
-      'LayoutModel(deviceType: $deviceType, size: $size, columns: $columns, gutter: $gutter)';
+  String toString() => 'LayoutModel(deviceType: $deviceType, size: $size, columns: $columns, gutter: $gutter)';
 }

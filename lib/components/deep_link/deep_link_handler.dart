@@ -38,15 +38,12 @@ class DeepLinkHandler extends CoreComponent {
   static Future<bool> checkStatus() async {
     appDebugPrint('DeepLink Check Status');
     final deepLinkData = await SecureStorageModule.to.read<DeepLinkCallBackUrlData?>(AppStorageKeys.deepLink);
-    return deepLinkData.fold(
-      (l) => false,
-      (r) async {
-        appDebugPrint('deepLinkData: ${r?.toJson()}');
-        await SecureStorageModule.to.remove(AppStorageKeys.deepLink);
-        if (r != null) _handleData(r);
-        return true;
-      },
-    );
+    return deepLinkData.fold((l) => false, (r) async {
+      appDebugPrint('deepLinkData: ${r?.toJson()}');
+      await SecureStorageModule.to.remove(AppStorageKeys.deepLink);
+      if (r != null) _handleData(r);
+      return true;
+    });
   }
 
   static FutureOr<bool> _onCallBackFunction(Uri uri) async {
@@ -84,10 +81,9 @@ class DeepLinkHandler extends CoreComponent {
     appDebugPrint('DeepLink Handler Redirecting to $url');
     final bool canLaunchUrl = await canLaunchUrlString(url);
     if (canLaunchUrl) {
-      await launchUrlString(url)
-          .timeout(AppDefaults.timeOutGeneral)
-          .onError((error, stackTrace) => _onErrorFunction(error))
-          .whenComplete(() => _onDoneFunction());
+      await launchUrlString(
+        url,
+      ).timeout(AppDefaults.timeOutGeneral).onError((error, stackTrace) => _onErrorFunction(error)).whenComplete(() => _onDoneFunction());
       goToPage(AppPages.homepage);
     } else {
       _onErrorFunction('DeepLink Handler Could not launch $url');

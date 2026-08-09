@@ -18,14 +18,14 @@ abstract class AppStatisticsData with _$AppStatisticsData {
   factory AppStatisticsData.fromJson(Map<String, dynamic> json) => _$AppStatisticsDataFromJson(json);
 
   factory AppStatisticsData.init() => AppStatisticsData(
-        launches: 1,
-        logins: 0,
-        crashes: 0,
-        pageOpens: 0,
-        apiCalls: 0,
-        installDateTime: DateTime.now(),
-        installDuration: Duration.zero,
-      );
+    launches: 1,
+    logins: 0,
+    crashes: 0,
+    pageOpens: 0,
+    apiCalls: 0,
+    installDateTime: DateTime.now(),
+    installDuration: Duration.zero,
+  );
 }
 
 @FreezedCustom.modelList

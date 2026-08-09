@@ -6,10 +6,7 @@ enum AppDataVersions {
   String get number => name.replaceRange(0, 1, '');
 }
 
-enum AppStorageProvider {
-  getStorage,
-  sharedPreferences,
-}
+enum AppStorageProvider { getStorage, sharedPreferences }
 
 enum Environment {
   development(baseUrl: 'resam.site', subDomain: 'www'),
@@ -21,11 +18,7 @@ enum Environment {
   const Environment({required this.baseUrl, this.subDomain});
 }
 
-enum AppVersionTypes {
-  release,
-  beta,
-  hidden,
-}
+enum AppVersionTypes { release, beta, hidden }
 
 enum APIVersions {
   v1;
@@ -52,11 +45,4 @@ enum AppLanguages {
   const AppLanguages(this.languageName, this.locale, this.textDirection);
 }
 
-enum AppStorageKeys {
-  appSecureStorage,
-  appData,
-  deepLink,
-  accessToken,
-  refreshToken,
-  authUser,
-}
+enum AppStorageKeys { appSecureStorage, appData, deepLink, accessToken, refreshToken, authUser }

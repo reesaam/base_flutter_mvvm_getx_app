@@ -14,15 +14,13 @@ class AppLocalNotificationsRepository {
 
   List<NotificationChannel> _channels() {
     List<NotificationChannel> channels = [
-      NotificationChannel(channelKey: AppNotificationChannelKey.simple.name, channelName: channelName, channelDescription: channelDescription)
+      NotificationChannel(channelKey: AppNotificationChannelKey.simple.name, channelName: channelName, channelDescription: channelDescription),
     ];
     return channels;
   }
 
   List<NotificationChannelGroup>? _groups() {
-    List<NotificationChannelGroup> groups = [
-      NotificationChannelGroup(channelGroupKey: channelGroupKey, channelGroupName: channelGroupName),
-    ];
+    List<NotificationChannelGroup> groups = [NotificationChannelGroup(channelGroupKey: channelGroupKey, channelGroupName: channelGroupName)];
     return groups;
   }
 
@@ -105,108 +103,104 @@ class AppLocalNotificationsRepository {
     String? ticker,
     int? timeoutAfterLongSeconds,
     bool? wakeUpScreen,
-  }) async =>
-      await AwesomeNotifications().createNotification(
-        content: NotificationContent(
-          id: id ?? 1,
-          channelKey: channelKey.name,
-          notificationLayout: layout ?? NotificationLayout.Default,
-          color: color,
-          backgroundColor: backgroundColor,
-          title: title,
-          actionType: actionType ?? ActionType.Default,
-          autoDismissible: autoDismissible ?? true,
-          badge: badge ?? 0,
-          bigPicture: bigPicture,
-          body: body,
-          category: category ?? NotificationCategory.Status,
-          chronometer: Duration(seconds: chronometerLongSeconds ?? 0),
-          // criticalAlert: criticalAlert ?? false,
-          customSound: customSound,
-          displayOnBackground: displayOnBackground ?? true,
-          displayOnForeground: displayOnForeground ?? true,
-          fullScreenIntent: fullScreenIntent ?? false,
-          groupKey: groupKey,
-          hideLargeIconOnExpand: hideLargeIconOnExpand ?? true,
-          icon: icon,
-          largeIcon: largeIcon,
-          locked: locked ?? false,
-          payload: payload,
-          progress: progress,
-          roundedBigPicture: roundedBigPicture ?? false,
-          roundedLargeIcon: roundedLargeIcon ?? false,
-          showWhen: showWhen ?? false,
-          summary: summary,
-          ticker: ticker,
-          timeoutAfter: Duration(seconds: timeoutAfterLongSeconds ?? 0),
-          wakeUpScreen: wakeUpScreen ?? true,
-        ),
-        actionButtons: actionButtons,
-        localizations: localizations,
-        schedule: interval ?? calendar,
+  }) async => await AwesomeNotifications().createNotification(
+    content: NotificationContent(
+      id: id ?? 1,
+      channelKey: channelKey.name,
+      notificationLayout: layout ?? NotificationLayout.Default,
+      color: color,
+      backgroundColor: backgroundColor,
+      title: title,
+      actionType: actionType ?? ActionType.Default,
+      autoDismissible: autoDismissible ?? true,
+      badge: badge ?? 0,
+      bigPicture: bigPicture,
+      body: body,
+      category: category ?? NotificationCategory.Status,
+      chronometer: Duration(seconds: chronometerLongSeconds ?? 0),
+      // criticalAlert: criticalAlert ?? false,
+      customSound: customSound,
+      displayOnBackground: displayOnBackground ?? true,
+      displayOnForeground: displayOnForeground ?? true,
+      fullScreenIntent: fullScreenIntent ?? false,
+      groupKey: groupKey,
+      hideLargeIconOnExpand: hideLargeIconOnExpand ?? true,
+      icon: icon,
+      largeIcon: largeIcon,
+      locked: locked ?? false,
+      payload: payload,
+      progress: progress,
+      roundedBigPicture: roundedBigPicture ?? false,
+      roundedLargeIcon: roundedLargeIcon ?? false,
+      showWhen: showWhen ?? false,
+      summary: summary,
+      ticker: ticker,
+      timeoutAfter: Duration(seconds: timeoutAfterLongSeconds ?? 0),
+      wakeUpScreen: wakeUpScreen ?? true,
+    ),
+    actionButtons: actionButtons,
+    localizations: localizations,
+    schedule: interval ?? calendar,
+  );
+
+  NotificationInterval createInterval({Duration? interval, bool? repeats, bool? preciseAlarm, bool? allowWhileIdle, String? timeZone}) =>
+      NotificationInterval(
+        interval: interval ?? const Duration(seconds: 1),
+        repeats: repeats ?? false,
+        preciseAlarm: preciseAlarm ?? true,
+        allowWhileIdle: allowWhileIdle ?? true,
+        timeZone: timeZone,
       );
 
-  NotificationInterval createInterval({
-    Duration? interval,
-    bool? repeats,
-    bool? preciseAlarm,
-    bool? allowWhileIdle,
+  NotificationCalendar createCalendar({
+    DateTime? dateTime,
     String? timeZone,
-  }) =>
-      NotificationInterval(
-          interval: interval ?? const Duration(seconds: 1),
-          repeats: repeats ?? false,
-          preciseAlarm: preciseAlarm ?? true,
-          allowWhileIdle: allowWhileIdle ?? true,
-          timeZone: timeZone);
+    bool? allowWhileIdle,
+    bool? preciseAlarm,
+    bool? repeats,
+    int? era,
+    int? weekday,
+    int? weekOfMonth,
+    int? weekOfYear,
+  }) => NotificationCalendar(
+    timeZone: timeZone,
+    allowWhileIdle: allowWhileIdle ?? true,
+    preciseAlarm: preciseAlarm ?? true,
+    repeats: repeats ?? false,
+    hour: dateTime?.hour,
+    second: dateTime?.second,
+    minute: dateTime?.minute,
+    day: dateTime?.day,
+    month: dateTime?.month,
+    year: dateTime?.year,
+    era: era,
+    millisecond: dateTime?.millisecond,
+    weekday: dateTime?.weekday,
+    weekOfMonth: weekOfMonth,
+    weekOfYear: weekOfYear,
+  );
 
-  NotificationCalendar createCalendar(
-          {DateTime? dateTime,
-          String? timeZone,
-          bool? allowWhileIdle,
-          bool? preciseAlarm,
-          bool? repeats,
-          int? era,
-          int? weekday,
-          int? weekOfMonth,
-          int? weekOfYear}) =>
-      NotificationCalendar(
-          timeZone: timeZone,
-          allowWhileIdle: allowWhileIdle ?? true,
-          preciseAlarm: preciseAlarm ?? true,
-          repeats: repeats ?? false,
-          hour: dateTime?.hour,
-          second: dateTime?.second,
-          minute: dateTime?.minute,
-          day: dateTime?.day,
-          month: dateTime?.month,
-          year: dateTime?.year,
-          era: era,
-          millisecond: dateTime?.millisecond,
-          weekday: dateTime?.weekday,
-          weekOfMonth: weekOfMonth,
-          weekOfYear: weekOfYear);
-
-  NotificationActionButton createButton(
-          {String? key,
-          String? label,
-          String? icon,
-          bool? autoDismissible,
-          ActionType? actionType,
-          Color? color,
-          bool? enabled,
-          bool? isDangerousOption,
-          bool? requireInputText,
-          bool? showInCompactView}) =>
-      NotificationActionButton(
-          key: key ?? Texts.to.general.empty,
-          label: label ?? Texts.to.general.empty,
-          icon: icon,
-          autoDismissible: autoDismissible ?? true,
-          actionType: actionType ?? ActionType.Default,
-          color: color ?? Get.theme.primaryColor,
-          enabled: enabled ?? true,
-          isDangerousOption: isDangerousOption ?? false,
-          requireInputText: requireInputText ?? false,
-          showInCompactView: showInCompactView ?? false);
+  NotificationActionButton createButton({
+    String? key,
+    String? label,
+    String? icon,
+    bool? autoDismissible,
+    ActionType? actionType,
+    Color? color,
+    bool? enabled,
+    bool? isDangerousOption,
+    bool? requireInputText,
+    bool? showInCompactView,
+  }) => NotificationActionButton(
+    key: key ?? Texts.to.general.empty,
+    label: label ?? Texts.to.general.empty,
+    icon: icon,
+    autoDismissible: autoDismissible ?? true,
+    actionType: actionType ?? ActionType.Default,
+    color: color ?? Get.theme.primaryColor,
+    enabled: enabled ?? true,
+    isDangerousOption: isDangerousOption ?? false,
+    requireInputText: requireInputText ?? false,
+    showInCompactView: showInCompactView ?? false,
+  );
 }

@@ -64,16 +64,13 @@ class AppSharedPreferences implements AppStorageModuleAbstraction {
   }
 
   @override
-  Future<BaseLocalResponse<bool>> saveData({
-    required String key,
-    required Map<String, dynamic> data,
-  }) async {
+  Future<BaseLocalResponse<bool>> saveData({required String key, required Map<String, dynamic> data}) async {
     SharedPreferences sp = await SharedPreferences.getInstance();
     try {
       String jsonData = json.encode(data);
       final result = await sp.setString(key, jsonData);
       appLogPrint('Data Saved Successfully');
-      return result ?  Right(result) : Left(_defaultLeftResponse);
+      return result ? Right(result) : Left(_defaultLeftResponse);
     } on LocalException catch (ex, stackTrace) {
       _printException('SAVE', ex);
       return Left(LocalException.handleResponse(ex, stackTrace));

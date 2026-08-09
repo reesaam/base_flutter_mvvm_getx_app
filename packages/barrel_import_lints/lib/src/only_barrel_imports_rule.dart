@@ -18,10 +18,7 @@ import 'policy.dart';
 /// or `// ignore_for_file: barrel_import_lints/only_barrel_imports`
 class OnlyBarrelImportsRule extends AnalysisRule {
   OnlyBarrelImportsRule()
-      : super(
-          name: BarrelImportPolicy.ruleId,
-          description: 'Import shared layers and packages only via lib/barrels/*_barrel.dart.',
-        );
+    : super(name: BarrelImportPolicy.ruleId, description: 'Import shared layers and packages only via lib/barrels/*_barrel.dart.');
 
   static const LintCode code = LintCode(
     BarrelImportPolicy.ruleId,
@@ -68,10 +65,7 @@ class OnlyBarrelImportsRule extends AnalysisRule {
     final yaml = loadYaml(barrels.readAsStringSync());
     if (yaml is! YamlMap) return null;
 
-    final policy = BarrelImportPolicy.fromYaml(
-      packageName: packageName,
-      barrelsYaml: yaml,
-    );
+    final policy = BarrelImportPolicy.fromYaml(packageName: packageName, barrelsYaml: yaml);
     _cache[key] = _CachedPolicy(stamp, policy);
     return policy;
   }

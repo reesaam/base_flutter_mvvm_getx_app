@@ -56,28 +56,30 @@ class AppButtonWidget extends ElevatedButton {
         : [
             icon?.widget ?? AppBox.shrink(),
             AppBox.expanded(
-                child: Center(
-                    child: Text(
-              text,
-              textAlign: textAlign ?? TextAlign.center,
-              overflow: textOverflow ?? TextOverflow.ellipsis,
-              softWrap: softWrap ?? true,
-            ))),
+              child: Center(
+                child: Text(
+                  text,
+                  textAlign: textAlign ?? TextAlign.center,
+                  overflow: textOverflow ?? TextOverflow.ellipsis,
+                  softWrap: softWrap ?? true,
+                ),
+              ),
+            ),
             leading?.widget ?? AppBox.shrink(),
           ];
     return Row(
-        mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.spaceAround,
-        crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.center,
-        children: children);
+      mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.spaceAround,
+      crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.center,
+      children: children,
+    );
   }
 
   @override
-  VoidCallback? get onPressed => () => disabled == true || loading == true ? null : onTap();
+  VoidCallback? get onPressed =>
+      () => disabled == true || loading == true ? null : onTap();
 
   @override
   WidgetStatesController? get statesController =>
       stateController ??
-      (disabled == true
-          ? WidgetStatesController(<WidgetState>{WidgetState.focused})
-          : WidgetStatesController(<WidgetState>{WidgetState.disabled}));
+      (disabled == true ? WidgetStatesController(<WidgetState>{WidgetState.focused}) : WidgetStatesController(<WidgetState>{WidgetState.disabled}));
 }

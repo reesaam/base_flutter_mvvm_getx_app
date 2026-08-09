@@ -1,4 +1,3 @@
-
 /// Width rules:
 /// - mobile:  `< [tablet]`
 /// - tablet:  `[tablet]` inclusive … `< [desktop]`

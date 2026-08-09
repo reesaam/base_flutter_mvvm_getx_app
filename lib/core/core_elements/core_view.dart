@@ -60,11 +60,7 @@ abstract class CoreView<Controller extends CoreController> extends GetView<Contr
     final content = padding == null ? raw : Padding(padding: padding, child: raw);
     return SafeArea(
       child: enableBodyScroll
-          ? SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              physics: const BouncingScrollPhysics(),
-              child: content,
-            )
+          ? SingleChildScrollView(scrollDirection: Axis.vertical, physics: const BouncingScrollPhysics(), child: content)
           : content,
     );
   }

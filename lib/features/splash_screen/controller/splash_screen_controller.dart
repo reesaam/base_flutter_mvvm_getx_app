@@ -43,13 +43,13 @@ class SplashScreenController extends CoreController {
 
   // ignore: unused_element
   void _showUpdateDialog({bool? isForceUpdate}) => AppAlertDialogs.withYesNo(
-        title: Texts.to.update.updateNewVersion,
-        text: Texts.to.update.updateApprove,
-        dismissible: isForceUpdate != true,
-        onTapNo: () => isForceUpdate == true ? null : goToPage(AppPages.homepage),
-        onTapYes: () {
-          if (isForceUpdate != true) goToPage(AppPages.homepage);
-          goToPage(AppPages.update);
-        },
-      );
+    title: Texts.to.update.updateNewVersion,
+    text: Texts.to.update.updateApprove,
+    dismissible: isForceUpdate != true,
+    onTapNo: () => isForceUpdate == true ? null : goToPage(AppPages.homepage),
+    onTapYes: () {
+      if (isForceUpdate != true) goToPage(AppPages.homepage);
+      goToPage(AppPages.update);
+    },
+  );
 }

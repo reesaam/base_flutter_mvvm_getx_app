@@ -11,6 +11,9 @@ class AboutPage extends CoreView<AboutController> {
 
   @override
   Widget get body => Column(
-      children: List<Widget>.generate(controller.listItems.length,
-          (index) => AboutSectionWidget(titleText: controller.listTitles[index], itemText: controller.listItems[index])));
+    children: List<Widget>.generate(
+      controller.listItems.length,
+      (index) => AboutSectionWidget(titleText: controller.listTitles[index], itemText: controller.listItems[index]),
+    ),
+  );
 }

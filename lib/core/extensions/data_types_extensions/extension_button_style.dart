@@ -1,10 +1,7 @@
 import '../../../barrels/core_barrel.dart';
 
 extension ButtonStyleColorsExtension on ButtonStyle {
-  ButtonStyle? get invertColors => copyWith(
-        backgroundColor: foregroundColor,
-        foregroundColor: backgroundColor,
-      );
+  ButtonStyle? get invertColors => copyWith(backgroundColor: foregroundColor, foregroundColor: backgroundColor);
 }
 
 extension ExtensionButtonCopyWith on ButtonStyle? {
@@ -31,29 +28,28 @@ extension ExtensionButtonCopyWith on ButtonStyle? {
     MaterialTapTargetSize? tapTargetSize,
     WidgetStateProperty<TextStyle?>? textStyle,
     VisualDensity? visualDensity,
-  ) =>
-      ButtonStyle(
-        backgroundColor: backgroundColor,
-        side: side,
-        alignment: alignment,
-        animationDuration: animationDuration,
-        elevation: elevation,
-        enableFeedback: enableFeedback,
-        fixedSize: fixedSize,
-        foregroundColor: foregroundColor,
-        iconColor: iconColor,
-        iconSize: iconSize,
-        maximumSize: maximumSize,
-        minimumSize: minimumSize,
-        mouseCursor: mouseCursor,
-        overlayColor: overlayColor,
-        padding: padding,
-        shadowColor: shadowColor,
-        shape: shape,
-        splashFactory: splashFactory,
-        surfaceTintColor: surfaceTintColor,
-        tapTargetSize: tapTargetSize,
-        textStyle: textStyle,
-        visualDensity: visualDensity,
-      );
+  ) => ButtonStyle(
+    backgroundColor: backgroundColor,
+    side: side,
+    alignment: alignment,
+    animationDuration: animationDuration,
+    elevation: elevation,
+    enableFeedback: enableFeedback,
+    fixedSize: fixedSize,
+    foregroundColor: foregroundColor,
+    iconColor: iconColor,
+    iconSize: iconSize,
+    maximumSize: maximumSize,
+    minimumSize: minimumSize,
+    mouseCursor: mouseCursor,
+    overlayColor: overlayColor,
+    padding: padding,
+    shadowColor: shadowColor,
+    shape: shape,
+    splashFactory: splashFactory,
+    surfaceTintColor: surfaceTintColor,
+    tapTargetSize: tapTargetSize,
+    textStyle: textStyle,
+    visualDensity: visualDensity,
+  );
 }

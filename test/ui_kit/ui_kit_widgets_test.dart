@@ -8,9 +8,7 @@ import 'package:base_flutter_mvvm_getx_app/ui_kit/switch.dart';
 import 'package:base_flutter_mvvm_getx_app/ui_kit/divider.dart';
 import 'package:base_flutter_mvvm_getx_app/ui_kit/resources/spaces.dart';
 
-Widget _wrap(Widget child) => GetMaterialApp(
-      home: Scaffold(body: child),
-    );
+Widget _wrap(Widget child) => GetMaterialApp(home: Scaffold(body: child));
 
 void main() {
   group('AppBox', () {
@@ -48,10 +46,7 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           StatefulBuilder(
-            builder: (context, setState) => AppCheckBox(
-              value: value!,
-              onChanged: (v) => setState(() => value = v),
-            ),
+            builder: (context, setState) => AppCheckBox(value: value!, onChanged: (v) => setState(() => value = v)),
           ),
         ),
       );
@@ -68,10 +63,7 @@ void main() {
       await tester.pumpWidget(
         _wrap(
           StatefulBuilder(
-            builder: (context, setState) => AppSwitch(
-              value: value,
-              onChanged: (v) => setState(() => value = v as bool),
-            ),
+            builder: (context, setState) => AppSwitch(value: value, onChanged: (v) => setState(() => value = v as bool)),
           ),
         ),
       );

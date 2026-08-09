@@ -12,8 +12,10 @@ extension ColorPaletteExtension on AppColorPalette {
 extension ColorExtensionForAppColorPalette on AppColorPalette {
   Color get lightColor => _createColorFromColorCode(lightColorCode) ?? _defaultColor;
   Color get darkColor => _createColorFromColorCode(darkColorCode) ?? _defaultColor;
-  LinearGradient get lightGradient => _createGradientFromColorCode(gradientColorCodes: lightGradientCodes, singleColorCode: lightColorCode) ?? _defaultGradient;
-  LinearGradient get darkGradient => _createGradientFromColorCode(gradientColorCodes: darkGradientCodes, singleColorCode: darkColorCode) ?? _defaultGradient;
+  LinearGradient get lightGradient =>
+      _createGradientFromColorCode(gradientColorCodes: lightGradientCodes, singleColorCode: lightColorCode) ?? _defaultGradient;
+  LinearGradient get darkGradient =>
+      _createGradientFromColorCode(gradientColorCodes: darkGradientCodes, singleColorCode: darkColorCode) ?? _defaultGradient;
 
   Color get color {
     Color color = _defaultColor;
@@ -37,7 +39,7 @@ extension ColorExtensionForAppColorPalette on AppColorPalette {
       (Get.context?.isLight ?? false
           ? _createGradientFromColorCode(gradientColorCodes: lightGradientCodes, singleColorCode: lightColorCode)
           : _createGradientFromColorCode(gradientColorCodes: darkGradientCodes, singleColorCode: darkColorCode)) ??
-          _defaultGradient;
+      _defaultGradient;
 }
 
 Color? _createColorFromColorCode(String? colorCode) {

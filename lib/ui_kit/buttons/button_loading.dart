@@ -8,9 +8,5 @@ class AppButtonLoading extends BaseWidget {
   final double? strokeWidth;
 
   @override
-  Widget get widget => AppProgressIndicator.circular(
-        color: color?.color ?? Get.theme.canvasColor,
-        width: width ?? 20,
-        strokeWidth: strokeWidth ?? 3,
-      );
+  Widget get widget => AppProgressIndicator.circular(color: color?.color ?? Get.theme.canvasColor, width: width ?? 20, strokeWidth: strokeWidth ?? 3);
 }

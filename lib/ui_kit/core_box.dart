@@ -10,8 +10,7 @@ class AppBox extends BaseWidget {
   final int? flex;
   final bool? expanded;
 
-  factory AppBox({Widget? child, double? width, double? height}) =>
-      AppBox._(width: width, height: height, child: child);
+  factory AppBox({Widget? child, double? width, double? height}) => AppBox._(width: width, height: height, child: child);
 
   factory AppBox.shrink() => const AppBox._(shrink: true);
 
@@ -23,17 +22,10 @@ class AppBox extends BaseWidget {
   Widget get widget => shrink == true
       ? const SizedBox.shrink()
       : expanded == true
-          ? _expandedBox
-          : _box;
+      ? _expandedBox
+      : _box;
 
-  Widget get _box => SizedBox(
-        width: width,
-        height: height,
-        child: child,
-      );
+  Widget get _box => SizedBox(width: width, height: height, child: child);
 
-  Widget get _expandedBox => Expanded(
-        flex: flex ?? 1,
-        child: _box,
-      );
+  Widget get _expandedBox => Expanded(flex: flex ?? 1, child: _box);
 }

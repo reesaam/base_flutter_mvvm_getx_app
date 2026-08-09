@@ -14,27 +14,19 @@ import '../../features/splash_screen/view/splash_screen_view.dart';
 import '../../features/update/view/update_view.dart';
 
 class AppPages {
-  static List<AppPageDetail> get listPages => [
-        splashScreen,
-        login,
-        homepage,
-        settings,
-        about,
-        update,
-        notFound,
-      ];
+  static List<AppPageDetail> get listPages => [splashScreen, login, homepage, settings, about, update, notFound];
 
   static List<AppPageDetail> get listAdminPages => [
-        adminStartPage,
-        adminTestPage,
-        adminAppInfoPage,
-        adminAppResourcesPage,
-        adminWidgetCheckPage,
-        adminDataFormatCheckPage,
-        adminVerifiersPage,
-        adminAppCountriesPage,
-        appDocs,
-      ];
+    adminStartPage,
+    adminTestPage,
+    adminAppInfoPage,
+    adminAppResourcesPage,
+    adminWidgetCheckPage,
+    adminDataFormatCheckPage,
+    adminVerifiersPage,
+    adminAppCountriesPage,
+    appDocs,
+  ];
 
   ///Admin Pages
   static AppPageDetail adminStartPage = AppPageDetail(
@@ -42,10 +34,7 @@ class AppPages {
     pageRoute: _getPageRoute(AdminStartPage),
   );
 
-  static AppPageDetail adminTestPage = AppPageDetail(
-    pageName: Texts.to.adminPagesName.adminTestPageName,
-    pageRoute: _getPageRoute(AdminTestPage),
-  );
+  static AppPageDetail adminTestPage = AppPageDetail(pageName: Texts.to.adminPagesName.adminTestPageName, pageRoute: _getPageRoute(AdminTestPage));
 
   static AppPageDetail adminAppInfoPage = AppPageDetail(
     pageName: Texts.to.adminPagesName.adminAppInfoPageName,
@@ -77,21 +66,12 @@ class AppPages {
     pageRoute: _getPageRoute(AdminAppCountriesPage),
   );
 
-  static AppPageDetail appDocs = AppPageDetail(
-    pageName: Texts.to.adminPagesName.appDocsPageName,
-    pageRoute: _getPageRoute(AppDocsPage),
-  );
+  static AppPageDetail appDocs = AppPageDetail(pageName: Texts.to.adminPagesName.appDocsPageName, pageRoute: _getPageRoute(AppDocsPage));
 
   ///Main Pages
-  static AppPageDetail splashScreen = AppPageDetail(
-    pageName: Texts.to.pagesName.splashScreenPageName,
-    pageRoute: _getPageRoute(SplashScreenPage),
-  );
+  static AppPageDetail splashScreen = AppPageDetail(pageName: Texts.to.pagesName.splashScreenPageName, pageRoute: _getPageRoute(SplashScreenPage));
 
-  static AppPageDetail login = AppPageDetail(
-    pageName: 'Login',
-    pageRoute: _getPageRoute(LoginPage),
-  );
+  static AppPageDetail login = AppPageDetail(pageName: 'Login', pageRoute: _getPageRoute(LoginPage));
 
   static AppPageDetail homepage = AppPageDetail(
     pageName: Texts.to.pagesName.homePageName,
@@ -123,10 +103,7 @@ class AppPages {
     drawerPresence: true,
   );
 
-  static AppPageDetail notFound = AppPageDetail(
-    pageName: Texts.to.pagesName.notFoundPageName,
-    pageRoute: _getPageRoute(NotFoundPage),
-  );
+  static AppPageDetail notFound = AppPageDetail(pageName: Texts.to.pagesName.notFoundPageName, pageRoute: _getPageRoute(NotFoundPage));
 }
 
 String _getPageRoute(Type page) => page.route;

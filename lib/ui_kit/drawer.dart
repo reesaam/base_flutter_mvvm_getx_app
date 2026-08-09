@@ -13,21 +13,28 @@ class AppDrawer extends Drawer {
 
   @override
   Widget? get child => SafeArea(
-          child: Column(children: [
+    child: Column(
+      children: [
         header(),
         AppDividers.general(),
         AppBox.expanded(child: body()),
         AppDividers.general(),
         footer(),
-      ]));
+      ],
+    ),
+  );
 
   Widget header() => AppContainer(
-      padding: AppPaddings.drawerHeader,
-      child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+    padding: AppPaddings.drawerHeader,
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
         Image.asset(AppLogos.appLogo, width: AppSizes.drawerHeaderIconWidth),
         AppSpaces.w50,
         const Text(AppInfo.appNameInitials, overflow: TextOverflow.ellipsis),
-      ]));
+      ],
+    ),
+  );
 
   Widget body() {
     List<AppPageDetail> drawerList = AppPages.listPages.where((element) => element.drawerPresence == true).toList();
@@ -38,10 +45,14 @@ class AppDrawer extends Drawer {
       ListTile(title: Text(page.pageName ?? Texts.to.general.empty), leading: page.iconCode.toIcon(), onTap: () => {popPage(), goToPage(page)});
 
   Widget footer() => AppContainer(
-      padding: AppPaddings.drawerFooter,
-      child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+    padding: AppPaddings.drawerFooter,
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
         AppIcons.version.widget,
         AppSpaces.w20,
         InkWell(onTap: () => goToPage(AppPages.update), child: Text('${Texts.to.general.version}: ${AppInfo.currentVersion.version}')),
-      ]));
+      ],
+    ),
+  );
 }

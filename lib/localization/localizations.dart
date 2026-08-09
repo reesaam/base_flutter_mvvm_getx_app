@@ -19,10 +19,7 @@ class AppLocalizations {
 
   final Translation? translation;
 
-  static final _translations = <String, Translation Function()>{
-    'en': () => const Translation(),
-    'fa': () => const Translation_fa(),
-  };
+  static final _translations = <String, Translation Function()>{'en': () => const Translation(), 'fa': () => const Translation_fa()};
 
   get localizationDelegates => [_delegate, _material, _widgets, _cupertino];
   LocalizationsDelegate get _delegate => const _AppLocalizationsDelegate();
@@ -32,21 +29,15 @@ class AppLocalizations {
 
   List<Locale> get supportedLocales => _supportedLocales.map((x) => Locale(x)).toList();
 
-  Future<AppLocalizations> load(Locale locale) =>
-      Future.value(AppLocalizations(translation: _translations[locale.languageCode]!()));
+  Future<AppLocalizations> load(Locale locale) => Future.value(AppLocalizations(translation: _translations[locale.languageCode]!()));
 
-  Translation of(BuildContext context) =>
-      Localizations.of<AppLocalizations>(context, AppLocalizations)!.translation!;
+  Translation of(BuildContext context) => Localizations.of<AppLocalizations>(context, AppLocalizations)!.translation!;
 
   /// Manual Added
   // TimeZone & Country
   TimeZone getTimeZone() {
     DateTime currentTime = DateTime.now();
-    TimeZone timeZone = TimeZone(
-      currentTime.timeZoneOffset,
-      abbreviation: currentTime.timeZoneName,
-      isDst: currentTime.timeZoneName.contains('DT'),
-    );
+    TimeZone timeZone = TimeZone(currentTime.timeZoneOffset, abbreviation: currentTime.timeZoneName, isDst: currentTime.timeZoneName.contains('DT'));
     return timeZone;
   }
 

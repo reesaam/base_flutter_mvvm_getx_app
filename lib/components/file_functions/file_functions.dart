@@ -10,11 +10,7 @@ import '../../barrels/core_elements_barrel.dart';
 class AppFileFunctions extends CoreComponent {
   static AppFileFunctions get to => Get.find();
 
-  Future<String?> saveFile({
-    required String fileName,
-    required data,
-    String? filePath,
-  }) async {
+  Future<String?> saveFile({required String fileName, required data, String? filePath}) async {
     SaveFileDialogParams saveParams = SaveFileDialogParams(data: data, fileName: fileName, sourceFilePath: filePath);
     String? path = await FlutterFileDialog.saveFile(params: saveParams);
     appLogPrint('File Saved');
@@ -24,11 +20,7 @@ class AppFileFunctions extends CoreComponent {
     return path;
   }
 
-  Future<File?> pickFile({
-    OpenFileDialogType? dialogType,
-    SourceType? sourceType,
-    List<String>? fileExtensionsFilter,
-  }) async {
+  Future<File?> pickFile({OpenFileDialogType? dialogType, SourceType? sourceType, List<String>? fileExtensionsFilter}) async {
     File? importFile;
     OpenFileDialogParams openFileParams = OpenFileDialogParams(
       dialogType: dialogType ?? OpenFileDialogType.document,

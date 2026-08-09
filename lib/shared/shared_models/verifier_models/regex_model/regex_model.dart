@@ -7,10 +7,7 @@ part 'regex_model.g.dart';
 
 @FreezedCustom.model
 abstract class AppRegexModel with _$AppRegexModel {
-  const factory AppRegexModel({
-    required final String regexValue,
-    final bool? isExceptionOfFormatting,
-  }) = _AppRegexModel;
+  const factory AppRegexModel({required final String regexValue, final bool? isExceptionOfFormatting}) = _AppRegexModel;
 
   factory AppRegexModel.fromJson(Map<String, dynamic> json) => _$AppRegexModelFromJson(json);
 
@@ -34,19 +31,21 @@ abstract class AppRegexModelsList with _$AppRegexModelsList {
 
   factory AppRegexModelsList.fromJson(Map<String, dynamic> json) => _$AppRegexModelsListFromJson(json);
 
-  factory AppRegexModelsList.all() => AppRegexModelsList(regexesList: List<AppRegexModel>.of([
-    AppRegexModel.numeric(),
-    AppRegexModel.url(),
-    AppRegexModel.phoneNumber(),
-    AppRegexModel.email(),
-    AppRegexModel.username(),
-    AppRegexModel.passwordEasy(),
-    AppRegexModel.passwordHard(),
-    AppRegexModel.macAddress(),
-    AppRegexModel.google(),
-    AppRegexModel.github(),
-    AppRegexModel.youTube(),
-  ]));
+  factory AppRegexModelsList.all() => AppRegexModelsList(
+    regexesList: List<AppRegexModel>.of([
+      AppRegexModel.numeric(),
+      AppRegexModel.url(),
+      AppRegexModel.phoneNumber(),
+      AppRegexModel.email(),
+      AppRegexModel.username(),
+      AppRegexModel.passwordEasy(),
+      AppRegexModel.passwordHard(),
+      AppRegexModel.macAddress(),
+      AppRegexModel.google(),
+      AppRegexModel.github(),
+      AppRegexModel.youTube(),
+    ]),
+  );
 
   factory AppRegexModelsList.exceptionsOfFormatting() =>
       AppRegexModelsList(regexesList: AppRegexModelsList.all().regexesList.where((element) => element.isExceptionOfFormatting == true).toList());

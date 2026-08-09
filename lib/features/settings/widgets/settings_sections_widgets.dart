@@ -10,12 +10,16 @@ class SettingsSectionWidget extends BaseWidget {
 
   @override
   Widget get widget => Padding(
-      padding: AppPaddings.settingsSection,
-      child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+    padding: AppPaddings.settingsSection,
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
         _title(title),
         AppDividers.settings,
         Column(children: widgets),
-      ]));
+      ],
+    ),
+  );
 }
 
 ///Items Widget
@@ -28,11 +32,14 @@ class SettingsSectionItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => InkWell(
-      onTap: wholeItemFunction == null ? null : () => wholeItemFunction!(),
-      child: Padding(
-          padding: AppPaddings.settingsItem,
-          child: Row(crossAxisAlignment: CrossAxisAlignment.center, mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            Text(text).withBodyLarge,
-            leading ?? AppBox.shrink(),
-          ])));
+    onTap: wholeItemFunction == null ? null : () => wholeItemFunction!(),
+    child: Padding(
+      padding: AppPaddings.settingsItem,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [Text(text).withBodyLarge, leading ?? AppBox.shrink()],
+      ),
+    ),
+  );
 }

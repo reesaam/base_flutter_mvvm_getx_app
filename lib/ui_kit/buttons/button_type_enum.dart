@@ -9,8 +9,5 @@ enum ButtonType {
   final AppColors? backgroundColor;
   final AppColors? textColor;
 
-  const ButtonType({
-    this.backgroundColor,
-    this.textColor,
-  });
+  const ButtonType({this.backgroundColor, this.textColor});
 }

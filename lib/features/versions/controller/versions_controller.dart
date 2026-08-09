@@ -8,7 +8,6 @@ import '../data/versions_remote_data_source.dart';
 
 @GetPut.controller()
 class VersionsController extends CoreController {
-
   static VersionsController get to => Get.find();
 
   Future<AppVersion?> getLastVersion() async {

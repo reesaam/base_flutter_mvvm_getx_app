@@ -9,21 +9,18 @@ class _FailThenSucceedAdapter implements HttpClientAdapter {
   void close({bool force = false}) {}
 
   @override
-  Future<ResponseBody> fetch(
-    RequestOptions options,
-    Stream<List<int>>? requestStream,
-    Future<void>? cancelFuture,
-  ) async {
+  Future<ResponseBody> fetch(RequestOptions options, Stream<List<int>>? requestStream, Future<void>? cancelFuture) async {
     attempts++;
     if (attempts == 1) {
-      throw DioException(
-        requestOptions: options,
-        type: DioExceptionType.connectionTimeout,
-      );
+      throw DioException(requestOptions: options, type: DioExceptionType.connectionTimeout);
     }
-    return ResponseBody.fromString('{"ok":true}', 200, headers: {
-      Headers.contentTypeHeader: [Headers.jsonContentType],
-    });
+    return ResponseBody.fromString(
+      '{"ok":true}',
+      200,
+      headers: {
+        Headers.contentTypeHeader: [Headers.jsonContentType],
+      },
+    );
   }
 }
 
@@ -45,10 +42,7 @@ void main() {
     dio.httpClientAdapter = adapter;
     dio.interceptors.add(RetryInterceptor(dio, maxRetries: 2, retryDelay: Duration.zero));
 
-    await expectLater(
-      () => dio.post<dynamic>('/ping'),
-      throwsA(isA<DioException>()),
-    );
+    await expectLater(() => dio.post<dynamic>('/ping'), throwsA(isA<DioException>()));
     expect(adapter.attempts, 1);
   });
 }

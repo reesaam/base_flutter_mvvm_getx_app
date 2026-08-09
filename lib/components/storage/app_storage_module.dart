@@ -45,16 +45,13 @@ class AppStorage extends CoreComponent {
   ///Manage Data
   Future<void> exportData() async {
     final appData = await loadAppData();
-    appData.fold(
-      (l) => null,
-      (r) async {
-        var appDataJson = (appData as AppData).toJson();
-        Uint8List data = appDataJson.toString().toUInt8List();
-        String? savedPath = await AppFileFunctions.to.saveFile(fileName: AppTexts.settingBackupFilename, data: data);
-        appLogPrint('File Path: $savedPath');
-        appLogPrint('Backup File Exported');
-      },
-    );
+    appData.fold((l) => null, (r) async {
+      var appDataJson = (appData as AppData).toJson();
+      Uint8List data = appDataJson.toString().toUInt8List();
+      String? savedPath = await AppFileFunctions.to.saveFile(fileName: AppTexts.settingBackupFilename, data: data);
+      appLogPrint('File Path: $savedPath');
+      appLogPrint('Backup File Exported');
+    });
   }
 
   Future<void> importData() async {
@@ -83,9 +80,7 @@ class AppStorage extends CoreComponent {
     if (appData != null) {
       appLogPrint('==> App Data:');
       appLogPrint('App Version: ${appData.appVersions?.versionsList.lastOrNull?.version ?? unknown}');
-      detailsIncluded == true
-          ? appLogPrint('App Version Type: ${appData.appVersions?.versionsList.lastOrNull?.versionType ?? unknown}')
-          : null;
+      detailsIncluded == true ? appLogPrint('App Version Type: ${appData.appVersions?.versionsList.lastOrNull?.versionType ?? unknown}') : null;
       appLogPrint('App Data Type: ${appData.dataVersion?.number ?? unknown}');
       if (detailsIncluded == true) {
         appLogPrint('==> Details:');
