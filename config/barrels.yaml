@@ -27,6 +27,13 @@ barrels:
       - deep_link_handler_helper.dart
       - deep_link_types.dart
       - deep_link_handler_data_model.dart
+      - app_storage_module_abstraction.dart
+      - local_storage.dart
+      - shared_preferences.dart
+      - notifications_enums.dart
+      - local_notification_controller.dart
+      - local_notifications_repository.dart
+      - interceptors/*
 
   - output: lib/barrels/core_barrel.dart
     library: true
