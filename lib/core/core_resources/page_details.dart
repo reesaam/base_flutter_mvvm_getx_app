@@ -1,3 +1,5 @@
+// ignore_for_file: barrel_import_lints/only_barrel_imports
+
 import '../../barrels/admin_barrel.dart';
 import '../../barrels/core_resources_barrel.dart';
 import '../../barrels/extensions_barrel.dart';

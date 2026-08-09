@@ -4,7 +4,9 @@ import 'barrels/extensions_barrel.dart';
 import 'barrels/localization_barrel.dart';
 import 'barrels/ui_kit_barrel.dart';
 
+// ignore: barrel_import_lints/only_barrel_imports
 import 'main_project_initializer.dart';
+// ignore: barrel_import_lints/only_barrel_imports
 import 'main.get_put.dart';
 
 Future<void> main() async => await projectInitialization(() async => const MainApp());

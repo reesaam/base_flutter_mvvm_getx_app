@@ -1,11 +1,13 @@
 import 'dart:io';
 
 import '../barrels/components_barrel.dart';
-import '../barrels/core_barrel.dart';
 import '../barrels/core_resources_barrel.dart';
 import '../barrels/localization_barrel.dart';
 import '../barrels/shared_models_barrel.dart';
 import '../barrels/ui_kit_barrel.dart';
+
+// ignore: barrel_import_lints/only_barrel_imports
+import 'package:flutter/foundation.dart';
 
 void appDebugPrint(String message) => CoreFlags.isRelease ? null : debugPrint('[Debug] $message');
 void appLogPrint(String message) => print('[LOG] $message');

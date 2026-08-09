@@ -1,17 +1,18 @@
 include: package:flutter_lints/flutter.yaml
 
-# Barrel import policy (not a dart analyzer plugin — analyzer plugins conflict
-# with this project's codegen deps):
-#   dart run tool/check_barrel_imports.dart
+# Barrel imports: analyzer plugin for all of `lib/` (red errors in IDE + analyze).
+# After changing `plugins:`, restart the Dart Analysis Server.
 #
-# Rule id: only_barrel_imports
-# Allowed: barrels, same-feature relatives, dart: SDK, packages only inside barreled roots
-# Forbidden elsewhere: package: imports and direct shared-layer imports (use barrels)
-#
-# Override one line:
-#   // ignore: only_barrel_imports
-# Override a file:
-#   // ignore_for_file: only_barrel_imports
+# Suppress one line:
+#   // ignore: barrel_import_lints/only_barrel_imports
+# Suppress a file:
+#   // ignore_for_file: barrel_import_lints/only_barrel_imports
+
+plugins:
+  barrel_import_lints:
+    path: packages/barrel_import_lints
+    diagnostics:
+      only_barrel_imports: true
 
 linter:
   rules:
@@ -25,6 +26,7 @@ analyzer:
     invalid_assignment: error
     invalid_import: error
     missing_return: error
+    only_barrel_imports: error
     always_declare_return_types: warning
     always_use_package_imports: ignore
     annotate_overrides: warning

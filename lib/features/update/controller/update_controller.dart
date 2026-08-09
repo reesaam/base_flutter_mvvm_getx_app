@@ -9,10 +9,14 @@ import '../../../barrels/extensions_barrel.dart';
 import '../../../barrels/localization_barrel.dart';
 import '../../../barrels/shared_models_barrel.dart';
 import '../../../barrels/ui_kit_barrel.dart';
-// ignore: only_barrel_imports
+
+// ignore: barrel_import_lints/only_barrel_imports
 import 'package:path_provider/path_provider.dart';
+// ignore: barrel_import_lints/only_barrel_imports
 import 'package:open_file_plus/open_file_plus.dart' as file_plus;
+// ignore: barrel_import_lints/only_barrel_imports
 import '../../versions/controller/versions_controller.dart';
+// ignore: barrel_import_lints/only_barrel_imports
 import '../data/update_remote_data_source.dart';
 
 @GetPut.controller()

@@ -249,25 +249,28 @@ barrels:
 
 Then re-run `dart run tool/generate_barrels.dart`.
 
-### Barrel import lint
+### Barrel import rule (analyzer)
 
-Shared layers **and pub packages** must be imported via `lib/barrels/*_barrel.dart` (see `package_exports` in `config/barrels.yaml`). Features have **no** barrel — same-feature relatives are fine; cross-feature imports need an explicit ignore. Direct `package:` imports are only allowed inside barreled roots (where the dependency is owned).
+Applies to **all of `lib/`** (not only features). Shared layers **and pub packages** must be imported via `lib/barrels/*_barrel.dart` (see `package_exports` in `config/barrels.yaml`).
 
-```bash
-dart run tool/check_barrel_imports.dart
-```
+Allowed without an ignore:
+- barrel imports
+- `dart:` SDK imports
+- same-feature relatives (`features/<name>/...`)
+- same barreled-root relatives
+- `package:` imports only inside the owning barreled root / barrel `files:`
 
-Override one import:
+Features have **no** barrel — cross-feature and outside→feature imports need an explicit ignore. Existing non-compliant imports may keep their ignore comments rather than being rewritten.
+
+Enforced by `packages/barrel_import_lints` in `analysis_options.yaml` (**errors** / red underline). After changing `plugins:`, restart the Dart Analysis Server.
 
 ```dart
-// ignore: only_barrel_imports
+// ignore: barrel_import_lints/only_barrel_imports
 import '../../auth/data/auth_session.dart';
 ```
 
-Override a whole file:
-
 ```dart
-// ignore_for_file: only_barrel_imports
+// ignore_for_file: barrel_import_lints/only_barrel_imports
 ```
 
 ## Run / build with env config files (EnvConfig)

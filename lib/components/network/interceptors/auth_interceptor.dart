@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:dio/dio.dart' as dio;
 
 import '../../../barrels/core_barrel.dart';
+// ignore: barrel_import_lints/only_barrel_imports
 import '../../../features/auth/data/auth_session.dart';
 
 /// Attaches Bearer token from [AuthSession] unless skipped via header.
