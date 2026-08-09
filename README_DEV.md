@@ -273,13 +273,13 @@ Setup once:
 
 ```bash
 # optional personal overrides
-cp config/env.local.json config/env.local.json
+cp config/envs/env.local.json config/envs/env.local.json
 
 # production (fill real Sentry DSN + password)
-cp config/env.production.json config/env.production.json
+cp config/envs/env.production.json config/envs/env.production.json
 ```
 
-Example `config/env.development.json`:
+Example `config/envs/env.development.json`:
 
 ```json
 {
@@ -405,7 +405,7 @@ Do not remove these when changing `main.dart`.
 | `checkUpdate` | Auto-check update on splash/settings |
 | `clearData` | Clear local app data on splash |
 
-Toggle manually for local experiments; prefer `config/env.*.json` + `--dart-define-from-file` for env/API/Sentry.
+Toggle manually for local experiments; prefer `config/envs/env.*.json` + `--dart-define-from-file` for env/API/Sentry.
 
 ## Localization (i69n)
 
@@ -475,7 +475,7 @@ dart run flutter_launcher_icons -f icons.yaml
 
 - Regenerating `main.get_put.dart` can reintroduce `Impl`-only `lazyPut` — keep `applyBindingFixes` or re-patch abstracts.
 - Calling secure storage before bootstrap init → failures / empty session.
-- Forgetting `--dart-define-from-file=config/env....json` on **both** `run` and `build` → wrong env in release binaries.
-- Committing `config/env.production.json` / `config/env.local.json` with real secrets — keep them gitignored; commit only `.example` files.
+- Forgetting `--dart-define-from-file=config/envs/env....json` on **both** `run` and `build` → wrong env in release binaries.
+- Committing `config/envs/env.production.json` / `config/envs/env.local.json` with real secrets — keep them gitignored; commit only `.example` files.
 - Using `Texts.to` / localized exception messages in pure unit tests without a widget tree — handlers fall back to status names when localization is unavailable.
 - Creating `ScrollController()` inside `build` without dispose (use `CoreView` scroll flag instead).
