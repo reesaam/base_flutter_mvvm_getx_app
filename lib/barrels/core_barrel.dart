@@ -11,7 +11,7 @@ export '../core/core_info/app_info.dart';
 export '../core/core_info/core_defaults.dart';
 export '../core/core_info/developer_info.dart';
 export '../core/flavors/env_config.dart';
-export '../core/layout/adaptive_builder.dart';
+export '../core/core_layout/adaptive_builder.dart';
 export 'package:flutter/material.dart';
 export 'package:flutter/widgets.dart';
 export 'package:get/get.dart';

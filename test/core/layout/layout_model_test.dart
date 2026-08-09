@@ -1,8 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/widgets.dart';
-import 'package:base_flutter_mvvm_getx_app/core/layout/app_breakpoints.dart';
-import 'package:base_flutter_mvvm_getx_app/core/layout/layout_model.dart';
-import 'package:base_flutter_mvvm_getx_app/core/layout/adaptive_builder.dart';
+import 'package:base_flutter_mvvm_getx_app/core/core_layout/app_breakpoints.dart';
+import 'package:base_flutter_mvvm_getx_app/core/core_layout/adaptive_builder.dart';
 
 void main() {
   group('DeviceType.fromWidth', () {
