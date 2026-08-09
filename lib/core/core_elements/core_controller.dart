@@ -13,6 +13,8 @@ abstract class CoreController<T> extends GetxController {
     return ctx;
   }
 
+  LayoutModel get layout => context.layout;
+
   late AppPageDetail pageDetail;
 
   ///Mandatory Functions

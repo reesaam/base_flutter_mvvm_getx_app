@@ -40,11 +40,30 @@ void main() {
   });
 
   group('AdaptiveValue', () {
-    test('falls back desktop → tablet → mobile', () {
-      const value = AdaptiveValue<int>(mobile: 1, tablet: 2);
-      expect(value.resolve(LayoutModel.fromSize(const Size(400, 800))), 1);
-      expect(value.resolve(LayoutModel.fromSize(const Size(800, 800))), 2);
-      expect(value.resolve(LayoutModel.fromSize(const Size(1200, 800))), 2);
+    test('falls back through orElse then other breakpoints', () {
+      const withMobile = AdaptiveValue<int>(mobile: 1, tablet: 2);
+      expect(withMobile.resolve(LayoutModel.fromSize(const Size(400, 800))), 1);
+      expect(withMobile.resolve(LayoutModel.fromSize(const Size(800, 800))), 2);
+      expect(withMobile.resolve(LayoutModel.fromSize(const Size(1200, 800))), 2);
+
+      const webFirst = AdaptiveValue<int>(desktop: 3, tablet: 2);
+      expect(webFirst.resolve(LayoutModel.fromSize(const Size(400, 800))), 2);
+      expect(webFirst.resolve(LayoutModel.fromSize(const Size(800, 800))), 2);
+      expect(webFirst.resolve(LayoutModel.fromSize(const Size(1200, 800))), 3);
+
+      const withDefault = AdaptiveValue<int>(orElse: 0, desktop: 9);
+      expect(withDefault.resolve(LayoutModel.fromSize(const Size(400, 800))), 0);
+      expect(withDefault.resolve(LayoutModel.fromSize(const Size(1200, 800))), 9);
+    });
+  });
+
+  group('AdaptiveBuilder.resolveBuilder', () {
+    test('requires no specific mobile when desktop/orElse exist', () {
+      const builder = AdaptiveBuilder(desktop: _box, orElse: _box);
+      expect(builder.resolveBuilder(DeviceType.mobile), isNotNull);
+      expect(builder.resolveBuilder(DeviceType.desktop), isNotNull);
     });
   });
 }
+
+Widget _box(BuildContext context, LayoutModel layout) => const SizedBox.shrink();
