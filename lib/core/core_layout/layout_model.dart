@@ -1,5 +1,5 @@
-import 'package:flutter/widgets.dart';
-
+import '../../barrels/core_barrel.dart';
+// ignore: barrel_import_lints/only_barrel_imports
 import 'app_breakpoints.dart';
 
 @immutable
