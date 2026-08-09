@@ -9,7 +9,7 @@ class AppInfo {
   // Version
   static const AppVersion currentVersion = AppVersion(version: '0.2.0');
 
-  // Environment
+  // Environment — change this to switch the whole app (dev / stage / production)
   static const Environment environment = Environment.development;
 
   // FileNames

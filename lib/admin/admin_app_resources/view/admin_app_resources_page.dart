@@ -87,9 +87,12 @@ class AdminAppResourcesPage extends CoreView<AdminAppResourcesController> {
   ], title: 'App Color Palette');
 
   _appAPIs() => AdminFunctions.section([
-    AdminFunctions.item(title: 'Base URL', text: currentEnvironment.baseUrl),
+    AdminFunctions.item(title: 'Environment', text: currentEnvironment.name),
+    AdminFunctions.item(title: 'Base URL', text: currentEnvironmentSettings.baseUrl),
+    AdminFunctions.item(title: 'SubDomain', text: currentEnvironmentSettings.subDomain),
     AdminFunctions.item(title: 'API Version', text: APIVersions.v1.getValue),
-    AdminFunctions.item(title: 'API Base URL', text: 'https://${currentEnvironment.baseUrl}/'),
+    AdminFunctions.item(title: 'API Host', text: currentEnvironmentSettings.apiHost),
+    AdminFunctions.item(title: 'API Base URL', text: 'https://${currentEnvironmentSettings.apiHost}/'),
   ], title: 'App APIs');
 
   _colorWidget({AppColors? color, AppColorPalette? colorPalette, bool? dark, bool? gradient}) {

@@ -273,9 +273,21 @@ import '../../auth/data/auth_session.dart';
 // ignore_for_file: barrel_import_lints/only_barrel_imports
 ```
 
-## Run / build with env config files (EnvConfig)
+## App environment
 
-Do **not** pass long `--dart-define=...` chains. Put values in JSON under `config/envs/` and load them with one flag:
+**Name** (dev / stage / production) — edit:
+
+`lib/core/core_info/app_info.dart` → `AppInfo.environment`
+
+`Environment` in `core_enums.dart` is **names only**.
+
+**Settings** (URLs, Sentry, auth demo, passwords) — model `EnvironmentVariables` filled from JSON:
+
+`config/envs/*.json` + `--dart-define-from-file=...`
+
+Access via `EnvConfig.vars` / `currentEnvironmentSettings` / `EnvironmentHandler.settings`.
+
+## Run / build with env config files (EnvConfig)
 
 ```bash
 flutter run --dart-define-from-file=config/envs/env.development.json
@@ -289,25 +301,14 @@ flutter build apk --release --dart-define-from-file=config/envs/env.production.j
 | File                                      | Committed? | Purpose |
 |-------------------------------------------|---|---|
 | `config/envs/env.development.json`        | yes | Default local / demo auth |
-| `config/envs/env.stage.json`              | yes | Staging host/subdomain |
+| `config/envs/env.stage.json`              | yes | Staging URLs / flags |
 | `config/envs/env.local.json`              | **no** (gitignored) | Your machine-only secrets/overrides |
 | `config/envs/env.production.json`         | **no** (gitignored) | Real production secrets (DSN, passwords) |
-
-Setup once:
-
-```bash
-# optional personal overrides
-cp config/envs/env.local.json config/envs/env.local.json
-
-# production (fill real Sentry DSN + password)
-cp config/envs/env.production.json config/envs/env.production.json
-```
 
 Example `config/envs/env.development.json`:
 
 ```json
 {
-  "ENV": "development",
   "BASE_URL": "resam.site",
   "API_SUBDOMAIN": "www",
   "ENABLE_SENTRY": "false",
@@ -317,27 +318,24 @@ Example `config/envs/env.development.json`:
 }
 ```
 
-Keys (same as before; booleans must be JSON strings `"true"` / `"false"`):
+Keys (booleans must be JSON strings `"true"` / `"false"`):
 
 | Key | Type | Default | Purpose |
 |---|---|---|---|
-| `ENV` | String | `development` | `development` / `stage` / `production` (also `prod`, `staging`) |
-| `BASE_URL` | String | _(empty → enum default)_ | Host only, e.g. `api.example.com` |
-| `API_SUBDOMAIN` | String | _(empty → enum default)_ | e.g. `www`, `stage` |
+| `BASE_URL` | String | `resam.site` | Host only, e.g. `api.example.com` |
+| `API_SUBDOMAIN` | String | `www` | e.g. `www`, `stage` |
 | `ENABLE_SENTRY` | bool string | `false` | Must be `"true"` to init Sentry |
 | `SENTRY_DSN` | String | empty | Sentry DSN URL |
 | `SECURE_STORAGE_PASSWORD` | String | `dev_only_change_me` | Password for `get_secure_storage` init |
 | `AUTH_DEMO_MODE` | bool string | `true` | Accept any non-empty login without real API |
 
-`EnvConfig` still reads these via `String.fromEnvironment` / `bool.fromEnvironment` — the JSON file only supplies the defines at compile time.
-
-API base URL is built as:
+API URL shape:
 
 ```text
-https://{API_SUBDOMAIN|www}.{BASE_URL|Environment.baseUrl}/{apiVersion}/...
+https://{API_SUBDOMAIN}.{BASE_URL}/{apiVersion}/...
 ```
 
-See `lib/core/core_resources/apis.dart` and `EnvironmentHandler`.
+`EnvironmentVariables.current` reads these via `String.fromEnvironment` / `bool.fromEnvironment`.
 
 ## Auth module
 

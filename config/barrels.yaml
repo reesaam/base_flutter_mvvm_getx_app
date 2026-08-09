@@ -49,6 +49,7 @@ barrels:
     exclude:
       - app_breakpoints.dart
       - layout_model.dart
+      - environment_variables.dart
     files:
       - lib/core/core_functions.dart
 

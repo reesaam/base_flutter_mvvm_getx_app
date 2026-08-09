@@ -9,13 +9,9 @@ enum AppDataVersions {
 enum AppStorageProvider { getStorage, sharedPreferences }
 
 enum Environment {
-  development(baseUrl: 'resam.site', subDomain: 'www'),
-  stage(baseUrl: 'resam.site', subDomain: 'stage'),
-  production(baseUrl: 'resam.site', subDomain: 'www');
-
-  final String baseUrl;
-  final String? subDomain;
-  const Environment({required this.baseUrl, this.subDomain});
+  development,
+  stage,
+  production;
 }
 
 enum AppVersionTypes { release, beta, hidden }

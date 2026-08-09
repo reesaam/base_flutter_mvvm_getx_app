@@ -31,8 +31,10 @@ class AdminAppInfoPage extends CoreView<AdminAppInfoController> {
     AdminFunctions.item(title: 'Website', text: AppInfo.website),
     AdminFunctions.item(title: 'Current Version', text: AppInfo.currentVersion.version),
     // AdminFunctions.item(title: 'Version Counter', text: AppInfo.versionsCounter.toString()),
-    AdminFunctions.item(title: 'Base URL', text: currentEnvironment.baseUrl),
-    AdminFunctions.item(title: 'SubDomain', text: currentEnvironment.subDomain ?? Texts.to.general.notAvailableInitials),
+    AdminFunctions.item(title: 'Environment', text: currentEnvironment.name),
+    AdminFunctions.item(title: 'Base URL', text: currentEnvironmentSettings.baseUrl),
+    AdminFunctions.item(title: 'SubDomain', text: currentEnvironmentSettings.subDomain),
+    AdminFunctions.item(title: 'API Host', text: currentEnvironmentSettings.apiHost),
     AdminFunctions.item(title: 'Is Release', text: CoreFlags.isRelease.toString()),
     AdminFunctions.item(title: 'Check Update', text: CoreFlags.checkUpdate.toString()),
   ], title: 'App Info');

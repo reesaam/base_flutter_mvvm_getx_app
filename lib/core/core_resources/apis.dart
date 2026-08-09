@@ -14,7 +14,7 @@ import '../../barrels/core_resources_barrel.dart';
 
 class AppAPIUrls {
   /// [Main Variables] for generating APIs are:
-  static String get _apiBaseUrl => '${EnvironmentHandler.subDomain ?? 'www'}.${EnvironmentHandler.baseUrl}';
+  static String get _apiBaseUrl => EnvironmentHandler.apiHost;
   static String get _apiVersion => APIVersions.v1.getValue;
   static String get _apiUrl => 'https://$_apiBaseUrl/$_apiVersion';
 

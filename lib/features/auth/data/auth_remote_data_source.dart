@@ -10,9 +10,7 @@ abstract class AuthRemoteDataSource extends CoreRepository {
   static AuthRemoteDataSource get to => Get.find();
 
   Future<BaseAPIResponse<AuthLoginResult>> login({required String email, required String password});
-
   Future<BaseAPIResponse<bool>> logout();
-
   Future<BaseAPIResponse<AuthUser>> me();
 }
 
