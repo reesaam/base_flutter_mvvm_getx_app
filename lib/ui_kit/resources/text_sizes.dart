@@ -1,4 +1,4 @@
-import '../../core/core_resources/defaults.dart';
+import '../../barrels/core_resources_barrel.dart';
 
 class AppTextSizes {
   static double get _textSizeDefault => AppDefaults.fontSize;

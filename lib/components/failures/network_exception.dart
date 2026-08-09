@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart' as dio;
 
-import '../../core/extensions/api_extensions/extension_api_response_status.dart';
+import '../../barrels/extensions_barrel.dart';
 import '../network/api_response_status.dart';
 import 'general_exception.dart';
 

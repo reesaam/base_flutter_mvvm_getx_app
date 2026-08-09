@@ -1,4 +1,4 @@
-import '../../localization/localizations.dart';
+import '../../barrels/localization_barrel.dart';
 import 'local_exception.dart';
 
 enum LocalExceptions {

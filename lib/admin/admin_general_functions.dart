@@ -1,6 +1,6 @@
 import '../barrels/extensions_barrel.dart';
+import '../barrels/localization_barrel.dart';
 import '../barrels/ui_kit_barrel.dart';
-import '../localization/localizations.dart';
 
 class AdminFunctions {
   static section(List<Widget> section, {bool? isRow, String? title, Color? backgroundColor}) => Column(children: [

@@ -1,4 +1,4 @@
-import '../../../../core/annotations/freezed_custom_annotation.dart';
+import '../../../../barrels/annotations_barrel.dart';
 
 part 'app_page_detail.freezed.dart';
 part 'app_page_detail.g.dart';

@@ -1,4 +1,4 @@
-import '../../core/core_resources/core_enums.dart';
+import '../../barrels/core_resources_barrel.dart';
 /// Prefer a JSON env file over long CLI flags:
 /// ```bash
 /// flutter run --dart-define-from-file=config/envs/env.development.json

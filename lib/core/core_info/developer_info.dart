@@ -1,4 +1,4 @@
-import '../core_resources/logos.dart';
+import '../../barrels/core_resources_barrel.dart';
 
 class AppDeveloperInfo {
   static get fullName => '$firstName $lastName';

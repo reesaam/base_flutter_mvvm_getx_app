@@ -1,8 +1,8 @@
 import '../../../barrels/core_barrel.dart';
+import '../../../barrels/core_resources_barrel.dart';
+import '../../../barrels/extensions_barrel.dart';
+import '../../../barrels/localization_barrel.dart';
 import '../../../barrels/ui_kit_barrel.dart';
-import '../../../core/core_resources/core_flags.dart';
-import '../../../core/extensions/extension_prints.dart';
-import '../../../localization/localizations.dart';
 import '../notifications_enums.dart';
 import 'local_notification_controller.dart';
 

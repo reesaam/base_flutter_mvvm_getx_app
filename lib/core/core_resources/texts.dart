@@ -1,4 +1,4 @@
-import '../core_info/app_info.dart';
+import '../../barrels/core_barrel.dart';
 
 class AppTexts {
   ///App Pages

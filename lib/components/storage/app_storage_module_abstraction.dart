@@ -1,4 +1,4 @@
-import '../../core/core_resources/defined_types.dart';
+import '../../barrels/core_resources_barrel.dart';
 
 abstract class AppStorageModuleAbstraction {
   Future<BaseLocalResponse<bool>> clear(String key);

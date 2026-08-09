@@ -1,6 +1,6 @@
 import 'package:permission_handler/permission_handler.dart';
 
-import '../../../../core/annotations/freezed_custom_annotation.dart';
+import '../../../../barrels/annotations_barrel.dart';
 
 part 'permission_base_response.freezed.dart';
 part 'permission_base_response.g.dart';

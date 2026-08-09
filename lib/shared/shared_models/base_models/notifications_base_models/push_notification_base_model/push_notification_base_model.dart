@@ -1,4 +1,4 @@
-import '../../../../../core/annotations/freezed_custom_annotation.dart';
+import '../../../../../barrels/annotations_barrel.dart';
 
 part 'push_notification_base_model.freezed.dart';
 part 'push_notification_base_model.g.dart';

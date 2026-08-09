@@ -1,12 +1,7 @@
-import '../../admin/admin_app_countries/view/admin_app_countries_page.dart';
-import '../../admin/admin_app_info/view/admin_app_info_page.dart';
-import '../../admin/admin_app_resources/view/admin_app_resources_page.dart';
-import '../../admin/admin_data_format_check/view/admin_data_format_check_page.dart';
-import '../../admin/admin_start/view/admin_start_page.dart';
-import '../../admin/admin_test/view/admin_test_page.dart';
-import '../../admin/admin_verifiers/view/admin_verifiers_page.dart';
-import '../../admin/admin_widget_check/view/admin_widget_check_page.dart';
-import '../../admin/app_docs/view/app_docs_page.dart';
+import '../../barrels/admin_barrel.dart';
+import '../../barrels/extensions_barrel.dart';
+import '../../barrels/localization_barrel.dart';
+import '../../barrels/shared_models_barrel.dart';
 import '../../features/about/view/about_view.dart';
 import '../../features/auth/view/login_view.dart';
 import '../../features/homepage/view/homepage_view.dart';
@@ -14,9 +9,6 @@ import '../../features/not_found/view/not_found_view.dart';
 import '../../features/settings/view/settings_view.dart';
 import '../../features/splash_screen/view/splash_screen_view.dart';
 import '../../features/update/view/update_view.dart';
-import '../../localization/localizations.dart';
-import '../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
-import '../extensions/extension_app_routes.dart';
 import 'icons.dart';
 
 class AppPages {

@@ -1,7 +1,6 @@
+import '../../../barrels/components_barrel.dart';
 import '../../../barrels/core_barrel.dart';
-
-import '../../../components/failures/network_exception.dart';
-import '../../../localization/localizations.dart';
+import '../../../barrels/localization_barrel.dart';
 
 extension APIResponseStatusListExtension on List<APIResponseStatus> {
   APIResponseStatus find(int statusCode) =>

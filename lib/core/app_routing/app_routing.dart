@@ -1,9 +1,7 @@
-import '../../../barrels/core_barrel.dart';
-
-import '../../components/statistics/statistics.dart';
-import '../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
-import '../core_resources/defaults.dart';
-import '../core_resources/page_details.dart';
+import '../../barrels/components_barrel.dart';
+import '../../barrels/core_barrel.dart';
+import '../../barrels/core_resources_barrel.dart';
+import '../../barrels/shared_models_barrel.dart';
 
 void goToPage(AppPageDetail? page, {bool? popAll}) {
   page == null
