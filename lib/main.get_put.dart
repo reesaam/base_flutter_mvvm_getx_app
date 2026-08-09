@@ -35,6 +35,7 @@ library;
 ///  GitHub: [ https://github.com/reesaam ]
 
 import 'package:get/get.dart';
+import 'main.dart';
 import 'admin/admin_app_countries/controller/admin_app_countries_controller.dart';
 import 'admin/admin_app_countries/view/admin_app_countries_page.dart';
 import 'admin/admin_app_info/controller/admin_app_info_controller.dart';
@@ -91,13 +92,11 @@ import 'localization/localizations.dart';
 import 'ui_kit/theme/theme_functions.dart';
 
 /// Generated Library Statistics:
-/// Imports Count: 50
-/// Pages Count: 14
-/// Controllers Count: 17
-/// Components Count: 16
-/// Repositories Count: 3
-/// NOTE: Abstract DI types patched manually (C1). Prefer regenerating then re-applying
-/// [applyBindingFixes] via AppBindings.
+/// Imports Count: 54
+/// Pages Count: 15
+/// Controllers Count: 18
+/// Components Count: 17
+/// Repositories Count: 4
 
 class GetPutPages {
   static List<GetPage> get pages => [
@@ -203,11 +202,10 @@ class _GetPutComponent extends Bindings {
       fenix: true,
     );
     Get.lazyPut<AppPermissions>(() => AppPermissions(), fenix: true);
-    Get.lazyPut<SecureStorageModule>(
+    Get.lazyPut<SecureStorageModuleImpl>(
       () => SecureStorageModuleImpl(),
       fenix: true,
     );
-    Get.lazyPut<AuthSession>(() => AuthSession(), fenix: true);
     Get.lazyPut<AppShare>(() => AppShare(), fenix: true);
     Get.lazyPut<AppStatistics>(() => AppStatistics(), fenix: true);
     Get.lazyPut<AppStorage>(() => AppStorage(), fenix: true);
@@ -216,6 +214,7 @@ class _GetPutComponent extends Bindings {
       () => AppSharedPreferences(),
       fenix: true,
     );
+    Get.lazyPut<AuthSession>(() => AuthSession(), fenix: true);
     Get.lazyPut<AppLocalizations>(() => AppLocalizations(), fenix: true);
     Get.lazyPut<AppThemeFunctions>(() => AppThemeFunctions(), fenix: true);
   }
@@ -224,20 +223,20 @@ class _GetPutComponent extends Bindings {
 class _GetPutRepository extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<UpdateRemoteDataSource>(
+    Get.lazyPut<AuthRemoteDataSourceImpl>(
+      () => AuthRemoteDataSourceImpl(),
+      fenix: true,
+    );
+    Get.lazyPut<UpdateRemoteDataSourceImpl>(
       () => UpdateRemoteDataSourceImpl(),
       fenix: true,
     );
-    Get.lazyPut<VersionsLocalDataSource>(
+    Get.lazyPut<VersionsLocalDataSourceImpl>(
       () => VersionsLocalDataSourceImpl(),
       fenix: true,
     );
-    Get.lazyPut<VersionsRemoteDataSource>(
+    Get.lazyPut<VersionsRemoteDataSourceImpl>(
       () => VersionsRemoteDataSourceImpl(),
-      fenix: true,
-    );
-    Get.lazyPut<AuthRemoteDataSource>(
-      () => AuthRemoteDataSourceImpl(),
       fenix: true,
     );
   }

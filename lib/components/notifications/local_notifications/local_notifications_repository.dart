@@ -27,7 +27,7 @@ class AppLocalNotificationsRepository {
   }
 
   Future<bool> init() async {
-    bool initializationResult = await AwesomeNotifications().initialize(null, _channels(), channelGroups: _groups(), debug: !CoreFlags.isProduction);
+    bool initializationResult = await AwesomeNotifications().initialize(null, _channels(), channelGroups: _groups(), debug: !CoreFlags.isRelease);
     bool permissionResult = await _permissionCheck().withStatusPrint(featureName: 'App Local Notifications Permission Check');
     bool listenersInitResult = await _setListeners().withStatusPrint(featureName: 'App Local Notifications Listeners Set');
     bool channelSetResult = await _setChannel().withStatusPrint(featureName: 'App Local Notifications Channel Set');

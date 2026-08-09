@@ -8,9 +8,7 @@ import '../../barrels/core_resources_barrel.dart';
 class EnvironmentHandler extends CoreController {
   static Environment current = EnvConfig.environment;
 
-  static void applyEnvConfig() {
-    current = EnvConfig.environment;
-  }
+  static void applyEnvConfig() => current = EnvConfig.environment;
 
   static String get baseUrl => EnvConfig.resolvedBaseUrl;
   static String? get subDomain => EnvConfig.resolvedSubDomain;

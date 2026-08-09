@@ -54,5 +54,5 @@ app.*.map.json
 **.swift
 *.cc
 # Local / secret env files (never commit real secrets)
-config/env.local.json
-config/env.production.json
+config/envs/env.local.json
+config/envs/env.production.json

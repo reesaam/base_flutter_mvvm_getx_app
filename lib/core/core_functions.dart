@@ -8,7 +8,7 @@ import '../barrels/localization_barrel.dart';
 import '../barrels/shared_models_barrel.dart';
 import '../barrels/ui_kit_barrel.dart';
 
-void appDebugPrint(message) => CoreFlags.isProduction ? null : debugPrint('[Debug] $message');
+void appDebugPrint(message) => CoreFlags.isRelease ? null : debugPrint('[Debug] $message');
 void appLogPrint(message) => print('[LOG] $message');
 
 bool get kIsDesktop => Platform.isWindows || Platform.isMacOS || Platform.isLinux;

@@ -7,7 +7,6 @@ import '../barrels/components_barrel.dart';
 import '../barrels/core_barrel.dart';
 import '../barrels/core_resources_barrel.dart';
 import '../features/auth/data/auth_session.dart';
-import 'di/app_bindings.dart';
 import 'flavors/env_config.dart';
 
 /// App entry bootstrap: Zone + FlutterError + PlatformDispatcher + Sentry + DI.
@@ -45,8 +44,6 @@ Future<void> _initializeDependencies() async {
     appLogPrint('GetStorage init failed: $e');
     return false;
   });
-
-  AppBindings().dependencies();
 
   try {
     await SecureStorageModule.to.init(EnvConfig.secureStoragePassword);

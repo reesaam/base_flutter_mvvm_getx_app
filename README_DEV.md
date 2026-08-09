@@ -275,10 +275,10 @@ Setup once:
 
 ```bash
 # optional personal overrides
-cp config/env.local.json.example config/env.local.json
+cp config/env.local.json config/env.local.json
 
 # production (fill real Sentry DSN + password)
-cp config/env.production.json.example config/env.production.json
+cp config/env.production.json config/env.production.json
 ```
 
 Example `config/env.development.json`:

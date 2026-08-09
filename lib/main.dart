@@ -5,7 +5,6 @@ import 'barrels/localization_barrel.dart';
 import 'barrels/ui_kit_barrel.dart';
 
 import 'app/bootstrap.dart';
-import 'app/di/app_bindings.dart';
 import 'main.get_put.dart';
 
 Future<void> main() async {
@@ -19,8 +18,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) => GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: AppInfo.appName,
-        // Bindings already applied in [bootstrap]; keep for GetX route recreations.
-        initialBinding: AppBindings(),
+        initialBinding: GetPutBindings(),
         getPages: GetPutPages.pages,
         initialRoute: GetPutPages.initialRoute,
         unknownRoute: GetPutPages.unknownRoute,
