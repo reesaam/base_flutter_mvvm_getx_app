@@ -93,7 +93,7 @@ dev_dependencies:
 
 builders:
   barrels:
-    import: "package:base_flutter_mvvm_getx_app/builder.dart"
+    import: "package:base_flutter_mvvm_getx_app/barrels_builder.dart"
     builder_factories: ["barrelsBuilder"]
     build_extensions: {"$lib$": [".barrels.stamp"]}
     auto_apply: root_package

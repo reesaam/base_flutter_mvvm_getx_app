@@ -71,7 +71,7 @@ flutter test
 - first change the file in assets : <<assets/logos/app_logo.png>> (Please replace the file)
 - then run:
 ```
-dart run flutter_launcher_icons -f flutter_launcher_icons.yaml
+dart run flutter_launcher_icons -f config/icons.yaml
 ```
 
 # How to Manage
@@ -449,7 +449,7 @@ Dev dependency for mocks: `mocktail`.
 3. Run:
 
 ```bash
-dart run flutter_launcher_icons -f flutter_launcher_icons.yaml
+dart run flutter_launcher_icons -f icons.yaml
 ```
 
 ## Linting

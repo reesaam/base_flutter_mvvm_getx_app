@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:yaml/yaml.dart';
 
-/// Shared barrel generation used by CLI and build_runner.
 class BarrelsGenerator {
   BarrelsGenerator({Directory? projectRoot}) : root = projectRoot ?? _findProjectRoot();
 
@@ -10,7 +9,6 @@ class BarrelsGenerator {
 
   File get configFile => File('${root.path}${Platform.pathSeparator}config${Platform.pathSeparator}barrels.yaml');
 
-  /// Returns number of files written. Throws if config missing.
   int generate({bool checkOnly = false}) {
     if (!configFile.existsSync()) {
       throw StateError('Missing config: ${configFile.path}');
@@ -157,8 +155,7 @@ class BarrelsGenerator {
     if (localExclude.contains(relPath) || localExclude.contains(name)) return false;
     if (excludePrivate && name.startsWith('_')) return false;
 
-    final allowedByInclude =
-        includeSuffixes.isEmpty ? relPath.endsWith('.dart') : includeSuffixes.any(relPath.endsWith);
+    final allowedByInclude = includeSuffixes.isEmpty ? relPath.endsWith('.dart') : includeSuffixes.any(relPath.endsWith);
     if (!allowedByInclude) return false;
 
     for (final suffix in excludeSuffixes) {
@@ -186,8 +183,7 @@ class BarrelsGenerator {
   }
 
   static String _toExport(String libRelativePath) {
-    final withoutLib =
-        libRelativePath.startsWith('lib/') ? libRelativePath.substring('lib/'.length) : libRelativePath;
+    final withoutLib = libRelativePath.startsWith('lib/') ? libRelativePath.substring('lib/'.length) : libRelativePath;
     return "export '../$withoutLib';";
   }
 
