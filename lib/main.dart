@@ -1,53 +1,36 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
+import 'barrels/core_barrel.dart';
+import 'barrels/core_resources_barrel.dart';
+import 'barrels/extensions_barrel.dart';
+import 'barrels/localization_barrel.dart';
+import 'barrels/ui_kit_barrel.dart';
 
-import 'components/notifications/local_notifications/local_notifications.dart';
-import 'core/core_info/app_info.dart';
-import 'core/core_resources/defaults.dart';
-import 'core/extensions/extension_for_prints/extension_for_prints.dart';
-import 'core/extensions/extensions_on_data_types/extension_language.dart';
-import 'localization/localizations.dart';
-import 'ui_kit/theme/themes.dart';
-
+// ignore: barrel_import_lints/only_barrel_imports
+import 'main_project_initializer.dart';
+// ignore: barrel_import_lints/only_barrel_imports
 import 'main.get_put.dart';
 
-// import 'generated/l10n.dart';
-
-void main() => initProject();
-
-void initProject() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  GetPutBindings().dependencies();
-  await GetStorage.init().withStatusPrint(isLog: true, featureName: 'Get Storage Initialization');
-  await AppLocalNotifications().init().withStatusPrint(isLog: true, featureName: 'App Local Notifications Initialization');
-  kIsWeb ? null : SystemChannels.textInput.invokeMethod('TextInput.hide');
-  runApp(const MainApp());
-}
+Future<void> main() async => await projectInitialization(() async => const MainApp());
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
+
   @override
-  Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: AppInfo.appName,
-      initialBinding: GetPutBindings(),
-      getPages: GetPutPages.pages,
-      initialRoute: GetPutPages.initialRoute.name,
-      unknownRoute: GetPutPages.unknownRoute,
-      defaultTransition: Transition.fadeIn,
-      transitionDuration: appDefaultTransitionDuration,
-      color: AppThemes.to.primaryColor,
-      theme: AppThemes.lightTheme,
-      darkTheme: AppThemes.darkTheme,
-      themeMode: ThemeMode.system,
-      supportedLocales: AppLocalizations.supportedLocales,
-      localizationsDelegates: AppLocalizations.to.localizationDelegates,
-      locale: AppLocalizations.to.translation?.getLanguage?.locale,
-      textDirection: AppLocalizations.to.translation?.getLanguage?.textDirection,
-    );
-  }
+  Widget build(BuildContext context) => GetMaterialApp(
+    debugShowCheckedModeBanner: false,
+    title: AppInfo.appName,
+    initialBinding: GetPutBindings(),
+    getPages: GetPutPages.pages,
+    initialRoute: GetPutPages.initialRoute,
+    unknownRoute: GetPutPages.unknownRoute,
+    defaultTransition: AppDefaults.transition,
+    transitionDuration: AppDefaults.transitionDuration,
+    color: AppColors.primary.color,
+    theme: AppTheme.lightTheme,
+    darkTheme: AppTheme.darkTheme,
+    themeMode: ThemeMode.system,
+    supportedLocales: AppLocalizations.to.supportedLocales,
+    localizationsDelegates: AppLocalizations.to.localizationDelegates,
+    locale: AppLocalizations.to.translation?.getLanguage?.locale,
+    textDirection: AppLocalizations.to.translation?.getLanguage?.textDirection,
+  );
 }

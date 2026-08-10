@@ -1,4 +1,4 @@
-import '../core_info/app_info.dart';
+import '../../barrels/core_barrel.dart';
 
 class AppTexts {
   ///App Pages
@@ -6,17 +6,17 @@ class AppTexts {
   ///App Admin Pages
 
   ///General
-  static String get languageNamePersian => 'فارسی';
+  static const String languageNamePersian = 'فارسی';
 
   ///Settings
-  static String get settingBackupFilename => '${AppInfo.appNameInitials}_Backup.json';
+  static const String settingBackupFilename = '${AppInfo.appNameInitials}_Backup.json';
 
   ///Update
-  static String get updateAppFilename => '${AppInfo.appNameInitials}_app.apk';
+  static const String updateAppFilename = '${AppInfo.appNameInitials}_app.apk';
 
   ///Dio
-  static String get dioHeaderContentType => 'Content-Type';
-  static String get dioHeaderContentTypeData => 'application/json';
-  static String get dioHeaderConnection => 'Connection';
-  static String get dioHeaderConnectionData => 'keep-alive';
+  static const String dioHeaderContentType = 'Content-Type';
+  static const String dioHeaderContentTypeData = 'application/json';
+  static const String dioHeaderConnection = 'Connection';
+  static const String dioHeaderConnectionData = 'keep-alive';
 }

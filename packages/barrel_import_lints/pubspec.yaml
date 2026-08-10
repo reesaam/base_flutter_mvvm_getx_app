@@ -1,0 +1,12 @@
+name: barrel_import_lints
+description: Analyzer plugin — enforce barrel-only imports (shared layers + packages).
+publish_to: none
+version: 0.1.0
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  analysis_server_plugin: ^0.3.0
+  analyzer: ^8.0.0
+  yaml: ^3.1.3

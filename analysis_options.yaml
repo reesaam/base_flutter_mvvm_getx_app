@@ -1,5 +1,17 @@
 include: package:flutter_lints/flutter.yaml
 
+# Analyzer plugins (restart Dart Analysis Server after changing `plugins:`):
+# - barrel_import_lints/only_barrel_imports
+#
+# Suppress:
+#   // ignore: avoid_print   (logger only)
+
+plugins:
+  barrel_import_lints:
+    path: packages/barrel_import_lints
+    diagnostics:
+      only_barrel_imports: true
+
 linter:
   rules:
     avoid_print: true
@@ -10,6 +22,18 @@ linter:
 analyzer:
   errors:
     invalid_assignment: error
-    missing_return: warning
+    invalid_import: error
+    missing_return: error
+    only_barrel_imports: error
+    avoid_print: error
+    always_declare_return_types: warning
+    always_use_package_imports: ignore
+    annotate_overrides: warning
+    avoid_as: warning
+    avoid_empty_else: warning
+    avoid_unnecessary_containers: warning
+    unnecessary_import: warning
+    prefer_relative_imports: warning
+    unnecessary_this: warning
     unused_import: warning
-    unrelated_type_equality_checks: warning
+    unrelated_type_equality_checks: error

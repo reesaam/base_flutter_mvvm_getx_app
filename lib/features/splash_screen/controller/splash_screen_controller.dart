@@ -1,17 +1,13 @@
-import 'package:getx_binding_annotation/annotation.dart';
-
-import '../../../components/statistics/statistics.dart';
-import '../../../core/app_routing/app_routing.dart';
-import '../../../core/core_elements/core_controller.dart';
-import '../../../core/core_functions.dart';
-import '../../../core/core_info/app_info.dart';
-import '../../../core/core_resources/core_enums.dart';
-import '../../../core/core_resources/core_flags.dart';
-import '../../../core/core_resources/logos.dart';
-import '../../../core/core_resources/page_details.dart';
-import '../../../localization/localizations.dart';
-import '../../../shared/shared_models/core_models/app_version/app_version.dart';
-import '../../../ui_kit/dialogs/app_alert_dialogs.dart';
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/components_barrel.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
+import '../../../barrels/core_resources_barrel.dart';
+import '../../../barrels/localization_barrel.dart';
+import '../../../barrels/shared_models_barrel.dart';
+import '../../../barrels/ui_kit_barrel.dart';
+// ignore: barrel_import_lints/only_barrel_imports
+import '../../auth/data/auth_session.dart';
 
 @GetPut.controller()
 class SplashScreenController extends CoreController {
@@ -26,16 +22,13 @@ class SplashScreenController extends CoreController {
   @override
   void dataInit() async {
     CoreFlags.clearData ? clearAppData() : null;
-    // permissionsStatus = await AppPermissions.to.checkAllPermissions();
-    // internetStatus = await ConnectionChecker.to.checkInternet();
-    // internetStatus ? availableUpdate = await checkAvailableVersion() : noInternetConnectionSnackBar();
     AppStatistics.to.increaseLaunch();
     printAllData();
   }
 
   @override
   void pageInit() {
-    pageDetail = AppPageDetails.splashScreen;
+    pageDetail = AppPages.splashScreen;
     logoSource = AppLogos.appLogo;
     appName = AppInfo.appName;
     appVersion = '${Texts.to.general.version}: ${AppInfo.currentVersion.version}';
@@ -43,20 +36,20 @@ class SplashScreenController extends CoreController {
 
   @override
   void onReadyFunction() async {
-    availableUpdate = await checkAvailableVersion();
-    (availableUpdate != null && availableUpdate?.version != AppInfo.currentVersion.version)
-        ? _showUpdateDialog(isForceUpdate: availableUpdate?.isForceUpdate)
-        : goToPageWithDelay(AppPageDetails.homepage);
+    await AuthSession.to.restoreSession();
+    final next = AuthSession.to.isAuthenticated.value ? AppPages.homepage : AppPages.login;
+    goToPage(next, popAll: true);
   }
 
-  _showUpdateDialog({bool? isForceUpdate}) => AppAlertDialogs.withYesNo(
-        title: Texts.to.update.updateNewVersion,
-        text: Texts.to.update.updateApprove,
-        dismissible: isForceUpdate != true,
-        onTapNo: isForceUpdate == true ? null : goToHomePage,
-        onTapYes: () {
-          if (isForceUpdate != true) goToHomePage();
-          goToUpdatePage();
-        },
-      );
+  // ignore: unused_element
+  void _showUpdateDialog({bool? isForceUpdate}) => AppAlertDialogs.withYesNo(
+    title: Texts.to.update.updateNewVersion,
+    text: Texts.to.update.updateApprove,
+    dismissible: isForceUpdate != true,
+    onTapNo: () => isForceUpdate == true ? null : goToPage(AppPages.homepage),
+    onTapYes: () {
+      if (isForceUpdate != true) goToPage(AppPages.homepage);
+      goToPage(AppPages.update);
+    },
+  );
 }

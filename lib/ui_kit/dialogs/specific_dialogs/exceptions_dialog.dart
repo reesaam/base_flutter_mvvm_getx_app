@@ -1,22 +1,13 @@
-import '../../../components/failures/local_exception.dart';
-import '../../../components/failures/network_exception.dart';
-import '../../../core/core_functions.dart';
-import '../../../localization/localizations.dart';
-import '../../../ui_kit/dialogs/app_alert_dialogs.dart';
+import '../../../barrels/components_barrel.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/localization_barrel.dart';
+import '../../../barrels/ui_kit_barrel.dart';
 
 class AppExceptionsDialog extends AppAlertDialogs {
-  static local({required LocalException exception, String? message, int? statusCode, Function()? onTap}) async {
+  static show({required GeneralException exception, String? message, int? statusCode, Function()? onTap}) async {
     await AppAlertDialogs.withOk(
-      title: statusCode?.toString() ?? exception.statusCode?.toString(),
-      text: message ?? exception.message ?? Texts.to.general.notAvailableInitials,
-      onTapOk: onTap ?? popPage,
-    );
-  }
-
-  static remote({required NetworkException exception, String? message, int? statusCode, Function()? onTap}) async {
-    await AppAlertDialogs.withOk(
-      title: statusCode?.toString() ?? exception.statusCode?.toString(),
-      text: message ?? exception.message ?? Texts.to.general.notAvailableInitials,
+      title: statusCode != null ? 'Error: ${statusCode.toString()}' : exception.statusCode?.toString() ?? Texts.to.error.unknown,
+      text: message ?? exception.message ?? Texts.to.error.unknown,
       onTapOk: onTap ?? popPage,
     );
   }

@@ -1,14 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:getx_binding_annotation/annotation.dart';
-
-import '../../../core/core_elements/core_view.dart';
-import '../../../core/core_info/app_info.dart';
-import '../../../localization/localizations.dart';
-import '../../../ui_kit/buttons/app_general_button.dart';
-import '../../../ui_kit/main_widgets/app_bar.dart';
-import '../../../ui_kit/resources/paddings.dart';
-import '../../../ui_kit/resources/spaces.dart';
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
+import '../../../barrels/localization_barrel.dart';
+import '../../../barrels/ui_kit_barrel.dart';
 import '../controller/update_controller.dart';
 
 @GetPut.page()
@@ -16,43 +10,50 @@ class UpdatePage extends CoreView<UpdateController> {
   const UpdatePage({super.key});
 
   @override
-  Widget? get footer => _widgetButtons();
+  Widget? get bottomSheet => _widgetButtons();
 
   @override
-  Widget get body => Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        _widgetVersions(),
-      ]);
+  Widget get body => Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [_widgetVersions()]);
 
   Widget _widgetVersions() => Card(
-      child: Container(
-          padding: AppPaddings.updateVersions,
-          child: Column(children: [
-            _widgetVersion(Texts.to.update.updateCurrentVersion, AppInfo.currentVersion.version),
-            AppSpaces.h10,
-            Obx(() => _widgetVersion(
-                  Texts.to.update.updateAvailableVersion,
-                  controller.updateAvailability() ? controller.availableVersion.value : Texts.to.general.notAvailable,
-                )),
-          ])));
+    child: AppContainer(
+      padding: AppPaddings.updateVersions,
+      child: Column(
+        children: [
+          _widgetVersion(Texts.to.update.updateCurrentVersion, AppInfo.currentVersion.version),
+          AppSpaces.h10,
+          Obx(
+            () => _widgetVersion(
+              Texts.to.update.updateAvailableVersion,
+              controller.updateAvailability() ? controller.availableVersion.value : Texts.to.general.notAvailable,
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
 
-  Widget _widgetVersion(String title, String version) => Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [Text(title), Text(version)],
-      );
+  Widget _widgetVersion(String title, String version) =>
+      Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text(title), Text(version)]);
 
-  Widget _widgetButtons() => Obx(() => Container(
+  Widget _widgetButtons() => Obx(
+    () => AppContainer(
       padding: AppPaddings.updateButtons,
-      child: Column(children: [
-        AppGeneralButton(
-          text: Texts.to.update.updateCheckUpdate,
-          loading: controller.buttonCheckUpdateLoading.value,
-          onTap: controller.checkUpdateFunction,
-        ),
-        AppGeneralButton(
-          text: Texts.to.update.updateDownloadUpdate,
-          loading: controller.buttonDownloadUpdateLoading.value,
-          onTap: controller.downloadUpdate,
-          disabled: controller.updateAvailability(),
-        ),
-      ])));
+      child: Column(
+        children: [
+          AppButton.general(
+            text: Texts.to.update.updateCheckUpdate,
+            loading: controller.buttonCheckUpdateLoading.value,
+            onTap: controller.checkUpdate,
+          ),
+          AppButton.general(
+            text: Texts.to.update.updateDownloadUpdate,
+            loading: controller.buttonDownloadUpdateLoading.value,
+            onTap: controller.downloadUpdate,
+            disabled: controller.updateAvailability(),
+          ),
+        ],
+      ),
+    ),
+  );
 }

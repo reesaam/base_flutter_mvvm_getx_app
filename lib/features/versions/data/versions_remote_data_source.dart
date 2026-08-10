@@ -1,12 +1,19 @@
-import 'package:dartz/dartz.dart';
-import 'package:getx_binding_annotation/annotation.dart';
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/components_barrel.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
+import '../../../barrels/core_resources_barrel.dart';
+import '../../../barrels/shared_models_barrel.dart';
 
-import '../../../components/failures/network_exception.dart';
-import '../../../components/network/dio_functions.dart';
-import '../../../core/core_resources/apis.dart';
-import '../../../shared/shared_models/core_models/app_version/app_version.dart';
+abstract class VersionsRemoteDataSource extends CoreRepository {
+  static VersionsRemoteDataSource get to => Get.find();
 
-@GetPut.repository()
-class VersionsRemoteDataSource {
-  Future<Either<NetworkException, AppVersionsList>> getVersions() async => await DioFunctions.get<AppVersionsList>(url: AppAPIs.apiGetVersions);
+  Future<BaseAPIResponse<AppVersionsList>> getVersions();
+}
+
+@GetPut.repository(as: VersionsRemoteDataSource)
+class VersionsRemoteDataSourceImpl extends CoreRepository implements VersionsRemoteDataSource {
+  @override
+  Future<BaseAPIResponse<AppVersionsList>> getVersions() async =>
+      await DioCore.to.callMethod<AppVersionsList>(method: APIMethods.get, url: AppAPIUrls.apiGetVersions);
 }

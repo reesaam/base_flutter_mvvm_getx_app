@@ -1,12 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:getx_binding_annotation/annotation.dart';
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
+import '../../../barrels/ui_kit_barrel.dart';
 
-import '../../../core/core_elements/core_view.dart';
-import '../../../ui_kit/core_widgets.dart';
-import '../../../ui_kit/general_widgets/image.dart';
-import '../../../ui_kit/main_widgets/progress_indicator.dart';
-import '../../../ui_kit/theme/themes.dart';
 import '../controller/splash_screen_controller.dart';
 
 @GetPut.page(isInitial: true)
@@ -14,29 +9,30 @@ class SplashScreenPage extends CoreView<SplashScreenController> {
   const SplashScreenPage({super.key});
 
   @override
-  Widget get body => Container(
-      alignment: Alignment.center,
-      width: Get.width,
-      height: Get.height - 100,
-      child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        Expanded(flex: 4, child: shrinkSizedBox),
-        Expanded(flex: 4, child: _widgetLogo()),
-        Expanded(flex: 8, child: _widgetAppName()),
-        Expanded(flex: 6, child: _widgetLoadingIndicator()),
-      ]));
+  Widget get body => AppContainer(
+    alignment: Alignment.center,
+    width: Get.width,
+    height: Get.height - 100,
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        AppBox.shrinkExpanded(flex: 4),
+        AppBox.expanded(flex: 4, child: _widgetLogo()),
+        AppBox.expanded(flex: 8, child: _widgetAppName()),
+        AppBox.expanded(flex: 6, child: _widgetLoadingIndicator()),
+      ],
+    ),
+  );
 
-  Widget _widgetLogo() => Container(
-        alignment: Alignment.center,
-        child: AppImage(image: controller.logoSource),
-      );
+  Widget _widgetLogo() => AppContainer(
+    alignment: Alignment.center,
+    child: AppImage(image: controller.logoSource),
+  );
 
-  Widget _widgetAppName() => Container(
-        alignment: Alignment.center,
-        child: Text(controller.appName, style: AppThemes.to.textTheme.titleSmall),
-      );
+  Widget _widgetAppName() => AppContainer(
+    alignment: Alignment.center,
+    child: Text(controller.appName, style: Get.theme.textTheme.titleSmall),
+  );
 
-  Widget _widgetLoadingIndicator() => Container(
-        alignment: Alignment.center,
-        child: AppProgressIndicator.circular(width: 50),
-      );
+  Widget _widgetLoadingIndicator() => AppContainer(alignment: Alignment.center, child: AppProgressIndicator.circular(width: 50));
 }

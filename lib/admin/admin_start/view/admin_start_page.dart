@@ -1,16 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:getx_binding_annotation/annotation.dart';
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
+import '../../../barrels/core_resources_barrel.dart';
+import '../../../barrels/localization_barrel.dart';
+import '../../../barrels/ui_kit_barrel.dart';
 
-import '../../../core/app_routing/app_routing.dart';
-import '../../../core/core_elements/core_view.dart';
-import '../../../core/core_resources/icons.dart';
-import '../../../localization/localizations.dart';
-import '../../../ui_kit/buttons/app_general_button.dart';
-import '../../../ui_kit/core_widgets.dart';
-import '../../../core/core_resources/page_details.dart';
-import '../../../ui_kit/main_widgets/app_bar.dart';
-import '../../../ui_kit/main_widgets/floating_buttons.dart';
-import '../../../ui_kit/resources/paddings.dart';
 import '../controller/admin_start_controller.dart';
 
 @GetPut.page()
@@ -21,22 +15,23 @@ class AdminStartPage extends CoreView<AdminStartController> {
   PreferredSizeWidget? get appBar => AppAppBar(pageDetail: controller.pageDetail);
 
   @override
-  Widget? get floatingActionButton => AppFloatingActionButtons(icon: AppIcons.add, onPressed: () {});
+  Widget? get floatingActionButton => AppFloatingActionButtons(icon: AppIcons.add.widget, onPressed: () {});
 
   @override
-  Widget get body => Column(children: [
-        _sectionsButtons(),
-      ]);
+  Widget get body => Column(children: [_sectionsButtons()]);
 
-  _sectionsButtons() => Container(
-      padding: AppPaddings.buttonLarge,
-      child: Column(
-          children: List<Widget>.generate(
-              AppPageDetails.listAdminPages.length,
-              (index) => index == 0
-                  ? shrinkSizedBox
-                  : AppGeneralButton(
-                      text: controller.pages[index].pageName ?? Texts.to.general.notAvailableInitials,
-                      onTap: () => goToPage(controller.pages[index]),
-                    ))));
+  Widget _sectionsButtons() => AppContainer(
+    padding: AppPaddings.buttonLarge,
+    child: Column(
+      children: List<Widget>.generate(
+        AppPages.listAdminPages.length,
+        (index) => index == 0
+            ? AppBox.shrink()
+            : AppButton.general(
+                text: controller.pages[index].pageName ?? Texts.to.general.notAvailableInitials,
+                onTap: () => goToPage(controller.pages[index]),
+              ),
+      ),
+    ),
+  );
 }

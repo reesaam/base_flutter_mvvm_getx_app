@@ -1,10 +1,8 @@
-import 'package:getx_binding_annotation/annotation.dart';
-
-import '../../../core/core_elements/core_controller.dart';
-import '../../../core/core_info/app_info.dart';
-import '../../../core/core_info/developer_info.dart';
-import '../../../core/core_resources/page_details.dart';
-import '../../../localization/localizations.dart';
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
+import '../../../barrels/core_resources_barrel.dart';
+import '../../../barrels/localization_barrel.dart';
 
 @GetPut.controller()
 class AboutController extends CoreController {
@@ -18,7 +16,7 @@ class AboutController extends CoreController {
 
   @override
   void pageInit() {
-    pageDetail = AppPageDetails.about;
+    pageDetail = AppPages.about;
   }
 
   _fillData() {
@@ -29,11 +27,6 @@ class AboutController extends CoreController {
       Texts.to.about.aboutTitlesDeveloperLinkedIn,
     ]);
 
-    listItems = List<String>.of([
-      AppInfo.appName,
-      AppDeveloperInfo.fullName,
-      AppDeveloperInfo.website,
-      AppDeveloperInfo.linkedin,
-    ]);
+    listItems = List<String>.of([AppInfo.appName, AppDeveloperInfo.fullName, AppDeveloperInfo.website, AppDeveloperInfo.linkedin]);
   }
 }

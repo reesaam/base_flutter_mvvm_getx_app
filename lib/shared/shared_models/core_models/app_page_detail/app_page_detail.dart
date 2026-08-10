@@ -1,12 +1,10 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-
-import '../../../../core/annotations/freezed_custom_annotation.dart';
+import '../../../../barrels/annotations_barrel.dart';
 
 part 'app_page_detail.freezed.dart';
 part 'app_page_detail.g.dart';
 
 @FreezedCustom.model
-class AppPageDetail with _$AppPageDetail {
+abstract class AppPageDetail with _$AppPageDetail {
   const factory AppPageDetail({
     required final String pageRoute,
     final String? pageName,
@@ -19,7 +17,7 @@ class AppPageDetail with _$AppPageDetail {
 }
 
 @FreezedCustom.modelList
-class AppPageDetailsList with _$AppPageDetailsList {
+abstract class AppPageDetailsList with _$AppPageDetailsList {
   factory AppPageDetailsList({@Default(<AppPageDetail>[]) List<AppPageDetail> pageDetailsList}) = _AppPageDetailsList;
 
   factory AppPageDetailsList.fromJson(Map<String, dynamic> json) => _$AppPageDetailsListFromJson(json);

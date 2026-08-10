@@ -1,20 +1,21 @@
 import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:get/get.dart';
-import 'package:getx_binding_annotation/annotation.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 
-import '../../core/core_resources/defaults.dart';
+import '../../barrels/annotations_barrel.dart';
+import '../../barrels/core_barrel.dart';
+import '../../barrels/core_elements_barrel.dart';
+import '../../barrels/core_resources_barrel.dart';
 
 @GetPut.component()
-class AppConnectionChecker {
+class AppConnectionChecker extends CoreComponent {
   static AppConnectionChecker get to => Get.find();
 
   get internetConnection => InternetConnection();
   get connectivity => Connectivity();
 
-  Future<bool> checkInternet() async => await internetConnection.hasInternetAccess.timeout(appDefaultConnectionTimeOut);
+  Future<bool> checkInternet() async => await internetConnection.hasInternetAccess.timeout(AppDefaults.timeOutConnection);
 
   Future<InternetStatus> checkInternetStatus() async => await internetConnection.internetStatus;
 

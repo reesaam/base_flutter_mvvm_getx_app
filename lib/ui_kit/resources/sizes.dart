@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import '../../barrels/ui_kit_barrel.dart';
 
 class AppSizes {
   ///Fonts

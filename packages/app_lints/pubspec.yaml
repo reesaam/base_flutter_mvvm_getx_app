@@ -1,0 +1,11 @@
+name: app_lints
+description: Project analyzer rules (avoid_var, etc.).
+publish_to: none
+version: 0.1.0
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  analysis_server_plugin: ^0.3.0
+  analyzer: ^8.0.0

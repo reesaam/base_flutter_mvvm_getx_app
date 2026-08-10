@@ -1,18 +1,15 @@
-import 'package:get/get.dart';
+import '../../barrels/annotations_barrel.dart';
+import '../../barrels/core_barrel.dart';
+import '../../barrels/core_elements_barrel.dart';
+import '../../barrels/ui_kit_barrel.dart';
 
-import '../../components/storage/app_storage_module.dart';
-import '../../core/core_functions.dart';
-import 'themes.dart';
+@GetPut.component()
+class AppThemeFunctions extends CoreController {
+  static AppThemeFunctions get to => Get.find();
 
-class AppThemeFunctions {
-  static changeDarkMode(bool? darkMode) {
-    appLogPrint('DarkMode Changed to $darkMode');
-    Get.changeTheme(darkMode == true ? AppThemes.darkTheme : AppThemes.lightTheme);
-  }
-
-  static bool getMode() {
-    bool? isDark = false;
-    AppStorage.to.loadAppData().then((value) => value.fold((l) => null, (r) => isDark = r?.settings?.darkMode));
-    return isDark == true;
+  changeThemeMode(bool? darkMode) {
+    appLogPrint('Theme Mode Changed to ${darkMode == true ? 'Dark' : 'Light'}');
+    Get.changeTheme(darkMode != true ? AppTheme.lightTheme : AppTheme.darkTheme);
+    update();
   }
 }

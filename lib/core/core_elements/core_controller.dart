@@ -1,10 +1,18 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import '../../barrels/shared_models_barrel.dart';
+import '../../barrels/core_barrel.dart';
 
-import '../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
+abstract class CoreController<T> extends GetxController {
+  /// Prefer this over storing [Get.context] at construction time.
+  BuildContext? get contextOrNull => Get.context;
 
-abstract class CoreController extends GetxController {
-  BuildContext context = Get.context!;
+  BuildContext get context {
+    final ctx = Get.context;
+    if (ctx == null) throw StateError('BuildContext is not available yet. Access context after the widget tree is mounted.');
+    return ctx;
+  }
+
+  LayoutModel get layout => context.layout;
+
   late AppPageDetail pageDetail;
 
   ///Mandatory Functions

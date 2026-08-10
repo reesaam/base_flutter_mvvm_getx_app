@@ -1,14 +1,13 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
-import 'package:get/get.dart';
-import 'package:getx_binding_annotation/annotation.dart';
 
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/core_barrel.dart';
 import '../notifications_enums.dart';
 import '../notifications_repository.dart';
 import 'local_notifications_repository.dart';
 
 @GetPut.component()
 class AppLocalNotifications extends AppNotificationsRepository {
-
   static AppLocalNotifications get to => Get.find();
 
   @override
@@ -84,11 +83,7 @@ class AppLocalNotifications extends AppNotificationsRepository {
       largeIcon: largeIcon,
       timeoutAfterLongSeconds: timeoutAfterLongSeconds,
       wakeUpScreen: wakeUpScreen,
-      interval: NotificationInterval(
-        interval: interval,
-        repeats: repeat ?? false,
-        preciseAlarm: preciseAlarm ?? true,
-      ),
+      interval: NotificationInterval(interval: interval, repeats: repeat ?? false, preciseAlarm: preciseAlarm ?? true),
     );
     return result;
   }

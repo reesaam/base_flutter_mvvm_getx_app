@@ -1,451 +1,189 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:getx_binding_annotation/annotation.dart';
+import '../../barrels/core_resources_barrel.dart';
+import '../../barrels/ui_kit_barrel.dart';
 
-import '../../components/storage/app_storage_module.dart';
-import '../../core/core_functions.dart';
-import '../../core/core_resources/defaults.dart';
-import '../resources/elements.dart';
-import '../../shared/shared_models/core_models/theme_data_model/theme_data_model.dart';
-import 'themes_variables.dart';
-
-@GetPut.component()
-class AppThemes {
+class AppTheme {
   ///Main Theme Functions
-  static AppThemes get _to => Get.find();
-  static ThemeData get to => _to.getTheme();
+  static ThemeData get lightTheme => _getTheme(brightness: Brightness.light);
+  static ThemeData get darkTheme => _getTheme(brightness: Brightness.dark);
 
-  static ThemeData get lightTheme => _to.getTheme(isSystemDark: false);
-  static ThemeData get darkTheme => _to.getTheme(isSystemDark: true);
-
-  ThemeData importTheme({ThemeData? themeData}) => themeData ?? getTheme();
-
-  static bool isDark = false;
+  ThemeData importTheme({ThemeData? themeData}) => themeData ?? _getTheme();
 
   ///Get Variables and Decide about Theme
-  ThemeData getTheme({bool? isSystemDark}) {
-    bool? storageResult;
-    AppStorage.to.loadAppData().then((value) => value.fold((l) => null, (r) => storageResult = r?.settings?.darkMode));
-    isDark = storageResult == true || isSystemDark == true;
-    isDark ? appLogPrint('Dark Mode Activated') : null ;
+  static ThemeData _getTheme({Brightness? brightness}) {
+    // bool? storageResult;
+    // AppStorage.to.loadAppData().then((value) => value.fold((l) => null, (r) => storageResult = r?.settings?.darkMode));
+    // isDark = storageResult == true || isSystemDark == true;
+    // isDark ? appLogPrint('Dark Mode Activated') : null ;
+    // return _theme();
+
+    // Get.changeThemeMode(brightness == Brightness.dark ? ThemeMode.dark : ThemeMode.light);
     return _theme();
   }
 
   ///Theme Constructor
-  ThemeData _theme() => ThemeData(
-        colorScheme: _colorScheme(),
-        canvasColor: _canvasColor(),
-        scaffoldBackgroundColor: _canvasColor(),
-        dialogBackgroundColor: _canvasColor(),
-        primaryColor: _primaryColor(),
-        primaryColorLight: AppThemesVariables.appPrimary,
-        primaryColorDark: AppThemesVariables.appPrimaryDark,
-        hintColor: AppThemesVariables.appWarning,
-        primaryTextTheme: _textTheme(),
-        fontFamily: AppThemesVariables.appFont,
-        appBarTheme: _appBar(),
-        bottomAppBarTheme: _bottomAppBar(),
-        drawerTheme: _drawer(),
-        bottomNavigationBarTheme: _bottomNavigationBar(),
-        navigationBarTheme: _navigationBar(),
-        navigationDrawerTheme: _navigationDrawer(),
-        navigationRailTheme: _navigationRail(),
-        snackBarTheme: _snackBar(),
-        dialogTheme: _dialog(),
-        bottomSheetTheme: _bottomSheet(),
-        floatingActionButtonTheme: _floatingActionButton(),
-        bannerTheme: _banner(),
-        badgeTheme: _badge(),
-        chipTheme: _chip(),
-        indicatorColor: _progressIndicator().color,
-        progressIndicatorTheme: _progressIndicator(),
-        iconTheme: _icon(),
-        actionIconTheme: _actionIcon(),
-        textTheme: _textTheme(),
-        buttonTheme: _button(),
-        elevatedButtonTheme: _buttonElevated(),
-        outlinedButtonTheme: _buttonOutlined(),
-        filledButtonTheme: _buttonFilled(),
-        textButtonTheme: _buttonText(),
-        iconButtonTheme: _buttonIcon(),
-        buttonBarTheme: _buttonBar(),
-        toggleButtonsTheme: _buttonToggle(),
-        menuButtonTheme: _buttonMenu(),
-        dropdownMenuTheme: _buttonDropDown(),
-        cardTheme: _card(),
-        cardColor: _card().color,
-        checkboxTheme: _checkBox(),
-        switchTheme: _switch(),
-        dividerTheme: _divider(),
-        // tooltipTheme: ,
-        // adaptations:
-      );
-
-  ///Colors
-  Color _canvasColor() => AppThemeDataModel<Color>(
-        lightThemeData: AppThemesVariables.appBackground,
-        darkThemeData: AppThemesVariables.appBackgroundDark,
-      ).getMode<Color>(isDark);
-
-  Color _primaryColor() => AppThemeDataModel<Color>(
-        lightThemeData: AppThemesVariables.appPrimary,
-        darkThemeData: AppThemesVariables.appPrimaryDark,
-      ).getMode<Color>(isDark);
-
-  ColorScheme _colorScheme() => AppThemeDataModel<ColorScheme>(
-        lightThemeData: AppThemesVariables.colorSchemeLight,
-        darkThemeData: AppThemesVariables.colorSchemeDark,
-      ).getMode<ColorScheme>(isDark);
-
-  _colorSchemeSeed() => AppThemeDataModel<Color>(
-        lightThemeData: AppThemesVariables.colorSchemeSeedLight,
-        darkThemeData: AppThemesVariables.colorSchemeSeedDark,
-      ).getMode<Color>(isDark);
+  static ThemeData _theme() => ThemeData(
+    // colorScheme: _colorScheme(),
+    canvasColor: AppColors.canvas.color,
+    scaffoldBackgroundColor: AppColors.background.color,
+    dialogBackgroundColor: AppColors.canvas.color,
+    primaryColor: AppColors.primary.color,
+    hintColor: AppColors.tertiary.color,
+    primaryTextTheme: _textTheme(),
+    fontFamily: AppFonts.defaultFont,
+    appBarTheme: _appBar(),
+    bottomAppBarTheme: _bottomAppBar(),
+    drawerTheme: _drawer(),
+    bottomNavigationBarTheme: _bottomNavigationBar(),
+    navigationBarTheme: _navigationBar(),
+    navigationDrawerTheme: _navigationDrawer(),
+    navigationRailTheme: _navigationRail(),
+    snackBarTheme: _snackBar(),
+    dialogTheme: _dialog(),
+    bottomSheetTheme: _bottomSheet(),
+    floatingActionButtonTheme: _floatingActionButton(),
+    bannerTheme: _banner(),
+    badgeTheme: _badge(),
+    chipTheme: _chip(),
+    progressIndicatorTheme: _progressIndicator(),
+    iconTheme: _icon(),
+    actionIconTheme: _actionIcon(),
+    textTheme: _textTheme(),
+    buttonTheme: _button(),
+    elevatedButtonTheme: _buttonElevated(),
+    outlinedButtonTheme: _buttonOutlined(),
+    filledButtonTheme: _buttonFilled(),
+    textButtonTheme: _buttonText(),
+    iconButtonTheme: _buttonIcon(),
+    // buttonBarTheme: _buttonBar(),
+    toggleButtonsTheme: _buttonToggle(),
+    menuButtonTheme: _buttonMenu(),
+    dropdownMenuTheme: _buttonDropDown(),
+    cardTheme: _card().data,
+    cardColor: _card().color,
+    checkboxTheme: _checkBox(),
+    switchTheme: _switch(),
+    dividerTheme: _divider(),
+    // tooltipTheme: ,
+    // adaptations:
+  );
 
   ///Main Components
-  TextTheme _textTheme() {
+  static TextTheme _textTheme() {
     TextStyle generalStyle = _textStyle();
 
-    TextStyle lightStyle = generalStyle.copyWith(
-      color: AppThemesVariables.appSecondary,
-    );
-    TextStyle darkStyle = generalStyle.copyWith(
-      color: AppThemesVariables.appSecondaryDark,
-    );
+    TextStyle style = generalStyle.copyWith(color: AppColors.onPrimary.color);
 
-    TextTheme themeLight = TextTheme(
-      bodySmall: lightStyle.copyWith(fontSize: AppThemesVariables.textSizeXSmall),
-      bodyMedium: lightStyle.copyWith(fontSize: AppThemesVariables.textSizeSmall),
-      bodyLarge: lightStyle.copyWith(fontSize: AppThemesVariables.textSizeNormal),
-      displaySmall: lightStyle.copyWith(fontSize: AppThemesVariables.textSizeNormal),
-      displayMedium: lightStyle.copyWith(fontSize: AppThemesVariables.textSizeLarge),
-      displayLarge: lightStyle.copyWith(fontSize: AppThemesVariables.textSizeXLarge),
-      titleSmall: lightStyle.copyWith(fontSize: AppThemesVariables.textSizeTitle),
-      titleMedium: lightStyle.copyWith(fontSize: AppThemesVariables.textSizeTitleLarge),
-      titleLarge: lightStyle.copyWith(fontSize: AppThemesVariables.textSizeTitleHuge),
+    TextTheme textTheme = TextTheme(
+      bodySmall: style.copyWith(fontSize: AppTextSizes.textSizeXSmall),
+      bodyMedium: style.copyWith(fontSize: AppTextSizes.textSizeSmall),
+      bodyLarge: style.copyWith(fontSize: AppTextSizes.textSizeNormal),
+      displaySmall: style.copyWith(fontSize: AppTextSizes.textSizeNormal),
+      displayMedium: style.copyWith(fontSize: AppTextSizes.textSizeLarge),
+      displayLarge: style.copyWith(fontSize: AppTextSizes.textSizeXLarge),
+      titleSmall: style.copyWith(fontSize: AppTextSizes.textSizeTitle),
+      titleMedium: style.copyWith(fontSize: AppTextSizes.textSizeTitleLarge),
+      titleLarge: style.copyWith(fontSize: AppTextSizes.textSizeTitleHuge),
     );
-
-    TextTheme themeDark = TextTheme(
-      bodySmall: darkStyle.copyWith(fontSize: AppThemesVariables.textSizeXSmall),
-      bodyMedium: darkStyle.copyWith(fontSize: AppThemesVariables.textSizeSmall),
-      bodyLarge: darkStyle.copyWith(fontSize: AppThemesVariables.textSizeNormal),
-      displaySmall: darkStyle.copyWith(fontSize: AppThemesVariables.textSizeNormal),
-      displayMedium: darkStyle.copyWith(fontSize: AppThemesVariables.textSizeLarge),
-      displayLarge: darkStyle.copyWith(fontSize: AppThemesVariables.textSizeXLarge),
-      titleSmall: darkStyle.copyWith(fontSize: AppThemesVariables.textSizeTitle),
-      titleMedium: darkStyle.copyWith(fontSize: AppThemesVariables.textSizeTitleLarge),
-      titleLarge: darkStyle.copyWith(fontSize: AppThemesVariables.textSizeTitleHuge),
-    );
-
-    return AppThemeDataModel<TextTheme>(
-      lightThemeData: themeLight,
-      darkThemeData: themeDark,
-    ).getMode<TextTheme>(isDark);
+    return textTheme;
   }
 
-  AppBarTheme _appBar() {
-    AppBarTheme generalTheme = const AppBarTheme(
-      centerTitle: true,
-    );
-    return AppThemeDataModel<AppBarTheme>(
-        lightThemeData: generalTheme.copyWith(
-          backgroundColor: AppThemesVariables.appBackground,
-          foregroundColor: AppThemesVariables.appPrimary,
-        ),
-        darkThemeData: generalTheme.copyWith(
-          backgroundColor: AppThemesVariables.appBackgroundDark,
-          foregroundColor: AppThemesVariables.appSecondaryDark,
-        )).getMode<AppBarTheme>(isDark);
-  }
+  static AppBarTheme _appBar() =>
+      AppBarTheme(centerTitle: true, backgroundColor: AppColors.appBarBackground.color, foregroundColor: AppColors.appBarForeground.color);
 
-  BottomAppBarTheme _bottomAppBar() {
-    BottomAppBarTheme generalTheme = const BottomAppBarTheme(
-      elevation: 5,
-    );
-    return AppThemeDataModel<BottomAppBarTheme>(
-      lightThemeData: generalTheme.copyWith(color: AppThemesVariables.appPrimary),
-      darkThemeData: generalTheme.copyWith(color: AppThemesVariables.appPrimaryDark),
-    ).getMode<BottomAppBarTheme>(isDark);
-  }
+  static BottomAppBarThemeData _bottomAppBar() => BottomAppBarThemeData(elevation: 5, color: AppColors.primary.color);
 
-  DrawerThemeData _drawer() {
-    DrawerThemeData generalTheme = const DrawerThemeData(
-      elevation: 5,
-    );
-    return AppThemeDataModel<DrawerThemeData>(
-      lightThemeData: generalTheme.copyWith(backgroundColor: AppThemesVariables.appBackground),
-      darkThemeData: generalTheme.copyWith(backgroundColor: AppThemesVariables.appBackgroundDark),
-    ).getMode<DrawerThemeData>(isDark);
-  }
+  static DrawerThemeData _drawer() => DrawerThemeData(elevation: 5, backgroundColor: AppColors.appBarBackground.color);
 
-  BottomNavigationBarThemeData _bottomNavigationBar() {
+  static BottomNavigationBarThemeData _bottomNavigationBar() {
     IconThemeData defaultIconThemeData = const IconThemeData();
 
-    BottomNavigationBarThemeData themeData = BottomNavigationBarThemeData(
-      backgroundColor: AppThemesVariables.appError,
+    return BottomNavigationBarThemeData(
+      backgroundColor: AppColors.bottomNavigationBarBackground.color,
       showSelectedLabels: true,
       showUnselectedLabels: true,
       enableFeedback: true,
       selectedIconTheme: defaultIconThemeData,
       unselectedIconTheme: defaultIconThemeData,
+      selectedItemColor: AppColors.primary.color,
+      unselectedItemColor: AppColors.primary.color,
     );
-    return AppThemeDataModel<BottomNavigationBarThemeData>(
-        lightThemeData: themeData.copyWith(
-          backgroundColor: AppThemesVariables.appPrimary,
-          selectedItemColor: AppThemesVariables.appBackground,
-          unselectedItemColor: AppThemesVariables.appTertiary,
-        ),
-        darkThemeData: themeData.copyWith(
-          backgroundColor: AppThemesVariables.appBackgroundDark,
-          selectedItemColor: AppThemesVariables.appTertiaryDark,
-          unselectedItemColor: AppThemesVariables.appTertiaryDark,
-        )).getMode<BottomNavigationBarThemeData>(isDark);
   }
 
-  NavigationBarThemeData _navigationBar() {
-    NavigationBarThemeData generalTheme = const NavigationBarThemeData();
-    return AppThemeDataModel<NavigationBarThemeData>(
-      lightThemeData: generalTheme,
-      darkThemeData: generalTheme,
-    ).getMode<NavigationBarThemeData>(isDark);
-  }
+  static NavigationBarThemeData _navigationBar() => NavigationBarThemeData(backgroundColor: AppColors.primary.color);
 
-  NavigationDrawerThemeData _navigationDrawer() {
-    NavigationDrawerThemeData generalTheme = const NavigationDrawerThemeData();
-    return AppThemeDataModel<NavigationDrawerThemeData>(
-      lightThemeData: generalTheme,
-      darkThemeData: generalTheme,
-    ).getMode<NavigationDrawerThemeData>(isDark);
-  }
+  static NavigationDrawerThemeData _navigationDrawer() => NavigationDrawerThemeData(backgroundColor: AppColors.primary.color);
 
-  NavigationRailThemeData _navigationRail() {
-    NavigationRailThemeData generalTheme = const NavigationRailThemeData();
-    return AppThemeDataModel<NavigationRailThemeData>(
-      lightThemeData: generalTheme,
-      darkThemeData: generalTheme,
-    ).getMode<NavigationRailThemeData>(isDark);
-  }
+  static NavigationRailThemeData _navigationRail() => NavigationRailThemeData(backgroundColor: AppColors.primary.color);
 
-  SnackBarThemeData _snackBar() {
-    SnackBarThemeData generalTheme = const SnackBarThemeData(
-      elevation: 10,
-      behavior: SnackBarBehavior.floating,
-    );
+  static SnackBarThemeData _snackBar() =>
+      SnackBarThemeData(elevation: 10, behavior: SnackBarBehavior.floating, backgroundColor: AppColors.tertiary.color);
 
-    return AppThemeDataModel<SnackBarThemeData>(
-      lightThemeData: generalTheme.copyWith(
-        backgroundColor: AppThemesVariables.appTertiary,
-      ),
-      darkThemeData: generalTheme.copyWith(
-        backgroundColor: AppThemesVariables.appTertiaryDark,
-      ),
-    ).getMode<SnackBarThemeData>(isDark);
-  }
+  static DialogThemeData _dialog() => DialogThemeData();
 
-  DialogTheme _dialog() {
-    DialogTheme generalTheme = const DialogTheme(
-      elevation: 10,
-    );
+  static BottomSheetThemeData _bottomSheet() => BottomSheetThemeData(backgroundColor: AppColors.background.color);
 
-    return AppThemeDataModel<DialogTheme>(
-      lightThemeData: generalTheme.copyWith(
-        backgroundColor: AppThemesVariables.appBackground,
-      ),
-      darkThemeData: generalTheme.copyWith(
-        backgroundColor: AppThemesVariables.appTertiaryDark,
-      ),
-    ).getMode<DialogTheme>(isDark);
-  }
+  static FloatingActionButtonThemeData _floatingActionButton() => FloatingActionButtonThemeData(backgroundColor: AppColors.primary.color);
 
-  BottomSheetThemeData _bottomSheet() {
-    BottomSheetThemeData generalTheme = const BottomSheetThemeData();
+  static MaterialBannerThemeData _banner() => MaterialBannerThemeData();
 
-    return AppThemeDataModel<BottomSheetThemeData>(
-      lightThemeData: generalTheme.copyWith(
-        backgroundColor: AppThemesVariables.appBackground,
-      ),
-      darkThemeData: generalTheme.copyWith(
-        backgroundColor: AppThemesVariables.appBackgroundDark,
-      ),
-    ).getMode<BottomSheetThemeData>(isDark);
-  }
+  static BadgeThemeData _badge() => BadgeThemeData();
 
-  FloatingActionButtonThemeData _floatingActionButton() {
-    FloatingActionButtonThemeData generalTheme = const FloatingActionButtonThemeData();
+  static ChipThemeData _chip() => ChipThemeData();
 
-    return AppThemeDataModel<FloatingActionButtonThemeData>(
-      lightThemeData: generalTheme,
-      darkThemeData: generalTheme,
-    ).getMode<FloatingActionButtonThemeData>(isDark);
-  }
+  static ProgressIndicatorThemeData _progressIndicator() => ProgressIndicatorThemeData();
 
-  MaterialBannerThemeData _banner() => AppThemeDataModel<MaterialBannerThemeData>(
-        lightThemeData: const MaterialBannerThemeData(),
-        darkThemeData: const MaterialBannerThemeData(),
-      ).getMode<MaterialBannerThemeData>(isDark);
+  static IconThemeData _icon() => IconThemeData();
 
-  BadgeThemeData _badge() => AppThemeDataModel<BadgeThemeData>(
-        lightThemeData: const BadgeThemeData(),
-        darkThemeData: const BadgeThemeData(),
-      ).getMode<BadgeThemeData>(isDark);
-
-  ChipThemeData _chip() => AppThemeDataModel<ChipThemeData>(
-        lightThemeData: const ChipThemeData(),
-        darkThemeData: const ChipThemeData(),
-      ).getMode<ChipThemeData>(isDark);
-
-  ProgressIndicatorThemeData _progressIndicator() => AppThemeDataModel<ProgressIndicatorThemeData>(
-        lightThemeData: const ProgressIndicatorThemeData(),
-        darkThemeData: const ProgressIndicatorThemeData(),
-      ).getMode<ProgressIndicatorThemeData>(isDark);
-
-  IconThemeData _icon() => AppThemeDataModel<IconThemeData>(
-        lightThemeData: const IconThemeData(),
-        darkThemeData: const IconThemeData(),
-      ).getMode<IconThemeData>(isDark);
-
-  ActionIconThemeData _actionIcon() => AppThemeDataModel<ActionIconThemeData>(
-        lightThemeData: const ActionIconThemeData(),
-        darkThemeData: const ActionIconThemeData(),
-      ).getMode<ActionIconThemeData>(isDark);
+  static ActionIconThemeData _actionIcon() => ActionIconThemeData();
 
   ///Text
-  TextStyle _textStyle() => TextStyle(
-        fontSize: appDefaultFontSize,
-        overflow: TextOverflow.ellipsis,
-      );
+  static TextStyle _textStyle() => TextStyle(fontSize: AppDefaults.fontSize, overflow: TextOverflow.ellipsis);
 
   ///Buttons
-  ButtonThemeData _button() {
-    ButtonThemeData generalTheme = const ButtonThemeData();
-    return AppThemeDataModel<ButtonThemeData>(
-        lightThemeData: generalTheme.copyWith(
-          buttonColor: AppThemesVariables.appBackground,
-          disabledColor: AppThemesVariables.appDisabled,
-        ),
-        darkThemeData: generalTheme.copyWith(
-          buttonColor: AppThemesVariables.appSecondaryDark,
-          disabledColor: AppThemesVariables.appDisabledDark,
-        )).getMode<ButtonThemeData>(isDark);
-  }
+  static ButtonThemeData _button() => ButtonThemeData(buttonColor: AppColors.button.color, disabledColor: AppColors.buttonDisabled.color);
 
-  TextStyle _buttonTextStyle() => TextStyle(
-        fontSize: appDefaultFontSize,
-        overflow: TextOverflow.ellipsis,
-      );
+  static TextStyle _buttonTextStyle() => TextStyle(fontSize: AppDefaults.fontSize, overflow: TextOverflow.ellipsis);
 
-  ButtonStyle _buttonStyle() => ButtonStyle(
-        shape: MaterialStateProperty.all(AppElements.borderShapeDefault),
-        textStyle: MaterialStateProperty.all(_buttonTextStyle()),
-      );
+  static ButtonStyle _buttonStyle() => ButtonStyle(
+    backgroundColor: WidgetStateProperty.all(AppColors.button.color),
+    foregroundColor: WidgetStateProperty.all(AppColors.buttonText.color),
+    shape: WidgetStateProperty.all(AppElements.borderShapeDefault),
+    textStyle: WidgetStateProperty.all(_buttonTextStyle()),
+  );
 
-  ElevatedButtonThemeData _buttonElevated() {
-    ButtonStyle buttonStyleLight = _buttonStyle().copyWith(
-      backgroundColor: MaterialStateProperty.all(AppThemesVariables.appPrimary),
-      foregroundColor: MaterialStateProperty.all(AppThemesVariables.appBackground),
-    );
+  static ElevatedButtonThemeData _buttonElevated() => ElevatedButtonThemeData(style: _buttonStyle());
 
-    ButtonStyle buttonStyleDark = _buttonStyle().copyWith(
-      backgroundColor: MaterialStateProperty.all(AppThemesVariables.appSecondaryDark),
-      foregroundColor: MaterialStateProperty.all(AppThemesVariables.appTertiaryDark),
-    );
+  static OutlinedButtonThemeData _buttonOutlined() => OutlinedButtonThemeData(style: _buttonStyle());
 
-    return AppThemeDataModel<ElevatedButtonThemeData>(
-      lightThemeData: ElevatedButtonThemeData(style: buttonStyleLight),
-      darkThemeData: ElevatedButtonThemeData(style: buttonStyleDark),
-    ).getMode<ElevatedButtonThemeData>(isDark);
-  }
+  static FilledButtonThemeData _buttonFilled() => FilledButtonThemeData(style: _buttonStyle());
 
-  OutlinedButtonThemeData _buttonOutlined() => AppThemeDataModel<OutlinedButtonThemeData>(
-        lightThemeData: OutlinedButtonThemeData(style: _buttonStyle()),
-        darkThemeData: OutlinedButtonThemeData(style: _buttonStyle()),
-      ).getMode<OutlinedButtonThemeData>(isDark);
+  static TextButtonThemeData _buttonText() => TextButtonThemeData(style: _buttonStyle());
 
-  FilledButtonThemeData _buttonFilled() => AppThemeDataModel<FilledButtonThemeData>(
-        lightThemeData: FilledButtonThemeData(style: _buttonStyle()),
-        darkThemeData: FilledButtonThemeData(style: _buttonStyle()),
-      ).getMode<FilledButtonThemeData>(isDark);
+  static IconButtonThemeData _buttonIcon() => IconButtonThemeData(style: _buttonStyle().invertColors);
 
-  TextButtonThemeData _buttonText() => AppThemeDataModel<TextButtonThemeData>(
-        lightThemeData: TextButtonThemeData(style: _buttonStyle()),
-        darkThemeData: TextButtonThemeData(style: _buttonStyle()),
-      ).getMode<TextButtonThemeData>(isDark);
+  static OverflowBar _overflowBar() => const OverflowBar();
 
-  IconButtonThemeData _buttonIcon() => AppThemeDataModel<IconButtonThemeData>(
-        lightThemeData: IconButtonThemeData(style: _buttonStyle()),
-        darkThemeData: IconButtonThemeData(style: _buttonStyle()),
-      ).getMode<IconButtonThemeData>(isDark);
+  static ToggleButtonsThemeData _buttonToggle() => const ToggleButtonsThemeData();
 
-  ButtonBarThemeData _buttonBar() => AppThemeDataModel<ButtonBarThemeData>(
-        lightThemeData: const ButtonBarThemeData(),
-        darkThemeData: const ButtonBarThemeData(),
-      ).getMode<ButtonBarThemeData>(isDark);
-
-  ToggleButtonsThemeData _buttonToggle() => AppThemeDataModel<ToggleButtonsThemeData>(
-        lightThemeData: const ToggleButtonsThemeData(),
-        darkThemeData: const ToggleButtonsThemeData(),
-      ).getMode<ToggleButtonsThemeData>(isDark);
-
-  MenuButtonThemeData _buttonMenu() => AppThemeDataModel<MenuButtonThemeData>(
-        lightThemeData: MenuButtonThemeData(style: _buttonStyle()),
-        darkThemeData: MenuButtonThemeData(style: _buttonStyle()),
-      ).getMode<MenuButtonThemeData>(isDark);
+  static MenuButtonThemeData _buttonMenu() => MenuButtonThemeData(style: _buttonStyle());
 
   ///Menus
-  DropdownMenuThemeData _buttonDropDown() => AppThemeDataModel<DropdownMenuThemeData>(
-        lightThemeData: const DropdownMenuThemeData(),
-        darkThemeData: const DropdownMenuThemeData(),
-      ).getMode<DropdownMenuThemeData>(isDark);
+  static DropdownMenuThemeData _buttonDropDown() => const DropdownMenuThemeData();
 
   ///Others
-  CardTheme _card() {
-    CardTheme theme = CardTheme(shape: AppElements.borderShapeDefault);
-    return AppThemeDataModel<CardTheme>(
-        lightThemeData: theme.copyWith(
-          color: AppThemesVariables.appBackground,
-        ),
-        darkThemeData: CardTheme(
-          color: AppThemesVariables.appBackgroundDark,
-        )).getMode<CardTheme>(isDark);
-  }
+  static CardTheme _card() => CardTheme(shape: AppElements.borderShapeDefault, color: AppColors.background.color);
 
-  CheckboxThemeData _checkBox() {
-    CheckboxThemeData themeData = const CheckboxThemeData();
-    return AppThemeDataModel<CheckboxThemeData>(
-        lightThemeData: themeData.copyWith(
-          checkColor: MaterialStateProperty.all(AppThemesVariables.appBackground),
-          fillColor: MaterialStateProperty.all(AppThemesVariables.appPrimary),
-          // side: AppElements.borderSide,
-        ),
-        darkThemeData: themeData.copyWith(
-          checkColor: MaterialStateProperty.all(AppThemesVariables.appBackgroundDark),
-          fillColor: MaterialStateProperty.all(AppThemesVariables.appPrimaryDark),
-        )).getMode<CheckboxThemeData>(isDark);
-  }
+  static CheckboxThemeData _checkBox() => CheckboxThemeData(
+    checkColor: WidgetStateProperty.all(AppColors.background.color),
+    fillColor: WidgetStateProperty.all(AppColors.primary.color),
+    // side: AppElements.borderSide,
+  );
 
-  SwitchThemeData _switch() {
-    SwitchThemeData themeData = const SwitchThemeData();
-    return AppThemeDataModel<SwitchThemeData>(
-        lightThemeData: themeData.copyWith(
-          overlayColor: MaterialStateProperty.all(AppThemesVariables.appBackground),
-          trackOutlineColor: MaterialStateProperty.all(AppThemesVariables.appPrimary),
-          thumbColor: MaterialStateProperty.all(AppThemesVariables.appBackground),
-        ),
-        darkThemeData: themeData.copyWith(
-          overlayColor: MaterialStateProperty.all(AppThemesVariables.appBackgroundDark),
-          trackOutlineColor: MaterialStateProperty.all(AppThemesVariables.appPrimaryDark),
-          thumbColor: MaterialStateProperty.all(AppThemesVariables.appBackgroundDark),
-        )).getMode<SwitchThemeData>(isDark);
-  }
+  static SwitchThemeData _switch() => SwitchThemeData(
+    overlayColor: WidgetStateProperty.all(AppColors.background.color),
+    trackOutlineColor: WidgetStateProperty.all(AppColors.primary.color),
+    thumbColor: WidgetStateProperty.all(AppColors.background.color),
+  );
 
-  DividerThemeData _divider() {
-    DividerThemeData themeData = const DividerThemeData();
-    return AppThemeDataModel<DividerThemeData>(
-        lightThemeData: themeData.copyWith(
-          color: AppThemesVariables.appSecondary,
-        ),
-        darkThemeData: themeData.copyWith(
-          color: AppThemesVariables.appSecondaryDark,
-        )).getMode<DividerThemeData>(isDark);
-  }
+  static DividerThemeData _divider() => DividerThemeData(color: AppColors.secondary.color);
 }

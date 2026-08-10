@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import '../../barrels/ui_kit_barrel.dart';
 
 class AppPaddings extends EdgeInsets {
   const AppPaddings.all(double? value) : super.all(value ?? 0);
   const AppPaddings.only({double? left, double? top, double? right, double? bottom})
-      : super.only(left: left ?? 0, top: top ?? 0, right: right ?? 0, bottom: bottom ?? 0);
+    : super.only(left: left ?? 0, top: top ?? 0, right: right ?? 0, bottom: bottom ?? 0);
   const AppPaddings.fromLTRB(double? left, double? top, double? right, double? bottom) : super.fromLTRB(left ?? 0, top ?? 0, right ?? 0, bottom ?? 0);
   const AppPaddings.symmetric({double? horizontal, double? vertical}) : super.symmetric(horizontal: horizontal ?? 0, vertical: vertical ?? 0);
 
@@ -32,6 +31,7 @@ class AppPaddings extends EdgeInsets {
   static EdgeInsets get snackBar => const EdgeInsets.symmetric(horizontal: 20, vertical: 20);
 
   ///Buttons
+  static EdgeInsets get buttonDefaultPadding => const EdgeInsets.symmetric(horizontal: 10, vertical: 10);
   static EdgeInsets get buttonXSmall => const EdgeInsets.symmetric(horizontal: 100, vertical: 10);
   static EdgeInsets get buttonSmall => const EdgeInsets.symmetric(horizontal: 80, vertical: 10);
   static EdgeInsets get buttonMedium => const EdgeInsets.symmetric(horizontal: 60, vertical: 10);
@@ -50,7 +50,7 @@ class AppPaddings extends EdgeInsets {
   static EdgeInsets get homepageButtons => const EdgeInsets.fromLTRB(50, 40, 50, 0);
 
   ///Settings
-  static EdgeInsets get settingsSection => const EdgeInsets.fromLTRB(0, 20, 0, 10);
+  static EdgeInsets get settingsSection => const EdgeInsets.fromLTRB(20, 20, 20, 10);
   static EdgeInsets get settingsItem => const EdgeInsets.symmetric(horizontal: 15, vertical: 10);
 
   ///Update

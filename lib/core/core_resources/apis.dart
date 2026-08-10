@@ -1,8 +1,9 @@
-import '../core_info/app_info.dart';
-import 'core_enums.dart';
+import '../../barrels/components_barrel.dart';
+import '../../barrels/core_barrel.dart';
+import '../../barrels/core_resources_barrel.dart';
 
 ///
-/// All APIs URls are gathering here in [AppAPIs] to have the best changing performance
+/// All APIs URls are gathering here in [AppAPIUrls] to have the best changing performance
 /// You can use [_apiBaseUrl] for the Base for all, it means the base url of the business website
 /// Use [_apiVersion] for determine the version of api and it could be easily changed
 /// [_apiUrl] is the generated API URl that you can use for APIS here, the every API will be used in the App
@@ -11,17 +12,16 @@ import 'core_enums.dart';
 /// Then API URLs will generate for every API and you use them all over the App
 ///
 
-class AppAPIs {
+class AppAPIUrls {
   /// [Main Variables] for generating APIs are:
-  // static String get _apiBaseUrl => '${AppInfo.subDomain}.${AppInfo.baseUrl}';
-  static String get _apiBaseUrl => 'www.${AppInfo.baseUrl}/${AppInfo.subDomain}';
+  static String get _apiBaseUrl => EnvironmentHandler.apiHost;
   static String get _apiVersion => APIVersions.v1.getValue;
   static String get _apiUrl => 'https://$_apiBaseUrl/$_apiVersion';
 
   /// Defining [Sections]
-  //Sections
   static String get _apiSectionVersion => '$_apiUrl/${APISections.versions.getName}';
   static String get _apiSectionUpdate => '$_apiUrl/${APISections.update.getName}';
+  static String get _apiSectionAuth => '$_apiUrl/${APISections.auth.getName}';
 
   /// [Sections]:
   //Version
@@ -30,4 +30,10 @@ class AppAPIs {
   //Update
   static String get apiGetUpdateAddress => '$_apiSectionUpdate/get_download_address';
   static String get apiGetUpdateAPKDownload => '$apiGetUpdateAddress/${AppInfo.fileNameAPK}';
+
+  //Auth
+  static String get apiLogin => '$_apiSectionAuth/login';
+  static String get apiLogout => '$_apiSectionAuth/logout';
+  static String get apiRefreshToken => '$_apiSectionAuth/refresh';
+  static String get apiMe => '$_apiSectionAuth/me';
 }

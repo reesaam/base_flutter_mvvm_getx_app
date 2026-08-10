@@ -1,13 +1,15 @@
 import 'dart:io';
-import 'package:get/get.dart';
-import 'package:getx_binding_annotation/annotation.dart';
+
 import 'package:permission_handler/permission_handler.dart';
 
-import '../../shared/shared_models/base_models/permission_base_response_model/permission_base_response.dart';
-import '../../core/extensions/extensions_on_data_models/extension_permission.dart';
+import '../../barrels/annotations_barrel.dart';
+import '../../barrels/core_barrel.dart';
+import '../../barrels/core_elements_barrel.dart';
+import '../../barrels/extensions_barrel.dart';
+import '../../barrels/shared_models_barrel.dart';
 
 @GetPut.component()
-class AppPermissions {
+class AppPermissions extends CoreComponent {
   static AppPermissions get to => Get.find();
 
   AppPermissions() {
@@ -65,33 +67,27 @@ class AppPermissions {
 
   Future<List<PermissionBaseResponse>> checkAllPermissions() async => await checkPermissionsList(_listPermissions);
 
-  PermissionBaseResponse _createResponse({
-    required Permission permission,
-    required PermissionStatus status,
-  }) =>
-      PermissionBaseResponse(
-        permission: permission.getName,
-        status: status,
-      );
+  PermissionBaseResponse _createResponse({required Permission permission, required PermissionStatus status}) =>
+      PermissionBaseResponse(permission: permission.getName, status: status);
 
   List<String> get _listManifestPermissions => [
-        'ACCESS_COARSE_LOCATION',
-        'ACCESS_FINE_LOCATION',
-        'ACCESS_LOCATION_EXTRA_COMMANDS',
-        'ACCESS_NETWORK_STATE',
-        'ACCESS_NOTIFICATION_POLICY',
-        'ACCESS_WIFI_STATE',
-        'ANSWER_PHONE_CALLS',
-        'CALL_PHONE',
-        'READ_CALL_LOG',
-        'ANSWER_PHONE_CALLS',
-        'CAMERA',
-        'CHANGE_WIFI_STATE',
-        'INTERNET',
-        'READ_EXTERNAL_STORAGE',
-        'READ_PHONE_STATE',
-        'READ_SMS',
-        'SEND_SMS',
-        'VIBRATE',
-      ];
+    'ACCESS_COARSE_LOCATION',
+    'ACCESS_FINE_LOCATION',
+    'ACCESS_LOCATION_EXTRA_COMMANDS',
+    'ACCESS_NETWORK_STATE',
+    'ACCESS_NOTIFICATION_POLICY',
+    'ACCESS_WIFI_STATE',
+    'ANSWER_PHONE_CALLS',
+    'CALL_PHONE',
+    'READ_CALL_LOG',
+    'ANSWER_PHONE_CALLS',
+    'CAMERA',
+    'CHANGE_WIFI_STATE',
+    'INTERNET',
+    'READ_EXTERNAL_STORAGE',
+    'READ_PHONE_STATE',
+    'READ_SMS',
+    'SEND_SMS',
+    'VIBRATE',
+  ];
 }

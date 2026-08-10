@@ -1,22 +1,19 @@
-import '../../shared/shared_models/core_models/app_version/app_version.dart';
-import '../core_functions.dart';
+import '../../barrels/core_resources_barrel.dart';
+import '../../barrels/shared_models_barrel.dart';
 
 class AppInfo {
-  static String get appName => 'Base Flutter MVVM GetX App';
-  static String get appNameInitials => 'BFMGA';
-  static String get website => 'resam.site';
+  static const String appName = 'Base Flutter MVVM GetX App';
+  static const String appNameInitials = 'BFMGA';
+  static const String website = 'resam.site';
 
-  //Versioning
-  static AppVersion get currentVersion => const AppVersion(version: '0.0.1');
-  static AppVersionsList get versions => loadAppData()?.appVersions ?? AppVersionsList();
-  static int get versionsCounter => versions.versionsList.length;
+  // Version
+  static const AppVersion currentVersion = AppVersion(version: '0.2.0');
 
-  //Domains
-  static String get baseUrl => 'resam.site';
-  static String get subDomain => 'basefluttermvvmgetx';
+  // Environment — change this to switch the whole app (dev / stage / production)
+  static const Environment environment = Environment.development;
 
-  //FileNames
-  static String get fileNameAPK => '${AppInfo.appNameInitials}_android.apk';
-  static String get fileNameIPA => '${AppInfo.appNameInitials}_ios.ipa';
-  static String get fileNameBackup => '${AppInfo.appNameInitials}_Backup.json';
+  // FileNames
+  static const String fileNameAPK = '${AppInfo.appNameInitials}_android.apk';
+  static const String fileNameIPA = '${AppInfo.appNameInitials}_ios.ipa';
+  static const String fileNameBackup = '${AppInfo.appNameInitials}_Backup.json';
 }

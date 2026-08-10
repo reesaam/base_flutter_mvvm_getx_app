@@ -89,11 +89,11 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "site.resam.basefluttermvvmgetx" "\0"
+            VALUE "CompanyName", "site.resam" "\0"
             VALUE "FileDescription", "base_flutter_mvvm_getx_app" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "base_flutter_mvvm_getx_app" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2024 site.resam.basefluttermvvmgetx. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2026 site.resam. All rights reserved." "\0"
             VALUE "OriginalFilename", "base_flutter_mvvm_getx_app.exe" "\0"
             VALUE "ProductName", "base_flutter_mvvm_getx_app" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"

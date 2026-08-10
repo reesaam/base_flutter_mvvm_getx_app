@@ -1,8 +1,11 @@
-import 'package:getx_binding_annotation/annotation.dart';
+import '../../barrels/core_barrel.dart';
 
 import 'general_exception.dart';
+import 'local_exceptions.dart';
 
-@GetPut.component()
+export 'general_exception.dart';
+export 'local_exceptions.dart';
+
 class LocalException implements GeneralException {
   LocalException({this.message, this.statusCode});
 
@@ -11,32 +14,18 @@ class LocalException implements GeneralException {
   @override
   final int? statusCode;
 
-  static LocalException handleResponse(ex) {
-    switch (ex) {
-      case null:
-        throw NullException();
-      case 203:
-        throw StorageLoadDataException();
-      case 204:
-        throw StorageSaveDataException();
-      default:
-        throw UnknownException();
+  static LocalException handleResponse(GeneralException ex, StackTrace? stacktrace) {
+    if (ex is LocalException) {
+      return LocalException(message: ex.message, statusCode: ex.statusCode);
+    }
+    final matched = LocalExceptions.values.firstWhereOrNull((e) => e.statusCode == ex.statusCode);
+    if (matched == null) {
+      return LocalException(message: LocalExceptions.unknownException.name, statusCode: 0);
+    }
+    try {
+      return matched.exception;
+    } catch (_) {
+      return LocalException(message: matched.name, statusCode: matched.statusCode);
     }
   }
-}
-
-class StorageLoadDataException extends LocalException {
-  StorageLoadDataException() : super(message: 'Storage Load Data Exception');
-}
-
-class StorageSaveDataException extends LocalException {
-  StorageSaveDataException() : super(message: 'Storage Save Data Exception');
-}
-
-class NullException extends LocalException {
-  NullException() : super(message: 'Null Exception');
-}
-
-class UnknownException extends LocalException {
-  UnknownException() : super(message: 'Unknown Error');
 }

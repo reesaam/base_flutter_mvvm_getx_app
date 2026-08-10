@@ -27,6 +27,7 @@ migrate_working_dir/
 .pub/
 /build/
 pubspec.lock
+devtools_options.yaml
 
 *.freezed.dart
 *.g.dart
@@ -46,3 +47,14 @@ app.*.map.json
 
 # Localization
 /lib/generated/intl/
+
+/.idea/
+/.dart_tool/
+/lib/localization/translation*.dart
+**.swift
+*.cc
+# Local / secret env files (never commit real secrets)
+config/envs/env.local.json
+config/envs/env.production.json
+FLUTTER
+GENERATE

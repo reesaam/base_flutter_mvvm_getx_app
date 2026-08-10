@@ -1,34 +1,25 @@
-import 'package:flutter/widgets.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:get/get.dart';
-import 'package:getx_binding_annotation/annotation.dart';
-import 'package:timezone/timezone.dart';
-
-import '../core/core_resources/countries.dart';
-import '../core/extensions/extensions_on_data_types/extension_time_zone.dart';
-
-//Languages Import
-import 'translation.i69n.dart';
-import 'translation_fa.i69n.dart';
+import '../barrels/annotations_barrel.dart';
+import '../barrels/core_barrel.dart';
+import '../barrels/core_resources_barrel.dart';
+import '../barrels/extensions_barrel.dart';
+import '../barrels/localization_barrel.dart';
 
 const _supportedLocales = ['en', 'fa'];
 
 class Texts {
   Texts._();
-  static Translation get to => AppLocalizations.of(Get.context!);
+  static Translation get to => AppLocalizations.to.of(Get.context!);
 }
 
 @GetPut.component()
 class AppLocalizations {
   AppLocalizations({this.translation});
+
   static AppLocalizations get to => Get.find();
 
   final Translation? translation;
 
-  static final _translations = <String, Translation Function()>{
-    'en': () => const Translation(),
-    'fa': () => const Translation_fa(),
-  };
+  static final _translations = <String, Translation Function()>{'en': () => const Translation(), 'fa': () => const Translation_fa()};
 
   get localizationDelegates => [_delegate, _material, _widgets, _cupertino];
   LocalizationsDelegate get _delegate => const _AppLocalizationsDelegate();
@@ -36,21 +27,17 @@ class AppLocalizations {
   LocalizationsDelegate get _widgets => GlobalWidgetsLocalizations.delegate;
   LocalizationsDelegate get _cupertino => GlobalCupertinoLocalizations.delegate;
 
-  static List<Locale> get supportedLocales => _supportedLocales.map((x) => Locale(x)).toList();
+  List<Locale> get supportedLocales => _supportedLocales.map((x) => Locale(x)).toList();
 
-  static Future<AppLocalizations> load(Locale locale) => Future.value(AppLocalizations(translation: _translations[locale.languageCode]!()));
+  Future<AppLocalizations> load(Locale locale) => Future.value(AppLocalizations(translation: _translations[locale.languageCode]!()));
 
-  static Translation of(BuildContext context) => Localizations.of<AppLocalizations>(context, AppLocalizations)!.translation!;
+  Translation of(BuildContext context) => Localizations.of<AppLocalizations>(context, AppLocalizations)!.translation!;
 
   /// Manual Added
   // TimeZone & Country
   TimeZone getTimeZone() {
     DateTime currentTime = DateTime.now();
-    TimeZone timeZone = TimeZone(
-      currentTime.timeZoneOffset.inMilliseconds,
-      abbreviation: currentTime.timeZoneName,
-      isDst: currentTime.timeZoneName.contains('DT'),
-    );
+    TimeZone timeZone = TimeZone(currentTime.timeZoneOffset, abbreviation: currentTime.timeZoneName, isDst: currentTime.timeZoneName.contains('DT'));
     return timeZone;
   }
 
@@ -72,7 +59,7 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   bool isSupported(Locale locale) => _supportedLocales.contains(locale.languageCode);
 
   @override
-  Future<AppLocalizations> load(Locale locale) => AppLocalizations.load(locale);
+  Future<AppLocalizations> load(Locale locale) => AppLocalizations.to.load(locale);
 
   @override
   bool shouldReload(LocalizationsDelegate<AppLocalizations> old) => false;

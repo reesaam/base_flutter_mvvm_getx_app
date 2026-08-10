@@ -1,23 +1,18 @@
 import 'dart:async';
 
-import 'package:get/get.dart';
-import 'package:getx_binding_annotation/annotation.dart';
-
-import '../../../components/storage/app_storage_module.dart';
-import '../../../core/app_routing/app_routing.dart';
-import '../../../core/core_elements/core_controller.dart';
-import '../../../core/core_functions.dart';
-import '../../../core/core_resources/core_enums.dart';
-import '../../../core/core_resources/core_flags.dart';
-import '../../../core/core_resources/page_details.dart';
-import '../../../core/extensions/extensions_on_data_models/extension_settings.dart';
-import '../../../core/extensions/extensions_on_data_types/extension_language.dart';
-import '../../../localization/localizations.dart';
-import '../../../shared/shared_models/core_models/app_settings_data/app_setting_data.dart';
-import '../../../shared/shared_models/core_models/app_version/app_version.dart';
-import '../../../ui_kit/dialogs/app_alert_dialogs.dart';
-import '../../../ui_kit/dialogs/app_bottom_dialogs.dart';
-import '../../../ui_kit/theme/themes.dart';
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/components_barrel.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
+import '../../../barrels/core_resources_barrel.dart';
+import '../../../barrels/extensions_barrel.dart';
+import '../../../barrels/localization_barrel.dart';
+import '../../../barrels/shared_models_barrel.dart';
+import '../../../barrels/ui_kit_barrel.dart';
+// ignore: barrel_import_lints/only_barrel_imports
+import '../../auth/controller/auth_controller.dart';
+// ignore: barrel_import_lints/only_barrel_imports
+import '../../versions/controller/versions_controller.dart';
 import '../widgets/settings_languages_widgets.dart';
 
 @GetPut.controller()
@@ -33,14 +28,15 @@ class SettingsController extends CoreController {
   late StreamSubscription<AppSettingData> appSettingDataListener;
 
   @override
-  void dataInit() {
-    appSettings.value = loadAppData()?.settings ?? const AppSettingData();
+  void dataInit() async {
+    final loadedAppData = await loadAppData();
+    appSettings.value = loadedAppData?.settings ?? const AppSettingData();
     CoreFlags.checkUpdate ? functionCheckUpdateAvailableVersion() : null;
   }
 
   @override
   void pageInit() {
-    pageDetail = AppPageDetails.settings;
+    pageDetail = AppPages.settings;
   }
 
   @override
@@ -54,18 +50,24 @@ class SettingsController extends CoreController {
     appSettingDataListener.cancel();
   }
 
-  _fillData() {
+  void _fillData() {
     darkMode.value = appSettings.value.darkMode;
     selectedLanguage.value = appSettings.value.language;
     appDebugPrint('Fill Setting Data Function Applied Data');
-    appSettingDataListener = appSettings.listen((data) => _fillData());
+    appSettingDataListener = appSettings.listen((data) {
+      darkMode.value = data.darkMode;
+      selectedLanguage.value = data.language;
+    });
   }
 
-  functionLanguageModal() => AppBottomDialogs().withCancel(
-      title: Texts.to.settings.settingsLanguageModalSelectLanguage, form: SettingsLanguageWidget(function: functionLanguageSelectionOnTap), dismissible: true);
+  functionLanguageModal() => AppBottomSheet().withCancel(
+    title: Texts.to.settings.languageModalSelectLanguage,
+    form: SettingsLanguageWidget(function: functionLanguageSelectionOnTap),
+    dismissible: true,
+  );
 
   functionLanguageSelectionOnTap(int index) {
-    selectedLanguage.value = AppLocalizations.supportedLocales[index].getLanguage;
+    selectedLanguage.value = AppLocalizations.to.supportedLocales[index].getLanguage;
     appSettings.value = appSettings.value.copyWith(language: selectedLanguage.value);
     appSettings.changeLanguage(selectedLanguage.value);
     saveSettings();
@@ -80,15 +82,16 @@ class SettingsController extends CoreController {
     appSettings.value = appSettings.value.copyWith(darkMode: value);
     saveSettings();
     appLogPrint('DarkMode Changed to ${darkMode.value}');
-    Get.changeTheme(darkMode.value ? AppThemes.darkTheme : AppThemes.lightTheme);
+    AppThemeFunctions.to.changeThemeMode(darkMode.value);
+    update();
   }
 
   functionCheckUpdateAvailableVersion() async {
-    updateAvailableVersion.value = await checkAvailableVersion();
+    updateAvailableVersion.value = await VersionsController.to.checkUpdateAvailableVersion();
     appLogPrint('Checked Update Version: ${updateAvailableVersion.value?.version ?? Texts.to.general.notAvailable}');
   }
 
-  functionGoToUpdatePage() => goToUpdatePage();
+  functionGoToUpdatePage() => goToPage(AppPages.update);
 
   functionBackup() {
     function() async {
@@ -96,7 +99,12 @@ class SettingsController extends CoreController {
       await AppStorage.to.exportData();
     }
 
-    AppAlertDialogs.withOkCancel(title: Texts.to.general.warning, text: Texts.to.dialogs.areYouSureDataExport, onTapOk: function, dismissible: true);
+    AppAlertDialogs.withOkCancel(
+      title: Texts.to.general.warning,
+      text: Texts.to.dialogs.data.areYouSureDataExport,
+      onTapOk: function,
+      dismissible: true,
+    );
   }
 
   functionRestore() {
@@ -105,7 +113,12 @@ class SettingsController extends CoreController {
       await AppStorage.to.importData();
     }
 
-    AppAlertDialogs.withOkCancel(title: Texts.to.general.warning, text: Texts.to.dialogs.areYouSureDataMayLost, onTapOk: function, dismissible: true);
+    AppAlertDialogs.withOkCancel(
+      title: Texts.to.general.warning,
+      text: Texts.to.dialogs.data.areYouSureDataMayLost,
+      onTapOk: function,
+      dismissible: true,
+    );
   }
 
   clearAllData() {
@@ -116,7 +129,12 @@ class SettingsController extends CoreController {
       refresh();
     }
 
-    AppAlertDialogs.withOkCancel(title: Texts.to.general.warning, text: Texts.to.dialogs.areYouSureDataWillLost, onTapOk: function, dismissible: true);
+    AppAlertDialogs.withOkCancel(
+      title: Texts.to.general.warning,
+      text: Texts.to.dialogs.data.areYouSureDataWillLost,
+      onTapOk: function,
+      dismissible: true,
+    );
   }
 
   resetAllSettings() {
@@ -127,8 +145,26 @@ class SettingsController extends CoreController {
       refresh();
     }
 
-    AppAlertDialogs.withOkCancel(title: Texts.to.general.warning, text: Texts.to.dialogs.areYouSureDataWillLost, onTapOk: function, dismissible: true);
+    AppAlertDialogs.withOkCancel(
+      title: Texts.to.general.warning,
+      text: Texts.to.dialogs.data.areYouSureDataWillLost,
+      onTapOk: function,
+      dismissible: true,
+    );
   }
 
   saveSettings() => saveAppData(appSettingData: appSettings.value);
+
+  Future<void> logout() async {
+    AppAlertDialogs.withOkCancel(
+      title: Texts.to.general.warning,
+      text: Texts.to.dialogs.general.areYouSure,
+      dismissible: true,
+      onTapOk: () async {
+        popPage();
+        final auth = Get.isRegistered<AuthController>() ? AuthController.to : Get.put(AuthController());
+        await auth.logout();
+      },
+    );
+  }
 }

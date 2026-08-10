@@ -1,21 +1,20 @@
-import 'package:get/get.dart';
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
+import '../../../barrels/core_resources_barrel.dart';
+import '../../../barrels/shared_models_barrel.dart';
 
-import '../../../core/core_elements/core_controller.dart';
-import '../../../core/core_functions.dart';
-import '../../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
-import '../../../shared/shared_models/core_models/app_statistics_data/app_statistics_data.dart';
-import '../../../core/core_resources/page_details.dart';
-
+@GetPut.controller()
 class AppDocsController extends CoreController {
-
   @override
-  AppPageDetail get pageDetail => AppPageDetails.appDocs;
+  AppPageDetail get pageDetail => AppPages.appDocs;
 
   Rx<AppStatisticsData> statisticsData = const AppStatisticsData().obs;
 
   @override
-  void dataInit() {
-    statisticsData.value = loadAppData()?.statisticsData ?? AppStatisticsData();
+  void dataInit() async {
+    final loadedAppData = await loadAppData();
+    statisticsData.value = loadedAppData?.statisticsData ?? statisticsData.value;
   }
 
   generateDocs() {}

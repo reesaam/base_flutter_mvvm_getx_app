@@ -1,12 +1,8 @@
-import 'package:dartz/dartz.dart';
-import 'package:getx_binding_annotation/annotation.dart';
-
-import '../../core/core_resources/core_enums.dart';
-import '../failures/local_exception.dart';
+import '../../barrels/core_resources_barrel.dart';
 
 abstract class AppStorageModuleAbstraction {
-  Future<Either<LocalException, bool>> clearStorage(String key);
-  Future<Either<LocalException, bool>> hasData(String key);
-  Future<Either<LocalException, Map<String, dynamic>?>> loadData(String key);
-  Future<Either<LocalException, bool>> saveData({required String key, required Map<String, dynamic> data});
+  Future<BaseLocalResponse<bool>> clear(String key);
+  Future<BaseLocalResponse<bool>> hasData(String key);
+  Future<BaseLocalResponse<Map<String, dynamic>?>> loadData(String key);
+  Future<BaseLocalResponse<bool>> saveData({required String key, required Map<String, dynamic> data});
 }

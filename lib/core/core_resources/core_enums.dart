@@ -1,34 +1,31 @@
-import 'package:flutter/material.dart';
-
-import 'countries.dart';
+import '../../barrels/core_barrel.dart';
 
 enum AppDataVersions {
-  v1(1);
+  v1;
 
-  final int number;
-  const AppDataVersions(this.number);
+  String get number => name.replaceRange(0, 1, '');
 }
 
-enum AppStorageProvider {
-  getStorage,
-  sharedPreferences,
+enum AppStorageProvider { getStorage, sharedPreferences }
+
+enum Environment {
+  development,
+  stage,
+  production;
 }
 
-enum AppVersionTypes {
-  release,
-  beta,
-  hidden,
-}
+enum AppVersionTypes { release, beta, hidden }
 
 enum APIVersions {
   v1;
 
-  String get getValue => name;
+  String get getValue => name.replaceRange(0, 1, '');
 }
 
 enum APISections {
   versions,
-  update;
+  update,
+  auth;
 
   String get getName => name;
 }
@@ -44,6 +41,4 @@ enum AppLanguages {
   const AppLanguages(this.languageName, this.locale, this.textDirection);
 }
 
-enum AppStorageKeys {
-  keyAppData,
-}
+enum AppStorageKeys { appSecureStorage, appData, deepLink, accessToken, refreshToken, authUser }

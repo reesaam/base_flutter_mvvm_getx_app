@@ -1,17 +1,14 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:getx_binding_annotation/annotation.dart';
-
-import '../../../core/core_elements/core_controller.dart';
-import '../../../localization/localizations.dart';
-import '../../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
-import '../../../core/core_resources/page_details.dart';
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
+import '../../../barrels/core_resources_barrel.dart';
+import '../../../barrels/localization_barrel.dart';
+import '../../../barrels/shared_models_barrel.dart';
+import '../../../barrels/ui_kit_barrel.dart';
 
 @GetPut.controller()
 class AdminVerifiersController extends CoreController {
-
   @override
-  AppPageDetail get pageDetail => AppPageDetails.adminVerifiersPage;
+  AppPageDetail get pageDetail => AppPages.adminVerifiersPage;
 
   TextEditingController generalController = TextEditingController();
   TextEditingController passwordController = TextEditingController();

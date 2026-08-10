@@ -1,20 +1,16 @@
 import 'dart:io';
 
 import 'package:flutter_file_dialog/flutter_file_dialog.dart';
-import 'package:get/get.dart';
-import 'package:getx_binding_annotation/annotation.dart';
 
-import '../../../core/core_functions.dart';
+import '../../barrels/annotations_barrel.dart';
+import '../../barrels/core_barrel.dart';
+import '../../barrels/core_elements_barrel.dart';
 
 @GetPut.component()
-class AppFileFunctions {
+class AppFileFunctions extends CoreComponent {
   static AppFileFunctions get to => Get.find();
 
-  Future<String?> saveFile({
-    required String fileName,
-    required data,
-    String? filePath,
-  }) async {
+  Future<String?> saveFile({required String fileName, required data, String? filePath}) async {
     SaveFileDialogParams saveParams = SaveFileDialogParams(data: data, fileName: fileName, sourceFilePath: filePath);
     String? path = await FlutterFileDialog.saveFile(params: saveParams);
     appLogPrint('File Saved');
@@ -24,11 +20,7 @@ class AppFileFunctions {
     return path;
   }
 
-  Future<File?> pickFile({
-    OpenFileDialogType? dialogType,
-    SourceType? sourceType,
-    List<String>? fileExtensionsFilter,
-  }) async {
+  Future<File?> pickFile({OpenFileDialogType? dialogType, SourceType? sourceType, List<String>? fileExtensionsFilter}) async {
     File? importFile;
     OpenFileDialogParams openFileParams = OpenFileDialogParams(
       dialogType: dialogType ?? OpenFileDialogType.document,

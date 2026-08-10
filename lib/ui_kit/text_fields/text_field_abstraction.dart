@@ -1,4 +1,3 @@
-import 'text_field.dart';
 import 'text_field_widget.dart';
 
 /// Abstraction for TextField to Determine what functions TextFields have without checking the main file.

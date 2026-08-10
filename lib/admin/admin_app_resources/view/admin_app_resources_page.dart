@@ -1,14 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:getx_binding_annotation/annotation.dart';
+import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/components_barrel.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
+import '../../../barrels/core_resources_barrel.dart';
+import '../../../barrels/ui_kit_barrel.dart';
 
-import '../../../core/core_elements/core_view.dart';
-import '../../../core/core_info/app_info.dart';
-import '../../../core/core_resources/core_enums.dart';
-import '../../../core/core_resources/defaults.dart';
-import '../../../ui_kit/general_widgets/dividers.dart';
-import '../../../ui_kit/main_widgets/app_bar.dart';
-import '../../../ui_kit/resources/paddings.dart';
-import '../../../ui_kit/theme/themes.dart';
 import '../../admin_general_functions.dart';
 import '../controller/admin_app_resources_controller.dart';
 
@@ -23,94 +19,102 @@ class AdminAppResourcesPage extends CoreView<AdminAppResourcesController> {
   EdgeInsets? get pagePadding => AppPaddings.zero;
 
   @override
-  Widget get body => Column(children: [
-        AppDividers.generalWithDisabledColor,
-        _appDefaults(),
-        _appAPIs(),
-        _appTheme(),
-        _appColorsLight(),
-        _appColorsDark(),
-      ]);
+  Widget get body => Column(children: [AppDividers.generalWithDisabledColor, _appDefaults(), _appAPIs(), _appColors(), _appColorPalette()]);
 
   _appDefaults() => AdminFunctions.section([
-        AdminFunctions.item(title: 'Font Size', text: appDefaultFontSize.toInt().toString()),
-        AdminFunctions.item(title: 'Connection Timeout', text: appDefaultConnectionTimeOut.inSeconds.toString()),
-        AdminFunctions.item(title: 'Circular Progress Bar Width', text: defaultCircularProgressBarWidth.toInt().toString()),
-        AdminFunctions.item(title: 'SnackBar Animation Duration', text: appSnackBarDefaultAnimationDuration.inSeconds.toInt().toString()),
-        AdminFunctions.item(title: 'SnackBar Duration', text: appSnackBarDefaultDuration.inSeconds.toInt().toString()),
-        AdminFunctions.item(title: 'Snack Position', text: appDefaultSnackPosition.toString().split('.').last),
-        AdminFunctions.item(title: 'Border Width', text: appDefaultBorderWidth.toInt().toString()),
-      ], title: 'App Defaults');
+    AdminFunctions.item(title: 'Font Size', text: AppDefaults.fontSize.toInt().toString()),
+    AdminFunctions.item(title: 'Connection Timeout', text: AppDefaults.timeOutConnection.inSeconds.toString()),
+    AdminFunctions.item(title: 'Transition', text: AppDefaults.transition.name),
+    AdminFunctions.item(title: 'Transition Duration', text: AppDefaults.transitionDuration.inSeconds.toString()),
+    AdminFunctions.item(title: 'Page Transition Delay', text: AppDefaults.pageTransitionDelay.seconds.inSeconds.toString()),
+    AdminFunctions.item(title: 'Circular Progress Bar Width', text: AppDefaults.borderWidth.toInt().toString()),
+    AdminFunctions.item(title: 'SnackBar Animation Duration', text: AppDefaults.snackBarAnimationDuration.inSeconds.toInt().toString()),
+    AdminFunctions.item(title: 'SnackBar Duration', text: AppDefaults.snackBarDuration.inSeconds.toInt().toString()),
+    AdminFunctions.item(title: 'Snack Position', text: AppDefaults.snackBarPosition.toString().split('.').last),
+    AdminFunctions.item(title: 'Border Width', text: AppDefaults.borderWidth.toInt().toString()),
+  ], title: 'App Defaults');
 
-  _appTheme() => AdminFunctions.section([
-        AdminFunctions.item(
-            widget: Scrollbar(
-                trackVisibility: true,
-                child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    physics: const BouncingScrollPhysics(),
-                    child: Row(children: [
-                      AdminFunctions.item(title: 'Canvas Color', widget: _colorWidget(AppThemes.to.canvasColor)),
-                      AdminFunctions.item(title: 'Primary Color', widget: _colorWidget(AppThemes.to.primaryColor)),
-                      AdminFunctions.item(title: 'Primary Dark Color', widget: _colorWidget(AppThemes.to.primaryColorDark)),
-                    ]))),
-            fullWidth: true)
-      ], title: 'Theme');
+  _appColors() => AdminFunctions.section([
+    AdminFunctions.item(
+      widget: Scrollbar(
+        trackVisibility: true,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          physics: const BouncingScrollPhysics(),
+          child: Row(
+            children: List<Widget>.generate(
+              AppColors.values.length,
+              (index) => AdminFunctions.item(
+                title: AppColors.values[index].name,
+                multipleItems: <Widget>[
+                  _colorWidget(color: AppColors.values[index]),
+                  AppSpaces.w10,
+                  _colorWidget(color: AppColors.values[index], dark: true),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+      fullWidth: true,
+    ),
+  ], title: 'App Colors');
 
-  _appColorsLight() => AdminFunctions.section([
-        AdminFunctions.item(
-            widget: Scrollbar(
-                trackVisibility: true,
-                child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    physics: const BouncingScrollPhysics(),
-                    child: Row(children: [
-                      AdminFunctions.item(title: 'Background', widget: _colorWidget(AppThemes.to.canvasColor)),
-                      AdminFunctions.item(title: 'Primary', widget: _colorWidget(AppThemes.to.primaryColor)),
-                      AdminFunctions.item(title: 'Secondary', widget: _colorWidget(AppThemes.to.colorScheme.secondary)),
-                      AdminFunctions.item(title: 'Tertiary', widget: _colorWidget(AppThemes.to.colorScheme.tertiary)),
-                      AdminFunctions.item(title: 'Disabled', widget: _colorWidget(AppThemes.to.disabledColor)),
-                      AdminFunctions.item(title: 'Error', widget: _colorWidget(AppThemes.to.colorScheme.error)),
-                    ]))),
-            fullWidth: true)
-      ], title: 'App Colors - Light');
-
-  _appColorsDark() => AdminFunctions.section([
-        AdminFunctions.item(
-            widget: Scrollbar(
-                trackVisibility: true,
-                child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    physics: const BouncingScrollPhysics(),
-                    child: Row(children: [
-                      AdminFunctions.item(title: 'Background', widget: _colorWidget(AppThemes.to.canvasColor)),
-                      AdminFunctions.item(title: 'Primary', widget: _colorWidget(AppThemes.to.primaryColor)),
-                      AdminFunctions.item(title: 'Secondary', widget: _colorWidget(AppThemes.to.colorScheme.secondary)),
-                      AdminFunctions.item(title: 'Tertiary', widget: _colorWidget(AppThemes.to.colorScheme.tertiary)),
-                      AdminFunctions.item(title: 'Disabled', widget: _colorWidget(AppThemes.to.disabledColor)),
-                      AdminFunctions.item(title: 'Error', widget: _colorWidget(AppThemes.to.colorScheme.error)),
-                    ]))),
-            fullWidth: true)
-      ], title: 'App Colors - Dark');
+  _appColorPalette() => AdminFunctions.section([
+    AdminFunctions.item(
+      widget: Scrollbar(
+        trackVisibility: true,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          physics: const BouncingScrollPhysics(),
+          child: Row(
+            children: List<Widget>.generate(
+              AppColorPalette.values.length,
+              (index) => AdminFunctions.item(
+                title: AppColorPalette.values[index].name,
+                multipleItems: <Widget>[
+                  _colorWidget(colorPalette: AppColorPalette.values[index]),
+                  AppSpaces.w10,
+                  _colorWidget(colorPalette: AppColorPalette.values[index], dark: true),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+      fullWidth: true,
+    ),
+  ], title: 'App Color Palette');
 
   _appAPIs() => AdminFunctions.section([
-        AdminFunctions.item(title: 'Base URL', text: AppInfo.baseUrl),
-        AdminFunctions.item(title: 'API Version', text: APIVersions.v1.getValue),
-        AdminFunctions.item(title: 'API URL', text: 'https://${AppInfo.baseUrl}/${APIVersions.v1.getValue}'),
-      ], title: 'App APIs');
+    AdminFunctions.item(title: 'Environment', text: currentEnvironment.name),
+    AdminFunctions.item(title: 'Base URL', text: currentEnvironmentSettings.baseUrl),
+    AdminFunctions.item(title: 'SubDomain', text: currentEnvironmentSettings.subDomain),
+    AdminFunctions.item(title: 'API Version', text: APIVersions.v1.getValue),
+    AdminFunctions.item(title: 'API Host', text: currentEnvironmentSettings.apiHost),
+    AdminFunctions.item(title: 'API Base URL', text: 'https://${currentEnvironmentSettings.apiHost}/'),
+  ], title: 'App APIs');
 
-  _colorWidget(Color color) => CircleAvatar(
-        minRadius: 20,
-        maxRadius: 20,
-        backgroundColor: Colors.white,
-        child: CircleAvatar(
-            minRadius: 20,
-            maxRadius: 20,
-            backgroundColor: Colors.black,
-            child: CircleAvatar(
-              minRadius: 18,
-              maxRadius: 18,
-              backgroundColor: color,
-            )),
-      );
+  _colorWidget({AppColors? color, AppColorPalette? colorPalette, bool? dark, bool? gradient}) {
+    AppColorPalette innerColor = color?.colorPalette ?? colorPalette ?? AppColorPalette.values.first;
+    return AppContainer(
+      alignment: Alignment.center,
+      height: 30,
+      width: 30,
+      decoration: BoxDecoration(
+        borderRadius: AppElements.borderRadiusHigh,
+        border: Border.all(color: Colors.black, width: 2),
+        color: gradient == true
+            ? null
+            : dark == true
+            ? innerColor.darkColor
+            : innerColor.lightColor,
+        gradient: gradient == true
+            ? dark == true
+                  ? innerColor.darkGradient
+                  : innerColor.lightGradient
+            : null,
+      ),
+    );
+  }
 }
