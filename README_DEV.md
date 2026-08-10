@@ -469,7 +469,7 @@ Dev dependency for mocks: `mocktail`.
 3. Run:
 
 ```bash
-dart run flutter_launcher_icons -f icons.yaml
+dart run flutter_launcher_icons -f config/icons.yaml
 ```
 
 ## Linting

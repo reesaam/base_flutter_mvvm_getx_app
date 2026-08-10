@@ -29,7 +29,7 @@ jobs:
       - name: Install dependencie
         run: dart pub get
       - name: Icon Generation in Case of Changes
-        run: dart run flutter_launcher_icons -f icons.yaml
+        run: dart run flutter_launcher_icons -f config/icons.yaml
       - name: BuildRunner
         run: dart pub run build_runner build --delete-conflicting-outputs
 
