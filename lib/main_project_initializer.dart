@@ -14,9 +14,7 @@ Future<void> projectInitialization(FutureOr<Widget> Function() builder) async {
     () async {
       WidgetsFlutterBinding.ensureInitialized();
 
-      FlutterError.onError = (details) {
-        unawaited(CrashReporter.recordFlutterError(details));
-      };
+      FlutterError.onError = (details) => unawaited(CrashReporter.recordFlutterError(details));
 
       PlatformDispatcher.instance.onError = (error, stack) {
         unawaited(CrashReporter.recordError(error, stack, fatal: true));
