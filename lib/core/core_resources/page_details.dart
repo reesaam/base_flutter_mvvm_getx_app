@@ -6,7 +6,6 @@ import '../../barrels/extensions_barrel.dart';
 import '../../barrels/localization_barrel.dart';
 import '../../barrels/shared_models_barrel.dart';
 import '../../features/about/view/about_view.dart';
-import '../../features/auth/view/login_view.dart';
 import '../../features/homepage/view/homepage_view.dart';
 import '../../features/not_found/view/not_found_view.dart';
 import '../../features/settings/view/settings_view.dart';
@@ -14,7 +13,7 @@ import '../../features/splash_screen/view/splash_screen_view.dart';
 import '../../features/update/view/update_view.dart';
 
 class AppPages {
-  static List<AppPageDetail> get listPages => [splashScreen, login, homepage, settings, about, update, notFound];
+  static List<AppPageDetail> get listPages => [splashScreen, homepage, settings, about, update, notFound];
 
   static List<AppPageDetail> get listAdminPages => [
     adminStartPage,
@@ -70,8 +69,6 @@ class AppPages {
 
   ///Main Pages
   static AppPageDetail splashScreen = AppPageDetail(pageName: Texts.to.pagesName.splashScreenPageName, pageRoute: _getPageRoute(SplashScreenPage));
-
-  static AppPageDetail login = AppPageDetail(pageName: 'Login', pageRoute: _getPageRoute(LoginPage));
 
   static AppPageDetail homepage = AppPageDetail(
     pageName: Texts.to.pagesName.homePageName,

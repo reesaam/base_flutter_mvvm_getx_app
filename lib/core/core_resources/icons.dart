@@ -1,4 +1,5 @@
 import '../../barrels/core_barrel.dart';
+import '../../barrels/ui_kit_barrel.dart';
 
 export '../extensions/data_types_extensions/extension_icon.dart';
 

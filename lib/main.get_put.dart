@@ -70,10 +70,6 @@ import 'components/storage/storage_providers/local_storage.dart';
 import 'components/storage/storage_providers/shared_preferences.dart';
 import 'features/about/controller/about_controller.dart';
 import 'features/about/view/about_view.dart';
-import 'features/auth/controller/auth_controller.dart';
-import 'features/auth/data/auth_remote_data_source.dart';
-import 'features/auth/data/auth_session.dart';
-import 'features/auth/view/login_view.dart';
 import 'features/homepage/controller/homepage_controller.dart';
 import 'features/homepage/view/homepage_view.dart';
 import 'features/not_found/controller/not_found_controller.dart';
@@ -92,11 +88,11 @@ import 'localization/localizations.dart';
 import 'ui_kit/theme/theme_functions.dart';
 
 /// Generated Library Statistics:
-/// Imports Count: 54
-/// Pages Count: 15
-/// Controllers Count: 18
-/// Components Count: 17
-/// Repositories Count: 4
+/// Imports Count: 50
+/// Pages Count: 14
+/// Controllers Count: 17
+/// Components Count: 16
+/// Repositories Count: 3
 
 class GetPutPages {
   static List<GetPage> get pages => [
@@ -112,7 +108,6 @@ class GetPutPages {
     GetPage(name: '/AdminVerifiersPage', page: AdminVerifiersPage.new),
     GetPage(name: '/AdminWidgetCheckPage', page: AdminWidgetCheckPage.new),
     GetPage(name: '/AboutPage', page: AboutPage.new),
-    GetPage(name: '/LoginPage', page: LoginPage.new),
     GetPage(name: '/HomePage', page: HomePage.new),
     GetPage(name: '/NotFoundPage', page: NotFoundPage.new),
     GetPage(name: '/SettingsPage', page: SettingsPage.new),
@@ -169,7 +164,6 @@ class _GetPutController extends Bindings {
     Get.lazyPut<AppDocsController>(() => AppDocsController(), fenix: true);
     Get.lazyPut<AppDocsPage>(() => AppDocsPage(), fenix: true);
     Get.lazyPut<AboutController>(() => AboutController(), fenix: true);
-    Get.lazyPut<AuthController>(() => AuthController(), fenix: true);
     Get.lazyPut<HomePageController>(() => HomePageController(), fenix: true);
     Get.lazyPut<NotFoundController>(() => NotFoundController(), fenix: true);
     Get.lazyPut<SettingsController>(() => SettingsController(), fenix: true);
@@ -214,7 +208,6 @@ class _GetPutComponent extends Bindings {
       () => AppSharedPreferences(),
       fenix: true,
     );
-    Get.lazyPut<AuthSession>(() => AuthSession(), fenix: true);
     Get.lazyPut<AppLocalizations>(() => AppLocalizations(), fenix: true);
     Get.lazyPut<AppThemeFunctions>(() => AppThemeFunctions(), fenix: true);
   }
@@ -223,10 +216,6 @@ class _GetPutComponent extends Bindings {
 class _GetPutRepository extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<AuthRemoteDataSourceImpl>(
-      () => AuthRemoteDataSourceImpl(),
-      fenix: true,
-    );
     Get.lazyPut<UpdateRemoteDataSourceImpl>(
       () => UpdateRemoteDataSourceImpl(),
       fenix: true,

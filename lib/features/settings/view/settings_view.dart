@@ -83,7 +83,6 @@ class SettingsPage extends CoreView<SettingsController> {
     title: Texts.to.settings.sectionTitleStorage,
     widgets: [
       SettingsSectionItemWidget(text: Texts.to.settings.sectionStorageItemEraseAllData, wholeItemFunction: controller.clearAllData),
-      SettingsSectionItemWidget(text: 'Sign Out', wholeItemFunction: controller.logout),
     ],
   );
 }

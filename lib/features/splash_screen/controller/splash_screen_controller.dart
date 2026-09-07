@@ -6,8 +6,6 @@ import '../../../barrels/core_resources_barrel.dart';
 import '../../../barrels/localization_barrel.dart';
 import '../../../barrels/shared_models_barrel.dart';
 import '../../../barrels/ui_kit_barrel.dart';
-// ignore: barrel_import_lints/only_barrel_imports
-import '../../auth/data/auth_session.dart';
 
 @GetPut.controller()
 class SplashScreenController extends CoreController {
@@ -36,9 +34,7 @@ class SplashScreenController extends CoreController {
 
   @override
   void onReadyFunction() async {
-    await AuthSession.to.restoreSession();
-    final next = AuthSession.to.isAuthenticated.value ? AppPages.homepage : AppPages.login;
-    goToPage(next, popAll: true);
+    goToPage(AppPages.homepage, popAll: true);
   }
 
   // ignore: unused_element

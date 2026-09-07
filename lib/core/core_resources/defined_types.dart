@@ -3,6 +3,7 @@ export 'package:dartz/dartz.dart';
 
 import '../../barrels/components_barrel.dart';
 import '../../barrels/core_barrel.dart';
+import '../../barrels/ui_kit_barrel.dart';
 export '../../components/failures/general_exception.dart';
 export '../../components/failures/network_exception.dart';
 

@@ -10,8 +10,6 @@ import '../../../barrels/localization_barrel.dart';
 import '../../../barrels/shared_models_barrel.dart';
 import '../../../barrels/ui_kit_barrel.dart';
 // ignore: barrel_import_lints/only_barrel_imports
-import '../../auth/controller/auth_controller.dart';
-// ignore: barrel_import_lints/only_barrel_imports
 import '../../versions/controller/versions_controller.dart';
 import '../widgets/settings_languages_widgets.dart';
 
@@ -154,17 +152,4 @@ class SettingsController extends CoreController {
   }
 
   saveSettings() => saveAppData(appSettingData: appSettings.value);
-
-  Future<void> logout() async {
-    AppAlertDialogs.withOkCancel(
-      title: Texts.to.general.warning,
-      text: Texts.to.dialogs.general.areYouSure,
-      dismissible: true,
-      onTapOk: () async {
-        popPage();
-        final auth = Get.isRegistered<AuthController>() ? AuthController.to : Get.put(AuthController());
-        await auth.logout();
-      },
-    );
-  }
 }

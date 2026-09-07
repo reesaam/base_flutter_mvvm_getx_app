@@ -7,7 +7,6 @@ import '../../barrels/components_barrel.dart';
 import '../../barrels/core_barrel.dart';
 import '../../barrels/core_elements_barrel.dart';
 import '../../barrels/core_resources_barrel.dart';
-import 'interceptors/auth_interceptor.dart';
 import 'interceptors/logging_interceptor.dart';
 import 'interceptors/retry_interceptor.dart';
 
@@ -33,7 +32,7 @@ class DioCore extends CoreComponent {
         headers: const {'Content-Type': 'application/json', 'Accept': 'application/json'},
       ),
     );
-    client.interceptors.addAll([AuthInterceptor(), RetryInterceptor(client), LoggingInterceptor()]);
+    client.interceptors.addAll([RetryInterceptor(client), LoggingInterceptor()]);
     super.onInit();
   }
 
@@ -54,7 +53,7 @@ class DioCore extends CoreComponent {
         receiveTimeout: AppDefaults.timeOutConnection,
         sendTimeout: AppDefaults.timeOutConnection,
         contentType: AppTexts.dioHeaderContentTypeData,
-        headers: {'Content-Type': 'application/json', if (headers != null) ...headers, if (skipAuth) AuthInterceptor.skipAuthHeader: 'true'},
+        headers: {'Content-Type': 'application/json', if (headers != null) ...headers},
       );
       _increaseStatisticApiCall();
       final result = await client.request<dynamic>(url, queryParameters: queryParameters, options: options, data: data);

@@ -3,6 +3,7 @@ import '../barrels/core_barrel.dart';
 import '../barrels/core_resources_barrel.dart';
 import '../barrels/extensions_barrel.dart';
 import '../barrels/localization_barrel.dart';
+import '../barrels/ui_kit_barrel.dart';
 
 const _supportedLocales = ['en', 'fa'];
 
