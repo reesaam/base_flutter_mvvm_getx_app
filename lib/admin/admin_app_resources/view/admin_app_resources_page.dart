@@ -107,8 +107,8 @@ class AdminAppResourcesPage extends CoreView<AdminAppResourcesController> {
         color: gradient == true
             ? null
             : dark == true
-            ? innerColor.darkColor
-            : innerColor.lightColor,
+            ? innerColor.darkColorFromColors
+            : innerColor.lightColorFromColors,
         gradient: gradient == true
             ? dark == true
                   ? innerColor.darkGradient

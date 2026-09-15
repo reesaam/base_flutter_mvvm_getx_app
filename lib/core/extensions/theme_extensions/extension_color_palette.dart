@@ -10,8 +10,8 @@ extension ColorPaletteExtension on AppColorPalette {
 }
 
 extension ColorExtensionForAppColorPalette on AppColorPalette {
-  Color get lightColor => _createColorFromColorCode(lightColorCode) ?? _defaultColor;
-  Color get darkColor => _createColorFromColorCode(darkColorCode) ?? _defaultColor;
+  Color get lightColor => _createColorFromColorCode(lightColorCode ?? lightColorFromColors.toString()) ?? _defaultColor;
+  Color get darkColor => _createColorFromColorCode(darkColorCode ?? darkColorFromColors.toString()) ?? _defaultColor;
   LinearGradient get lightGradient =>
       _createGradientFromColorCode(gradientColorCodes: lightGradientCodes, singleColorCode: lightColorCode) ?? _defaultGradient;
   LinearGradient get darkGradient =>
@@ -20,13 +20,13 @@ extension ColorExtensionForAppColorPalette on AppColorPalette {
   Color get color {
     Color color = _defaultColor;
     if (Get.context?.isLight ?? true) {
-      Color? lightColor = _createColorFromColorCode(lightColorCode);
+      Color? lightColor = _createColorFromColorCode(lightColorCode ?? lightColorFromColors?.toHex());
       if (lightColor == null && (lightGradientCodes?.isNotEmpty ?? false)) {
         lightColor = _createColorFromColorCode(lightGradientCodes!.first);
       }
       if (lightColor != null) color = lightColor;
     } else {
-      Color? darkColor = _createColorFromColorCode(darkColorCode);
+      Color? darkColor = _createColorFromColorCode(darkColorCode ?? darkColorFromColors?.toHex());
       if (darkColor == null && (darkGradientCodes?.isNotEmpty ?? false)) {
         darkColor = _createColorFromColorCode(darkGradientCodes!.first);
       }

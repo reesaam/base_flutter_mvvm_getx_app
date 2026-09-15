@@ -5,13 +5,13 @@ language:
 app:
   appName: Base Flutter MVVM GetX App
 
-pagesName:
-  splashScreenPageName: Splash Screen
-  homePageName: Home
-  settingsPageName: Settings
-  updatePageName: Update
-  aboutPageName: About
-  notFoundPageName: Page Not Found
+featureName:
+  splashScreen: Splash Screen
+  home: Home
+  settings(bool plural): "Setting${plural ? 's' : ''}"
+  update: Update
+  about: About
+  notFound: Page Not Found
 
 adminPagesName:
   adminStartPagePageName: Admin Start Page
@@ -94,6 +94,10 @@ update:
 
 error:
   unknown: Unknown Error Occurred
+  save(String item): "$item save occurred error"
+  load(String item): "$item save occurred error"
+  repetitive(String item): "$item is repetitive"
+  notFound(String item): "$item not found"
 
 storage:
   exceptionNull: Null Exception

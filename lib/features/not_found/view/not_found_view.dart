@@ -21,7 +21,7 @@ class NotFoundPage extends CoreView<NotFoundController> {
     alignment: Alignment.center,
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [controller.icon.withSize(Get.size.width / 6), Text(Texts.to.pagesName.notFoundPageName)],
+      children: [controller.icon.withSize(Get.size.width / 6), Text(Texts.to.featureName.notFound)],
     ),
   );
 }

@@ -68,6 +68,7 @@ import 'components/statistics/statistics.dart';
 import 'components/storage/app_storage_module.dart';
 import 'components/storage/storage_providers/local_storage.dart';
 import 'components/storage/storage_providers/shared_preferences.dart';
+import 'components/uuid/uuid_handler.dart';
 import 'features/about/controller/about_controller.dart';
 import 'features/about/view/about_view.dart';
 import 'features/homepage/controller/homepage_controller.dart';
@@ -88,10 +89,10 @@ import 'localization/localizations.dart';
 import 'ui_kit/theme/theme_functions.dart';
 
 /// Generated Library Statistics:
-/// Imports Count: 50
+/// Imports Count: 51
 /// Pages Count: 14
 /// Controllers Count: 17
-/// Components Count: 16
+/// Components Count: 17
 /// Repositories Count: 3
 
 class GetPutPages {
@@ -208,6 +209,7 @@ class _GetPutComponent extends Bindings {
       () => AppSharedPreferences(),
       fenix: true,
     );
+    Get.lazyPut<UuidHandler>(() => UuidHandler(), fenix: true);
     Get.lazyPut<AppLocalizations>(() => AppLocalizations(), fenix: true);
     Get.lazyPut<AppThemeFunctions>(() => AppThemeFunctions(), fenix: true);
   }
