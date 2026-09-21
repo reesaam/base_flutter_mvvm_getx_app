@@ -194,16 +194,16 @@ class _GetPutComponent extends Bindings {
       fenix: true,
     );
     Get.lazyPut<DioCore>(() => DioCore(), fenix: true);
-    Get.lazyPut<AppLocalNotificationController>(
-      () => AppLocalNotificationController(),
+    Get.lazyPut<AppLocalNotificationService>(
+      () => AppLocalNotificationService(),
       fenix: true,
     );
     Get.lazyPut<AppLocalNotifications>(
       () => AppLocalNotifications(),
       fenix: true,
     );
-    Get.lazyPut<SecureStorageModuleImpl>(
-      () => SecureStorageModuleImpl(),
+    Get.lazyPut<SecureStorageServiceImpl>(
+      () => SecureStorageServiceImpl(),
       fenix: true,
     );
     Get.lazyPut<AppStatisticsService>(

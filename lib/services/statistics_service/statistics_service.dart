@@ -4,8 +4,8 @@ import '../../barrels/core_elements_barrel.dart';
 import '../../barrels/shared_models_barrel.dart';
 
 @GetPut.component()
-class AppStatistics extends CoreComponent {
-  static AppStatistics get to => Get.find();
+class AppStatisticsService extends CoreService {
+  static AppStatisticsService get to => Get.find();
 
   void increaseLaunch() => _addStatistics(launches: true);
   void increaseLogin() => _addStatistics(logins: true);

@@ -3,13 +3,14 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../barrels/annotations_barrel.dart';
-import '../../../barrels/components_barrel.dart';
+import '../../../barrels/services_barrel.dart';
 import '../../../barrels/core_barrel.dart';
 import '../../../barrels/core_resources_barrel.dart';
-import '../app_storage_module_abstraction.dart';
+
+import '../app_storage_service_abstraction.dart';
 
 @GetPut.component()
-class AppSharedPreferences implements AppStorageModuleAbstraction {
+class AppSharedPreferences implements AppStorageServiceAbstraction {
   AppSharedPreferences() {
     _init();
   }

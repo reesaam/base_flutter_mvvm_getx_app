@@ -9,8 +9,8 @@ import '../../../barrels/core_elements_barrel.dart';
 import '../notifications_enums.dart';
 
 @GetPut.component()
-class AppLocalNotificationController extends CoreComponent {
-  AppLocalNotificationController() {
+class AppLocalNotificationService extends CoreService {
+  AppLocalNotificationService() {
     ReceivePort? receivePort;
     // IsolateNameServer.registerPortWithName(receivePort, AppNotificationsPortNames.receivePort.portName);
   }

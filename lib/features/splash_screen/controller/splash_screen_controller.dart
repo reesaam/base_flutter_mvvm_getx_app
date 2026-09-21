@@ -1,5 +1,5 @@
 import '../../../barrels/annotations_barrel.dart';
-import '../../../barrels/components_barrel.dart';
+import '../../../barrels/services_barrel.dart';
 import '../../../barrels/core_barrel.dart';
 import '../../../barrels/core_elements_barrel.dart';
 import '../../../barrels/core_resources_barrel.dart';
@@ -20,7 +20,7 @@ class SplashScreenController extends CoreController {
   @override
   void dataInit() async {
     CoreFlags.clearData ? clearAppData() : null;
-    AppStatistics.to.increaseLaunch();
+    AppStatisticsService.to.increaseLaunch();
     printAllData();
   }
 

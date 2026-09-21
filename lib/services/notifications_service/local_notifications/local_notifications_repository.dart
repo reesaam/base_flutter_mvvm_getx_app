@@ -1,4 +1,5 @@
 import '../../../barrels/core_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
 import '../../../barrels/core_resources_barrel.dart';
 import '../../../barrels/extensions_barrel.dart';
 import '../../../barrels/localization_barrel.dart';
@@ -6,7 +7,7 @@ import '../../../barrels/ui_kit_barrel.dart';
 import '../notifications_enums.dart';
 import 'local_notification_controller.dart';
 
-class AppLocalNotificationsRepository {
+class AppLocalNotificationsRepository extends CoreRepository {
   String? channelName = 'channelName';
   String? channelDescription = 'channelDescription';
   String channelGroupKey = 'channelGroupKey';
@@ -38,10 +39,10 @@ class AppLocalNotificationsRepository {
 
   Future<bool> _setListeners() async {
     bool listenersInitResult = await AwesomeNotifications().setListeners(
-      onActionReceivedMethod: (receivedAction) => AppLocalNotificationController.onActionReceivedMethod(receivedAction),
-      onDismissActionReceivedMethod: (receivedAction) => AppLocalNotificationController.onDismissActionReceivedMethod(receivedAction),
-      onNotificationCreatedMethod: (receivedNotification) => AppLocalNotificationController.onNotificationCreatedMethod(receivedNotification),
-      onNotificationDisplayedMethod: (receivedNotification) => AppLocalNotificationController.onNotificationDisplayedMethod(receivedNotification),
+      onActionReceivedMethod: (receivedAction) => AppLocalNotificationService.onActionReceivedMethod(receivedAction),
+      onDismissActionReceivedMethod: (receivedAction) => AppLocalNotificationService.onDismissActionReceivedMethod(receivedAction),
+      onNotificationCreatedMethod: (receivedNotification) => AppLocalNotificationService.onNotificationCreatedMethod(receivedNotification),
+      onNotificationDisplayedMethod: (receivedNotification) => AppLocalNotificationService.onNotificationDisplayedMethod(receivedNotification),
     );
 
     return listenersInitResult;

@@ -1,5 +1,5 @@
 import '../../../barrels/annotations_barrel.dart';
-import '../../../barrels/components_barrel.dart';
+import '../../../barrels/services_barrel.dart';
 import '../../../barrels/core_barrel.dart';
 import '../../../barrels/core_elements_barrel.dart';
 import '../../../barrels/shared_models_barrel.dart';
@@ -21,7 +21,7 @@ class VersionsController extends CoreController {
   }
 
   Future<AppVersionsList?> getVersionsList() async {
-    bool internetAvailability = await AppConnectionChecker.to.checkInternet();
+    bool internetAvailability = await AppConnectionService.to.checkInternet();
     AppVersionsList? versionsList;
     if (internetAvailability) {
       var response = await VersionsRemoteDataSource.to.getVersions();

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:base_flutter_mvvm_getx_app/components/network/interceptors/retry_interceptor.dart';
+import 'package:base_flutter_mvvm_getx_app/services/network_service/interceptors/retry_interceptor.dart';
 
 class _FailThenSucceedAdapter implements HttpClientAdapter {
   int attempts = 0;

@@ -3,12 +3,10 @@ import 'dart:io';
 import 'package:dio/dio.dart' as dio;
 
 import '../../barrels/annotations_barrel.dart';
-import '../../barrels/components_barrel.dart';
 import '../../barrels/core_barrel.dart';
 import '../../barrels/core_elements_barrel.dart';
 import '../../barrels/core_resources_barrel.dart';
-import 'interceptors/logging_interceptor.dart';
-import 'interceptors/retry_interceptor.dart';
+import '../../barrels/services_barrel.dart';
 
 export 'api_methods.dart';
 export 'api_response_status.dart';
@@ -16,7 +14,7 @@ export 'api_response_status.dart';
 typedef APIResponse = dio.Response;
 
 @GetPut.component()
-class DioCore extends CoreComponent {
+class DioCore extends CoreService {
   static DioCore get to => Get.find();
 
   late final dio.Dio client;
@@ -90,7 +88,7 @@ class DioCore extends CoreComponent {
     }
   }
 
-  static void _increaseStatisticApiCall() => AppStatistics.to.increaseApiCalls();
+  static void _increaseStatisticApiCall() => AppStatisticsService.to.increaseApiCalls();
 
   static void _printResponse(String method, APIResponse response) {
     appDebugPrint('==> $method Method Successful Response:');

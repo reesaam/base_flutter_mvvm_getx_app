@@ -1,10 +1,7 @@
 import 'package:dio/dio.dart' as dio;
 
-import '../../barrels/extensions_barrel.dart';
-import '../network/api_response_status.dart';
-import 'general_exception.dart';
+import '../../barrels/services_barrel.dart';
 
-export '../network/api_response_status.dart';
 export 'general_exception.dart';
 export '../../core/extensions/api_extensions/extension_api_response_status.dart';
 

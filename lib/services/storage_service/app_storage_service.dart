@@ -15,13 +15,13 @@ import 'storage_providers/local_storage.dart';
 import 'storage_providers/shared_preferences.dart';
 
 @GetPut.component()
-class AppStorage extends CoreComponent {
+class AppStorageService extends CoreService {
   final _storage = switch (CoreDefaults.defaultStorageProvider) {
     AppStorageProvider.getStorage => AppLocalStorage(),
     AppStorageProvider.sharedPreferences => AppSharedPreferences(),
   };
 
-  static AppStorage get to => Get.find();
+  static AppStorageService get to => Get.find();
 
   ///Keys
   final _keyAppData = AppStorageKeys.appData;

@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import '../barrels/components_barrel.dart';
+import '../barrels/services_barrel.dart';
 import '../barrels/core_resources_barrel.dart';
 import '../barrels/localization_barrel.dart';
 import '../barrels/shared_models_barrel.dart';
@@ -9,10 +9,10 @@ import '../barrels/ui_kit_barrel.dart';
 // ignore: barrel_import_lints/only_barrel_imports
 import 'package:flutter/foundation.dart';
 
-void appDebugPrint(String message) => CoreFlags.isRelease ? null : debugPrint('[Debug] $message');
+// void appDebugPrint(String message) => CoreFlags.isRelease ? null : debugPrint('[Debug] $message');
+void appDebugPrint(String message) => CoreFlags.isRelease ? nullFunction() : LoggerService.devLog(message: message);
 // Logger entry point — direct print is allowed only here.
-// ignore: avoid_print
-void appLogPrint(String message) => print('[LOG] $message');
+void appLogPrint(String message) => LoggerService.log(message: message);
 
 bool get kIsDesktop => Platform.isWindows || Platform.isMacOS || Platform.isLinux;
 bool get kIsDesktopWeb => kIsWeb && kIsDesktop;
@@ -22,10 +22,10 @@ void popPage() {
   Get.back();
 }
 
-nullFunction() => null;
+void nullFunction() {}
 
 void clearAppData() async {
-  final response = await AppStorage.to.clearStorage();
+  final response = await AppStorageService.to.clearStorage();
   response.fold((l) => AppExceptionsDialog.show(exception: l), (r) => AppSnackBar.show());
 }
 
@@ -42,20 +42,20 @@ Future<bool?> saveAppData({
     settings: appSettingData ?? loadedData?.settings,
     statisticsData: appStatisticsData ?? loadedData?.statisticsData,
   );
-  final result = await AppStorage.to
+  final result = await AppStorageService.to
       .saveAppData(appData: appData)
       .then((value) => value.fold((l) => AppExceptionsDialog.show(exception: l), (r) => r));
   return result;
 }
 
 Future<AppData?> loadAppData() async {
-  AppData? appData = await AppStorage.to.loadAppData().then((value) => value.fold((l) => AppExceptionsDialog.show(exception: l), (r) => r));
+  AppData? appData = await AppStorageService.to.loadAppData().then((value) => value.fold((l) => AppExceptionsDialog.show(exception: l), (r) => r));
   return appData;
 }
 
 void printAllData({bool? detailsIncluded}) async {
   AppData? appData = await loadAppData();
-  AppStorage.to.printData(appData: appData, detailsIncluded: detailsIncluded);
+  AppStorageService.to.printData(appData: appData, detailsIncluded: detailsIncluded);
 }
 
 noInternetConnectionSnackBar() => AppSnackBar.show(message: Texts.to.network.connection.internetNotAvailable);

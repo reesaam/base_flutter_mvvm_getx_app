@@ -1,5 +1,5 @@
 import '../../../barrels/annotations_barrel.dart';
-import '../../../barrels/components_barrel.dart';
+import '../../../barrels/services_barrel.dart';
 import '../../../barrels/core_barrel.dart';
 import '../../../barrels/core_elements_barrel.dart';
 import '../../../barrels/core_resources_barrel.dart';
@@ -15,7 +15,7 @@ abstract class VersionsLocalDataSource extends CoreRepository {
 class VersionsLocalDataSourceImpl extends CoreRepository implements VersionsLocalDataSource {
   @override
   Future<BaseLocalResponse<AppVersionsList?>> getVersions() async {
-    var result = await AppStorage.to.loadAppData();
+    var result = await AppStorageService.to.loadAppData();
     return result.map((r) => r?.appVersions);
   }
 }

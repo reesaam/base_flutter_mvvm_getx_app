@@ -2,14 +2,14 @@ import 'dart:convert' as convert;
 import 'package:get_storage/get_storage.dart';
 
 import '../../../barrels/annotations_barrel.dart';
-import '../../../barrels/components_barrel.dart';
+import '../../../barrels/services_barrel.dart';
 import '../../../barrels/core_barrel.dart';
 import '../../../barrels/core_resources_barrel.dart';
 
-import '../app_storage_module_abstraction.dart';
+import '../app_storage_service_abstraction.dart';
 
 @GetPut.component()
-class AppLocalStorage implements AppStorageModuleAbstraction {
+class AppLocalStorage implements AppStorageServiceAbstraction {
   AppLocalStorage() {
     _init();
   }

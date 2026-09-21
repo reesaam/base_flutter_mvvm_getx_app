@@ -2,12 +2,13 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 
 import '../../../barrels/annotations_barrel.dart';
 import '../../../barrels/core_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
 import '../notifications_enums.dart';
 import '../notifications_repository.dart';
 import 'local_notifications_repository.dart';
 
 @GetPut.component()
-class AppLocalNotifications extends AppNotificationsRepository {
+class AppLocalNotifications extends CoreComponent implements AppNotificationsRepository {
   static AppLocalNotifications get to => Get.find();
 
   @override

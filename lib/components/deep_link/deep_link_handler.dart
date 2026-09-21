@@ -5,7 +5,7 @@ import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../barrels/annotations_barrel.dart';
 
-import '../../barrels/components_barrel.dart';
+import '../../barrels/services_barrel.dart';
 import '../../barrels/core_barrel.dart';
 import '../../barrels/core_elements_barrel.dart';
 import '../../barrels/core_resources_barrel.dart';
@@ -37,10 +37,10 @@ class DeepLinkHandler extends CoreComponent {
 
   static Future<bool> checkStatus() async {
     appDebugPrint('DeepLink Check Status');
-    final deepLinkData = await SecureStorageModule.to.read<DeepLinkCallBackUrlData?>(AppStorageKeys.deepLink);
+    final deepLinkData = await SecureStorageService.to.read<DeepLinkCallBackUrlData?>(AppStorageKeys.deepLink);
     return deepLinkData.fold((l) => false, (r) async {
       appDebugPrint('deepLinkData: ${r?.toJson()}');
-      await SecureStorageModule.to.remove(AppStorageKeys.deepLink);
+      await SecureStorageService.to.remove(AppStorageKeys.deepLink);
       if (r != null) _handleData(r);
       return true;
     });
@@ -51,7 +51,7 @@ class DeepLinkHandler extends CoreComponent {
     appDebugPrint('DeepLink Listener callBack Triggered, uri: ${uri.toString()}');
     final DeepLinkCallBackUrlData? data = DeepLinkHandlerHelper.getDataFromCallBackUrl(uri.toString());
     if (data != null) {
-      await SecureStorageModule.to.write(key: AppStorageKeys.deepLink, value: data);
+      await SecureStorageService.to.write(key: AppStorageKeys.deepLink, value: data);
       appDebugPrint('DeepLink Data Wrote to SecureStorage');
       _handleData(data);
     }

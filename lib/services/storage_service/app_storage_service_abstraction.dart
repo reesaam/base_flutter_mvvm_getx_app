@@ -1,6 +1,6 @@
 import '../../barrels/core_resources_barrel.dart';
 
-abstract class AppStorageModuleAbstraction {
+abstract class AppStorageServiceAbstraction {
   Future<BaseLocalResponse<bool>> clear(String key);
   Future<BaseLocalResponse<bool>> hasData(String key);
   Future<BaseLocalResponse<Map<String, dynamic>?>> loadData(String key);
