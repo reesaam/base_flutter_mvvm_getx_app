@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'barrels/components_barrel.dart';
+import 'barrels/services_barrel.dart';
 import 'barrels/core_barrel.dart';
 import 'barrels/core_resources_barrel.dart';
 import 'barrels/extensions_barrel.dart';
