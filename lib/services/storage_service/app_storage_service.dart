@@ -14,7 +14,7 @@ import '../../barrels/shared_models_barrel.dart';
 import 'storage_providers/local_storage.dart';
 import 'storage_providers/shared_preferences.dart';
 
-@GetPut.component()
+@GetPut.service()
 class AppStorageService extends CoreService {
   final _storage = switch (CoreDefaults.defaultStorageProvider) {
     AppStorageProvider.getStorage => AppLocalStorage(),

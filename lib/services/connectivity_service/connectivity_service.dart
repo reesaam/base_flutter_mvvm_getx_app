@@ -8,7 +8,7 @@ import '../../barrels/core_barrel.dart';
 import '../../barrels/core_elements_barrel.dart';
 import '../../barrels/core_resources_barrel.dart';
 
-@GetPut.component()
+@GetPut.service()
 class AppConnectionService extends CoreService {
   static AppConnectionService get to => Get.find();
 

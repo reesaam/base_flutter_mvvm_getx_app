@@ -3,7 +3,7 @@ import '../../barrels/core_barrel.dart';
 import '../../barrels/core_elements_barrel.dart';
 import '../../barrels/shared_models_barrel.dart';
 
-@GetPut.component()
+@GetPut.service()
 class AppStatisticsService extends CoreService {
   static AppStatisticsService get to => Get.find();
 
