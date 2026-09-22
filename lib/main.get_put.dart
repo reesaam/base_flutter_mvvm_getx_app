@@ -79,7 +79,7 @@ import 'features/versions/data/versions_remote_data_source.dart';
 import 'localization/localizations.dart';
 import 'services/connectivity_service/connectivity_service.dart';
 import 'services/network_service/dio_core.dart';
-import 'services/notifications_service/local_notifications/local_notification_controller.dart';
+import 'services/notifications_service/local_notifications/local_notification_service.dart';
 import 'services/notifications_service/local_notifications/local_notifications.dart';
 import 'services/secure_storage_service/secure_storage_service.dart';
 import 'services/statistics_service/statistics_service.dart';
@@ -92,9 +92,9 @@ import 'ui_kit/theme/theme_functions.dart';
 ///  Imports Count: 51
 ///  Pages Count: 14
 ///  Controllers Count: 17
-///  Components Count: 17
+///  Components Count: 12
 ///  Repositories Count: 3
-///  Services Count: 0
+///  Services Count: 5
 
 class GetPutPages {
   static List<GetPage> get pages => [
@@ -189,15 +189,6 @@ class _GetPutComponent extends Bindings {
     Get.lazyPut<AppShare>(() => AppShare(), fenix: true);
     Get.lazyPut<UuidHandler>(() => UuidHandler(), fenix: true);
     Get.lazyPut<AppLocalizations>(() => AppLocalizations(), fenix: true);
-    Get.lazyPut<AppConnectionService>(
-      () => AppConnectionService(),
-      fenix: true,
-    );
-    Get.lazyPut<DioCore>(() => DioCore(), fenix: true);
-    Get.lazyPut<AppLocalNotificationService>(
-      () => AppLocalNotificationService(),
-      fenix: true,
-    );
     Get.lazyPut<AppLocalNotifications>(
       () => AppLocalNotifications(),
       fenix: true,
@@ -206,11 +197,6 @@ class _GetPutComponent extends Bindings {
       () => SecureStorageServiceImpl(),
       fenix: true,
     );
-    Get.lazyPut<AppStatisticsService>(
-      () => AppStatisticsService(),
-      fenix: true,
-    );
-    Get.lazyPut<AppStorageService>(() => AppStorageService(), fenix: true);
     Get.lazyPut<AppLocalStorage>(() => AppLocalStorage(), fenix: true);
     Get.lazyPut<AppSharedPreferences>(
       () => AppSharedPreferences(),
@@ -240,5 +226,13 @@ class _GetPutRepository extends Bindings {
 
 class _GetPutService extends Bindings {
   @override
-  void dependencies() {}
+  void dependencies() {
+    Get.putAsync<AppConnectionService>(() async => AppConnectionService());
+    Get.putAsync<DioCore>(() async => DioCore());
+    Get.putAsync<AppLocalNotificationService>(
+      () async => AppLocalNotificationService(),
+    );
+    Get.putAsync<AppStatisticsService>(() async => AppStatisticsService());
+    Get.putAsync<AppStorageService>(() async => AppStorageService());
+  }
 }

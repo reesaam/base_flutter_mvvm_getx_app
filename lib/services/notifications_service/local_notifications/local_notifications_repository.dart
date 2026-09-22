@@ -5,7 +5,7 @@ import '../../../barrels/extensions_barrel.dart';
 import '../../../barrels/localization_barrel.dart';
 import '../../../barrels/ui_kit_barrel.dart';
 import '../notifications_enums.dart';
-import 'local_notification_controller.dart';
+import 'local_notification_service.dart';
 
 class AppLocalNotificationsRepository extends CoreRepository {
   String? channelName = 'channelName';

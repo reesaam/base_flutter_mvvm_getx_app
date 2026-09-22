@@ -6,14 +6,15 @@ import '../../barrels/annotations_barrel.dart';
 import '../../barrels/core_barrel.dart';
 import '../../barrels/core_elements_barrel.dart';
 import '../../barrels/core_resources_barrel.dart';
+import '../../barrels/extensions_barrel.dart';
 import '../../barrels/services_barrel.dart';
 
 export 'api_methods.dart';
-export 'api_response_status.dart';
+export '../../core/core_resources/response_status_api.dart';
 
 typedef APIResponse = dio.Response;
 
-@GetPut.component()
+@GetPut.service()
 class DioCore extends CoreService {
   static DioCore get to => Get.find();
 
@@ -55,11 +56,11 @@ class DioCore extends CoreService {
       );
       _increaseStatisticApiCall();
       final result = await client.request<dynamic>(url, queryParameters: queryParameters, options: options, data: data);
-      if (APIResponseStatus.values.find(result.statusCode ?? 0).isSuccess == true) {
+      if (ResponseStatusAPI.values.find(result.statusCode ?? 0).isSuccess == true) {
         return Right(result.data as T);
       }
       _printException(method.getName, ['Result Data: ${result.data} (${result.statusCode})', 'Result Message: ${result.statusMessage}']);
-      return Left(APIResponseStatus.values.find(result.statusCode ?? 0).exception);
+      return Left(ResponseStatusAPI.values.find(result.statusCode ?? 0).exception);
     } on dio.DioException catch (ex, stackTrace) {
       _printException(method.getName, ['DioException Response: ${ex.response}', 'DioException Message: ${ex.message}']);
       return Left(NetworkException.handleResponse(ex, stackTrace));
@@ -78,7 +79,7 @@ class DioCore extends CoreService {
         return Right(File(savePath));
       }
       _printException(APIMethods.download.getName, ['Result Data: ${result.data}', 'Result Message: ${result.statusMessage}']);
-      return Left(APIResponseStatus.values.find(result.statusCode ?? 0).exception);
+      return Left(ResponseStatusAPI.values.find(result.statusCode ?? 0).exception);
     } on dio.DioException catch (ex, stackTrace) {
       _printException(APIMethods.download.getName, ['DioException Response: ${ex.response}', 'DioException Message: ${ex.message}']);
       return Left(NetworkException.handleResponse(ex, stackTrace));

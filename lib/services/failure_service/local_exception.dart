@@ -1,10 +1,8 @@
 import '../../barrels/core_barrel.dart';
 
+import '../../barrels/core_resources_barrel.dart';
+import '../../barrels/extensions_barrel.dart';
 import 'general_exception.dart';
-import 'local_exceptions.dart';
-
-export 'general_exception.dart';
-export 'local_exceptions.dart';
 
 class LocalException implements GeneralException {
   LocalException({this.message, this.statusCode});
@@ -18,9 +16,9 @@ class LocalException implements GeneralException {
     if (ex is LocalException) {
       return LocalException(message: ex.message, statusCode: ex.statusCode);
     }
-    final matched = LocalExceptions.values.firstWhereOrNull((e) => e.statusCode == ex.statusCode);
+    final matched = ResponseStatusLocalException.values.firstWhereOrNull((e) => e.statusCode == ex.statusCode);
     if (matched == null) {
-      return LocalException(message: LocalExceptions.unknownException.name, statusCode: 0);
+      return LocalException(message: ResponseStatusLocalException.unknownException.name, statusCode: 0);
     }
     try {
       return matched.exception;

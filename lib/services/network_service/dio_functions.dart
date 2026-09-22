@@ -1,14 +1,12 @@
 import 'dart:io';
 
-import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
 import '../../barrels/core_resources_barrel.dart';
-
 import '../../barrels/localization_barrel.dart';
 import '../../barrels/services_barrel.dart';
+import '../../barrels/extensions_barrel.dart';
 import '../../core/core_functions.dart';
-import 'dio_core.dart';
 
 class DioFunctions {
   static Dio apiCore = DioCore.to.dioCore;
@@ -107,7 +105,7 @@ class DioFunctions {
   ///TODO: Implementation
   static Future<String> _getSavePath() async => Texts.to.general.empty;
 
-  static NetworkException get _defaultLeftResponse => APIResponseStatus.unknownException.exception;
+  static NetworkException get _defaultLeftResponse => ResponseStatusAPI.unknownException.exception;
 
   static _printResponse(String method, Response response) {
     appDebugPrint('==> $method Method Successful Response:');

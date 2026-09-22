@@ -1,4 +1,4 @@
-enum APIResponseStatus {
+enum ResponseStatusAPI {
   success(statusCode: 200, isSuccess: true),
   created(statusCode: 201, isSuccess: true),
   nonAuthoritativeInformationException(statusCode: 203),
@@ -43,5 +43,5 @@ enum APIResponseStatus {
 
   final int statusCode;
   final bool? isSuccess;
-  const APIResponseStatus({required this.statusCode, this.isSuccess});
+  const ResponseStatusAPI({required this.statusCode, this.isSuccess});
 }

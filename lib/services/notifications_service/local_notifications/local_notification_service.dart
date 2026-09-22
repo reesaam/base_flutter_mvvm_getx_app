@@ -8,7 +8,7 @@ import '../../../barrels/core_barrel.dart';
 import '../../../barrels/core_elements_barrel.dart';
 import '../notifications_enums.dart';
 
-@GetPut.component()
+@GetPut.service()
 class AppLocalNotificationService extends CoreService {
   AppLocalNotificationService() {
     ReceivePort? receivePort;

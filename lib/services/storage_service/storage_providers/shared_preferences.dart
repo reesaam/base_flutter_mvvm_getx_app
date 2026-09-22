@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/extensions_barrel.dart';
 import '../../../barrels/services_barrel.dart';
 import '../../../barrels/core_barrel.dart';
 import '../../../barrels/core_resources_barrel.dart';
@@ -81,7 +82,7 @@ class AppSharedPreferences implements AppStorageServiceAbstraction {
     }
   }
 
-  static LocalException get _defaultLeftResponse => LocalExceptions.unknownException.exception;
+  static LocalException get _defaultLeftResponse => ResponseStatusLocalException.unknownException.exception;
 
   static _printException(String method, GeneralException exception) {
     appDebugPrint('==> Local $method Data Exception: ${exception.message} (${exception.statusCode})');

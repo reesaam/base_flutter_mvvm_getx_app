@@ -7,7 +7,7 @@ import '../../barrels/core_resources_barrel.dart';
 import '../../core/flavors/environment_variables.dart';
 
 @GetPut.component()
-class EnvironmentHandler extends CoreController {
+class EnvironmentHandler extends CoreComponent {
   static Environment get current => AppInfo.environment;
   static EnvironmentVariables get settings => EnvConfig.vars;
 

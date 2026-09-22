@@ -37,7 +37,7 @@ barrels:
       - local_storage.dart
       - shared_preferences.dart
       - notifications_enums.dart
-      - local_notification_controller.dart
+      - local_notification_service.dart
       - local_notifications_repository.dart
       - interceptors/*
 

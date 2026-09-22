@@ -1,9 +1,7 @@
 import 'package:dio/dio.dart' as dio;
 
+import '../../barrels/extensions_barrel.dart';
 import '../../barrels/services_barrel.dart';
-
-export 'general_exception.dart';
-export '../../core/extensions/api_extensions/extension_api_response_status.dart';
 
 class NetworkException implements GeneralException {
   NetworkException({this.message, this.statusCode});
@@ -14,7 +12,7 @@ class NetworkException implements GeneralException {
   final int? statusCode;
 
   static NetworkException handleResponse(dio.DioException ex, StackTrace? stacktrace) {
-    final status = APIResponseStatus.values.find(ex.response?.statusCode ?? 0);
+    final status = ResponseStatusAPI.values.find(ex.response?.statusCode ?? 0);
     String message;
     try {
       message = status.message;
