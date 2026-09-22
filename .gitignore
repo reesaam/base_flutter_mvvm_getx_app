@@ -44,17 +44,34 @@ app.*.map.json
 /linux/
 /windows/
 /macos/
-
-# Localization
+/android/
+/web/
 /lib/generated/intl/
 
+# IDE
 /.idea/
 /.dart_tool/
+
 /lib/localization/translation*.dart
 **.swift
 *.cc
+
 # Local / secret env files (never commit real secrets)
 config/envs/env.local.json
 config/envs/env.production.json
+
+# To prevent mix project specified files
+#Files
 FLUTTER
 GENERATE
+./LICENSE
+./lib/features
+#Platforms
+
+#Yaml Project Specified Files
+./build.yaml
+./pubspec.yaml
+./analysis_options.yaml
+#ReadMes
+./README.md
+./README_DEV.md
