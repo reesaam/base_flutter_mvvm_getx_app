@@ -3,7 +3,7 @@ import 'color_palette.dart';
 export '../../core/extensions/theme_extensions/extension_theme.dart';
 
 enum AppColors {
-  canvas(AppColorPalette.background),
+  canvas(AppColorPalette.canvas),
   background(AppColorPalette.background),
   primary(AppColorPalette.primary),
   onPrimary(AppColorPalette.onPrimary),

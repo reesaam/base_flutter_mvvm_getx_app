@@ -16,7 +16,7 @@ class AppFileFunctions extends CoreComponent {
     String? path = await FlutterFileDialog.saveFile(params: saveParams);
     LoggerService.to.log(message: 'File Saved');
     LoggerService.to.devLog(message: 'Filename: ${saveParams.fileName}');
-    LoggerService.to.devLog(message: 'Path: ${saveParams.sourceFilePath}');
+    LoggerService.to.devLog(message: 'Source Path: ${saveParams.sourceFilePath}');
     LoggerService.to.log(message: 'File Path: $path');
     return path;
   }

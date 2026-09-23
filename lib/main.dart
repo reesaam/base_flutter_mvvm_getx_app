@@ -10,14 +10,16 @@ import 'barrels/ui_kit_barrel.dart';
 
 // ignore: barrel_import_lints/only_barrel_imports
 import 'package:flutter/foundation.dart';
+
 // ignore: barrel_import_lints/only_barrel_imports
 import 'package:get_storage/get_storage.dart';
+
 // ignore: barrel_import_lints/only_barrel_imports
 import 'main.get_put.dart';
 
-Future<void> main()  async {
+Future<void> main() async {
   await runZonedGuarded(
-        () async {
+    () async {
       WidgetsFlutterBinding.ensureInitialized();
       GetPutBindings().dependencies();
       // FlutterError.onError = (details) => unawaited();
@@ -27,9 +29,9 @@ Future<void> main()  async {
       if (!kIsWeb) await AppSystemChannelMethods.textInputHide.invoke();
       runApp(const MainApp());
     },
-        (error, stack) {
+    (error, stack) {
       // unawaited(CrashReporter.recordError(error, stack, fatal: true));
-      LoggerService.to.log(message: 'Uncaught zone error: $error\n$stack');
+      debugPrint('Uncaught zone error: $error\n$stack');
     },
   );
 }
