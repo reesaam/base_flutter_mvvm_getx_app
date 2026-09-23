@@ -56,10 +56,10 @@ class UpdateController extends CoreController {
       AppVersion? version = await VersionsController.to.checkUpdateAvailableVersion();
       popPage();
       if (version == null || version.version == AppInfo.currentVersion.version) {
-        LoggerService.to.log(message: 'No New Version Available');
+        loggerService.log(message: 'No New Version Available');
         AppSnackBar.show(message: Texts.to.update.updateNoUpdateFound);
       } else {
-        LoggerService.to.log(message: 'Available Version: ${version.version}');
+        loggerService.log(message: 'Available Version: ${version.version}');
         availableVersion.value = version.version;
         AppSnackBar.show(message: '${Texts.to.update.updateUpdateFound}\n${Texts.to.general.version.withDoubleDots} $version');
       }

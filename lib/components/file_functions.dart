@@ -2,10 +2,9 @@ import 'dart:io';
 
 import 'package:flutter_file_dialog/flutter_file_dialog.dart';
 
-import '../../barrels/annotations_barrel.dart';
-import '../../barrels/core_barrel.dart';
-import '../../barrels/core_elements_barrel.dart';
-import '../../barrels/services_barrel.dart';
+import '../barrels/annotations_barrel.dart';
+import '../barrels/core_barrel.dart';
+import '../barrels/core_elements_barrel.dart';
 
 @GetPut.component()
 class AppFileFunctions extends CoreComponent {
@@ -14,10 +13,10 @@ class AppFileFunctions extends CoreComponent {
   Future<String?> saveFile({required String fileName, required data, String? filePath}) async {
     SaveFileDialogParams saveParams = SaveFileDialogParams(data: data, fileName: fileName, sourceFilePath: filePath);
     String? path = await FlutterFileDialog.saveFile(params: saveParams);
-    LoggerService.to.log(message: 'File Saved');
-    LoggerService.to.devLog(message: 'Filename: ${saveParams.fileName}');
-    LoggerService.to.devLog(message: 'Path: ${saveParams.sourceFilePath}');
-    LoggerService.to.log(message: 'File Path: $path');
+    loggerService.log(message: 'File Saved');
+    loggerService.devLog(message: 'Filename: ${saveParams.fileName}');
+    loggerService.devLog(message: 'Path: ${saveParams.sourceFilePath}');
+    loggerService.log(message: 'File Path: $path');
     return path;
   }
 

@@ -1,10 +1,10 @@
-import '../../barrels/annotations_barrel.dart';
-import '../../barrels/core_barrel.dart';
-import '../../barrels/core_elements_barrel.dart';
-import '../../barrels/core_resources_barrel.dart';
+import '../barrels/annotations_barrel.dart';
+import '../barrels/core_barrel.dart';
+import '../barrels/core_elements_barrel.dart';
+import '../barrels/core_resources_barrel.dart';
 
 // ignore: barrel_import_lints/only_barrel_imports
-import '../../core/flavors/environment_variables.dart';
+import '../core/flavors/environment_variables.dart';
 
 @GetPut.component()
 class EnvironmentHandler extends CoreComponent {

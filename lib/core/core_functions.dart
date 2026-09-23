@@ -12,7 +12,8 @@ import 'package:flutter/foundation.dart';
 // void appDebugPrint(String message) => CoreFlags.isRelease ? null : debugPrint('[Debug] $message');
 // void appDebugPrint(String message) => CoreFlags.isRelease ? nullFunction() : LoggerService.devLog(message: message);
 // Logger entry point — direct print is allowed only here.
-// void appLogPrint(String message) => LoggerService.log(message: message);
+LoggerService get loggerService => LoggerService.to;
+AppStatisticsService get statisticsService => AppStatisticsService.to;
 
 bool get kIsDesktop => Platform.isWindows || Platform.isMacOS || Platform.isLinux;
 bool get kIsDesktopWeb => kIsWeb && kIsDesktop;

@@ -6,8 +6,8 @@
 library;
 
 export '../components/deep_link/deep_link_handler.dart';
-export '../components/environment/environment_handler.dart';
-export '../components/file_functions/file_functions.dart';
-export '../components/permissions/permissions.dart';
-export '../components/share/share.dart';
-export '../components/uuid/uuid_handler.dart';
+export '../components/environment_handler.dart';
+export '../components/file_functions.dart';
+export '../components/permissions.dart';
+export '../components/share.dart';
+export '../components/uuid_handler.dart';

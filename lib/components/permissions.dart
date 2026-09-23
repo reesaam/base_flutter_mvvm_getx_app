@@ -2,11 +2,11 @@ import 'dart:io';
 
 import 'package:permission_handler/permission_handler.dart';
 
-import '../../barrels/annotations_barrel.dart';
-import '../../barrels/core_barrel.dart';
-import '../../barrels/core_elements_barrel.dart';
-import '../../barrels/extensions_barrel.dart';
-import '../../barrels/shared_models_barrel.dart';
+import '../barrels/annotations_barrel.dart';
+import '../barrels/core_barrel.dart';
+import '../barrels/core_elements_barrel.dart';
+import '../barrels/extensions_barrel.dart';
+import '../barrels/shared_models_barrel.dart';
 
 @GetPut.component()
 class AppPermissions extends CoreComponent {

@@ -1,4 +1,3 @@
-import '../../barrels/core_barrel.dart';
 import '../../barrels/services_barrel.dart';
 
 extension ExtensionOnFunctionsDebugPrint on Future<bool> {

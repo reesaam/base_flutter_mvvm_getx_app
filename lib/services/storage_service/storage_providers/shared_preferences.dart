@@ -3,15 +3,18 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/core_elements_barrel.dart';
 import '../../../barrels/extensions_barrel.dart';
 import '../../../barrels/services_barrel.dart';
-import '../../../barrels/core_barrel.dart';
 import '../../../barrels/core_resources_barrel.dart';
 
 import '../app_storage_service_abstraction.dart';
 
 @GetPut.component()
-class AppSharedPreferences implements AppStorageServiceAbstraction {
+class AppSharedPreferences extends CoreComponent implements AppStoragesAbstraction {
+  static AppSharedPreferences get to => Get.find();
+
   AppSharedPreferences() {
     _init();
   }
@@ -23,7 +26,7 @@ class AppSharedPreferences implements AppStorageServiceAbstraction {
   Future<BaseLocalResponse<bool>> clear(String key) async {
     try {
       final response = await _storage.remove(key);
-      LoggerService.to.log(message: 'Storage Cleared Successfully');
+      loggerService.log(message: 'Storage Cleared Successfully');
       return response ? Right(response) : Left(_defaultLeftResponse);
     } on LocalException catch (ex, stackTrace) {
       _printException('CLEAR STORAGE', ex);
@@ -38,7 +41,7 @@ class AppSharedPreferences implements AppStorageServiceAbstraction {
   Future<BaseLocalResponse<bool>> hasData(String key) async {
     try {
       final response = _storage.get(key);
-      LoggerService.to.log(message: 'Storage Read Successfully');
+      loggerService.log(message: 'Storage Read Successfully');
       return response != null ? const Right(true) : Left(_defaultLeftResponse);
     } on LocalException catch (ex, stackTrace) {
       _printException('CHECK', ex);
@@ -54,7 +57,7 @@ class AppSharedPreferences implements AppStorageServiceAbstraction {
     try {
       String? data = _storage.getString(key);
       final result = data == null ? null : json.decode(data);
-      LoggerService.to.log(message: 'Data Loaded Successfully from $key');
+      loggerService.log(message: 'Data Loaded Successfully from $key');
       return result != null ? Right(result) : Left(_defaultLeftResponse);
     } on LocalException catch (ex, stackTrace) {
       _printException('LOAD', ex);
@@ -71,7 +74,7 @@ class AppSharedPreferences implements AppStorageServiceAbstraction {
     try {
       String jsonData = json.encode(data);
       final result = await sp.setString(key, jsonData);
-      LoggerService.to.log(message: 'Data Saved Successfully');
+      loggerService.log(message: 'Data Saved Successfully');
       return result ? Right(result) : Left(_defaultLeftResponse);
     } on LocalException catch (ex, stackTrace) {
       _printException('SAVE', ex);
@@ -82,9 +85,9 @@ class AppSharedPreferences implements AppStorageServiceAbstraction {
     }
   }
 
-  static LocalException get _defaultLeftResponse => ResponseStatusLocalException.unknownException.exception;
+  LocalException get _defaultLeftResponse => ResponseStatusLocalException.unknownException.exception;
 
-  static _printException(String method, GeneralException exception) {
-    LoggerService.to.devLog(message: '==> Local $method Data Exception: ${exception.message} (${exception.statusCode})');
+  void _printException(String method, GeneralException exception) {
+    loggerService.devLog(message: '==> Local $method Data Exception: ${exception.message} (${exception.statusCode})');
   }
 }

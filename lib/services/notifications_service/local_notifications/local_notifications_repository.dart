@@ -3,7 +3,6 @@ import '../../../barrels/core_elements_barrel.dart';
 import '../../../barrels/core_resources_barrel.dart';
 import '../../../barrels/extensions_barrel.dart';
 import '../../../barrels/localization_barrel.dart';
-import '../../../barrels/services_barrel.dart';
 import '../../../barrels/ui_kit_barrel.dart';
 import '../notifications_enums.dart';
 import 'local_notification_service.dart';
@@ -33,7 +32,7 @@ class AppLocalNotificationsRepository extends CoreRepository {
     bool channelSetResult = await _setChannel().withStatusPrint(featureName: 'App Local Notifications Channel Set');
 
     var receivedAction = await AwesomeNotifications().getInitialNotificationAction(removeFromActionEvents: false);
-    LoggerService.to.devLog(message: receivedAction.toString());
+    loggerService.devLog(message: receivedAction.toString());
 
     return initializationResult && permissionResult && listenersInitResult && channelSetResult;
   }

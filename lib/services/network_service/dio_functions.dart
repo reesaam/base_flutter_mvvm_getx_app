@@ -6,7 +6,6 @@ import '../../barrels/core_resources_barrel.dart';
 import '../../barrels/localization_barrel.dart';
 import '../../barrels/services_barrel.dart';
 import '../../barrels/extensions_barrel.dart';
-import '../../core/core_functions.dart';
 
 class DioFunctions {
   static Dio apiCore = DioCore.to.dioCore;

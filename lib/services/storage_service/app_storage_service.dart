@@ -9,9 +9,9 @@ import '../../barrels/core_elements_barrel.dart';
 import '../../barrels/core_resources_barrel.dart';
 import '../../barrels/extensions_barrel.dart';
 import '../../barrels/localization_barrel.dart';
-import '../../barrels/services_barrel.dart';
 import '../../barrels/shared_models_barrel.dart';
 
+import 'app_storage_service_abstraction.dart';
 import 'storage_providers/local_storage.dart';
 import 'storage_providers/shared_preferences.dart';
 
@@ -20,9 +20,9 @@ class AppStorageService extends CoreService {
 
   static AppStorageService get to => Get.find();
 
-  final _storage = switch (CoreDefaults.defaultStorageProvider) {
-    AppStorageProvider.getStorage => AppLocalStorage(),
-    AppStorageProvider.sharedPreferences => AppSharedPreferences(),
+  final AppStoragesAbstraction _storage = switch (CoreDefaults.defaultStorageProvider) {
+    AppStorageProvider.getStorage => AppLocalStorage.to,
+    AppStorageProvider.sharedPreferences => AppSharedPreferences.to,
   };
 
   ///Keys
@@ -51,8 +51,8 @@ class AppStorageService extends CoreService {
       var appDataJson = (appData as AppData).toJson();
       Uint8List data = appDataJson.toString().toUInt8List();
       String? savedPath = await AppFileFunctions.to.saveFile(fileName: AppTexts.settingBackupFilename, data: data);
-      LoggerService.to.log(message: 'File Path: $savedPath');
-      LoggerService.to.log(message: 'Backup File Exported');
+      loggerService.log(message: 'File Path: $savedPath');
+      loggerService.log(message: 'Backup File Exported');
     });
   }
 
@@ -67,12 +67,12 @@ class AppStorageService extends CoreService {
       ///Filling Data Fields
       if (appData.dataVersion == AppDataVersions.values.last) {
         saveAppData(appData: appData);
-        LoggerService.to.log(message: 'Data Imported');
+        loggerService.log(message: 'Data Imported');
       } else {
-        LoggerService.to.log(message: 'Data Version is not Compatible, Converter is not Implemented\nData Import Failed');
+        loggerService.log(message: 'Data Version is not Compatible, Converter is not Implemented\nData Import Failed');
       }
     } else {
-      LoggerService.to.devLog(message: 'Imported File was NUll');
+      loggerService.devLog(message: 'Imported File was NUll');
     }
   }
 
@@ -80,26 +80,26 @@ class AppStorageService extends CoreService {
     String unknown = Texts.to.general.notAvailableInitials;
 
     if (appData != null) {
-      LoggerService.to.log(message: '==> App Data:');
-      LoggerService.to.log(message: 'App Version: ${appData.appVersions?.versionsList.lastOrNull?.version ?? unknown}');
-      detailsIncluded == true ? LoggerService.to.log(message: 'App Version Type: ${appData.appVersions?.versionsList.lastOrNull?.versionType ?? unknown}') : null;
-      LoggerService.to.log(message: 'App Data Type: ${appData.dataVersion?.number ?? unknown}');
+      loggerService.log(message: '==> App Data:');
+      loggerService.log(message: 'App Version: ${appData.appVersions?.versionsList.lastOrNull?.version ?? unknown}');
+      detailsIncluded == true ? loggerService.log(message: 'App Version Type: ${appData.appVersions?.versionsList.lastOrNull?.versionType ?? unknown}') : null;
+      loggerService.log(message: 'App Data Type: ${appData.dataVersion?.number ?? unknown}');
       if (detailsIncluded == true) {
-        LoggerService.to.log(message: '==> Details:');
-        LoggerService.to.log(message: 'Settings / Dark Mode: ${appData.settings?.darkMode}');
-        LoggerService.to.log(message: 'Settings / Language: ${appData.settings?.language.languageName}');
+        loggerService.log(message: '==> Details:');
+        loggerService.log(message: 'Settings / Dark Mode: ${appData.settings?.darkMode}');
+        loggerService.log(message: 'Settings / Language: ${appData.settings?.language.languageName}');
       }
     }
 
     if (appData?.statisticsData != null) {
-      LoggerService.to.log(message: '==> Statistics:');
-      LoggerService.to.log(message: 'Statistics / Launches: ${appData?.statisticsData?.launches}');
-      LoggerService.to.log(message: 'Statistics / Logins: ${appData?.statisticsData?.logins}');
-      LoggerService.to.log(message: 'Statistics / Crashes: ${appData?.statisticsData?.crashes}');
-      LoggerService.to.log(message: 'Statistics / Page Opens: ${appData?.statisticsData?.pageOpens}');
-      LoggerService.to.log(message: 'Statistics / API Calls: ${appData?.statisticsData?.apiCalls}');
-      LoggerService.to.log(message: 'Statistics / Install DateTime: ${appData?.statisticsData?.installDateTime.toDateTimeFormat}');
-      LoggerService.to.log(message: 'Statistics / Install Duration: ${appData?.statisticsData?.installDuration.toConditionalFormat}');
+      loggerService.log(message: '==> Statistics:');
+      loggerService.log(message: 'Statistics / Launches: ${appData?.statisticsData?.launches}');
+      loggerService.log(message: 'Statistics / Logins: ${appData?.statisticsData?.logins}');
+      loggerService.log(message: 'Statistics / Crashes: ${appData?.statisticsData?.crashes}');
+      loggerService.log(message: 'Statistics / Page Opens: ${appData?.statisticsData?.pageOpens}');
+      loggerService.log(message: 'Statistics / API Calls: ${appData?.statisticsData?.apiCalls}');
+      loggerService.log(message: 'Statistics / Install DateTime: ${appData?.statisticsData?.installDateTime.toDateTimeFormat}');
+      loggerService.log(message: 'Statistics / Install Duration: ${appData?.statisticsData?.installDuration.toConditionalFormat}');
     }
   }
 }

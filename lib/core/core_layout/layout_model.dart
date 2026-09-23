@@ -1,6 +1,4 @@
 import '../../barrels/core_barrel.dart';
-// ignore: barrel_import_lints/only_barrel_imports
-import '../../barrels/ui_kit_barrel.dart';
 import 'app_breakpoints.dart';
 
 @immutable

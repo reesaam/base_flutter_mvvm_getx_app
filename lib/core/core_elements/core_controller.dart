@@ -1,4 +1,3 @@
-import '../../barrels/services_barrel.dart';
 import '../../barrels/shared_models_barrel.dart';
 import '../../barrels/core_barrel.dart';
 
@@ -12,10 +11,6 @@ abstract class CoreController extends GetxController {
   }
 
   LayoutModel get layout => context.layout;
-
-  /// Services
-  LoggerService get loggerService => LoggerService.to;
-  AppStatisticsService get statisticsService => AppStatisticsService.to;
 
   late AppPageDetail pageDetail;
 
