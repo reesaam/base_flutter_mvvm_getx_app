@@ -108,16 +108,16 @@ class DioFunctions {
   static NetworkException get _defaultLeftResponse => ResponseStatusAPI.unknownException.exception;
 
   static _printResponse(String method, Response response) {
-    appDebugPrint('==> $method Method Successful Response:');
-    appDebugPrint('Status Code: ${response.statusCode}');
-    appDebugPrint('Data Message: ${response.statusMessage}');
-    appDebugPrint('Data Body: ${response.data}');
+    LoggerService.to.devLog(message: '==> $method Method Successful Response:');
+    LoggerService.to.devLog(message: 'Status Code: ${response.statusCode}');
+    LoggerService.to.devLog(message: 'Data Message: ${response.statusMessage}');
+    LoggerService.to.devLog(message: 'Data Body: ${response.data}');
   }
 
   static _printException(String method, List<String> prints) {
-    appDebugPrint('==> $method Method Exception:');
+    LoggerService.to.devLog(message: '==> $method Method Exception:');
     for (var print in prints) {
-      appDebugPrint(print);
+      LoggerService.to.devLog(message: print);
     }
   }
 }

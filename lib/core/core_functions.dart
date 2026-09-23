@@ -10,9 +10,9 @@ import '../barrels/ui_kit_barrel.dart';
 import 'package:flutter/foundation.dart';
 
 // void appDebugPrint(String message) => CoreFlags.isRelease ? null : debugPrint('[Debug] $message');
-void appDebugPrint(String message) => CoreFlags.isRelease ? nullFunction() : LoggerService.devLog(message: message);
+// void appDebugPrint(String message) => CoreFlags.isRelease ? nullFunction() : LoggerService.devLog(message: message);
 // Logger entry point — direct print is allowed only here.
-void appLogPrint(String message) => LoggerService.log(message: message);
+// void appLogPrint(String message) => LoggerService.log(message: message);
 
 bool get kIsDesktop => Platform.isWindows || Platform.isMacOS || Platform.isLinux;
 bool get kIsDesktopWeb => kIsWeb && kIsDesktop;
@@ -67,21 +67,21 @@ appExitDialog() =>
 
 appReload({AppPageDetail? bootPage}) async {
   showLoadingDialog();
-  appLogPrint('App Reload Triggered');
+  LoggerService.to.log(message: 'App Reload Triggered');
   Get.reloadAll(force: true);
 }
 
 appReset() {
-  appLogPrint('App Reset Triggered');
+  LoggerService.to.log(message: 'App Reset Triggered');
   Get.reset();
 }
 
 appRestart() {
-  appLogPrint('App Restart Triggered');
+  LoggerService.to.log(message: 'App Restart Triggered');
   // kIsWeb ? RestartWeb().restart('webOrigin') : Restart.restartApp();
 }
 
 appExit() {
-  appLogPrint('App Exit Triggered');
+  LoggerService.to.log(message: 'App Exit Triggered');
   exit(0);
 }

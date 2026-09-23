@@ -29,7 +29,7 @@ Future<void> main()  async {
     },
         (error, stack) {
       // unawaited(CrashReporter.recordError(error, stack, fatal: true));
-      appLogPrint('Uncaught zone error: $error\n$stack');
+      LoggerService.to.log(message: 'Uncaught zone error: $error\n$stack');
     },
   );
 }

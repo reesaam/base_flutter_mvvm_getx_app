@@ -2,13 +2,14 @@ import 'package:dio/dio.dart' as dio;
 
 import '../../../barrels/core_barrel.dart';
 import '../../../barrels/core_resources_barrel.dart';
+import '../../../barrels/services_barrel.dart';
 
 /// Debug-only request/response logging interceptor.
 class LoggingInterceptor extends dio.Interceptor {
   @override
   void onRequest(dio.RequestOptions options, dio.RequestInterceptorHandler handler) {
     if (!CoreFlags.isRelease) {
-      appDebugPrint('HTTP → ${options.method} ${options.uri}');
+      LoggerService.to.devLog(message: 'HTTP → ${options.method} ${options.uri}');
     }
     handler.next(options);
   }
@@ -16,7 +17,7 @@ class LoggingInterceptor extends dio.Interceptor {
   @override
   void onResponse(dio.Response response, dio.ResponseInterceptorHandler handler) {
     if (!CoreFlags.isRelease) {
-      appDebugPrint('HTTP ← ${response.statusCode} ${response.requestOptions.uri}');
+      LoggerService.to.devLog(message: 'HTTP ← ${response.statusCode} ${response.requestOptions.uri}');
     }
     handler.next(response);
   }
@@ -24,7 +25,7 @@ class LoggingInterceptor extends dio.Interceptor {
   @override
   void onError(dio.DioException err, dio.ErrorInterceptorHandler handler) {
     if (!CoreFlags.isRelease) {
-      appDebugPrint('HTTP ✕ ${err.response?.statusCode} ${err.requestOptions.uri} · ${err.message}');
+      LoggerService.to.devLog(message: 'HTTP ✕ ${err.response?.statusCode} ${err.requestOptions.uri} · ${err.message}');
     }
     handler.next(err);
   }

@@ -6,6 +6,7 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import '../../../barrels/annotations_barrel.dart';
 import '../../../barrels/core_barrel.dart';
 import '../../../barrels/core_elements_barrel.dart';
+import '../../../barrels/services_barrel.dart';
 import '../notifications_enums.dart';
 
 @GetPut.service()
@@ -19,8 +20,8 @@ class AppLocalNotificationService extends CoreService {
 
   @notificationAnnotation
   static onActionReceivedMethod(ReceivedAction receivedAction) {
-    appDebugPrint('Notification Received Action Channel Key: ${receivedAction.channelKey}');
-    appDebugPrint('New Notification Action Received: ${receivedAction.toMap()}');
+    LoggerService.to.devLog(message: 'Notification Received Action Channel Key: ${receivedAction.channelKey}');
+    LoggerService.to.devLog(message: 'New Notification Action Received: ${receivedAction.toMap()}');
 
     SendPort? sendPort = IsolateNameServer.lookupPortByName(AppNotificationsPortNames.receivePort.portName);
     if (sendPort != null) {
@@ -31,16 +32,16 @@ class AppLocalNotificationService extends CoreService {
 
   @notificationAnnotation
   static onDismissActionReceivedMethod(ReceivedAction receivedAction) {
-    appDebugPrint(receivedAction.channelKey.toString());
+    LoggerService.to.devLog(message: receivedAction.channelKey.toString());
   }
 
   @notificationAnnotation
   static onNotificationCreatedMethod(ReceivedNotification receivedNotification) {
-    appDebugPrint(receivedNotification.channelKey.toString());
+    LoggerService.to.devLog(message: receivedNotification.channelKey.toString());
   }
 
   @notificationAnnotation
   static onNotificationDisplayedMethod(ReceivedNotification receivedNotification) {
-    appDebugPrint(receivedNotification.channelKey.toString());
+    LoggerService.to.devLog(message: receivedNotification.channelKey.toString());
   }
 }

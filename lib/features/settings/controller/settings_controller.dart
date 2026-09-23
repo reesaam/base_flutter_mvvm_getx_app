@@ -71,7 +71,7 @@ class SettingsController extends CoreController {
     saveSettings();
     popPage();
     Get.updateLocale(selectedLanguage.value.locale);
-    appDebugPrint('Language Changed to ${selectedLanguage.value.languageName}');
+    LoggerService.to.devLog(message: 'Language Changed to ${selectedLanguage.value.languageName}');
     appReload(bootPage: pageDetail);
   }
 
@@ -79,14 +79,14 @@ class SettingsController extends CoreController {
     darkMode.value = value;
     appSettings.value = appSettings.value.copyWith(darkMode: value);
     saveSettings();
-    appLogPrint('DarkMode Changed to ${darkMode.value}');
+    LoggerService.to.log(message: 'DarkMode Changed to ${darkMode.value}');
     AppThemeFunctions.to.changeThemeMode(darkMode.value);
     update();
   }
 
   functionCheckUpdateAvailableVersion() async {
     updateAvailableVersion.value = await VersionsController.to.checkUpdateAvailableVersion();
-    appLogPrint('Checked Update Version: ${updateAvailableVersion.value?.version ?? Texts.to.general.notAvailable}');
+    LoggerService.to.log(message: 'Checked Update Version: ${updateAvailableVersion.value?.version ?? Texts.to.general.notAvailable}');
   }
 
   functionGoToUpdatePage() => goToPage(AppPages.update);
