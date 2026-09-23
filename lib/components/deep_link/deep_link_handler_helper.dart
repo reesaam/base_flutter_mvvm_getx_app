@@ -1,6 +1,7 @@
 import '../../barrels/core_barrel.dart';
 import '../../barrels/extensions_barrel.dart';
 
+import '../../barrels/services_barrel.dart';
 import 'deep_link_handler_data_model/deep_link_handler_data_model.dart';
 import 'deep_link_types.dart';
 
@@ -28,8 +29,8 @@ class DeepLinkHandlerHelper {
       parts.removeWhere((element) => element == '#');
       parts.removeWhere((element) => element == _paramsSeparator);
       if (!parts.isNullOrEmpty) params.addAll(parts);
-      appDebugPrint('getDataFromCallBackUrl type: ${type.name}');
-      appDebugPrint('getDataFromCallBackUrl params: $params');
+      LoggerService.to.devLog(message: 'getDataFromCallBackUrl type: ${type.name}');
+      LoggerService.to.devLog(message: 'getDataFromCallBackUrl params: $params');
       return DeepLinkCallBackUrlData(type: type, params: params);
     } else {
       return null;

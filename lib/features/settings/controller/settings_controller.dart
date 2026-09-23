@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import '../../../barrels/annotations_barrel.dart';
-import '../../../barrels/components_barrel.dart';
+import '../../../barrels/services_barrel.dart';
 import '../../../barrels/core_barrel.dart';
 import '../../../barrels/core_elements_barrel.dart';
 import '../../../barrels/core_resources_barrel.dart';
@@ -9,8 +9,6 @@ import '../../../barrels/extensions_barrel.dart';
 import '../../../barrels/localization_barrel.dart';
 import '../../../barrels/shared_models_barrel.dart';
 import '../../../barrels/ui_kit_barrel.dart';
-// ignore: barrel_import_lints/only_barrel_imports
-import '../../auth/controller/auth_controller.dart';
 // ignore: barrel_import_lints/only_barrel_imports
 import '../../versions/controller/versions_controller.dart';
 import '../widgets/settings_languages_widgets.dart';
@@ -53,7 +51,7 @@ class SettingsController extends CoreController {
   void _fillData() {
     darkMode.value = appSettings.value.darkMode;
     selectedLanguage.value = appSettings.value.language;
-    appDebugPrint('Fill Setting Data Function Applied Data');
+    LoggerService.to.log(message: 'Fill Setting Data Function Applied Data');
     appSettingDataListener = appSettings.listen((data) {
       darkMode.value = data.darkMode;
       selectedLanguage.value = data.language;
@@ -73,7 +71,7 @@ class SettingsController extends CoreController {
     saveSettings();
     popPage();
     Get.updateLocale(selectedLanguage.value.locale);
-    appDebugPrint('Language Changed to ${selectedLanguage.value.languageName}');
+    LoggerService.to.devLog(message: 'Language Changed to ${selectedLanguage.value.languageName}');
     appReload(bootPage: pageDetail);
   }
 
@@ -81,14 +79,14 @@ class SettingsController extends CoreController {
     darkMode.value = value;
     appSettings.value = appSettings.value.copyWith(darkMode: value);
     saveSettings();
-    appLogPrint('DarkMode Changed to ${darkMode.value}');
+    LoggerService.to.log(message: 'DarkMode Changed to ${darkMode.value}');
     AppThemeFunctions.to.changeThemeMode(darkMode.value);
     update();
   }
 
   functionCheckUpdateAvailableVersion() async {
     updateAvailableVersion.value = await VersionsController.to.checkUpdateAvailableVersion();
-    appLogPrint('Checked Update Version: ${updateAvailableVersion.value?.version ?? Texts.to.general.notAvailable}');
+    LoggerService.to.log(message: 'Checked Update Version: ${updateAvailableVersion.value?.version ?? Texts.to.general.notAvailable}');
   }
 
   functionGoToUpdatePage() => goToPage(AppPages.update);
@@ -96,7 +94,7 @@ class SettingsController extends CoreController {
   functionBackup() {
     function() async {
       popPage();
-      await AppStorage.to.exportData();
+      await AppStorageService.to.exportData();
     }
 
     AppAlertDialogs.withOkCancel(
@@ -110,7 +108,7 @@ class SettingsController extends CoreController {
   functionRestore() {
     function() async {
       popPage();
-      await AppStorage.to.importData();
+      await AppStorageService.to.importData();
     }
 
     AppAlertDialogs.withOkCancel(
@@ -154,17 +152,4 @@ class SettingsController extends CoreController {
   }
 
   saveSettings() => saveAppData(appSettingData: appSettings.value);
-
-  Future<void> logout() async {
-    AppAlertDialogs.withOkCancel(
-      title: Texts.to.general.warning,
-      text: Texts.to.dialogs.general.areYouSure,
-      dismissible: true,
-      onTapOk: () async {
-        popPage();
-        final auth = Get.isRegistered<AuthController>() ? AuthController.to : Get.put(AuthController());
-        await auth.logout();
-      },
-    );
-  }
 }

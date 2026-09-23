@@ -4,6 +4,7 @@ import 'package:share_plus/share_plus.dart';
 
 import '../../../barrels/annotations_barrel.dart';
 import '../../../barrels/components_barrel.dart';
+import '../../../barrels/services_barrel.dart';
 import '../../../barrels/core_barrel.dart';
 import '../../../barrels/core_elements_barrel.dart';
 import '../../../barrels/core_resources_barrel.dart';
@@ -35,17 +36,17 @@ class AdminTestController extends CoreController {
 
   ///Connections
   internetConnection() async {
-    var result = await AppConnectionChecker().checkInternet();
+    var result = await AppConnectionService().checkInternet();
     await _dialog(result.toString().capitalizeFirst ?? unknownStatus);
   }
 
   internetStatus() async {
-    var result = await AppConnectionChecker().checkInternetStatus();
+    var result = await AppConnectionService().checkInternetStatus();
     await _dialog(result.name.capitalizeFirst ?? unknownStatus);
   }
 
   checkConnection() async {
-    var result = await AppConnectionChecker().checkConnection();
+    var result = await AppConnectionService().checkConnection();
     await _dialog(result.name.capitalizeFirst ?? unknownStatus);
   }
 
@@ -191,9 +192,9 @@ class AdminTestController extends CoreController {
     _dialog(response);
   }
 
-  importAppDataTest() async => await AppStorage.to.importData();
+  importAppDataTest() async => await AppStorageService.to.importData();
 
-  exportAppDataTest() async => await AppStorage.to.exportData();
+  exportAppDataTest() async => await AppStorageService.to.exportData();
 
   shareText() async => await AppShare.shareText('Sample Share Text');
 

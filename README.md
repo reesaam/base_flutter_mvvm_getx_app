@@ -11,21 +11,41 @@
 - `GetX` State-Managements
 - Centralized, Fully-Modular, Object-Oriented
 - Generalized UI Elements and Widgets 
-- Storage, Relational and non-Relational Databases Compatible (`MSSQL`, `MySQL`, `SQLite`, `MongoDB`, `realmDB`, `Get Storage`, `Shared Preferences`, etc.)
+- Controllers, Components, Repositories and Services are ready to implement with Object-Oriented Structure
+- Storage, Relational and non-Relational Databases Compatible
 - Several Connection Types Compatible
 - `JSON` Friendly
 
-
 ### This Base Project is using:
 - Performance Optimization
-- `Freezed`, `Dartz`
+- `Freezed`, `Dartz` implemented
 - Dependency Injection
-- `Dio`, `Retrofit`, `Interceptor`
-- Intl App Localization, Countries Specifications (Flags, TimeZones, etc.)
-- Compatible with Native Modules (Camera, Contacts, Permissions, Storage, etc.)
-- Compatible with Several Connection Types (Bluetooth, BLE Devices, Wi-Fi, etc.)
-- Animations and UI Elements
+- `Dio`, `Retrofit`, `Interceptors` implemented
+- Multi Environment Ready
+- Some Storages Implemented (`Get Storage`, `Shared Preferences`, `Secure Storage`)
+- `Intl App Localization` (i69) - Configurations with a yaml file and a tree data
+- Compatible with Native Modules (`Camera`, `Contacts`, `Permissions`, `Storage`, etc.)
+- Compatible with Several Connection Types (`Bluetooth`, `BLE Devices`, `Wi-Fi`, etc.)
 - App Icon Generator
+- `Admin Pages` to check and test all widgets and functionalities
+
+### This Base Project is using:
+- Multi Environment Ready
+- Barrels Generator
+- Some Storages implemented (`Get Storage`, `Shared Preferences`)
+- Connections and Network Service
+- Failure Handling Service
+- Logger Service
+- Notifications Service
+- Countries Specifications (Flags, TimeZones, etc.)
+- Permissions
+- DeepLink
+- Share Module
+- UUID
+- Complete Theming and UI Kit including Animations and UI Elements
+- Major UI Elements like `AppBar`, `BottomNavigationBar`, `ProgressIndicator`, `TextFields`, `Popup Menu`, `SnackBar`, `Dialogs` (Fully Modular)
+- Beneficial `Extensions` on many types and models
+- `App Icon` Generator
 
 > [!Tip]
 > 

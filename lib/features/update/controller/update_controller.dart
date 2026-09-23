@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import '../../../barrels/annotations_barrel.dart';
-import '../../../barrels/components_barrel.dart';
+import '../../../barrels/services_barrel.dart';
 import '../../../barrels/core_barrel.dart';
 import '../../../barrels/core_elements_barrel.dart';
 import '../../../barrels/core_resources_barrel.dart';
@@ -51,15 +51,15 @@ class UpdateController extends CoreController {
   Future<void> checkUpdate() async {
     buttonCheckUpdateLoading.value = true;
     AppBottomSheet().withoutButton(title: Texts.to.update.updateCheckingUpdate, form: AppProgressIndicator.linear());
-    bool internetStatus = await AppConnectionChecker.to.checkInternet();
+    bool internetStatus = await AppConnectionService.to.checkInternet();
     if (internetStatus) {
       AppVersion? version = await VersionsController.to.checkUpdateAvailableVersion();
       popPage();
       if (version == null || version.version == AppInfo.currentVersion.version) {
-        appLogPrint('No New Version Available');
+        LoggerService.to.log(message: 'No New Version Available');
         AppSnackBar.show(message: Texts.to.update.updateNoUpdateFound);
       } else {
-        appLogPrint('Available Version: ${version.version}');
+        LoggerService.to.log(message: 'Available Version: ${version.version}');
         availableVersion.value = version.version;
         AppSnackBar.show(message: '${Texts.to.update.updateUpdateFound}\n${Texts.to.general.version.withDoubleDots} $version');
       }
@@ -71,7 +71,7 @@ class UpdateController extends CoreController {
   void downloadUpdate() async {
     buttonDownloadUpdateLoading.value = true;
     AppBottomSheet().withoutButton(title: Texts.to.update.updateDownloading, form: AppProgressIndicator.linear());
-    bool internetStatus = await AppConnectionChecker.to.checkInternet();
+    bool internetStatus = await AppConnectionService.to.checkInternet();
     if (!internetStatus) {
       noInternetConnectionSnackBar();
       return;
@@ -95,7 +95,7 @@ class UpdateController extends CoreController {
     result.fold((l) => showErrorDialog(message: l.toString()), (r) {
       dlFile = r;
       downloaded.value = true;
-      appDebugPrint((dlFile?.length() ?? 0).toString());
+      LoggerService.to.devLog(message: (dlFile?.length() ?? 0).toString());
       AppSnackBar.show(message: Texts.to.update.updateDownloaded);
       AppAlertDialogs.withOkCancel(
         title: Texts.to.update.updateInstallationTitle,

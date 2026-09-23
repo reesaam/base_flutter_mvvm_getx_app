@@ -71,7 +71,7 @@ class AppTheme {
   static TextTheme _textTheme() {
     TextStyle generalStyle = _textStyle();
 
-    TextStyle style = generalStyle.copyWith(color: AppColors.onPrimary.color);
+    TextStyle style = generalStyle.copyWith(color: AppColors.primary.color);
 
     TextTheme textTheme = TextTheme(
       bodySmall: style.copyWith(fontSize: AppTextSizes.textSizeXSmall),

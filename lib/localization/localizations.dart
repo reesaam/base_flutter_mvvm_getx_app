@@ -1,18 +1,20 @@
 import '../barrels/annotations_barrel.dart';
 import '../barrels/core_barrel.dart';
+import '../barrels/core_elements_barrel.dart';
 import '../barrels/core_resources_barrel.dart';
 import '../barrels/extensions_barrel.dart';
 import '../barrels/localization_barrel.dart';
+import '../barrels/ui_kit_barrel.dart';
 
 const _supportedLocales = ['en', 'fa'];
 
 class Texts {
-  Texts._();
+  const Texts._();
   static Translation get to => AppLocalizations.to.of(Get.context!);
 }
 
 @GetPut.component()
-class AppLocalizations {
+class AppLocalizations extends CoreComponent {
   AppLocalizations({this.translation});
 
   static AppLocalizations get to => Get.find();

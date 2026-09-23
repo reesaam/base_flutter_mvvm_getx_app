@@ -1,4 +1,4 @@
-import '../../barrels/core_barrel.dart';
+import '../../barrels/services_barrel.dart';
 
 extension ExtensionOnFunctionsDebugPrint on Future<bool> {
   Future<bool> withStatusPrint({bool? isLog, String? featureName, String? message, String? successfulMessage, String? failureMessage}) =>
@@ -10,9 +10,9 @@ extension ExtensionOnFunctionsDebugPrint on Future<bool> {
         String successfulMsg = message ?? successfulMessage ?? '$featureName Function Successful Performed';
         String failureMsg = message ?? failureMessage ?? '$featureName Function Failed';
         if (isLog == true) {
-          value ? appLogPrint(successfulMsg) : appLogPrint(failureMsg);
+          value ? LoggerService.to.devLog(message: successfulMsg) : LoggerService.to.log(message: failureMsg);
         } else {
-          value ? appDebugPrint(successfulMsg) : appDebugPrint(failureMsg);
+          value ? LoggerService.to.log(message: successfulMsg) : LoggerService.to.devLog(message: failureMsg);
         }
         return value;
       });

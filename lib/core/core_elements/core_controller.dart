@@ -1,8 +1,7 @@
 import '../../barrels/shared_models_barrel.dart';
 import '../../barrels/core_barrel.dart';
 
-abstract class CoreController<T> extends GetxController {
-  /// Prefer this over storing [Get.context] at construction time.
+abstract class CoreController extends GetxController {
   BuildContext? get contextOrNull => Get.context;
 
   BuildContext get context {

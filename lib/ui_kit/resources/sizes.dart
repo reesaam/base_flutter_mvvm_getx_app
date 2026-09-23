@@ -14,6 +14,7 @@ class AppSizes {
   static double get popUpMenuButton => 20;
 
   ///Elements
+  static double get columnSpacing => 20;
   static Size get switchHeight => const Size.fromHeight(20);
 
   ///Homepage

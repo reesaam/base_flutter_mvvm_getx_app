@@ -4,6 +4,11 @@ import '../../../barrels/core_resources_barrel.dart';
 import '../../../barrels/localization_barrel.dart';
 import '../../../barrels/ui_kit_barrel.dart';
 
+extension ExtensionOnInt on int? {
+  bool get isNull => this == null;
+  bool get isNotNull => !isNull;
+}
+
 extension ExtensionIconFunction on int? {
   Icon toIcon() => this == null ? AppIcons.none.widget : Icon(IconData(this!, fontFamily: AppFonts.materialIcons));
 }
