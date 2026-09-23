@@ -28,13 +28,13 @@ class SecureStorageServiceImpl extends CoreService implements SecureStorageServi
   Future<BaseLocalResponse<T?>> read<T>(AppStorageKeys key) async {
     try {
       final data = _storage.read<T>(key.name);
-      loggerService.devLog(message: 'SecureStorage : Data Loaded Successfully from $key');
+      LoggerService.to.devLog(message: 'SecureStorage : Data Loaded Successfully from $key');
       return Right(data);
     } on LocalException catch (ex, stackTrace) {
-      loggerService.devLog(message: 'SecureStorage : Local Exception Occurred : $ex');
+      LoggerService.to.devLog(message: 'SecureStorage : Local Exception Occurred : $ex');
       return Left(LocalException.handleResponse(ex, stackTrace));
     } catch (ex, stackTrace) {
-      loggerService.devLog(message: 'Exception Occurred : $ex');
+      LoggerService.to.devLog(message: 'Exception Occurred : $ex');
       rethrow;
     }
   }
@@ -43,13 +43,13 @@ class SecureStorageServiceImpl extends CoreService implements SecureStorageServi
   Future<BaseLocalResponse<bool>> write<T>({required AppStorageKeys key, required T value}) async {
     try {
       await _storage.write(key.name, value);
-      loggerService.devLog(message: 'SecureStorage : Data Loaded Successfully from $key');
+      LoggerService.to.devLog(message: 'SecureStorage : Data Loaded Successfully from $key');
       return const Right(true);
     } on LocalException catch (ex, stackTrace) {
-      loggerService.devLog(message: 'SecureStorage : Local Exception Occurred : $ex');
+      LoggerService.to.devLog(message: 'SecureStorage : Local Exception Occurred : $ex');
       return Left(LocalException.handleResponse(ex, stackTrace));
     } catch (ex, stackTrace) {
-      loggerService.devLog(message: 'Exception Occurred : $ex');
+      LoggerService.to.devLog(message: 'Exception Occurred : $ex');
       rethrow;
     }
   }
@@ -62,13 +62,13 @@ class SecureStorageServiceImpl extends CoreService implements SecureStorageServi
       } else {
         await _storage.remove(key.name);
       }
-      loggerService.devLog(message: 'Secure Storage Cleared Successfully');
+      LoggerService.to.devLog(message: 'Secure Storage Cleared Successfully');
       return const Right(true);
     } on LocalException catch (ex, stackTrace) {
-      loggerService.devLog(message: 'Local Exception Occurred : $ex');
+      LoggerService.to.devLog(message: 'Local Exception Occurred : $ex');
       return Left(LocalException.handleResponse(ex, stackTrace));
     } catch (ex, stackTrace) {
-      loggerService.devLog(message: 'Exception Occurred : $ex');
+      LoggerService.to.devLog(message: 'Exception Occurred : $ex');
       rethrow;
     }
   }
@@ -77,13 +77,13 @@ class SecureStorageServiceImpl extends CoreService implements SecureStorageServi
   Future<BaseLocalResponse<bool>> hasData(AppStorageKeys key) async {
     try {
       final result = _storage.hasData(key.name);
-      loggerService.devLog(message: 'App Data Cleared Successfully');
+      LoggerService.to.devLog(message: 'App Data Cleared Successfully');
       return Right(result);
     } on LocalException catch (ex, stackTrace) {
-      loggerService.devLog(message: 'Local Exception Occurred : $ex');
+      LoggerService.to.devLog(message: 'Local Exception Occurred : $ex');
       return Left(LocalException.handleResponse(ex, stackTrace));
     } catch (ex, stackTrace) {
-      loggerService.devLog(message: 'Exception Occurred : $ex');
+      LoggerService.to.devLog(message: 'Exception Occurred : $ex');
       rethrow;
     }
   }

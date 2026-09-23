@@ -28,7 +28,7 @@ class DeepLinkHandler extends CoreComponent {
   StreamSubscription<Uri>? _linkSubscription;
 
   void init() {
-    loggerService.devLog(message: 'initDeepLinks Function');
+    LoggerService.to.devLog(message: 'initDeepLinks Function');
     _linkSubscription = _appLinks.uriLinkStream.listen(
       (uriValue) => _onCallBackFunction(uriValue),
       onError: (error) => _onErrorFunction(error),
@@ -38,10 +38,10 @@ class DeepLinkHandler extends CoreComponent {
   }
 
   Future<bool> checkStatus() async {
-    loggerService.devLog(message: 'DeepLink Check Status');
+    LoggerService.to.devLog(message: 'DeepLink Check Status');
     final deepLinkData = await SecureStorageService.to.read<DeepLinkCallBackUrlData?>(AppStorageKeys.deepLink);
     return deepLinkData.fold((l) => false, (r) async {
-      loggerService.devLog(message: 'deepLinkData: ${r?.toJson()}');
+      LoggerService.to.devLog(message: 'deepLinkData: ${r?.toJson()}');
       await SecureStorageService.to.remove(AppStorageKeys.deepLink);
       if (r != null) _handleData(r);
       return true;
@@ -50,11 +50,11 @@ class DeepLinkHandler extends CoreComponent {
 
   FutureOr<bool> _onCallBackFunction(Uri uri) async {
     /// Handling DeepLink CallBacks
-    loggerService.devLog(message: 'DeepLink Listener callBack Triggered, uri: ${uri.toString()}');
+    LoggerService.to.devLog(message: 'DeepLink Listener callBack Triggered, uri: ${uri.toString()}');
     final DeepLinkCallBackUrlData? data = DeepLinkHandlerHelper.getDataFromCallBackUrl(uri.toString());
     if (data != null) {
       await SecureStorageService.to.write(key: AppStorageKeys.deepLink, value: data);
-      loggerService.devLog(message: 'DeepLink Data Wrote to SecureStorage');
+      LoggerService.to.devLog(message: 'DeepLink Data Wrote to SecureStorage');
       _handleData(data);
     }
     // AppRouter.navigateTo(AppRoutes.home);
@@ -62,25 +62,25 @@ class DeepLinkHandler extends CoreComponent {
   }
 
   FutureOr<bool> _onErrorFunction(error) async {
-    loggerService.devLog(message: 'DeepLink Error: $error');
+    LoggerService.to.devLog(message: 'DeepLink Error: $error');
     goToPage(AppPages.homepage);
     AppSnackBar.showError(message: Texts.to.error.unknown);
     return true;
   }
 
   FutureOr<bool> _onDoneFunction() async {
-    loggerService.devLog(message: 'DefaultOnDoneFunction');
+    LoggerService.to.devLog(message: 'DefaultOnDoneFunction');
     return true;
   }
 
   FutureOr<bool> _onDoneListenerFunction() async {
-    loggerService.devLog(message: 'DefaultListenerOnDoneFunction');
+    LoggerService.to.devLog(message: 'DefaultListenerOnDoneFunction');
     _linkSubscription?.cancel();
     return true;
   }
 
   Future<void> redirect({required String url, Function? onDone, Function? onError, Duration? timeout}) async {
-    loggerService.devLog(message: 'DeepLink Handler Redirecting to $url');
+    LoggerService.to.devLog(message: 'DeepLink Handler Redirecting to $url');
     final bool canLaunchUrl = await canLaunchUrlString(url);
     if (canLaunchUrl) {
       await launchUrlString(

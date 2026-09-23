@@ -26,7 +26,7 @@ class AppSharedPreferences extends CoreComponent implements AppStoragesAbstracti
   Future<BaseLocalResponse<bool>> clear(String key) async {
     try {
       final response = await _storage.remove(key);
-      loggerService.log(message: 'Storage Cleared Successfully');
+      LoggerService.to.log(message: 'Storage Cleared Successfully');
       return response ? Right(response) : Left(_defaultLeftResponse);
     } on LocalException catch (ex, stackTrace) {
       _printException('CLEAR STORAGE', ex);
@@ -41,7 +41,7 @@ class AppSharedPreferences extends CoreComponent implements AppStoragesAbstracti
   Future<BaseLocalResponse<bool>> hasData(String key) async {
     try {
       final response = _storage.get(key);
-      loggerService.log(message: 'Storage Read Successfully');
+      LoggerService.to.log(message: 'Storage Read Successfully');
       return response != null ? const Right(true) : Left(_defaultLeftResponse);
     } on LocalException catch (ex, stackTrace) {
       _printException('CHECK', ex);
@@ -57,7 +57,7 @@ class AppSharedPreferences extends CoreComponent implements AppStoragesAbstracti
     try {
       String? data = _storage.getString(key);
       final result = data == null ? null : json.decode(data);
-      loggerService.log(message: 'Data Loaded Successfully from $key');
+      LoggerService.to.log(message: 'Data Loaded Successfully from $key');
       return result != null ? Right(result) : Left(_defaultLeftResponse);
     } on LocalException catch (ex, stackTrace) {
       _printException('LOAD', ex);
@@ -74,7 +74,7 @@ class AppSharedPreferences extends CoreComponent implements AppStoragesAbstracti
     try {
       String jsonData = json.encode(data);
       final result = await sp.setString(key, jsonData);
-      loggerService.log(message: 'Data Saved Successfully');
+      LoggerService.to.log(message: 'Data Saved Successfully');
       return result ? Right(result) : Left(_defaultLeftResponse);
     } on LocalException catch (ex, stackTrace) {
       _printException('SAVE', ex);
@@ -88,6 +88,6 @@ class AppSharedPreferences extends CoreComponent implements AppStoragesAbstracti
   LocalException get _defaultLeftResponse => ResponseStatusLocalException.unknownException.exception;
 
   void _printException(String method, GeneralException exception) {
-    loggerService.devLog(message: '==> Local $method Data Exception: ${exception.message} (${exception.statusCode})');
+    LoggerService.to.devLog(message: '==> Local $method Data Exception: ${exception.message} (${exception.statusCode})');
   }
 }
