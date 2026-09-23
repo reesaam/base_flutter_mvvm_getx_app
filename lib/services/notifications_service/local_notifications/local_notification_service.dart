@@ -15,6 +15,8 @@ class AppLocalNotificationService extends CoreService {
     // IsolateNameServer.registerPortWithName(receivePort, AppNotificationsPortNames.receivePort.portName);
   }
 
+  static AppLocalNotificationService get to => Get.find();
+
   @notificationAnnotation
   static onActionReceivedMethod(ReceivedAction receivedAction) {
     appDebugPrint('Notification Received Action Channel Key: ${receivedAction.channelKey}');

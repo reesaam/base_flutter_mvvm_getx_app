@@ -100,7 +100,7 @@ class DioFunctions {
     }
   }
 
-  static _increaseStatisticApiCall() => AppStatisticsService().increaseApiCalls();
+  static _increaseStatisticApiCall() => AppStatisticsService.to.increaseApiCalls();
 
   ///TODO: Implementation
   static Future<String> _getSavePath() async => Texts.to.general.empty;

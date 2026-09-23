@@ -5,6 +5,8 @@ import '../../barrels/shared_models_barrel.dart';
 
 @GetPut.service()
 class AppStatisticsService extends CoreService {
+  AppStatisticsService();
+
   static AppStatisticsService get to => Get.find();
 
   void increaseLaunch() => _addStatistics(launches: true);

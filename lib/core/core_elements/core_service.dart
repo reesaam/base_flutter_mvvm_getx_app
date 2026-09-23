@@ -1,6 +1,7 @@
 import '../../barrels/core_barrel.dart';
 
-abstract class CoreService<T> extends GetxService  {
+abstract class CoreService extends GetxService  {
+
   void onInitFunction() {}
   void onReadyFunction() {}
   void onCloseFunction() {}

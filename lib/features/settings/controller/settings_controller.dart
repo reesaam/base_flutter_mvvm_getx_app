@@ -51,7 +51,7 @@ class SettingsController extends CoreController {
   void _fillData() {
     darkMode.value = appSettings.value.darkMode;
     selectedLanguage.value = appSettings.value.language;
-    appDebugPrint('Fill Setting Data Function Applied Data');
+    loggerService.log(message: 'Fill Setting Data Function Applied Data');
     appSettingDataListener = appSettings.listen((data) {
       darkMode.value = data.darkMode;
       selectedLanguage.value = data.language;
