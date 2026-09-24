@@ -7,9 +7,9 @@ extension ExtensionDateTimeStringProvidersNull on DateTime? {
 }
 
 extension ExtensionDateTimeStringProviders on DateTime {
-  String toDateTimeFormat({String? separator}) {
+  String toDateTimeFormat({String? separator, bool? withTimeOfDay}) {
     String sp = separator ?? '/';
-    return '${year.toString().padLeft(4, '0')}$sp${month.toString().padLeft(2, '0')}$sp${day.toString().padLeft(2, '0')} - ${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}';
+    return '${year.toString().padLeft(4, '0')}$sp${month.toString().padLeft(2, '0')}$sp${day.toString().padLeft(2, '0')} - ${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}${withTimeOfDay == true ? '  ${timeOfDay()}' : ''}';
   }
 
   String toDateFormat({String? separator}) {
@@ -17,8 +17,11 @@ extension ExtensionDateTimeStringProviders on DateTime {
     return '${year.toString().padLeft(4, '0')}$sp${month.toString().padLeft(2, '0')}$sp${day.toString().padLeft(2, '0')}';
   }
 
-  String toTimeFormat({bool? withSeconds}) =>
-      '${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}${withSeconds == true ? ':${second.toString().padLeft(2, '0')}' : ''}';
+  String toTimeFormat({bool? withSeconds, bool? withTimeOfDay}) =>
+      '${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}${withSeconds == true ? ':${second.toString().padLeft(2, '0')}' : ''}${withTimeOfDay == true ? '  ${timeOfDay()}' : ''}';
+
+  String timeOfDay() => hour >= 12 ? Texts.to.general.timeOfDayPM : Texts.to.general.timeOfDayAM;
+
 }
 
 extension ExtensionDateTimeCompareNull on DateTime? {

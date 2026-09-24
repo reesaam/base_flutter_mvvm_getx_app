@@ -25,8 +25,7 @@ class AppButtonConstructor extends BaseWidget {
     this.child,
     this.icon,
     this.leading,
-    this.width,
-    this.height,
+    this.size,
     this.disabled,
     this.loading,
     this.padding,
@@ -48,8 +47,7 @@ class AppButtonConstructor extends BaseWidget {
   final String? text;
   final AppIcons? icon;
   final AppIcons? leading;
-  final double? width;
-  final double? height;
+  final Size? size;
   final bool? disabled;
   final bool? loading;
   final AppPaddings? padding;
@@ -77,8 +75,8 @@ class AppButtonConstructor extends BaseWidget {
       );
     }
     return AppContainer(
-      width: width,
-      height: height ?? AppDefaults.buttonHeight,
+      width: size?.width,
+      height: size?.height,
       padding: padding ?? AppDefaults.buttonPadding,
       margin: margin,
       child: widget,

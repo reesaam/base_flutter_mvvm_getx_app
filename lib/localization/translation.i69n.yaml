@@ -27,6 +27,7 @@ adminPagesName:
 general:
   empty:
   dash: '-'
+  appExit: App Exit
   version: Version
   ok: Ok
   cancel: Cancel
@@ -43,7 +44,14 @@ general:
   info: Info
   incorrect: Incorrect
   totalBalance: Total Balance
-  appExit: App Exit
+  timeOfDayAM: AM
+  timeOfDayPM: PM
+  emptyPage: Items List is Empty
+  actions:
+    add: Add
+    edit: Edit
+    remove: Remove
+    close: Close
 
 devices:
   android: Android

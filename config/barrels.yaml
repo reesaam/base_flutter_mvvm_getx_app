@@ -107,6 +107,10 @@ barrels:
       - lib/core/extensions/data_types_extensions/extension_button_style.dart
       - lib/core/core_resources/icons.dart
       - lib/core/core_resources/images.dart
+    exclude:
+      - buttons/button_abstraction.dart
+      - buttons/button_constructor.dart
+      - buttons/button_type_enum.dart
 
   - output: lib/barrels/localization_barrel.dart
     library: true
