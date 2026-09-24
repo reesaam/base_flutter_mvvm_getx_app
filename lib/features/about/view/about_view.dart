@@ -12,10 +12,7 @@ class AboutPage extends CoreView<AboutController> {
   @override
   Widget get body => Obx(
     () => Column(
-      children: List<Widget>.generate(
-        controller.listItems.length,
-        (index) => AboutSectionWidget(titleText: controller.listTitles[index], itemText: controller.listItems[index]),
-      ),
+      children: controller.items.map((item) => AboutSectionWidget(item: item)).toList(),
     ),
   );
 }

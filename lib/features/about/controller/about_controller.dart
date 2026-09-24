@@ -5,10 +5,11 @@ import '../../../barrels/core_resources_barrel.dart';
 import '../../../barrels/localization_barrel.dart';
 import '../../../barrels/services_barrel.dart';
 
+import '../models/about_item_model.dart';
+
 @GetPut.controller()
 class AboutController extends CoreController {
-  final RxList<String> listTitles = List<String>.empty(growable: true).obs;
-  final RxList<String> listItems = List<String>.empty(growable: true).obs;
+  final RxList<AboutItemModel> items = <AboutItemModel>[].obs;
 
   @override
   void dataInit() async {
@@ -21,30 +22,18 @@ class AboutController extends CoreController {
     pageDetail = AppPages.about;
   }
 
-  _fillData() {
+  void _fillData() {
     final device = AppDeviceInfoService.to;
-    listTitles.assignAll([
-      Texts.to.about.aboutTitlesAppName,
-      Texts.to.about.aboutTitlesVersion,
-      Texts.to.about.aboutTitlesBuild,
-      Texts.to.about.aboutTitlesOs,
-      Texts.to.about.aboutTitlesDevice,
-      Texts.to.about.aboutTitlesLocale,
-      Texts.to.about.aboutTitlesDeveloperName,
-      Texts.to.about.aboutTitlesDeveloperWebsite,
-      Texts.to.about.aboutTitlesDeveloperLinkedIn,
-    ]);
-
-    listItems.assignAll([
-      AppInfo.appName,
-      device.version,
-      device.buildNumber,
-      '${device.os} ${device.osVersion}'.trim(),
-      device.deviceModel,
-      device.localeTag,
-      AppDeveloperInfo.fullName,
-      AppDeveloperInfo.website,
-      AppDeveloperInfo.linkedin,
+    items.assignAll([
+      AboutItemModel(title: Texts.to.about.aboutTitlesAppName, value: AppInfo.appName),
+      AboutItemModel(title: Texts.to.about.aboutTitlesVersion, value: device.version),
+      AboutItemModel(title: Texts.to.about.aboutTitlesBuild, value: device.buildNumber),
+      AboutItemModel(title: Texts.to.about.aboutTitlesOs, value: '${device.os} ${device.osVersion}'.trim()),
+      AboutItemModel(title: Texts.to.about.aboutTitlesDevice, value: device.deviceModel),
+      AboutItemModel(title: Texts.to.about.aboutTitlesLocale, value: device.localeTag),
+      AboutItemModel(title: Texts.to.about.aboutTitlesDeveloperName, value: AppDeveloperInfo.fullName),
+      AboutItemModel(title: Texts.to.about.aboutTitlesDeveloperWebsite, value: AppDeveloperInfo.website),
+      AboutItemModel(title: Texts.to.about.aboutTitlesDeveloperLinkedIn, value: AppDeveloperInfo.linkedin),
     ]);
   }
 }

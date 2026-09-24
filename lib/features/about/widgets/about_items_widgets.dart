@@ -1,11 +1,12 @@
 import '../../../barrels/ui_kit_barrel.dart';
 
-class AboutSectionWidget extends BaseWidget {
-  final String titleText;
-  final String itemText;
-  const AboutSectionWidget({super.key, required this.titleText, required this.itemText});
+import '../models/about_item_model.dart';
 
-  Widget _title() => Padding(padding: const EdgeInsets.symmetric(horizontal: 10), child: Text('$titleText:'));
+class AboutSectionWidget extends BaseWidget {
+  final AboutItemModel item;
+  const AboutSectionWidget({super.key, required this.item});
+
+  Widget _title() => Padding(padding: const EdgeInsets.symmetric(horizontal: 10), child: Text('${item.title}:'));
 
   Widget _item() => LayoutBuilder(
     builder: (context, constraints) => Card(
@@ -14,7 +15,7 @@ class AboutSectionWidget extends BaseWidget {
         width: constraints.maxWidth,
         padding: const EdgeInsets.all(10),
         child: Text(
-          itemText,
+          item.value,
           // style: TextStyle(color: AppColors.textNormalLight)
         ),
       ),
