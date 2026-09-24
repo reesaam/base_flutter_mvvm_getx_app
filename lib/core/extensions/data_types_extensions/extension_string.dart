@@ -5,6 +5,7 @@ import '../../../barrels/extensions_barrel.dart';
 
 extension ExtensionStringNullChecks on String? {
   bool get isNullOrEmpty => this?.isEmpty ?? true;
+  bool get isNotNullOrEmpty => !(this?.isEmpty ?? true);
 }
 
 extension ExtensionUInt8List on String {

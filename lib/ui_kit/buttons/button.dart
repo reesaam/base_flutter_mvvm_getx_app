@@ -48,6 +48,7 @@ class AppButton extends AppButtonConstructor implements AppButtonAbstraction {
     AppIcons? leading,
     bool? disabled,
     bool? loading,
+    Size? size,
   }) => AppButton._(
     buttonType: ButtonType.general,
     backgroundColor: backgroundColor,
@@ -58,6 +59,7 @@ class AppButton extends AppButtonConstructor implements AppButtonAbstraction {
     leading: leading,
     disabled: disabled,
     loading: loading,
+    size: size,
     child: widget,
   );
 
