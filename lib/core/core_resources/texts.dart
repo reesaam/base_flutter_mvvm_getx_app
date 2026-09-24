@@ -17,6 +17,8 @@ class AppTexts {
   ///Dio
   static const String dioHeaderContentType = 'Content-Type';
   static const String dioHeaderContentTypeData = 'application/json';
+  static const String dioHeaderAuthorization = 'Authorization';
+  static const String dioHeaderSkipAuth = 'X-Skip-Auth';
   static const String dioHeaderConnection = 'Connection';
   static const String dioHeaderConnectionData = 'keep-alive';
 }

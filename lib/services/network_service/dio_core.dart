@@ -10,6 +10,10 @@ import '../../barrels/core_resources_barrel.dart';
 import '../../barrels/extensions_barrel.dart';
 import '../../barrels/services_barrel.dart';
 
+import 'interceptors/auth_interceptor.dart';
+import 'interceptors/logging_interceptor.dart';
+import 'interceptors/retry_interceptor.dart';
+
 export 'api_methods.dart';
 export '../../core/core_resources/response_status_api.dart';
 
@@ -25,14 +29,15 @@ class DioCore extends CoreService {
   void onInit() {
     client = dio.Dio(
       dio.BaseOptions(
+        baseUrl: EnvConfig.apiBaseUrl,
         connectTimeout: AppDefaults.timeOutConnection,
         receiveTimeout: AppDefaults.timeOutConnection,
         sendTimeout: AppDefaults.timeOutConnection,
         contentType: AppTexts.dioHeaderContentTypeData,
-        headers: const {'Content-Type': 'application/json', 'Accept': 'application/json'},
+        headers: const {AppTexts.dioHeaderContentType: 'application/json', 'Accept': 'application/json'},
       ),
     );
-    client.interceptors.addAll([RetryInterceptor(client), LoggingInterceptor()]);
+    client.interceptors.addAll([AuthInterceptor(), RetryInterceptor(client), LoggingInterceptor()]);
     super.onInit();
   }
 
@@ -53,7 +58,12 @@ class DioCore extends CoreService {
         receiveTimeout: AppDefaults.timeOutConnection,
         sendTimeout: AppDefaults.timeOutConnection,
         contentType: AppTexts.dioHeaderContentTypeData,
-        headers: {'Content-Type': 'application/json', if (headers != null) ...headers},
+        extra: {AuthInterceptor.skipAuthExtraKey: skipAuth},
+        headers: {
+          AppTexts.dioHeaderContentType: 'application/json',
+          if (skipAuth) AppTexts.dioHeaderSkipAuth: 'true',
+          if (headers != null) ...headers,
+        },
       );
       _increaseStatisticApiCall();
       final result = await client.request<dynamic>(url, queryParameters: queryParameters, options: options, data: data);
@@ -71,10 +81,14 @@ class DioCore extends CoreService {
     }
   }
 
-  Future<BaseAPIResponse<File>> download({required String url, required String savePath}) async {
+  Future<BaseAPIResponse<File>> download({required String url, required String savePath, bool skipAuth = false}) async {
     try {
       _increaseStatisticApiCall();
-      final APIResponse result = await client.download(url, savePath);
+      final APIResponse result = await client.download(
+        url,
+        savePath,
+        options: dio.Options(extra: {AuthInterceptor.skipAuthExtraKey: skipAuth}),
+      );
       if (result.statusCode == 200) {
         _printResponse('DOWNLOAD', result);
         return Right(File(savePath));
