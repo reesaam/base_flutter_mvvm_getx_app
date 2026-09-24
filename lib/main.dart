@@ -13,6 +13,8 @@ import 'package:flutter/foundation.dart';
 
 // ignore: barrel_import_lints/only_barrel_imports
 import 'package:get_storage/get_storage.dart';
+// ignore: barrel_import_lints/only_barrel_imports
+import 'package:get_secure_storage/get_secure_storage.dart';
 
 // ignore: barrel_import_lints/only_barrel_imports
 import 'main.get_put.dart';
@@ -25,6 +27,7 @@ Future<void> main() async {
       // FlutterError.onError = (details) => unawaited();
       EnvironmentHandler.applyEnvConfig();
       await GetStorage.init();
+      await GetSecureStorage.init(password: EnvConfig.secureStoragePassword, container: AppStorageKeys.secureStorage.name);
       //await AuthSession.to.restoreSession();
       if (!kIsWeb) await AppSystemChannelMethods.textInputHide.invoke();
       runApp(const MainApp());

@@ -8,10 +8,7 @@ import '../../barrels/core_resources_barrel.dart';
 
 @GetPut.service(as: SecureStorageService)
 class SecureStorageServiceImpl extends CoreService implements SecureStorageService {
-  static GetSecureStorage get _storage => GetSecureStorage();
-
-  @override
-  Future<void> init(String password) async => await GetSecureStorage.init(password: password, container: AppStorageKeys.appSecureStorage.name);
+  static GetSecureStorage get _storage => GetSecureStorage(container: AppStorageKeys.secureStorage.name);
 
   @override
   Future<BaseLocalResponse<T?>> read<T>(AppStorageKeys key) async {

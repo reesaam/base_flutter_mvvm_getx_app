@@ -42,4 +42,4 @@ enum AppLanguages {
   const AppLanguages(this.languageName, this.locale, this.textDirection);
 }
 
-enum AppStorageKeys { appSecureStorage, appData, deepLink, accessToken, refreshToken, authUser }
+enum AppStorageKeys { secureStorage, appData, deepLink, accessToken, refreshToken, authUser }
