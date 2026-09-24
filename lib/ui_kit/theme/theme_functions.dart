@@ -4,7 +4,7 @@ import '../../barrels/services_barrel.dart';
 import '../../barrels/ui_kit_barrel.dart';
 
 @GetPut.component()
-class AppThemeFunctions extends CoreController {
+class AppThemeFunctions extends CoreComponent {
   static AppThemeFunctions get to => Get.find();
 
   void changeThemeMode(bool? darkMode) {
