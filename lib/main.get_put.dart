@@ -78,6 +78,7 @@ import 'features/versions/data/versions_local_data_source.dart';
 import 'features/versions/data/versions_remote_data_source.dart';
 import 'localization/localizations.dart';
 import 'services/connectivity_service/connectivity_service.dart';
+import 'services/logger_service/logger_service.dart';
 import 'services/network_service/dio_core.dart';
 import 'services/notifications_service/local_notifications/local_notification_service.dart';
 import 'services/notifications_service/local_notifications/local_notifications.dart';
@@ -89,12 +90,12 @@ import 'services/storage_service/storage_providers/shared_preferences.dart';
 import 'ui_kit/theme/theme_functions.dart';
 
 /// Generated Library Statistics:
-///  Imports Count: 51
+///  Imports Count: 52
 ///  Pages Count: 14
 ///  Controllers Count: 17
-///  Components Count: 12
+///  Components Count: 11
 ///  Repositories Count: 3
-///  Services Count: 5
+///  Services Count: 7
 
 class GetPutPages {
   static List<GetPage> get pages => [
@@ -193,10 +194,6 @@ class _GetPutComponent extends Bindings {
       () => AppLocalNotifications(),
       fenix: true,
     );
-    Get.lazyPut<SecureStorageServiceImpl>(
-      () => SecureStorageServiceImpl(),
-      fenix: true,
-    );
     Get.lazyPut<AppLocalStorage>(() => AppLocalStorage(), fenix: true);
     Get.lazyPut<AppSharedPreferences>(
       () => AppSharedPreferences(),
@@ -228,9 +225,13 @@ class _GetPutService extends Bindings {
   @override
   void dependencies() {
     Get.putAsync<AppConnectionService>(() async => AppConnectionService());
+    Get.putAsync<LoggerService>(() async => LoggerService());
     Get.putAsync<DioCore>(() async => DioCore());
     Get.putAsync<AppLocalNotificationService>(
       () async => AppLocalNotificationService(),
+    );
+    Get.putAsync<SecureStorageServiceImpl>(
+      () async => SecureStorageServiceImpl(),
     );
     Get.putAsync<AppStatisticsService>(() async => AppStatisticsService());
     Get.putAsync<AppStorageService>(() async => AppStorageService());

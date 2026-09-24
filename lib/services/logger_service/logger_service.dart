@@ -1,8 +1,10 @@
+import '../../barrels/annotations_barrel.dart';
 import '../../barrels/core_barrel.dart';
 import '../../barrels/core_elements_barrel.dart';
 import '../../barrels/core_resources_barrel.dart';
 import '../../barrels/localization_barrel.dart';
 
+@GetPut.service()
 class LoggerService extends CoreService {
   LoggerService();
 

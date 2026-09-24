@@ -2,22 +2,10 @@ import 'package:get_secure_storage/get_secure_storage.dart';
 
 import '../../barrels/annotations_barrel.dart';
 import '../../barrels/services_barrel.dart';
-import '../../barrels/core_barrel.dart';
 import '../../barrels/core_elements_barrel.dart';
 import '../../barrels/core_resources_barrel.dart';
 
-abstract class SecureStorageService extends CoreService {
-
-  static SecureStorageService get to => Get.find();
-
-  Future<void> init(String password);
-  Future<BaseLocalResponse<T?>> read<T>(AppStorageKeys key);
-  Future<BaseLocalResponse<bool>> write<T>({required AppStorageKeys key, required T value});
-  Future<BaseLocalResponse<bool>> remove(AppStorageKeys? key);
-  Future<BaseLocalResponse<bool>> hasData(AppStorageKeys key);
-}
-
-@GetPut.component(as: SecureStorageService)
+@GetPut.service(as: SecureStorageService)
 class SecureStorageServiceImpl extends CoreService implements SecureStorageService {
   static GetSecureStorage get _storage => GetSecureStorage();
 

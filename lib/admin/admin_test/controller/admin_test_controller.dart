@@ -25,7 +25,7 @@ class AdminTestController extends CoreController {
   String unknownStatus = 'Unknown';
 
   ///Connections
-  changeDarkMode() async {
+  void changeDarkMode() async {
     darkMode.value = !darkMode.value;
     final loadedAppData = await loadAppData();
     var settings = loadedAppData?.settings;
@@ -35,30 +35,31 @@ class AdminTestController extends CoreController {
   }
 
   ///Connections
-  internetConnection() async {
+  void internetConnection() async {
     var result = await AppConnectionService().checkInternet();
     await _dialog(result.toString().capitalizeFirst ?? unknownStatus);
   }
 
-  internetStatus() async {
+  void internetStatus() async {
     var result = await AppConnectionService().checkInternetStatus();
     await _dialog(result.name.capitalizeFirst ?? unknownStatus);
   }
 
-  checkConnection() async {
+  void checkConnection() async {
     var result = await AppConnectionService().checkConnection();
-    await _dialog(result.name.capitalizeFirst ?? unknownStatus);
+    /// TODO: Fix it
+    // await _dialog(result.name.capitalizeFirst ?? unknownStatus);
   }
 
   ///API
-  apiGetData() async {
+  void apiGetData() async {
     const method = APIMethods.get;
     const url = 'https://jsonplaceholder.typicode.com/posts';
     final response = await DioCore.to.callMethod<List>(method: method, url: url);
     final result = response.fold((l) => _dialog('API Call Failed'), (r) => _dialog(r.length.toString()));
   }
 
-  apiPostData() async {
+  void apiPostData() async {
     const method = APIMethods.post;
     const url = 'https://jsonplaceholder.typicode.com/posts';
     final Map<String, dynamic> data = {"title": "foo", "body": "bar", "userId": 1, "id": 101};
@@ -66,7 +67,7 @@ class AdminTestController extends CoreController {
     final result = response.fold((l) => _dialog('API Call Failed'), (r) => _dialog(r['title']));
   }
 
-  apiPutData() async {
+  void apiPutData() async {
     const method = APIMethods.put;
     const url = '';
     final response = await DioCore.to.callMethod<String>(method: method, url: url);
@@ -74,7 +75,7 @@ class AdminTestController extends CoreController {
     _dialog(result);
   }
 
-  apiPatchData() async {
+  void apiPatchData() async {
     const method = APIMethods.patch;
     const url = '';
     final response = await DioCore.to.callMethod<String>(method: method, url: url);
@@ -82,7 +83,7 @@ class AdminTestController extends CoreController {
     _dialog(result);
   }
 
-  apiDownloadData() async {
+  void apiDownloadData() async {
     const method = APIMethods.download;
     const url = '';
     final response = await DioCore.to.callMethod<String>(method: method, url: url);
@@ -90,7 +91,7 @@ class AdminTestController extends CoreController {
     _dialog(result);
   }
 
-  apiDeleteData() async {
+  void apiDeleteData() async {
     const method = APIMethods.delete;
     const url = '';
     final response = await DioCore.to.callMethod<String>(method: method, url: url);
@@ -99,7 +100,7 @@ class AdminTestController extends CoreController {
   }
 
   ///Files
-  pickFile() async {
+  void pickFile() async {
     String message = 'File not Imported';
     var result = await AppFileFunctions.to.pickFile();
     if (result != null) {
@@ -108,7 +109,7 @@ class AdminTestController extends CoreController {
     await _dialog(message);
   }
 
-  saveFile() async {
+  void saveFile() async {
     String message = 'File nor Saved';
     var resultPick = await AppFileFunctions.to.pickFile();
     if (resultPick != null) {
@@ -119,7 +120,7 @@ class AdminTestController extends CoreController {
   }
 
   ///Permissions
-  checkAllPermissions() async {
+  void checkAllPermissions() async {
     var result = await AppPermissions.to.checkAllPermissions();
     String response = Texts.to.general.empty;
     for (var r in result) {
@@ -128,7 +129,7 @@ class AdminTestController extends CoreController {
     await _dialog(response);
   }
 
-  askAllPermissions() async {
+  void askAllPermissions() async {
     var result = await AppPermissions.to.askAllPermissions();
     String response = Texts.to.general.empty;
     for (var r in result) {
@@ -138,13 +139,13 @@ class AdminTestController extends CoreController {
     await _dialog(response);
   }
 
-  showLocalNotification() async {
+  void showLocalNotification() async {
     await AppLocalNotifications().simple(title: 'Test Notification Title', body: 'Test Notification Body');
   }
 
-  showPushNotification() {}
+  void showPushNotification() {}
 
-  loadAppDataTest() async {
+  void loadAppDataTest() async {
     AppData? appData = await loadAppData();
     String response = '';
     response = 'Load Data Success\n\n';
@@ -165,7 +166,7 @@ class AdminTestController extends CoreController {
     _dialog(response);
   }
 
-  saveAppDataTest() async {
+  void saveAppDataTest() async {
     bool? result = false;
     String response = '';
 
@@ -192,15 +193,15 @@ class AdminTestController extends CoreController {
     _dialog(response);
   }
 
-  importAppDataTest() async => await AppStorageService.to.importData();
+  void importAppDataTest() async => await AppStorageService.to.importData();
 
-  exportAppDataTest() async => await AppStorageService.to.exportData();
+  void exportAppDataTest() async => await AppStorageService.to.exportData();
 
-  shareText() async => await AppShare.shareText('Sample Share Text');
+  void shareText() async => await AppShare.shareText('Sample Share Text');
 
-  shareUri() async => await AppShare.shareUrl('Sample link');
+  void shareUri() async => await AppShare.shareUrl('Sample link');
 
-  shareFile() async {
+  void shareFile() async {
     File? file = await AppFileFunctions.to.pickFile();
     if (file == null) {
       await AppAlertDialogs.withOk(text: 'File is not Picked or Loaded', onTapOk: popPage);
@@ -209,7 +210,7 @@ class AdminTestController extends CoreController {
     }
   }
 
-  tempTestFunctionOne() {}
+  void tempTestFunctionOne() {}
 
-  tempTestFunctionTwo() {}
+  void tempTestFunctionTwo() {}
 }

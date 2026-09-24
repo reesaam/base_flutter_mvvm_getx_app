@@ -12,18 +12,18 @@ import '../../barrels/core_resources_barrel.dart';
 class AppConnectionService extends CoreService {
   static AppConnectionService get to => Get.find();
 
-  get internetConnection => InternetConnection();
-  get connectivity => Connectivity();
+  InternetConnection get internetConnection => InternetConnection();
+  Connectivity get connectivity => Connectivity();
 
   Future<bool> checkInternet() async => await internetConnection.hasInternetAccess.timeout(AppDefaults.timeOutConnection);
 
   Future<InternetStatus> checkInternetStatus() async => await internetConnection.internetStatus;
 
-  internetListener({Function? function}) =>
+  void internetListener({Function? function}) =>
       internetConnection.onStatusChange.listen((status) {}).onData((data) => function == null ? data : function());
 
-  Future<ConnectivityResult> checkConnection() async => await connectivity.checkConnectivity();
+  Future<List<ConnectivityResult>> checkConnection() async => await connectivity.checkConnectivity();
 
-  connectionListener({Function? function}) =>
+  void connectionListener({Function? function}) =>
       connectivity.onConnectivityChanged.listen((status) {}).onData((data) => function == null ? data : function());
 }
