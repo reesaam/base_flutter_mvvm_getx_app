@@ -11,24 +11,17 @@ import '../app_storage_service_abstraction.dart';
 
 class AppSharedPreferences implements AppStoragesAbstraction {
   AppSharedPreferences({SharedPreferences? storage}) {
-    if (storage != null) {
-      _storage = storage;
-      _ready = Future.value();
-    } else {
-      _ready = _init();
-    }
+    _initialized = _assignStorage(storage);
   }
 
   late SharedPreferences _storage;
-  late final Future<void> _ready;
+  late final Future<void> _initialized;
 
-  Future<void> _init() async {
-    _storage = await SharedPreferences.getInstance();
-  }
+  Future<void> _assignStorage(SharedPreferences? storage) async => _storage = storage ?? await SharedPreferences.getInstance();
 
   @override
   Future<BaseLocalResponse<bool>> clear(String key) async {
-    await _ready;
+    await _initialized;
     try {
       final response = await _storage.remove(key);
       LoggerService.to.log(message: 'Storage Cleared Successfully');
@@ -44,7 +37,7 @@ class AppSharedPreferences implements AppStoragesAbstraction {
 
   @override
   Future<BaseLocalResponse<bool>> hasData(String key) async {
-    await _ready;
+    await _initialized;
     try {
       final response = _storage.get(key);
       LoggerService.to.log(message: 'Storage Read Successfully');
@@ -60,9 +53,9 @@ class AppSharedPreferences implements AppStoragesAbstraction {
 
   @override
   Future<BaseLocalResponse<Map<String, dynamic>>> loadData(String key) async {
-    await _ready;
+    await _initialized;
     try {
-      String? data = _storage.getString(key);
+      final data = _storage.getString(key);
       final result = data == null ? null : json.decode(data);
       LoggerService.to.log(message: 'Data Loaded Successfully from $key');
       return result != null ? Right(result) : Left(_defaultLeftResponse);
@@ -77,10 +70,9 @@ class AppSharedPreferences implements AppStoragesAbstraction {
 
   @override
   Future<BaseLocalResponse<bool>> saveData({required String key, required Map<String, dynamic> data}) async {
-    await _ready;
+    await _initialized;
     try {
-      String jsonData = json.encode(data);
-      final result = await _storage.setString(key, jsonData);
+      final result = await _storage.setString(key, json.encode(data));
       LoggerService.to.log(message: 'Data Saved Successfully');
       return result ? Right(result) : Left(_defaultLeftResponse);
     } on LocalException catch (ex, stackTrace) {
