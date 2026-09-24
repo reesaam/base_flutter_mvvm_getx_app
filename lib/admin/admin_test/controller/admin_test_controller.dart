@@ -36,19 +36,18 @@ class AdminTestController extends CoreController {
 
   ///Connections
   void internetConnection() async {
-    var result = await AppConnectionService().checkInternet();
+    var result = await AppConnectionService.to.checkInternet();
     await _dialog(result.toString().capitalizeFirst ?? unknownStatus);
   }
 
   void internetStatus() async {
-    var result = await AppConnectionService().checkInternetStatus();
+    var result = await AppConnectionService.to.checkInternetStatus();
     await _dialog(result.name.capitalizeFirst ?? unknownStatus);
   }
 
   void checkConnection() async {
-    var result = await AppConnectionService().checkConnection();
-    /// TODO: Fix it
-    // await _dialog(result.name.capitalizeFirst ?? unknownStatus);
+    var result = await AppConnectionService.to.checkConnection();
+    await _dialog(result.map((e) => e.name.capitalizeFirst).join(', '));
   }
 
   ///API
@@ -193,9 +192,9 @@ class AdminTestController extends CoreController {
     _dialog(response);
   }
 
-  void importAppDataTest() async => await AppStorageService.to.importData();
+  void importAppDataTest() async => await AppFileFunctions.to.importAppData();
 
-  void exportAppDataTest() async => await AppStorageService.to.exportData();
+  void exportAppDataTest() async => await AppFileFunctions.to.exportAppData();
 
   void shareText() async => await AppShare.to.shareText('Sample Share Text');
 
