@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import '../../../barrels/annotations_barrel.dart';
+import '../../../barrels/components_barrel.dart';
 import '../../../barrels/services_barrel.dart';
 import '../../../barrels/core_barrel.dart';
 import '../../../barrels/core_elements_barrel.dart';
@@ -58,13 +59,13 @@ class SettingsController extends CoreController {
     });
   }
 
-  functionLanguageModal() => AppBottomSheet().withCancel(
+  void functionLanguageModal() => AppBottomSheet().withCancel(
     title: Texts.to.settings.languageModalSelectLanguage,
     form: SettingsLanguageWidget(function: functionLanguageSelectionOnTap),
     dismissible: true,
   );
 
-  functionLanguageSelectionOnTap(int index) {
+  void functionLanguageSelectionOnTap(int index) {
     selectedLanguage.value = AppLocalizations.to.supportedLocales[index].getLanguage;
     appSettings.value = appSettings.value.copyWith(language: selectedLanguage.value);
     appSettings.changeLanguage(selectedLanguage.value);
@@ -75,7 +76,7 @@ class SettingsController extends CoreController {
     appReload(bootPage: pageDetail);
   }
 
-  functionDarkModeOnChange(bool value) {
+  void functionDarkModeOnChange(bool value) {
     darkMode.value = value;
     appSettings.value = appSettings.value.copyWith(darkMode: value);
     saveSettings();
@@ -84,17 +85,17 @@ class SettingsController extends CoreController {
     update();
   }
 
-  functionCheckUpdateAvailableVersion() async {
+  void functionCheckUpdateAvailableVersion() async {
     updateAvailableVersion.value = await VersionsController.to.checkUpdateAvailableVersion();
     LoggerService.to.log(message: 'Checked Update Version: ${updateAvailableVersion.value?.version ?? Texts.to.general.notAvailable}');
   }
 
-  functionGoToUpdatePage() => goToPage(AppPages.update);
+  void functionGoToUpdatePage() => goToPage(AppPages.update);
 
-  functionBackup() {
+  void functionBackup() {
     function() async {
       popPage();
-      await AppStorageService.to.exportData();
+      await AppFileFunctions.to.exportAppData();
     }
 
     AppAlertDialogs.withOkCancel(
@@ -105,10 +106,10 @@ class SettingsController extends CoreController {
     );
   }
 
-  functionRestore() {
+  void functionRestore() {
     function() async {
       popPage();
-      await AppStorageService.to.importData();
+      await AppFileFunctions.to.importAppData();
     }
 
     AppAlertDialogs.withOkCancel(
@@ -119,7 +120,7 @@ class SettingsController extends CoreController {
     );
   }
 
-  clearAllData() {
+  void clearAllData() {
     function() {
       popPage();
       clearAppData();
@@ -135,7 +136,7 @@ class SettingsController extends CoreController {
     );
   }
 
-  resetAllSettings() {
+  void resetAllSettings() {
     function() {
       popPage();
       const AppSettingData().clearData;
@@ -151,5 +152,5 @@ class SettingsController extends CoreController {
     );
   }
 
-  saveSettings() => saveAppData(appSettingData: appSettings.value);
+  void saveSettings() => saveAppData(appSettingData: appSettings.value);
 }

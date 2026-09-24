@@ -1,9 +1,4 @@
-import 'dart:convert';
-
-import 'package:flutter/foundation.dart';
-
 import '../../barrels/annotations_barrel.dart';
-import '../../barrels/components_barrel.dart';
 import '../../barrels/core_barrel.dart';
 import '../../barrels/core_elements_barrel.dart';
 import '../../barrels/core_resources_barrel.dart';
@@ -46,38 +41,6 @@ class AppStorageService extends CoreService {
   }
 
   Future<BaseLocalResponse<bool>> clearAppData() async => await _storage.clear(_keyAppData.name);
-
-  ///Manage Data
-  Future<void> exportData() async {
-    final appData = await loadAppData();
-    appData.fold((l) => null, (r) async {
-      var appDataJson = (appData as AppData).toJson();
-      Uint8List data = appDataJson.toString().toUInt8List();
-      String? savedPath = await AppFileFunctions.to.saveFile(fileName: AppTexts.settingBackupFilename, data: data);
-      LoggerService.to.log(message: 'File Path: $savedPath');
-      LoggerService.to.log(message: 'Backup File Exported');
-    });
-  }
-
-  Future<void> importData() async {
-    var appDataFile = await AppFileFunctions.to.pickFile();
-
-    if (appDataFile != null) {
-      clearAppData();
-      String stringCharCodes = String.fromCharCodes(appDataFile.readAsBytesSync());
-      AppData appData = AppData.fromJson(json.decode(stringCharCodes));
-
-      ///Filling Data Fields
-      if (appData.dataVersion == AppDataVersions.values.last) {
-        saveAppData(appData: appData);
-        LoggerService.to.log(message: 'Data Imported');
-      } else {
-        LoggerService.to.log(message: 'Data Version is not Compatible, Converter is not Implemented\nData Import Failed');
-      }
-    } else {
-      LoggerService.to.devLog(message: 'Imported File was NUll');
-    }
-  }
 
   void printData({AppData? appData, bool? detailsIncluded}) {
     String unknown = Texts.to.general.notAvailableInitials;
