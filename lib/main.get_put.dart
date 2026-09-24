@@ -54,7 +54,6 @@ import 'admin/admin_widget_check/controller/admin_widget_check_controller.dart';
 import 'admin/admin_widget_check/view/admin_widget_check_page.dart';
 import 'admin/app_docs/controller/app_docs_controller.dart';
 import 'admin/app_docs/view/app_docs_page.dart';
-import 'components/deep_link/deep_link_handler.dart';
 import 'components/environment_handler.dart';
 import 'components/file_functions.dart';
 import 'components/permissions.dart';
@@ -78,12 +77,13 @@ import 'features/versions/data/versions_local_data_source.dart';
 import 'features/versions/data/versions_remote_data_source.dart';
 import 'localization/localizations.dart';
 import 'services/connectivity_service/connectivity_service.dart';
-import 'services/logger_service/logger_service.dart';
+import 'services/deep_link/deep_link_service.dart';
+import 'services/logger_service.dart';
 import 'services/network_service/dio_core.dart';
 import 'services/notifications_service/local_notifications/local_notification_service.dart';
 import 'services/notifications_service/local_notifications/local_notifications.dart';
 import 'services/secure_storage_service/secure_storage_service.dart';
-import 'services/statistics_service/statistics_service.dart';
+import 'services/statistics_service.dart';
 import 'services/storage_service/app_storage_service.dart';
 import 'services/storage_service/storage_providers/local_storage.dart';
 import 'services/storage_service/storage_providers/shared_preferences.dart';
@@ -93,9 +93,9 @@ import 'ui_kit/theme/theme_functions.dart';
 ///  Imports Count: 52
 ///  Pages Count: 14
 ///  Controllers Count: 17
-///  Components Count: 11
+///  Components Count: 10
 ///  Repositories Count: 3
-///  Services Count: 7
+///  Services Count: 8
 
 class GetPutPages {
   static List<GetPage> get pages => [
@@ -183,7 +183,6 @@ class _GetPutController extends Bindings {
 class _GetPutComponent extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<DeepLinkHandler>(() => DeepLinkHandler(), fenix: true);
     Get.lazyPut<EnvironmentHandler>(() => EnvironmentHandler(), fenix: true);
     Get.lazyPut<AppFileFunctions>(() => AppFileFunctions(), fenix: true);
     Get.lazyPut<AppPermissions>(() => AppPermissions(), fenix: true);
@@ -225,6 +224,7 @@ class _GetPutService extends Bindings {
   @override
   void dependencies() {
     Get.putAsync<AppConnectionService>(() async => AppConnectionService());
+    Get.putAsync<DeepLinkService>(() async => DeepLinkService());
     Get.putAsync<LoggerService>(() async => LoggerService());
     Get.putAsync<DioCore>(() async => DioCore());
     Get.putAsync<AppLocalNotificationService>(

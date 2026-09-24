@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 
+import '../../barrels/components_barrel.dart';
 import '../../barrels/core_resources_barrel.dart';
 import '../../barrels/localization_barrel.dart';
 import '../../barrels/services_barrel.dart';

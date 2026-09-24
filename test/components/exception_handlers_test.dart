@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:base_flutter_mvvm_getx_app/services/failure_service/network_exception.dart';
-import 'package:base_flutter_mvvm_getx_app/services/failure_service/local_exception.dart';
+import 'package:base_flutter_mvvm_getx_app/components/failure/network_exception.dart';
+import 'package:base_flutter_mvvm_getx_app/components/failure/local_exception.dart';
 
 void main() {
   group('NetworkException.handleResponse', () {

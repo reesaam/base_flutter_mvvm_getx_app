@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart' as dio;
 
+import '../../barrels/components_barrel.dart';
 import '../../barrels/extensions_barrel.dart';
 import '../../barrels/services_barrel.dart';
 

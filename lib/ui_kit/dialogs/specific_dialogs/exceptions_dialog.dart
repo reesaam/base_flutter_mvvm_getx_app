@@ -1,3 +1,4 @@
+import '../../../barrels/components_barrel.dart';
 import '../../../barrels/services_barrel.dart';
 import '../../../barrels/core_barrel.dart';
 import '../../../barrels/localization_barrel.dart';
