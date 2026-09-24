@@ -3,6 +3,7 @@ import '../../../barrels/core_barrel.dart';
 import '../../../barrels/core_elements_barrel.dart';
 import '../../../barrels/extensions_barrel.dart';
 import '../../../barrels/localization_barrel.dart';
+import '../../../barrels/services_barrel.dart';
 
 import '../../../barrels/ui_kit_barrel.dart';
 import '../controller/settings_controller.dart';
@@ -56,12 +57,12 @@ class SettingsPage extends CoreView<SettingsController> {
       widgets: [
         SettingsSectionItemWidget(
           text: Texts.to.settings.sectionTitleUpdateCurrentVersion.withDoubleDots,
-          leading: Text(AppInfo.currentVersion.version),
+          leading: Text(AppDeviceInfoService.to.version),
         ),
         SettingsSectionItemWidget(
           text: Texts.to.settings.sectionTitleUpdateAvailableVersion.withDoubleDots,
           leading: Text(
-            controller.updateAvailableVersion.value?.version == AppInfo.currentVersion.version
+            controller.updateAvailableVersion.value?.version == AppDeviceInfoService.to.version
                 ? Texts.to.general.notAvailable
                 : controller.updateAvailableVersion.value?.version ?? Texts.to.general.notAvailable,
           ),

@@ -46,7 +46,7 @@ class UpdateController extends CoreController {
     CoreFlags.checkUpdate ? await checkUpdate() : null;
   }
 
-  bool updateAvailability() => availableVersion.value == AppInfo.currentVersion.version || availableVersion.value == Texts.to.general.notAvailable;
+  bool updateAvailability() => availableVersion.value == AppDeviceInfoService.to.version || availableVersion.value == Texts.to.general.notAvailable;
 
   Future<void> checkUpdate() async {
     buttonCheckUpdateLoading.value = true;
@@ -55,7 +55,7 @@ class UpdateController extends CoreController {
     if (internetStatus) {
       AppVersion? version = await VersionsController.to.checkUpdateAvailableVersion();
       popPage();
-      if (version == null || version.version == AppInfo.currentVersion.version) {
+      if (version == null || version.version == AppDeviceInfoService.to.version) {
         LoggerService.to.info(message: 'No New Version Available');
         AppSnackBar.show(message: Texts.to.update.updateNoUpdateFound);
       } else {

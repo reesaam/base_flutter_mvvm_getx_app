@@ -17,7 +17,8 @@ class VersionsController extends CoreController {
 
   Future<AppVersion?> checkUpdateAvailableVersion() async {
     AppVersion? response = await getLastVersion();
-    return (response?.version != AppInfo.currentVersion.version) ? response : null;
+    await AppDeviceInfoService.to.ensureReady();
+    return (response?.version != AppDeviceInfoService.to.version) ? response : null;
   }
 
   Future<AppVersionsList?> getVersionsList() async {

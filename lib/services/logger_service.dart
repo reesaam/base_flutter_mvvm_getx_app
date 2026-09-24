@@ -8,18 +8,17 @@ import '../barrels/localization_barrel.dart';
 
 // ignore: barrel_import_lints/only_barrel_imports
 import 'package:flutter/foundation.dart';
+
 // ignore: barrel_import_lints/only_barrel_imports
 import 'package:path_provider/path_provider.dart';
+
 // ignore: barrel_import_lints/only_barrel_imports
 import 'package:sentry_flutter/sentry_flutter.dart';
-
 
 @GetPut.service()
 class LoggerService extends CoreService {
   /// [minLevel] drops noisier lines. [fileSink] is an optional extra writer (tests or a custom file).
-  LoggerService({LoggerLevel? minLevel, void Function(String line)? fileSink})
-    : _minLevel = minLevel,
-      _fileSink = fileSink;
+  LoggerService({LoggerLevel? minLevel, void Function(String line)? fileSink}) : _minLevel = minLevel, _fileSink = fileSink;
 
   static LoggerService get to => Get.find();
 
@@ -30,9 +29,13 @@ class LoggerService extends CoreService {
   LoggerLevel get _effectiveMinLevel => _minLevel ?? (CoreFlags.isRelease ? LoggerLevel.warning : LoggerLevel.debug);
 
   void debug({required String message}) => _logger(level: LoggerLevel.debug, message: message);
+
   void info({required String message}) => _logger(level: LoggerLevel.info, message: message);
+
   void warning({required String message}) => _logger(level: LoggerLevel.warning, message: message);
-  void error({required String message, Object? error, StackTrace? stackTrace}) => _logger(level: LoggerLevel.error, message: message, error: error, stackTrace: stackTrace);
+
+  void error({required String message, Object? error, StackTrace? stackTrace}) =>
+      _logger(level: LoggerLevel.error, message: message, error: error, stackTrace: stackTrace);
 
   /// Optional disk log. Skipped on web; [file] overrides the default `app.log` in documents.
   Future<void> enableFileSink({File? file}) async {

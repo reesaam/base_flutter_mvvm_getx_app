@@ -10,10 +10,12 @@ class AboutPage extends CoreView<AboutController> {
   const AboutPage({super.key});
 
   @override
-  Widget get body => Column(
-    children: List<Widget>.generate(
-      controller.listItems.length,
-      (index) => AboutSectionWidget(titleText: controller.listTitles[index], itemText: controller.listItems[index]),
+  Widget get body => Obx(
+    () => Column(
+      children: List<Widget>.generate(
+        controller.listItems.length,
+        (index) => AboutSectionWidget(titleText: controller.listTitles[index], itemText: controller.listItems[index]),
+      ),
     ),
   );
 }

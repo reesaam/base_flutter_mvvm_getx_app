@@ -9,9 +9,22 @@ import '../barrels/ui_kit_barrel.dart';
 // ignore: barrel_import_lints/only_barrel_imports
 import 'package:flutter/foundation.dart';
 
-bool get kIsDesktop => Platform.isWindows || Platform.isMacOS || Platform.isLinux;
-bool get kIsDesktopWeb => kIsWeb && kIsDesktop;
-bool get kisMobile => Platform.isAndroid || Platform.isIOS;
+bool get kIsDesktop => !kIsWeb && (Platform.isWindows || Platform.isMacOS || Platform.isLinux);
+bool get kIsDesktopWeb => kIsWeb && (defaultTargetPlatform == TargetPlatform.windows || defaultTargetPlatform == TargetPlatform.macOS || defaultTargetPlatform == TargetPlatform.linux);
+bool get kisMobile => !kIsWeb && (Platform.isAndroid || Platform.isIOS);
+
+/// Resolves [AppDevices] from [kIsWeb] / [kIsDesktop] / [kIsDesktopWeb] / [kisMobile].
+AppDevices get currentAppDevice {
+  if (kIsDesktopWeb) return AppDevices.desktopWeb;
+  if (kIsWeb) return AppDevices.web;
+  if (kisMobile) return Platform.isIOS ? AppDevices.ios : AppDevices.android;
+  if (kIsDesktop) {
+    if (Platform.isWindows) return AppDevices.windows;
+    if (Platform.isMacOS) return AppDevices.macos;
+    return AppDevices.linux;
+  }
+  return AppDevices.unknown;
+}
 
 void popPage() {
   Get.back();

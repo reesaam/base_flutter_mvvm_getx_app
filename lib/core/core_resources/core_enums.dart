@@ -45,3 +45,18 @@ enum AppLanguages {
 enum AppStorageKeys { secureStorage, appData, deepLink, accessToken, refreshToken, authUser }
 
 enum LoggerLevel { debug, info, warning, error }
+
+/// Runtime target used by [AppDeviceInfo]. [title] is the fallback OS label when the plugin has none.
+enum AppDevices {
+  android('Android'),
+  ios('iOS'),
+  web('Web'),
+  desktopWeb('Desktop Web'),
+  windows('Windows'),
+  macos('macOS'),
+  linux('Linux'),
+  unknown('unknown');
+
+  final String title;
+  const AppDevices(this.title);
+}

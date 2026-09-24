@@ -3,6 +3,7 @@ import 'package:share_plus/share_plus.dart';
 import '../barrels/annotations_barrel.dart';
 import '../barrels/core_barrel.dart';
 import '../barrels/core_elements_barrel.dart';
+import '../barrels/services_barrel.dart';
 
 @GetPut.component()
 class AppShare extends CoreComponent {
@@ -10,6 +11,12 @@ class AppShare extends CoreComponent {
 
   shareText(String text) async {
     await Share.share(text);
+  }
+
+  /// Shares version/OS/model so support emails include the same facts as crash reports.
+  Future<void> shareSupportInfo() async {
+    await AppDeviceInfoService.to.ensureReady();
+    await Share.share(AppDeviceInfoService.to.summary);
   }
 
   shareUrl(String url) async {

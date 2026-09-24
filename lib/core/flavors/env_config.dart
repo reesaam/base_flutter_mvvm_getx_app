@@ -9,7 +9,7 @@ import 'environment_variables.dart';
 class EnvConfig {
   const EnvConfig._();
 
-  /// Active environment name — from [AppInfo.environment].
+  /// Active environment name — from [AppInfo.environment]. Copied onto [AppDeviceInfo].
   static Environment get environment => AppInfo.environment;
 
   static String get envName => environment.name;
@@ -26,6 +26,7 @@ class EnvConfig {
   static String get secureStoragePassword => vars.secureStoragePassword;
   static bool get authDemoMode => vars.authDemoMode;
 
+  /// Flavor flag copied onto [AppDeviceInfo].
   static bool get isProduction => environment == Environment.production;
   static bool get shouldInitSentry => vars.shouldInitSentry;
 }

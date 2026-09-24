@@ -78,6 +78,7 @@ import 'features/versions/data/versions_remote_data_source.dart';
 import 'localization/localizations.dart';
 import 'services/connectivity_service.dart';
 import 'services/deep_link/deep_link_service.dart';
+import 'services/device_info_service.dart';
 import 'services/logger_service.dart';
 import 'services/network_service/dio_core.dart';
 import 'services/notifications_service/local_notifications/local_notification_service.dart';
@@ -88,12 +89,12 @@ import 'services/storage_service/app_storage_service.dart';
 import 'ui_kit/theme/theme_functions.dart';
 
 /// Generated Library Statistics:
-///  Imports Count: 50
-///  Pages Count: 14
-///  Controllers Count: 17
+///  Imports Count: 51
+///  Pages Count: 15
+///  Controllers Count: 16
 ///  Components Count: 8
 ///  Repositories Count: 3
-///  Services Count: 8
+///  Services Count: 9
 
 class GetPutPages {
   static List<GetPage> get pages => [
@@ -108,6 +109,7 @@ class GetPutPages {
     GetPage(name: '/AdminTestPage', page: AdminTestPage.new),
     GetPage(name: '/AdminVerifiersPage', page: AdminVerifiersPage.new),
     GetPage(name: '/AdminWidgetCheckPage', page: AdminWidgetCheckPage.new),
+    GetPage(name: '/AppDocsPage', page: AppDocsPage.new),
     GetPage(name: '/AboutPage', page: AboutPage.new),
     GetPage(name: '/HomePage', page: HomePage.new),
     GetPage(name: '/NotFoundPage', page: NotFoundPage.new),
@@ -164,7 +166,6 @@ class _GetPutController extends Bindings {
       fenix: true,
     );
     Get.lazyPut<AppDocsController>(() => AppDocsController(), fenix: true);
-    Get.lazyPut<AppDocsPage>(() => AppDocsPage(), fenix: true);
     Get.lazyPut<AboutController>(() => AboutController(), fenix: true);
     Get.lazyPut<HomePageController>(() => HomePageController(), fenix: true);
     Get.lazyPut<NotFoundController>(() => NotFoundController(), fenix: true);
@@ -218,6 +219,7 @@ class _GetPutService extends Bindings {
   void dependencies() {
     Get.putAsync<AppConnectionService>(() async => AppConnectionService());
     Get.putAsync<DeepLinkService>(() async => DeepLinkService());
+    Get.putAsync<AppDeviceInfoService>(() async => AppDeviceInfoService());
     Get.putAsync<LoggerService>(() async => LoggerService());
     Get.putAsync<DioCore>(() async => DioCore());
     Get.putAsync<AppLocalNotificationService>(

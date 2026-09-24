@@ -2,6 +2,7 @@ import '../../../barrels/annotations_barrel.dart';
 import '../../../barrels/core_barrel.dart';
 import '../../../barrels/core_elements_barrel.dart';
 import '../../../barrels/localization_barrel.dart';
+import '../../../barrels/services_barrel.dart';
 import '../../../barrels/ui_kit_barrel.dart';
 import '../controller/update_controller.dart';
 
@@ -20,7 +21,7 @@ class UpdatePage extends CoreView<UpdateController> {
       padding: AppPaddings.updateVersions,
       child: Column(
         children: [
-          _widgetVersion(Texts.to.update.updateCurrentVersion, AppInfo.currentVersion.version),
+          _widgetVersion(Texts.to.update.updateCurrentVersion, AppDeviceInfoService.to.version),
           AppSpaces.h10,
           Obx(
             () => _widgetVersion(

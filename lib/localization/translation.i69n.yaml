@@ -45,6 +45,16 @@ general:
   totalBalance: Total Balance
   appExit: App Exit
 
+devices:
+  android: Android
+  ios: iOS
+  web: Web
+  desktopWeb: Desktop Web
+  windows: Windows
+  macos: macOS
+  linux: Linux
+  unknown: Unknown
+
 dialogs:
   general:
     areYouSure: Are you sure ?
@@ -159,6 +169,11 @@ network:
 
 about:
   aboutTitlesAppName: App Name
+  aboutTitlesVersion: Version
+  aboutTitlesBuild: Build
+  aboutTitlesOs: OS
+  aboutTitlesDevice: Device
+  aboutTitlesLocale: Locale
   aboutTitlesDeveloperName: Developer Name
   aboutTitlesDeveloperWebsite: Developer WebSite
   aboutTitlesDeveloperLinkedIn: Developer LinkedIn Profile

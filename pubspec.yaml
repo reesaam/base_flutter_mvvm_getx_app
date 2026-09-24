@@ -34,6 +34,8 @@ dependencies:
   path_provider: ^2.1.6
   url_launcher: ^6.3.2
   app_links: ^7.0.0
+  package_info_plus: ^10.0.0
+  device_info_plus: ^13.2.0
 
   # Tools
   dartz: ^0.10.1
