@@ -15,6 +15,7 @@ void main() {
       expect(EnvConfig.baseUrl, isNotEmpty);
       expect(EnvConfig.subDomain, isNotEmpty);
       expect(EnvConfig.apiHost, '${EnvConfig.subDomain}.${EnvConfig.baseUrl}');
+      expect(EnvConfig.apiBaseUrl, 'https://${EnvConfig.apiHost}/${APIVersions.v1.getValue}/');
     });
 
     test('Environment enum has no embedded settings', () {

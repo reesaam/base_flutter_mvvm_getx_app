@@ -20,6 +20,7 @@ class EnvConfig {
   static String get baseUrl => vars.baseUrl;
   static String get subDomain => vars.subDomain;
   static String get apiHost => vars.apiHost;
+  static String get apiBaseUrl => 'https://$apiHost/${APIVersions.v1.getValue}/';
   static String get sentryDsn => vars.sentryDsn;
   static bool get enableSentry => vars.enableSentry;
   static String get secureStoragePassword => vars.secureStoragePassword;
