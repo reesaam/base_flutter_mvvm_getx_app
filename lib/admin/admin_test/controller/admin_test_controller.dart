@@ -197,16 +197,16 @@ class AdminTestController extends CoreController {
 
   void exportAppDataTest() async => await AppStorageService.to.exportData();
 
-  void shareText() async => await AppShare.shareText('Sample Share Text');
+  void shareText() async => await AppShare.to.shareText('Sample Share Text');
 
-  void shareUri() async => await AppShare.shareUrl('Sample link');
+  void shareUri() async => await AppShare.to.shareUrl('Sample link');
 
   void shareFile() async {
     File? file = await AppFileFunctions.to.pickFile();
     if (file == null) {
       await AppAlertDialogs.withOk(text: 'File is not Picked or Loaded', onTapOk: popPage);
     } else {
-      await AppShare.shareFile(file: XFile(file.path));
+      await AppShare.to.shareFile(file: XFile(file.path));
     }
   }
 

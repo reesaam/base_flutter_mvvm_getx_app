@@ -8,6 +8,8 @@ import '../core/flavors/environment_variables.dart';
 
 @GetPut.component()
 class EnvironmentHandler extends CoreComponent {
+  static EnvironmentHandler get to => Get.find();
+
   static Environment get current => AppInfo.environment;
   static EnvironmentVariables get settings => EnvConfig.vars;
 
