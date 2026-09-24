@@ -52,6 +52,9 @@ app.*.map.json
 /.idea/
 /.dart_tool/
 
+# Local Cursor rules (machine-specific, not shared)
+.cursor/rules/
+
 /lib/localization/translation*.dart
 **.swift
 *.cc
