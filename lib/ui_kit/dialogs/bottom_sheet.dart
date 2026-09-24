@@ -3,24 +3,29 @@ import '../../barrels/localization_barrel.dart';
 import '../../barrels/ui_kit_barrel.dart';
 
 class AppBottomSheet {
-  _onTapCancel() => popPage();
+  void _onTapCancel() => popPage();
 
-  withoutButton({String? title, required Widget form, bool? dismissible}) async {
+  void withoutButton({String? title, required Widget form, bool? dismissible}) async {
     List<Widget> buttons = [];
     await _appBottomSheetGeneral(title: title, form: form, buttons: buttons, dismissible: dismissible);
   }
 
-  withOk({String? title, required Widget form, required Function() onTapOk, bool? dismissible}) async {
+  void withOk({String? title, required Widget form, required Function() onTapOk, bool? dismissible}) async {
     List<Widget> buttons = [AppButton.general(text: Texts.to.general.ok, onTap: onTapOk)];
     await _appBottomSheetGeneral(title: title, form: form, buttons: buttons, dismissible: dismissible);
   }
 
-  withCancel({String? title, required Widget form, bool? dismissible}) async {
+  void withCancel({String? title, required Widget form, bool? dismissible}) async {
     List<Widget> buttons = [AppButton.general(text: Texts.to.general.cancel, onTap: _onTapCancel)];
     await _appBottomSheetGeneral(title: title, form: form, buttons: buttons, dismissible: dismissible);
   }
 
-  withOkCancel({String? title, required Widget form, required Function() onTapOk, bool? dismissible}) async {
+  void withClose({String? title, required Widget form, bool? dismissible}) async {
+    List<Widget> buttons = [AppButton.general(text: Texts.to.general.actions.close, onTap: _onTapCancel)];
+    await _appBottomSheetGeneral(title: title, form: form, buttons: buttons, dismissible: dismissible);
+  }
+
+  void withOkCancel({String? title, required Widget form, required Function() onTapOk, bool? dismissible}) async {
     List<Widget> buttons = [
       AppButton.general(text: Texts.to.general.cancel, onTap: () => _onTapCancel()),
       AppButton.general(text: Texts.to.general.ok, onTap: () => onTapOk()),
@@ -28,14 +33,14 @@ class AppBottomSheet {
     await _appBottomSheetGeneral(title: title, form: form, buttons: buttons, dismissible: dismissible);
   }
 
-  tappableItem({required String text, required Function() onTap}) => LayoutBuilder(
+  void tappableItem({required String text, required Function() onTap}) => LayoutBuilder(
     builder: (context, constraints) => InkWell(
       onTap: onTap,
       child: SizedBox(width: constraints.maxWidth, height: 50, child: Text(text)),
     ),
   );
 
-  _appBottomSheetGeneral({String? title, required Widget form, required List<Widget> buttons, bool? dismissible}) async => await showModalBottomSheet(
+  Future<void> _appBottomSheetGeneral({String? title, required Widget form, required List<Widget> buttons, bool? dismissible}) async => await showModalBottomSheet(
     context: Get.context!,
     useSafeArea: true,
     useRootNavigator: true,
