@@ -5,7 +5,7 @@ import '../../../barrels/ui_kit_barrel.dart';
 import '../../admin_general_functions.dart';
 import '../controller/app_docs_controller.dart';
 
-@GetPut.controller()
+@GetPut.page()
 class AppDocsPage extends CoreView<AppDocsController> {
   const AppDocsPage({super.key});
 
