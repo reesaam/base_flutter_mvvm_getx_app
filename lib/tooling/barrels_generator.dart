@@ -91,6 +91,7 @@ class BarrelsGenerator {
         if (!_shouldExport(
           file: entity,
           relPath: rel,
+          barrelRoot: rootRel.replaceAll('\\', '/'),
           excludeSuffixes: excludeSuffixes,
           excludeNames: excludeNames,
           excludePrivate: excludePrivate,
@@ -144,6 +145,7 @@ class BarrelsGenerator {
   static bool _shouldExport({
     required File file,
     required String relPath,
+    String? barrelRoot,
     required List<String> excludeSuffixes,
     required Set<String> excludeNames,
     required bool excludePrivate,
@@ -154,6 +156,9 @@ class BarrelsGenerator {
     final name = relPath.split('/').last;
     if (excludeNames.contains(name)) return false;
     if (localExclude.contains(relPath) || localExclude.contains(name)) return false;
+    if (barrelRoot != null && _isExcludedUnderRoot(relPath: relPath, barrelRoot: barrelRoot, localExclude: localExclude)) {
+      return false;
+    }
     if (excludePrivate && name.startsWith('_')) return false;
 
     final allowedByInclude = includeSuffixes.isEmpty ? relPath.endsWith('.dart') : includeSuffixes.any(relPath.endsWith);
@@ -181,6 +186,36 @@ class BarrelsGenerator {
     }
 
     return true;
+  }
+
+  /// [localExclude] folder paths are relative to [barrelRoot].
+  /// `network_service/interceptors` under root `lib/services` excludes only
+  /// `lib/services/network_service/interceptors/**`.
+  static bool _isExcludedUnderRoot({
+    required String relPath,
+    required String barrelRoot,
+    required Set<String> localExclude,
+  }) {
+    final root = barrelRoot.replaceAll('\\', '/').replaceAll(RegExp(r'/+$'), '');
+    final prefix = '$root/';
+    if (relPath != root && !relPath.startsWith(prefix)) return false;
+    final relativeToRoot = relPath == root ? '' : relPath.substring(prefix.length);
+
+    for (final raw in localExclude) {
+      var pattern = raw.replaceAll('\\', '/');
+      if (pattern.endsWith('/*')) {
+        pattern = pattern.substring(0, pattern.length - 2);
+      }
+      pattern = pattern.replaceAll(RegExp(r'/+$'), '');
+      if (pattern.startsWith('$root/')) {
+        pattern = pattern.substring(prefix.length);
+      }
+      if (pattern.isEmpty) continue;
+      if (relativeToRoot == pattern || relativeToRoot.startsWith('$pattern/')) {
+        return true;
+      }
+    }
+    return false;
   }
 
   static String _toExport(String libRelativePath) {

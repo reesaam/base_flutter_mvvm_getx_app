@@ -9,9 +9,6 @@ exclude_suffixes:
   - .mocks.dart
   - .get_put.dart
 
-exclude_names:
-  - dio_functions.dart
-
 # Skip private library files (leading underscore)
 exclude_private: true
 
@@ -42,7 +39,7 @@ barrels:
       - deep_link_service_helper.dart
       - deep_link_types.dart
       - deep_link_service_data_model.dart
-      - interceptors/*
+      - network_service/interceptors
 
   - output: lib/barrels/core_barrel.dart
     library: true
