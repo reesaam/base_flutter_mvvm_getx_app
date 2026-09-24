@@ -65,7 +65,7 @@ config/envs/env.production.json
 FLUTTER
 GENERATE
 ./LICENSE
-./lib/features
+./lib/features/
 #Platforms
 
 #Yaml Project Specified Files
