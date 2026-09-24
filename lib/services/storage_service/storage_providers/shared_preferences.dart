@@ -2,29 +2,33 @@ import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../barrels/annotations_barrel.dart';
 import '../../../barrels/components_barrel.dart';
-import '../../../barrels/core_barrel.dart';
-import '../../../barrels/core_elements_barrel.dart';
 import '../../../barrels/extensions_barrel.dart';
 import '../../../barrels/services_barrel.dart';
 import '../../../barrels/core_resources_barrel.dart';
 
 import '../app_storage_service_abstraction.dart';
 
-@GetPut.component()
-class AppSharedPreferences extends CoreComponent implements AppStoragesAbstraction {
-  static AppSharedPreferences get to => Get.find();
-
-  AppSharedPreferences() {
-    _init();
+class AppSharedPreferences implements AppStoragesAbstraction {
+  AppSharedPreferences({SharedPreferences? storage}) {
+    if (storage != null) {
+      _storage = storage;
+      _ready = Future.value();
+    } else {
+      _ready = _init();
+    }
   }
 
   late SharedPreferences _storage;
-  void _init() async => _storage = await SharedPreferences.getInstance();
+  late final Future<void> _ready;
+
+  Future<void> _init() async {
+    _storage = await SharedPreferences.getInstance();
+  }
 
   @override
   Future<BaseLocalResponse<bool>> clear(String key) async {
+    await _ready;
     try {
       final response = await _storage.remove(key);
       LoggerService.to.log(message: 'Storage Cleared Successfully');
@@ -40,6 +44,7 @@ class AppSharedPreferences extends CoreComponent implements AppStoragesAbstracti
 
   @override
   Future<BaseLocalResponse<bool>> hasData(String key) async {
+    await _ready;
     try {
       final response = _storage.get(key);
       LoggerService.to.log(message: 'Storage Read Successfully');
@@ -55,6 +60,7 @@ class AppSharedPreferences extends CoreComponent implements AppStoragesAbstracti
 
   @override
   Future<BaseLocalResponse<Map<String, dynamic>>> loadData(String key) async {
+    await _ready;
     try {
       String? data = _storage.getString(key);
       final result = data == null ? null : json.decode(data);
@@ -71,10 +77,10 @@ class AppSharedPreferences extends CoreComponent implements AppStoragesAbstracti
 
   @override
   Future<BaseLocalResponse<bool>> saveData({required String key, required Map<String, dynamic> data}) async {
-    SharedPreferences sp = await SharedPreferences.getInstance();
+    await _ready;
     try {
       String jsonData = json.encode(data);
-      final result = await sp.setString(key, jsonData);
+      final result = await _storage.setString(key, jsonData);
       LoggerService.to.log(message: 'Data Saved Successfully');
       return result ? Right(result) : Left(_defaultLeftResponse);
     } on LocalException catch (ex, stackTrace) {

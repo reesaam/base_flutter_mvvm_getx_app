@@ -85,15 +85,13 @@ import 'services/notifications_service/local_notifications/local_notifications.d
 import 'services/secure_storage_service/secure_storage_service.dart';
 import 'services/statistics_service.dart';
 import 'services/storage_service/app_storage_service.dart';
-import 'services/storage_service/storage_providers/local_storage.dart';
-import 'services/storage_service/storage_providers/shared_preferences.dart';
 import 'ui_kit/theme/theme_functions.dart';
 
 /// Generated Library Statistics:
-///  Imports Count: 52
+///  Imports Count: 50
 ///  Pages Count: 14
 ///  Controllers Count: 17
-///  Components Count: 10
+///  Components Count: 8
 ///  Repositories Count: 3
 ///  Services Count: 8
 
@@ -191,11 +189,6 @@ class _GetPutComponent extends Bindings {
     Get.lazyPut<AppLocalizations>(() => AppLocalizations(), fenix: true);
     Get.lazyPut<AppLocalNotifications>(
       () => AppLocalNotifications(),
-      fenix: true,
-    );
-    Get.lazyPut<AppLocalStorage>(() => AppLocalStorage(), fenix: true);
-    Get.lazyPut<AppSharedPreferences>(
-      () => AppSharedPreferences(),
       fenix: true,
     );
     Get.lazyPut<AppThemeFunctions>(() => AppThemeFunctions(), fenix: true);

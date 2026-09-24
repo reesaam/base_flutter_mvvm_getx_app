@@ -18,12 +18,14 @@ import 'storage_providers/shared_preferences.dart';
 
 @GetPut.service()
 class AppStorageService extends CoreService {
+  AppStorageService({AppStoragesAbstraction? storage}) : _storage = storage ?? _createStorage();
 
   static AppStorageService get to => Get.find();
+  final AppStoragesAbstraction _storage;
 
-  final AppStoragesAbstraction _storage = switch (CoreDefaults.defaultStorageProvider) {
-    AppStorageProvider.getStorage => AppLocalStorage.to,
-    AppStorageProvider.sharedPreferences => AppSharedPreferences.to,
+  static AppStoragesAbstraction _createStorage() => switch (CoreDefaults.defaultStorageProvider) {
+    AppStorageProvider.getStorage => AppLocalStorage(),
+    AppStorageProvider.sharedPreferences => AppSharedPreferences(),
   };
 
   ///Keys
