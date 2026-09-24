@@ -8,8 +8,10 @@ import '../barrels/shared_models_barrel.dart';
 
 // ignore: barrel_import_lints/only_barrel_imports
 import 'package:device_info_plus/device_info_plus.dart';
+
 // ignore: barrel_import_lints/only_barrel_imports
 import 'package:package_info_plus/package_info_plus.dart';
+
 // ignore: barrel_import_lints/only_barrel_imports
 import 'package:sentry_flutter/sentry_flutter.dart';
 
@@ -35,7 +37,6 @@ class AppDeviceInfoService extends CoreService {
   Future<void>? _loadFuture;
 
   AppDeviceInfo get data => _info;
-
   String get appName => _info.appName;
   String get packageName => _info.packageName;
   String get version => _info.version;
@@ -46,18 +47,13 @@ class AppDeviceInfoService extends CoreService {
   String get deviceModel => _info.model;
   AppDevices get device => _info.device;
 
-  /// Active UI locale, then device locale — so About and crash context match what the user sees.
   Locale get locale => _injectedLocale ?? Get.locale ?? Get.deviceLocale ?? WidgetsBinding.instance.platformDispatcher.locale;
-
   String get localeTag => locale.toLanguageTag();
-
-  /// Plain-text body for support emails; keys come from the model, not literals.
   String get summary => _info.toJson().entries.map((e) => '${e.key}: ${e.value}').join('\n');
 
   @override
   void onInitFunction() => unawaited(ensureReady());
 
-  /// Loads package/device data once. Safe to call from About and update checks before reading [data].
   Future<void> ensureReady() => _loadFuture ??= _load();
 
   Future<void> _load() async {
@@ -68,7 +64,6 @@ class AppDeviceInfoService extends CoreService {
     _attachCrashContext();
   }
 
-  /// Tags the next crash report so Sentry shows version/OS/model without extra UI.
   void _attachCrashContext() {
     if (!EnvConfig.shouldInitSentry) return;
     try {
@@ -95,9 +90,13 @@ class AppDeviceInfoService extends CoreService {
   AppDeviceInfo _fromMacOs(MacOsDeviceInfo info) => _assembled(device: AppDevices.macos, os: AppDevices.macos.title, osVersion: info.osRelease, model: info.model);
   AppDeviceInfo _fromLinux(LinuxDeviceInfo info) => _assembled(device: AppDevices.linux, os: info.name, osVersion: info.version, model: info.prettyName);
   AppDeviceInfo _fromIos(IosDeviceInfo info) => _assembled(device: AppDevices.ios, os: info.systemName, osVersion: info.systemVersion, model: info.utsname.machine);
-  AppDeviceInfo _fromAndroid(AndroidDeviceInfo info) => _assembled(device: AppDevices.android, os: AppDevices.android.title, osVersion: info.version.release, model: '${info.manufacturer} ${info.model}');
+  AppDeviceInfo _fromAndroid(AndroidDeviceInfo info) => _assembled(
+    device: AppDevices.android,
+    os: AppDevices.android.title,
+    osVersion: info.version.release,
+    model: '${info.manufacturer} ${info.model}',
+  );
 
-  /// Stamps plugin + package fields and reads flavor data from [EnvConfig].
   AppDeviceInfo _assembled({required AppDevices device, String? os, String? osVersion, String? model}) => AppDeviceInfo(
     appName: _packageInfo?.appName ?? AppInfo.appName,
     packageName: _packageInfo?.packageName ?? '',
