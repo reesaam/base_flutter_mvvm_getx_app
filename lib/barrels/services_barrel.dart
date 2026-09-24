@@ -5,7 +5,7 @@
 
 library;
 
-export '../services/connectivity_service/connectivity_service.dart';
+export '../services/connectivity_service.dart';
 export '../services/deep_link/deep_link_service.dart';
 export '../services/logger_service.dart';
 export '../services/network_service/api_methods.dart';

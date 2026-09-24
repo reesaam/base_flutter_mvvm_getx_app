@@ -76,7 +76,7 @@ import 'features/versions/controller/versions_controller.dart';
 import 'features/versions/data/versions_local_data_source.dart';
 import 'features/versions/data/versions_remote_data_source.dart';
 import 'localization/localizations.dart';
-import 'services/connectivity_service/connectivity_service.dart';
+import 'services/connectivity_service.dart';
 import 'services/deep_link/deep_link_service.dart';
 import 'services/logger_service.dart';
 import 'services/network_service/dio_core.dart';
