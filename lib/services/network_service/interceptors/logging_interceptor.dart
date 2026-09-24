@@ -8,7 +8,7 @@ class LoggingInterceptor extends dio.Interceptor {
   @override
   void onRequest(dio.RequestOptions options, dio.RequestInterceptorHandler handler) {
     if (!CoreFlags.isRelease) {
-      LoggerService.to.devLog(message: 'HTTP → ${options.method} ${options.uri}');
+      LoggerService.to.debug(message: 'HTTP → ${options.method} ${options.uri}');
     }
     handler.next(options);
   }
@@ -16,7 +16,7 @@ class LoggingInterceptor extends dio.Interceptor {
   @override
   void onResponse(dio.Response response, dio.ResponseInterceptorHandler handler) {
     if (!CoreFlags.isRelease) {
-      LoggerService.to.devLog(message: 'HTTP ← ${response.statusCode} ${response.requestOptions.uri}');
+      LoggerService.to.debug(message: 'HTTP ← ${response.statusCode} ${response.requestOptions.uri}');
     }
     handler.next(response);
   }
@@ -24,7 +24,7 @@ class LoggingInterceptor extends dio.Interceptor {
   @override
   void onError(dio.DioException err, dio.ErrorInterceptorHandler handler) {
     if (!CoreFlags.isRelease) {
-      LoggerService.to.devLog(message: 'HTTP ✕ ${err.response?.statusCode} ${err.requestOptions.uri} · ${err.message}');
+      LoggerService.to.warning(message: 'HTTP ✕ ${err.response?.statusCode} ${err.requestOptions.uri} · ${err.message}');
     }
     handler.next(err);
   }

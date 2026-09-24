@@ -33,7 +33,7 @@ class AppLocalNotificationsRepository extends CoreRepository {
     bool channelSetResult = await _setChannel().withStatusPrint(featureName: 'App Local Notifications Channel Set');
 
     var receivedAction = await AwesomeNotifications().getInitialNotificationAction(removeFromActionEvents: false);
-    LoggerService.to.devLog(message: receivedAction.toString());
+    LoggerService.to.debug(message: receivedAction.toString());
 
     return initializationResult && permissionResult && listenersInitResult && channelSetResult;
   }

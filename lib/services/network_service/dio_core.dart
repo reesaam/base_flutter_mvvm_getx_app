@@ -107,16 +107,16 @@ class DioCore extends CoreService {
   void _increaseStatisticApiCall() => AppStatisticsService.to.increaseApiCalls();
 
   void _printResponse(String method, APIResponse response) {
-    LoggerService.to.devLog(message: '==> $method Method Successful Response:');
-    LoggerService.to.devLog(message: 'Status Code: ${response.statusCode}');
-    LoggerService.to.devLog(message: 'Data Message: ${response.statusMessage}');
-    LoggerService.to.devLog(message: 'Data Body: ${response.data}');
+    LoggerService.to.debug(message: '==> $method Method Successful Response:');
+    LoggerService.to.debug(message: 'Status Code: ${response.statusCode}');
+    LoggerService.to.debug(message: 'Data Message: ${response.statusMessage}');
+    LoggerService.to.debug(message: 'Data Body: ${response.data}');
   }
 
   void _printException(String method, List<String> prints) {
-    LoggerService.to.devLog(message: '==> $method Method Exception:');
+    LoggerService.to.error(message: '==> $method Method Exception:');
     for (final print in prints) {
-      LoggerService.to.devLog(message: print);
+      LoggerService.to.error(message: print);
     }
   }
 }

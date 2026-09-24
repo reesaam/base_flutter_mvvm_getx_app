@@ -24,7 +24,7 @@ class AppSharedPreferences implements AppStoragesAbstraction {
     await _initialized;
     try {
       final response = await _storage.remove(key);
-      LoggerService.to.log(message: 'Storage Cleared Successfully');
+      LoggerService.to.info(message: 'Storage Cleared Successfully');
       return response ? Right(response) : Left(_defaultLeftResponse);
     } on LocalException catch (ex, stackTrace) {
       _printException('CLEAR STORAGE', ex);
@@ -40,7 +40,7 @@ class AppSharedPreferences implements AppStoragesAbstraction {
     await _initialized;
     try {
       final response = _storage.get(key);
-      LoggerService.to.log(message: 'Storage Read Successfully');
+      LoggerService.to.info(message: 'Storage Read Successfully');
       return response != null ? const Right(true) : Left(_defaultLeftResponse);
     } on LocalException catch (ex, stackTrace) {
       _printException('CHECK', ex);
@@ -57,7 +57,7 @@ class AppSharedPreferences implements AppStoragesAbstraction {
     try {
       final data = _storage.getString(key);
       final result = data == null ? null : json.decode(data);
-      LoggerService.to.log(message: 'Data Loaded Successfully from $key');
+      LoggerService.to.info(message: 'Data Loaded Successfully from $key');
       return result != null ? Right(result) : Left(_defaultLeftResponse);
     } on LocalException catch (ex, stackTrace) {
       _printException('LOAD', ex);
@@ -73,7 +73,7 @@ class AppSharedPreferences implements AppStoragesAbstraction {
     await _initialized;
     try {
       final result = await _storage.setString(key, json.encode(data));
-      LoggerService.to.log(message: 'Data Saved Successfully');
+      LoggerService.to.info(message: 'Data Saved Successfully');
       return result ? Right(result) : Left(_defaultLeftResponse);
     } on LocalException catch (ex, stackTrace) {
       _printException('SAVE', ex);
@@ -87,6 +87,6 @@ class AppSharedPreferences implements AppStoragesAbstraction {
   LocalException get _defaultLeftResponse => ResponseStatusLocalException.unknownException.exception;
 
   void _printException(String method, GeneralException exception) {
-    LoggerService.to.devLog(message: '==> Local $method Data Exception: ${exception.message} (${exception.statusCode})');
+    LoggerService.to.error(message: '==> Local $method Data Exception: ${exception.message} (${exception.statusCode})');
   }
 }

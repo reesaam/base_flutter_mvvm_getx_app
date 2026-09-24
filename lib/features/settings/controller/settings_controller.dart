@@ -52,7 +52,7 @@ class SettingsController extends CoreController {
   void _fillData() {
     darkMode.value = appSettings.value.darkMode;
     selectedLanguage.value = appSettings.value.language;
-    LoggerService.to.log(message: 'Fill Setting Data Function Applied Data');
+    LoggerService.to.info(message: 'Fill Setting Data Function Applied Data');
     appSettingDataListener = appSettings.listen((data) {
       darkMode.value = data.darkMode;
       selectedLanguage.value = data.language;
@@ -72,7 +72,7 @@ class SettingsController extends CoreController {
     saveSettings();
     popPage();
     Get.updateLocale(selectedLanguage.value.locale);
-    LoggerService.to.devLog(message: 'Language Changed to ${selectedLanguage.value.languageName}');
+    LoggerService.to.debug(message: 'Language Changed to ${selectedLanguage.value.languageName}');
     appReload(bootPage: pageDetail);
   }
 
@@ -80,14 +80,14 @@ class SettingsController extends CoreController {
     darkMode.value = value;
     appSettings.value = appSettings.value.copyWith(darkMode: value);
     saveSettings();
-    LoggerService.to.log(message: 'DarkMode Changed to ${darkMode.value}');
+    LoggerService.to.info(message: 'DarkMode Changed to ${darkMode.value}');
     AppThemeFunctions.to.changeThemeMode(darkMode.value);
     update();
   }
 
   void functionCheckUpdateAvailableVersion() async {
     updateAvailableVersion.value = await VersionsController.to.checkUpdateAvailableVersion();
-    LoggerService.to.log(message: 'Checked Update Version: ${updateAvailableVersion.value?.version ?? Texts.to.general.notAvailable}');
+    LoggerService.to.info(message: 'Checked Update Version: ${updateAvailableVersion.value?.version ?? Texts.to.general.notAvailable}');
   }
 
   void functionGoToUpdatePage() => goToPage(AppPages.update);

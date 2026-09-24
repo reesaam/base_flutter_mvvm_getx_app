@@ -46,26 +46,26 @@ class AppStorageService extends CoreService {
     String unknown = Texts.to.general.notAvailableInitials;
 
     if (appData != null) {
-      LoggerService.to.log(message: '==> App Data:');
-      LoggerService.to.log(message: 'App Version: ${appData.appVersions?.versionsList.lastOrNull?.version ?? unknown}');
-      detailsIncluded == true ? LoggerService.to.log(message: 'App Version Type: ${appData.appVersions?.versionsList.lastOrNull?.versionType ?? unknown}') : null;
-      LoggerService.to.log(message: 'App Data Type: ${appData.dataVersion?.number ?? unknown}');
+      LoggerService.to.info(message: '==> App Data:');
+      LoggerService.to.info(message: 'App Version: ${appData.appVersions?.versionsList.lastOrNull?.version ?? unknown}');
+      detailsIncluded == true ? LoggerService.to.info(message: 'App Version Type: ${appData.appVersions?.versionsList.lastOrNull?.versionType ?? unknown}') : null;
+      LoggerService.to.info(message: 'App Data Type: ${appData.dataVersion?.number ?? unknown}');
       if (detailsIncluded == true) {
-        LoggerService.to.log(message: '==> Details:');
-        LoggerService.to.log(message: 'Settings / Dark Mode: ${appData.settings?.darkMode}');
-        LoggerService.to.log(message: 'Settings / Language: ${appData.settings?.language.languageName}');
+        LoggerService.to.info(message: '==> Details:');
+        LoggerService.to.info(message: 'Settings / Dark Mode: ${appData.settings?.darkMode}');
+        LoggerService.to.info(message: 'Settings / Language: ${appData.settings?.language.languageName}');
       }
     }
 
     if (appData?.statisticsData != null) {
-      LoggerService.to.log(message: '==> Statistics:');
-      LoggerService.to.log(message: 'Statistics / Launches: ${appData?.statisticsData?.launches}');
-      LoggerService.to.log(message: 'Statistics / Logins: ${appData?.statisticsData?.logins}');
-      LoggerService.to.log(message: 'Statistics / Crashes: ${appData?.statisticsData?.crashes}');
-      LoggerService.to.log(message: 'Statistics / Page Opens: ${appData?.statisticsData?.pageOpens}');
-      LoggerService.to.log(message: 'Statistics / API Calls: ${appData?.statisticsData?.apiCalls}');
-      LoggerService.to.log(message: 'Statistics / Install DateTime: ${appData?.statisticsData?.installDateTime.toDateTimeFormat}');
-      LoggerService.to.log(message: 'Statistics / Install Duration: ${appData?.statisticsData?.installDuration.toConditionalFormat}');
+      LoggerService.to.info(message: '==> Statistics:');
+      LoggerService.to.info(message: 'Statistics / Launches: ${appData?.statisticsData?.launches}');
+      LoggerService.to.info(message: 'Statistics / Logins: ${appData?.statisticsData?.logins}');
+      LoggerService.to.info(message: 'Statistics / Crashes: ${appData?.statisticsData?.crashes}');
+      LoggerService.to.info(message: 'Statistics / Page Opens: ${appData?.statisticsData?.pageOpens}');
+      LoggerService.to.info(message: 'Statistics / API Calls: ${appData?.statisticsData?.apiCalls}');
+      LoggerService.to.info(message: 'Statistics / Install DateTime: ${appData?.statisticsData?.installDateTime.toDateTimeFormat}');
+      LoggerService.to.info(message: 'Statistics / Install Duration: ${appData?.statisticsData?.installDuration.toConditionalFormat}');
     }
   }
 }

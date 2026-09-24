@@ -20,8 +20,8 @@ class AppLocalNotificationService extends CoreService {
 
   @notificationAnnotation
   static onActionReceivedMethod(ReceivedAction receivedAction) {
-    LoggerService.to.devLog(message: 'Notification Received Action Channel Key: ${receivedAction.channelKey}');
-    LoggerService.to.devLog(message: 'New Notification Action Received: ${receivedAction.toMap()}');
+    LoggerService.to.debug(message: 'Notification Received Action Channel Key: ${receivedAction.channelKey}');
+    LoggerService.to.debug(message: 'New Notification Action Received: ${receivedAction.toMap()}');
 
     SendPort? sendPort = IsolateNameServer.lookupPortByName(AppNotificationsPortNames.receivePort.portName);
     if (sendPort != null) {
@@ -32,16 +32,16 @@ class AppLocalNotificationService extends CoreService {
 
   @notificationAnnotation
   static onDismissActionReceivedMethod(ReceivedAction receivedAction) {
-    LoggerService.to.devLog(message: receivedAction.channelKey.toString());
+    LoggerService.to.debug(message: receivedAction.channelKey.toString());
   }
 
   @notificationAnnotation
   static onNotificationCreatedMethod(ReceivedNotification receivedNotification) {
-    LoggerService.to.devLog(message: receivedNotification.channelKey.toString());
+    LoggerService.to.debug(message: receivedNotification.channelKey.toString());
   }
 
   @notificationAnnotation
   static onNotificationDisplayedMethod(ReceivedNotification receivedNotification) {
-    LoggerService.to.devLog(message: receivedNotification.channelKey.toString());
+    LoggerService.to.debug(message: receivedNotification.channelKey.toString());
   }
 }

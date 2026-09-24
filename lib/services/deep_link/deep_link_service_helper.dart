@@ -29,8 +29,8 @@ class DeepLinkHandlerHelper {
       parts.removeWhere((element) => element == '#');
       parts.removeWhere((element) => element == _paramsSeparator);
       if (!parts.isNullOrEmpty) params.addAll(parts);
-      LoggerService.to.devLog(message: 'getDataFromCallBackUrl type: ${type.name}');
-      LoggerService.to.devLog(message: 'getDataFromCallBackUrl params: $params');
+      LoggerService.to.debug(message: 'getDataFromCallBackUrl type: ${type.name}');
+      LoggerService.to.debug(message: 'getDataFromCallBackUrl params: $params');
       return DeepLinkServiceCallBackData(type: type, params: params);
     } else {
       return null;

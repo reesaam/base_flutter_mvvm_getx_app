@@ -8,7 +8,7 @@ class AppThemeFunctions extends CoreComponent {
   static AppThemeFunctions get to => Get.find();
 
   void changeThemeMode(bool? darkMode) {
-    LoggerService.to.log(message: 'Theme Mode Changed to ${darkMode == true ? 'Dark' : 'Light'}');
+    LoggerService.to.info(message: 'Theme Mode Changed to ${darkMode == true ? 'Dark' : 'Light'}');
     Get.changeTheme(darkMode != true ? AppTheme.lightTheme : AppTheme.darkTheme);
     update();
   }

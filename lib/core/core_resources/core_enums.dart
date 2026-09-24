@@ -43,3 +43,5 @@ enum AppLanguages {
 }
 
 enum AppStorageKeys { secureStorage, appData, deepLink, accessToken, refreshToken, authUser }
+
+enum LoggerLevel { debug, info, warning, error }

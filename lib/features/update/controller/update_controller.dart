@@ -56,10 +56,10 @@ class UpdateController extends CoreController {
       AppVersion? version = await VersionsController.to.checkUpdateAvailableVersion();
       popPage();
       if (version == null || version.version == AppInfo.currentVersion.version) {
-        LoggerService.to.log(message: 'No New Version Available');
+        LoggerService.to.info(message: 'No New Version Available');
         AppSnackBar.show(message: Texts.to.update.updateNoUpdateFound);
       } else {
-        LoggerService.to.log(message: 'Available Version: ${version.version}');
+        LoggerService.to.info(message: 'Available Version: ${version.version}');
         availableVersion.value = version.version;
         AppSnackBar.show(message: '${Texts.to.update.updateUpdateFound}\n${Texts.to.general.version.withDoubleDots} $version');
       }
@@ -95,7 +95,7 @@ class UpdateController extends CoreController {
     result.fold((l) => showErrorDialog(message: l.toString()), (r) {
       dlFile = r;
       downloaded.value = true;
-      LoggerService.to.devLog(message: (dlFile?.length() ?? 0).toString());
+      LoggerService.to.debug(message: (dlFile?.length() ?? 0).toString());
       AppSnackBar.show(message: Texts.to.update.updateDownloaded);
       AppAlertDialogs.withOkCancel(
         title: Texts.to.update.updateInstallationTitle,

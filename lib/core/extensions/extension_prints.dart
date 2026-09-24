@@ -10,9 +10,9 @@ extension ExtensionOnFunctionsDebugPrint on Future<bool> {
         String successfulMsg = message ?? successfulMessage ?? '$featureName Function Successful Performed';
         String failureMsg = message ?? failureMessage ?? '$featureName Function Failed';
         if (isLog == true) {
-          value ? LoggerService.to.devLog(message: successfulMsg) : LoggerService.to.log(message: failureMsg);
+          value ? LoggerService.to.debug(message: successfulMsg) : LoggerService.to.error(message: failureMsg);
         } else {
-          value ? LoggerService.to.log(message: successfulMsg) : LoggerService.to.devLog(message: failureMsg);
+          value ? LoggerService.to.info(message: successfulMsg) : LoggerService.to.error(message: failureMsg);
         }
         return value;
       });

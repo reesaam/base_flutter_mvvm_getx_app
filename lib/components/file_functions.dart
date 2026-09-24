@@ -18,10 +18,10 @@ class AppFileFunctions extends CoreComponent {
   Future<String?> saveFile({required String fileName, required data, String? filePath}) async {
     SaveFileDialogParams saveParams = SaveFileDialogParams(data: data, fileName: fileName, sourceFilePath: filePath);
     String? path = await FlutterFileDialog.saveFile(params: saveParams);
-    LoggerService.to.log(message: 'File Saved');
-    LoggerService.to.devLog(message: 'Filename: ${saveParams.fileName}');
-    LoggerService.to.devLog(message: 'Source Path: ${saveParams.sourceFilePath}');
-    LoggerService.to.log(message: 'File Path: $path');
+    LoggerService.to.info(message: 'File Saved');
+    LoggerService.to.debug(message: 'Filename: ${saveParams.fileName}');
+    LoggerService.to.debug(message: 'Source Path: ${saveParams.sourceFilePath}');
+    LoggerService.to.info(message: 'File Path: $path');
     return path;
   }
 
@@ -42,30 +42,30 @@ class AppFileFunctions extends CoreComponent {
     final result = await AppStorageService.to.loadAppData();
     await result.fold((_) async {}, (appData) async {
       if (appData == null) {
-        LoggerService.to.devLog(message: 'Exported AppData was Null');
+        LoggerService.to.warning(message: 'Exported AppData was Null');
         return;
       }
       final data = appData.toJson().toString().toUInt8List();
       final savedPath = await saveFile(fileName: AppTexts.settingBackupFilename, data: data);
-      LoggerService.to.log(message: 'File Path: $savedPath');
-      LoggerService.to.log(message: 'Backup File Exported');
+      LoggerService.to.info(message: 'File Path: $savedPath');
+      LoggerService.to.info(message: 'Backup File Exported');
     });
   }
 
   Future<void> importAppData() async {
     final appDataFile = await pickFile();
     if (appDataFile == null) {
-      LoggerService.to.devLog(message: 'Imported File was NUll');
+      LoggerService.to.warning(message: 'Imported File was NUll');
       return;
     }
 
     final appData = AppData.fromJson(json.decode(String.fromCharCodes(appDataFile.readAsBytesSync())));
     if (appData.dataVersion != AppDataVersions.values.last) {
-      LoggerService.to.log(message: 'Data Version is not Compatible, Converter is not Implemented\nData Import Failed');
+      LoggerService.to.warning(message: 'Data Version is not Compatible, Converter is not Implemented\nData Import Failed');
       return;
     }
 
     await AppStorageService.to.saveAppData(appData: appData);
-    LoggerService.to.log(message: 'Data Imported');
+    LoggerService.to.info(message: 'Data Imported');
   }
 }

@@ -62,21 +62,21 @@ appExitDialog() =>
 
 appReload({AppPageDetail? bootPage}) async {
   showLoadingDialog();
-  LoggerService.to.log(message: 'App Reload Triggered');
+  LoggerService.to.info(message: 'App Reload Triggered');
   Get.reloadAll(force: true);
 }
 
 appReset() {
-  LoggerService.to.log(message: 'App Reset Triggered');
+  LoggerService.to.info(message: 'App Reset Triggered');
   Get.reset();
 }
 
 appRestart() {
-  LoggerService.to.log(message: 'App Restart Triggered');
+  LoggerService.to.info(message: 'App Restart Triggered');
   // kIsWeb ? RestartWeb().restart('webOrigin') : Restart.restartApp();
 }
 
 appExit() {
-  LoggerService.to.log(message: 'App Exit Triggered');
+  LoggerService.to.info(message: 'App Exit Triggered');
   exit(0);
 }
