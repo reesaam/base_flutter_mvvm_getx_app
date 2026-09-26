@@ -43,6 +43,9 @@ class AppTextField extends AppTextFieldWidget implements AppTextFieldAbstraction
     super.expandable,
     super.autoFocus,
     super.focusNode,
+    super.color,
+    super.textColor,
+    super.errorColor,
   });
 
   factory AppTextField.general({
@@ -77,6 +80,9 @@ class AppTextField extends AppTextFieldWidget implements AppTextFieldAbstraction
     bool? expandable,
     bool? autoFocus,
     FocusNode? focusNode,
+    AppColors? color,
+    AppColors? textColor,
+    AppColors? errorColor,
   }) => AppTextField._(
     controller: controller,
     undoController: undoController,
@@ -109,6 +115,9 @@ class AppTextField extends AppTextFieldWidget implements AppTextFieldAbstraction
     expandable: expandable,
     autoFocus: autoFocus,
     focusNode: focusNode,
+    color: color,
+    textColor: textColor,
+    errorColor: errorColor,
   );
 
   factory AppTextField.password({
@@ -142,6 +151,9 @@ class AppTextField extends AppTextFieldWidget implements AppTextFieldAbstraction
     bool? autoFocus,
     FocusNode? focusNode,
     bool? isComplex,
+    AppColors? color,
+    AppColors? textColor,
+    AppColors? errorColor,
   }) => AppTextField._(
     controller: controller,
     undoController: undoController,
@@ -173,6 +185,9 @@ class AppTextField extends AppTextFieldWidget implements AppTextFieldAbstraction
     expandable: expandable,
     autoFocus: autoFocus,
     focusNode: focusNode,
+    color: color,
+    textColor: textColor,
+    errorColor: errorColor,
   );
 
   factory AppTextField.phone({
@@ -202,6 +217,9 @@ class AppTextField extends AppTextFieldWidget implements AppTextFieldAbstraction
     bool? showMaxLength,
     bool? autoFocus,
     FocusNode? focusNode,
+    AppColors? color,
+    AppColors? textColor,
+    AppColors? errorColor,
   }) => AppTextField._(
     controller: controller,
     undoController: undoController,
@@ -233,6 +251,9 @@ class AppTextField extends AppTextFieldWidget implements AppTextFieldAbstraction
     expandable: false,
     autoFocus: autoFocus,
     focusNode: focusNode,
+    color: color,
+    textColor: textColor,
+    errorColor: errorColor,
   );
 
   factory AppTextField.email({
@@ -263,6 +284,9 @@ class AppTextField extends AppTextFieldWidget implements AppTextFieldAbstraction
     bool? expandable,
     bool? autoFocus,
     FocusNode? focusNode,
+    AppColors? color,
+    AppColors? textColor,
+    AppColors? errorColor,
   }) => AppTextField._(
     controller: controller,
     undoController: undoController,
@@ -293,6 +317,9 @@ class AppTextField extends AppTextFieldWidget implements AppTextFieldAbstraction
     expandable: expandable,
     autoFocus: autoFocus,
     focusNode: focusNode,
+    color: color,
+    textColor: textColor,
+    errorColor: errorColor,
   );
 
   factory AppTextField.numeric({
@@ -324,6 +351,9 @@ class AppTextField extends AppTextFieldWidget implements AppTextFieldAbstraction
     bool? expandable,
     bool? autoFocus,
     FocusNode? focusNode,
+    AppColors? color,
+    AppColors? textColor,
+    AppColors? errorColor,
   }) => AppTextField._(
     controller: controller,
     undoController: undoController,
@@ -355,5 +385,8 @@ class AppTextField extends AppTextFieldWidget implements AppTextFieldAbstraction
     expandable: expandable,
     autoFocus: autoFocus,
     focusNode: focusNode,
+    color: color,
+    textColor: textColor,
+    errorColor: errorColor,
   );
 }

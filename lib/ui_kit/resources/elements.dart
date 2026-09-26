@@ -26,15 +26,15 @@ class AppElements {
   static BorderRadius get borderRadiusTop => BorderRadius.only(topLeft: circularRadiusDefault, topRight: circularRadiusDefault);
 
   ///BorderSide
-  static BorderSide get _borderSideGeneral => BorderSide(color: Get.theme.colorScheme.secondary, width: AppDefaults.borderWidth);
-  static BorderSide get borderSide => _borderSideGeneral.copyWith(color: Get.theme.primaryColor);
-  static BorderSide get borderSidePrimary => _borderSideGeneral.copyWith(color: Get.theme.primaryColor);
-  static BorderSide get borderSideSecondary => _borderSideGeneral.copyWith(color: Get.theme.colorScheme.secondary);
-  static BorderSide get borderSideTertiary => _borderSideGeneral.copyWith(color: Get.theme.colorScheme.tertiary);
-  static BorderSide get borderSideError => _borderSideGeneral.copyWith(color: Get.theme.colorScheme.error);
+  static BorderSide get _borderSideGeneral => BorderSide(color: Get.theme.colorScheme.primary, width: AppDefaults.borderWidth);
+  static BorderSide get borderSide => _borderSideGeneral.copyWith(color: AppColors.primary.color);
+  static BorderSide get borderSidePrimary => _borderSideGeneral.copyWith(color: AppColors.primary.color);
+  static BorderSide get borderSideSecondary => _borderSideGeneral.copyWith(color: AppColors.primary.color);
+  static BorderSide get borderSideTertiary => _borderSideGeneral.copyWith(color: AppColors.tertiary.color);
+  static BorderSide get borderSideError => _borderSideGeneral.copyWith(color: AppColors.error.color);
   static BorderSide get borderSideTransparent => _borderSideGeneral.copyWith(color: AppColors.transparent.color);
-  static BorderSide get borderSideFocused => _borderSideGeneral.copyWith(color: Get.theme.colorScheme.secondary);
-  static BorderSide get borderSideDisabled => _borderSideGeneral.copyWith(color: AppColors.transparent.color);
+  static BorderSide get borderSideFocused => _borderSideGeneral.copyWith(color: AppColors.primary.color);
+  static BorderSide get borderSideDisabled => _borderSideGeneral.copyWith(color: AppColors.disabled.color);
 
   ///OutlineInputBorder
   static OutlineInputBorder get _borderOutlinedGeneral => OutlineInputBorder(borderRadius: borderRadiusLow);
@@ -56,8 +56,10 @@ class AppElements {
   ///RoundedRectangleBorder
   static RoundedRectangleBorder get borderShapeDefault => borderShapeLowRadius;
   static RoundedRectangleBorder get borderShapeLowRadius => RoundedRectangleBorder(borderRadius: borderRadiusLow);
-  static RoundedRectangleBorder get borderShapeNormalRadius => RoundedRectangleBorder(borderRadius: borderRadiusLow, side: borderSidePrimary);
-  static RoundedRectangleBorder get borderShapeHighRadius => RoundedRectangleBorder(borderRadius: borderRadiusLow);
+  static RoundedRectangleBorder get borderShapeNormalRadius => RoundedRectangleBorder(borderRadius: borderRadiusNormal, side: borderSidePrimary);
+  static RoundedRectangleBorder get borderShapeHighRadius => RoundedRectangleBorder(borderRadius: borderRadiusHigh);
   static RoundedRectangleBorder get borderShapeModal => RoundedRectangleBorder(borderRadius: borderRadiusTop);
   static RoundedRectangleBorder get borderShapeAlertDialog => RoundedRectangleBorder(borderRadius: borderRadiusDefault);
+  static RoundedRectangleBorder get borderShapeOutline => RoundedRectangleBorder(borderRadius: borderRadiusDefault, side: borderSidePrimary);
+
 }

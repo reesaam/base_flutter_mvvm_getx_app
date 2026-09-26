@@ -19,6 +19,7 @@ abstract class AppTextFieldWidget extends StatelessWidget {
     required this.controller,
     this.undoController,
     this.label,
+    this.helper,
     this.hint,
     this.width,
     this.height,
@@ -47,11 +48,15 @@ abstract class AppTextFieldWidget extends StatelessWidget {
     this.expandable,
     this.autoFocus,
     this.focusNode,
+    this.color,
+    this.textColor,
+    this.errorColor,
   });
 
   final TextEditingController controller;
   final UndoHistoryController? undoController;
   final String? label;
+  final String? helper;
   final String? hint;
   final double? width;
   final double? height;
@@ -80,6 +85,9 @@ abstract class AppTextFieldWidget extends StatelessWidget {
   final bool? expandable; // Default is false
   final bool? autoFocus;
   final FocusNode? focusNode;
+  final AppColors? color;
+  final AppColors? textColor;
+  final AppColors? errorColor;
 
   @override
   Widget build(BuildContext context) => AppContainer(
@@ -94,8 +102,8 @@ abstract class AppTextFieldWidget extends StatelessWidget {
       textAlignVertical: TextAlignVertical.center,
       textDirection: textDirection,
       obscureText: isPassword ?? false,
-      style: errorText == null ? AppTextStyles.textFieldText() : AppTextStyles.textError(),
-      cursorColor: Get.theme.primaryColor,
+      style: errorText == null ? AppTextStyles.textFieldText(color: textColor) : AppTextStyles.textError(color: errorColor),
+      cursorColor: color?.color ?? Get.theme.primaryColor,
       keyboardType: textInputType ?? TextInputType.text,
       textInputAction: textInputAction,
 
@@ -127,9 +135,11 @@ abstract class AppTextFieldWidget extends StatelessWidget {
         constraints: const BoxConstraints(maxHeight: double.maxFinite),
         contentPadding: AppPaddings.textFieldContent,
         labelText: label,
-        labelStyle: errorText == null ? AppTextStyles.textFieldText() : AppTextStyles.textError(),
+        labelStyle: errorText == null ? AppTextStyles.textFieldLabel(color: color) : AppTextStyles.textError(color: errorColor),
+        helperText: helper,
+        helperStyle: errorText == null ? AppTextStyles.textFieldHint(color: color) : AppTextStyles.textError(color: errorColor),
         hintText: hint,
-        hintStyle: AppTextStyles.textFieldHint(),
+        hintStyle: AppTextStyles.textFieldHint(color: color),
         alignLabelWithHint: true,
         hintMaxLines: 1,
         icon: _leading,
@@ -141,7 +151,7 @@ abstract class AppTextFieldWidget extends StatelessWidget {
         focusedBorder: AppElements.borderOutlinedFocused,
         isDense: true,
         isCollapsed: true,
-        errorStyle: _errorDetector() == null ? null : AppTextStyles.textError(),
+        errorStyle: _errorDetector() == null ? null : AppTextStyles.textError(color: textColor),
         errorBorder: _errorDetector() == null ? null : AppElements.borderOutlinedError,
         errorText: _errorDetector(),
       ),

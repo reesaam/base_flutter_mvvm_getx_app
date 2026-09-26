@@ -111,6 +111,8 @@ barrels:
       - buttons/button_abstraction.dart
       - buttons/button_constructor.dart
       - buttons/button_type_enum.dart
+      - text_fields\text_field_abstraction.dart
+      - text_fields\text_field_widget.dart
 
   - output: lib/barrels/localization_barrel.dart
     library: true

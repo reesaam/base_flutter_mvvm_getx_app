@@ -1,5 +1,4 @@
 import '../../../barrels/annotations_barrel.dart';
-import '../../../barrels/core_barrel.dart';
 import '../../../barrels/core_elements_barrel.dart';
 import '../../../barrels/extensions_barrel.dart';
 import '../../../barrels/localization_barrel.dart';
@@ -25,7 +24,7 @@ class SettingsPage extends CoreView<SettingsController> {
   @override
   Widget get body => Column(children: [_widgetGeneral(), _widgetUpdate(), _widgetBackup(), _widgetStorage()]);
 
-  Widget _widgetAppbarThreeDotsButton() => AppPopupMenu(listItems: _listAppbarThreeDotsButton, primaryColorIcon: false);
+  Widget _widgetAppbarThreeDotsButton() => AppPopupMenu(listItems: _listAppbarThreeDotsButton);
 
   List<AppPopupMenuItem> get _listAppbarThreeDotsButton =>
       List.of([AppPopupMenuItem(text: Texts.to.settings.appbarMenuResetSettings, onTapFunction: () => controller.resetAllSettings())]);

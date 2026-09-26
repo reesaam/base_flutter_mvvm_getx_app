@@ -1,7 +1,7 @@
 import '../barrels/ui_kit_barrel.dart';
 
 class AppCard extends BaseWidget {
-  const AppCard({
+  const AppCard._({
     super.key,
     this.color,
     this.shadowColor,
@@ -27,6 +27,58 @@ class AppCard extends BaseWidget {
   final bool? semanticContainer;
   final EdgeInsets? padding;
   final Widget? child;
+
+  factory AppCard.primary({
+    Color? color,
+    Color? shadowColor,
+    Color? surfaceTintColor,
+    double? elevation,
+    ShapeBorder? shape,
+    bool? borderOnForeground,
+    Clip? clipBehavior,
+    EdgeInsetsGeometry? margin,
+    bool? semanticContainer,
+    EdgeInsets? padding,
+    required Widget child,
+  }) => AppCard._(
+    color: color,
+    shadowColor: shadowColor,
+    surfaceTintColor: surfaceTintColor,
+    elevation: elevation,
+    shape: shape,
+    borderOnForeground: borderOnForeground,
+    clipBehavior: clipBehavior,
+    margin: margin,
+    semanticContainer: semanticContainer,
+    padding: padding,
+    child: child,
+  );
+
+  factory AppCard.outline({
+    Color? borderColor,
+    Color? shadowColor,
+    Color? surfaceTintColor,
+    double? elevation,
+    ShapeBorder? shape,
+    bool? borderOnForeground,
+    Clip? clipBehavior,
+    EdgeInsetsGeometry? margin,
+    bool? semanticContainer,
+    EdgeInsets? padding,
+    required Widget child,
+  }) => AppCard._(
+    color: AppColors.background.color,
+    shadowColor: shadowColor,
+    surfaceTintColor: surfaceTintColor,
+    elevation: elevation,
+    shape: AppElements.borderShapeOutline,
+    borderOnForeground: borderOnForeground,
+    clipBehavior: clipBehavior,
+    margin: margin,
+    semanticContainer: semanticContainer,
+    padding: padding,
+    child: child,
+  );
 
   @override
   Widget get widget => Padding(

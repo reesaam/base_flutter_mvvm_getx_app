@@ -7,7 +7,7 @@ class AppPopupMenuItem extends PopupMenuItem {
   final Function() onTapFunction;
 
   @override
-  Widget? get child => Text(text);
+  Widget? get child => Text(text, style: Get.textTheme.bodyLarge);
 
   @override
   VoidCallback get onTap => onTapFunction;

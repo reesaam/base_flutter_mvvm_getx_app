@@ -116,7 +116,6 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
         title: 'Popup Menu\nPrimaryColor',
         primary: true,
         widget: AppPopupMenu(
-          primaryColorIcon: true,
           listItems: List<AppPopupMenuItem>.generate(
             5,
             (index) => AppPopupMenuItem(text: 'Popup Menu Item', onTapFunction: controller.functionCalledDialog),

@@ -8,10 +8,10 @@ class AppTextStyles extends TextStyle {
   factory AppTextStyles.cardTitle() => AppTextStyles(style: Get.textTheme.displayLarge);
 
   ///Text Fields
-  factory AppTextStyles.textFieldText() => AppTextStyles(style: Get.textTheme.displayLarge);
-  factory AppTextStyles.textFieldLabel() => AppTextStyles(style: Get.textTheme.displayLarge);
-  factory AppTextStyles.textFieldHint() => AppTextStyles(style: Get.textTheme.displayLarge);
-  factory AppTextStyles.textError() => AppTextStyles(style: Get.textTheme.displayLarge);
+  factory AppTextStyles.textFieldText({AppColors? color}) => AppTextStyles(style: Get.textTheme.displayLarge?.copyWith(color: color?.color ?? AppColors.primary.color));
+  factory AppTextStyles.textFieldLabel({AppColors? color}) => AppTextStyles(style: Get.textTheme.displayLarge?.copyWith(color: color?.color ?? AppColors.primary.color));
+  factory AppTextStyles.textFieldHint({AppColors? color}) => AppTextStyles(style: Get.textTheme.displayLarge?.copyWith(color: color?.color ?? AppColors.primary.color));
+  factory AppTextStyles.textError({AppColors? color}) => AppTextStyles(style: Get.textTheme.displayLarge?.copyWith(color: color?.color ?? AppColors.error.color));
 
   ///Popup Menu
   factory AppTextStyles.popupMenuItem() => AppTextStyles(style: Get.textTheme.displayLarge);

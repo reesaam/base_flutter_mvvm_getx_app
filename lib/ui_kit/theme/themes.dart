@@ -69,9 +69,7 @@ class AppTheme {
 
   ///Main Components
   static TextTheme _textTheme() {
-    TextStyle generalStyle = _textStyle();
-
-    TextStyle style = generalStyle.copyWith(color: AppColors.primary.color);
+    TextStyle style = _textStyle().copyWith(color: AppColors.primary.color);
 
     TextTheme textTheme = TextTheme(
       bodySmall: style.copyWith(fontSize: AppTextSizes.textSizeXSmall),
@@ -171,7 +169,7 @@ class AppTheme {
   static DropdownMenuThemeData _buttonDropDown() => const DropdownMenuThemeData();
 
   ///Others
-  static CardTheme _card() => CardTheme(shape: AppElements.borderShapeDefault, color: AppColors.background.color);
+  static CardTheme _card() => CardTheme(shape: AppElements.borderShapeDefault, color: AppColors.primary.color);
 
   static CheckboxThemeData _checkBox() => CheckboxThemeData(
     checkColor: WidgetStateProperty.all(AppColors.background.color),
