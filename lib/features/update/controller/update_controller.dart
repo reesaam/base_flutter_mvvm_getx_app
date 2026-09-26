@@ -97,10 +97,13 @@ class UpdateController extends CoreController {
       downloaded.value = true;
       LoggerService.to.debug(message: (dlFile?.length() ?? 0).toString());
       AppSnackBar.show(message: Texts.to.update.updateDownloaded);
-      AppAlertDialogs.withOkCancel(
+      AppAlertDialogs.to.withTwoButtons(
+        buttonText1: Texts.to.general.ok,
+        buttonText2: Texts.to.general.cancel,
         title: Texts.to.update.updateInstallationTitle,
         text: Texts.to.update.updateInstallationContent,
-        onTapOk: _installUpdateFunction,
+        onTapButton2: popPage,
+        onTapButton1: _installUpdateFunction,
         dismissible: true,
       );
     });

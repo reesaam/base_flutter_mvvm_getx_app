@@ -86,13 +86,14 @@ import 'services/notifications_service/local_notifications/local_notifications.d
 import 'services/secure_storage_service/secure_storage_service.dart';
 import 'services/statistics_service.dart';
 import 'services/storage_service/app_storage_service.dart';
+import 'ui_kit/dialogs/alert_dialogs.dart';
 import 'ui_kit/theme/theme_functions.dart';
 
 /// Generated Library Statistics:
-///  Imports Count: 51
+///  Imports Count: 52
 ///  Pages Count: 15
 ///  Controllers Count: 16
-///  Components Count: 8
+///  Components Count: 9
 ///  Repositories Count: 3
 ///  Services Count: 9
 
@@ -192,6 +193,7 @@ class _GetPutComponent extends Bindings {
       () => AppLocalNotifications(),
       fenix: true,
     );
+    Get.lazyPut<AppAlertDialogs>(() => AppAlertDialogs(), fenix: true);
     Get.lazyPut<AppThemeFunctions>(() => AppThemeFunctions(), fenix: true);
   }
 }

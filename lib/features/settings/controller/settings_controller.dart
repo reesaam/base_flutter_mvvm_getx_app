@@ -10,6 +10,7 @@ import '../../../barrels/extensions_barrel.dart';
 import '../../../barrels/localization_barrel.dart';
 import '../../../barrels/shared_models_barrel.dart';
 import '../../../barrels/ui_kit_barrel.dart';
+
 // ignore: barrel_import_lints/only_barrel_imports
 import '../../versions/controller/versions_controller.dart';
 import '../widgets/settings_languages_widgets.dart';
@@ -92,16 +93,19 @@ class SettingsController extends CoreController {
 
   void functionGoToUpdatePage() => goToPage(AppPages.update);
 
-  void functionBackup() {
+  functionBackup() {
     function() async {
       popPage();
       await AppFileFunctions.to.exportAppData();
     }
 
-    AppAlertDialogs.withOkCancel(
+    AppAlertDialogs.to.withTwoButtons<bool, bool>(
+      buttonText1: Texts.to.general.ok,
+      buttonText2: Texts.to.general.cancel,
       title: Texts.to.general.warning,
       text: Texts.to.dialogs.data.areYouSureDataExport,
-      onTapOk: function,
+      onTapButton1: function(),
+      onTapButton2: popPage(),
       dismissible: true,
     );
   }
@@ -112,11 +116,13 @@ class SettingsController extends CoreController {
       await AppFileFunctions.to.importAppData();
     }
 
-    AppAlertDialogs.withOkCancel(
+    AppAlertDialogs.to.withTwoButtons(
+      buttonText1: Texts.to.general.ok,
+      buttonText2: Texts.to.general.cancel,
       title: Texts.to.general.warning,
       text: Texts.to.dialogs.data.areYouSureDataMayLost,
-      onTapOk: function,
-      dismissible: true,
+      onTapButton1: function(),
+      onTapButton2: popPage(),
     );
   }
 
@@ -128,10 +134,13 @@ class SettingsController extends CoreController {
       refresh();
     }
 
-    AppAlertDialogs.withOkCancel(
+    AppAlertDialogs.to.withTwoButtons(
+      buttonText1: Texts.to.general.ok,
+      buttonText2: Texts.to.general.cancel,
       title: Texts.to.general.warning,
       text: Texts.to.dialogs.data.areYouSureDataWillLost,
-      onTapOk: function,
+      onTapButton1: function(),
+      onTapButton2: popPage(),
       dismissible: true,
     );
   }
@@ -144,10 +153,13 @@ class SettingsController extends CoreController {
       refresh();
     }
 
-    AppAlertDialogs.withOkCancel(
+    AppAlertDialogs.to.withTwoButtons(
+      buttonText1: Texts.to.general.ok,
+      buttonText2: Texts.to.general.cancel,
       title: Texts.to.general.warning,
       text: Texts.to.dialogs.data.areYouSureDataWillLost,
-      onTapOk: function,
+      onTapButton1: function(),
+      onTapButton2: popPage(),
       dismissible: true,
     );
   }

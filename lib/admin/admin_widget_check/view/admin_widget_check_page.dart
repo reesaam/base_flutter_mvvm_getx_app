@@ -2,6 +2,7 @@ import '../../../barrels/annotations_barrel.dart';
 import '../../../barrels/core_barrel.dart';
 import '../../../barrels/core_elements_barrel.dart';
 import '../../../barrels/core_resources_barrel.dart';
+import '../../../barrels/localization_barrel.dart';
 import '../../../barrels/shared_models_barrel.dart';
 import '../../../barrels/ui_kit_barrel.dart';
 
@@ -320,25 +321,49 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
     AdminFunctions.item(
       widget: AppButton.general(
         text: 'Alert Dialog with OK',
-        onTap: () => AppAlertDialogs.withOk(title: 'Alert Dialog Title', text: 'App Alert Dialog with Yes/No', onTapOk: popPage),
+        onTap: () => AppAlertDialogs.to.withOneButton(
+          buttonText: Texts.to.general.ok,
+          title: 'Alert Dialog Title',
+          text: 'App Alert Dialog with Yes/No',
+          onTapOk: popPage,
+        ),
       ),
     ),
     AdminFunctions.item(
       widget: AppButton.general(
         text: 'Alert Dialog with Ok/Cancel',
-        onTap: () => AppAlertDialogs.withOkCancel(title: 'Alert Dialog Title', text: 'App Alert Dialog with Ok/Cancel', onTapOk: popPage),
+        onTap: () => AppAlertDialogs.to.withTwoButtons(
+          buttonText1: Texts.to.general.ok,
+          buttonText2: Texts.to.general.cancel,
+          title: 'Alert Dialog Title',
+          text: 'App Alert Dialog with Ok/Cancel',
+          onTapButton1: popPage<String>,
+          onTapButton2: popPage<String>,
+        ),
       ),
     ),
     AdminFunctions.item(
       widget: AppButton.general(
         text: 'Alert Dialog by Widget with OK',
-        onTap: () => AppAlertWidgetDialogs().withOk(title: 'Alert Dialog Title', widget: _alertDialogWidget(), onTapOk: popPage),
+        onTap: () => AppAlertDialogs.to.withOneButton(
+          buttonText: Texts.to.general.ok,
+          title: 'Alert Dialog Title',
+          widget: _alertDialogWidget(),
+          onTapOk: popPage,
+        ),
       ),
     ),
     AdminFunctions.item(
       widget: AppButton.general(
         text: 'Alert Dialog by Widget with Ok/Cancel',
-        onTap: () => AppAlertWidgetDialogs().withOkCancel(title: 'Alert Dialog Title', widget: _alertDialogWidget(), onTapOk: popPage),
+        onTap: () => AppAlertDialogs.to.withTwoButtons(
+          buttonText1: Texts.to.general.ok,
+          buttonText2: Texts.to.general.cancel,
+          title: 'Alert Dialog Title',
+          widget: _alertDialogWidget(),
+          onTapButton1: popPage,
+          onTapButton2: popPage,
+        ),
       ),
     ),
   ], title: 'Alert Dialogs');

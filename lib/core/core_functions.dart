@@ -10,7 +10,13 @@ import '../barrels/ui_kit_barrel.dart';
 import 'package:flutter/foundation.dart';
 
 bool get kIsDesktop => !kIsWeb && (Platform.isWindows || Platform.isMacOS || Platform.isLinux);
-bool get kIsDesktopWeb => kIsWeb && (defaultTargetPlatform == TargetPlatform.windows || defaultTargetPlatform == TargetPlatform.macOS || defaultTargetPlatform == TargetPlatform.linux);
+
+bool get kIsDesktopWeb =>
+    kIsWeb &&
+    (defaultTargetPlatform == TargetPlatform.windows ||
+        defaultTargetPlatform == TargetPlatform.macOS ||
+        defaultTargetPlatform == TargetPlatform.linux);
+
 bool get kisMobile => !kIsWeb && (Platform.isAndroid || Platform.isIOS);
 
 /// Resolves [AppDevices] from [kIsWeb] / [kIsDesktop] / [kIsDesktopWeb] / [kisMobile].
@@ -26,8 +32,8 @@ AppDevices get currentAppDevice {
   return AppDevices.unknown;
 }
 
-void popPage() {
-  Get.back();
+popPage<T>() {
+  Get.back<T>();
 }
 
 void nullFunction() {}
@@ -68,10 +74,17 @@ void printAllData({bool? detailsIncluded}) async {
 
 noInternetConnectionSnackBar() => AppSnackBar.show(message: Texts.to.network.connection.internetNotAvailable);
 
-showLoadingDialog({bool? isDismissible}) => AppAlertWidgetDialogs().withoutButton(widget: AppProgressIndicator.linear(), dismissible: isDismissible);
+showLoadingDialog({bool? isDismissible}) => AppAlertDialogs.to.withoutButton(widget: AppProgressIndicator.linear(), dismissible: isDismissible);
 
-appExitDialog() =>
-    AppAlertDialogs.withOkCancel(title: Texts.to.general.appExit, text: Texts.to.dialogs.general.areYouSure, onTapOk: appExit, dismissible: true);
+appExitDialog() => AppAlertDialogs.to.withTwoButtons(
+  buttonText1: Texts.to.general.ok,
+  buttonText2: Texts.to.general.cancel,
+  title: Texts.to.general.appExit,
+  text: Texts.to.dialogs.general.areYouSure,
+  onTapButton1: appExit(),
+  onTapButton2: popPage,
+  dismissible: true,
+);
 
 appReload({AppPageDetail? bootPage}) async {
   showLoadingDialog();

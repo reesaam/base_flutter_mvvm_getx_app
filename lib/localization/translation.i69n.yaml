@@ -33,6 +33,7 @@ general:
   cancel: Cancel
   yes: Yes
   no: No
+  close: Close
   notAvailable: Not Available
   notAvailableInitials: N/A
   total: Total
