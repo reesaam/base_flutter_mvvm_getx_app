@@ -15,7 +15,7 @@ abstract class UpdateRepository extends CoreRepository {
 }
 
 @GetPut.repository(as: UpdateRepository)
-class UpdateRepositoryImpl extends CoreRepository implements UpdateRepository {
+class UpdateRepositoryImpl extends CoreRepositoryImpl implements UpdateRepository {
   @override
   Future<BaseResponse<String>> getDownloadAddress() async =>
       await DioCore.to.callMethod<String>(method: APIMethods.get, url: AppAPIUrls.apiGetUpdateAddress);

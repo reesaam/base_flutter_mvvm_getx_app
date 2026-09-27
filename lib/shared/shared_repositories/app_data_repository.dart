@@ -15,7 +15,7 @@ abstract class AppDataRepository {
 }
 
 @GetPut.repository()
-class AppDataRepositoryImpl extends CoreRepository implements AppDataRepository {
+class AppDataRepositoryImpl extends CoreRepositoryImpl implements AppDataRepository {
   @override
   Future<BaseResponse<AppData?>> loadAppData() async => await AppStorageService.to.loadAppData();
 

@@ -12,7 +12,7 @@ abstract class VersionsRepository extends CoreRepository {
 }
 
 @GetPut.repository(as: VersionsRepository)
-class VersionsRepositoryImpl extends CoreRepository implements VersionsRepository {
+class VersionsRepositoryImpl extends CoreRepositoryImpl implements VersionsRepository {
   @override
   Future<BaseResponse<AppVersionsList?>> getVersions() async {
     // await DioCore.to.callMethod<AppVersionsList>(method: APIMethods.get, url: AppAPIUrls.apiGetVersions);

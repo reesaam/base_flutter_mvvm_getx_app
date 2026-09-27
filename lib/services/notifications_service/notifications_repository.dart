@@ -1,6 +1,4 @@
-import '../../barrels/core_elements_barrel.dart';
-
-abstract class AppNotificationsRepository extends CoreRepository {
+abstract class AppNotificationsRepository {
   Future<bool> init();
 
   Future<bool> simple({
