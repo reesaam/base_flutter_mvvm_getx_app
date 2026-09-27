@@ -17,7 +17,7 @@ import 'package:open_file_plus/open_file_plus.dart' as file_plus;
 // ignore: barrel_import_lints/only_barrel_imports
 import '../../versions/controller/versions_controller.dart';
 // ignore: barrel_import_lints/only_barrel_imports
-import '../data/update_remote_data_source.dart';
+import '../data/update_repository.dart';
 
 @GetPut.controller()
 class UpdateController extends CoreController {
@@ -85,13 +85,13 @@ class UpdateController extends CoreController {
     if (dlFile.existsSync()) dlFile.deleteSync();
     downloaded.value = false;
     String downloadAddress = Texts.to.general.empty;
-    final resultAddress = await UpdateRemoteDataSource.to.getDownloadAddress();
+    final resultAddress = await UpdateRepository.to.getDownloadAddress();
     resultAddress.fold((l) => showErrorDialog(message: l.toString()), (r) => downloadAddress = r);
     if (downloadAddress.isEmpty) {
       _alertDirectoryOrFileNotFound(dlDir == null);
       return;
     }
-    final result = await UpdateRemoteDataSource.to.updateDownload(savePath: dlFile.path);
+    final result = await UpdateRepository.to.updateDownload(savePath: dlFile.path);
     result.fold((l) => showErrorDialog(message: l.toString()), (r) {
       dlFile = r;
       downloaded.value = true;

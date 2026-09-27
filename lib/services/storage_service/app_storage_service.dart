@@ -31,8 +31,10 @@ class AppStorageService extends CoreService {
   }
 
   ///AppData
-  Future<BaseLocalResponse<bool>> saveAppData({required AppData appData}) async =>
-      await _storage.saveData(key: _keyAppData.name, data: appData.toJson());
+  Future<BaseLocalResponse<AppData>> saveAppData({required AppData appData}) async {
+    var response = await _storage.saveData(key: _keyAppData.name, data: appData.toJson());
+    return response.map((r) => appData);
+  }
 
   Future<BaseLocalResponse<AppData?>> loadAppData() async {
     final response = await _storage.loadData(_keyAppData.name);

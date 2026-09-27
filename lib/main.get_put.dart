@@ -70,11 +70,10 @@ import 'features/settings/view/settings_view.dart';
 import 'features/splash_screen/controller/splash_screen_controller.dart';
 import 'features/splash_screen/view/splash_screen_view.dart';
 import 'features/update/controller/update_controller.dart';
-import 'features/update/data/update_remote_data_source.dart';
+import 'features/update/data/update_repository.dart';
 import 'features/update/view/update_view.dart';
 import 'features/versions/controller/versions_controller.dart';
-import 'features/versions/data/versions_local_data_source.dart';
-import 'features/versions/data/versions_remote_data_source.dart';
+import 'features/versions/data/versions_repository.dart';
 import 'localization/localizations.dart';
 import 'services/connectivity_service.dart';
 import 'services/deep_link/deep_link_service.dart';
@@ -86,6 +85,7 @@ import 'services/notifications_service/local_notifications/local_notifications.d
 import 'services/secure_storage_service/secure_storage_service.dart';
 import 'services/statistics_service.dart';
 import 'services/storage_service/app_storage_service.dart';
+import 'shared/shared_repositories/app_data_repository.dart';
 import 'ui_kit/dialogs/alert_dialogs.dart';
 import 'ui_kit/theme/theme_functions.dart';
 
@@ -201,16 +201,16 @@ class _GetPutComponent extends Bindings {
 class _GetPutRepository extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<UpdateRemoteDataSourceImpl>(
-      () => UpdateRemoteDataSourceImpl(),
+    Get.lazyPut<UpdateRepositoryImpl>(
+      () => UpdateRepositoryImpl(),
       fenix: true,
     );
-    Get.lazyPut<VersionsLocalDataSourceImpl>(
-      () => VersionsLocalDataSourceImpl(),
+    Get.lazyPut<VersionsRepositoryImpl>(
+      () => VersionsRepositoryImpl(),
       fenix: true,
     );
-    Get.lazyPut<VersionsRemoteDataSourceImpl>(
-      () => VersionsRemoteDataSourceImpl(),
+    Get.lazyPut<AppDataRepositoryImpl>(
+      () => AppDataRepositoryImpl(),
       fenix: true,
     );
   }

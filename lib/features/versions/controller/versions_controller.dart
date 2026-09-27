@@ -3,8 +3,7 @@ import '../../../barrels/services_barrel.dart';
 import '../../../barrels/core_barrel.dart';
 import '../../../barrels/core_elements_barrel.dart';
 import '../../../barrels/shared_models_barrel.dart';
-import '../data/versions_local_data_source.dart';
-import '../data/versions_remote_data_source.dart';
+import '../data/versions_repository.dart';
 
 @GetPut.controller()
 class VersionsController extends CoreController {
@@ -25,11 +24,11 @@ class VersionsController extends CoreController {
     bool internetAvailability = await AppConnectionService.to.checkInternet();
     AppVersionsList? versionsList;
     if (internetAvailability) {
-      var response = await VersionsRemoteDataSource.to.getVersions();
+      var response = await VersionsRepository.to.getVersions();
       versionsList = response.fold((l) => null, (r) => r);
     }
     if (versionsList == null) {
-      var response = await VersionsLocalDataSource.to.getVersions();
+      var response = await VersionsRepository.to.getVersions();
       versionsList = response.fold((l) => null, (r) => r);
     }
     return versionsList;

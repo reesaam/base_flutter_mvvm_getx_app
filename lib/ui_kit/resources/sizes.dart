@@ -17,6 +17,9 @@ class AppSizes {
   static double get columnSpacing => 20;
   static Size get switchHeight => const Size.fromHeight(20);
 
+  ///Shared Widgets
+  static double get emptyPageIcon => 60;
+
   ///Homepage
   static double get homepageLogo => 60;
   static double get homepageSettingIcon => 20;

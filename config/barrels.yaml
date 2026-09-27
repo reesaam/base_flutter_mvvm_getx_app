@@ -84,7 +84,17 @@ barrels:
   - output: lib/barrels/shared_models_barrel.dart
     library: true
     roots:
-      - lib/shared
+      - lib/shared/shared_models
+
+  - output: lib/barrels/shared_widgets_barrel.dart
+    library: true
+    roots:
+      - lib/shared/shared_widgets
+
+  - output: lib/barrels/shared_repositories_barrel.dart
+    library: true
+    roots:
+      - lib/shared/shared_repositories
 
   - output: lib/barrels/ui_kit_barrel.dart
     library: true
