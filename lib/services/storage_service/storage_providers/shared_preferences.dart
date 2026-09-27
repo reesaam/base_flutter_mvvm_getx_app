@@ -85,7 +85,7 @@ class AppSharedPreferences implements AppStoragesAbstraction {
     }
   }
 
-  LocalException get _defaultLeftResponse => ResponseStatusLocalException.unknownException.exception();
+  LocalException get _defaultLeftResponse => ResponseStatusLocal.unknownException.exception();
 
   void _printException(String method, GeneralException exception) {
     LoggerService.to.error(message: '==> Local $method Data Exception: ${exception.message} (${exception.statusCode})');

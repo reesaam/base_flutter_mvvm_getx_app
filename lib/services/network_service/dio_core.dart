@@ -15,7 +15,7 @@ import 'interceptors/logging_interceptor.dart';
 import 'interceptors/retry_interceptor.dart';
 
 export 'api_methods.dart';
-export '../../core/core_resources/response_status_api.dart';
+export '../../core/core_resources/response_status.dart';
 
 typedef APIResponse = dio.Response;
 
@@ -67,11 +67,11 @@ class DioCore extends CoreService {
       );
       _increaseStatisticApiCall();
       final result = await client.request<dynamic>(url, queryParameters: queryParameters, options: options, data: data);
-      if (ResponseStatusAPI.values.find(result.statusCode ?? 0).isSuccess == true) {
+      if (ResponseStatus.values.find(result.statusCode ?? 0).isSuccess == true) {
         return Right(result.data as T);
       }
       _printException(method.getName, ['Result Data: ${result.data} (${result.statusCode})', 'Result Message: ${result.statusMessage}']);
-      return Left(ResponseStatusAPI.values.find(result.statusCode ?? 0).exception());
+      return Left(ResponseStatus.values.find(result.statusCode ?? 0).exception());
     } on dio.DioException catch (ex, stackTrace) {
       _printException(method.getName, ['DioException Response: ${ex.response}', 'DioException Message: ${ex.message}']);
       return Left(NetworkException.handleResponse(ex, stackTrace));
@@ -90,7 +90,7 @@ class DioCore extends CoreService {
         return Right(File(savePath));
       }
       _printException(APIMethods.download.getName, ['Result Data: ${result.data}', 'Result Message: ${result.statusMessage}']);
-      return Left(ResponseStatusAPI.values.find(result.statusCode ?? 0).exception());
+      return Left(ResponseStatus.values.find(result.statusCode ?? 0).exception());
     } on dio.DioException catch (ex, stackTrace) {
       _printException(APIMethods.download.getName, ['DioException Response: ${ex.response}', 'DioException Message: ${ex.message}']);
       return Left(NetworkException.handleResponse(ex, stackTrace));

@@ -17,7 +17,7 @@ class NetworkException implements GeneralException {
 
   static NetworkException handleResponse(dio.DioException ex, StackTrace? stacktrace) {
     final status =
-        ResponseStatusAPI.values.firstWhereOrNull((element) => element.statusCode == ex.response?.statusCode) ?? ResponseStatusAPI.unknownException;
+        ResponseStatus.values.firstWhereOrNull((element) => element.statusCode == ex.response?.statusCode) ?? ResponseStatus.unknownException;
     try {
       return status.exception(stackTrace: stacktrace);
     } catch (_) {

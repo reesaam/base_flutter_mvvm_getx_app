@@ -19,7 +19,7 @@ class LocalException implements GeneralException {
       return LocalException(message: ex.message, statusCode: ex.statusCode, stackTrace: stacktrace);
     }
     final exception =
-        ResponseStatusLocalException.values.firstWhereOrNull((e) => e.statusCode == ex.statusCode) ?? ResponseStatusLocalException.unknownException;
+        ResponseStatusLocal.values.firstWhereOrNull((e) => e.statusCode == ex.statusCode) ?? ResponseStatusLocal.unknownException;
     try {
       return exception.exception(stacktrace: stacktrace);
     } catch (_) {
