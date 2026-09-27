@@ -1,9 +1,11 @@
 import 'dart:io';
 
+import '../barrels/components_barrel.dart';
 import '../barrels/services_barrel.dart';
 import '../barrels/core_resources_barrel.dart';
 import '../barrels/localization_barrel.dart';
 import '../barrels/shared_models_barrel.dart';
+import '../barrels/shared_repositories_barrel.dart';
 import '../barrels/ui_kit_barrel.dart';
 
 // ignore: barrel_import_lints/only_barrel_imports
@@ -39,8 +41,8 @@ popPage<T>() {
 void nullFunction() {}
 
 void clearAppData() async {
-  final response = await AppStorageService.to.clearStorage();
-  response.fold((l) => AppExceptionsDialog.show(exception: l), (r) => AppSnackBar.show());
+  final response = await AppDataRepository.to.clearAppData();
+  response.fold((l) => _exceptionDialog(l), (r) => AppSnackBar.show());
 }
 
 Future<bool?> saveAppData({
@@ -56,53 +58,54 @@ Future<bool?> saveAppData({
     settings: appSettingData ?? loadedData?.settings,
     statisticsData: appStatisticsData ?? loadedData?.statisticsData,
   );
-  final result = await AppStorageService.to
-      .saveAppData(appData: appData)
-      .then((value) => value.fold((l) => AppExceptionsDialog.show(exception: l), (r) => r));
+  final result = await AppDataRepository.to.saveAppData(appData).then((value) => value.fold((l) => _exceptionDialog(l), (r) => r));
   return result;
 }
 
 Future<AppData?> loadAppData() async {
-  AppData? appData = await AppStorageService.to.loadAppData().then((value) => value.fold((l) => AppExceptionsDialog.show(exception: l), (r) => r));
+  var loadResponse = await AppDataRepository.to.loadAppData();
+  AppData? appData = loadResponse.fold((l) => _exceptionDialog(l), (r) => r);
   return appData;
 }
 
 void printAllData({bool? detailsIncluded}) async {
-  AppData? appData = await loadAppData();
+  var appData = await loadAppData();
   AppStorageService.to.printData(appData: appData, detailsIncluded: detailsIncluded);
 }
 
-noInternetConnectionSnackBar() => AppSnackBar.show(message: Texts.to.network.connection.internetNotAvailable);
+_exceptionDialog(GeneralException? l) => AppExceptionsDialog.show(exception: l ?? GeneralException.create());
 
-showLoadingDialog({bool? isDismissible}) => AppAlertDialogs.to.withoutButton(widget: AppProgressIndicator.linear(), dismissible: isDismissible);
+void noInternetConnectionSnackBar() => AppSnackBar.show(message: Texts.to.network.connection.internetNotAvailable);
 
-appExitDialog() => AppAlertDialogs.to.withTwoButtons(
+void showLoadingDialog({bool? isDismissible}) => AppAlertDialogs.to.withoutButton(widget: AppProgressIndicator.linear(), dismissible: isDismissible);
+
+void appExitDialog() => AppAlertDialogs.to.withTwoButtons(
   buttonText1: Texts.to.general.ok,
   buttonText2: Texts.to.general.cancel,
   title: Texts.to.general.appExit,
   text: Texts.to.dialogs.general.areYouSure,
-  onTapButton1: appExit(),
+  onTapButton1: appExit,
   onTapButton2: popPage,
   dismissible: true,
 );
 
-appReload({AppPageDetail? bootPage}) async {
+void appReload({AppPageDetail? bootPage}) async {
   showLoadingDialog();
   LoggerService.to.info(message: 'App Reload Triggered');
   Get.reloadAll(force: true);
 }
 
-appReset() {
+void appReset() {
   LoggerService.to.info(message: 'App Reset Triggered');
   Get.reset();
 }
 
-appRestart() {
+void appRestart() {
   LoggerService.to.info(message: 'App Restart Triggered');
   // kIsWeb ? RestartWeb().restart('webOrigin') : Restart.restartApp();
 }
 
-appExit() {
+void appExit() {
   LoggerService.to.info(message: 'App Exit Triggered');
   exit(0);
 }

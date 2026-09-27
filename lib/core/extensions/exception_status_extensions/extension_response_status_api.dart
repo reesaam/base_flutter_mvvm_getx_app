@@ -8,7 +8,7 @@ extension APIResponseStatusListExtension on List<ResponseStatusAPI> {
 }
 
 extension NetworkExceptionsExtension on ResponseStatusAPI {
-  NetworkException get exception => NetworkException(statusCode: statusCode, message: message);
+  NetworkException exception({StackTrace? stackTrace}) => NetworkException(statusCode: statusCode, message: message, stackTrace: stackTrace);
 
   String get message => switch (this) {
     ResponseStatusAPI.success => Texts.to.network.api.exceptionNonAuthoritativeInformation,

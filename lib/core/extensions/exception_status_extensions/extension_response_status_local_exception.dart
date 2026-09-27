@@ -1,10 +1,9 @@
 import '../../../barrels/components_barrel.dart';
 import '../../../barrels/core_resources_barrel.dart';
 import '../../../barrels/localization_barrel.dart';
-import '../../../barrels/services_barrel.dart';
 
 extension LocalExceptionsExtension on ResponseStatusLocalException {
-  LocalException get exception => LocalException(statusCode: statusCode, message: message);
+  LocalException exception({StackTrace? stacktrace}) => LocalException(statusCode: statusCode, message: message, stackTrace: stacktrace);
 
   String get message => switch (this) {
     ResponseStatusLocalException.nullException => Texts.to.storage.exceptionNull,

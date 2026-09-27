@@ -1,6 +1,7 @@
 import '../../../barrels/core_barrel.dart';
 import '../../../barrels/core_resources_barrel.dart';
 import '../../../barrels/shared_models_barrel.dart';
+import '../../../barrels/shared_repositories_barrel.dart';
 
 extension ExtensionAppSettingsRxClear on Rx<AppSettingData> {
   Rx<AppSettingData> clearData() {
@@ -30,4 +31,4 @@ extension ExtensionAppSettingsLanguages on AppSettingData {
   }
 }
 
-_saveDataOnStorage(AppSettingData data) => saveAppData(appSettingData: data);
+_saveDataOnStorage(AppSettingData data) => AppDataRepository.to.saveAppDataItems(settings: data);

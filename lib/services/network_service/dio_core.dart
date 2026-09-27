@@ -71,7 +71,7 @@ class DioCore extends CoreService {
         return Right(result.data as T);
       }
       _printException(method.getName, ['Result Data: ${result.data} (${result.statusCode})', 'Result Message: ${result.statusMessage}']);
-      return Left(ResponseStatusAPI.values.find(result.statusCode ?? 0).exception);
+      return Left(ResponseStatusAPI.values.find(result.statusCode ?? 0).exception());
     } on dio.DioException catch (ex, stackTrace) {
       _printException(method.getName, ['DioException Response: ${ex.response}', 'DioException Message: ${ex.message}']);
       return Left(NetworkException.handleResponse(ex, stackTrace));
@@ -84,17 +84,13 @@ class DioCore extends CoreService {
   Future<BaseAPIResponse<File>> download({required String url, required String savePath, bool skipAuth = false}) async {
     try {
       _increaseStatisticApiCall();
-      final APIResponse result = await client.download(
-        url,
-        savePath,
-        options: dio.Options(extra: {AuthInterceptor.skipAuthExtraKey: skipAuth}),
-      );
+      final APIResponse result = await client.download(url, savePath, options: dio.Options(extra: {AuthInterceptor.skipAuthExtraKey: skipAuth}));
       if (result.statusCode == 200) {
         _printResponse('DOWNLOAD', result);
         return Right(File(savePath));
       }
       _printException(APIMethods.download.getName, ['Result Data: ${result.data}', 'Result Message: ${result.statusMessage}']);
-      return Left(ResponseStatusAPI.values.find(result.statusCode ?? 0).exception);
+      return Left(ResponseStatusAPI.values.find(result.statusCode ?? 0).exception());
     } on dio.DioException catch (ex, stackTrace) {
       _printException(APIMethods.download.getName, ['DioException Response: ${ex.response}', 'DioException Message: ${ex.message}']);
       return Left(NetworkException.handleResponse(ex, stackTrace));

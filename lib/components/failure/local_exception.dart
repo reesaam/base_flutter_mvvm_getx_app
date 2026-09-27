@@ -5,25 +5,25 @@ import '../../barrels/extensions_barrel.dart';
 import 'general_exception.dart';
 
 class LocalException implements GeneralException {
-  LocalException({this.message, this.statusCode});
+  LocalException({this.message, this.statusCode, this.stackTrace});
 
   @override
   final String? message;
   @override
   final int? statusCode;
+  @override
+  StackTrace? stackTrace;
 
   static LocalException handleResponse(GeneralException ex, StackTrace? stacktrace) {
     if (ex is LocalException) {
-      return LocalException(message: ex.message, statusCode: ex.statusCode);
+      return LocalException(message: ex.message, statusCode: ex.statusCode, stackTrace: stacktrace);
     }
-    final matched = ResponseStatusLocalException.values.firstWhereOrNull((e) => e.statusCode == ex.statusCode);
-    if (matched == null) {
-      return LocalException(message: ResponseStatusLocalException.unknownException.name, statusCode: 0);
-    }
+    final exception =
+        ResponseStatusLocalException.values.firstWhereOrNull((e) => e.statusCode == ex.statusCode) ?? ResponseStatusLocalException.unknownException;
     try {
-      return matched.exception;
+      return exception.exception(stacktrace: stacktrace);
     } catch (_) {
-      return LocalException(message: matched.name, statusCode: matched.statusCode);
+      return LocalException(message: exception.message, statusCode: exception.statusCode, stackTrace: stacktrace);
     }
   }
 }

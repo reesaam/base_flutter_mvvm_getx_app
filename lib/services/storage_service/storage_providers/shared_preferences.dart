@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -29,8 +30,8 @@ class AppSharedPreferences implements AppStoragesAbstraction {
     } on LocalException catch (ex, stackTrace) {
       _printException('CLEAR STORAGE', ex);
       return Left(LocalException.handleResponse(ex, stackTrace));
-    } catch (ex) {
-      _printException('CLEAR STORAGE', GeneralException.create(ex));
+    } catch (ex, st) {
+      _printException('CLEAR STORAGE', GeneralException.create(ex: ex));
       rethrow;
     }
   }
@@ -46,7 +47,7 @@ class AppSharedPreferences implements AppStoragesAbstraction {
       _printException('CHECK', ex);
       return Left(LocalException.handleResponse(ex, stackTrace));
     } catch (ex) {
-      _printException('CHECK', GeneralException.create(ex));
+      _printException('CHECK', GeneralException.create(ex: ex));
       rethrow;
     }
   }
@@ -63,7 +64,7 @@ class AppSharedPreferences implements AppStoragesAbstraction {
       _printException('LOAD', ex);
       return Left(LocalException.handleResponse(ex, stackTrace));
     } catch (ex) {
-      _printException('LOAD', GeneralException.create(ex));
+      _printException('LOAD', GeneralException.create(ex: ex));
       rethrow;
     }
   }
@@ -79,12 +80,12 @@ class AppSharedPreferences implements AppStoragesAbstraction {
       _printException('SAVE', ex);
       return Left(LocalException.handleResponse(ex, stackTrace));
     } catch (ex) {
-      _printException('SAVE', GeneralException.create(ex));
+      _printException('SAVE', GeneralException.create(ex: ex));
       rethrow;
     }
   }
 
-  LocalException get _defaultLeftResponse => ResponseStatusLocalException.unknownException.exception;
+  LocalException get _defaultLeftResponse => ResponseStatusLocalException.unknownException.exception();
 
   void _printException(String method, GeneralException exception) {
     LoggerService.to.error(message: '==> Local $method Data Exception: ${exception.message} (${exception.statusCode})');
