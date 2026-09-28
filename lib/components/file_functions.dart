@@ -38,34 +38,37 @@ class AppFileFunctions extends CoreComponent {
     return importFile;
   }
 
-  Future<void> exportAppData() async {
+  Future<bool> exportAppData() async {
     final result = await AppStorageService.to.loadAppData();
     await result.fold((_) async {}, (appData) async {
       if (appData == null) {
         LoggerService.to.warning(message: 'Exported AppData was Null');
-        return;
+        return false;
       }
       final data = appData.toJson().toString().toUInt8List();
       final savedPath = await saveFile(fileName: AppTexts.settingBackupFilename, data: data);
       LoggerService.to.info(message: 'File Path: $savedPath');
       LoggerService.to.info(message: 'Backup File Exported');
+      return true;
     });
+    return false;
   }
 
-  Future<void> importAppData() async {
+  Future<bool> importAppData() async {
     final appDataFile = await pickFile();
     if (appDataFile == null) {
       LoggerService.to.warning(message: 'Imported File was NUll');
-      return;
+      return false;
     }
 
     final appData = AppData.fromJson(json.decode(String.fromCharCodes(appDataFile.readAsBytesSync())));
     if (appData.dataVersion != AppDataVersions.values.last) {
       LoggerService.to.warning(message: 'Data Version is not Compatible, Converter is not Implemented\nData Import Failed');
-      return;
+      return false;
     }
 
     await AppStorageService.to.saveAppData(appData: appData);
     LoggerService.to.info(message: 'Data Imported');
+    return true;
   }
 }

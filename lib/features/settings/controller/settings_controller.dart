@@ -95,27 +95,29 @@ class SettingsController extends CoreController {
 
   void functionGoToUpdatePage() => goToPage(AppPages.update);
 
-  functionBackup() {
-    function() async {
+  void functionBackup() {
+    Future<bool> functionExport() async {
       popPage();
-      await AppFileFunctions.to.exportAppData();
+      var exportResult = await AppFileFunctions.to.exportAppData();
+      return exportResult;
     }
 
-    AppAlertDialogs.to.twoButtons<bool, bool>(
+    var result = AppAlertDialogs.to.twoButtons<bool, bool>(
       buttonText1: Texts.to.general.ok,
       buttonText2: Texts.to.general.cancel,
       title: Texts.to.general.warning,
       text: Texts.to.dialogs.data.areYouSureDataExport,
-      onTapButton1: function(),
-      onTapButton2: popPage(),
+      onTapButton1: functionExport,
+      onTapButton2: popPage,
       dismissible: true,
     );
   }
 
   void functionRestore() {
-    function() async {
+    Future<bool> functionImport() async {
       popPage();
-      await AppFileFunctions.to.importAppData();
+      var importResult = await AppFileFunctions.to.importAppData();
+      return importResult;
     }
 
     AppAlertDialogs.to.twoButtons(
@@ -123,8 +125,8 @@ class SettingsController extends CoreController {
       buttonText2: Texts.to.general.cancel,
       title: Texts.to.general.warning,
       text: Texts.to.dialogs.data.areYouSureDataMayLost,
-      onTapButton1: function(),
-      onTapButton2: popPage(),
+      onTapButton1: functionImport,
+      onTapButton2: popPage,
     );
   }
 
@@ -142,7 +144,7 @@ class SettingsController extends CoreController {
       title: Texts.to.general.warning,
       text: Texts.to.dialogs.data.areYouSureDataWillLost,
       onTapButton1: function(),
-      onTapButton2: popPage(),
+      onTapButton2: popPage,
       dismissible: true,
     );
   }
@@ -161,7 +163,7 @@ class SettingsController extends CoreController {
       title: Texts.to.general.warning,
       text: Texts.to.dialogs.data.areYouSureDataWillLost,
       onTapButton1: function(),
-      onTapButton2: popPage(),
+      onTapButton2: popPage,
       dismissible: true,
     );
   }

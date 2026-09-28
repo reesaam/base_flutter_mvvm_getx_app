@@ -395,13 +395,13 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
       AdminFunctions.item(
         widget: AppButton.general(
           text: 'BottomSheet Dialog without Button',
-          onTap: () => AppBottomSheet().form(title: 'BottomSheet Dialog', form: form, dismissible: true),
+          onTap: () => AppBottomSheet.to.form(title: 'BottomSheet Dialog', form: form, dismissible: true),
         ),
       ),
       AdminFunctions.item(
         widget: AppButton.general(
           text: 'BottomSheet Dialog with OK',
-          onTap: () => AppBottomSheet().oneButton(
+          onTap: () => AppBottomSheet.to.oneButton(
             title: 'BottomSheet Dialog',
             buttonText: Texts.to.general.ok,
             onTapButton: popPage,
@@ -413,7 +413,7 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
       AdminFunctions.item(
         widget: AppButton.general(
           text: 'BottomSheet Dialog with Cancel',
-          onTap: () => AppBottomSheet().oneButton(
+          onTap: () => AppBottomSheet.to.oneButton(
             title: 'BottomSheet Dialog',
             buttonText: Texts.to.general.cancel,
             onTapButton: popPage,
@@ -425,7 +425,7 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
       AdminFunctions.item(
         widget: AppButton.general(
           text: 'BottomSheet Dialog with OK/Cancel',
-          onTap: () => AppBottomSheet().twoButtons(
+          onTap: () => AppBottomSheet.to.twoButtons(
             title: 'BottomSheet Dialog',
             buttonText1: Texts.to.general.ok,
             onTapButton1: popPage,

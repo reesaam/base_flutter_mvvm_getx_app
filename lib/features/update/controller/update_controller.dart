@@ -52,7 +52,7 @@ class UpdateController extends CoreController {
 
   Future<void> checkUpdate() async {
     buttonCheckUpdateLoading.value = true;
-    AppBottomSheet().form(title: Texts.to.update.updateCheckingUpdate, form: AppProgressIndicator.linear());
+    AppBottomSheet.to.form(title: Texts.to.update.updateCheckingUpdate, form: AppProgressIndicator.linear());
     bool internetStatus = await AppConnectionService.to.checkInternet();
     if (internetStatus) {
       AppVersion? version = await VersionsController.to.checkUpdateAvailableVersion();
@@ -72,7 +72,7 @@ class UpdateController extends CoreController {
 
   void downloadUpdate() async {
     buttonDownloadUpdateLoading.value = true;
-    AppBottomSheet().form(title: Texts.to.update.updateDownloading, form: AppProgressIndicator.linear());
+    AppBottomSheet.to.form(title: Texts.to.update.updateDownloading, form: AppProgressIndicator.linear());
     bool internetStatus = await AppConnectionService.to.checkInternet();
     if (!internetStatus) {
       noInternetConnectionSnackBar();
