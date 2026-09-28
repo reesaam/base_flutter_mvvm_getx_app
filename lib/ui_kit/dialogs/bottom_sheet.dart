@@ -34,16 +34,16 @@ class AppBottomSheet {
     return result;
   }
 
-  Future<void> form({String? title, Widget? form, String? text, bool? dismissible}) async {
-    await _appBottomSheetGeneral(title: title, widget: form, dismissible: dismissible);
+  Future<void> form({String? title, Widget? form, Widget? buttons, bool? dismissible}) async {
+    await _appBottomSheetGeneral(title: title, widget: form, buttons: buttons == null ? [] : [buttons], dismissible: dismissible);
   }
 
-  void tappableItem({required String text, required Function() onTap}) => LayoutBuilder(
-    builder: (context, constraints) => InkWell(
-      onTap: onTap,
-      child: SizedBox(width: constraints.maxWidth, height: 50, child: Text(text)),
-    ),
-  );
+  // void tappableItem({required String text, required Function() onTap}) => LayoutBuilder(
+  //   builder: (context, constraints) => InkWell(
+  //     onTap: onTap,
+  //     child: SizedBox(width: constraints.maxWidth, height: 50, child: Text(text)),
+  //   ),
+  // );
 
   Future<(T1?, T2?)> _appBottomSheetGeneral<T1, T2>({String? title, Widget? widget, String? text, List<Widget>? buttons, bool? dismissible}) async =>
       await showModalBottomSheet(

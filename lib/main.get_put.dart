@@ -196,7 +196,7 @@ class _GetPutComponent extends Bindings {
       fenix: true,
     );
     Get.lazyPut<AppAlertDialogs>(() => AppAlertDialogs(), fenix: true);
-    Get.lazyPut<AppBottomSheet>(() => AppBottomSheet.to, fenix: true);
+    Get.lazyPut<AppBottomSheet>(() => AppBottomSheet(), fenix: true);
     Get.lazyPut<AppThemeFunctions>(() => AppThemeFunctions(), fenix: true);
   }
 }

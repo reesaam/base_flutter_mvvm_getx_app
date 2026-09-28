@@ -2,7 +2,7 @@ import '../../barrels/core_resources_barrel.dart';
 import '../../barrels/localization_barrel.dart';
 import '../../barrels/ui_kit_barrel.dart';
 
-import 'app_button_widget.dart';
+import 'button_widget.dart';
 import 'button_type_enum.dart';
 import 'icon_button.dart';
 

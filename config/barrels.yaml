@@ -122,6 +122,8 @@ barrels:
       - buttons/button_abstraction.dart
       - buttons/button_constructor.dart
       - buttons/button_type_enum.dart
+      - buttons/button_widget.dart
+      - buttons/button_loading.dart
       - text_fields\text_field_abstraction.dart
       - text_fields\text_field_widget.dart
 
