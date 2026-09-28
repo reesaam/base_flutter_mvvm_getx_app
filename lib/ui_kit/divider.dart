@@ -1,30 +1,27 @@
 import '../barrels/ui_kit_barrel.dart';
 
 class AppDividers {
-  static Widget general({Color? color}) => Divider(color: color ?? Get.theme.primaryColor);
+  static Widget general({AppColors? color, AppPaddings? padding}) => AppContainer(
+    padding: padding,
+    child: Divider(color: (color ?? AppColors.primary).color),
+  );
 
-  static Widget generalWithInlineText({required String text, Color? color}) => Stack(
+  static Widget generalWithInlineText({required String text, AppColors? color}) => Stack(
     alignment: Alignment.center,
     children: [
-      general(color: color ?? Get.theme.primaryColor),
+      general(color: color ?? AppColors.divider),
 
       /// Exclusion for UI Kit AppContainer
       Container(
         padding: AppPaddings.buttonXLarge,
         color:
-            Get.context?.findAncestorWidgetOfExactType<Container>()?.color ??
+        Get.context?.findAncestorWidgetOfExactType<Container>()?.color ??
             Get.context?.findAncestorWidgetOfExactType<Scaffold>()?.backgroundColor ??
             Get.theme.canvasColor,
-        child: Text(text).withColor(color ?? Get.theme.primaryColor),
+        child: Text(text).withColor((color ?? AppColors.primary).color),
       ),
     ],
   );
 
-  static Widget get generalWithCanvasColor => general(color: AppColors.canvas.color);
-
-  static Widget get generalWithPrimaryColor => general(color: AppColors.primary.color);
-
-  static Widget get generalWithDisabledColor => general(color: AppColors.disabled.color);
-
-  static Widget get settings => generalWithDisabledColor;
+  static Widget get settings => general(color: AppColors.disabled);
 }

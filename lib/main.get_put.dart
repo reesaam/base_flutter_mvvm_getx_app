@@ -88,13 +88,14 @@ import 'services/statistics_service.dart';
 import 'services/storage_service/app_storage_service.dart';
 import 'shared/shared_repositories/app_data_repository.dart';
 import 'ui_kit/dialogs/alert_dialogs.dart';
+import 'ui_kit/dialogs/bottom_sheet.dart';
 import 'ui_kit/theme/theme_functions.dart';
 
 /// Generated Library Statistics:
-///  Imports Count: 53
+///  Imports Count: 54
 ///  Pages Count: 15
 ///  Controllers Count: 16
-///  Components Count: 9
+///  Components Count: 10
 ///  Repositories Count: 3
 ///  Services Count: 9
 
@@ -195,6 +196,7 @@ class _GetPutComponent extends Bindings {
       fenix: true,
     );
     Get.lazyPut<AppAlertDialogs>(() => AppAlertDialogs(), fenix: true);
+    Get.lazyPut<AppBottomSheet>(() => AppBottomSheet(), fenix: true);
     Get.lazyPut<AppThemeFunctions>(() => AppThemeFunctions(), fenix: true);
   }
 }

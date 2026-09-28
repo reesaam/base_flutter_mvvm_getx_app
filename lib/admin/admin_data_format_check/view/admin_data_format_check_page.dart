@@ -21,7 +21,7 @@ class AdminDataFormatCheckPage extends CoreView<AdminDataFormatCheckController> 
   Widget get body => Column(
     mainAxisAlignment: MainAxisAlignment.start,
     crossAxisAlignment: CrossAxisAlignment.center,
-    children: [AppDividers.generalWithDisabledColor, _locale(), _dateTime(), _currency()],
+    children: [AppDividers.general(), _locale(), _dateTime(), _currency()],
   );
 
   _locale() => AdminFunctions.section([

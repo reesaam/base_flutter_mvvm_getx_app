@@ -19,7 +19,7 @@ class AdminVerifiersPage extends CoreView<AdminVerifiersController> {
   Widget get body => Column(
     mainAxisAlignment: MainAxisAlignment.start,
     crossAxisAlignment: CrossAxisAlignment.center,
-    children: [AppDividers.generalWithDisabledColor, _textFields()],
+    children: [AppDividers.general(), _textFields()],
   );
 
   _textFields() => Obx(

@@ -64,7 +64,7 @@ class AppAlertDialogs extends CoreComponent {
               : Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [Text(title), AppDividers.generalWithPrimaryColor],
+                  children: [Text(title), AppDividers.general(color: AppColors.primary)],
                 ),
           content:
               widget ??

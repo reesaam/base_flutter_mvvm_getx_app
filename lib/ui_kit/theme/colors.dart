@@ -16,6 +16,7 @@ enum AppColors {
   bottomNavigationBarBackground(AppColorPalette.background),
   bottomNavigationBarForeground(AppColorPalette.primary),
   error(AppColorPalette.error),
+  divider(AppColorPalette.disabled),
   button(AppColorPalette.primary),
   buttonText(AppColorPalette.background),
   buttonBorder(AppColorPalette.background),

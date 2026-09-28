@@ -71,7 +71,7 @@ class AppBottomSheet {
                             ? AppBox.shrink()
                             : Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [Text(title), AppDividers.generalWithPrimaryColor, AppSpaces.h10],
+                                children: [Text(title), AppDividers.general(color: AppColors.primary), AppSpaces.h10],
                               ),
                         widget ??
                             Padding(

@@ -19,7 +19,7 @@ class AdminAppResourcesPage extends CoreView<AdminAppResourcesController> {
   EdgeInsets? get pagePadding => AppPaddings.zero;
 
   @override
-  Widget get body => Column(children: [AppDividers.generalWithDisabledColor, _appDefaults(), _appAPIs(), _appColors(), _appColorPalette()]);
+  Widget get body => Column(children: [AppDividers.general(), _appDefaults(), _appAPIs(), _appColors(), _appColorPalette()]);
 
   _appDefaults() => AdminFunctions.section([
     AdminFunctions.item(title: 'Font Size', text: AppDefaults.fontSize.toInt().toString()),

@@ -16,7 +16,7 @@ class AppDocsPage extends CoreView<AppDocsController> {
   EdgeInsets? get pagePadding => AppPaddings.zero;
 
   @override
-  Widget get body => Column(children: [AppDividers.generalWithDisabledColor, _mainDocs()]);
+  Widget get body => Column(children: [AppDividers.general(), _mainDocs()]);
 
   _mainDocs() => AdminFunctions.sectionGrid(
     items: [AdminFunctions.itemButton(text: 'Docs Generate', function: controller.generateDocs)],

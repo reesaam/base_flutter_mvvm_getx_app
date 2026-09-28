@@ -22,7 +22,7 @@ class AdminFunctions {
               )
             : Column(children: section),
       ),
-      AppDividers.generalWithDisabledColor,
+      AppDividers.general(),
     ],
   );
 
@@ -72,7 +72,7 @@ class AdminFunctions {
             children: List<Widget>.generate(items.length, (index) => items[index]),
           ),
         ),
-        AppDividers.generalWithDisabledColor,
+        AppDividers.general(),
       ],
     );
   }

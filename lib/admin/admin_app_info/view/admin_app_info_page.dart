@@ -23,7 +23,7 @@ class AdminAppInfoPage extends CoreView<AdminAppInfoController> {
 
   @override
   Widget get body =>
-      Column(children: [AppDividers.generalWithDisabledColor, _appInfo(), _appDeveloperInfo(), _appStatisticsInfo(), _locale(), _localization()]);
+      Column(children: [AppDividers.general(), _appInfo(), _appDeveloperInfo(), _appStatisticsInfo(), _locale(), _localization()]);
 
   _appInfo() => AdminFunctions.section([
     AdminFunctions.item(title: 'App Name', text: AppInfo.appName),

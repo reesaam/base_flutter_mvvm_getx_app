@@ -24,7 +24,7 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
     mainAxisAlignment: MainAxisAlignment.start,
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
-      AppDividers.generalWithDisabledColor,
+      AppDividers.general(),
       _dividers(),
       _appBoxes(),
       _iconButtons(),
@@ -46,7 +46,7 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
 
   Widget _dividers() => AdminFunctions.section([
     AdminFunctions.item(title: 'AppDividers General', widget: AppDividers.general()),
-    AdminFunctions.item(primary: true, title: 'AppDividers General PrimaryColor', widget: AppDividers.generalWithPrimaryColor),
+    AdminFunctions.item(primary: true, title: 'AppDividers General PrimaryColor', widget: AppDividers.general()),
     AdminFunctions.item(
       title: 'AppDividers GeneralText',
       widget: AppDividers.generalWithInlineText(text: 'Some Text'),

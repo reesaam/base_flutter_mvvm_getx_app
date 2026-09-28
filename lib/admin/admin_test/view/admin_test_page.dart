@@ -21,7 +21,7 @@ class AdminTestPage extends CoreView<AdminTestController> {
     mainAxisAlignment: MainAxisAlignment.start,
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
-      AppDividers.generalWithDisabledColor,
+      AppDividers.general(),
       _appPages(),
       _themes(),
       _checkConnection(),
