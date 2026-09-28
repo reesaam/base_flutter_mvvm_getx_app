@@ -69,6 +69,7 @@ FLUTTER
 GENERATE
 ./LICENSE
 ./lib/features/
+./lib/barrels/
 #Platforms
 
 #Yaml Project Specified Files
