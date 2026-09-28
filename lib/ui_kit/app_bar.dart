@@ -3,13 +3,14 @@ import '../barrels/shared_models_barrel.dart';
 import '../barrels/ui_kit_barrel.dart';
 
 class AppAppBar extends AppBar {
-  AppAppBar({super.key, required this.pageDetail, this.withOutTitle, this.barTitle, this.barLeading, this.barAction}) : super();
+  AppAppBar({super.key, required this.pageDetail, this.withOutTitle, this.barTitle, this.barLeading, this.barAction, this.height}) : super();
 
   final AppPageDetail pageDetail;
   final bool? withOutTitle;
   final Widget? barTitle;
   final Widget? barLeading;
   final Widget? barAction;
+  final double? height;
 
   @override
   Widget? get title => withOutTitle == true ? null : barTitle ?? _normalTextTitle;
@@ -18,13 +19,16 @@ class AppAppBar extends AppBar {
   Widget? get leading => barLeading;
 
   @override
-  List<Widget>? get actions => [Padding(padding: AppPaddings.appBarActions, child: barAction)];
+  List<Widget>? get actions => [AppContainer(child: barAction)];
 
   @override
   bool? get centerTitle => true;
 
+  @override
+  double? get toolbarHeight => height;
+
   Widget get _normalTextTitle => Text(
     pageDetail.pageName ?? Texts.to.general.empty,
     style: Get.theme.textTheme.titleSmall,
-  ).withColor(Get.theme.appBarTheme.foregroundColor ?? Get.theme.canvasColor);
+  ).withColor(Get.theme.appBarTheme.foregroundColor ?? AppColors.background.color);
 }

@@ -28,7 +28,7 @@ class HomePage extends CoreView<HomePageController> {
 
   Widget _adminTestButton() => Padding(
     padding: AppPaddings.pages,
-    child: AppButton.general(text: 'Admin Test Page', onTap: () => goToPage(AppPages.adminStartPage)),
+    child: AppButton.general(text: 'Admin Test Page', onTap: () => goToPage(AppPages.adminStartPage), size: Size.fromHeight(50),),
   );
 
   Widget _logo(double height) => AppContainer(

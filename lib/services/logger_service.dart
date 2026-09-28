@@ -13,7 +13,7 @@ import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
 
 // ignore: barrel_import_lints/only_barrel_imports
-import 'package:sentry_flutter/sentry_flutter.dart';
+// import 'package:sentry_flutter/sentry_flutter.dart';
 
 @GetPut.service()
 class LoggerService extends CoreService {
@@ -64,21 +64,21 @@ class LoggerService extends CoreService {
   /// Trail for the next crash report. No-op until Sentry is enabled via env config.
   void _addSentryBreadcrumb({required LoggerLevel level, required String message}) {
     if (!EnvConfig.shouldInitSentry) return;
-    try {
-      Sentry.addBreadcrumb(
-        Breadcrumb(
-          message: message,
-          category: 'logger',
-          level: switch (level) {
-            LoggerLevel.debug => SentryLevel.debug,
-            LoggerLevel.info => SentryLevel.info,
-            LoggerLevel.warning => SentryLevel.warning,
-            LoggerLevel.error => SentryLevel.error,
-          },
-        ),
-      );
-    } catch (_) {
-      // Logging must never throw if Sentry is not started or rejects the breadcrumb.
-    }
+    // try {
+    //   Sentry.addBreadcrumb(
+    //     Breadcrumb(
+    //       message: message,
+    //       category: 'logger',
+    //       level: switch (level) {
+    //         LoggerLevel.debug => SentryLevel.debug,
+    //         LoggerLevel.info => SentryLevel.info,
+    //         LoggerLevel.warning => SentryLevel.warning,
+    //         LoggerLevel.error => SentryLevel.error,
+    //       },
+    //     ),
+    //   );
+    // } catch (_) {
+    //   // Logging must never throw if Sentry is not started or rejects the breadcrumb.
+    // }
   }
 }

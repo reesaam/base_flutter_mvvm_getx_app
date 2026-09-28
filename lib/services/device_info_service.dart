@@ -13,7 +13,7 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 // ignore: barrel_import_lints/only_barrel_imports
-import 'package:sentry_flutter/sentry_flutter.dart';
+// import 'package:sentry_flutter/sentry_flutter.dart';
 
 /// Loads [AppDeviceInfo] for About, update checks, crash reports, and support emails.
 @GetPut.service()
@@ -66,13 +66,13 @@ class AppDeviceInfoService extends CoreService {
 
   void _attachCrashContext() {
     if (!EnvConfig.shouldInitSentry) return;
-    try {
-      Sentry.configureScope((scope) {
-        scope.setContexts('app_device', _info.toJson());
-      });
-    } catch (_) {
-      // Crash context must never throw if Sentry is not started.
-    }
+    // try {
+    //   Sentry.configureScope((scope) {
+    //     scope.setContexts('app_device', _info.toJson());
+    //   });
+    // } catch (_) {
+    //   // Crash context must never throw if Sentry is not started.
+    // }
   }
 
   Future<AppDeviceInfo> _readDeviceSnapshot(DeviceInfoPlugin plugin) async => switch (currentAppDevice) {
