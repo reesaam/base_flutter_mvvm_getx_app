@@ -22,6 +22,10 @@ enum AppColors {
   buttonDisabled(AppColorPalette.disabled),
   buttonDisabledText(AppColorPalette.onDisabled),
   buttonDisabledBorder(AppColorPalette.onPrimary),
+  textFieldText(AppColorPalette.primary),
+  textFieldLabel(AppColorPalette.primary),
+  textFieldHint(AppColorPalette.disabled),
+  textFieldHelper(AppColorPalette.primary),
   transparent(AppColorPalette.transparent);
 
   final AppColorPalette colorPalette;

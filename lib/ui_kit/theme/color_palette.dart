@@ -2,8 +2,8 @@ import '../../barrels/core_barrel.dart';
 
 enum AppColorPalette {
   transparent(lightColorFromColors: Colors.transparent),
-  canvas(lightColorFromColors: Colors.white70, darkColorFromColors: Colors.black54),
-  background(lightColorFromColors: Colors.white70, darkColorFromColors: Colors.black54),
+  canvas(lightColorFromColors: Colors.white, darkColorFromColors: Colors.black54),
+  background(lightColorFromColors: Colors.white, darkColorFromColors: Colors.black54),
   primary(lightColorCode: _persianGreen, darkColorCode: _persianGreen),
   onPrimary(lightColorFromColors: Colors.white70, darkColorFromColors: Colors.black54),
   secondary(lightColorCode: _coral, darkColorCode: _coral),

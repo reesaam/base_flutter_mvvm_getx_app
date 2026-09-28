@@ -26,23 +26,23 @@ class AdminVerifiersPage extends CoreView<AdminVerifiersController> {
     () => AdminFunctions.section([
       AdminFunctions.item(
         title: 'General',
-        widget: AppTextField.general(hint: 'Text', label: controller.general.value, controller: controller.generalController),
+        widget: AppTextField.general(hintText: 'Text', labelText: controller.general.value, controller: controller.generalController),
       ),
       AdminFunctions.item(
         title: 'Password',
-        widget: AppTextField.password(hint: 'Password', label: controller.password.value, controller: controller.passwordController),
+        widget: AppTextField.password(hintText: 'Password', labelText: controller.password.value, controller: controller.passwordController),
       ),
       AdminFunctions.item(
         title: 'Phone',
-        widget: AppTextField.phone(hint: '0987654321', label: controller.phone.value, controller: controller.phoneController),
+        widget: AppTextField.phone(hintText: '0987654321', labelText: controller.phone.value, controller: controller.phoneController),
       ),
       AdminFunctions.item(
         title: 'Email',
-        widget: AppTextField.email(hint: 'r@r.R', label: controller.email.value, controller: controller.emailController),
+        widget: AppTextField.email(hintText: 'r@r.R', labelText: controller.email.value, controller: controller.emailController),
       ),
       AdminFunctions.item(
         title: 'Numeric',
-        widget: AppTextField.numeric(hint: '123456', label: controller.numeric.value, controller: controller.numericController),
+        widget: AppTextField.numeric(hintText: '123456', labelText: controller.numeric.value, controller: controller.numericController),
       ),
     ], title: 'Verifiers'),
   );

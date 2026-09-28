@@ -1,44 +1,46 @@
 import '../../barrels/ui_kit_barrel.dart';
 
 class AppTextStyles extends TextStyle {
-  final TextStyle? style;
-  const AppTextStyles({this.style});
+  static TextStyle _defaultStyle({TextStyle? inputStyle}) => inputStyle ?? Get.textTheme.displayLarge ?? TextStyle();
+
+  /// Other
+  static TextStyle custom(TextStyle style) => style;
 
   ///Card
-  factory AppTextStyles.cardTitle() => AppTextStyles(style: Get.textTheme.displayLarge);
+  static TextStyle cardTitle() => _defaultStyle();
 
   ///Text Fields
-  factory AppTextStyles.textFieldText({AppColors? color}) => AppTextStyles(style: Get.textTheme.displayLarge?.copyWith(color: color?.color ?? AppColors.primary.color));
-  factory AppTextStyles.textFieldLabel({AppColors? color}) => AppTextStyles(style: Get.textTheme.displayLarge?.copyWith(color: color?.color ?? AppColors.primary.color));
-  factory AppTextStyles.textFieldHint({AppColors? color}) => AppTextStyles(style: Get.textTheme.displayLarge?.copyWith(color: color?.color ?? AppColors.primary.color));
-  factory AppTextStyles.textError({AppColors? color}) => AppTextStyles(style: Get.textTheme.displayLarge?.copyWith(color: color?.color ?? AppColors.error.color));
+  static TextStyle textFieldText({AppColors? color}) => _defaultStyle().copyWith(color: color?.color ?? AppColors.textFieldText.color);
+  static TextStyle textFieldLabel({AppColors? color}) => _defaultStyle(inputStyle: Get.textTheme.displayMedium).copyWith(color: color?.color ?? AppColors.textFieldLabel.color);
+  static TextStyle textFieldHint({AppColors? color}) => _defaultStyle(inputStyle: Get.textTheme.displayMedium).copyWith(color: color?.color ?? AppColors.textFieldHint.color);
+  static TextStyle textFieldHelper({AppColors? color}) => _defaultStyle(inputStyle: Get.textTheme.displayMedium).copyWith(color: color?.color ?? AppColors.textFieldHelper.color);
+  static TextStyle textFieldError({AppColors? color}) => _defaultStyle().copyWith(color: color?.color ?? AppColors.error.color);
 
   ///Popup Menu
-  factory AppTextStyles.popupMenuItem() => AppTextStyles(style: Get.textTheme.displayLarge);
-  factory AppTextStyles.popupMenuItemSecondary() => AppTextStyles(style: Get.textTheme.displayLarge);
+  static TextStyle popupMenuItem() => _defaultStyle();
+  static TextStyle popupMenuItemSecondary() => _defaultStyle();
 
   ///AppBar
-  factory AppTextStyles.appBarTitle() => AppTextStyles(style: Get.textTheme.displayLarge);
+  static TextStyle appBarTitle() => _defaultStyle();
 
   ///ModalBottomSheet
-  factory AppTextStyles.modalTitle() => AppTextStyles(style: Get.textTheme.displayLarge);
+  static TextStyle modalTitle() => _defaultStyle();
 
   ///Dialogs
-  factory AppTextStyles.dialogAlertTitle() => AppTextStyles(style: Get.textTheme.displayLarge);
-  factory AppTextStyles.dialogAlertText() => AppTextStyles(style: Get.textTheme.displayLarge);
+  static TextStyle dialogAlertTitle() => _defaultStyle();
+  static TextStyle dialogAlertText() => _defaultStyle();
 
   ///SnackBar
-  factory AppTextStyles.snackBarMessage() => AppTextStyles(style: Get.textTheme.displayLarge);
-  factory AppTextStyles.snackBarTitle() => AppTextStyles(style: Get.textTheme.displayLarge);
+  static TextStyle snackBarMessage() => _defaultStyle();
+  static TextStyle snackBarTitle() => _defaultStyle();
 
   ///TextField
-  factory AppTextStyles.textFieldCounter() => AppTextStyles(style: Get.textTheme.displayLarge);
-  factory AppTextStyles.textFieldCounterError() => AppTextStyles(style: Get.textTheme.displayLarge);
+  static TextStyle textFieldCounter() => _defaultStyle();
+  static TextStyle textFieldCounterError() => _defaultStyle();
 
   ///SplashScreen
-  factory AppTextStyles.splashScreenAppName() => AppTextStyles(style: Get.textTheme.displayLarge);
+  static TextStyle splashScreenAppName() => _defaultStyle();
 
-  ///Settings
-  factory AppTextStyles.settingsSectionTitle() => AppTextStyles(style: Get.textTheme.displayLarge);
-  factory AppTextStyles.settingsSectionItem() => AppTextStyles(style: Get.textTheme.displayLarge);
+  static TextStyle settingsSectionTitle() => _defaultStyle();
+  static TextStyle settingsSectionItem() => _defaultStyle();
 }

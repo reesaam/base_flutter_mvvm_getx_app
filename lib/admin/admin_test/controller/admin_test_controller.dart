@@ -20,11 +20,11 @@ class AdminTestController extends CoreController {
   @override
   AppPageDetail get pageDetail => AppPages.adminTestPage;
 
-  ///Internal
+  /// Internal
   _dialog(String text) async => await AppAlertDialogs.to.withOneButton(buttonText: Texts.to.general.ok, text: text, onTapOk: popPage);
   String unknownStatus = 'Unknown';
 
-  ///Connections
+  /// Connections
   void changeDarkMode() async {
     darkMode.value = !darkMode.value;
     final loadedAppData = await loadAppData();
@@ -34,7 +34,7 @@ class AdminTestController extends CoreController {
     AppThemeFunctions.to.changeThemeMode(darkMode.value);
   }
 
-  ///Connections
+  /// Connections
   void internetConnection() async {
     var result = await AppConnectionService.to.checkInternet();
     await _dialog(result.toString().capitalizeFirst ?? unknownStatus);
@@ -50,7 +50,7 @@ class AdminTestController extends CoreController {
     await _dialog(result.map((e) => e.name.capitalizeFirst).join(', '));
   }
 
-  ///API
+  /// API
   void apiGetData() async {
     const method = APIMethods.get;
     const url = 'https://jsonplaceholder.typicode.com/posts';
@@ -98,7 +98,7 @@ class AdminTestController extends CoreController {
     _dialog(result);
   }
 
-  ///Files
+  /// Files
   void pickFile() async {
     String message = 'File not Imported';
     var result = await AppFileFunctions.to.pickFile();
@@ -118,7 +118,7 @@ class AdminTestController extends CoreController {
     await _dialog(message);
   }
 
-  ///Permissions
+  /// Permissions
   void checkAllPermissions() async {
     var result = await AppPermissions.to.checkAllPermissions();
     String response = Texts.to.general.empty;

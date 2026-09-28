@@ -139,14 +139,26 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
 
     return AdminFunctions.section([
       AdminFunctions.item(
+        title: 'TextField Data',
+        widget: AppTextField.general(controller: ctrlWithData),
+      ),
+      AdminFunctions.item(
+        title: 'TextField Label',
+        widget: AppTextField.general(controller: ctrl, labelText: textFieldLabel),
+      ),
+      AdminFunctions.item(
+        title: 'TextField Hint',
+        widget: AppTextField.general(controller: ctrl, hintText: textFieldHint),
+      ),
+      AdminFunctions.item(
         title: 'TextField Editable with Leading Icon',
-        widget: AppTextField.general(controller: ctrl, hint: textFieldHint, leadingIcon: AppIcons.info.widget),
+        widget: AppTextField.general(controller: ctrl, hintText: textFieldHint, leadingIcon: AppIcons.info.widget),
       ),
       AdminFunctions.item(
         title: 'TextField Editable with Prefix and Suffix',
         widget: AppTextField.general(
           controller: ctrl,
-          hint: textFieldHint,
+          hintText: textFieldHint,
           prefixIcon: AppIcons.add.widget,
           prefixAction: controller.functionCalledDialog,
           suffixIcon: AppIcons.settings.widget,
@@ -159,8 +171,8 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
           editable: false,
           controller: ctrl,
           hasCounter: true,
-          label: textFieldLabel,
-          hint: textFieldHint,
+          labelText: textFieldLabel,
+          hintText: textFieldHint,
           suffixIcon: AppIcons.settings.widget,
           suffixAction: controller.functionCalledDialog,
         ),
@@ -170,7 +182,7 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
         widget: AppTextField.general(
           controller: ctrlWithData,
           hasCounter: true,
-          hint: textFieldHint,
+          hintText: textFieldHint,
           suffixIcon: AppIcons.settings.widget,
           suffixAction: controller.functionCalledDialog,
         ),
@@ -182,8 +194,8 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
           hasCounter: true,
           maxLength: 100,
           showMaxLength: true,
-          label: textFieldLabel,
-          hint: textFieldHint,
+          labelText: textFieldLabel,
+          hintText: textFieldHint,
           suffixIcon: AppIcons.settings.widget,
           suffixAction: controller.functionCalledDialog,
         ),
@@ -192,14 +204,14 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
         title: 'TextField Whole Widget Function',
         widget: AppTextField.general(
           controller: ctrl,
-          label: textFieldLabel,
-          hint: textFieldHint,
+          labelText: textFieldLabel,
+          hintText: textFieldHint,
           wholeWidgetAction: controller.functionCalledDialog,
         ),
       ),
       AdminFunctions.item(
         title: 'TextField with Error',
-        widget: AppTextField.general(controller: ctrlWithData, label: textFieldLabel, hint: textFieldHint, errorText: 'Error'),
+        widget: AppTextField.general(controller: ctrlWithData, labelText: textFieldLabel, hintText: textFieldHint, errorText: 'Error'),
       ),
     ], title: 'TextFields');
   }
