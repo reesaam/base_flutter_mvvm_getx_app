@@ -35,7 +35,7 @@ class AppPopupMenu extends BaseWidget {
     color: background?.color ?? AppColors.background.color,
     iconSize: iconSize,
     menuPadding: menuPadding,
-    icon: (icon == null ? AppIcons.threeDots.widget : icon!.withPrimaryColor).withColor(iconColor?.color ?? AppColors.primary.color),
+    icon: (icon == null ? AppIcons.threeDots.widget : icon!).copyWith(color: iconColor?.color ?? AppColors.primary.color),
     child: text == null ? null : Text(text!),
     itemBuilder: (context) => List<AppPopupMenuItem>.generate(
       listItems.length,

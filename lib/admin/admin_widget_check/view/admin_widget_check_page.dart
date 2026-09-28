@@ -525,7 +525,7 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
           child: Row(
             children: List<Widget>.generate(
               AppIcons.values.length,
-              (index) => Padding(padding: AppPaddings.pages, child: AppIcons.values[index].widget.withSecondaryColor),
+              (index) => Padding(padding: AppPaddings.pages, child: AppIcons.values[index].widget),
             ),
           ),
         ),

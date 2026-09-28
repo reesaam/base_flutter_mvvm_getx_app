@@ -26,6 +26,7 @@ enum AppColors {
   textFieldLabel(AppColorPalette.primary),
   textFieldHint(AppColorPalette.disabled),
   textFieldHelper(AppColorPalette.primary),
+  floatingButtonIcon(AppColorPalette.background),
   transparent(AppColorPalette.transparent);
 
   final AppColorPalette colorPalette;

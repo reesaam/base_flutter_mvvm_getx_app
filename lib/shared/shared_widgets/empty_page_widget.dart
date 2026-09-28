@@ -12,6 +12,6 @@ class EmptyPageWidget extends BaseWidget {
   Widget get widget => Column(
     mainAxisAlignment: MainAxisAlignment.center,
     crossAxisAlignment: CrossAxisAlignment.center,
-    children: [page.iconCode.toIcon().withSize(AppSizes.emptyPageIcon), AppSpaces.h20, Text(Texts.to.general.emptyPage).withSizeDisplayLarge],
+    children: [page.iconCode.toIcon().copyWith(size: AppSizes.emptyPageIcon), AppSpaces.h20, Text(Texts.to.general.emptyPage).withSizeDisplayLarge],
   );
 }

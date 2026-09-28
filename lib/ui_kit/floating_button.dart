@@ -6,7 +6,7 @@ class AppFloatingActionButtons extends FloatingActionButton {
   final Icon icon;
 
   @override
-  Widget? get child => icon.withAppAppBackgroundColor;
+  Widget? get child => icon.copyWith(color: AppColors.floatingButtonIcon.color);
 
   @override
   Widget build(BuildContext context) => FloatingActionButton(mini: true, onPressed: onPressed, child: child);

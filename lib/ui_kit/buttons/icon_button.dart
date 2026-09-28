@@ -20,7 +20,7 @@ class AppIconButton extends MaterialButton {
           padding: AppPaddings.zero,
           iconSize: iconSize ?? AppSizes.iconButtonIconSize,
           onPressed: onTap,
-          icon: icon.widget.withColor(iconColor?.color),
+          icon: icon.widget.copyWith(color: iconColor?.color),
         ),
         text == null ? AppBox.shrink() : Text(text!).withColor(iconColor?.color),
       ],

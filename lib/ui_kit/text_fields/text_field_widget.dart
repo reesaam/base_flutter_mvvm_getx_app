@@ -166,17 +166,12 @@ abstract class AppTextFieldWidget extends StatelessWidget {
     ),
   );
 
-  Widget? get _leading => leadingIcon == null
-      ? null
-      : InkWell(onTap: () => leadingAction == null ? nullFunction() : leadingAction!(), child: leadingIcon?.withSecondaryColor);
+  Widget? get _leading =>
+      leadingIcon == null ? null : InkWell(onTap: () => leadingAction == null ? nullFunction() : leadingAction!(), child: leadingIcon);
 
-  Widget? get _prefix => prefixIcon == null
-      ? null
-      : InkWell(onTap: () => prefixAction == null ? nullFunction() : prefixAction!(), child: prefixIcon?.withSecondaryColor);
+  Widget? get _prefix => prefixIcon == null ? null : InkWell(onTap: () => prefixAction == null ? nullFunction() : prefixAction!(), child: prefixIcon);
 
-  Widget? get _suffix => suffixIcon == null
-      ? null
-      : InkWell(onTap: () => suffixAction == null ? nullFunction() : suffixAction!(), child: suffixIcon?.withSecondaryColor);
+  Widget? get _suffix => suffixIcon == null ? null : InkWell(onTap: () => suffixAction == null ? nullFunction() : suffixAction!(), child: suffixIcon);
 
   /// All Errors would Detect by this function
   /// Even multiple conditions will Check and shows by their priority
