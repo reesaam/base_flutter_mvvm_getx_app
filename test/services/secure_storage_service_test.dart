@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
 import 'package:base_flutter_mvvm_getx_app/barrels/core_elements_barrel.dart';
 import 'package:base_flutter_mvvm_getx_app/barrels/core_resources_barrel.dart';
-import 'package:base_flutter_mvvm_getx_app/services/secure_storage_service/secure_storage_service_abstraction.dart';
+import 'package:base_flutter_mvvm_getx_app/services/secure_storage_service/secure_storage_service.dart';
 
 class _FakeSecureStorage extends CoreService implements SecureStorageService {
   final Map<AppStorageKeys, Object?> store = {};

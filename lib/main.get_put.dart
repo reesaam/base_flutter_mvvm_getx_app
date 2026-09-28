@@ -201,18 +201,12 @@ class _GetPutComponent extends Bindings {
 class _GetPutRepository extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<UpdateRepositoryImpl>(
-      () => UpdateRepositoryImpl(),
-      fenix: true,
-    );
-    Get.lazyPut<VersionsRepositoryImpl>(
+    Get.lazyPut<UpdateRepository>(() => UpdateRepositoryImpl(), fenix: true);
+    Get.lazyPut<VersionsRepository>(
       () => VersionsRepositoryImpl(),
       fenix: true,
     );
-    Get.lazyPut<AppDataRepositoryImpl>(
-      () => AppDataRepositoryImpl(),
-      fenix: true,
-    );
+    Get.lazyPut<AppDataRepository>(() => AppDataRepositoryImpl(), fenix: true);
   }
 }
 
@@ -227,9 +221,7 @@ class _GetPutService extends Bindings {
     Get.putAsync<AppLocalNotificationService>(
       () async => AppLocalNotificationService(),
     );
-    Get.putAsync<SecureStorageServiceImpl>(
-      () async => SecureStorageServiceImpl(),
-    );
+    Get.putAsync<SecureStorageService>(() async => SecureStorageServiceImpl());
     Get.putAsync<AppStatisticsService>(() async => AppStatisticsService());
     Get.putAsync<AppStorageService>(() async => AppStorageService());
   }
