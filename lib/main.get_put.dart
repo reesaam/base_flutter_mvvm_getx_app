@@ -83,6 +83,7 @@ import 'services/network_service/dio_core.dart';
 import 'services/notifications_service/local_notifications/local_notification_service.dart';
 import 'services/notifications_service/local_notifications/local_notifications.dart';
 import 'services/secure_storage_service/secure_storage_service.dart';
+import 'services/secure_storage_service/secure_storage_service_abstraction.dart';
 import 'services/statistics_service.dart';
 import 'services/storage_service/app_storage_service.dart';
 import 'shared/shared_repositories/app_data_repository.dart';
@@ -90,7 +91,7 @@ import 'ui_kit/dialogs/alert_dialogs.dart';
 import 'ui_kit/theme/theme_functions.dart';
 
 /// Generated Library Statistics:
-///  Imports Count: 52
+///  Imports Count: 53
 ///  Pages Count: 15
 ///  Controllers Count: 16
 ///  Components Count: 9

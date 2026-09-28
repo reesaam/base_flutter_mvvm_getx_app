@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:base_flutter_mvvm_getx_app/barrels/core_elements_barrel.dart';
 import 'package:base_flutter_mvvm_getx_app/barrels/core_resources_barrel.dart';
 import 'package:base_flutter_mvvm_getx_app/services/network_service/interceptors/auth_interceptor.dart';
-import 'package:base_flutter_mvvm_getx_app/services/secure_storage_service/secure_storage_service.dart';
+import 'package:base_flutter_mvvm_getx_app/services/secure_storage_service/secure_storage_service_abstraction.dart';
 
 class _FakeSecureStorage extends CoreService implements SecureStorageService {
   _FakeSecureStorage(this.token);
