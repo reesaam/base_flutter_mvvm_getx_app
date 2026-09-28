@@ -336,7 +336,7 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
           buttonText: Texts.to.general.ok,
           title: 'Alert Dialog Title',
           text: 'App Alert Dialog with Yes/No',
-          onTapOk: popPage,
+          onTapButton: popPage,
         ),
       ),
     ),
@@ -360,7 +360,7 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
           buttonText: Texts.to.general.ok,
           title: 'Alert Dialog Title',
           widget: _alertDialogWidget(),
-          onTapOk: popPage,
+          onTapButton: popPage,
         ),
       ),
     ),
@@ -395,25 +395,45 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
       AdminFunctions.item(
         widget: AppButton.general(
           text: 'BottomSheet Dialog without Button',
-          onTap: () => AppBottomSheet().withoutButton(title: 'BottomSheet Dialog', form: form, dismissible: true),
+          onTap: () => AppBottomSheet().form(title: 'BottomSheet Dialog', form: form, dismissible: true),
         ),
       ),
       AdminFunctions.item(
         widget: AppButton.general(
           text: 'BottomSheet Dialog with OK',
-          onTap: () => AppBottomSheet().withOk(title: 'BottomSheet Dialog', form: form, onTapOk: popPage, dismissible: true),
+          onTap: () => AppBottomSheet().oneButton(
+            title: 'BottomSheet Dialog',
+            buttonText: Texts.to.general.ok,
+            onTapButton: popPage,
+            widget: form,
+            dismissible: true,
+          ),
         ),
       ),
       AdminFunctions.item(
         widget: AppButton.general(
           text: 'BottomSheet Dialog with Cancel',
-          onTap: () => AppBottomSheet().withCancel(title: 'BottomSheet Dialog', form: form, dismissible: true),
+          onTap: () => AppBottomSheet().oneButton(
+            title: 'BottomSheet Dialog',
+            buttonText: Texts.to.general.cancel,
+            onTapButton: popPage,
+            widget: form,
+            dismissible: true,
+          ),
         ),
       ),
       AdminFunctions.item(
         widget: AppButton.general(
           text: 'BottomSheet Dialog with OK/Cancel',
-          onTap: () => AppBottomSheet().withOkCancel(title: 'BottomSheet Dialog', form: form, onTapOk: popPage, dismissible: true),
+          onTap: () => AppBottomSheet().twoButtons(
+            title: 'BottomSheet Dialog',
+            buttonText1: Texts.to.general.ok,
+            onTapButton1: popPage,
+            buttonText2: Texts.to.general.cancel,
+            onTapButton2: popPage,
+            widget: form,
+            dismissible: true,
+          ),
         ),
       ),
     ], title: 'BottomSheet Dialogs');

@@ -60,9 +60,11 @@ class SettingsController extends CoreController {
     });
   }
 
-  void functionLanguageModal() => AppBottomSheet().withCancel(
+  void functionLanguageModal() => AppBottomSheet().oneButton(
     title: Texts.to.settings.languageModalSelectLanguage,
-    form: SettingsLanguageWidget(function: functionLanguageSelectionOnTap),
+    buttonText: Texts.to.general.cancel,
+    onTapButton: popPage,
+    widget: SettingsLanguageWidget(function: functionLanguageSelectionOnTap),
     dismissible: true,
   );
 

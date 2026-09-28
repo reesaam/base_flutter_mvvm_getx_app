@@ -10,7 +10,7 @@ class AppExceptionsDialog extends AppAlertDialogs {
       buttonText: Texts.to.general.ok,
       title: statusCode != null ? 'Error: ${statusCode.toString()}' : exception.statusCode?.toString() ?? Texts.to.error.unknown,
       text: message ?? exception.message ?? Texts.to.error.unknown,
-      onTapOk: onTap ?? popPage,
+      onTapButton: onTap ?? popPage,
     );
   }
 }

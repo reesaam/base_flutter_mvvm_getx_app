@@ -11,5 +11,5 @@ class AdminDataFormatCheckController extends CoreController {
   @override
   AppPageDetail get pageDetail => AppPages.adminDataFormatCheckPage;
 
-  void functionCalledDialog() => AppAlertDialogs.to.withOneButton(buttonText: Texts.to.general.ok, text: 'Function Called', onTapOk: popPage);
+  void functionCalledDialog() => AppAlertDialogs.to.withOneButton(buttonText: Texts.to.general.ok, text: 'Function Called', onTapButton: popPage);
 }

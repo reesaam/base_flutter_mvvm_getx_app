@@ -20,10 +20,10 @@ class AppAlertDialogs extends CoreComponent {
     required String buttonText,
     Widget? widget,
     String? text,
-    required Function() onTapOk,
+    required Function() onTapButton,
     bool? dismissible,
   }) async {
-    List<Widget> buttons = [AppButton.general(text: buttonText, onTap: onTapOk)];
+    List<Widget> buttons = [AppButton.general(text: buttonText, onTap: onTapButton)];
     var result = await _appAlertWidgetDialog<T, bool>(title: title, widget: widget, buttons: buttons, dismissible: dismissible);
     return result.$1;
   }

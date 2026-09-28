@@ -12,10 +12,12 @@ import '../../../barrels/ui_kit_barrel.dart';
 
 // ignore: barrel_import_lints/only_barrel_imports
 import 'package:path_provider/path_provider.dart';
+
 // ignore: barrel_import_lints/only_barrel_imports
 // import 'package:open_file_plus/open_file_plus.dart' as file_plus;
 // ignore: barrel_import_lints/only_barrel_imports
 import '../../versions/controller/versions_controller.dart';
+
 // ignore: barrel_import_lints/only_barrel_imports
 import '../data/update_repository.dart';
 
@@ -50,7 +52,7 @@ class UpdateController extends CoreController {
 
   Future<void> checkUpdate() async {
     buttonCheckUpdateLoading.value = true;
-    AppBottomSheet().withoutButton(title: Texts.to.update.updateCheckingUpdate, form: AppProgressIndicator.linear());
+    AppBottomSheet().form(title: Texts.to.update.updateCheckingUpdate, form: AppProgressIndicator.linear());
     bool internetStatus = await AppConnectionService.to.checkInternet();
     if (internetStatus) {
       AppVersion? version = await VersionsController.to.checkUpdateAvailableVersion();
@@ -70,7 +72,7 @@ class UpdateController extends CoreController {
 
   void downloadUpdate() async {
     buttonDownloadUpdateLoading.value = true;
-    AppBottomSheet().withoutButton(title: Texts.to.update.updateDownloading, form: AppProgressIndicator.linear());
+    AppBottomSheet().form(title: Texts.to.update.updateDownloading, form: AppProgressIndicator.linear());
     bool internetStatus = await AppConnectionService.to.checkInternet();
     if (!internetStatus) {
       noInternetConnectionSnackBar();

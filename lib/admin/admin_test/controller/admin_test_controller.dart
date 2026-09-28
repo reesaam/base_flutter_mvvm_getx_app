@@ -21,7 +21,7 @@ class AdminTestController extends CoreController {
   AppPageDetail get pageDetail => AppPages.adminTestPage;
 
   /// Internal
-  _dialog(String text) async => await AppAlertDialogs.to.withOneButton(buttonText: Texts.to.general.ok, text: text, onTapOk: popPage);
+  _dialog(String text) async => await AppAlertDialogs.to.withOneButton(buttonText: Texts.to.general.ok, text: text, onTapButton: popPage);
   String unknownStatus = 'Unknown';
 
   /// Connections
@@ -203,7 +203,7 @@ class AdminTestController extends CoreController {
   void shareFile() async {
     File? file = await AppFileFunctions.to.pickFile();
     if (file == null) {
-      await AppAlertDialogs.to.withOneButton(buttonText: Texts.to.general.ok, text: 'File is not Picked or Loaded', onTapOk: popPage);
+      await AppAlertDialogs.to.withOneButton(buttonText: Texts.to.general.ok, text: 'File is not Picked or Loaded', onTapButton: popPage);
     } else {
       await AppShare.to.shareFile(file: XFile(file.path));
     }
