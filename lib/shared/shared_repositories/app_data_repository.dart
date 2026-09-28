@@ -23,7 +23,7 @@ abstract class AppDataRepository extends CoreRepository {
   Future<BaseResponse<bool?>> clearAppData();
 }
 
-@GetPut.repository()
+@GetPut.repository(as: AppDataRepository)
 class AppDataRepositoryImpl extends CoreRepositoryImpl implements AppDataRepository {
   @override
   Future<BaseResponse<AppData?>> loadAppData() async => await AppStorageService.to.loadAppData();

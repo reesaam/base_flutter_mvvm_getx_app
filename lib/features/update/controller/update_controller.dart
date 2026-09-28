@@ -13,7 +13,7 @@ import '../../../barrels/ui_kit_barrel.dart';
 // ignore: barrel_import_lints/only_barrel_imports
 import 'package:path_provider/path_provider.dart';
 // ignore: barrel_import_lints/only_barrel_imports
-import 'package:open_file_plus/open_file_plus.dart' as file_plus;
+// import 'package:open_file_plus/open_file_plus.dart' as file_plus;
 // ignore: barrel_import_lints/only_barrel_imports
 import '../../versions/controller/versions_controller.dart';
 // ignore: barrel_import_lints/only_barrel_imports
@@ -111,7 +111,8 @@ class UpdateController extends CoreController {
     buttonDownloadUpdateLoading.value = false;
   }
 
-  void _installUpdateFunction() => dlFile == null ? _alertDirectoryOrFileNotFound(false) : file_plus.OpenFile.open(dlFile!.path);
+  // void _installUpdateFunction() => dlFile == null ? _alertDirectoryOrFileNotFound(false) : file_plus.OpenFile.open(dlFile!.path);
+  void _installUpdateFunction() => null;
 
   _alertDirectoryOrFileNotFound(bool directoryError) => showErrorDialog(
     title: directoryError ? Texts.to.update.updateDirectoryNotFoundTitle : Texts.to.update.updateFileNotFoundTitle,
