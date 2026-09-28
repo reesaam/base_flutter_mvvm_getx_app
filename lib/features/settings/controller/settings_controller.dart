@@ -101,7 +101,7 @@ class SettingsController extends CoreController {
       await AppFileFunctions.to.exportAppData();
     }
 
-    AppAlertDialogs.to.withTwoButtons<bool, bool>(
+    AppAlertDialogs.to.twoButtons<bool, bool>(
       buttonText1: Texts.to.general.ok,
       buttonText2: Texts.to.general.cancel,
       title: Texts.to.general.warning,
@@ -118,7 +118,7 @@ class SettingsController extends CoreController {
       await AppFileFunctions.to.importAppData();
     }
 
-    AppAlertDialogs.to.withTwoButtons(
+    AppAlertDialogs.to.twoButtons(
       buttonText1: Texts.to.general.ok,
       buttonText2: Texts.to.general.cancel,
       title: Texts.to.general.warning,
@@ -136,7 +136,7 @@ class SettingsController extends CoreController {
       refresh();
     }
 
-    AppAlertDialogs.to.withTwoButtons(
+    AppAlertDialogs.to.twoButtons(
       buttonText1: Texts.to.general.ok,
       buttonText2: Texts.to.general.cancel,
       title: Texts.to.general.warning,
@@ -155,7 +155,7 @@ class SettingsController extends CoreController {
       refresh();
     }
 
-    AppAlertDialogs.to.withTwoButtons(
+    AppAlertDialogs.to.twoButtons(
       buttonText1: Texts.to.general.ok,
       buttonText2: Texts.to.general.cancel,
       title: Texts.to.general.warning,

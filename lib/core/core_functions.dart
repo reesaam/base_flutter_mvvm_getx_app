@@ -77,9 +77,9 @@ _exceptionDialog(GeneralException? l) => AppExceptionsDialog.show(exception: l ?
 
 void noInternetConnectionSnackBar() => AppSnackBar.show(message: Texts.to.network.connection.internetNotAvailable);
 
-void showLoadingDialog({bool? isDismissible}) => AppAlertDialogs.to.withoutButton(widget: AppProgressIndicator.linear(), dismissible: isDismissible);
+void showLoadingDialog({bool? isDismissible}) => AppAlertDialogs.to.form(form: AppProgressIndicator.linear(), dismissible: isDismissible);
 
-void appExitDialog() => AppAlertDialogs.to.withTwoButtons(
+void appExitDialog() => AppAlertDialogs.to.twoButtons(
   buttonText1: Texts.to.general.ok,
   buttonText2: Texts.to.general.cancel,
   title: Texts.to.general.appExit,

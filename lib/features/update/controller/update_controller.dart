@@ -99,7 +99,7 @@ class UpdateController extends CoreController {
       downloaded.value = true;
       LoggerService.to.debug(message: (dlFile?.length() ?? 0).toString());
       AppSnackBar.show(message: Texts.to.update.updateDownloaded);
-      AppAlertDialogs.to.withTwoButtons(
+      AppAlertDialogs.to.twoButtons(
         buttonText1: Texts.to.general.ok,
         buttonText2: Texts.to.general.cancel,
         title: Texts.to.update.updateInstallationTitle,

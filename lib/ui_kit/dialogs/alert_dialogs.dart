@@ -13,9 +13,7 @@ import '../../barrels/ui_kit_barrel.dart';
 class AppAlertDialogs extends CoreComponent {
   static AppAlertDialogs get to => Get.find();
 
-  void _onTapCancel() => popPage();
-
-  Future<T?> withOneButton<T>({
+  Future<T?> oneButton<T>({
     String? title,
     required String buttonText,
     Widget? widget,
@@ -28,7 +26,7 @@ class AppAlertDialogs extends CoreComponent {
     return result.$1;
   }
 
-  Future<(T1?, T2?)> withTwoButtons<T1, T2>({
+  Future<(T1?, T2?)> twoButtons<T1, T2>({
     String? title,
     Widget? widget,
     String? text,
@@ -43,8 +41,8 @@ class AppAlertDialogs extends CoreComponent {
     return result;
   }
 
-  Future<void> withoutButton({String? title, Widget? widget, String? text, bool? dismissible}) async {
-    await _appAlertWidgetDialog(title: title, widget: widget, dismissible: dismissible);
+  Future<void> form({String? title, Widget? form, String? text, bool? dismissible}) async {
+    await _appAlertWidgetDialog(title: title, widget: form, dismissible: dismissible);
   }
 
   Future<(T1?, T2?)> _appAlertWidgetDialog<T1, T2>({String? title, Widget? widget, String? text, List<Widget>? buttons, bool? dismissible}) async {

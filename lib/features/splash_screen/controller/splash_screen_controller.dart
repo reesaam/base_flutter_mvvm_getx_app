@@ -38,7 +38,7 @@ class SplashScreenController extends CoreController {
   }
 
   // ignore: unused_element
-  void _showUpdateDialog({bool? isForceUpdate}) => AppAlertDialogs.to.withTwoButtons(
+  void _showUpdateDialog({bool? isForceUpdate}) => AppAlertDialogs.to.twoButtons(
     buttonText1: Texts.to.general.yes,
     buttonText2: Texts.to.general.no,
     title: Texts.to.update.updateNewVersion,

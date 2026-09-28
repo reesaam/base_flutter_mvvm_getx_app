@@ -11,5 +11,5 @@ class AdminWidgetCheckController extends CoreController {
   @override
   AppPageDetail get pageDetail => AppPages.adminWidgetCheckPage;
 
-  void functionCalledDialog() => AppAlertDialogs.to.withOneButton(buttonText: Texts.to.general.ok, text: 'Function Called', onTapButton: popPage);
+  void functionCalledDialog() => AppAlertDialogs.to.oneButton(buttonText: Texts.to.general.ok, text: 'Function Called', onTapButton: popPage);
 }

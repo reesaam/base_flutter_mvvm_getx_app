@@ -332,7 +332,7 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
     AdminFunctions.item(
       widget: AppButton.general(
         text: 'Alert Dialog with OK',
-        onTap: () => AppAlertDialogs.to.withOneButton(
+        onTap: () => AppAlertDialogs.to.oneButton(
           buttonText: Texts.to.general.ok,
           title: 'Alert Dialog Title',
           text: 'App Alert Dialog with Yes/No',
@@ -343,7 +343,7 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
     AdminFunctions.item(
       widget: AppButton.general(
         text: 'Alert Dialog with Ok/Cancel',
-        onTap: () => AppAlertDialogs.to.withTwoButtons(
+        onTap: () => AppAlertDialogs.to.twoButtons(
           buttonText1: Texts.to.general.ok,
           buttonText2: Texts.to.general.cancel,
           title: 'Alert Dialog Title',
@@ -356,7 +356,7 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
     AdminFunctions.item(
       widget: AppButton.general(
         text: 'Alert Dialog by Widget with OK',
-        onTap: () => AppAlertDialogs.to.withOneButton(
+        onTap: () => AppAlertDialogs.to.oneButton(
           buttonText: Texts.to.general.ok,
           title: 'Alert Dialog Title',
           widget: _alertDialogWidget(),
@@ -367,7 +367,7 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
     AdminFunctions.item(
       widget: AppButton.general(
         text: 'Alert Dialog by Widget with Ok/Cancel',
-        onTap: () => AppAlertDialogs.to.withTwoButtons(
+        onTap: () => AppAlertDialogs.to.twoButtons(
           buttonText1: Texts.to.general.ok,
           buttonText2: Texts.to.general.cancel,
           title: 'Alert Dialog Title',
