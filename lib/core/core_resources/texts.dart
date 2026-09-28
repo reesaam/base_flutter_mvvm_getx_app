@@ -1,20 +1,20 @@
 import '../../barrels/core_barrel.dart';
 
 class AppTexts {
-  ///App Pages
+  /// App Pages
 
-  ///App Admin Pages
+  /// App Admin Pages
 
-  ///General
+  /// General
   static const String languageNamePersian = 'فارسی';
 
-  ///Settings
+  /// Settings
   static const String settingBackupFilename = '${AppInfo.appNameInitials}_Backup.json';
 
-  ///Update
+  /// Update
   static const String updateAppFilename = '${AppInfo.appNameInitials}_app.apk';
 
-  ///Dio
+  /// Dio
   static const String dioHeaderContentType = 'Content-Type';
   static const String dioHeaderContentTypeData = 'application/json';
   static const String dioHeaderAuthorization = 'Authorization';

@@ -27,7 +27,7 @@ class AppPages {
     appDocs,
   ];
 
-  ///Admin Pages
+  /// Admin Pages
   static AppPageDetail adminStartPage = AppPageDetail(
     pageName: Texts.to.adminPagesName.adminStartPagePageName,
     pageRoute: _getPageRoute(AdminStartPage),
@@ -67,7 +67,7 @@ class AppPages {
 
   static AppPageDetail appDocs = AppPageDetail(pageName: Texts.to.adminPagesName.appDocsPageName, pageRoute: _getPageRoute(AppDocsPage));
 
-  ///Main Pages
+  /// Main Pages
   static AppPageDetail splashScreen = AppPageDetail(pageName: Texts.to.featureName.splashScreen, pageRoute: _getPageRoute(SplashScreenPage));
 
   static AppPageDetail homepage = AppPageDetail(

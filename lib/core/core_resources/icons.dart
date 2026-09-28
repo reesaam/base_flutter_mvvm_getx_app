@@ -6,10 +6,10 @@ export '../extensions/data_types_extensions/extension_icon.dart';
 enum AppIcons {
   none(icon: Icons.not_interested),
 
-  ///Admin
+  /// Admin
   adminPanel(icon: Icons.person_rounded),
 
-  ///General
+  /// General
   close(icon: Icons.close_rounded),
   version(icon: Icons.info_outline_rounded),
   error(icon: Icons.error_outline_rounded),
@@ -30,14 +30,14 @@ enum AppIcons {
   description(icon: Icons.description_rounded),
   note(icon: Icons.edit_note_rounded),
 
-  ///Page Icons
+  /// Page Icons
   home(icon: Icons.home_rounded),
   settings(icon: Icons.settings_rounded),
   about(icon: Icons.info_outline_rounded),
   update(icon: Icons.update_rounded),
   profile(icon: Icons.account_circle_rounded),
 
-  ///List
+  /// List
   listSearch(icon: Icons.search_rounded),
   listSearchRemove(icon: Icons.clear_rounded);
 

@@ -32,7 +32,7 @@ class AdminTestPage extends CoreView<AdminTestController> {
       _appData(),
       _share(),
 
-      ///Always Exist at Last
+      /// Always Exist at Last
       _tempTest(),
     ],
   );

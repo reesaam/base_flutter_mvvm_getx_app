@@ -92,7 +92,7 @@ enum AppCountry {
     timeZoneOffset: [DurationCustomModel()],
   );
 
-  ///Variables
+  /// Variables
   final String? countryName;
   final String? countryNameAbbreviation;
   final String? code;
@@ -101,7 +101,7 @@ enum AppCountry {
   final List<DurationCustomModel>? timeZoneOffset;
   final bool hasDst;
 
-  ///Constructor
+  /// Constructor
   const AppCountry({
     this.countryName,
     this.countryNameAbbreviation,

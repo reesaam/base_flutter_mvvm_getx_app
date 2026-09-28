@@ -14,7 +14,7 @@ abstract class CoreController extends GetxController {
 
   late AppPageDetail pageDetail;
 
-  ///Mandatory Functions
+  /// Mandatory Functions
   void dataInit() {}
   void pageInit() {}
   void onInitFunction() {}

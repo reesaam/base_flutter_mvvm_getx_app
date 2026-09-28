@@ -1,5 +1,5 @@
 class AppFonts {
-  ///Fonts
+  /// Fonts
   static String get defaultFont => ubuntu;
   static String get ubuntu => 'Ubuntu';
   static String get roboto => 'Roboto';
