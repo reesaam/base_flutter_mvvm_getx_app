@@ -14,7 +14,7 @@ class AppBox extends BaseWidget {
 
   factory AppBox.shrink() => const AppBox._(shrink: true);
 
-  factory AppBox.expanded({int? flex, Widget? child}) => AppBox._(child: child, expanded: true, flex: flex);
+  factory AppBox.expanded({int? flex, Widget? child}) => AppBox._(expanded: true, flex: flex, child: child);
 
   factory AppBox.shrinkExpanded({int? flex}) => AppBox._(shrink: true, expanded: true, flex: flex);
 

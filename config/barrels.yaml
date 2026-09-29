@@ -119,7 +119,6 @@ barrels:
       - lib/core/core_resources/images.dart
     exclude:
       - theme/color_palette.dart
-      - buttons/button_abstraction.dart
       - buttons/button_constructor.dart
       - buttons/button_type_enum.dart
       - buttons/button_widget.dart

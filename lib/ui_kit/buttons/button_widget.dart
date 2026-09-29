@@ -55,14 +55,12 @@ class AppButtonWidget extends ElevatedButton {
         ? [loadingWidget ?? AppButtonLoading(color: loadingColor)]
         : [
             icon?.widget ?? AppBox.shrink(),
-            AppBox.expanded(
-              child: Center(
-                child: Text(
-                  text,
-                  textAlign: textAlign ?? TextAlign.center,
-                  overflow: textOverflow ?? TextOverflow.ellipsis,
-                  softWrap: softWrap ?? true,
-                ),
+            Center(
+              child: Text(
+                text,
+                textAlign: textAlign ?? TextAlign.center,
+                overflow: textOverflow ?? TextOverflow.ellipsis,
+                softWrap: softWrap ?? true,
               ),
             ),
             leading?.widget ?? AppBox.shrink(),

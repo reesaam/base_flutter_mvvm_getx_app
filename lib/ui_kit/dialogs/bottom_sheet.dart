@@ -15,22 +15,22 @@ class AppBottomSheet {
     bool? dismissible,
   }) async {
     List<Widget> buttons = [AppButton.general(text: buttonText, onTap: onTapButton)];
-    var result = await _appBottomSheetGeneral<T, bool>(title: title, widget: widget, buttons: buttons, dismissible: dismissible);
-    return result.$1;
+    var result = await _appBottomSheetGeneral<T>(title: title, widget: widget, buttons: buttons, dismissible: dismissible);
+    return result;
   }
 
-  Future<(T1?, T2?)> twoButtons<T1, T2>({
+  Future<T?> twoButtons<T>({
     String? title,
     Widget? widget,
     String? text,
     required String buttonText1,
     required String buttonText2,
-    required onTapButton1, // T1
-    required onTapButton2, // T2
+    required onTapButton1,
+    required onTapButton2,
     bool? dismissible,
   }) async {
     List<Widget> buttons = [AppButton.general(text: buttonText1, onTap: onTapButton1), AppButton.general(text: buttonText2, onTap: onTapButton2)];
-    var result = await _appBottomSheetGeneral<T1, T2>(title: title, widget: widget, buttons: buttons, dismissible: dismissible);
+    var result = await _appBottomSheetGeneral<T>(title: title, widget: widget, buttons: buttons, dismissible: dismissible);
     return result;
   }
 
@@ -45,7 +45,7 @@ class AppBottomSheet {
   //   ),
   // );
 
-  Future<(T1?, T2?)> _appBottomSheetGeneral<T1, T2>({String? title, Widget? widget, String? text, List<Widget>? buttons, bool? dismissible}) async =>
+  Future<T?> _appBottomSheetGeneral<T>({String? title, Widget? widget, String? text, List<Widget>? buttons, bool? dismissible}) async =>
       await showModalBottomSheet(
         context: Get.context!,
         useSafeArea: true,
@@ -71,7 +71,11 @@ class AppBottomSheet {
                             ? AppBox.shrink()
                             : Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [Text(title), AppDividers.general(color: AppColors.primary), AppSpaces.h10],
+                                children: [
+                                  Text(title),
+                                  AppDividers.general(color: AppColors.primary),
+                                  AppSpaces.h10,
+                                ],
                               ),
                         widget ??
                             Padding(

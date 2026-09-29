@@ -4,7 +4,6 @@ import '../../barrels/ui_kit_barrel.dart';
 
 import 'button_widget.dart';
 import 'button_type_enum.dart';
-import 'icon_button.dart';
 
 /// General and Complete Widget for [AppButton]
 /// All Buttons in the App will generate with this Widget in [AppButton]
@@ -33,7 +32,10 @@ class AppButtonConstructor extends BaseWidget {
     this.stateController,
     this.mainAxisAlignment,
     this.crossAxisAlignment,
-  });
+  }) : assert(
+         (text == null && icon == null) || (text == null && icon != null) || (text != null && icon != null) || (child == null),
+         AppAssertTexts.buttonsCheckNullInputs,
+       );
 
   final ButtonType buttonType;
   final Function() onTap;
@@ -75,7 +77,7 @@ class AppButtonConstructor extends BaseWidget {
       );
     }
     return AppContainer(
-      width: size?.width,
+      width: size?.width ?? double.maxFinite,
       height: size?.height ?? AppDefaults.buttonHeight,
       padding: padding ?? AppDefaults.buttonPadding,
       margin: margin,
