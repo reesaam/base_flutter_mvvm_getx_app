@@ -1,13 +1,10 @@
 import 'dart:async';
 
 import '../../barrels/annotations_barrel.dart';
-import '../../barrels/core_barrel.dart';
 import '../../barrels/core_elements_barrel.dart';
 import '../../barrels/core_resources_barrel.dart';
 import '../../barrels/localization_barrel.dart';
 import '../../barrels/ui_kit_barrel.dart';
-
-//: assert((text == null && widget == null) || (text != null && widget != null), AppAssertTexts.buttonsCheckNullInputs);
 
 @GetPut.component()
 class AppAlertDialogs extends CoreComponent {

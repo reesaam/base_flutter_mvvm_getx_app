@@ -1,8 +1,6 @@
 import '../../barrels/core_barrel.dart';
 import '../../barrels/core_resources_barrel.dart';
 
-// ignore: barrel_import_lints/only_barrel_imports
-import '../../barrels/ui_kit_barrel.dart';
 import 'app_breakpoints.dart';
 
 export 'layout_model.dart';
@@ -14,7 +12,7 @@ class LayoutScope extends InheritedWidget {
 
   static LayoutModel of(BuildContext context) {
     final scope = context.dependOnInheritedWidgetOfExactType<LayoutScope>();
-    assert(scope != null, 'LayoutScope not found. Wrap the screen with LayoutScope / AdaptiveHost.');
+    assert(scope != null, AppAssertTexts.layoutScope);
     return scope!.layout;
   }
 
