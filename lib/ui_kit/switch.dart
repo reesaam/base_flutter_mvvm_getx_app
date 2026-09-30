@@ -1,4 +1,5 @@
 import '../../barrels/ui_kit_barrel.dart';
+import '../barrels/core_resources_barrel.dart';
 
 class AppSwitch extends BaseWidget {
   const AppSwitch({super.key, required this.value, required this.onChanged, this.enabled});
@@ -9,7 +10,7 @@ class AppSwitch extends BaseWidget {
 
   @override
   Widget get widget => SizedBox(
-    height: AppSizes.switchHeight.height,
+    height: AppDefaults.switchHeight.height,
     child: Switch.adaptive(
       value: value == true ? true : false,
       onChanged: (value) => onChanged!(value),

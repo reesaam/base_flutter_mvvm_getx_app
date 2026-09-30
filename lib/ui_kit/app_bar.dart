@@ -13,13 +13,20 @@ class AppAppBar extends AppBar {
   final double? height;
 
   @override
+  Color? get backgroundColor => AppColors.appBarBackground.color;
+
+  @override
+  IconThemeData? get iconTheme => Get.theme.iconTheme;
+
+  @override
   Widget? get title => withOutTitle == true ? null : barTitle ?? _normalTextTitle;
 
   @override
   Widget? get leading => barLeading;
 
   @override
-  List<Widget>? get actions => [AppContainer(child: barAction)];
+  List<Widget>? get actions => [barAction ?? AppBox.shrink()];
+  // List<Widget>? get actions => [barAction ?? AppBox.shrink()];
 
   @override
   bool? get centerTitle => true;

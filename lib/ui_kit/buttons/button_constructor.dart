@@ -1,4 +1,5 @@
 import '../../barrels/core_resources_barrel.dart';
+import '../../barrels/extensions_barrel.dart';
 import '../../barrels/localization_barrel.dart';
 import '../../barrels/ui_kit_barrel.dart';
 
@@ -15,18 +16,19 @@ class AppButtonConstructor extends BaseWidget {
     required this.buttonType,
     required this.onTap,
     this.backgroundColor,
-    this.textColor,
-    this.iconColor,
     this.borderColor,
     this.loadingColor,
-    this.loadingWidget,
-    this.text,
     this.child,
+    this.text,
+    this.textColor,
     this.icon,
+    this.iconColor,
+    this.iconSize,
     this.leading,
     this.size,
     this.disabled,
     this.loading,
+    this.loadingWidget,
     this.padding,
     this.margin,
     this.stateController,
@@ -40,18 +42,19 @@ class AppButtonConstructor extends BaseWidget {
   final ButtonType buttonType;
   final Function() onTap;
   final AppColors? backgroundColor;
-  final AppColors? textColor;
-  final AppColors? iconColor;
   final AppColors? borderColor;
   final AppColors? loadingColor;
   final Widget? child;
-  final Widget? loadingWidget;
   final String? text;
+  final AppColors? textColor;
   final AppIcons? icon;
+  final AppColors? iconColor;
+  final double? iconSize;
   final AppIcons? leading;
   final Size? size;
   final bool? disabled;
   final bool? loading;
+  final Widget? loadingWidget;
   final AppPaddings? padding;
   final AppPaddings? margin;
   final WidgetStatesController? stateController;
@@ -62,7 +65,18 @@ class AppButtonConstructor extends BaseWidget {
   Widget get widget {
     Widget widget = AppBox.shrink();
     if (buttonType == ButtonType.icon) {
-      widget = AppIconButton(icon: icon ?? AppIcons.none, iconColor: iconColor, onTap: onTap, text: text);
+      // widget = AppIconButton(
+      //   icon: icon ?? AppIcons.none,
+      //   iconColor: iconColor,
+      //   iconSize: iconSize,
+      //   onTap: onTap,
+      //   text: text,
+      // );
+      widget = Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [Icon(icon?.icon), if (text.isNotNullOrEmpty) Text(text ?? '').withColor(iconColor?.color)],
+      );
     } else {
       widget = AppButtonWidget(
         backgroundColor: buttonType.backgroundColor,
@@ -77,8 +91,11 @@ class AppButtonConstructor extends BaseWidget {
       );
     }
     return AppContainer(
-      width: size?.width ?? double.maxFinite,
-      height: size?.height ?? AppDefaults.buttonHeight,
+      color: backgroundColor ?? AppColors.transparent,
+      decoration: AppElements.boxDecorationDefault,
+      alignment: Alignment.center,
+      width: buttonType == ButtonType.icon ? AppDefaults.appbarIconButtonHeight : size?.width ?? double.maxFinite,
+      height: size?.height ?? AppDefaults.buttonsGeneralHeight,
       padding: padding ?? AppDefaults.buttonPadding,
       margin: margin,
       child: widget,

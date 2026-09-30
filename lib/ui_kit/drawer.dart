@@ -29,7 +29,7 @@ class AppDrawer extends Drawer {
     child: Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Image.asset(AppLogos.appLogo, width: AppSizes.drawerHeaderIconWidth),
+        Image.asset(AppLogos.appLogo, width: AppDefaults.drawerHeaderIconWidth),
         AppSpaces.w50,
         const Text(AppInfo.appNameInitials, overflow: TextOverflow.ellipsis),
       ],

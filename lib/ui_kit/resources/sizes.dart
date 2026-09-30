@@ -4,19 +4,6 @@ class AppSizes {
   ///Fonts
   static double get splashScreenAppName => 30;
 
-  ///Drawer
-  static double get drawerHeaderIconWidth => 50;
-
-  ///Buttons
-  static double get buttonsGeneralHeight => 50;
-  static double get iconButtonIconSize => 22;
-  static double get iconButtonSize => 24;
-  static double get popUpMenuButton => 20;
-
-  ///Elements
-  static double get columnSpacing => 20;
-  static Size get switchHeight => const Size.fromHeight(20);
-
   ///Shared Widgets
   static double get emptyPageIcon => 60;
 

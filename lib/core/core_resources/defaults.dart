@@ -23,7 +23,14 @@ class AppDefaults {
   /// Borders
   static double get borderWidth => 2;
 
-  /// Buttons
-  static double get buttonHeight => 50;
+  /// Widgets
+  static double get buttonsGeneralHeight => 50;
+  static double get iconButtonIconSize => 22;
+  static double get iconButtonSize => 26;
+  static double get popUpMenuButton => 20;
+  static double get appbarIconButtonHeight => 60;
+  static double get columnSpacing => 20;
+  static Size get switchHeight => const Size.fromHeight(20);
+  static double get drawerHeaderIconWidth => 50;
   static EdgeInsets get buttonPadding => const EdgeInsets.symmetric(horizontal: 5, vertical: 5);
 }

@@ -71,7 +71,7 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
         AdminFunctions.item(
           title: 'AppBox Expanded',
           widget: AppContainer(
-            color: AppColors.primary,
+            color: AppColors.disabled,
             child: AppBox.expanded(child: _innerChild),
           ),
         ),
@@ -522,6 +522,27 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
 
   Widget _appBar() => AdminFunctions.section([
     AdminFunctions.item(
+      fullWidth: true,
+      widget: AppAppBar(
+        pageDetail: AppPageDetail(pageRoute: AppPages.adminWidgetCheckPage.pageRoute, pageName: 'Page Name'),
+        // barLeading: AppButton.icon(icon: AppIcons.list, onTap: nullFunction),
+        // barAction: AppButton.icon(icon: AppIcons.add, onTap: nullFunction),
+      ),
+    ),
+    AdminFunctions.item(
+      fullWidth: true,
+      widget: AppAppBar(
+        pageDetail: AppPageDetail(pageRoute: AppPages.adminWidgetCheckPage.pageRoute, pageName: 'Page Name'),
+        barLeading: AppButton.icon(icon: AppIcons.list, onTap: nullFunction),
+      ),
+    ),
+    AdminFunctions.item(
+      fullWidth: true,
+      widget: AppAppBar(
+        pageDetail: AppPageDetail(pageRoute: AppPages.adminWidgetCheckPage.pageRoute, pageName: 'Page Name'),
+        barAction: AppButton.icon(icon: AppIcons.add, onTap: nullFunction),
+      ),
+    ),AdminFunctions.item(
       fullWidth: true,
       widget: AppAppBar(
         pageDetail: AppPageDetail(pageRoute: AppPages.adminWidgetCheckPage.pageRoute, pageName: 'Page Name'),

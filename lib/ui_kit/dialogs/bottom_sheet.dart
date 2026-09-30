@@ -1,4 +1,5 @@
 import '../../barrels/annotations_barrel.dart';
+import '../../barrels/extensions_barrel.dart';
 import '../../barrels/localization_barrel.dart';
 import '../../barrels/ui_kit_barrel.dart';
 
@@ -25,8 +26,8 @@ class AppBottomSheet {
     String? text,
     required String buttonText1,
     required String buttonText2,
-    required onTapButton1,
-    required onTapButton2,
+    required Function() onTapButton1,
+    required Function() onTapButton2,
     bool? dismissible,
   }) async {
     List<Widget> buttons = [AppButton.general(text: buttonText1, onTap: onTapButton1), AppButton.general(text: buttonText2, onTap: onTapButton2)];
@@ -54,63 +55,61 @@ class AppBottomSheet {
         isScrollControlled: true,
         isDismissible: dismissible ?? false,
         shape: AppElements.borderShapeModal,
-        builder: (context) => SingleChildScrollView(
+        builder: (context) => Padding(
+          padding: AppPaddings.generalBottomModal,
           child: Column(
-            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Padding(
-                padding: AppPaddings.generalBottomModal,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        title == null
-                            ? AppBox.shrink()
-                            : Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(title),
-                                  AppDividers.general(color: AppColors.primary),
-                                  AppSpaces.h10,
-                                ],
-                              ),
-                        widget ??
-                            Padding(
-                              padding: AppPaddings.generalAlertDialog,
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [Text(text ?? Texts.to.general.notAvailable, softWrap: true)],
-                              ),
-                            ),
-                      ],
-                    ),
-                    AppSpaces.h40,
-                    _renderButtonsBottomDialog(buttons ?? List<Widget>.empty()),
-                  ],
-                ),
-              ),
-              AppSpaces.h20,
+              _widget(title: title, text: text, widget: widget),
+              AppSpaces.h40,
+              _renderButtonsBottomDialog(buttons),
             ],
           ),
         ),
       );
 
-  Widget _renderButtonsBottomDialog(List<Widget> buttons) {
-    List<Widget> list = List.empty(growable: true);
-    int length = buttons.length;
+  Widget _widget({String? title, Widget? widget, String? text}) => SingleChildScrollView(
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Title Widget
+        if (title.isNullOrEmpty)
+          Padding(
+            padding: AppPaddings.generalAlertDialog,
+            child: Column(
+              children: [
+                Text(title ?? ''),
+                AppDividers.general(color: AppColors.primary),
+              ],
+            ),
+          ),
+        // Main Widget
+        (widget ??
+            Padding(
+              padding: AppPaddings.generalAlertDialog,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [Text(text ?? Texts.to.general.notAvailable, softWrap: true)],
+              ),
+            )),
+      ],
+    ),
+  );
+
+  Widget _renderButtonsBottomDialog(List<Widget>? buttons) {
+    List<Widget> buttonWidgetList = List.empty(growable: true);
+    int length = buttons?.length ?? 0;
     for (int i = 0; i < length; i++) {
-      list.addIf(i == 0, AppBox.shrinkExpanded());
-      list.add(AppBox.expanded(flex: length > 1 ? (30 ~/ length) : 4, child: buttons[i]));
-      list.add(i == length - 1 ? AppBox.shrinkExpanded() : AppBox.shrinkExpanded(flex: 5));
+      buttonWidgetList.addIf(i == 0, AppBox.shrinkExpanded());
+      buttonWidgetList.add(AppBox.expanded(flex: length > 1 ? (30 ~/ length) : 4, child: buttons?[i]));
+      buttonWidgetList.add(i == length - 1 ? AppBox.shrinkExpanded() : AppBox.shrinkExpanded(flex: 5));
     }
     return Padding(
       padding: AppPaddings.buttonXLarge,
-      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: list),
+      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: buttonWidgetList),
     );
   }
 }
