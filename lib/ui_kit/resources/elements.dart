@@ -1,65 +1,72 @@
 import '../../barrels/core_resources_barrel.dart';
 import '../../barrels/ui_kit_barrel.dart';
 
-class AppElements {
-  ///Radius
-  static double get radiusZero => 0;
-  static double get radiusLow => 10;
-  static double get radiusNormal => 20;
-  static double get radiusHigh => 30;
-  static double get defaultRadius => radiusLow;
+enum AppElementRadius {
+  low(radius: 10),
+  normal(radius: 20),
+  high(radius: 30),
+  zero(radius: 0);
 
-  ///BorderRadius
-  static Radius get circularRadiusDefault => Radius.circular(defaultRadius);
-  static Radius get circularRadiusZero => Radius.circular(radiusZero);
-  static Radius get circularRadiusLow => Radius.circular(radiusLow);
-  static Radius get circularRadiusNormal => Radius.circular(radiusNormal);
-  static Radius get circularRadiusHigh => Radius.circular(radiusHigh);
+  final double radius;
 
-  ///Border
-  static BorderRadius get borderRadiusDefault => BorderRadius.all(circularRadiusDefault);
-  static BorderRadius get borderRadiusZero => BorderRadius.all(circularRadiusZero);
-  static BorderRadius get borderRadiusLow => BorderRadius.all(circularRadiusLow);
-  static BorderRadius get borderRadiusNormal => BorderRadius.all(circularRadiusNormal);
-  static BorderRadius get borderRadiusHigh => BorderRadius.all(circularRadiusHigh);
+  const AppElementRadius({required this.radius});
 
-  static BorderRadius get borderRadiusTop => BorderRadius.only(topLeft: circularRadiusDefault, topRight: circularRadiusDefault);
+  double get getDefault => low.radius;
 
-  ///BorderSide
-  static BorderSide get _borderSideGeneral => BorderSide(color: Get.theme.colorScheme.primary, width: AppDefaults.borderWidth);
-  static BorderSide get borderSide => _borderSideGeneral.copyWith(color: AppColors.primary.color);
-  static BorderSide get borderSidePrimary => _borderSideGeneral.copyWith(color: AppColors.primary.color);
-  static BorderSide get borderSideSecondary => _borderSideGeneral.copyWith(color: AppColors.primary.color);
-  static BorderSide get borderSideTertiary => _borderSideGeneral.copyWith(color: AppColors.tertiary.color);
-  static BorderSide get borderSideError => _borderSideGeneral.copyWith(color: AppColors.error.color);
-  static BorderSide get borderSideTransparent => _borderSideGeneral.copyWith(color: AppColors.transparent.color);
-  static BorderSide get borderSideFocused => _borderSideGeneral.copyWith(color: AppColors.primary.color);
-  static BorderSide get borderSideDisabled => _borderSideGeneral.copyWith(color: AppColors.disabled.color);
 
-  ///OutlineInputBorder
-  static OutlineInputBorder get _borderOutlinedGeneral => OutlineInputBorder(borderRadius: borderRadiusLow);
-  static OutlineInputBorder get borderOutlined => _borderOutlinedGeneral.copyWith(borderSide: borderSide);
-  static OutlineInputBorder get borderOutlinedFocused => _borderOutlinedGeneral.copyWith(borderSide: borderSideFocused);
-  static OutlineInputBorder get borderOutlinedDisabled => _borderOutlinedGeneral.copyWith(borderSide: borderSideDisabled);
-  static OutlineInputBorder get borderOutlinedError => _borderOutlinedGeneral.copyWith(borderSide: borderSideError);
-  static OutlineInputBorder get borderOutlinedTransparent => _borderOutlinedGeneral.copyWith(borderSide: borderSideTransparent);
-  static OutlineInputBorder get borderOutlinedTransparentZeroRadius => borderOutlinedTransparent.copyWith(borderRadius: borderRadiusZero);
+  /// Radius
+  Radius circularRadius() => Radius.circular(radius);
+  BorderRadius borderCircularRadius() => BorderRadius.all(circularRadius());
+  BorderRadius borderCircularRadiusTop() => BorderRadius.only(topLeft: circularRadius(), topRight: circularRadius());
+  BorderRadius borderCircularRadiusBottom() => BorderRadius.only(bottomLeft: circularRadius(), bottomRight: circularRadius());
 
-  ///BoxBorder
-  static BoxBorder get boxBorder => Border.all(color: Get.theme.canvasColor);
-  static BoxBorder get boxBorderTransparent => Border.all(color: AppColors.transparent.color);
+  /// BorderSide
+  BorderSide borderSide({AppColors? color, BorderStyle? borderStyle, double? width}) => BorderSide(color: (color ?? AppColors.primary).color, style: borderStyle ?? BorderStyle.solid, width: width ?? 1);
+  BorderSide borderSideError({BorderStyle? borderStyle, double? width}) => borderSide(color: AppColors.error, borderStyle: borderStyle, width: width);
+  BorderSide borderSideTransparent({BorderStyle? borderStyle, double? width}) => borderSide(color: AppColors.transparent, borderStyle: borderStyle, width: width);
+  BorderSide borderSideFocused({BorderStyle? borderStyle, double? width}) => borderSide(color: AppColors.primary, borderStyle: borderStyle, width: width);
+  BorderSide borderSideDisabled({BorderStyle? borderStyle, double? width}) => borderSide(color: AppColors.disabled, borderStyle: borderStyle, width: width);
 
-  ///Shapes
-  static BoxDecoration get boxDecorationDefault => BoxDecoration(borderRadius: AppElements.borderRadiusDefault);
-  static BoxDecoration get listPageSearchBox => BoxDecoration(border: Border.all(color: AppColors.transparent.color));
 
-  ///RoundedRectangleBorder
-  static RoundedRectangleBorder get borderShapeDefault => borderShapeLowRadius;
-  static RoundedRectangleBorder get borderShapeLowRadius => RoundedRectangleBorder(borderRadius: borderRadiusLow);
-  static RoundedRectangleBorder get borderShapeNormalRadius => RoundedRectangleBorder(borderRadius: borderRadiusNormal, side: borderSidePrimary);
-  static RoundedRectangleBorder get borderShapeHighRadius => RoundedRectangleBorder(borderRadius: borderRadiusHigh);
-  static RoundedRectangleBorder get borderShapeModal => RoundedRectangleBorder(borderRadius: borderRadiusTop);
-  static RoundedRectangleBorder get borderShapeAlertDialog => RoundedRectangleBorder(borderRadius: borderRadiusDefault);
-  static RoundedRectangleBorder get borderShapeOutline => RoundedRectangleBorder(borderRadius: borderRadiusDefault, side: borderSidePrimary);
+  /// [Border] BoxBorder
+  BoxBorder boxBorder({AppColors? color, BorderStyle? style, double? width}) => BoxBorder.all(color: (color ?? AppColors.primary).color, style: style ?? BorderStyle.solid, width: width ?? 1);
 
+  BoxBorder boxBorderError({AppColors? color, BorderStyle? style, double? width}) => BoxBorder.all(color: (color ?? AppColors.error).color, style: style ?? BorderStyle.solid, width: width ?? 1);
+  BoxBorder boxBorderTransparent({AppColors? color, BorderStyle? style, double? width}) => BoxBorder.all(color: (color ?? AppColors.transparent).color, style: style ?? BorderStyle.solid, width: width ?? 1);
+  BoxBorder boxBorderDisabled({AppColors? color, BorderStyle? style, double? width}) => BoxBorder.all(color: (color ?? AppColors.disabled).color, style: style ?? BorderStyle.solid, width: width ?? 1);
+
+  /// [Decoration] BoxDecoration
+  BoxDecoration boxDecoration({BoxShape? boxShape, BorderRadius? borderRadius, BoxBorder? boxBorder, DecorationImage? image, Gradient? gradient}) =>
+      BoxDecoration(borderRadius: borderRadius ?? borderCircularRadius(), color: AppColors.primary.color, shape: boxShape ?? BoxShape.rectangle,border: boxBorder ?? this.boxBorder(), image: image, gradient: gradient);
+
+  /// [Border] OutlineInputBorder
+  OutlineInputBorder outlineInputBorder({BorderRadius? borderRadius, BorderSide? borderSide}) => OutlineInputBorder(borderRadius: borderRadius ?? borderCircularRadius(), borderSide: borderSide ?? this.borderSide());
+  OutlineInputBorder outlineInputBorderError({BorderStyle? borderStyle, double? width}) => outlineInputBorder(borderSide: borderSideError(borderStyle: borderStyle, width: width));
+  OutlineInputBorder outlineInputBorderTransparent({BorderStyle? borderStyle, double? width}) => outlineInputBorder(borderSide: borderSideTransparent(borderStyle: borderStyle, width: width));
+  OutlineInputBorder outlineInputBorderFocused({BorderStyle? borderStyle, double? width}) => outlineInputBorder(borderSide: borderSideFocused(borderStyle: borderStyle, width: width));
+  OutlineInputBorder outlineInputBorderDisabled({BorderStyle? borderStyle, double? width}) => outlineInputBorder(borderSide: borderSideDisabled(borderStyle: borderStyle, width: width));
+
+  /// [Border] RoundedRectangleBorder
+  RoundedRectangleBorder roundedRectangleBorder({AppColors? color, BorderStyle? style, double? width}) => RoundedRectangleBorder(
+    borderRadius: borderCircularRadius(),
+    side: borderSide(color: color, borderStyle: style, width: width),
+  );
+
+  RoundedRectangleBorder roundedRectangleBorderTop({AppColors? color, BorderStyle? style, double? width}) => RoundedRectangleBorder(
+    borderRadius: borderCircularRadiusTop(),
+    side: borderSide(color: color, borderStyle: style, width: width),
+  );
+
+  RoundedRectangleBorder roundedRectangleBorderBottom({AppColors? color, BorderStyle? style, double? width}) => RoundedRectangleBorder(
+    borderRadius: borderCircularRadiusBottom(),
+    side: borderSide(color: color, borderStyle: style, width: width),
+  );
+
+  /// Custom UI Kit
+  BoxDecoration get boxDecorationDefault => boxDecoration(boxBorder: boxBorderTransparent());
+
+  RoundedRectangleBorder get borderModal => roundedRectangleBorderTop();
+  RoundedRectangleBorder get borderAlertDialog => roundedRectangleBorder();
+  RoundedRectangleBorder get borderOutline => roundedRectangleBorder();
+  RoundedRectangleBorder get borderButton => roundedRectangleBorder(color: AppColors.transparent);
 }
