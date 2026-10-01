@@ -19,7 +19,7 @@ extension ExtensionCountryFlagWidget on AppCountry {
     return AppContainer(
       width: size ?? 100,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(rounded == true ? roundRadius ?? AppElements.defaultRadius : 0)),
+        borderRadius: BorderRadius.all(Radius.circular(rounded == true ? roundRadius ?? AppElements.getDefaultRadius.radius : 0)),
         border: hasBorder == true ? Border.all(color: borderColor ?? Colors.black45) : null,
       ),
       padding: EdgeInsets.all(padding ?? 0),

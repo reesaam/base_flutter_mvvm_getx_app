@@ -102,7 +102,7 @@ class AdminAppResourcesPage extends CoreView<AdminAppResourcesController> {
       height: 30,
       width: 30,
       decoration: BoxDecoration(
-        borderRadius: AppElements.borderRadiusHigh,
+        borderRadius: AppElements.borderRadiusCircular(radius: AppElementRadius.high),
         border: Border.all(color: Colors.black, width: 2),
         color: gradient == true
             ? null

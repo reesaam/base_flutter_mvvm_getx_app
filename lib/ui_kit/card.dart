@@ -71,7 +71,7 @@ class AppCard extends BaseWidget {
     shadowColor: shadowColor,
     surfaceTintColor: surfaceTintColor,
     elevation: elevation,
-    shape: AppElements.borderShapeOutline,
+    shape: AppElements.borderOutline,
     borderOnForeground: borderOnForeground,
     clipBehavior: clipBehavior,
     margin: margin,

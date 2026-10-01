@@ -11,7 +11,7 @@ class AppBottomSheetWidget {
         showDragHandle: true,
         isScrollControlled: true,
         isDismissible: dismissible ?? false,
-        shape: AppElements.borderShapeModal,
+        shape: AppElements.borderModal,
         builder: (context) => Padding(
           padding: AppPaddings.generalBottomModal,
           child: Column(

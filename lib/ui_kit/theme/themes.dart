@@ -145,7 +145,7 @@ class AppTheme {
   static ButtonStyle _buttonStyle() => ButtonStyle(
     backgroundColor: WidgetStateProperty.all(AppColors.button.color),
     foregroundColor: WidgetStateProperty.all(AppColors.buttonText.color),
-    shape: WidgetStateProperty.all(AppElements.borderShapeDefault),
+    shape: WidgetStateProperty.all(AppElements.roundedRectangleBorder()),
     textStyle: WidgetStateProperty.all(_buttonTextStyle()),
   );
 
@@ -169,7 +169,7 @@ class AppTheme {
   static DropdownMenuThemeData _buttonDropDown() => const DropdownMenuThemeData();
 
   ///Others
-  static CardTheme _card() => CardTheme(shape: AppElements.borderShapeDefault, color: AppColors.primary.color);
+  static CardTheme _card() => CardTheme(shape: AppElements.borderOutline, color: AppColors.primary.color);
 
   static CheckboxThemeData _checkBox() => CheckboxThemeData(
     checkColor: WidgetStateProperty.all(AppColors.background.color),

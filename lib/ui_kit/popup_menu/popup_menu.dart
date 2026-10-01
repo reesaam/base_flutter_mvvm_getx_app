@@ -31,7 +31,7 @@ class AppPopupMenu extends BaseWidget {
     enabled: enabled ?? true,
     padding: AppPaddings.zero,
     position: position ?? PopupMenuPosition.under,
-    shape: AppElements.borderShapeOutline,
+    shape: AppElements.borderOutline,
     color: background?.color ?? AppColors.background.color,
     iconSize: iconSize,
     menuPadding: menuPadding,

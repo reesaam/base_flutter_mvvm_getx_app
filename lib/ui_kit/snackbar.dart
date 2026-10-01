@@ -141,7 +141,7 @@ _showSnackBar({
   duration: duration ?? AppDefaults.snackBarDuration,
   isDismissible: isDismissible ?? true,
   backgroundColor: backgroundColor?.color ?? Get.theme.snackBarTheme.backgroundColor ?? Get.theme.colorScheme.tertiary,
-  borderRadius: AppElements.defaultRadius,
+  borderRadius: AppElements.getDefaultRadius.radius,
   icon: icon?.widget.copyWith(color: iconColor?.color ?? textColor?.color ?? Get.theme.canvasColor),
   shouldIconPulse: false,
   showProgressIndicator: showProgressIndicator ?? false,

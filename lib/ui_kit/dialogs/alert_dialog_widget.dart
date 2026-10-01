@@ -25,7 +25,7 @@ class AppAlertDialogWidget {
           scrollable: true,
           backgroundColor: AppColors.transparent.color,
           elevation: 10,
-          shape: AppElements.borderShapeAlertDialog,
+          shape: AppElements.borderAlertDialog,
           title: title == null
               ? AppBox.shrink()
               : AppCard.outline(
