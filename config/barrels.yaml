@@ -125,6 +125,8 @@ barrels:
       - buttons/button_loading.dart
       - text_fields/text_field_abstraction.dart
       - text_fields/text_field_widget.dart
+      - dialogs/alert_dialog_widget.dart
+      - dialogs/bottom_sheet_widget.dart
 
   - output: lib/barrels/localization_barrel.dart
     library: true
