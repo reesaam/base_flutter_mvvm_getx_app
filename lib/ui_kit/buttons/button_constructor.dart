@@ -95,7 +95,7 @@ class AppButtonConstructor extends BaseWidget {
     }
     return AppContainer(
       color: backgroundColor ?? AppColors.transparent,
-      decoration: AppElements.boxDecorationDefault,
+      decoration: AppElements.boxDecorationButton,
       alignment: Alignment.center,
       width: buttonType == ButtonType.icon ? AppDefaults.appbarIconButtonHeight : size?.width ?? double.maxFinite,
       height: size?.height ?? AppDefaults.buttonsGeneralHeight,

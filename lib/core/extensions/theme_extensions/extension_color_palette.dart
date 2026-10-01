@@ -1,5 +1,7 @@
 import '../../../barrels/extensions_barrel.dart';
 import '../../../barrels/ui_kit_barrel.dart';
+
+// ignore: barrel_import_lints/only_barrel_imports
 import '../../../ui_kit/theme/color_palette.dart';
 
 Color _defaultColor = Colors.transparent;

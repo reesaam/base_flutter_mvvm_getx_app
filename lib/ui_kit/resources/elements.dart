@@ -20,12 +20,12 @@ class AppElements {
   static BoxBorder boxBorder({AppColors? color, BorderStyle? style, double? width}) => BoxBorder.all(color: (color ?? AppColors.primary).color, style: style ?? BorderStyle.solid, width: width ?? 1);
 
   static BoxBorder boxBorderError({AppColors? color, BorderStyle? style, double? width}) => BoxBorder.all(color: (color ?? AppColors.error).color, style: style ?? BorderStyle.solid, width: width ?? 1);
-  static BoxBorder boxBorderTransparent({AppColors? color, BorderStyle? style, double? width}) => BoxBorder.all(color: (color ?? AppColors.transparent).color, style: style ?? BorderStyle.solid, width: width ?? 1);
+  static BoxBorder boxBorderTransparent({BorderStyle? style, double? width}) => BoxBorder.all(color: AppColors.transparent.color, style: style ?? BorderStyle.solid, width: width ?? 1);
   static BoxBorder boxBorderDisabled({AppColors? color, BorderStyle? style, double? width}) => BoxBorder.all(color: (color ?? AppColors.disabled).color, style: style ?? BorderStyle.solid, width: width ?? 1);
 
   /// [Decoration] BoxDecoration
-  static BoxDecoration boxDecoration({BoxShape? boxShape, BorderRadius? borderRadius, BoxBorder? inputBoxBorder, DecorationImage? image, Gradient? gradient}) =>
-      BoxDecoration(borderRadius: borderRadius ?? borderRadiusCircular(), color: AppColors.primary.color, shape: boxShape ?? BoxShape.rectangle,border: inputBoxBorder ?? boxBorder(), image: image, gradient: gradient);
+  static BoxDecoration boxDecoration({BoxShape? boxShape, BorderRadius? borderRadius, AppColors? color, BoxBorder? inputBoxBorder, DecorationImage? image, Gradient? gradient}) =>
+      BoxDecoration(borderRadius: borderRadius ?? borderRadiusCircular(), color: (color ?? AppColors.primary).color, shape: boxShape ?? BoxShape.rectangle, border: inputBoxBorder ?? boxBorder(color: color), image: image, gradient: gradient);
 
   /// [Border] OutlineInputBorder
   static OutlineInputBorder outlineInputBorder({BorderRadius? borderRadius, BorderSide? inputBorderSide}) => OutlineInputBorder(borderRadius: borderRadius ?? borderRadiusCircular(), borderSide: inputBorderSide ?? borderSide());
@@ -51,7 +51,8 @@ class AppElements {
   );
 
   /// Custom UI Kit
-  static BoxDecoration get boxDecorationDefault => boxDecoration(inputBoxBorder: boxBorderTransparent());
+  static BoxDecoration get boxDecorationDefault => boxDecoration(inputBoxBorder: boxBorder());
+  static BoxDecoration get boxDecorationButton => boxDecoration(inputBoxBorder: boxBorderTransparent(), color: AppColors.transparent);
 
   static RoundedRectangleBorder get borderModal => roundedRectangleBorderTop();
   static RoundedRectangleBorder get borderAlertDialog => roundedRectangleBorder();

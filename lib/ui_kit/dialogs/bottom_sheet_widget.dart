@@ -12,9 +12,11 @@ class AppBottomSheetWidget {
         isScrollControlled: true,
         isDismissible: dismissible ?? false,
         shape: AppElements.borderModal,
-        builder: (context) => Padding(
+        builder: (context) => AppContainer(
+          constraints: BoxConstraints.expand(height: Get.height / 1.2),
           padding: AppPaddings.generalBottomModal,
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [

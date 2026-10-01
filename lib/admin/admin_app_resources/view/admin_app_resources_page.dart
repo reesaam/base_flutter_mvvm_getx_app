@@ -4,9 +4,11 @@ import '../../../barrels/core_elements_barrel.dart';
 import '../../../barrels/core_resources_barrel.dart';
 import '../../../barrels/ui_kit_barrel.dart';
 
-import '../../../ui_kit/theme/color_palette.dart';
 import '../../admin_general_functions.dart';
 import '../controller/admin_app_resources_controller.dart';
+
+// ignore: barrel_import_lints/only_barrel_imports
+import '../../../ui_kit/theme/color_palette.dart';
 
 @GetPut.page()
 class AdminAppResourcesPage extends CoreView<AdminAppResourcesController> {
