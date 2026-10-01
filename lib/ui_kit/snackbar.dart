@@ -27,8 +27,8 @@ class AppSnackBar {
       leadingText: leadingText,
       buttonText: buttonText,
       buttonAction: buttonAction,
-      backgroundColor: backgroundColor?.color,
-      textColor: textColor?.color,
+      backgroundColor: backgroundColor,
+      textColor: textColor,
       showProgressIndicator: withProgressIndicator,
     );
   }
@@ -54,7 +54,7 @@ class AppSnackBar {
       leadingText: leadingText,
       buttonText: buttonText,
       buttonAction: buttonAction,
-      backgroundColor: Get.theme.colorScheme.error,
+      backgroundColor: AppColors.error,
     );
   }
 
@@ -79,7 +79,7 @@ class AppSnackBar {
       leadingText: leadingText,
       buttonText: buttonText,
       buttonAction: buttonAction,
-      backgroundColor: Get.theme.hintColor,
+      backgroundColor: AppColors.hint,
     );
   }
 }
@@ -95,9 +95,9 @@ _showSnackBar({
   String? leadingText,
   String? buttonText,
   Function()? buttonAction,
-  Color? backgroundColor,
-  Color? textColor,
-  Color? iconColor,
+  AppColors? backgroundColor,
+  AppColors? textColor,
+  AppColors? iconColor,
   bool? isDismissible,
   CrossAxisAlignment? crossAxisAlignment,
   EdgeInsets? padding,
@@ -107,7 +107,7 @@ _showSnackBar({
   AnimationController? progressIndicatorController,
 }) => GetSnackBar(
   //Elements
-  titleText: title == null ? AppBox.shrink() : Text(title).withColor(textColor ?? Get.theme.canvasColor),
+  titleText: title == null ? AppBox.shrink() : Text(title).copyWith(textColor: textColor),
   messageText:
       widget ??
       Column(
@@ -115,7 +115,7 @@ _showSnackBar({
         crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          if (message != null) Text(message).withColor(textColor ?? Get.theme.canvasColor),
+          if (message != null) Text(message).copyWith(textColor: textColor),
           if (buttonText != null)
             Column(
               children: [
@@ -140,12 +140,12 @@ _showSnackBar({
   animationDuration: AppDefaults.snackBarAnimationDuration,
   duration: duration ?? AppDefaults.snackBarDuration,
   isDismissible: isDismissible ?? true,
-  backgroundColor: backgroundColor ?? Get.theme.snackBarTheme.backgroundColor ?? Get.theme.colorScheme.tertiary,
+  backgroundColor: backgroundColor?.color ?? Get.theme.snackBarTheme.backgroundColor ?? Get.theme.colorScheme.tertiary,
   borderRadius: AppElements.defaultRadius,
-  icon: icon?.widget.copyWith(color: iconColor ?? textColor ?? Get.theme.canvasColor),
+  icon: icon?.widget.copyWith(color: iconColor?.color ?? textColor?.color ?? Get.theme.canvasColor),
   shouldIconPulse: false,
   showProgressIndicator: showProgressIndicator ?? false,
-  progressIndicatorBackgroundColor: showProgressIndicator == true ? backgroundColor ?? Get.theme.canvasColor : null,
+  progressIndicatorBackgroundColor: showProgressIndicator == true ? backgroundColor?.color ?? Get.theme.canvasColor : null,
   progressIndicatorController: progressIndicatorController,
 ).show();
 

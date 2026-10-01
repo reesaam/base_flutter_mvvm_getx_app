@@ -28,7 +28,7 @@ class HomePage extends CoreView<HomePageController> {
 
   Widget _adminTestButton() => Padding(
     padding: AppPaddings.pages,
-    child: AppButton.general(text: 'Admin Test Page', onTap: () => goToPage(AppPages.adminStartPage), size: Size.fromHeight(50),),
+    child: AppButton.general(text: 'Admin Test Page', onTap: () => goToPage(AppPages.adminStartPage), size: Size.fromHeight(50)),
   );
 
   Widget _logo(double height) => AppContainer(
@@ -45,10 +45,10 @@ class HomePage extends CoreView<HomePageController> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text('Base Flutter App').withSizeTitleSmall,
-              const Text('MVVM Architecture').withSizeDisplaySmall,
-              const Text('GetX State Manager').withSizeDisplaySmall,
-              Text('${layout.deviceType.name} · ${layout.width.toInt()}px').withSizeBodySmall,
+              const Text('Base Flutter App').withTitleSmallSize,
+              const Text('MVVM Architecture').withDisplaySmallSize,
+              const Text('GetX State Manager').withDisplaySmallSize,
+              Text('${layout.deviceType.name} · ${layout.width.toInt()}px').withBodySmallSize,
             ],
           ),
         ),
@@ -69,7 +69,7 @@ class HomePage extends CoreView<HomePageController> {
           flex: 2,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [Text(AppDeveloperInfo.fullName).withSizeTitleSmall, Text('Software Developer').withSizeDisplaySmall],
+            children: [Text(AppDeveloperInfo.fullName).withTitleSmallSize, Text('Software Developer').withDisplaySmallSize],
           ),
         ),
       ],

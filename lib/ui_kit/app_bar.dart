@@ -37,5 +37,5 @@ class AppAppBar extends AppBar {
   Widget get _normalTextTitle => Text(
     pageDetail.pageName ?? Texts.to.general.empty,
     style: Get.theme.textTheme.titleSmall,
-  ).withColor(Get.theme.appBarTheme.foregroundColor ?? AppColors.background.color);
+  ).copyWith(textColor: AppColors.appBarForeground);
 }

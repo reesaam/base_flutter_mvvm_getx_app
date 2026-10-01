@@ -75,7 +75,10 @@ class AppButtonConstructor extends BaseWidget {
       widget = Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [Icon(icon?.icon), if (text.isNotNullOrEmpty) Text(text ?? '').withColor(iconColor?.color)],
+        children: [
+          Icon(icon?.icon),
+          if (text.isNotNullOrEmpty) Text(text ?? '').copyWith(textColor: iconColor),
+        ],
       );
     } else {
       widget = AppButtonWidget(

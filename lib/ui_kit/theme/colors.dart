@@ -16,6 +16,8 @@ enum AppColors {
   bottomNavigationBarBackground(AppColorPalette.background),
   bottomNavigationBarForeground(AppColorPalette.primary),
   error(AppColorPalette.error),
+  hint(AppColorPalette.disabled),
+  warning(AppColorPalette.disabled),
   divider(AppColorPalette.disabled),
   button(AppColorPalette.primary),
   buttonText(AppColorPalette.background),
@@ -25,7 +27,6 @@ enum AppColors {
   buttonDisabledBorder(AppColorPalette.onPrimary),
   textFieldText(AppColorPalette.primary),
   textFieldLabel(AppColorPalette.primary),
-  textFieldHint(AppColorPalette.disabled),
   textFieldHelper(AppColorPalette.primary),
   floatingButtonIcon(AppColorPalette.background),
   transparent(AppColorPalette.transparent);

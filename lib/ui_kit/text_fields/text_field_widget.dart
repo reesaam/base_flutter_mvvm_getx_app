@@ -53,7 +53,7 @@ abstract class AppTextFieldWidget extends StatelessWidget {
     this.labelColor = AppColors.textFieldLabel,
     this.errorColor = AppColors.error,
     this.helperColor = AppColors.textFieldHelper,
-    this.hintColor = AppColors.textFieldHint,
+    this.hintColor = AppColors.hint,
   });
 
   final TextEditingController controller;

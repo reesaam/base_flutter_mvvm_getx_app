@@ -27,7 +27,7 @@ class AppIconButton extends MaterialButton {
           icon: icon.widget.copyWith(color: iconColor?.color, size: iconSize ?? AppDefaults.iconButtonSize),
           onPressed: onTap,
         ),
-        if (text.isNotNullOrEmpty) Text(text ?? '').withColor(iconColor?.color),
+        if (text.isNotNullOrEmpty) Text(text ?? '').copyWith(textColor: iconColor),
       ],
     );
   }

@@ -15,10 +15,10 @@ class AppDividers {
       Container(
         padding: AppPaddings.buttonXLarge,
         color:
-        Get.context?.findAncestorWidgetOfExactType<Container>()?.color ??
+            Get.context?.findAncestorWidgetOfExactType<Container>()?.color ??
             Get.context?.findAncestorWidgetOfExactType<Scaffold>()?.backgroundColor ??
             Get.theme.canvasColor,
-        child: Text(text).withColor((color ?? AppColors.primary).color),
+        child: Text(text).copyWith(textColor: color ?? AppColors.primary),
       ),
     ],
   );

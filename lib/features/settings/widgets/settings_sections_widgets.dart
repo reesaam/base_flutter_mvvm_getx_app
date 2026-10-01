@@ -6,7 +6,7 @@ class SettingsSectionWidget extends BaseWidget {
   final List<Widget> widgets;
   const SettingsSectionWidget({super.key, required this.title, required this.widgets});
 
-  Widget _title(String text) => Text(text).withSizeBodyLarge.withDisabledColor;
+  Widget _title(String text) => Text(text).withBodyLargeSize.copyWith(textColor: AppColors.disabled);
 
   @override
   Widget get widget => Padding(
@@ -38,7 +38,7 @@ class SettingsSectionItemWidget extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [Text(text).withBodyLarge, leading ?? AppBox.shrink()],
+        children: [Text(text).withBodyLargeTheme, leading ?? AppBox.shrink()],
       ),
     ),
   );

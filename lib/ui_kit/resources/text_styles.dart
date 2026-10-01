@@ -12,7 +12,7 @@ class AppTextStyles extends TextStyle {
   ///Text Fields
   static TextStyle textFieldText({AppColors? color}) => _defaultStyle().copyWith(color: color?.color ?? AppColors.textFieldText.color);
   static TextStyle textFieldLabel({AppColors? color}) => _defaultStyle(inputStyle: Get.textTheme.displayMedium).copyWith(color: color?.color ?? AppColors.textFieldLabel.color);
-  static TextStyle textFieldHint({AppColors? color}) => _defaultStyle(inputStyle: Get.textTheme.displayMedium).copyWith(color: color?.color ?? AppColors.textFieldHint.color);
+  static TextStyle textFieldHint({AppColors? color}) => _defaultStyle(inputStyle: Get.textTheme.displayMedium).copyWith(color: color?.color ?? AppColors.hint.color);
   static TextStyle textFieldHelper({AppColors? color}) => _defaultStyle(inputStyle: Get.textTheme.displayMedium).copyWith(color: color?.color ?? AppColors.textFieldHelper.color);
   static TextStyle textFieldError({AppColors? color}) => _defaultStyle().copyWith(color: color?.color ?? AppColors.error.color);
 

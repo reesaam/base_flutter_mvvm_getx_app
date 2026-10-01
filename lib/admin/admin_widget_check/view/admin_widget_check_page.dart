@@ -379,15 +379,19 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
     ),
   ], title: 'Alert Dialogs');
 
-  Widget _alertDialogWidget() =>
-      Column(mainAxisSize: MainAxisSize.min, children: List<Widget>.generate(5, (index) => const Text('Some Widget').withTertiaryColor));
+  Widget _alertDialogWidget() => Column(
+    mainAxisSize: MainAxisSize.min,
+    children: List<Widget>.generate(5, (index) => const Text('Some Widget').copyWith(textColor: AppColors.tertiary)),
+  );
 
   Widget _bottomSheetDialog() {
     Widget form = Column(
       children: List<Widget>.generate(
         5,
-        (index) =>
-            Padding(padding: const EdgeInsets.symmetric(vertical: 10), child: const Text('App BottomSheet Dialog without Button').withTertiaryColor),
+        (index) => Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          child: const Text('App BottomSheet Dialog without Button').copyWith(textColor: AppColors.tertiary),
+        ),
       ),
     );
 
@@ -542,7 +546,8 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
         pageDetail: AppPageDetail(pageRoute: AppPages.adminWidgetCheckPage.pageRoute, pageName: 'Page Name'),
         barAction: AppButton.icon(icon: AppIcons.add, onTap: nullFunction),
       ),
-    ),AdminFunctions.item(
+    ),
+    AdminFunctions.item(
       fullWidth: true,
       widget: AppAppBar(
         pageDetail: AppPageDetail(pageRoute: AppPages.adminWidgetCheckPage.pageRoute, pageName: 'Page Name'),
