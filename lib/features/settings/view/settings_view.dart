@@ -16,7 +16,7 @@ class SettingsPage extends CoreView<SettingsController> {
   Widget? get drawer => const AppDrawer();
 
   @override
-  PreferredSizeWidget? get appBar => AppAppBar(pageDetail: controller.pageDetail);
+  PreferredSizeWidget? get appBar => AppAppBar(pageDetail: controller.pageDetail, barAction: _widgetAppbarThreeDotsButton());
 
   @override
   Widget? get bottomNavigationBar => const AppBottomNavigationBar();
@@ -26,8 +26,13 @@ class SettingsPage extends CoreView<SettingsController> {
 
   Widget _widgetAppbarThreeDotsButton() => AppPopupMenu(listItems: _listAppbarThreeDotsButton);
 
-  List<AppPopupMenuItem> get _listAppbarThreeDotsButton =>
-      List.of([AppPopupMenuItem(text: Texts.to.settings.appbarMenuResetSettings, onTapFunction: () => controller.resetAllSettings())]);
+  List<AppPopupMenuItem> get _listAppbarThreeDotsButton {
+    AppPopupMenuItem resetAllButton = AppPopupMenuItem(
+      text: Texts.to.settings.appbarMenuResetSettings,
+      onTapFunction: () => controller.resetAllSettings(),
+    );
+    return List.of([resetAllButton]);
+  }
 
   Widget _widgetGeneral() {
     Widget leadingLanguage() => Text(controller.selectedLanguage.value.localLanguageName);
@@ -81,8 +86,6 @@ class SettingsPage extends CoreView<SettingsController> {
 
   Widget _widgetStorage() => SettingsSectionWidget(
     title: Texts.to.settings.sectionTitleStorage,
-    widgets: [
-      SettingsSectionItemWidget(text: Texts.to.settings.sectionStorageItemEraseAllData, wholeItemFunction: controller.clearAllData),
-    ],
+    widgets: [SettingsSectionItemWidget(text: Texts.to.settings.sectionStorageItemEraseAllData, wholeItemFunction: controller.clearAllData)],
   );
 }
