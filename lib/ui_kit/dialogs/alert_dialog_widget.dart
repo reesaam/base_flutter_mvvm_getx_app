@@ -1,35 +1,42 @@
-import '../../barrels/core_resources_barrel.dart';
 import '../../barrels/localization_barrel.dart';
 import '../../barrels/ui_kit_barrel.dart';
 
 class AppAlertDialogWidget {
-  static Future<(T1?, T2?)> appAlertWidgetDialog<T1, T2>({
+  static Future<(T1?, T2?)?> appAlertWidgetDialog<T1, T2>({
     String? title,
     Widget? widget,
     String? text,
     List<Widget>? buttons,
     bool? dismissible,
   }) async {
-    assert((text == null && widget == null) || (text != null && widget != null), AppAssertTexts.buttonsCheckNullInputs);
-    return await showAdaptiveDialog(
+    // assert((text == null && widget == null) || (text != null && widget != null), AppAssertTexts.buttonsCheckNullInputs);
+    return await showDialog(
       context: Get.context!,
+      fullscreenDialog: false,
+      barrierColor: AppColors.transparent.color,
       useSafeArea: true,
       useRootNavigator: true,
       barrierDismissible: dismissible ?? false,
       builder: (context) => AppContainer(
+        height: Get.height / 2,
+        color: AppColors.transparent,
         padding: AppPaddings.generalAlertDialog,
-        child: AlertDialog.adaptive(
+        child: AlertDialog(
           scrollable: true,
+          backgroundColor: AppColors.transparent.color,
+          elevation: 10,
           shape: AppElements.borderShapeAlertDialog,
           title: title == null
               ? AppBox.shrink()
-              : Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(title),
-                    AppDividers.general(color: AppColors.primary),
-                  ],
+              : AppCard.outline(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(title),
+                      AppDividers.general(color: AppColors.primary),
+                    ],
+                  ),
                 ),
           content:
               widget ??

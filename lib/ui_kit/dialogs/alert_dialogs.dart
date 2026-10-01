@@ -20,10 +20,10 @@ class AppAlertDialogs extends CoreComponent {
   }) async {
     List<Widget> buttons = [AppButton.general(text: buttonText, onTap: onTapButton)];
     var result = await AppAlertDialogWidget.appAlertWidgetDialog<T, bool>(title: title, widget: widget, buttons: buttons, dismissible: dismissible);
-    return result.$1;
+    return result?.$1;
   }
 
-  Future<(T1?, T2?)> twoButtons<T1, T2>({
+  Future<(T1?, T2?)?> twoButtons<T1, T2>({
     String? title,
     Widget? widget,
     String? text,
@@ -38,7 +38,7 @@ class AppAlertDialogs extends CoreComponent {
     return result;
   }
 
-  Future<void> form({String? title, Widget? form, String? text, bool? dismissible}) async {
-    await AppAlertDialogWidget.appAlertWidgetDialog(title: title, widget: form, dismissible: dismissible);
+  Future<(T1?, T2?)?> form<T1, T2>({String? title, Widget? form, String? text, bool? dismissible}) async {
+    return await AppAlertDialogWidget.appAlertWidgetDialog(title: title, widget: form, dismissible: dismissible);
   }
 }
