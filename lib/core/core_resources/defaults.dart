@@ -33,5 +33,5 @@ class AppDefaults {
   static double get columnSpacing => 20;
   static Size get switchHeight => const Size.fromHeight(20);
   static double get drawerHeaderIconWidth => 50;
-  static EdgeInsets get buttonPadding => const EdgeInsets.symmetric(horizontal: 5, vertical: 5);
+  static AppPaddings get buttonPadding => const AppPaddings.symmetric(horizontal: 5, vertical: 5);
 }

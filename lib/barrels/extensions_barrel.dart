@@ -5,7 +5,6 @@
 
 library;
 
-export '../core/extensions/data_models_extensions/extension_paddings.dart';
 export '../core/extensions/data_models_extensions/extension_permission.dart';
 export '../core/extensions/data_models_extensions/extension_regexes.dart';
 export '../core/extensions/data_models_extensions/extension_settings.dart';
@@ -21,6 +20,7 @@ export '../core/extensions/data_types_extensions/extension_icon.dart';
 export '../core/extensions/data_types_extensions/extension_int.dart';
 export '../core/extensions/data_types_extensions/extension_language.dart';
 export '../core/extensions/data_types_extensions/extension_list.dart';
+export '../core/extensions/data_types_extensions/extension_padding.dart';
 export '../core/extensions/data_types_extensions/extension_string.dart';
 export '../core/extensions/data_types_extensions/extension_time_zone.dart';
 export '../core/extensions/enums_extensions/extension_countries.dart';

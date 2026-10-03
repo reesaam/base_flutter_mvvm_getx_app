@@ -23,7 +23,7 @@ abstract class CoreView<Controller extends CoreController> extends GetView<Contr
   Widget? get floatingActionButton => null;
   FloatingActionButtonLocation? get floatingActionButtonLocation => null;
   Widget? get bottomSheet => null;
-  EdgeInsets? get pagePadding => null;
+  AppPaddings? get pagePadding => null;
   bool get enableBodyScroll => true;
   bool get enableAdaptiveLayout => true;
 

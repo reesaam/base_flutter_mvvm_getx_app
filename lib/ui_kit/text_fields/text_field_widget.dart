@@ -68,8 +68,8 @@ abstract class AppTextFieldWidget extends StatelessWidget {
   final AppColors? hintColor;
   final double? width;
   final double? height;
-  final EdgeInsets? padding;
-  final EdgeInsets? margin;
+  final AppPaddings? padding;
+  final AppPaddings? margin;
   final TextInputType? textInputType;
   final TextInputAction? textInputAction;
   final TextDirection? textDirection;

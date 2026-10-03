@@ -4,7 +4,7 @@ class AppImage extends BaseWidget {
   const AppImage({super.key, required this.image, this.padding, this.size, this.roundness, this.boxFit});
 
   final String image;
-  final EdgeInsets? padding;
+  final AppPaddings? padding;
   final Size? size;
   final double? roundness;
   final BoxFit? boxFit;

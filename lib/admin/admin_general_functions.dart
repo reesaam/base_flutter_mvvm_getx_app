@@ -37,7 +37,7 @@ class AdminFunctions {
                   if (title != null) Text(title, textAlign: TextAlign.center),
                   if (title != null) AppSpaces.h20,
                   AppContainer(
-                    padding: fullWidth == true ? AppPaddings.zero : const EdgeInsets.symmetric(horizontal: 20),
+                    padding: fullWidth == true ? AppPaddings.zero : const AppPaddings.symmetric(horizontal: 20),
                     child: multipleItems == null
                         ? widget ?? AppBox.shrink()
                         : Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: multipleItems),

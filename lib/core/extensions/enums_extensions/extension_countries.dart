@@ -22,7 +22,7 @@ extension ExtensionCountryFlagWidget on AppCountry {
         borderRadius: BorderRadius.all(Radius.circular(rounded == true ? (radius ?? AppElementRadius.normal).getRadius : 0)),
         border: hasBorder == true ? Border.all(color: borderColor ?? Colors.black45) : null,
       ),
-      padding: EdgeInsets.all(padding ?? 0),
+      padding: AppPaddings.all(padding ?? 0),
       child: AspectRatio(
         aspectRatio: aspectRatio ?? 1.5,
         child: CountryFlag.fromCountryCode(

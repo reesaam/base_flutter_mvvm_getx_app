@@ -17,7 +17,7 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
   PreferredSizeWidget? get appBar => AppAppBar(pageDetail: controller.pageDetail);
 
   @override
-  EdgeInsets? get pagePadding => AppPaddings.zero;
+  AppPaddings? get pagePadding => AppPaddings.zero;
 
   @override
   Widget get body => Column(
@@ -407,7 +407,7 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
       children: List<Widget>.generate(
         5,
         (index) => Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10),
+          padding: const AppPaddings.symmetric(vertical: 10),
           child: const Text('App BottomSheet Dialog without Button').copyWith(textColor: AppColors.tertiary),
         ),
       ),
@@ -529,7 +529,7 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
         text: 'Progress Indicator Snackbar',
         onTap: () => AppSnackBar.general(
           titleInput: 'Progress Indicator Snackbar Title',
-          widgetInput: Padding(padding: const EdgeInsets.only(top: 20), child: AppProgressIndicator.linear()),
+          widgetInput: Padding(padding: const AppPaddings.only(top: 20), child: AppProgressIndicator.linear()),
         ).show(),
       ),
     ),

@@ -1,4 +1,5 @@
 import '../../barrels/core_barrel.dart';
+import '../../barrels/ui_kit_barrel.dart';
 import 'app_breakpoints.dart';
 
 @immutable
@@ -19,7 +20,7 @@ class LayoutModel {
   final Orientation orientation;
   final int columns;
   final double gutter;
-  final EdgeInsets pagePadding;
+  final AppPaddings pagePadding;
   final double contentMaxWidth;
   final bool isLargeDesktop;
 
@@ -44,7 +45,7 @@ class LayoutModel {
         orientation: resolvedOrientation,
         columns: AppBreakpoints.columnsMobile,
         gutter: AppBreakpoints.gutterMobile,
-        pagePadding: const EdgeInsets.symmetric(horizontal: AppBreakpoints.paddingMobile),
+        pagePadding: const AppPaddings.symmetric(horizontal: AppBreakpoints.paddingMobile),
         contentMaxWidth: AppBreakpoints.contentMobile,
         isLargeDesktop: false,
       ),
@@ -54,7 +55,7 @@ class LayoutModel {
         orientation: resolvedOrientation,
         columns: AppBreakpoints.columnsTablet,
         gutter: AppBreakpoints.gutterTablet,
-        pagePadding: const EdgeInsets.symmetric(horizontal: AppBreakpoints.paddingTablet),
+        pagePadding: const AppPaddings.symmetric(horizontal: AppBreakpoints.paddingTablet),
         contentMaxWidth: AppBreakpoints.contentTablet,
         isLargeDesktop: false,
       ),
@@ -64,7 +65,7 @@ class LayoutModel {
         orientation: resolvedOrientation,
         columns: AppBreakpoints.columnsDesktop,
         gutter: AppBreakpoints.gutterDesktop,
-        pagePadding: const EdgeInsets.symmetric(horizontal: AppBreakpoints.paddingDesktop),
+        pagePadding: const AppPaddings.symmetric(horizontal: AppBreakpoints.paddingDesktop),
         contentMaxWidth: size.width >= AppBreakpoints.largeDesktop ? AppBreakpoints.contentLargeDesktop : AppBreakpoints.contentDesktop,
         isLargeDesktop: size.width >= AppBreakpoints.largeDesktop,
       ),

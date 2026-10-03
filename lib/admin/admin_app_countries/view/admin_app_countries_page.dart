@@ -15,7 +15,7 @@ class AdminAppCountriesPage extends CoreView<AdminAppCountriesController> {
   PreferredSizeWidget? get appBar => AppAppBar(pageDetail: controller.pageDetail);
 
   @override
-  EdgeInsets? get pagePadding => AppPaddings.zero;
+  AppPaddings? get pagePadding => AppPaddings.zero;
 
   @override
   Widget get body => Column(

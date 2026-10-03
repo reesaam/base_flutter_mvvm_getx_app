@@ -21,8 +21,8 @@ class AppContainer extends BaseWidget {
   final double? height;
   final double? width;
   final AlignmentGeometry? alignment;
-  final EdgeInsetsGeometry? padding;
-  final EdgeInsetsGeometry? margin;
+  final AppPaddings? padding;
+  final AppPaddings? margin;
   final Decoration? decoration;
   final Decoration? foregroundDecoration;
   final BoxConstraints? constraints;

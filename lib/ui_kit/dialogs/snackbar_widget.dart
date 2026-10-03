@@ -61,8 +61,8 @@ class AppSnackBarWidget<T> extends GetSnackBar {
   final CrossAxisAlignment? crossAxisAlignment;
   final bool? isDismissibleInput;
   final bool? iconPulseInput;
-  final EdgeInsets? paddingInput;
-  final EdgeInsets? marginInput;
+  final AppPaddings? paddingInput;
+  final AppPaddings? marginInput;
   final Duration? durationInput;
   final bool? showProgressIndicatorInput;
   final AppColors? progressIndicatorBackgroundColorInput;
@@ -126,7 +126,7 @@ class AppSnackBarWidget<T> extends GetSnackBar {
   AnimationController? get progressIndicatorController => progressIndicatorControllerInput;
 
   @override
-  EdgeInsets get padding => paddingInput ?? AppPaddings.snackBar;
+  AppPaddings get padding => paddingInput ?? AppPaddings.snackBar;
 
   @override
   EdgeInsets get margin => marginInput ?? AppPaddings.snackBar;

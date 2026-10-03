@@ -13,7 +13,7 @@ class AdminVerifiersPage extends CoreView<AdminVerifiersController> {
   PreferredSizeWidget? get appBar => AppAppBar(pageDetail: controller.pageDetail);
 
   @override
-  EdgeInsets? get pagePadding => AppPaddings.zero;
+  AppPaddings? get pagePadding => AppPaddings.zero;
 
   @override
   Widget get body => Column(
