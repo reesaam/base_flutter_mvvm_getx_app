@@ -42,7 +42,7 @@ void nullFunction() {}
 
 void clearAppData() async {
   final response = await AppDataRepository.to.clearAppData();
-  response.fold((l) => _exceptionDialog(l), (r) => AppSnackBar.show());
+  response.fold((l) => _exceptionDialog(l), (r) => AppSnackBar.info().show());
 }
 
 Future<bool?> saveAppData({
@@ -75,7 +75,7 @@ void printAllData({bool? detailsIncluded}) async {
 
 _exceptionDialog(GeneralException? l) => AppExceptionsDialog.show(exception: l ?? GeneralException.create());
 
-void noInternetConnectionSnackBar() => AppSnackBar.show(message: Texts.to.network.connection.internetNotAvailable);
+void noInternetConnectionSnackBar() => AppSnackBar.warning(messageInput: Texts.to.network.connection.internetNotAvailable).show();
 
 void showLoadingDialog({bool? isDismissible}) => AppAlertDialogs.to.form(form: AppProgressIndicator.linear(), dismissible: isDismissible);
 

@@ -2,6 +2,7 @@ import '../../barrels/ui_kit_barrel.dart';
 
 class AppElements {
   static AppElementRadius get getDefaultRadius => AppElementRadius.low;
+  static AppElementRadius get snackbarRadius => AppElementRadius.normal;
 
   /// Radius
   static Radius circularRadius({AppElementRadius? radius}) => Radius.circular((radius ?? getDefaultRadius).radius);

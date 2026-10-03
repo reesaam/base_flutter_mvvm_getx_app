@@ -63,7 +63,7 @@ class DeepLinkService extends CoreService {
   FutureOr<bool> _onErrorFunction(error) async {
     LoggerService.to.error(message: 'DeepLink Error: $error');
     goToPage(AppPages.homepage);
-    AppSnackBar.showError(message: Texts.to.error.unknown);
+    AppSnackBar.error(messageInput: Texts.to.error.unknown).show();
     return true;
   }
 

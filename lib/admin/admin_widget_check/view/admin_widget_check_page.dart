@@ -447,79 +447,84 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
     AdminFunctions.item(
       widget: AppButton.general(
         text: 'Simple Snackbar',
-        onTap: () => AppSnackBar.show(message: 'App SnackBar with LeadingText'),
+        onTap: () => AppSnackBar.general(messageInput: 'App SnackBar with LeadingText').show(),
       ),
     ),
     AdminFunctions.item(
       widget: AppButton.general(
         text: 'Simple Snackbar with Title',
-        onTap: () => AppSnackBar.show(message: 'App SnackBar with LeadingText', title: 'AppSnackBar Title'),
+        onTap: () => AppSnackBar.general(messageInput: 'App SnackBar with LeadingText', titleInput: 'AppSnackBar Title').show(),
       ),
     ),
     AdminFunctions.item(
       widget: AppButton.general(
         text: 'Snackbar with LeadingText',
-        onTap: () => AppSnackBar.show(
-          message: 'App SnackBar with LeadingText',
-          title: 'AppSnackBar Title',
-          leadingText: 'Leading Text',
-          leadingAction: controller.functionCalledDialog,
-        ),
+        onTap: () => AppSnackBar.general(
+          messageInput: 'App SnackBar with LeadingText',
+          titleInput: 'AppSnackBar Title',
+          leadingTextInput: 'Leading Text',
+          leadingActionInput: controller.functionCalledDialog,
+        ).show(),
       ),
     ),
     AdminFunctions.item(
       widget: AppButton.general(
         text: 'Snackbar with LeadingIcon',
-        onTap: () => AppSnackBar.show(
-          message: 'App SnackBar with LeadingIcon',
-          title: 'AppSnackBar Title',
-          leadingIcon: AppIcons.info,
-          leadingAction: controller.functionCalledDialog,
-        ),
+        onTap: () => AppSnackBar.general(
+          messageInput: 'App SnackBar with LeadingIcon',
+          titleInput: 'AppSnackBar Title',
+          leadingIconInput: AppIcons.info,
+          leadingActionInput: controller.functionCalledDialog,
+        ).show(),
       ),
     ),
     AdminFunctions.item(
       widget: AppButton.general(
         text: 'Snackbar with Button',
-        onTap: () => AppSnackBar.show(
-          message: 'App SnackBar with Button',
-          title: 'AppSnackBar Title',
-          buttonText: 'Button',
-          buttonAction: controller.functionCalledDialog,
-        ),
+        onTap: () => AppSnackBar.general(
+          messageInput: 'App SnackBar with Button',
+          titleInput: 'AppSnackBar Title',
+          buttonTextInput: 'Button',
+          buttonActionInput: controller.functionCalledDialog,
+        ).show(),
       ),
     ),
     AdminFunctions.item(
       widget: AppButton.general(
         text: 'Snackbar with Icon',
-        onTap: () => AppSnackBar.show(message: 'App SnackBar with Button', title: 'AppSnackBar Title', icon: AppIcons.settings),
+        onTap: () =>
+            AppSnackBar.general(messageInput: 'App SnackBar with Button', titleInput: 'AppSnackBar Title', iconInput: AppIcons.settings).show(),
       ),
     ),
     AdminFunctions.item(
       widget: AppButton.general(
         text: 'Snackbar with Progress Indicator',
-        onTap: () => AppSnackBar.show(message: 'App SnackBar with Progress Indicator', title: 'AppSnackBar Title', withProgressIndicator: true),
+        onTap: () => AppSnackBar.general(
+          messageInput: 'App SnackBar with Progress Indicator',
+          titleInput: 'AppSnackBar Title',
+          showProgressIndicatorInput: true,
+        ).show(),
       ),
     ),
     AdminFunctions.item(
       widget: AppButton.general(
         text: 'Progress Indicator Snackbar',
-        onTap: () => AppSnackBar.show(
-          title: 'Progress Indicator Snackbar Title',
-          widget: Padding(padding: const EdgeInsets.only(top: 20), child: AppProgressIndicator.linear()),
-        ),
+        onTap: () => AppSnackBar.general(
+          titleInput: 'Progress Indicator Snackbar Title',
+          widgetInput: Padding(padding: const EdgeInsets.only(top: 20), child: AppProgressIndicator.linear()),
+        ).show(),
       ),
     ),
     AdminFunctions.item(
       widget: AppButton.general(
         text: 'Error Snackbar',
-        onTap: () => AppSnackBar.showError(message: 'App SnackBar with Button', title: 'AppSnackBar Title'),
+        onTap: () => AppSnackBar.error(messageInput: 'App SnackBar with Button', titleInput: 'AppSnackBar Title').show(),
       ),
     ),
     AdminFunctions.item(
       widget: AppButton.general(
         text: 'Warning Snackbar',
-        onTap: () => AppSnackBar.showWarning(message: 'App SnackBar with Button', title: 'AppSnackBar Title'),
+        onTap: () => AppSnackBar.warning(messageInput: 'App SnackBar with Button', titleInput: 'AppSnackBar Title').show(),
       ),
     ),
   ], title: 'SnackBars');

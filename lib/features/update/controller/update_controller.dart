@@ -59,11 +59,11 @@ class UpdateController extends CoreController {
       popPage();
       if (version == null || version.version == AppDeviceInfoService.to.version) {
         LoggerService.to.info(message: 'No New Version Available');
-        AppSnackBar.show(message: Texts.to.update.updateNoUpdateFound);
+        AppSnackBar.info(messageInput: Texts.to.update.updateNoUpdateFound).show();
       } else {
         LoggerService.to.info(message: 'Available Version: ${version.version}');
         availableVersion.value = version.version;
-        AppSnackBar.show(message: '${Texts.to.update.updateUpdateFound}\n${Texts.to.general.version.withDoubleDots} $version');
+        AppSnackBar.general(messageInput: '${Texts.to.update.updateUpdateFound}\n${Texts.to.general.version.withDoubleDots} $version');
       }
     } else {
       noInternetConnectionSnackBar();
@@ -98,7 +98,7 @@ class UpdateController extends CoreController {
       dlFile = r;
       downloaded.value = true;
       LoggerService.to.debug(message: (dlFile?.length() ?? 0).toString());
-      AppSnackBar.show(message: Texts.to.update.updateDownloaded);
+      AppSnackBar.info(messageInput: Texts.to.update.updateDownloaded).show();
       AppAlertDialogs.to.twoButtons(
         buttonText1: Texts.to.general.ok,
         buttonText2: Texts.to.general.cancel,

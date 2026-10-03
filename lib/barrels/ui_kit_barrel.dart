@@ -42,7 +42,7 @@ export '../ui_kit/resources/spaces.dart';
 export '../ui_kit/resources/styles.dart';
 export '../ui_kit/resources/text_sizes.dart';
 export '../ui_kit/resources/text_styles.dart';
-export '../ui_kit/snackbar.dart';
+export '../ui_kit/dialogs/snackbar.dart';
 export '../ui_kit/switch.dart';
 export '../ui_kit/text_fields/text_field.dart';
 export '../ui_kit/theme/colors.dart';
