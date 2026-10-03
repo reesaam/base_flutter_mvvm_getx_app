@@ -1,28 +1,26 @@
+import '../../barrels/core_resources_barrel.dart';
 import '../../barrels/ui_kit_barrel.dart';
 
 class AppElements {
-  static AppElementRadius get getDefaultRadius => AppElementRadius.low;
-  static AppElementRadius get snackbarRadius => AppElementRadius.normal;
-
   /// Radius
-  static Radius circularRadius({AppElementRadius? radius}) => Radius.circular((radius ?? getDefaultRadius).radius);
+  static Radius circularRadius({AppElementRadius? radius}) => Radius.circular((radius ?? AppElementRadius.normal).getRadius);
   static BorderRadius borderRadiusCircular({AppElementRadius? radius}) => BorderRadius.all(circularRadius(radius: radius));
   static BorderRadius borderRadiusCircularTop({AppElementRadius? radius}) => BorderRadius.only(topLeft: circularRadius(radius: radius), topRight: circularRadius(radius: radius));
   static BorderRadius borderRadiusCircularBottom({AppElementRadius? radius}) => BorderRadius.only(bottomLeft: circularRadius(radius: radius), bottomRight: circularRadius(radius: radius));
 
   /// BorderSide
-  static BorderSide borderSide({AppColors? color, BorderStyle? borderStyle, double? width}) => BorderSide(color: (color ?? AppColors.primary).color, style: borderStyle ?? BorderStyle.solid, width: width ?? 1);
+  static BorderSide borderSide({AppColors? color, BorderStyle? borderStyle, double? width}) => BorderSide(color: (color ?? AppColors.primary).color, style: borderStyle ?? BorderStyle.solid, width: width ?? AppDefaults.borderWidth);
   static BorderSide borderSideError({BorderStyle? borderStyle, double? width}) => borderSide(color: AppColors.error, borderStyle: borderStyle, width: width);
   static BorderSide borderSideTransparent({BorderStyle? borderStyle, double? width}) => borderSide(color: AppColors.transparent, borderStyle: borderStyle, width: width);
   static BorderSide borderSideFocused({BorderStyle? borderStyle, double? width}) => borderSide(color: AppColors.primary, borderStyle: borderStyle, width: width);
   static BorderSide borderSideDisabled({BorderStyle? borderStyle, double? width}) => borderSide(color: AppColors.disabled, borderStyle: borderStyle, width: width);
 
   /// [Border] BoxBorder
-  static BoxBorder boxBorder({AppColors? color, BorderStyle? style, double? width}) => BoxBorder.all(color: (color ?? AppColors.primary).color, style: style ?? BorderStyle.solid, width: width ?? 1);
+  static BoxBorder boxBorder({AppColors? color, BorderStyle? style, double? width}) => BoxBorder.all(color: (color ?? AppColors.primary).color, style: style ?? BorderStyle.solid, width: width ?? AppDefaults.borderWidth);
 
-  static BoxBorder boxBorderError({AppColors? color, BorderStyle? style, double? width}) => BoxBorder.all(color: (color ?? AppColors.error).color, style: style ?? BorderStyle.solid, width: width ?? 1);
+  static BoxBorder boxBorderError({AppColors? color, BorderStyle? style, double? width}) => BoxBorder.all(color: (color ?? AppColors.error).color, style: style ?? BorderStyle.solid, width: width ?? AppDefaults.borderWidth);
   static BoxBorder boxBorderTransparent({BorderStyle? style, double? width}) => BoxBorder.all(color: AppColors.transparent.color, style: style ?? BorderStyle.solid, width: width ?? 1);
-  static BoxBorder boxBorderDisabled({AppColors? color, BorderStyle? style, double? width}) => BoxBorder.all(color: (color ?? AppColors.disabled).color, style: style ?? BorderStyle.solid, width: width ?? 1);
+  static BoxBorder boxBorderDisabled({AppColors? color, BorderStyle? style, double? width}) => BoxBorder.all(color: (color ?? AppColors.disabled).color, style: style ?? BorderStyle.solid, width: width ?? AppDefaults.borderWidth);
 
   /// [Decoration] BoxDecoration
   static BoxDecoration boxDecoration({BoxShape? boxShape, BorderRadius? borderRadius, AppColors? color, BoxBorder? inputBoxBorder, DecorationImage? image, Gradient? gradient}) =>

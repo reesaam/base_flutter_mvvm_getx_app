@@ -15,11 +15,11 @@ extension ExtensionCountriesList on List<AppCountry> {
 }
 
 extension ExtensionCountryFlagWidget on AppCountry {
-  Widget flag({double? size, bool? rounded, double? roundRadius, bool? hasBorder, Color? borderColor, double? padding, double? aspectRatio}) {
+  Widget flag({double? size, bool? rounded, AppElementRadius? radius, bool? hasBorder, Color? borderColor, double? padding, double? aspectRatio}) {
     return AppContainer(
       width: size ?? 100,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(rounded == true ? roundRadius ?? AppElements.getDefaultRadius.radius : 0)),
+        borderRadius: BorderRadius.all(Radius.circular(rounded == true ? (radius ?? AppElementRadius.normal).getRadius : 0)),
         border: hasBorder == true ? Border.all(color: borderColor ?? Colors.black45) : null,
       ),
       padding: EdgeInsets.all(padding ?? 0),

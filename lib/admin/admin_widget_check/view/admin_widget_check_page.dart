@@ -26,6 +26,7 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
     children: [
       AppDividers.general(),
       _dividers(),
+      _appCards(),
       _appBoxes(),
       _iconButtons(),
       _popUpMenu(),
@@ -78,6 +79,23 @@ class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
       ],
       isRow: false,
       title: 'App Boxes',
+    );
+  }
+
+  Widget _appCards() {
+    return AdminFunctions.section(
+      [
+        AdminFunctions.item(
+          title: 'AppCard General',
+          widget: AppCard.general(size: Size(100, 100), childInput: Text('Card Child').copyWith(textColor: AppColors.background)),
+        ),
+        AdminFunctions.item(
+          title: 'AppCard Outline',
+          widget: AppCard.outline(size: Size(100, 100), childInput: Text('Card Child').copyWith(textColor: AppColors.primary)),
+        ),
+      ],
+      isRow: true,
+      title: 'App Cards',
     );
   }
 

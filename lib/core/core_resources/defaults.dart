@@ -24,6 +24,7 @@ class AppDefaults {
   static double get borderWidth => 2;
 
   /// Widgets
+  static double get elevation => 2;
   static double get buttonsGeneralHeight => 50;
   static double get iconButtonIconSize => 22;
   static double get iconButtonSize => 26;

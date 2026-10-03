@@ -114,7 +114,7 @@ class AppSnackBarWidget<T> extends GetSnackBar {
   Color? get borderColor => (borderColorInput ?? AppColors.primary).color;
 
   @override
-  double get borderRadius => (borderRadiusInput ?? AppElements.snackbarRadius).radius;
+  double get borderRadius => (borderRadiusInput ?? AppElementRadius.snackbar).getRadius;
 
   @override
   bool get showProgressIndicator => showProgressIndicatorInput ?? false;

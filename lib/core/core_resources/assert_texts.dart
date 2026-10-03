@@ -1,4 +1,5 @@
 class AppAssertTexts {
+  static const String appElementRadiusInputCheck = 'Either Radius or AER must be provided.';
   static const String buttonsCheckNullInputs = 'Either text or icon or both must be provided, or a child widget must be provided.';
   static const String dialogInputs = 'Either text or widget must be provided, or a child widget must be provided.';
   static const String layoutScope = 'LayoutScope not found. Wrap the screen with LayoutScope / AdaptiveHost.';

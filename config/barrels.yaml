@@ -119,6 +119,7 @@ barrels:
       - lib/core/core_resources/images.dart
     exclude:
       - theme/color_palette.dart
+      - card/card_widget.dart
       - buttons/button_constructor.dart
       - buttons/button_type_enum.dart
       - buttons/button_widget.dart
@@ -127,6 +128,7 @@ barrels:
       - text_fields/text_field_widget.dart
       - dialogs/alert_dialog_widget.dart
       - dialogs/bottom_sheet_widget.dart
+      - dialogs/snackbar_widget.dart
 
   - output: lib/barrels/localization_barrel.dart
     library: true

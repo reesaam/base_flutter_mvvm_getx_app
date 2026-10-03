@@ -29,7 +29,7 @@ class AppAlertDialogWidget {
           title: title == null
               ? AppBox.shrink()
               : AppCard.outline(
-                  child: Column(
+                  childInput: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
