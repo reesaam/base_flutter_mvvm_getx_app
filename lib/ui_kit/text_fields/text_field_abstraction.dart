@@ -13,4 +13,5 @@ abstract class AppTextFieldAbstraction {
   AppTextFieldAbstraction.phone();
   AppTextFieldAbstraction.email();
   AppTextFieldAbstraction.numeric();
+  AppTextFieldAbstraction.multiLine();
 }

@@ -6,7 +6,6 @@ import '../../barrels/ui_kit_barrel.dart';
 import '../../barrels/core_barrel.dart';
 import '../../barrels/extensions_barrel.dart';
 import '../../barrels/localization_barrel.dart';
-import '../../barrels/shared_models_barrel.dart';
 
 import 'text_field_abstraction.dart';
 
@@ -14,7 +13,7 @@ import 'text_field_abstraction.dart';
 /// All TextFields in the App will generate with this Widget in [AppTextField]
 /// [AppTextField] also uses [AppTextFieldAbstraction] for Abstraction which has been explained there
 
-abstract class AppTextFieldWidget extends StatelessWidget {
+abstract class AppTextFieldWidget extends BaseWidget {
   const AppTextFieldWidget({
     super.key,
     required this.controller,
@@ -22,8 +21,7 @@ abstract class AppTextFieldWidget extends StatelessWidget {
     this.labelText,
     this.helperText,
     this.hintText,
-    this.width,
-    this.height,
+    this.size,
     this.padding,
     this.margin,
     this.textInputType,
@@ -39,6 +37,7 @@ abstract class AppTextFieldWidget extends StatelessWidget {
     this.wholeWidgetAction,
     this.onChangedAction,
     this.regexValidator,
+    this.autoValidateMode,
     this.inputFormatters,
     this.editable,
     this.hasCounter,
@@ -49,12 +48,12 @@ abstract class AppTextFieldWidget extends StatelessWidget {
     this.expandable,
     this.autoFocus,
     this.focusNode,
-    this.color = AppColors.primary,
-    this.textColor = AppColors.textFieldText,
-    this.labelColor = AppColors.textFieldLabel,
-    this.errorColor = AppColors.error,
-    this.helperColor = AppColors.textFieldHelper,
-    this.hintColor = AppColors.hint,
+    this.color,
+    this.textColor,
+    this.labelColor,
+    this.errorColor,
+    this.helperColor,
+    this.hintColor,
   });
 
   final TextEditingController controller;
@@ -67,8 +66,7 @@ abstract class AppTextFieldWidget extends StatelessWidget {
   final AppColors? helperColor;
   final String? hintText;
   final AppColors? hintColor;
-  final double? width;
-  final double? height;
+  final Size? size;
   final AppPaddings? padding;
   final AppPaddings? margin;
   final TextInputType? textInputType;
@@ -84,6 +82,7 @@ abstract class AppTextFieldWidget extends StatelessWidget {
   final Function()? wholeWidgetAction;
   final Function(String)? onChangedAction;
   final AppRegexes? regexValidator;
+  final AutovalidateMode? autoValidateMode;
   final List<TextInputFormatter>? inputFormatters;
   final bool? editable; // Default is false
   final bool? hasCounter; // Default is false
@@ -97,9 +96,9 @@ abstract class AppTextFieldWidget extends StatelessWidget {
   final FocusNode? focusNode;
 
   @override
-  Widget build(BuildContext context) => AppContainer(
-    width: width,
-    height: height,
+  Widget get widget => AppContainer(
+    width: size?.width,
+    height: size?.height,
     padding: padding,
     margin: margin,
     child: TextFormField(
@@ -128,14 +127,14 @@ abstract class AppTextFieldWidget extends StatelessWidget {
       focusNode: focusNode,
       canRequestFocus: editable == false || wholeWidgetAction != null ? false : true,
       scrollPhysics: const BouncingScrollPhysics(),
-      onTap: wholeWidgetAction == null ? () {} : () => wholeWidgetAction!(),
-      onChanged: (value) => onChangedAction == null ? () {} : onChangedAction!(value),
-      onTapOutside: (event) => FocusScope.of(context).previousFocus(),
-      autovalidateMode: AutovalidateMode.onUserInteraction,
-      validator: (value) => _errorDetector(),
+      onTap: wholeWidgetAction == null ? nullFunction : () => wholeWidgetAction!(),
+      onChanged: (value) => onChangedAction == null ? nullFunction() : onChangedAction!(value),
+      onTapOutside: (event) => FocusScope.of(Get.context!).unfocus(),
+      autovalidateMode: autoValidateMode ?? AutovalidateMode.onUserInteraction,
+      validator: (value) => _errorDetector(value: value),
       inputFormatters: inputFormatters ?? _formatters(),
       buildCounter: (context, {required currentLength, required isFocused, required maxLength}) =>
-          hasCounter == true || showMaxLength == true ? _buildCounter(currentLength) : null,
+      hasCounter == true || showMaxLength == true ? _buildCounter(currentLength) : null,
 
       /// All Decoration Customizations
       decoration: InputDecoration(
@@ -167,6 +166,7 @@ abstract class AppTextFieldWidget extends StatelessWidget {
     ),
   );
 
+
   Widget? get _leading =>
       leadingIcon == null ? null : InkWell(onTap: () => leadingAction == null ? nullFunction() : leadingAction!(), child: leadingIcon);
 
@@ -176,7 +176,7 @@ abstract class AppTextFieldWidget extends StatelessWidget {
 
   /// All Errors would Detect by this function
   /// Even multiple conditions will Check and shows by their priority
-  String? _errorDetector() {
+  String? _errorDetector({String? value}) {
     String? text;
 
     //Regex Check
@@ -198,7 +198,10 @@ abstract class AppTextFieldWidget extends StatelessWidget {
   }
 
   /// Regex Checker
-  bool _regexValidator(String value) => value == Texts.to.general.empty ? true : RegexVal.hasMatch(value, regexValidator?.value() ?? '');
+  bool _regexValidator(String value) {
+    AppRegexes regExp = (isPassword == true ? (regexValidator ?? AppRegexes.passwordEasy) : regexValidator) ?? AppRegexes.none;
+    return value == Texts.to.general.empty ? true : RegexVal.hasMatch(value, regExp.value());
+  }
 
   /// Counter Builder
   /// [Counter], [MaxLength] and [CurrentLength] has Specific and Complicated Conditions
