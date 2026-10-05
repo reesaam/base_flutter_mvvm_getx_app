@@ -1,17 +1,9 @@
-import '../../../barrels/shared_models_barrel.dart';
+import '../../../barrels/core_resources_barrel.dart';
 
-extension Equal on AppRegexModel {
-  bool equalTo(AppRegexModel regExp) => regexValue == regExp.regexValue;
-}
+extension ExtensionsOnAppRegexes on AppRegexes {
+  bool equalTo(AppRegexes regExp) => value() == regExp.value();
 
-extension GetRegExp on AppRegexModel {
-  RegExp get regExp => RegExp(regexValue);
-}
+  RegExp get regExp => RegExp(value());
 
-extension ListContains on List<AppRegexModel> {
-  bool contains(AppRegexModel regExp) => where((element) => element.equalTo(regExp)).isNotEmpty;
-}
-
-extension ListModelContains on AppRegexModelsList {
-  bool contains(AppRegexModel regExp) => regexesList.where((element) => element.equalTo(regExp)).isNotEmpty ?? false;
+  bool contains(AppRegexes regExp) => AppRegexes.values.where((element) => element.equalTo(regExp)).isNotEmpty;
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_regex/flutter_regex.dart';
 
+import '../../barrels/core_resources_barrel.dart';
 import '../../barrels/ui_kit_barrel.dart';
 import '../../barrels/core_barrel.dart';
 import '../../barrels/extensions_barrel.dart';
@@ -82,7 +83,7 @@ abstract class AppTextFieldWidget extends StatelessWidget {
   final Function()? suffixAction;
   final Function()? wholeWidgetAction;
   final Function(String)? onChangedAction;
-  final AppRegexModel? regexValidator;
+  final AppRegexes? regexValidator;
   final List<TextInputFormatter>? inputFormatters;
   final bool? editable; // Default is false
   final bool? hasCounter; // Default is false
@@ -189,7 +190,7 @@ abstract class AppTextFieldWidget extends StatelessWidget {
 
   List<TextInputFormatter>? _formatters() {
     List<TextInputFormatter>? formatters = List<TextInputFormatter>.empty(growable: true);
-    if (regexValidator != null && !AppRegexModelsList.exceptionsOfFormatting().contains(regexValidator!)) {
+    if (regexValidator != null && !AppRegexes.values.where((element) => element.isExceptionOfFormatting == true).contains(regexValidator!)) {
       formatters.add(FilteringTextInputFormatter.allow(regexValidator!.regExp));
     }
 
@@ -197,7 +198,7 @@ abstract class AppTextFieldWidget extends StatelessWidget {
   }
 
   /// Regex Checker
-  bool _regexValidator(String value) => value == Texts.to.general.empty ? true : RegexVal.hasMatch(value, regexValidator!.regexValue);
+  bool _regexValidator(String value) => value == Texts.to.general.empty ? true : RegexVal.hasMatch(value, regexValidator?.value() ?? '');
 
   /// Counter Builder
   /// [Counter], [MaxLength] and [CurrentLength] has Specific and Complicated Conditions

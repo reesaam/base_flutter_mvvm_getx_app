@@ -1,5 +1,6 @@
 import 'package:flutter/services.dart';
 
+import '../../barrels/core_resources_barrel.dart';
 import '../../barrels/shared_models_barrel.dart';
 import '../../barrels/ui_kit_barrel.dart';
 
@@ -72,7 +73,7 @@ class AppTextField extends AppTextFieldWidget implements AppTextFieldAbstraction
     Function()? suffixAction,
     Function()? wholeWidgetAction,
     Function(String)? onChangedAction,
-    AppRegexModel? regexValidator,
+    AppRegexes? regexValidator,
     List<TextInputFormatter>? inputFormatters,
     bool? editable,
     bool? hasCounter,
@@ -184,7 +185,7 @@ class AppTextField extends AppTextFieldWidget implements AppTextFieldAbstraction
     suffixAction: suffixAction,
     wholeWidgetAction: wholeWidgetAction,
     onChangedAction: onChangedAction,
-    regexValidator: isComplex == true ? AppRegexModel.passwordHard() : AppRegexModel.passwordEasy(),
+    regexValidator: isComplex == true ? AppRegexes.passwordHard : AppRegexes.passwordEasy,
     inputFormatters: inputFormatters,
     editable: editable,
     hasCounter: hasCounter,
@@ -254,7 +255,7 @@ class AppTextField extends AppTextFieldWidget implements AppTextFieldAbstraction
     suffixAction: suffixAction,
     wholeWidgetAction: wholeWidgetAction,
     onChangedAction: onChangedAction,
-    regexValidator: AppRegexModel.phoneNumber(),
+    regexValidator: AppRegexes.phoneNumber,
     inputFormatters: inputFormatters,
     editable: editable,
     hasCounter: hasCounter,
@@ -324,7 +325,7 @@ class AppTextField extends AppTextFieldWidget implements AppTextFieldAbstraction
     suffixAction: suffixAction,
     wholeWidgetAction: wholeWidgetAction,
     onChangedAction: onChangedAction,
-    regexValidator: AppRegexModel.email(),
+    regexValidator: AppRegexes.email,
     inputFormatters: inputFormatters,
     editable: editable,
     hasCounter: hasCounter,
@@ -395,7 +396,7 @@ class AppTextField extends AppTextFieldWidget implements AppTextFieldAbstraction
     suffixAction: suffixAction,
     wholeWidgetAction: wholeWidgetAction,
     onChangedAction: onChangedAction,
-    regexValidator: AppRegexModel.numeric(),
+    regexValidator: AppRegexes.numeric,
     inputFormatters: inputFormatters,
     editable: editable,
     hasCounter: hasCounter,
