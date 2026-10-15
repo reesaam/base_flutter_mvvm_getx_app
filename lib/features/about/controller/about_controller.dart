@@ -9,7 +9,7 @@ import '../models/about_item_model.dart';
 
 @GetPut.controller()
 class AboutController extends CoreController {
-  final RxList<AboutItemModel> items = <AboutItemModel>[].obs;
+  final RxList<AboutItemModel> items = List<AboutItemModel>.empty(growable: true).obs;
 
   @override
   void dataInit() async {

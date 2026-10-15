@@ -1,6 +1,4 @@
-import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:get/get.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:base_flutter_mvvm_getx_app/barrels/core_barrel.dart';
 import 'package:base_flutter_mvvm_getx_app/barrels/core_resources_barrel.dart';
