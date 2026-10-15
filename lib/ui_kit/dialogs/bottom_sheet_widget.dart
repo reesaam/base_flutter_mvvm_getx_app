@@ -1,3 +1,4 @@
+import '../../barrels/core_barrel.dart';
 import '../../barrels/extensions_barrel.dart';
 import '../../barrels/localization_barrel.dart';
 import '../../barrels/ui_kit_barrel.dart';
@@ -59,7 +60,7 @@ class AppBottomSheetWidget {
   );
 
   static Widget renderButtonsBottomDialog(List<Widget>? buttons) {
-    List<Widget> buttonWidgetList = List.empty(growable: true);
+    List<Widget> buttonWidgetList = createEmptyList<Widget>();
     int length = buttons?.length ?? 0;
     for (int i = 0; i < length; i++) {
       buttonWidgetList.addIf(i == 0, AppBox.shrinkExpanded());

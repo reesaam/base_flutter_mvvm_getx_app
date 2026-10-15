@@ -189,7 +189,7 @@ abstract class AppTextFieldWidget extends BaseWidget {
   }
 
   List<TextInputFormatter>? _formatters() {
-    List<TextInputFormatter>? formatters = List<TextInputFormatter>.empty(growable: true);
+    List<TextInputFormatter>? formatters = createEmptyList<TextInputFormatter>();
     if (regexValidator != null && !AppRegexes.values.where((element) => element.isExceptionOfFormatting == true).contains(regexValidator!)) {
       formatters.add(FilteringTextInputFormatter.allow(regexValidator!.regExp));
     }

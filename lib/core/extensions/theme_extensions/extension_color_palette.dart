@@ -1,3 +1,4 @@
+import '../../../barrels/core_barrel.dart';
 import '../../../barrels/extensions_barrel.dart';
 import '../../../barrels/ui_kit_barrel.dart';
 
@@ -54,7 +55,7 @@ Color? _createColorFromColorCode(String? colorCode) {
 }
 
 LinearGradient? _createGradientFromColorCode({List<String>? gradientColorCodes, String? singleColorCode}) {
-  List<Color> colors = List<Color>.empty(growable: true);
+  List<Color> colors = createEmptyList<Color>();
   if (gradientColorCodes?.isNotEmpty ?? false) {
     for (int i = 0; i < (gradientColorCodes?.length ?? 0); i++) {
       final cl = _createColorFromColorCode(gradientColorCodes?[i]);

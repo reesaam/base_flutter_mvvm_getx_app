@@ -1,3 +1,4 @@
+import '../../barrels/core_barrel.dart';
 import '../../barrels/localization_barrel.dart';
 import '../../barrels/ui_kit_barrel.dart';
 
@@ -59,7 +60,7 @@ class AppAlertDialogWidget {
   }
 
   static List<Widget> _renderButtonsAlertWidgetDialog(List<Widget> buttons) {
-    List<Widget> list = List.empty(growable: true);
+    List<Widget> list = createEmptyList<Widget>();
     int length = buttons.length;
     for (int i = 0; i < length; i++) {
       list.addIf(i == 0, AppBox.shrinkExpanded());

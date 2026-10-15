@@ -16,7 +16,7 @@ class AppPermissions extends CoreComponent {
     _fillLists();
   }
 
-  final List<Permission> _listPermissions = List<Permission>.empty(growable: true);
+  final List<Permission> _listPermissions = createEmptyList<Permission>();
 
   void _fillLists() {
     Platform.isIOS ? null : _listPermissions.add(Permission.location);
@@ -41,7 +41,7 @@ class AppPermissions extends CoreComponent {
   }
 
   Future<List<PermissionBaseResponse>> askPermissionsList(List<Permission> permissions) async {
-    List<PermissionBaseResponse> responses = List<PermissionBaseResponse>.empty(growable: true);
+    List<PermissionBaseResponse> responses = createEmptyList<PermissionBaseResponse>();
     for (var permission in permissions) {
       var status = await askPermission(permission);
       responses.add(status);
@@ -57,7 +57,7 @@ class AppPermissions extends CoreComponent {
   }
 
   Future<List<PermissionBaseResponse>> checkPermissionsList(List<Permission> permissions) async {
-    List<PermissionBaseResponse> responses = List<PermissionBaseResponse>.empty(growable: true);
+    List<PermissionBaseResponse> responses = createEmptyList<PermissionBaseResponse>();
     for (var permission in permissions) {
       var status = await checkPermission(permission);
       responses.add(status);

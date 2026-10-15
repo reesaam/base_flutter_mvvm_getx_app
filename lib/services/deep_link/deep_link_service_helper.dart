@@ -17,7 +17,7 @@ class DeepLinkHandlerHelper {
 
   static DeepLinkServiceCallBackData? getDataFromCallBackUrl(String callbackUrl) {
     List<String> parts = callbackUrl.split(_paramsSeparator);
-    List<String> params = List<String>.empty(growable: true);
+    List<String> params = createEmptyList<String>();
 
     if (parts.any((element) => element.contains(_signature))) {
       final typeIndex = parts.indexWhere((element) => element.contains(_signature));

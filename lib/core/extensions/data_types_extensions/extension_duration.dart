@@ -1,3 +1,4 @@
+import '../../../barrels/core_barrel.dart';
 import '../../../barrels/localization_barrel.dart';
 import '../../../barrels/shared_models_barrel.dart';
 
@@ -33,7 +34,7 @@ extension ExtensionDateTimeFormat on Duration {
 
   String toConditionalFormat() {
     DurationCustomModel diff = calculateDifference();
-    List<String> list = List<String>.empty(growable: true);
+    List<String> list = createEmptyList<String>();
     diff.year == 0 || diff.year == null ? null : list.add('${diff.year}Y,');
     diff.month == 0 || diff.month == null ? null : list.add(' ${diff.month}M,');
     diff.week == 0 || diff.week == null ? null : list.add(' ${diff.week}W,');

@@ -58,6 +58,7 @@ barrels:
       - environment_variables.dart
     files:
       - lib/core/core_functions.dart
+      - lib/core/core_data_functions.dart
 
   - output: lib/barrels/core_elements_barrel.dart
     library: true
