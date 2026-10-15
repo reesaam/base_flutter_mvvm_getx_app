@@ -2,60 +2,45 @@
 
 <a href="https://github.com/reesaam/base_flutter_mvvm_getx_app"><img src="https://img.shields.io/badge/repo-Base_Flutter_App_/_MVVM_GetX-yellowgreen?logo=github" alt="build"></a>
 
-**A Resam Taghipour's Base Application for Flutter**
+**Resam Taghipour's base application for Flutter: MVVM on GetX, ready to build on.**
 
-**> Based on MVVM and GetX**
+## What you get
 
-### Specifications:
-- `MVVM` Architecture
-- `GetX` State-Managements
-- Centralized, Fully-Modular, Object-Oriented
-- Generalized UI Elements and Widgets 
-- Controllers, Components, Repositories and Services are ready to implement with Object-Oriented Structure
-- Storage, Relational and non-Relational Databases Compatible
-- Several Connection Types Compatible
-- `JSON` Friendly
+- **Architecture:** MVVM with `CoreView` / `CoreController` / `CoreRepository` / `CoreService`, plus generated GetX bindings and routes
+- **Data:** `Freezed` models, `dartz` `Either` results, typed exceptions
+- **Network:** a single `Dio` client with auth, retry, and logging interceptors
+- **Storage:** `GetStorage` or `SharedPreferences`, with `GetSecureStorage` for secrets
+- **Environments:** development, stage, and production via `--dart-define-from-file`
+- **Services:** logger, connectivity, notifications, deep links, statistics, device/app info
+- **Components:** permissions, share, file functions, UUID
+- **Localization:** i69n YAML (English, Persian)
+- **UI kit:** theme, app bar, drawer, bottom bar, buttons, text fields, dialogs, sheets, snackbars, popup menu
+- **Imports:** generated barrels, enforced by a custom lint
+- **Admin pages:** check widgets, resources, regexes, and app info while developing
+- **Tooling:** launcher icon generator, rename and package-name tools
 
-### This Base Project is using:
-- Performance Optimization
-- `Freezed`, `Dartz` implemented
-- Dependency Injection
-- `Dio`, `Retrofit`, `Interceptors` implemented
-- Multi Environment Ready
-- Some Storages Implemented (`Get Storage`, `Shared Preferences`, `Secure Storage`)
-- `Intl App Localization` (i69) - Configurations with a yaml file and a tree data
-- Compatible with Native Modules (`Camera`, `Contacts`, `Permissions`, `Storage`, etc.)
-- Compatible with Several Connection Types (`Bluetooth`, `BLE Devices`, `Wi-Fi`, etc.)
-- App Icon Generator
-- `Admin Pages` to check and test all widgets and functionalities
+## Quick start
 
-### This Base Project is using:
-- Multi Environment Ready
-- Barrels Generator
-- Some Storages implemented (`Get Storage`, `Shared Preferences`)
-- Connections and Network Service
-- Failure Handling Service
-- Logger Service
-- Notifications Service
-- Countries Specifications (Flags, TimeZones, etc.)
-- Permissions
-- DeepLink
-- Share Module
-- UUID
-- Complete Theming and UI Kit including Animations and UI Elements
-- Major UI Elements like `AppBar`, `BottomNavigationBar`, `ProgressIndicator`, `TextFields`, `Popup Menu`, `SnackBar`, `Dialogs` (Fully Modular)
-- Beneficial `Extensions` on many types and models
-- `App Icon` Generator
+```bash
+flutter pub get
+dart run tool/generate_barrels.dart
+dart run build_runner build --delete-conflicting-outputs
+flutter run --dart-define-from-file=config/envs/env.development.json
+```
+
+On Windows, `.\builder` does the first three steps.
+
+## Documentation
+
+- [Overview](documentation/OVERVIEW.md): folders, features, services
+- [Architecture](documentation/ARCHITECTURE.md): layers, DI, data flow, import rules
+- [Developer Guide](documentation/DEVELOPER_GUIDE.md): commands, environments, adding code, tests
 
 > [!Tip]
-> 
-> If you use this repo as a third-party repo in your project, you can get and merge updates to your project constantly.
+> Use this repo as an upstream of your app to keep merging its updates.
 
 > [!Note]
-> 
-> You can always send your merge requests if you can improve the code or adding a useful feature into this.
-> Best-Practices for any feature or module are always welcome.
-
+> Merge requests with improvements or useful features are welcome.
 
 ## About Author
 
