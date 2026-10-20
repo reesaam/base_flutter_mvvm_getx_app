@@ -12,14 +12,11 @@ class AboutController extends CoreController {
   final RxList<AboutItemModel> items = createEmptyList<AboutItemModel>().obs;
 
   @override
-  void dataInit() async {
+  void onInitFunction() async {
+    pageDetail = AppPages.about;
     await AppDeviceInfoService.to.ensureReady();
     _fillData();
-  }
-
-  @override
-  void pageInit() {
-    pageDetail = AppPages.about;
+    super.onInitFunction();
   }
 
   void _fillData() {

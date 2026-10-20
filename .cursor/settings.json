@@ -1,0 +1,7 @@
+{
+  "plugins": {
+    "dart-flutter": {
+      "enabled": true
+    }
+  }
+}

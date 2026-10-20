@@ -18,22 +18,14 @@ class SplashScreenController extends CoreController {
   late String appVersion;
 
   @override
-  void dataInit() async {
+  void onReadyFunction() async {
     CoreFlags.clearData ? clearAppData() : null;
-    AppStatisticsService.to.increaseLaunch();
-    printAllData();
-  }
-
-  @override
-  void pageInit() {
     pageDetail = AppPages.splashScreen;
     logoSource = AppLogos.appLogo;
     appName = AppInfo.appName;
     appVersion = '${Texts.to.general.version}: ${AppInfo.currentVersion.version}';
-  }
-
-  @override
-  void onReadyFunction() async {
+    AppStatisticsService.to.increaseLaunch();
+    printAllData();
     goToPage(AppPages.homepage, popAll: true);
   }
 

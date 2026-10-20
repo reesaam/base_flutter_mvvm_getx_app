@@ -28,19 +28,10 @@ class SettingsController extends CoreController {
   late StreamSubscription<AppSettingData> appSettingDataListener;
 
   @override
-  void dataInit() async {
-    final loadedAppData = await loadAppData();
-    appSettings.value = loadedAppData?.settings ?? const AppSettingData();
-    CoreFlags.checkUpdate ? functionCheckUpdateAvailableVersion() : null;
-  }
-
-  @override
-  void pageInit() {
-    pageDetail = AppPages.settings;
-  }
-
-  @override
   void onInitFunction() {
+    pageDetail = AppPages.settings;
+    appSettings.value = appData?.settings ?? AppSettingData();
+    CoreFlags.checkUpdate ? functionCheckUpdateAvailableVersion() : null;
     _fillData();
   }
 

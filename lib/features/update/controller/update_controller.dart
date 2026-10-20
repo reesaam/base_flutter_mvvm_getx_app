@@ -34,12 +34,8 @@ class UpdateController extends CoreController {
   Rx<bool> buttonDownloadUpdateLoading = false.obs;
 
   @override
-  void pageInit() {
-    pageDetail = AppPages.update;
-  }
-
-  @override
   void onInitFunction() {
+    pageDetail = AppPages.update;
     downloaded.listen((data) {}).onData((data) => data == true ? popPage() : null);
   }
 

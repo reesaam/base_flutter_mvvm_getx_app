@@ -8,8 +8,9 @@ class NotFoundController extends CoreController {
   late Icon icon;
 
   @override
-  void pageInit() {
+  void onInitFunction() {
     pageDetail = AppPages.notFound;
     icon = AppIcons.notFound.widget;
+    super.onInitFunction();
   }
 }

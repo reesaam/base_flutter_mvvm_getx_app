@@ -4,8 +4,10 @@ import '../../../barrels/core_resources_barrel.dart';
 
 @GetPut.controller()
 class HomePageController extends CoreController {
+
   @override
-  void pageInit() {
+  void onInitFunction() async {
     pageDetail = AppPages.homepage;
+    super.onInitFunction();
   }
 }

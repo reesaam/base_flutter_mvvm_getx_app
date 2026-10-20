@@ -4,6 +4,8 @@ import '../../barrels/core_barrel.dart';
 abstract class CoreController extends GetxController {
   BuildContext? get contextOrNull => Get.context;
 
+  AppData? appData;
+
   BuildContext get context {
     final ctx = Get.context;
     if (ctx == null) throw StateError('BuildContext is not available yet. Access context after the widget tree is mounted.');
@@ -14,17 +16,13 @@ abstract class CoreController extends GetxController {
 
   late AppPageDetail pageDetail;
 
-  /// Mandatory Functions
-  void dataInit() {}
-  void pageInit() {}
   void onInitFunction() {}
   void onReadyFunction() {}
   void onCloseFunction() {}
 
   @override
-  void onInit() {
-    dataInit();
-    pageInit();
+  void onInit() async {
+    appData = await loadAppData();
     onInitFunction();
     super.onInit();
   }
