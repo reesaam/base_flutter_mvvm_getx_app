@@ -66,7 +66,7 @@ Async operations return `Either` instead of throwing (`core_resources/defined_ty
 | `BaseAPIResponse<T>` | `NetworkException` |
 | `BaseLocalResponse<T>` | `LocalException` |
 
-Exceptions are in `lib/components/failure/`. `NetworkException.handleResponse` and `LocalException.handleResponse` map plugin errors to these types, and return them rather than throw.
+Exceptions are in `../lib/core/core_resources/failure`. `NetworkException.handleResponse` and `LocalException.handleResponse` map plugin errors to these types, and return them rather than throw.
 
 ## Data flow example
 

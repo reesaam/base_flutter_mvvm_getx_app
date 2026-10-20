@@ -31,7 +31,7 @@ class AppSharedPreferences implements AppStoragesAbstraction {
       _printException('CLEAR STORAGE', ex);
       return Left(LocalException.handleResponse(ex, stackTrace));
     } catch (ex, st) {
-      _printException('CLEAR STORAGE', GeneralException.create(ex: ex));
+      _printException('CLEAR STORAGE', CoreException.create(ex: ex));
       rethrow;
     }
   }
@@ -47,7 +47,7 @@ class AppSharedPreferences implements AppStoragesAbstraction {
       _printException('CHECK', ex);
       return Left(LocalException.handleResponse(ex, stackTrace));
     } catch (ex) {
-      _printException('CHECK', GeneralException.create(ex: ex));
+      _printException('CHECK', CoreException.create(ex: ex));
       rethrow;
     }
   }
@@ -64,7 +64,7 @@ class AppSharedPreferences implements AppStoragesAbstraction {
       _printException('LOAD', ex);
       return Left(LocalException.handleResponse(ex, stackTrace));
     } catch (ex) {
-      _printException('LOAD', GeneralException.create(ex: ex));
+      _printException('LOAD', CoreException.create(ex: ex));
       rethrow;
     }
   }
@@ -80,14 +80,14 @@ class AppSharedPreferences implements AppStoragesAbstraction {
       _printException('SAVE', ex);
       return Left(LocalException.handleResponse(ex, stackTrace));
     } catch (ex) {
-      _printException('SAVE', GeneralException.create(ex: ex));
+      _printException('SAVE', CoreException.create(ex: ex));
       rethrow;
     }
   }
 
   LocalException get _defaultLeftResponse => ResponseStatusLocal.unknownException.exception();
 
-  void _printException(String method, GeneralException exception) {
+  void _printException(String method, CoreException exception) {
     LoggerService.to.error(message: '==> Local $method Data Exception: ${exception.message} (${exception.statusCode})');
   }
 }

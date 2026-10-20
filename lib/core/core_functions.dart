@@ -73,7 +73,7 @@ void printAllData({bool? detailsIncluded}) async {
   AppStorageService.to.printData(appData: appData, detailsIncluded: detailsIncluded);
 }
 
-_exceptionDialog(GeneralException? l) => AppExceptionsDialog.show(exception: l ?? GeneralException.create());
+_exceptionDialog(CoreException? l) => AppExceptionsDialog.show(exception: l ?? CoreException.create());
 
 void noInternetConnectionSnackBar() => AppSnackBar.warning(messageInput: Texts.to.network.connection.internetNotAvailable).show();
 

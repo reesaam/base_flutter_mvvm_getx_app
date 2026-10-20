@@ -1,10 +1,8 @@
-import '../../barrels/core_barrel.dart';
+import '../../../barrels/core_barrel.dart';
+import '../../../barrels/core_resources_barrel.dart';
+import '../../../barrels/extensions_barrel.dart';
 
-import '../../barrels/core_resources_barrel.dart';
-import '../../barrels/extensions_barrel.dart';
-import 'general_exception.dart';
-
-class LocalException implements GeneralException {
+class LocalException implements CoreException {
   LocalException({this.message, this.statusCode, this.stackTrace});
 
   @override
@@ -14,7 +12,7 @@ class LocalException implements GeneralException {
   @override
   StackTrace? stackTrace;
 
-  static LocalException handleResponse(GeneralException ex, StackTrace? stacktrace) {
+  static LocalException handleResponse(CoreException ex, StackTrace? stacktrace) {
     if (ex is LocalException) {
       return LocalException(message: ex.message, statusCode: ex.statusCode, stackTrace: stacktrace);
     }

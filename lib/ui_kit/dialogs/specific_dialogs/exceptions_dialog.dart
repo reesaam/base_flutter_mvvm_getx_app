@@ -1,11 +1,10 @@
-import '../../../barrels/components_barrel.dart';
-import '../../../barrels/services_barrel.dart';
+import '../../../barrels/core_resources_barrel.dart';
 import '../../../barrels/core_barrel.dart';
 import '../../../barrels/localization_barrel.dart';
 import '../../../barrels/ui_kit_barrel.dart';
 
 class AppExceptionsDialog extends AppAlertDialogs {
-  static show({required GeneralException exception, String? message, int? statusCode, Function()? onTap}) async {
+  static show({required CoreException exception, String? message, int? statusCode, Function()? onTap}) async {
     await AppAlertDialogs.to.oneButton(
       buttonText: Texts.to.general.ok,
       title: statusCode != null ? 'Error: ${statusCode.toString()}' : exception.statusCode?.toString() ?? Texts.to.error.unknown,

@@ -4,7 +4,7 @@ import '../../../barrels/extensions_barrel.dart';
 
 extension SetExceptionBaseResponse on BaseResponse {
   BaseResponse<T?> setResponseStatus<T>({required ResponseStatus status, T? data, String? customMessage}) =>
-      bimap((l) => GeneralException(message: customMessage ?? status.message, statusCode: status.statusCode), (r) => data);
+      bimap((l) => CoreException(message: customMessage ?? status.message, statusCode: status.statusCode), (r) => data);
 
   BaseResponse<T?> setLocalResponseStatus<T>({required ResponseStatusLocal localStatus, T? data, String? customMessage}) =>
       bimap((l) => NetworkException(message: customMessage ?? localStatus.message, statusCode: localStatus.statusCode), (r) => data);

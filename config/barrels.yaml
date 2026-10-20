@@ -69,6 +69,7 @@ barrels:
     library: true
     roots:
       - lib/core/core_resources
+      - lib/core/core_resources/exceptions
 
   - output: lib/barrels/extensions_barrel.dart
     library: true
