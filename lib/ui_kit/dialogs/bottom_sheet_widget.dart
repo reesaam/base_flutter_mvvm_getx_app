@@ -1,62 +1,70 @@
 import '../../barrels/core_barrel.dart';
+import '../../barrels/core_resources_barrel.dart';
 import '../../barrels/extensions_barrel.dart';
 import '../../barrels/localization_barrel.dart';
 import '../../barrels/ui_kit_barrel.dart';
 
 class AppBottomSheetWidget {
-  static Future<T?> appBottomSheetGeneral<T>({String? title, Widget? widget, String? text, List<Widget>? buttons, bool? dismissible}) async =>
-      await showModalBottomSheet(
-        context: Get.context!,
-        useSafeArea: true,
-        useRootNavigator: true,
-        showDragHandle: true,
-        isScrollControlled: true,
-        isDismissible: dismissible ?? false,
-        shape: AppElements.borderModal,
-        builder: (context) => AppContainer(
-          constraints: BoxConstraints.expand(height: Get.height / 1.2),
-          padding: AppPaddings.generalBottomModal,
+  static Future<T?> appBottomSheetGeneral<T>({
+    String? title,
+    Widget? widget,
+    String? text,
+    List<Widget>? buttons,
+    bool? dismissible,
+  }) async => await showModalBottomSheet(
+    context: Get.context!,
+    useSafeArea: true,
+    useRootNavigator: true,
+    isScrollControlled: true,
+    showDragHandle: true,
+    isDismissible: dismissible ?? false,
+    shape: AppElements.borderModal,
+    barrierColor: AppColors.transparent.color,
+    builder: (context) => ConstrainedBox(
+      constraints: BoxConstraints(
+        maxHeight: AppDefaults.bottomSheetMaxHeight,
+        minHeight: AppDefaults.bottomSheetMinHeight,
+      ),
+      child: Padding(
+        padding: AppPaddings.only(bottom: Get.mediaQuery.viewInsets.bottom),
+        child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              innerWidget(title: title, text: text, widget: widget),
-              AppSpaces.h40,
+              if (title.isNotNullOrEmpty) _title(title),
+              AppSpaces.h20,
+              _bodyBuilder(widget: widget, text: text),
+              AppSpaces.h20,
               renderButtonsBottomDialog(buttons),
             ],
           ),
         ),
-      );
+      ),
+    ),
+  );
 
-  static Widget innerWidget({String? title, Widget? widget, String? text}) => SingleChildScrollView(
+  static Widget _title(String? title) => Padding(
+    padding: AppPaddings.generalAlertDialog,
     child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Title Widget
-        if (title.isNullOrEmpty)
-          Padding(
-            padding: AppPaddings.generalAlertDialog,
-            child: Column(
-              children: [
-                Text(title ?? ''),
-                AppDividers.general(color: AppColors.primary),
-              ],
-            ),
-          ),
-        // Main Widget
-        (widget ??
-            Padding(
-              padding: AppPaddings.generalAlertDialog,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [Text(text ?? Texts.to.general.notAvailable, softWrap: true)],
-              ),
-            )),
+        Text(title ?? '').withTitleSmallSize.copyWith(textColor: AppColors.primary),
+        AppDividers.general(color: AppColors.primary),
       ],
     ),
+  );
+
+  static Widget _bodyBuilder({Widget? widget, String? text}) => Padding(
+    padding: AppPaddings.generalAlertDialog,
+    child:
+        (widget ??
+        Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [Text(text ?? Texts.to.general.notAvailable, softWrap: true)],
+        )),
   );
 
   static Widget renderButtonsBottomDialog(List<Widget>? buttons) {

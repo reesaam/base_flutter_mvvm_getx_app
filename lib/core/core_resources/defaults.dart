@@ -23,6 +23,11 @@ class AppDefaults {
   /// Borders
   static double get borderWidth => 2;
 
+  ///Dialogs
+  static double get dialogsSpacing => 10;
+  static double get bottomSheetMaxHeight => Get.height / 1.2;
+  static double get bottomSheetMinHeight => 200;
+
   /// Widgets
   static double get elevation => 2;
   static double get buttonsGeneralHeight => 50;

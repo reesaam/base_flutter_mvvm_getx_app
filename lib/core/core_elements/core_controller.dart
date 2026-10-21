@@ -22,8 +22,8 @@ abstract class CoreController extends GetxController {
 
   @override
   void onInit() async {
-    appData = await loadAppData();
     onInitFunction();
+    appData = await loadAppData();
     super.onInit();
   }
 
